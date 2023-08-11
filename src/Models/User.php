@@ -63,7 +63,6 @@ class User extends Admin implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'rag' => AppRag::class,
         'status' => AppStatus::class,
-        'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'is_active' => 'boolean',
         'created_at' => 'datetime:d M, Y \a\t h:i a',
