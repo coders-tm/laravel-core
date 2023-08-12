@@ -23,14 +23,4 @@ return new class extends Migration
             $table->foreign('module_id')->references('id')->on('modules')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('permissions');
-    }
 };

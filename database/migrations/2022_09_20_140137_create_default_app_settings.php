@@ -24,14 +24,4 @@ return new class extends Migration
             '6' => ['name' => 'Sunday', 'open_at' => '08:00', 'close_at' => '16:00', 'is_closed' => false],
         ]);
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        //
-    }
 };

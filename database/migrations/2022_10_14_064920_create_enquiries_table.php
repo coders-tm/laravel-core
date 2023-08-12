@@ -44,15 +44,4 @@ return new class extends Migration
             $table->foreign('enquiry_id')->references('id')->on('enquiries')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('replies');
-        Schema::dropIfExists('enquiries');
-    }
 };

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('subscription_id')->nullable();
             $table->string('number')->nullable();
             $table->string('currency')->nullable();
-            $table->integer('total')->nullable();
+            $table->double('total', 15, 2)->nullable();
             $table->string('stripe_status')->nullable();
             $table->string('stripe_id')->nullable();
             $table->text('note')->nullable();
@@ -37,8 +37,8 @@ return new class extends Migration
             $table->string('stripe_id')->nullable();
             $table->string('stripe_price')->nullable();
             $table->string('stripe_plan')->nullable();
-            $table->integer('amount')->nullable()->default(0);
-            $table->integer('quantity')->nullable();
+            $table->double('amount', 15, 2)->nullable()->default(0);
+            $table->unsignedBigInteger('quantity')->nullable();
             $table->string('currency')->nullable();
 
             $table->foreign('invoice_id')->references('id')->on('invoices')->cascadeOnUpdate()->cascadeOnDelete();

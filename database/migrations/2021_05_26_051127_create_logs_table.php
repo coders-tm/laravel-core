@@ -32,14 +32,4 @@ return new class extends Migration
             $table->foreign('admin_id')->references('id')->on('admins')->nullOnDelete();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('logs');
-    }
 };

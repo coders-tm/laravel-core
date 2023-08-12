@@ -55,17 +55,4 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('admins')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('task_users');
-        Schema::dropIfExists('task_replies');
-        Schema::dropIfExists('task_archives');
-        Schema::dropIfExists('tasks');
-    }
 };

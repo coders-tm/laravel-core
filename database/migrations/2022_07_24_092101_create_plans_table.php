@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('interval')->default('month');
             $table->string('default_interval')->default('month');
             $table->unsignedInteger('interval_count')->default(1);
-            $table->decimal('custom_fee', 5, 2)->default(0.00);
-            $table->decimal('monthly_fee', 5, 2)->default(0.00);
-            $table->decimal('yearly_fee', 5, 2)->default(0.00);
+            $table->double('custom_fee', 12, 2)->default(0.00);
+            $table->double('monthly_fee', 12, 2)->default(0.00);
+            $table->double('yearly_fee', 12, 2)->default(0.00);
             $table->string('stripe_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
@@ -38,7 +38,7 @@ return new class extends Migration
             $table->string('stripe_id')->nullable();
             $table->string('interval')->default('month');
             $table->unsignedInteger('interval_count')->default(1);
-            $table->decimal('amount', 5, 2)->default(0.00);
+            $table->double('amount', 12, 2)->default(0.00);
             $table->timestamps();
 
             $table->foreign('plan_id')->references('id')->on('plans')->cascadeOnUpdate()->cascadeOnDelete();
@@ -68,17 +68,5 @@ return new class extends Migration
             $table->unique(['slug', 'subscription_id']);
             $table->foreign('subscription_id')->references('id')->on('subscriptions')->cascadeOnUpdate()->cascadeOnDelete();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('plan_features');
-        Schema::dropIfExists('plan_prices');
-        Schema::dropIfExists('plans');
     }
 };

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->dateTime('starts_at')->nullable();
             $table->dateTime('ends_at')->nullable();
             $table->dateTime('cancels_at')->nullable();
-            $table->decimal('amount', 5, 2)->nullable()->default(0.00);
+            $table->double('amount', 12, 2)->nullable()->default(0.00);
             $table->text('note')->nullable();
             $table->timestamps();
 

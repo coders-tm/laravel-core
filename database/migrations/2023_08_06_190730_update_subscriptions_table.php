@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->boolean('is_downgrade')->nullable()->default(false)->after('quantity');
             $table->string('schedule')->nullable()->after('is_downgrade');
+            if (!Schema::hasColumn('subscriptions', 'cancels_at')) {
+                $table->dateTime('cancels_at')->nullable()->after('ends_at');
+            }
         });
     }
 };
