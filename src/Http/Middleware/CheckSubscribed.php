@@ -22,7 +22,7 @@ class CheckSubscribed
         } else if ($user->subscription() && $user->subscription()->cancelled()) {
             return response()->json([
                 'cancelled' => true,
-                'message' => "Your Subscriptin will end on {$user->subscription()->ends_at->format('D d M Y')}"
+                'message' => "Your Subscription will end on {$user->subscription()->ends_at->format('D d M Y')}"
             ], 200);
         } else {
             return response()->json([
