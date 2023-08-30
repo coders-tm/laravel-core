@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasFeature
 {
-
-
     /**
      * Get all of the usages for the Subscription
      *

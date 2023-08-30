@@ -15,15 +15,6 @@ class Subscription extends CashierSubscription
     use HasFeature;
 
     /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'price.plan',
-    ];
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -40,6 +31,17 @@ class Subscription extends CashierSubscription
         'trial_ends_at',
         'ends_at',
         'cancels_at',
+    ];
+
+    /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = [
+        'price.plan',
+        'price.features',
+        'usages',
     ];
 
     /**
