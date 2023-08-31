@@ -14,7 +14,7 @@ class CheckHoldUser extends Command
      *
      * @var string
      */
-    protected $signature = 'users:hold';
+    protected $signature = 'coderstm:users-hold';
 
     /**
      * The console command description.
