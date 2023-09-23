@@ -74,7 +74,7 @@ class TaskController extends Controller
 
         return response()->json([
             'data' => $task->load(['users', 'replies.user', 'media']),
-            'message' => 'Task has been created successfully!',
+            'message' => trans('coderstm::messages.tasks.store'),
         ], 200);
     }
 
@@ -99,7 +99,7 @@ class TaskController extends Controller
     {
         $task->delete();
         return response()->json([
-            'message' => 'Task has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.tasks.destroy', 1),
         ], 200);
     }
 
@@ -118,7 +118,7 @@ class TaskController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Tasks has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.tasks.destroy', 2),
         ], 200);
     }
 
@@ -135,7 +135,7 @@ class TaskController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Task has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.tasks.restored', 1),
         ], 200);
     }
 
@@ -155,7 +155,7 @@ class TaskController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Tasks has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.tasks.restored', 2),
         ], 200);
     }
 
@@ -185,7 +185,7 @@ class TaskController extends Controller
 
         return response()->json([
             'data' => $reply->fresh(['media', 'user']),
-            'message' => 'Reply has been created successfully!',
+            'message' => trans('coderstm::messages.tasks.reply'),
         ], 200);
     }
 
@@ -203,8 +203,10 @@ class TaskController extends Controller
             $task->archives()->detach(current_user());
         }
 
+        $type = !$task->is_archived ? 'archived' : 'unarchive';
+
         return response()->json([
-            'message' => !$task->is_archived ? 'Task marked as archived successfully!' : 'Task marked as unarchive successfully!',
+            'message' => trans('coderstm::messages.tasks.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 }

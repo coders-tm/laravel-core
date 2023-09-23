@@ -71,7 +71,7 @@ class PlanController extends Controller
 
         return response()->json([
             'data' => $plan->fresh(['prices', 'features']),
-            'message' => 'Plan has been created successfully!',
+            'message' => trans('coderstm::messages.plans.store'),
         ], 200);
     }
 
@@ -114,7 +114,7 @@ class PlanController extends Controller
             'data' => $plan->fresh([
                 'features'
             ]),
-            'message' => 'Plan has been update successfully!',
+            'message' => trans('coderstm::messages.plans.updated'),
         ], 200);
     }
 
@@ -128,7 +128,7 @@ class PlanController extends Controller
     {
         $plan->delete();
         return response()->json([
-            'message' => 'Plan has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.plans.destroy', 1),
         ], 200);
     }
 
@@ -147,7 +147,7 @@ class PlanController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Plans has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.plans.destroy', 2),
         ], 200);
     }
 
@@ -164,7 +164,7 @@ class PlanController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Plan has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.plans.restored', 1),
         ], 200);
     }
 
@@ -184,7 +184,7 @@ class PlanController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Plans has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.plans.restored', 2),
         ], 200);
     }
 
@@ -200,8 +200,9 @@ class PlanController extends Controller
             'is_active' => !$plan->is_active
         ]);
 
+        $type = $plan->is_active ? 'active' : 'deactive';
         return response()->json([
-            'message' => $plan->is_active ? 'Plan marked as active successfully!' : 'Plan marked as deactivated successfully!',
+            'message' => trans('coderstm::messages.plans.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 }

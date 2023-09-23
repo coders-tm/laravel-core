@@ -25,9 +25,8 @@ class AuthController extends Controller
                 'password' => 'required',
             ],
             [
-                'email.required' => 'Your email address is required.',
-                'email.exists' => 'Your email address doens\'t exists.',
-                'password.required' => 'Your password is required.',
+                'email.required' => trans('coderstm::validation.email.required'),
+                'email.exists' => trans('coderstm::validation.email.exists'),
             ]
         );
 
@@ -37,7 +36,7 @@ class AuthController extends Controller
             // check user status
             if (!$user->is_active()) {
                 Auth::guard($guard)->logout();
-                abort(403, 'Your account has been disabled and cannot access this application. Please contact with admin.');
+                abort(403, trans('coderstm::messages.account_disabled'));
             }
 
             try {
@@ -68,7 +67,7 @@ class AuthController extends Controller
             ], 200);
         } else {
             throw ValidationException::withMessages([
-                'password' => ['Your password doesn\'t match with our records.'],
+                'password' => [trans('coderstm::validation.password.match')],
             ]);
         }
     }
@@ -139,7 +138,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => 'You have been successfully logged out!'
+            'message' => trans('coderstm::messages.logout')
         ], 200);
     }
 
@@ -215,13 +214,13 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password)
             ]);
         } else {
-            return response()->json([
-                'message' => 'Old password doesn\'t match!'
-            ], 404);
+            throw ValidationException::withMessages([
+                'old_password' => [trans('coderstm::validation.password.old_match')],
+            ]);
         }
 
         return response()->json([
-            'message' => 'Password has been changed successfully!'
+            'message' => trans('coderstm::messages.password.changed')
         ], 200);
     }
 }

@@ -22,6 +22,6 @@ class GuardMiddleware
             return $next($request);
         }
 
-        return response()->json('Unauthenticated.', 401);
+        return response()->json(trans('coderstm::messages.unauthenticated'), 401);
     }
 }

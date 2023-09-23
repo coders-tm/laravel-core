@@ -14,29 +14,24 @@ class ForgotPasswordController extends Controller
 {
     public function request(Request $request, $guard = null)
     {
-        $request->validate(
-            [
-                'email' => "required|email|exists:{$guard},email",
-            ],
-            [
-                'email.required' => 'Email address is required.',
-            ]
-        );
+        $request->validate([
+            'email' => "required|email|exists:{$guard},email",
+        ]);
 
         $status = Password::broker($guard)->sendResetLink($request->only('email'));
         if ($status === Password::INVALID_USER) {
             return response()->json([
-                'message' => 'User not found!'
+                'message' => trans('coderstm::messages.invalid_user')
             ], 403);
         } elseif ($status === PasswordBroker::RESET_THROTTLED) {
             return response()->json([
-                'message' => 'Reset password email already sent. Please try again after sometime!'
+                'message' => trans('coderstm::messages.reset_throttled')
             ], 403);
         }
 
         return response()->json([
             'status' => $status,
-            'message' => 'Password reset link sent successfully!'
+            'message' => trans('coderstm::messages.reset_email_sent')
         ], 200);
     }
 
@@ -48,8 +43,7 @@ class ForgotPasswordController extends Controller
                 'password_confirmation' => 'required'
             ],
             [
-                'password.required' => 'Password is required.',
-                'password_confirmation.required' => 'Password Confirm is required.'
+                'password_confirmation.required' => trans('coderstm::validation.password.confirmation')
             ]
         );
 
@@ -68,13 +62,13 @@ class ForgotPasswordController extends Controller
 
         if ($status !== Password::PASSWORD_RESET) {
             return response()->json([
-                'message' => 'Invalid token or token may expired!'
+                'message' => trans('coderstm::messages.invalid_token')
             ], 403);
         }
 
         return response()->json([
             'status' => $status,
-            'message' => 'Password reset successfully!'
+            'message' => trans('coderstm::messages.password.reset')
         ], 200);
     }
 }

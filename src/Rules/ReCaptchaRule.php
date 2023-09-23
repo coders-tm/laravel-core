@@ -35,6 +35,6 @@ class ReCaptchaRule implements Rule
      */
     public function message()
     {
-        return 'The verification process for reCAPTCHA failed. Please attempt again.';
+        return trans('coderstm::validation.recaptch');
     }
 }

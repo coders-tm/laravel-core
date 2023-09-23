@@ -162,7 +162,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(['address', 'notes', 'plan']),
-            'message' => 'Member has been created successfully!',
+            'message' => trans('coderstm::messages.users.store'),
         ], 200);
     }
 
@@ -238,7 +238,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(['address', 'notes', 'plan']),
-            'message' => 'Member has been update successfully!',
+            'message' => trans('coderstm::messages.users.updated'),
         ], 200);
     }
 
@@ -252,7 +252,7 @@ class UserController extends Controller
     {
         $user->delete();
         return response()->json([
-            'message' => 'Member has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.users.destroy', 1),
         ], 200);
     }
 
@@ -271,7 +271,7 @@ class UserController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Users has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.users.destroy', 2),
         ], 200);
     }
 
@@ -288,7 +288,7 @@ class UserController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'User has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.users.restored', 1),
         ], 200);
     }
 
@@ -308,7 +308,7 @@ class UserController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Users has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.users.restored', 2),
         ], 200);
     }
 
@@ -326,7 +326,7 @@ class UserController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => 'Password reset link sent successfully!',
+            'message' => trans('coderstm::messages.users.password'),
         ], 200);
     }
 
@@ -342,8 +342,10 @@ class UserController extends Controller
             'is_active' => !$user->is_active
         ]);
 
+        $type = !$user->is_active ? 'archived' : 'unarchive';
+
         return response()->json([
-            'message' => $user->is_active ? 'Member marked as active successfully!' : 'Member marked as deactivated successfully!',
+            'message' => trans('coderstm::messages.users.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -369,12 +371,12 @@ class UserController extends Controller
 
             return response()->json([
                 'data' => $note->load('admin'),
-                'message' => 'Note has been added successfully!',
+                'message' => trans('coderstm::messages.users.note'),
             ], 200);
         } else {
             return response()->json([
                 'data' => null,
-                'message' => 'Note has been added successfully!',
+                'message' => trans('coderstm::messages.users.note'),
             ], 200);
         }
     }
@@ -407,7 +409,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(),
-            'message' => 'Subscription payment has been received.'
+            'message' => trans('coderstm::messages.subscription.due_payment')
         ], 200);
     }
 }

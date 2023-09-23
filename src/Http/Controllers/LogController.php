@@ -52,7 +52,7 @@ class LogController extends Controller
                 'admin',
                 'media',
             ]),
-            'message' => 'Log has been updated successfully!',
+            'message' => trans('coderstm::messages.logs.updated'),
         ], 200);
     }
 
@@ -66,7 +66,7 @@ class LogController extends Controller
     {
         $log->delete();
         return response()->json([
-            'message' => 'Log has been deleted successfully!',
+            'message' => trans('coderstm::messages.logs.destroy'),
         ], 200);
     }
 
@@ -97,7 +97,7 @@ class LogController extends Controller
                 'admin',
                 'media',
             ]),
-            'message' => 'Log reply has been created successfully!',
+            'message' => trans('coderstm::messages.logs.reply'),
         ], 200);
     }
 }

@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
         $subscription = $user->subscription();
         if ($user->is_free_forever || !$subscription) {
             return response()->json([
-                'message' => 'To access exclusive gym features, please subscribe to a plan. You are not currently subscribed to any plan.',
+                'message' => trans('coderstm::messages.subscription.none'),
                 'upcomingInvoice' => false,
                 'defaultPaymentMethod' => null
             ], 200);
@@ -36,19 +36,28 @@ class SubscriptionController extends Controller
         $subscription['defaultPaymentMethod'] = $user->default_payment_method ?? null;
 
         if ($subscription->canceled() && $subscription->onGracePeriod()) {
-            $subscription['message'] = "You have cancelled your subscription. Your subscription will end on {$subscription->ends_at->format('D d M Y')}";
+            $subscription['message'] = trans('coderstm::messages.subscription.canceled', [
+                'date' => $subscription->ends_at->format('d M, Y')
+            ]);
         } else if ($subscription->pastDue() || $user->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice();
-            $subscription['message'] = "To activate your subscription, please complete payment of {$invoice->realTotal()}.";
+            $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
+                'amount' => $invoice->realTotal()
+            ]);
         } else if ($upcomingInvoice) {
             $subscription['upcomingInvoice'] =  [
                 'amount' => $upcomingInvoice->total(),
                 'date' => $upcomingInvoice->date()->toFormattedDateString(),
             ];
             if ($subscription->is_downgrade) {
-                $subscription['message'] = "Price change will become effective on {$subscription['upcomingInvoice']['date']}";
+                $subscription['message'] = trans('coderstm::messages.subscription.downgrade', [
+                    'date' => $subscription['upcomingInvoice']['date']
+                ]);
             } else {
-                $subscription['message'] = "Next invoice {$subscription['upcomingInvoice']['amount']} on {$subscription['upcomingInvoice']['date']}";
+                $subscription['message'] = trans('coderstm::messages.subscription.active', [
+                    'amount' => $subscription['upcomingInvoice']['amount'],
+                    'date' => $subscription['upcomingInvoice']['date']
+                ]);
             }
         }
         return response()->json($subscription, 200);
@@ -80,7 +89,7 @@ class SubscriptionController extends Controller
 
         if ($isSubscribed && $user->subscription()->stripe_price == $planID) {
             throw ValidationException::withMessages([
-                'plan' => "You already subscribed to {$price->plan->label} plan.",
+                'plan' => trans('coderstm::validation.subscription.plan_already', ['plan' => $price->plan->label]),
             ]);
         }
 
@@ -112,7 +121,7 @@ class SubscriptionController extends Controller
 
         return response()->json([
             'subscription' => $subscription,
-            'message' => !$payment_method ? "Please contact our reception to make payment and complete your subscription!" : "You have successfully subscribe to {$price->plan->label} plan."
+            'message' => trans_choice('coderstm::messages.subscription.success', $payment_method ? 0 : 1, ['plan' => $price->plan->label])
         ]);
     }
 
@@ -140,13 +149,16 @@ class SubscriptionController extends Controller
                 $subscription->stripe_status = Subscription::STATUS_ACTIVE;
                 $subscription->save();
             } else {
-                abort(403, 'We are unable to authenticate your payment method. Please choose a different payment method or try again.');
+                abort(403, trans('coderstm::messages.payment_method.authenticate'));
             }
         } catch (\Throwable $th) {
             throw $th;
         }
 
-        return response()->json(['subscription' => $user->subscription(), 'message' => "You have successfully subscribe to {$plan->label} plan."]);
+        return response()->json([
+            'subscription' => $user->subscription(),
+            'message' => trans('coderstm::messages.subscription.success', ['plan' => $plan->label])
+        ]);
     }
 
     public function cancel(Request $request)
@@ -154,7 +166,7 @@ class SubscriptionController extends Controller
         $this->user()->subscription()->cancel();
 
         return response()->json([
-            'message' => 'You have successfully cancelled your subscription.'
+            'message' => trans('coderstm::messages.subscription.cancel')
         ], 200);
     }
 
@@ -162,7 +174,7 @@ class SubscriptionController extends Controller
     {
         $this->user()->subscription()->releaseSchedule();
         return response()->json([
-            'message' => 'You have successfully upgraded your subscription.'
+            'message' => trans('coderstm::messages.subscription.upgraded')
         ], 200);
     }
 
@@ -171,7 +183,7 @@ class SubscriptionController extends Controller
         $this->user()->subscription()->resume();
 
         return response()->json([
-            'message' => 'You have successfully resume your subscription.'
+            'message' => trans('coderstm::messages.subscription.resume')
         ], 200);
     }
 
@@ -238,7 +250,7 @@ class SubscriptionController extends Controller
 
         if (!isset($options['plan'])) {
             throw ValidationException::withMessages([
-                'plan' => "A valid plan ID is necessary for downgrading the subscription.",
+                'plan' => trans('coderstm::validation.subscriptions.downgrade_plan'),
             ]);
         }
 

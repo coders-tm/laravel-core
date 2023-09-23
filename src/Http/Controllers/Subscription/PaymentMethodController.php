@@ -35,7 +35,7 @@ class PaymentMethodController extends Controller
         $paymentMethod = $request->input('payment_method');
 
         if ($user->checkPaymentMethod($request->input('last_four_digit'))) {
-            return abort(403, 'Payment method already exists in your account.');
+            return abort(403, trans('coderstm::messages.payment_method.already'));
         }
 
         // create or get stripe customer
@@ -48,7 +48,7 @@ class PaymentMethodController extends Controller
             $user->addPaymentMethod($paymentMethod);
         }
 
-        return response()->json(['message' => "You have successfully added new payment method."]);
+        return response()->json(['message' => trans('coderstm::messages.payment_method.success')]);
     }
 
     /**
@@ -68,7 +68,7 @@ class PaymentMethodController extends Controller
             throw $th;
         }
 
-        return response()->json(['message' => "You have successfully updated default payment method."]);
+        return response()->json(['message' => trans('coderstm::messages.payment_method.default')]);
     }
 
     /**
@@ -88,7 +88,7 @@ class PaymentMethodController extends Controller
             throw $th;
         }
 
-        return response()->json(['message' => "You have successfully removed payment method."]);
+        return response()->json(['message' => trans('coderstm::messages.payment_method.destory')]);
     }
 
     private function user()

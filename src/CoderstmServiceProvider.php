@@ -3,6 +3,7 @@
 namespace Coderstm;
 
 use Laravel\Cashier\Cashier;
+use Illuminate\Support\Facades\App;
 use Coderstm\Commands\CheckHoldUser;
 use Illuminate\Pagination\Paginator;
 use Coderstm\Commands\InstallCommand;
@@ -49,6 +50,8 @@ class CoderstmServiceProvider extends ServiceProvider
             'Group' => 'Coderstm\Models\Group',
         ]);
 
+        App::setLocale('hi');
+
         Paginator::useBootstrapFive();
 
         Cashier::ignoreRoutes();
@@ -90,6 +93,7 @@ class CoderstmServiceProvider extends ServiceProvider
     protected function registerResources()
     {
         $this->loadViewsFrom($this->packagePath('resources/views'), 'coderstm');
+        $this->loadTranslationsFrom($this->packagePath('resources/lang'), 'coderstm');
     }
 
     /**
@@ -140,6 +144,10 @@ class CoderstmServiceProvider extends ServiceProvider
                 $this->packageStubPath('CoderstmServiceProvider.stub') => app_path('Providers/CoderstmServiceProvider.php'),
                 $this->packageStubPath('CoderstmRouteServiceProvider.stub') => app_path('Providers/CoderstmRouteServiceProvider.php'),
             ], 'coderstm-provider');
+
+            $this->publishes([
+                $this->packagePath('resources/lang') => base_path('resources/lang/vendor/coderstm'),
+            ], 'coderstm-lang');
         }
     }
 

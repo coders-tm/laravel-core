@@ -70,7 +70,7 @@ class GroupController extends Controller
 
         return response()->json([
             'data' => $group->load('permissions'),
-            'message' => 'Group has been created successfully!'
+            'message' => trans('coderstm::messages.groups.store')
         ], 200);
     }
 
@@ -117,7 +117,7 @@ class GroupController extends Controller
 
         return response()->json([
             'data' => $this->toArray($group->fresh(['permissions'])),
-            'message' => 'Group has been updated successfully!'
+            'message' => trans('coderstm::messages.groups.updated')
         ], 200);
     }
 
@@ -131,7 +131,7 @@ class GroupController extends Controller
     {
         $group->delete();
         return response()->json([
-            'message' => 'Group has been deleted successfully!'
+            'message' => trans_choice('coderstm::messages.groups.destroy', 1)
         ], 200);
     }
 
@@ -150,7 +150,7 @@ class GroupController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Groups has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.groups.destroy', 2)
         ], 200);
     }
 
@@ -167,7 +167,7 @@ class GroupController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Group has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.groups.restored', 1)
         ], 200);
     }
 
@@ -187,7 +187,7 @@ class GroupController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Groups has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.groups.restored', 2)
         ], 200);
     }
 

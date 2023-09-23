@@ -22,12 +22,14 @@ class CheckSubscribed
         } else if ($user->subscription() && $user->subscription()->cancelled()) {
             return response()->json([
                 'cancelled' => true,
-                'message' => "Your Subscription will end on {$user->subscription()->ends_at->format('D d M Y')}"
+                'message' => trans('coderstm::messages.subscription.canceled', [
+                    'date' => $user->subscription()->ends_at->format('d M, Y')
+                ])
             ], 200);
         } else {
             return response()->json([
                 'subscribed' => $subscribed,
-                'message' => 'Sorry, it seems that you are not currently subscribed to any plan. Please subscribe to a plan to continue accessing our content and features. Thank you!'
+                'message' => trans('coderstm::messages.subscription.none'),
             ], 403);
         }
     }

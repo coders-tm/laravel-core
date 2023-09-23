@@ -23,9 +23,6 @@ class CoderstmEventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        // EnvironmentSaved::class => [
-        //     ProcessEnvironment::class,
-        // ],
         EnquiryCreated::class => [
             SendEnquiryNotification::class,
             SendEnquiryConfirmation::class,

@@ -103,7 +103,7 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $admin->load('groups', 'permissions'),
-            'message' => 'Staff account has been created successfully!',
+            'message' => trans('coderstm::messages.staff.store'),
         ], 200);
     }
 
@@ -161,7 +161,7 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $this->toArray($admin->load('groups', 'permissions')),
-            'message' => 'Staff has been updated successfully!',
+            'message' => trans('coderstm::messages.staff.updated'),
         ], 200);
     }
 
@@ -175,7 +175,7 @@ class AdminController extends Controller
     {
         $admin->delete();
         return response()->json([
-            'message' => 'Staff has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.staff.destroy', 1),
         ], 200);
     }
 
@@ -194,7 +194,7 @@ class AdminController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Admins has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.staff.destroy', 2),
         ], 200);
     }
 
@@ -211,7 +211,7 @@ class AdminController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Admin has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.staff.restored', 1),
         ], 200);
     }
 
@@ -231,7 +231,7 @@ class AdminController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Admins has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.staff.restored', 2),
         ], 200);
     }
 
@@ -247,7 +247,11 @@ class AdminController extends Controller
         $permissionByModule = $permissions->groupBy('module_id');
 
         $modules = Module::select('id', 'name', 'icon', 'url', 'show_menu', 'sort_order')
-            ->find($permissionByModule->keys());
+            ->find($permissionByModule->keys())
+            ->map(function ($item) {
+                $item->label = trans('coderstm::modules.' . $item->name);
+                return $item;
+            });
 
         foreach ($modules as &$module) {
             $module['permissions'] = $permissionByModule->get($module->id);
@@ -273,7 +277,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => 'Password reset link sent successfully!',
+            'message' => trans('coderstm::messages.staff.password'),
         ], 200);
     }
 
@@ -287,7 +291,7 @@ class AdminController extends Controller
     {
         if ($admin->id == current_user()->id) {
             return response()->json([
-                'message' => 'Staff can not update his/her self account.',
+                'message' => trans('coderstm::messages.staff.admin_error'),
             ], 403);
         }
 
@@ -295,8 +299,10 @@ class AdminController extends Controller
             'is_supper_admin' => !$admin->is_supper_admin
         ]);
 
+        $type = $admin->is_supper_admin ? 'marked' : 'unmarked';
+
         return response()->json([
-            'message' => $admin->is_supper_admin ? 'Staff marked as admin successfully!' : 'Staff unmarked as admin successfully!',
+            'message' => trans('coderstm::messages.staff.admin_success', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -310,7 +316,7 @@ class AdminController extends Controller
     {
         if ($admin->id == current_user()->id) {
             return response()->json([
-                'message' => 'Staff can not update his/her self account.',
+                'message' => trans('coderstm::messages.staff.reply'),
             ], 403);
         }
 
@@ -318,8 +324,10 @@ class AdminController extends Controller
             'is_active' => !$admin->is_active
         ]);
 
+        $type = !$admin->is_active ? 'archived' : 'unarchive';
+
         return response()->json([
-            'message' => $admin->is_active ? 'Staff marked as active successfully!' : 'Staff marked as deactivated successfully!',
+            'message' => trans('coderstm::messages.staff.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 

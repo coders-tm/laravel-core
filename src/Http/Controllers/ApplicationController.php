@@ -50,7 +50,7 @@ class ApplicationController extends Controller
         AppSetting::create($request->key, $request->options ?? []);
 
         return response()->json([
-            'message' => 'App settings has been updated successfully!'
+            'message' => trans('coderstm::messages.settings_update')
         ], 200);
     }
 }

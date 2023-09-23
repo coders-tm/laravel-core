@@ -88,7 +88,7 @@ class EnquiryController extends Controller
             });
 
             return response()->json([
-                'message' => 'Messages has been created successfully!',
+                'message' => trans('coderstm::messages.enquiry.store'),
             ], 200);
         }
 
@@ -108,7 +108,7 @@ class EnquiryController extends Controller
 
         return response()->json([
             'data' => $enquiry->load(['user', 'replies.user', 'media']),
-            'message' => 'Message has been created successfully!',
+            'message' => trans('coderstm::messages.enquiry.store'),
         ], 200);
     }
 
@@ -134,7 +134,7 @@ class EnquiryController extends Controller
     {
         $enquiry->delete();
         return response()->json([
-            'message' => 'Enquiry has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.enquiry.destroy', 1),
         ], 200);
     }
 
@@ -153,7 +153,7 @@ class EnquiryController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => 'Enquiries has been deleted successfully!',
+            'message' => trans_choice('coderstm::messages.enquiry.destroy', 2),
         ], 200);
     }
 
@@ -170,7 +170,7 @@ class EnquiryController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Enquiry has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.enquiry.restored', 1),
         ], 200);
     }
 
@@ -190,7 +190,7 @@ class EnquiryController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => 'Enquiries has been restored successfully!',
+            'message' => trans_choice('coderstm::messages.enquiry.restored', 2),
         ], 200);
     }
 
@@ -220,7 +220,7 @@ class EnquiryController extends Controller
 
         return response()->json([
             'data' => $reply->fresh(['media', 'user']),
-            'message' => 'Reply has been created successfully!',
+            'message' => trans('coderstm::messages.enquiry.reply'),
         ], 200);
     }
 
@@ -236,8 +236,10 @@ class EnquiryController extends Controller
             'is_archived' => !$enquiry->is_archived
         ]);
 
+        $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
+
         return response()->json([
-            'message' => $enquiry->is_archived ? 'Enquiry marked as archived successfully!' : 'Enquiry marked as unarchive successfully!',
+            'message' => trans('coderstm::messages.enquiry.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -253,8 +255,10 @@ class EnquiryController extends Controller
             'user_archived' => !$enquiry->user_archived
         ]);
 
+        $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
+
         return response()->json([
-            'message' => $enquiry->user_archived ? 'Enquiry marked as archived successfully!' : 'Enquiry marked as unarchive successfully!',
+            'message' => trans('coderstm::messages.enquiry.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
 }

@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e)
     {
         if ($e instanceof AuthorizationException) {
-            $e = new AuthorizationException('You do not have permission to access. Please contact your administrator to request access.', $e->getCode());
+            $e = new AuthorizationException(trans('coderstm::messages.access_denied'), $e->getCode());
         }
 
         return parent::render($request, $e);

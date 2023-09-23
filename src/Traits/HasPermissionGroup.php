@@ -62,6 +62,9 @@ trait HasPermissionGroup
             });
         }
 
-        return $modules;
+        return $modules->map(function ($item) {
+            $item->label = trans('coderstm::modules.' . $item->name);
+            return $item;
+        });
     }
 }

@@ -32,12 +32,12 @@ trait ManagesPaymentMethods
 
     public function checkPaymentMethod($last4 = '')
     {
-        return $this->getPaymentMethods()->contains('last_four', $last4);
+        return $this->getPaymentMethods()->contains('card.last4', $last4);
     }
 
     public function getPaymentMethod($last4 = '')
     {
-        return $this->getPaymentMethods()->firstWhere('last_four', $last4);
+        return $this->getPaymentMethods()->firstWhere('card.last4', $last4);
     }
 
     public function getPaymentMethods($type = 'card', $parameters = [])
