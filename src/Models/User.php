@@ -461,6 +461,9 @@ class User extends Admin implements MustVerifyEmail
             if (isset($date['month'])) {
                 $q->whereMonth($column, $date['month']);
             }
+            if (isset($date['day'])) {
+                $q->whereDay($column, $date['day']);
+            }
         });
     }
 

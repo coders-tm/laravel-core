@@ -142,3 +142,19 @@ if (!function_exists('admin_notify')) {
         ])->notify($notification);
     }
 }
+
+if (!function_exists('app_lang')) {
+    function app_lang()
+    {
+        $langs = [
+            'en-US' => 'en',
+            'hi_IN' => 'hi',
+            'fr' => 'fr',
+        ];
+
+        $config = app_settings('config');
+        $lang = $config['lang'] ?? 'en-US';
+
+        return $langs[$lang];
+    }
+}

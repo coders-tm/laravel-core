@@ -33,6 +33,11 @@ class ApplicationController extends Controller
         return response()->json(AppSetting::findByKey($key), 200);
     }
 
+    public function config()
+    {
+        return $this->getSettings('config');
+    }
+
     /**
      * Update settings for a key.
      *

@@ -50,7 +50,7 @@ class CoderstmServiceProvider extends ServiceProvider
             'Group' => 'Coderstm\Models\Group',
         ]);
 
-        App::setLocale('hi');
+        App::setLocale(app_lang());
 
         Paginator::useBootstrapFive();
 
