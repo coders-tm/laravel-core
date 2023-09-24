@@ -146,15 +146,19 @@ if (!function_exists('admin_notify')) {
 if (!function_exists('app_lang')) {
     function app_lang()
     {
-        $langs = [
-            'en-US' => 'en',
-            'hi_IN' => 'hi',
-            'fr' => 'fr',
-        ];
+        try {
+            $langs = [
+                'en-US' => 'en',
+                'hi_IN' => 'hi',
+                'fr' => 'fr',
+            ];
 
-        $config = app_settings('config');
-        $lang = $config['lang'] ?? 'en-US';
+            $config = app_settings('config');
+            $lang = $config['lang'] ?? 'en-US';
 
-        return $langs[$lang];
+            return $langs[$lang];
+        } catch (\Throwable $th) {
+            return 'en';
+        }
     }
 }
