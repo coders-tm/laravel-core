@@ -2,6 +2,7 @@
 
 namespace Coderstm;
 
+use Coderstm\Commands\CheckExpiredSubscriptions;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\App;
 use Coderstm\Commands\CheckHoldUser;
@@ -175,6 +176,7 @@ class CoderstmServiceProvider extends ServiceProvider
                 SubscriptionsCancel::class,
                 SubscriptionsInvoice::class,
                 CheckHoldUser::class,
+                CheckExpiredSubscriptions::class,
             ]);
         }
     }

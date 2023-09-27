@@ -6,13 +6,14 @@ use Laravel\Cashier\Cashier;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Traits\HasFeature;
 use Coderstm\Events\Cashier\SubscriptionProcessed;
+use Coderstm\Traits\Logable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Cashier\Subscription as CashierSubscription;
 use InvalidArgumentException;
 
 class Subscription extends CashierSubscription
 {
-    use HasFeature;
+    use HasFeature, Logable;
 
     /**
      * The attributes that are mass assignable.
