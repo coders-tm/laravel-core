@@ -5,7 +5,7 @@ We wanted to notify you that your subscription with us has expired as of {{ $end
 
 <strong>Plan</strong>: {{ $plan }}<br>
 <strong>Price</strong>: {{ $price }}<br>
-<strong>Billing Cycle</strong>: {{ $interval }}
+<strong>Billing Cycle</strong>: {{ $interval }}<br>
 <strong>Expiration Date</strong>: {{ $ends_at }}
 
 As your subscription has ended, you will no longer have access to our premium features and services. We hope you've
