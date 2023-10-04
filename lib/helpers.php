@@ -1,8 +1,10 @@
 <?php
 
+use Money\Currency;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
+use Symfony\Polyfill\Intl\Icu\Currencies;
 use Illuminate\Support\Facades\Notification;
 
 if (!function_exists('guard')) {
@@ -125,6 +127,13 @@ if (!function_exists('format_amount')) {
     function format_amount($amount, $currency = null, $locale = null, array $options = [])
     {
         return Cashier::formatAmount($amount, $currency, $locale, $options);
+    }
+}
+
+if (!function_exists('currency_symbol')) {
+    function currency_symbol($currency = null)
+    {
+        return Currencies::getSymbol($currency ?? config('cashier.currency'));
     }
 }
 
