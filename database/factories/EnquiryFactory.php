@@ -21,11 +21,11 @@ class EnquiryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->email(),
-            'phone' => $this->faker->phoneNumber(),
-            'subject' => $this->faker->sentence(),
-            'message' => $this->faker->paragraph(),
+            'name' => fake()->name(),
+            'email' => fake()->email(),
+            'phone' => fake()->phoneNumber(),
+            'subject' => fake()->sentence(),
+            'message' => fake()->paragraph(),
             'status' => ['Pending', 'Replied', 'Staff Replied', 'Resolved'][rand(0, 3)],
         ];
     }

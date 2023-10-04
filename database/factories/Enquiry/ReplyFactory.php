@@ -23,7 +23,7 @@ class ReplyFactory extends Factory
     public function definition()
     {
         return [
-            'message' => $this->faker->paragraph(),
+            'message' => fake()->paragraph(),
             'user_id' => Coderstm::$adminModel::inRandomOrder()->first()->id,
         ];
     }
