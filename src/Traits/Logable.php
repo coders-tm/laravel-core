@@ -60,14 +60,15 @@ trait Logable
                     ];
                 }
             }
-            $model->logs()->create([
-                'type' => LogType::UPDATED,
-                'message' => "{$modelName} has been updated.",
-                'options' => $options
-            ]);
 
             if (method_exists(static::class, 'customUpdated')) {
                 static::customUpdated($model, $modelName);
+            } else if (!empty($options)) {
+                $model->logs()->create([
+                    'type' => LogType::UPDATED,
+                    'message' => "{$modelName} has been updated.",
+                    'options' => $options
+                ]);
             }
         });
         if (method_exists(static::class, 'restored')) {
