@@ -56,15 +56,16 @@ trait HasPermissionGroup
             $modules = Module::orderBy('sort_order')->find($permissionByModule->keys())->load('permissions');
 
             $modules = $modules->map(function ($item) use ($permissionByModule) {
-                $module = $item->toArray();
-                $module['permissions'] = $permissionByModule->get($item->id);
-                return $module;
+                return array_merge($item->toArray(), [
+                    'permissions' => $permissionByModule->get($item->id)
+                ]);
             });
         }
 
         return $modules->map(function ($item) {
-            $item->label = trans('coderstm::modules.' . $item->name);
-            return $item;
+            return array_merge(collect($item)->toArray(), [
+                'label' => trans('coderstm::modules.' . $item['name']),
+            ]);
         });
     }
 }
