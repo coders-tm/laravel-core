@@ -4,7 +4,6 @@ namespace Coderstm\Traits;
 
 use Coderstm\Enum\LogType;
 use Coderstm\Models\Log;
-use Coderstm\Models\Plan;
 use Illuminate\Support\Str;
 
 trait Logable
@@ -22,9 +21,14 @@ trait Logable
         return str_replace('_', ' ', Str::snake($attribute));
     }
 
-    private static function getLogValue($key, $value)
+    protected static function mapLogValue($key, $value)
     {
         return $value;
+    }
+
+    public function getLoggable()
+    {
+        return array_diff($this->fillable, $this->logignore ?? []);
     }
 
     protected static function boot()
@@ -52,23 +56,25 @@ trait Logable
         static::updated(function ($model) {
             $modelName = model_log_name($model);
             $options = [];
-            foreach ($model->getFillable() as $key) {
+            foreach ($model->getLoggable() as $key) {
                 if ($model->wasChanged($key)) {
                     $options[$key] = [
-                        'previous' => static::getLogValue($key, $model->getOriginal($key)),
-                        'current' => static::getLogValue($key, $model[$key]),
+                        'previous' => static::mapLogValue($key, $model->getOriginal($key)),
+                        'current' => static::mapLogValue($key, $model[$key]),
                     ];
                 }
             }
 
-            if (method_exists(static::class, 'customUpdated')) {
-                static::customUpdated($model, $modelName);
-            } else if (!empty($options)) {
+            if (!empty($options)) {
                 $model->logs()->create([
                     'type' => LogType::UPDATED,
                     'message' => "{$modelName} has been updated.",
                     'options' => $options
                 ]);
+            }
+
+            if (method_exists(static::class, 'customUpdated')) {
+                static::customUpdated($model, $modelName);
             }
         });
         if (method_exists(static::class, 'restored')) {
