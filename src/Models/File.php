@@ -71,7 +71,10 @@ class File extends Model
     {
         if ($this->file) {
             $this->path = $this->file->storeAs('files', $this->hash . '.' . $this->extension, $this->disk);
-            $this->url = Storage::disk($this->disk)->url($this->path);
+            $this->url = route('files.download', [
+                'hash' => $this->hash,
+                'path' => $this->original_file_name,
+            ]);
         }
         return parent::save($options);
     }

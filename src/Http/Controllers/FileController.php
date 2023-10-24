@@ -4,10 +4,11 @@ namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\File;
 use Illuminate\Http\Request;
-use Coderstm\Http\Controllers\Controller;
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
+use Coderstm\Http\Controllers\Controller;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class FileController extends Controller
@@ -196,15 +197,16 @@ class FileController extends Controller
             $path = "files/" . md5($url) . ".png";
             $media = Http::get($url);
             Storage::disk('public')->put($path, $media);
-            // return Storage::disk('local')->download($path, $name);
+
+            $filePath = Storage::disk('public')->path($path);
+
             $file = new File();
-            $file->url = Storage::disk('public')->url($path);
-            $file->path = $path;
-            $file->original_file_name = $name;
-            $file->size = Storage::disk('public')->size($path);
-            $file->mime_type = Storage::disk('public')->mimeType($path);
-            $file->save();
-            $file->update($request->input());
+            $file->setHttpFile(new UploadedFile($filePath, $name));
+            $file->save($request->input());
+
+            // delete file
+            unlink($filePath);
+
             return response()->json(new JsonResource($file->fresh()), 200);
         } catch (\Exception $e) {
             throw $e;

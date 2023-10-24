@@ -26,14 +26,12 @@ trait Fileable
 
     public function syncMedia(array $media)
     {
-        if ($media) {
-            $files = collect($media)->pluck('id')->filter()->mapWithKeys(function ($item, $key) {
-                return [$item => [
-                    'order' => $key
-                ]];
-            });
-            $this->media()->sync($files);
-        }
+        $files = collect($media)->pluck('id')->filter()->mapWithKeys(function ($item, $key) {
+            return [$item => [
+                'order' => $key
+            ]];
+        });
+        $this->media()->sync($files);
         return $this;
     }
 
