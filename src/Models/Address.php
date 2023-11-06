@@ -15,6 +15,10 @@ class Address extends Model
      * @var array
      */
     protected $fillable = [
+        'first_name',
+        'last_name',
+        'company',
+        'phone_number',
         'line1',
         'line2',
         'city',
