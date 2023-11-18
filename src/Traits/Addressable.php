@@ -14,7 +14,7 @@ trait Addressable
     public function updateOrCreateAddress(array $address)
     {
         if ($this->address) {
-            $this->address()->update((new Address($address))->toArray());
+            $this->address->update((new Address($address))->toArray());
         } else {
             $this->address()->save(new Address($address));
         }

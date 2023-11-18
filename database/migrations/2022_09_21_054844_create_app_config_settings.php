@@ -18,7 +18,11 @@ return new class extends Migration
     public function up()
     {
         AppSetting::create('config', [
-            'lang' => 'en-US'
+            'lang' => 'en-US',
+            'app_name' => config('app.name') ?? 'Company Name',
+            'app_timezone' => "Asia/Calcutta",
+            'phone_number' => "+9733014543",
+            'app_email' => "hello@company.com",
         ]);
     }
 

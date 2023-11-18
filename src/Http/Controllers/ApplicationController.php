@@ -7,14 +7,10 @@ use Coderstm\Models\Task;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
 use Coderstm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
 
 class ApplicationController extends Controller
 {
-    /**
-     * Get stats.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function stats(Request $request)
     {
         return response()->json([
@@ -23,11 +19,6 @@ class ApplicationController extends Controller
         ], 200);
     }
 
-    /**
-     * Get settings for a key.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function getSettings($key)
     {
         return response()->json(AppSetting::findByKey($key), 200);
@@ -38,11 +29,16 @@ class ApplicationController extends Controller
         return $this->getSettings('config');
     }
 
-    /**
-     * Update settings for a key.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function location()
+    {
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ])->get('https://ipinfo.io');
+
+        return $response->json();
+    }
+
     public function updateSettings(Request $request)
     {
         $rules = [
