@@ -73,7 +73,11 @@ if (!function_exists('has_recaptcha')) {
 if (!function_exists('app_settings')) {
     function app_settings($key)
     {
-        return AppSetting::findByKey($key);
+        try {
+            return AppSetting::findByKey($key);
+        } catch (\Exception $e) {
+            return collect();
+        }
     }
 }
 
