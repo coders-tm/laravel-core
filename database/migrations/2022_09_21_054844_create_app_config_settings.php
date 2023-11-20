@@ -19,10 +19,11 @@ return new class extends Migration
     {
         AppSetting::create('config', [
             'lang' => 'en-US',
-            'app_name' => config('app.name') ?? 'Company Name',
-            'app_timezone' => "Asia/Calcutta",
-            'phone_number' => "+9733014543",
-            'app_email' => "hello@company.com",
+            'name' => config('app.name') ?? 'Company Name',
+            'country' => "India",
+            'timezone' => "Asia/Calcutta",
+            'phone' => "+9733014543",
+            'email' => "email@change.me",
         ]);
     }
 

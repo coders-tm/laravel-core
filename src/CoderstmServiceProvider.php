@@ -16,6 +16,7 @@ use Coderstm\Http\Middleware\CheckSubscribed;
 use Coderstm\Http\Middleware\GuardMiddleware;
 use Coderstm\Models\Cashier\SubscriptionItem;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Config;
 
 class CoderstmServiceProvider extends ServiceProvider
 {
@@ -52,6 +53,10 @@ class CoderstmServiceProvider extends ServiceProvider
         ]);
 
         App::setLocale(app_lang());
+
+        foreach (app_settings('config') as $key => $value) {
+            Config::set("app.$key", $value);
+        }
 
         Paginator::useBootstrapFive();
 

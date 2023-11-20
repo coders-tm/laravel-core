@@ -18,7 +18,6 @@ return [
     'api_prefix' => env('APP_API_PREFIX', 'api'),
     'tunnel_domain' => env('TUNNEL_WEB_DOMAIN', null),
     'reset_password_url' => env('RESET_PASSWORD_PAGE', '/auth/reset-password'),
-    'admin_email' => env('APP_ADMIN_EMAIL', null),
 
     /*
     |--------------------------------------------------------------------------

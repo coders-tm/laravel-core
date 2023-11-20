@@ -137,17 +137,11 @@ if (!function_exists('currency_symbol')) {
     }
 }
 
-/**
- * Send the admin notification.
- *
- * @param  mixed  $notification
- * @return void
- */
 if (!function_exists('admin_notify')) {
     function admin_notify($notification)
     {
         return Notification::route('mail', [
-            config('coderstm.admin_email') => 'Admin'
+            config('app.email') => 'Admin'
         ])->notify($notification);
     }
 }
@@ -166,7 +160,7 @@ if (!function_exists('app_lang')) {
             $lang = $config['lang'] ?? 'en-US';
 
             return $langs[$lang];
-        } catch (\Throwable $th) {
+        } catch (\Exception $e) {
             return 'en';
         }
     }
