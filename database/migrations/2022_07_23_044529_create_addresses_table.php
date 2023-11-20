@@ -23,8 +23,10 @@ return new class extends Migration
             $table->string('line2')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
+            $table->string('state_code')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('country')->nullable();
+            $table->string('country_code')->nullable();
             $table->string('phone_number')->nullable();
             $table->boolean('default')->default(false);
             $table->string('ref')->nullable();

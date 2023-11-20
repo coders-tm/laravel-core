@@ -23,8 +23,10 @@ class Address extends Model
         'line2',
         'city',
         'state',
+        'state_code',
         'postal_code',
         'country',
+        'country_code',
         'default',
         'ref',
     ];

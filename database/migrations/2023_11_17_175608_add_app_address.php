@@ -15,10 +15,12 @@ return new class extends Migration
         AppSetting::create('address', [
             'company' => 'NitroFIT28',
             'line1' => 'Address Line 1',
-            'line2' => 'Address Line 2',
-            'city' => 'City',
-            'state' => 'State',
-            'country' => 'Country',
+            'line2' => '',
+            'city' => 'North 24 Pargans',
+            'state' => 'West Bengal',
+            'state_code' => 'WB',
+            'country' => 'India',
+            'country_code' => 'IN',
             'postal_code' => '743273',
         ]);
     }
