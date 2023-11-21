@@ -1,6 +1,6 @@
 <?php
 
-namespace Coderstm\Services;
+namespace Coderstm\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;

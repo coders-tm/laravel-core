@@ -1,22 +1,23 @@
 <?php
 
-namespace Coderstm;
+namespace Coderstm\Providers;
 
-use Coderstm\Commands\CheckExpiredSubscriptions;
+use Coderstm\Coderstm;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\App;
 use Coderstm\Commands\CheckHoldUser;
 use Illuminate\Pagination\Paginator;
 use Coderstm\Commands\InstallCommand;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Coderstm\Commands\SubscriptionsCancel;
 use Coderstm\Commands\SubscriptionsInvoice;
 use Coderstm\Http\Middleware\CheckSubscribed;
 use Coderstm\Http\Middleware\GuardMiddleware;
 use Coderstm\Models\Cashier\SubscriptionItem;
+use Coderstm\Commands\CheckExpiredSubscriptions;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Config;
 
 class CoderstmServiceProvider extends ServiceProvider
 {
@@ -188,11 +189,11 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function packagePath(string $path)
     {
-        return __DIR__ . '/../' . $path;
+        return __DIR__ . '/../../' . $path;
     }
 
     protected function packageStubPath(string $path)
     {
-        return __DIR__ . '/../stubs/' . $path;
+        return __DIR__ . '/../../stubs/' . $path;
     }
 }

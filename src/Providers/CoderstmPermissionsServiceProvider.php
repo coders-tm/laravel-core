@@ -1,6 +1,6 @@
 <?php
 
-namespace Coderstm;
+namespace Coderstm\Providers;
 
 use Coderstm\Models\Permission;
 use Illuminate\Support\Facades\Gate;
