@@ -13,7 +13,7 @@ enjoyed your experience with us during your subscription period.
 
 To renew your subscription and continue enjoying our premium offerings, please click the button below:
 
-@component('mail::button', ['url' => 'ssss'])
+@component('mail::button', ['url' => config('coderstm.member_url') . '/billing'])
     Renew Subscription
 @endcomponent
 
