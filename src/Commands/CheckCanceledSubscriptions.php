@@ -3,8 +3,8 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
+use Coderstm\Notifications\SubscriptionCanceledNotification;
 use Illuminate\Console\Command;
-use Coderstm\Notifications\SubscriptionExpiredNotification;
 
 class CheckCanceledSubscriptions extends Command
 {
@@ -29,23 +29,25 @@ class CheckCanceledSubscriptions extends Command
      */
     public function handle()
     {
-        $canceledSubscriptions = Coderstm::$subscriptionModel::canceled()->where('ends_at', '<=', now())
+        Coderstm::$subscriptionModel::canceled()
+            ->where('ends_at', '<=', now())
             ->whereDoesntHave('logs', function ($q) {
                 $q->where('type', 'canceled-notification');
-            })->get();
+            })->chunkById(100, function ($subscriptions) {
+                foreach ($subscriptions as $subscription) {
+                    try {
+                        $user = $subscription->user;
+                        $user->notify(new SubscriptionCanceledNotification($user, $subscription));
+                        $subscription->logs()->create([
+                            'type' => 'canceled-notification',
+                            'message' => 'Notification for canceled subscriptions has been successfully sent.'
+                        ]);
+                    } catch (\Throwable $th) {
+                        report($th);
+                    }
+                }
+            });
 
-        foreach ($canceledSubscriptions as $subscription) {
-            $user = $subscription->user;
-            try {
-                $user->notify(new SubscriptionExpiredNotification($user, $subscription));
-                $subscription->logs()->create([
-                    'type' => 'canceled-notification',
-                    'message' => 'Notification for canceled subscriptions has been successfully sent.'
-                ]);
-            } catch (\Throwable $th) {
-                report($th);
-            }
-        }
 
         $this->info('Expired subscriptions checked and notifications sent.');
     }

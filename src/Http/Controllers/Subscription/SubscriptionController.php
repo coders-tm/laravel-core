@@ -14,6 +14,7 @@ use Coderstm\Models\Plan\Price;
 use Coderstm\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 use Laravel\Cashier\Exceptions\IncompletePayment;
+use Coderstm\Notifications\SubscriptionCancelNotification;
 
 class SubscriptionController extends Controller
 {
@@ -151,8 +152,8 @@ class SubscriptionController extends Controller
             } else {
                 abort(403, trans('coderstm::messages.payment_method.authenticate'));
             }
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (\Exception $e) {
+            throw $e;
         }
 
         return response()->json([
@@ -163,7 +164,16 @@ class SubscriptionController extends Controller
 
     public function cancel(Request $request)
     {
-        $this->user()->subscription()->cancel();
+        try {
+            $user = $this->user();
+            $subscription = $user->subscription();
+
+            $subscription->cancel();
+
+            $user->notify(new SubscriptionCancelNotification($user, $subscription));
+        } catch (\Exception $e) {
+            throw $e;
+        }
 
         return response()->json([
             'message' => trans('coderstm::messages.subscription.cancel')

@@ -29,17 +29,29 @@ class SubscriptionsCancel extends Command
      */
     public function handle()
     {
-        Subscription::query()->active()->where('cancels_at', '<=', now())->each(function ($subscription) {
-            try {
-                $subscription->cancelNow();
-                $subscription->user()->update([
-                    'status' => AppStatus::DEACTIVE->value
-                ]);
-                $this->info("User #{$subscription->user()->id} has been deactivated!");
-            } catch (\Exception $ex) {
-                report($ex);
-                $this->error("User #{$subscription->user()->id} unable to deactivated! {$ex->getMessage()}");
-            }
-        });
+        Subscription::query()
+            ->active()
+            ->where('cancels_at', '<=', now())
+            ->whereDoesntHave('logs', function ($query) {
+                $query->where('type', 'canceled');
+            })->chunkById(100, function ($subscriptions) {
+                foreach ($subscriptions as $subscription) {
+                    try {
+                        $user = $subscription->user();
+                        $subscription->cancelNow();
+                        $user->update([
+                            'status' => AppStatus::DEACTIVE->value
+                        ]);
+                        $subscription->logs()->create([
+                            'type' => 'canceled',
+                            'message' => 'Subscription has been canceled successfully!'
+                        ]);
+                        $this->info("User #{$user->id} has been deactivated!");
+                    } catch (\Exception $ex) {
+                        report($ex);
+                        $this->error("User #{$user->id} unable to deactivated! {$ex->getMessage()}");
+                    }
+                }
+            });
     }
 }

@@ -9,8 +9,7 @@ Your subscription has been downgraded successfully. Here are the details:
 <strong>Billing Cycle</strong>: {{ $interval }}<br>
 <strong>Next Billing Date</strong>: {{ $nextBillingDate }}
 
-If you have any questions or need assistance regarding your subscription, our dedicated support team is here to help.
-Feel free to reach out to us at [Support Email/Contact].
+If you have any questions or need assistance regarding your subscription, our dedicated support team is here to help. Feel free to reach out to us at [Support Email/Contact].
 
 Thank you for using our service!
 

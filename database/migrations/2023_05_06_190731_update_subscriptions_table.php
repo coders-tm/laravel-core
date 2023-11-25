@@ -14,9 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->boolean('is_downgrade')->nullable()->default(false)->after('quantity');
-            $table->string('schedule')->nullable()->after('is_downgrade');
-            $table->dateTime('cancels_at')->nullable()->after('ends_at');
+            $table->dateTime('expires_at')->nullable()->after('ends_at');
         });
     }
 };

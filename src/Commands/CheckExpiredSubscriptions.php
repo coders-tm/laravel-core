@@ -29,23 +29,23 @@ class CheckExpiredSubscriptions extends Command
      */
     public function handle()
     {
-        $expiredSubscriptions = Coderstm::$subscriptionModel::where('ends_at', '<=', now())
+        Coderstm::$subscriptionModel::where('expires_at', '<=', now())
             ->whereDoesntHave('logs', function ($q) {
                 $q->where('type', 'expired-notification');
-            })->get();
-
-        foreach ($expiredSubscriptions as $subscription) {
-            $user = $subscription->user;
-            try {
-                $user->notify(new SubscriptionExpiredNotification($user, $subscription));
-                $subscription->logs()->create([
-                    'type' => 'expired-notification',
-                    'message' => 'Notification for expired subscriptions has been successfully sent.'
-                ]);
-            } catch (\Throwable $th) {
-                report($th);
-            }
-        }
+            })->chunkById(100, function ($subscriptions) {
+                foreach ($subscriptions as $subscription) {
+                    $user = $subscription->user;
+                    try {
+                        $user->notify(new SubscriptionExpiredNotification($user, $subscription));
+                        $subscription->logs()->create([
+                            'type' => 'expired-notification',
+                            'message' => 'Notification for expired subscriptions has been successfully sent.'
+                        ]);
+                    } catch (\Throwable $th) {
+                        report($th);
+                    }
+                }
+            });
 
         $this->info('Expired subscriptions checked and notifications sent.');
     }

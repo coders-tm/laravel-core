@@ -1,19 +1,22 @@
 @component('mail::message')
 # Dear {{ $name }},
 
-We are sorry to see you go, but we've received your subscription cancellation request. Here are the details:
+We wanted to notify you that your subscription with us has canceled as of {{ $ends_at }}.
 
 <strong>Plan</strong>: {{ $plan }}<br>
-<strong>Cancellation Date</strong>: {{ $ends_at }}
+<strong>Price</strong>: {{ $price }}<br>
+<strong>Billing Cycle</strong>: {{ $interval }}<br>
+<strong>Expiration Date</strong>: {{ $ends_at }}
 
-If you've changed your mind and would like to reactivate your subscription, you can do so by clicking the following button:
+As your subscription has ended, you will no longer have access to our premium features and services. We hope you've enjoyed your experience with us during your subscription period.
+
+To renew your subscription and continue enjoying our premium offerings, please click the button below:
 
 @component('mail::button', ['url' => config('coderstm.member_url') . '/billing'])
-    Reactivate Subscription
+    Renew Subscription
 @endcomponent
 
-If you have any questions or need assistance regarding your subscription, our dedicated support team is here to help.
-Feel free to reach out to us at [Support Email/Contact].
+If you have any questions or need assistance regarding your subscription, our dedicated support team is here to help. Feel free to reach out to us at [Support Email/Contact].
 
 Thank you for being a part of our service. We hope to see you again soon!
 

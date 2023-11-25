@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SubscriptionCanceledNotification extends Notification
+class SubscriptionCancelNotification extends Notification
 {
     use Queueable;
 
@@ -52,7 +52,7 @@ class SubscriptionCanceledNotification extends Notification
 
         return (new MailMessage)
             ->subject($this->subject)
-            ->markdown('coderstm::emails.user.subscription-canceled', [
+            ->markdown('coderstm::emails.user.subscription-cancel', [
                 'name' => $this->user->first_name,
                 'plan' => optional($this->user->price)->label,
                 'price' => format_amount(optional($this->subscription->price)->amount * 100),

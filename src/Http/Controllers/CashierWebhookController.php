@@ -32,6 +32,14 @@ class CashierWebhookController extends WebhookController
                 return;
             }
 
+            $expiresAt = null;
+
+            if (isset($data['current_period_end'])) {
+                $expiresAt = Carbon::createFromTimestamp($data['current_period_end']);
+            }
+
+            $subscription->expires_at = $expiresAt;
+
             $subscription->name = $subscription->name ?? $data['metadata']['name'] ?? $this->newSubscriptionName($payload);
 
             $firstItem = $data['items']['data'][0];
