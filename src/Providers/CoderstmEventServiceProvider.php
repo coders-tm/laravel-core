@@ -1,53 +1,31 @@
-<?php
-
-namespace Coderstm\Providers;
-
-use Coderstm\Events\TaskCreated;
-use Coderstm\Events\EnquiryCreated;
-use Coderstm\Events\UserSubscribed;
-use Laravel\Cashier\Events\WebhookReceived;
-use Coderstm\Listeners\SendSignupNotification;
-use Coderstm\Listeners\SendEnquiryConfirmation;
-use Coderstm\Listeners\SendEnquiryNotification;
-use Coderstm\Listeners\SendTaskUsersNotification;
-use Coderstm\Events\Cashier\SubscriptionProcessed;
-use Coderstm\Listeners\Cashier\CashierEventListener;
-use Coderstm\Listeners\Cashier\SubscriptionEventListener;
-use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
-class CoderstmEventServiceProvider extends ServiceProvider
-{
-    /**
-     * The event listener mappings for the application.
-     *
-     * @var array
-     */
-    protected $listen = [
-        EnquiryCreated::class => [
-            SendEnquiryNotification::class,
-            SendEnquiryConfirmation::class,
-        ],
-        TaskCreated::class => [
-            SendTaskUsersNotification::class,
-        ],
-        WebhookReceived::class => [
-            CashierEventListener::class,
-        ],
-        SubscriptionProcessed::class => [
-            SubscriptionEventListener::class,
-        ],
-        UserSubscribed::class => [
-            SendSignupNotification::class,
-        ],
-    ];
-
-    /**
-     * Register any events for your application.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-}
+<?php //002cd
+if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
+?>
+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
+RPPyxa5lDDCjfoUi1q+ZLfFoim==
