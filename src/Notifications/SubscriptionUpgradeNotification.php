@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SubscriptionDowngradeNotification extends Notification
+class SubscriptionUpgradeNotification extends Notification
 {
     use Queueable;
 
@@ -27,7 +27,7 @@ class SubscriptionDowngradeNotification extends Notification
     {
         $this->user = $user;
         $this->subscription = $subscription;
-        $this->subject = "Subscription Changed - Your Subscription Downgraded";
+        $this->subject = "Subscription Changed - Your Subscription Upgraded";
     }
 
     /**
@@ -52,7 +52,7 @@ class SubscriptionDowngradeNotification extends Notification
 
         return (new MailMessage)
             ->subject($this->subject)
-            ->markdown('coderstm::emails.user.subscription-downgrade', [
+            ->markdown('coderstm::emails.user.subscription-upgraded', [
                 'name' => $this->user->first_name,
                 'oldPlan' => optional($this->subscription->oldPlan)->label,
                 'plan' => optional($this->subscription->price)->label,

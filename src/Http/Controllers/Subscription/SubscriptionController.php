@@ -15,6 +15,7 @@ use Coderstm\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Coderstm\Notifications\SubscriptionCancelNotification;
+use Coderstm\Notifications\SubscriptionUpgradeNotification;
 use Coderstm\Notifications\SubscriptionDowngradeNotification;
 
 class SubscriptionController extends Controller
@@ -88,6 +89,7 @@ class SubscriptionController extends Controller
         $isSubscribed = $user->subscribed();
         $subscription = null;
         $metadata = $request->input('metadata') ?? [];
+        $upgrade = false;
 
         if ($isSubscribed && $user->subscription()->stripe_price == $planID) {
             throw ValidationException::withMessages([
@@ -108,6 +110,7 @@ class SubscriptionController extends Controller
                     $subscription->swapAndInvoice($planID, [
                         'metadata' => $metadata,
                     ]);
+                    $upgrade = true;
                 }
             } else {
                 $subscription = $user->newSubscription('default', $planID)
@@ -115,9 +118,16 @@ class SubscriptionController extends Controller
                     ->create($payment_method);
             }
         } catch (IncompletePayment $exception) {
+            $upgrade = false;
             $paymentIntents = $this->paymentIntents($exception->payment->id);
             if ($paymentIntents['paymentIntent']['status'] != 'requires_payment_method') {
                 return $paymentIntents;
+            }
+        } finally {
+            if ($upgrade) {
+                $subscription->oldPlan = $subscription->price;
+                $subscription->price = $price;
+                $user->notify(new SubscriptionUpgradeNotification($user, $subscription));
             }
         }
 
