@@ -15,6 +15,7 @@ use Coderstm\Http\Controllers\Controller;
 use Illuminate\Validation\ValidationException;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Coderstm\Notifications\SubscriptionCancelNotification;
+use Coderstm\Notifications\SubscriptionDowngradeNotification;
 
 class SubscriptionController extends Controller
 {
@@ -313,6 +314,11 @@ class SubscriptionController extends Controller
             $subscription->is_downgrade = true;
             $subscription->schedule = $subscriptionSchedule->id; // or the date of the next renewal with the downgrade
             $subscription->save();
+
+            $subscription->oldPlan = Price::findByStripeId($currPhase->items[0]->price);
+            $subscription->price = Price::findByStripeId($options['plan']);
+            $user = $this->user();
+            $user->notify(new SubscriptionDowngradeNotification($user, $subscription));
         } catch (\Stripe\Exception\ApiErrorException $e) {
             throw $e;
         }

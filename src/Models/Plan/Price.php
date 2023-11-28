@@ -83,6 +83,11 @@ class Price extends Model
         return $price->first();
     }
 
+    public static function findByStripeId($id)
+    {
+        return static::firstWhere('stripe_id', $id);
+    }
+
     public function createAsPaymentGatewayPrice()
     {
         if (!$this->hasPaymentGatewayId()) {
