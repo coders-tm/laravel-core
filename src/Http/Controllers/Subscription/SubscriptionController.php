@@ -107,7 +107,7 @@ class SubscriptionController extends Controller
                     ]);
                 } else {
                     $subscription->releaseSchedule();
-                    $subscription->swapAndInvoice($planID, [
+                    $subscription->swap($planID, [
                         'metadata' => $metadata,
                     ]);
                     $upgrade = true;
