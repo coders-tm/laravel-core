@@ -19,11 +19,12 @@ return new class extends Migration
     {
         AppSetting::create('config', [
             'lang' => 'en-US',
-            'name' => config('app.name') ?? 'Company Name',
+            'name' => config('app.name', 'Company Name'),
             'country' => "India",
-            'timezone' => "Asia/Calcutta",
+            'timezone' => config('app.timezone', "Asia/Calcutta"),
             'phone' => "+9733014543",
-            'email' => "email@change.me",
+            'email' => config('coderstm.admin_email', "email@change.me"),
+            'currency' => config('cashier.currency', 'USD'),
         ]);
     }
 

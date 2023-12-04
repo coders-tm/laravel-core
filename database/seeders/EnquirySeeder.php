@@ -16,7 +16,7 @@ class EnquirySeeder extends Seeder
      */
     public function run()
     {
-        EnquiryFactory::new()->count(150)
+        EnquiryFactory::new()->count(30)
             ->has(
                 ReplyFactory::new()
                     ->count(rand(0, 1))

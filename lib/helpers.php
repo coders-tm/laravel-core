@@ -1,6 +1,5 @@
 <?php
 
-use Money\Currency;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
@@ -167,5 +166,12 @@ if (!function_exists('app_lang')) {
         } catch (\Exception $e) {
             return 'en';
         }
+    }
+}
+
+if (!function_exists('payment_methods')) {
+    function payment_methods()
+    {
+        return json_decode(file_get_contents(__DIR__ . '/payment-methods.json'), true);
     }
 }

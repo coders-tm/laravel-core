@@ -183,4 +183,13 @@ trait Helpers
             'time' => $time,
         ]);
     }
+
+    protected function setAutoIncrement($table, $increment = 1000000)
+    {
+        try {
+            DB::statement("ALTER TABLE $table AUTO_INCREMENT = $increment;");
+        } catch (\Exception $e) {
+            //throw $e;
+        }
+    }
 }

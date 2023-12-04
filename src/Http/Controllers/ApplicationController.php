@@ -4,10 +4,13 @@ namespace Coderstm\Http\Controllers;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Task;
+use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
-use Coderstm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Mail;
+use Coderstm\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 
 class ApplicationController extends Controller
 {
@@ -52,6 +55,30 @@ class ApplicationController extends Controller
 
         return response()->json([
             'message' => trans('coderstm::messages.settings_update')
+        ], 200);
+    }
+
+    public function testMailConfig(Request $request)
+    {
+        $rules = [
+            'to' => 'required|email',
+        ];
+
+        $this->validate($request, $rules);
+
+        try {
+            foreach ($request->input() as $key => $value) {
+                Config::set("mail.$key", $value);
+            }
+            Mail::to($request->to)->send(new TestEmail());
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => $e->getMessage()
+            ], 422);
+        }
+
+        return response()->json([
+            'message' => 'Test email sent successfully!'
         ], 200);
     }
 }
