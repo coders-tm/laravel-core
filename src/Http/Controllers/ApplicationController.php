@@ -7,10 +7,10 @@ use Coderstm\Models\Task;
 use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
-use Coderstm\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Config;
+use Coderstm\Http\Controllers\Controller;
+use Stevebauman\Location\Facades\Location;
 
 class ApplicationController extends Controller
 {
@@ -34,12 +34,7 @@ class ApplicationController extends Controller
 
     public function location()
     {
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
-        ])->get('https://ipinfo.io');
-
-        return $response->json();
+        return response()->json(Location::get(request()->ip()), 200);
     }
 
     public function updateSettings(Request $request)
