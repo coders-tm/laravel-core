@@ -6,29 +6,19 @@ use Coderstm\Coderstm;
 use Coderstm\Traits\Core;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Fileable;
-use Coderstm\Events\EnquiryCreated;
 use Coderstm\Models\Enquiry\Reply;
 use Illuminate\Support\Facades\DB;
+use Coderstm\Events\EnquiryCreated;
 use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
     use Core, Fileable;
 
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
     protected $dispatchesEvents = [
         'created' => EnquiryCreated::class,
     ];
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'email',
@@ -42,62 +32,26 @@ class Enquiry extends Model
         'source',
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'last_reply.user',
-        'user',
-    ];
+    protected $with = ['last_reply.user', 'user'];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'has_unseen',
-    ];
+    protected $appends = ['has_unseen'];
 
-    /**
-     * The relationship counts that should be eager loaded on every query.
-     *
-     * @var array
-     */
-    protected $withCount = [
-        'unseen',
-    ];
+    protected $withCount = ['unseen'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
+
     protected $casts = [
         'status' => AppStatus::class,
         'seen' => 'boolean',
         'is_archived' => 'boolean',
         'user_archived' => 'boolean',
-        'created_at' => 'datetime:d M, Y \a\t h:i a',
     ];
 
-    /**
-     * Get the has unseen
-     *
-     * @return bool
-     */
     public function getHasUnseenAttribute()
     {
         return $this->unseen_count > 0 || !$this->seen;
     }
 
-    /**
-     * Get the name
-     *
-     * @return string
-     */
     public function getNameAttribute($value)
     {
         if ($this->user) {
@@ -106,11 +60,6 @@ class Enquiry extends Model
         return $value;
     }
 
-    /**
-     * Get the phone
-     *
-     * @return string
-     */
     public function getPhoneAttribute($value)
     {
         if ($this->user) {
@@ -119,39 +68,21 @@ class Enquiry extends Model
         return $value;
     }
 
-    /**
-     * Get the user that owns the Enquiry
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo(Coderstm::$userModel, 'email', 'email')->withOnly([]);
     }
 
-    /**
-     * Get all of the replies for the Enquiry
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function replies()
     {
         return $this->hasMany(Reply::class, 'enquiry_id')->orderBy('created_at', 'desc');
     }
 
-    /**
-     * Get the enquiry's most recent reply.
-     */
     public function last_reply()
     {
         return $this->hasOne(Reply::class, 'enquiry_id')->latestOfMany();
     }
 
-    /**
-     * Get all of the unseen replies for the Enquiry
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function unseen()
     {
         return $this->hasMany(Reply::class, 'enquiry_id')->unseen();
@@ -174,12 +105,6 @@ class Enquiry extends Model
         return $this->replies()->save($reply);
     }
 
-    /**
-     * Scope a query to only include whereType
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeWhereType($query, $type)
     {
         switch ($type) {
@@ -193,12 +118,6 @@ class Enquiry extends Model
         }
     }
 
-    /**
-     * Scope a query to only include onlyOwner
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeOnlyOwner($query)
     {
         return $query->whereHas('user', function ($q) {
@@ -206,35 +125,16 @@ class Enquiry extends Model
         });
     }
 
-    /**
-     * Scope a query to only include onlyUnread
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeOnlyUnread($query)
     {
         return $query->where('status', AppStatus::STAFF_REPLIED);
     }
 
-    /**
-     * Scope a query to only include onlyActive
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeOnlyActive($query)
     {
         return $query->onlyStatus('Live');
     }
 
-    /**
-     * Scope a query to only include onlyStatus
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  string|null $status
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeOnlyStatus($query, $status = null)
     {
         switch ($status) {
@@ -258,14 +158,6 @@ class Enquiry extends Model
         return $query;
     }
 
-
-
-    /**
-     * Scope a query to only include sortBy
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeSortBy($query, $column = 'created_at', $direction = 'asc')
     {
         switch ($column) {

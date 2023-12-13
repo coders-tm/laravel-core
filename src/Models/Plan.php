@@ -6,6 +6,7 @@ use Coderstm\Traits\Core;
 use Coderstm\Enum\PlanInterval;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Models\Plan\Feature;
+use Coderstm\Traits\SerializeDate;
 use Laravel\Cashier\Cashier;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -13,13 +14,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
 {
-    use Core;
+    use Core, SerializeDate;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
+
     protected $fillable = [
         'label',
         'description',
@@ -35,30 +33,14 @@ class Plan extends Model
         'stripe_id',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = ['feature_lines'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'is_active' => 'boolean',
         'is_custom' => 'boolean',
         'interval' => PlanInterval::class,
-        'created_at' => 'datetime:d M, Y \a\t h:i a',
     ];
 
-    /**
-     * Get all of the prices for the Plan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function prices(): HasMany
     {
         return $this->hasMany(Price::class);
@@ -69,11 +51,6 @@ class Plan extends Model
         return !empty($this->description) ? explode("\n", $this->description) : [];
     }
 
-    /**
-     * Get all of the features for the Plan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function features(): HasMany
     {
         return $this->hasMany(Feature::class);
@@ -100,12 +77,6 @@ class Plan extends Model
         return $this;
     }
 
-    /**
-     * Override the create method to add custom functionality
-     *
-     * @param array $attributes
-     * @return \Illuminate\Database\Eloquent\Model|static
-     */
     public static function create(array $attributes = [])
     {
         try {
@@ -145,11 +116,6 @@ class Plan extends Model
         }
     }
 
-    /**
-     * Determine if the plan has a stripe id.
-     *
-     * @return bool
-     */
     public function hasStripeId()
     {
         return !is_null($this->stripe_id);
@@ -165,7 +131,6 @@ class Plan extends Model
         return $this;
     }
 
-    // Create a price for a given plan and amount
     protected static function createPrice($plan, $options = [])
     {
         $optional = optional((object) $options);

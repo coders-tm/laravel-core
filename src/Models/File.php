@@ -13,11 +13,6 @@ class File extends Model
 
     protected $file;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'disk',
         'url',
@@ -30,11 +25,6 @@ class File extends Model
         'ref',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'name',
         'is_image',
@@ -42,11 +32,6 @@ class File extends Model
         'icon',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'is_embed' => 'boolean',
     ];

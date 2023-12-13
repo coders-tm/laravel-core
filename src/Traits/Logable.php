@@ -28,7 +28,7 @@ trait Logable
 
     public function getLoggable()
     {
-        return array_diff($this->fillable, $this->logignore ?? []);
+        return array_diff($this->fillable, $this->logIgnore ?? []);
     }
 
     protected static function boot()

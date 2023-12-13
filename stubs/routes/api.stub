@@ -10,7 +10,7 @@ use Coderstm\Http\Controllers\FileController;
 use Coderstm\Http\Controllers\PlanController;
 use Coderstm\Http\Controllers\TaskController;
 use Coderstm\Http\Controllers\GroupController;
-use App\Http\Controllers\ApplicationController;
+use Coderstm\Http\Controllers\ApplicationController;
 use Coderstm\Http\Controllers\CashierWebhookController;
 use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
@@ -75,6 +75,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('admins/{admin}/reset-password-request', 'resetPasswordRequest')->name('admins.reset-password-request');
             Route::post('admins/{admin}/change-active', 'changeActive')->name('admins.change-active');
             Route::post('admins/{admin}/change-admin', 'changeAdmin')->name('admins.change-admin');
+            Route::post('admins/{admin}/change-instructor', 'changeInstructor')->name('admins.change-instructor');
         });
     });
     Route::resource('admins', AdminController::class);
@@ -167,6 +168,10 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::resource('plans', PlanController::class);
 });
 
+Route::get('qrcode/{user}.png', [UserController::class, 'qrcode'])->name('users.qrcode');
+
 // Stripe webhook
 Route::post('stripe/webhook', [CashierWebhookController::class, 'handleWebhook'])->name('stripe.webhook');
 Route::get('application/location', [ApplicationController::class, 'location'])->name('application.location');
+Route::get('application/config', [ApplicationController::class, 'config'])->name('application.config');
+Route::get('application/payment-methods', [ApplicationController::class, 'paymentMethods'])->name('application.payment-methods');

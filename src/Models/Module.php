@@ -3,15 +3,13 @@
 namespace Coderstm\Models;
 
 use Coderstm\Models\Permission;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Module extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    use SerializeDate;
+
     protected $fillable = [
         'name',
         'icon',
@@ -20,11 +18,6 @@ class Module extends Model
         'sort_order',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'show_menu' => 'boolean',
     ];

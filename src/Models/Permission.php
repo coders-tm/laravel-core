@@ -3,10 +3,13 @@
 namespace Coderstm\Models;
 
 use Coderstm\Models\Module;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
+    use SerializeDate;
+
     protected $fillable = [
         'module_id',
         'action',
@@ -19,9 +22,6 @@ class Permission extends Model
         return $this->belongsTo(Module::class);
     }
 
-    /**
-     * Get the parent permissionable model.
-     */
     public function permissionable()
     {
         return $this->morphTo();

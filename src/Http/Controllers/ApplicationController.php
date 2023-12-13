@@ -7,10 +7,11 @@ use Coderstm\Models\Task;
 use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
+use Coderstm\Models\PaymentMethod;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
-use Stevebauman\Location\Facades\Location;
 
 class ApplicationController extends Controller
 {
@@ -32,9 +33,19 @@ class ApplicationController extends Controller
         return $this->getSettings('config');
     }
 
+    public function paymentMethods()
+    {
+        return response()->json(PaymentMethod::toPublic(), 200);
+    }
+
     public function location()
     {
-        return response()->json(Location::get(request()->ip()), 200);
+        $response = Http::withHeaders([
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json'
+        ])->get('https://ipinfo.io');
+
+        return $response->json();
     }
 
     public function updateSettings(Request $request)

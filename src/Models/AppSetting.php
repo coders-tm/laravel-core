@@ -9,21 +9,11 @@ class AppSetting extends Model
 {
     use Core;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'key',
         'options'
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'options' => 'collection',
     ];

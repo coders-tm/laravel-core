@@ -15,15 +15,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class Admin extends Authenticatable
 {
-    use Notifiable, HasPermissionGroup, HasApiTokens, Fileable, Addressable, Core;
+    use Core, Notifiable, HasPermissionGroup, HasApiTokens, Fileable, Addressable;
 
     protected $guard = "admins";
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -34,55 +29,28 @@ class Admin extends Authenticatable
         'is_active',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
         'is_active' => 'boolean',
         'is_supper_admin' => 'boolean',
-        'created_at' => 'datetime:d M, Y \a\t h:i a',
     ];
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'name',
         'guard',
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
     protected $with = [
         'avatar',
         'address',
     ];
 
-    /**
-     * Get the full name of the user.
-     *
-     * @return bool
-     */
+    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
+
     public function getNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
@@ -108,34 +76,16 @@ class Admin extends Authenticatable
         return $this->is_active;
     }
 
-    /**
-     * Scope a query to only include whereName
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeWhereName($query, $filter)
     {
         return $query->where(DB::raw("CONCAT(`first_name`,`last_name`)"), 'like', "%{$filter}%");
     }
 
-    /**
-     * Scope a query to only include excludeCurrent
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeExcludeCurrent($query)
     {
         return $query->where('id', '<>', current_user()->id);
     }
 
-    /**
-     * Scope a query to only include sortBy
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc')
     {
         switch ($column) {

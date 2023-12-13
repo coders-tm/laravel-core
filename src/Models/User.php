@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Stripe\Subscription as StripeSubscription;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class User extends Admin implements MustVerifyEmail
@@ -24,11 +23,6 @@ class User extends Admin implements MustVerifyEmail
 
     protected $guard = "users";
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -44,35 +38,18 @@ class User extends Admin implements MustVerifyEmail
         'rag',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'rag' => AppRag::class,
         'status' => AppStatus::class,
-        'updated_at' => 'datetime',
         'is_active' => 'boolean',
-        'created_at' => 'datetime:d M, Y \a\t h:i a',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'name',
         'member_since',
@@ -81,11 +58,6 @@ class User extends Admin implements MustVerifyEmail
         'has_cancelled',
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
     protected $with = [
         'avatar',
         'address',
@@ -93,21 +65,11 @@ class User extends Admin implements MustVerifyEmail
         'latestInvoice',
     ];
 
-    /**
-     * Get the full name of the user.
-     *
-     * @return bool
-     */
     public function getNameAttribute()
     {
         return "{$this->title} {$this->first_name} {$this->last_name}";
     }
 
-    /**
-     * Get the member since of the user.
-     *
-     * @return bool
-     */
     public function getMemberSinceAttribute()
     {
         return $this->created_at->format('Y');

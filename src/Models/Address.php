@@ -9,11 +9,6 @@ class Address extends Model
 {
     use Core;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'first_name',
         'last_name',
@@ -31,20 +26,10 @@ class Address extends Model
         'ref',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'default' => 'boolean',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'addressable_type',
         'addressable_id',
@@ -55,11 +40,6 @@ class Address extends Model
         return $this->morphTo();
     }
 
-    /**
-     * Get the full address of the Address.
-     *
-     * @return bool
-     */
     public function getLabelAttribute()
     {
         return implode(', ', collect($this->attributes)->filter()->only([

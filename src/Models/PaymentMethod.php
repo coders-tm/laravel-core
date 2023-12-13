@@ -34,14 +34,14 @@ class PaymentMethod extends Model
     protected $casts = [
         'active' => 'boolean',
         'test_mode' => 'boolean',
-        'credentials' => 'array',
+        'credentials' => 'collection',
         'methods' => 'array',
     ];
 
     public function getConfigsAttribute()
     {
-        return collect($this->credentials)->mapWithKeys(function ($credential) {
-            return [$credential['key'] => $credential['value']];
+        return $this->credentials->mapWithKeys(function ($item) {
+            return [$item['key'] => $item['value']];
         })->all();
     }
 
@@ -68,5 +68,29 @@ class PaymentMethod extends Model
     public static function stripe()
     {
         return static::findProvider(static::STRIPE);
+    }
+
+    public static function toPublic()
+    {
+        return static::enabled()->get()->map(function ($item) {
+            $credentials = [];
+            if ($item->credentials) {
+                $credentials = $item->credentials->filter(function ($item) {
+                    return isset($item['publish']) && $item['publish'];
+                })->mapWithKeys(function ($item) {
+                    return [$item['key'] => $item['value']];
+                })->all();
+            }
+            return array_merge($item->only([
+                'name',
+                'id',
+                'provider',
+                'logo',
+                'payment_instructions',
+                'additional_details',
+                'methods',
+                'transaction_fee'
+            ]), $credentials);
+        });
     }
 }

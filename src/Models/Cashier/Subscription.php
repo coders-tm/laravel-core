@@ -2,24 +2,20 @@
 
 namespace Coderstm\Models\Cashier;
 
+use Coderstm\Traits\Logable;
 use Laravel\Cashier\Cashier;
+use InvalidArgumentException;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Traits\HasFeature;
+use Coderstm\Traits\SerializeDate;
 use Coderstm\Events\Cashier\SubscriptionProcessed;
-use Coderstm\Traits\Logable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Cashier\Subscription as CashierSubscription;
-use InvalidArgumentException;
 
 class Subscription extends CashierSubscription
 {
-    use HasFeature, Logable;
+    use HasFeature, Logable, SerializeDate;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'user_id',
         'name',
@@ -32,41 +28,29 @@ class Subscription extends CashierSubscription
         'trial_ends_at',
         'ends_at',
         'cancels_at',
+        'expires_at',
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
     protected $with = [
         'price.plan',
         'price.features',
         'usages',
     ];
 
-    /**
-     * The event map for the model.
-     *
-     * @var array
-     */
     protected $dispatchesEvents = [
         'created' => SubscriptionProcessed::class,
         'updated' => SubscriptionProcessed::class,
     ];
+    protected $casts = [
+        'ends_at' => 'datetime',
+        'quantity' => 'integer',
+        'trial_ends_at' => 'datetime',
+        'cancels_at' => 'datetime',
+        'expires_at' => 'datetime',
+    ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = ['is_valid'];
 
-    /**
-     * Get the price that owns the Subscription
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function price(): BelongsTo
     {
         return $this->belongsTo(Price::class, 'stripe_price', 'stripe_id');
@@ -88,27 +72,11 @@ class Subscription extends CashierSubscription
         }
     }
 
-
-    /**
-     * Get is valid for the Subscription
-     *
-     * @return bool
-     */
     public function getIsValidAttribute()
     {
         return $this->valid() ?: false;
     }
 
-    /**
-     * Swap the subscription to new Stripe prices.
-     *
-     * @param  string|array  $prices
-     * @param  array  $options
-     * @return $this
-     *
-     * @throws \Laravel\Cashier\Exceptions\IncompletePayment
-     * @throws \Laravel\Cashier\Exceptions\SubscriptionUpdateFailure
-     */
     public function swap($prices, array $options = [])
     {
         if (empty($prices = (array) $prices)) {

@@ -2,13 +2,14 @@
 
 namespace Coderstm\Traits;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Coderstm\Traits\Logable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 trait Core
 {
-    use SoftDeletes, HasFactory, Logable;
+    use SoftDeletes, HasFactory, Logable, SerializeDate;
 
     /**
      * Reload a fresh model instance from the database.

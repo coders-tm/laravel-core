@@ -5,19 +5,15 @@ namespace Coderstm\Models\Enquiry;
 use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Fileable;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reply extends Model
 {
-    use  HasFactory, Fileable;
+    use HasFactory, Fileable, SerializeDate;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'message',
         'enquiry_id',
@@ -27,68 +23,31 @@ class Reply extends Model
         'staff_only',
     ];
 
-    /**
-     * The relations to eager load on every query.
-     *
-     * @var array
-     */
-    protected $with = [
-        'media',
-    ];
+    protected $with = ['media'];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'seen' => 'boolean',
-        'created_at' => 'datetime:d M, Y \a\t h:i a',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'created_time'
-    ];
+    protected $appends = ['created_time'];
 
-    /**
-     * Get the created_time
-     *
-     * @return string
-     */
+    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
+
     public function getCreatedTimeAttribute()
     {
         return $this->created_at->format('H:i');
     }
 
-    /**
-     * Get the enquiry that owns the Reply
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function enquiry()
     {
         return $this->belongsTo(Coderstm::$enquiryModel);
     }
 
-    /**
-     * Get the parent user model (user or admin).
-     */
     public function user()
     {
         return $this->morphTo()->withOnly([]);
     }
 
-    /**
-     * Scope a query to only include unseen
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeUnseen($query)
     {
         return $query->where('seen', 0);

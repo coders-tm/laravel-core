@@ -3,63 +3,33 @@
 namespace Coderstm\Models\Plan;
 
 use Carbon\Carbon;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Usage extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
     public $timestamps = false;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'plan_usages';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'slug',
         'used',
         'reset_at',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'reset_at' => 'datetime',
     ];
 
-    /**
-     * Scope a query to only include byFeatureSlug
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeByFeatureSlug($query, string $featureSlug)
     {
         return $query->whereSlug($featureSlug);
     }
 
-    /**
-     * Check whether usage has been expired or not.
-     *
-     * @return bool
-     */
     public function expired(): bool
     {
         if (is_null($this->reset_at)) {

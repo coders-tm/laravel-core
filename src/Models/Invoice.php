@@ -15,11 +15,6 @@ class Invoice extends Model
 {
     use Core;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'number',
         'currency',
@@ -33,79 +28,38 @@ class Invoice extends Model
         'updated_at',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = ['amount', 'status', 'date'];
 
-    /**
-     * Get the subscription that owns the Invoice
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function subscription(): BelongsTo
     {
         return $this->belongsTo(Cashier::$subscriptionModel);
     }
 
-    /**
-     * Get all of the lines for the Invoice
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function lines(): HasMany
     {
         return $this->hasMany(LineItem::class);
     }
 
-    /**
-     * Format the given amount into a displayable currency.
-     *
-     * @param  int  $amount
-     * @return string
-     */
     protected function formatAmount($amount)
     {
         return Cashier::formatAmount($amount, $this->currency);
     }
 
-    /**
-     * Get the total amount that was paid (or will be paid).
-     *
-     * @return string
-     */
     public function formatTotal()
     {
         return $this->formatAmount($this->total);
     }
 
-    /**
-     * Get the amount
-     *
-     * @return string
-     */
     public function getAmountAttribute()
     {
         return $this->formatTotal();
     }
 
-    /**
-     * Get the status
-     *
-     * @return string
-     */
     public function getStatusAttribute()
     {
         return $this->stripe_status;
     }
 
-    /**
-     * Get the date
-     *
-     * @return string
-     */
     public function getDateAttribute()
     {
         return $this->created_at->toFormattedDateString();
@@ -142,12 +96,6 @@ class Invoice extends Model
         return $invoice->fresh(['lines']);
     }
 
-    /**
-     * Scope a query to only include open
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopeOpen($query)
     {
         return $query->where('stripe_status', StripeInvoice::STATUS_OPEN);

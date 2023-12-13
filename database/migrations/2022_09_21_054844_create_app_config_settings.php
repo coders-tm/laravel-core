@@ -24,7 +24,7 @@ return new class extends Migration
             'timezone' => config('app.timezone', "Asia/Calcutta"),
             'phone' => "+9733014543",
             'email' => config('coderstm.admin_email', "email@change.me"),
-            'currency' => config('cashier.currency', 'USD'),
+            'currency' => config('cashier.currency', 'usd'),
         ]);
     }
 

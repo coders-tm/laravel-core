@@ -5,6 +5,7 @@ namespace Coderstm\Models\Plan;
 use Coderstm\Models\Plan;
 use Laravel\Cashier\Cashier;
 use Coderstm\Enum\PlanInterval;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,20 +14,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Price extends Model
 {
-    use HasFactory;
+    use HasFactory, SerializeDate;
 
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
     protected $table = 'plan_prices';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'plan_id',
         'stripe_id',
@@ -35,40 +26,20 @@ class Price extends Model
         'amount',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'interval' => PlanInterval::class,
     ];
 
-    /**
-     * Get the plan that owns the Price
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function plan(): BelongsTo
     {
         return $this->belongsTo(Plan::class);
     }
 
-    /**
-     * Get all of the features for the Plan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function features(): HasMany
     {
         return $this->hasMany(Feature::class, 'plan_id', 'plan_id');
     }
 
-    /**
-     * Determine if the plan has a payment gateway id.
-     *
-     * @return bool
-     */
     public function hasPaymentGatewayId()
     {
         return !is_null($this->stripe_id);
