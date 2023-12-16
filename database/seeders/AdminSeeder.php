@@ -16,7 +16,7 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        AdminFactory::new()->count(20)->create()->each(function ($user) {
+        AdminFactory::new()->count(10)->create()->each(function ($user) {
             $user->updateOrCreateAddress(AddressFactory::new()->make()->toArray());
         });
     }

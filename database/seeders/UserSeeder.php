@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         UserFactory::new()
-            ->count(30)
+            ->count(10)
             ->create()
             ->each(function ($user) {
                 $user->updateOrCreateAddress(AddressFactory::new()->make()->toArray());

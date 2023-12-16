@@ -9,6 +9,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class EnquirySeeder extends Seeder
 {
+    use WithoutModelEvents;
+
     /**
      * Run the database seeds.
      *
@@ -16,7 +18,7 @@ class EnquirySeeder extends Seeder
      */
     public function run()
     {
-        EnquiryFactory::new()->count(30)
+        EnquiryFactory::new()->count(10)
             ->has(
                 ReplyFactory::new()
                     ->count(rand(0, 1))

@@ -2,8 +2,7 @@
 
 namespace Coderstm\Listeners;
 
-use Illuminate\Support\Str;
-use Coderstm\Models\AppSetting;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Coderstm\LaravelInstaller\Events\EnvironmentSaved;
@@ -18,6 +17,7 @@ class UpdateLicenseKey
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -30,9 +30,7 @@ class UpdateLicenseKey
     {
         $request = $event->request;
         if ($request->filled('license_key')) {
-            AppSetting::updateValue('config', [
-                'license_key' => $request->license_key
-            ]);
+            Config::set('app.license_key', $request->license_key);
         }
     }
 }
