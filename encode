@@ -1,4 +1,0 @@
-/home/dipak/Downloads/ioncube_encoder5_basic_13.0/ioncube_encoder.sh \
-  --copy "@/*/" \
-  --encode /home/dipak/www/laravel-core-source/src/Providers \
-  /home/dipak/www/laravel-core-source/ -o /home/dipak/www/laravel-core-encoded --merge-target

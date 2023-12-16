@@ -28,7 +28,7 @@ class UpdateLicenseKey
      */
     public function handle(EnvironmentSaved $event)
     {
-        $request = $event->getRequest();
+        $request = $event->request;
         if ($request->filled('license_key')) {
             AppSetting::updateValue('config', [
                 'license_key' => $request->license_key

@@ -144,7 +144,7 @@ if (!function_exists('admin_notify')) {
     function admin_notify($notification)
     {
         return Notification::route('mail', [
-            config('app.email') => 'Admin'
+            config('coderstm.admin_email') => config('app.name')
         ])->notify($notification);
     }
 }
@@ -166,6 +166,22 @@ if (!function_exists('app_lang')) {
         } catch (\Exception $e) {
             return 'en';
         }
+    }
+}
+
+if (!function_exists('company_address')) {
+    function company_address($html = false)
+    {
+        $address = optional((object) app_settings('address')->toArray());
+        $keys = [
+            'company' => $address->company,
+            'line1' => $address->line1,
+            'line2' => $address->line2,
+            'city' => $address->city,
+            'state' => $address->state ? "{$address->state}, {$address->postal_code}" : '',
+            'country' => $address->country,
+        ];
+        return collect($keys)->filter()->implode($html ? '<br>' : ', ');
     }
 }
 
