@@ -5,6 +5,7 @@ namespace Coderstm\Http\Controllers\Subscription;
 use Coderstm\Coderstm;
 use Stripe\Subscription;
 use Coderstm\Models\Plan;
+use Coderstm\Models\Coupon;
 use Illuminate\Support\Arr;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
@@ -12,6 +13,7 @@ use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Payment;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Redeem;
 use Illuminate\Validation\ValidationException;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Coderstm\Notifications\SubscriptionCancelNotification;
@@ -90,6 +92,7 @@ class SubscriptionController extends Controller
         $subscription = null;
         $metadata = $request->input('metadata') ?? [];
         $upgrade = false;
+        $coupon = Coupon::findByCode($request->promotion_code);
 
         if ($isSubscribed && $user->subscription()->stripe_price == $planID) {
             throw ValidationException::withMessages([
@@ -107,14 +110,16 @@ class SubscriptionController extends Controller
                     ]);
                 } else {
                     $subscription->releaseSchedule();
-                    $subscription->swapAndInvoice($planID, [
-                        'metadata' => $metadata,
-                    ]);
+                    $subscription->withCoupon($coupon->stripe_id)
+                        ->swapAndInvoice($planID, [
+                            'metadata' => $metadata,
+                        ]);
                     $upgrade = true;
                 }
             } else {
                 $subscription = $user->newSubscription('default', $planID)
                     ->withMetadata($metadata)
+                    ->withCoupon($coupon->stripe_id)
                     ->create($payment_method);
             }
         } catch (IncompletePayment $exception) {
@@ -124,6 +129,13 @@ class SubscriptionController extends Controller
                 return $paymentIntents;
             }
         } finally {
+            if ($coupon && $subscription) {
+                Redeem::updateOrCreate([
+                    'redeemable_type' => get_class($subscription),
+                    'redeemable_id' => $subscription->id,
+                    'coupon_id' => $coupon->id,
+                ]);
+            }
             if ($upgrade) {
                 $subscription->oldPlan = $subscription->price;
                 $subscription->price = $price;
@@ -231,6 +243,42 @@ class SubscriptionController extends Controller
     public function getSetupIntent(Request $request)
     {
         return $this->user()->createSetupIntent();
+    }
+
+    public function checkPromoCode(Request $request)
+    {
+        $request->validate([
+            'promotion_code' => 'required|string',
+            'plan_id' => 'required',
+        ]);
+
+        $planId = $request->input('plan_id');
+        $couponCode = $request->input('promotion_code');
+
+        // Retrieve the plan and coupon details from your database
+        $coupon = Coupon::findByCode($couponCode);
+
+        // Validate if the coupon exists
+        if (!$coupon) {
+            throw ValidationException::withMessages([
+                'promotion_code' => ['Invalid coupon code'],
+            ]);
+        }
+
+        if (!$coupon->canApplyToPlan($planId)) {
+            throw ValidationException::withMessages([
+                'promotion_code' => ['Invalid coupon code'],
+            ]);
+        }
+
+        // Check if the coupon has reached its maximum redemptions
+        if ($coupon->checkRaxRedemptions()) {
+            throw ValidationException::withMessages([
+                'promotion_code' => ['Coupon has reached maximum redemptions'],
+            ]);
+        }
+
+        return response()->json($coupon->toPublic());
     }
 
     protected function paymentIntents($id)

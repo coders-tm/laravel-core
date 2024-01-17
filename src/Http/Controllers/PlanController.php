@@ -9,21 +9,11 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PlanController extends Controller
 {
-    /**
-     * Create the controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->authorizeResource(Plan::class);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request, Plan $plan)
     {
         $plan = $plan->query();
@@ -40,17 +30,11 @@ class PlanController extends Controller
             $plan->onlyTrashed();
         }
 
-        $plan = $plan->orderBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')
-            ->paginate(optional($request)->rowsPerPage ?? 15);
+        $plan = $plan->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?? 15);
         return new ResourceCollection($plan);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request, Plan $plan)
     {
         $rules = [
@@ -75,24 +59,11 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
     public function show(Plan $plan)
     {
         return response()->json($plan->load('features'), 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Plan $plan)
     {
 
@@ -118,12 +89,6 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Plan $plan)
     {
         $plan->delete();
@@ -132,13 +97,7 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the selected resource from storage.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy_selected(Request $request, Plan $plan)
+    public function destroySelected(Request $request, Plan $plan)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -151,12 +110,6 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Restore the specified resource from storage.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
     public function restore($id)
     {
         Plan::onlyTrashed()
@@ -168,13 +121,7 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Remove the selected resource from storage.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
-    public function restore_selected(Request $request, Plan $plan)
+    public function restoreSelected(Request $request, Plan $plan)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -188,12 +135,6 @@ class PlanController extends Controller
         ], 200);
     }
 
-    /**
-     * Change active of specified resource from storage.
-     *
-     * @param  \Coderstm\Models\Plan  $plan
-     * @return \Illuminate\Http\Response
-     */
     public function changeActive(Request $request, Plan $plan)
     {
         $plan->update([

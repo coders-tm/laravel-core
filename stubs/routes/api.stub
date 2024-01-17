@@ -16,6 +16,7 @@ use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController;
 use Coderstm\Http\Controllers\PaymentMethodController as ShopPaymentMethodController;
+use Coderstm\Http\Controllers\Subscription\CouponController;
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +123,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('setup-intent', 'getSetupIntent')->name('setup-intent');
         Route::post('subscribe', 'subscribe')->name('subscribe');
+        Route::post('check-promo-code', 'checkPromoCode')->name('check-promo-code');
         Route::post('resume', 'resume')->name('resume');
         Route::post('confirm', 'confirm')->name('confirm');
         Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
@@ -166,6 +168,12 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('plans/{plan}/change-active', [PlanController::class, 'changeActive'])->name('plans.change-active');
     });
     Route::resource('plans', PlanController::class);
+
+    // Coupons
+    Route::middleware('can:update,coupon')->group(function () {
+        Route::post('coupons/{coupon}/change-active', [CouponController::class, 'changeActive'])->name('coupons.change-active');
+    });
+    Route::resource('coupons', CouponController::class);
 });
 
 Route::get('qrcode/{user}.png', [UserController::class, 'qrcode'])->name('users.qrcode');

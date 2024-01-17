@@ -33,7 +33,7 @@ class TaskController extends Controller
             $task->onlyTrashed();
         }
 
-        return $task->sortBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc');
+        return $task->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc');
     }
 
     /**
@@ -43,7 +43,7 @@ class TaskController extends Controller
      */
     public function index(Request $request, Task $task)
     {
-        $task = $this->query($request, $task)->onlyOwner()->paginate(optional($request)->rowsPerPage ?: 15);
+        $task = $this->query($request, $task)->onlyOwner()->paginate($request->rowsPerPage ?: 15);
         return new ResourceCollection($task);
     }
 
@@ -109,7 +109,7 @@ class TaskController extends Controller
      * @param  \Coderstm\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy_selected(Request $request, Task $task)
+    public function destroySelected(Request $request, Task $task)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -145,7 +145,7 @@ class TaskController extends Controller
      * @param  \Coderstm\Models\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function restore_selected(Request $request, Task $task)
+    public function restoreSelected(Request $request, Task $task)
     {
         $this->validate($request, [
             'items' => 'required',

@@ -34,8 +34,8 @@ class FileController extends Controller
             $file->onlyTrashed();
         }
 
-        $file = $file->orderBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')
-            ->paginate(optional($request)->rowsPerPage ?? 15);
+        $file = $file->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?? 15);
         return new ResourceCollection($file);
     }
 
@@ -110,7 +110,7 @@ class FileController extends Controller
      * @param  \Coderstm\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function destroy_selected(Request $request, File $file)
+    public function destroySelected(Request $request, File $file)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -146,7 +146,7 @@ class FileController extends Controller
      * @param  \Coderstm\Models\File  $file
      * @return \Illuminate\Http\Response
      */
-    public function restore_selected(Request $request, File $file)
+    public function restoreSelected(Request $request, File $file)
     {
         $this->validate($request, [
             'items' => 'required',

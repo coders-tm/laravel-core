@@ -51,6 +51,13 @@ return [
         'restored' => '{1} Plan has been restored successfully!|[2,*] Plans has been restored successfully!',
         'status' => 'Plan marked as :type successfully!',
     ],
+    'coupons' => [
+        'store' => 'Coupon has been created successfully!',
+        'updated' => 'Coupon has been updated successfully!',
+        'destroy' => '{1} Coupon has been deleted successfully!|[2,*] Coupons has been deleted successfully!',
+        'restored' => '{1} Coupon has been restored successfully!|[2,*] Coupons has been restored successfully!',
+        'status' => 'Coupon marked as :type successfully!',
+    ],
     'logs' => [
         'updated' => 'Log has been updated successfully!',
         'destroy' => 'Log has been deleted successfully!',

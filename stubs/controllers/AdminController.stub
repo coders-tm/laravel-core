@@ -56,8 +56,8 @@ class AdminController extends Controller
             $admin->onlyTrashed();
         }
 
-        $admin = $admin->sortBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')
-            ->paginate(optional($request)->rowsPerPage ?? 15);
+        $admin = $admin->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?? 15);
         return new ResourceCollection($admin);
     }
 
@@ -185,7 +185,7 @@ class AdminController extends Controller
      * @param  \App\Models\Admin $admin
      * @return \Illuminate\Http\Response
      */
-    public function destroy_selected(Request $request, Admin $admin)
+    public function destroySelected(Request $request, Admin $admin)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -221,7 +221,7 @@ class AdminController extends Controller
      * @param  \App\Models\Admin $admin
      * @return \Illuminate\Http\Response
      */
-    public function restore_selected(Request $request, Admin $admin)
+    public function restoreSelected(Request $request, Admin $admin)
     {
         $this->validate($request, [
             'items' => 'required',

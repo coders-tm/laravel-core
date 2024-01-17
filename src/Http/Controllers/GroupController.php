@@ -36,8 +36,8 @@ class GroupController extends Controller
             $group->onlyTrashed();
         }
 
-        $group = $group->orderBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')
-            ->paginate(optional($request)->rowsPerPage ?? 15);
+        $group = $group->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?? 15);
         return new ResourceCollection($group);
     }
 
@@ -141,7 +141,7 @@ class GroupController extends Controller
      * @param  \Coderstm\Models\Group $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy_selected(Request $request, Group $group)
+    public function destroySelected(Request $request, Group $group)
     {
         $this->validate($request, [
             'items' => 'required',
@@ -177,7 +177,7 @@ class GroupController extends Controller
      * @param  \Coderstm\Models\Group $group
      * @return \Illuminate\Http\Response
      */
-    public function restore_selected(Request $request, Group $group)
+    public function restoreSelected(Request $request, Group $group)
     {
         $this->validate($request, [
             'items' => 'required',

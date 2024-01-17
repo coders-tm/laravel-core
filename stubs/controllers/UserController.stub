@@ -75,8 +75,8 @@ class UserController extends Controller
             $user->onlyTrashed();
         }
 
-        $users = $user->sortBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')
-            ->paginate(optional($request)->rowsPerPage ?? 15);
+        $users = $user->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?? 15);
 
         return new ResourceCollection($users);
     }
