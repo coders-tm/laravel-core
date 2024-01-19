@@ -92,7 +92,7 @@ class SubscriptionController extends Controller
         $subscription = null;
         $metadata = $request->input('metadata') ?? [];
         $upgrade = false;
-        $coupon = Coupon::findByCode($request->promotion_code);
+        $coupon = optional(Coupon::findByCode($request->promotion_code));
 
         if ($isSubscribed && $user->subscription()->stripe_price == $planID) {
             throw ValidationException::withMessages([
