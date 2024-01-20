@@ -56,7 +56,6 @@ class Subscription extends CashierSubscription
         return $this->belongsTo(Price::class, 'stripe_price', 'stripe_id');
     }
 
-
     public function releaseSchedule()
     {
         try {

@@ -129,13 +129,14 @@ class SubscriptionController extends Controller
                 return $paymentIntents;
             }
         } finally {
-            if ($coupon && $subscription) {
+            if ($coupon->id && $subscription) {
                 Redeem::updateOrCreate([
                     'redeemable_type' => get_class($subscription),
                     'redeemable_id' => $subscription->id,
                     'coupon_id' => $coupon->id,
                 ]);
             }
+
             if ($upgrade) {
                 $subscription->oldPlan = $subscription->price;
                 $subscription->price = $price;
