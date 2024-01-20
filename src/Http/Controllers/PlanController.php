@@ -4,6 +4,7 @@ namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\Plan;
 use Illuminate\Http\Request;
+use Coderstm\Rules\SubscriptionExists;
 use Coderstm\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
@@ -24,6 +25,10 @@ class PlanController extends Controller
 
         if ($request->boolean('active')) {
             $plan->onlyActive();
+        }
+
+        if ($request->filled('plan_id')) {
+            $plan->orWhere('id', $request->plan_id);
         }
 
         if ($request->boolean('deleted')) {
@@ -91,6 +96,10 @@ class PlanController extends Controller
 
     public function destroy(Plan $plan)
     {
+        if ($plan->subscriptions()->count() > 0) {
+            abort(422, 'The plan cannot be deleted because it has active subscriptions.');
+        }
+
         $plan->delete();
         return response()->json([
             'message' => trans_choice('coderstm::messages.plans.destroy', 1),
@@ -100,11 +109,14 @@ class PlanController extends Controller
     public function destroySelected(Request $request, Plan $plan)
     {
         $this->validate($request, [
-            'items' => 'required',
+            'items' => 'required|array',
+            'items.*' => ['exists:plans,id', new SubscriptionExists],
         ]);
+
         $plan->whereIn('id', $request->items)->each(function ($item) {
             $item->delete();
         });
+
         return response()->json([
             'message' => trans_choice('coderstm::messages.plans.destroy', 2),
         ], 200);

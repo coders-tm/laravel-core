@@ -3,13 +3,14 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
+use Laravel\Cashier\Cashier;
 use Coderstm\Enum\PlanInterval;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Models\Plan\Feature;
 use Coderstm\Traits\SerializeDate;
-use Laravel\Cashier\Cashier;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Cashier\Subscription;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
@@ -44,6 +45,18 @@ class Plan extends Model
     public function prices(): HasMany
     {
         return $this->hasMany(Price::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasManyThrough(
+            Subscription::class,
+            Price::class,
+            'plan_id', // Foreign key on Price model
+            'stripe_price',    // Foreign key on Subscription model
+            'id',       // Local key on Plan model
+            'stripe_id'     // Local key on Price model
+        );
     }
 
     public function getFeatureLinesAttribute()
