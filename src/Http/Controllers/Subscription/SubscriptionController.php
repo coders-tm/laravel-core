@@ -176,7 +176,6 @@ class SubscriptionController extends Controller
     {
         $request->validate([
             'payment_intent' => 'required|string',
-            'plan' => 'string|integer',
         ]);
 
         $user = $this->user();
