@@ -3,6 +3,7 @@
 namespace Coderstm\Models\Cashier;
 
 use Coderstm\Models\Log;
+use Coderstm\Models\Invoice;
 use Coderstm\Traits\Logable;
 use Laravel\Cashier\Cashier;
 use InvalidArgumentException;
@@ -171,5 +172,64 @@ class Subscription extends CashierSubscription
         return $this->owner->upcomingInvoice(array_merge([
             'subscription' => $this->stripe_id,
         ], $options));
+    }
+
+    public function pay($paymentMethod)
+    {
+        if (empty($paymentMethod)) {
+            throw new InvalidArgumentException('Please provide a payment method.');
+        }
+
+        try {
+            if ($this->pastDue() || $this->hasIncompletePayment()) {
+                $invoice = $this->latestInvoice();
+                $invoice->pay([
+                    'payment_method' => $paymentMethod
+                ]);
+            }
+        } catch (\Exception $e) {
+            $this->handlePaymentFailure($this);
+        } finally {
+            $stripeSubscription = $this->asStripeSubscription();
+
+            $this->update([
+                'stripe_status' => $stripeSubscription->status
+            ]);
+
+            $this->syncLatestInvoice();
+        }
+
+        return $this;
+    }
+
+    public function paidOutOfBand($note = 'Cash')
+    {
+        try {
+            if ($this->pastDue() || $this->hasIncompletePayment()) {
+                $invoice = $this->latestInvoice();
+                $invoice->pay([
+                    'paid_out_of_band' => true
+                ]);
+            } else if ($this->onTrial()) {
+                $this->owner->creditBalance($this->upcomingInvoice()->amount_due, $note);
+                $this->endTrial();
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        } finally {
+            $stripeSubscription = $this->asStripeSubscription();
+
+            $this->update([
+                'stripe_status' => $stripeSubscription->status
+            ]);
+
+            $this->syncLatestInvoice();
+        }
+    }
+
+    public function syncLatestInvoice()
+    {
+        $invoice = $this->latestInvoice();
+        Invoice::createFromStripe($invoice);
     }
 }

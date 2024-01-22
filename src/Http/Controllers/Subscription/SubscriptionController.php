@@ -8,7 +8,6 @@ use Coderstm\Models\Plan;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\Redeem;
 use Illuminate\Support\Arr;
-use Coderstm\Models\Invoice;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Cashier;
@@ -35,7 +34,6 @@ class SubscriptionController extends Controller
             return response()->json([
                 'message' => trans('coderstm::messages.subscription.none'),
                 'upcomingInvoice' => false,
-                'defaultPaymentMethod' => null
             ], 200);
         }
 
@@ -45,7 +43,6 @@ class SubscriptionController extends Controller
         ]);
 
         $upcomingInvoice = $subscription->upcomingInvoice();
-        $subscription['defaultPaymentMethod'] = $user->default_payment_method ?? null;
 
         if ($subscription->canceled() && $subscription->onGracePeriod() && !$subscription->hasSchedule()) {
             if ($subscription->planCanceled) {
@@ -57,11 +54,13 @@ class SubscriptionController extends Controller
                     'date' => $subscription->ends_at->format('d M, Y')
                 ]);
             }
-        } else if ($subscription->pastDue() || $user->hasIncompletePayment()) {
+        } else if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice();
+            $amount = $invoice->realTotal();
             $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
-                'amount' => $invoice->realTotal()
+                'amount' => $amount
             ]);
+            $subscription['dueAmount'] = $amount;
             $subscription['hasDue'] = true;
         } else if ($upcomingInvoice) {
             $subscription['upcomingInvoice'] =  [
@@ -177,7 +176,7 @@ class SubscriptionController extends Controller
     {
         $request->validate([
             'payment_intent' => 'required|string',
-            'plan' => 'required|string',
+            'plan' => 'string|integer',
         ]);
 
         $user = $this->user();
@@ -203,9 +202,17 @@ class SubscriptionController extends Controller
             throw $e;
         }
 
+        if ($plan) {
+            $message = trans_choice('coderstm::messages.subscription.success', 0, [
+                'plan' => $plan->label
+            ]);
+        } else {
+            $message = 'Your payment has been confirmed successfully!';
+        }
+
         return response()->json([
             'subscription' => $user->subscription(),
-            'message' => trans('coderstm::messages.subscription.success', ['plan' => $plan->label])
+            'message' => $message
         ]);
     }
 
@@ -243,48 +250,24 @@ class SubscriptionController extends Controller
             'message' => trans('coderstm::messages.subscription.resume')
         ], 200);
     }
-    public function payment(Request $request)
-    {
-        try {
-            $user = $this->user();
-            $subscription = $user->subscription();
-            if ($subscription->pastDue() || $user->hasIncompletePayment()) {
-                $invoice = $subscription->latestInvoice();
-                return response()->json($this->paymentIntents($invoice->payment_intent), 200);
-            }
-        } catch (\Throwable $th) {
-            throw $th;
-        }
 
-        abort(422, 'Your subscription has no due payment');
-    }
     public function pay(Request $request)
     {
         $request->validate([
-            'payment_intent' => 'required|string',
             'payment_method' => 'required|string',
         ]);
 
         try {
             $user = $this->user();
             $subscription = $user->subscription();
-            if ($subscription->pastDue() || $user->hasIncompletePayment()) {
-                $invoice = $subscription->latestInvoice();
-                $invoice->pay([
-                    'payment_method' => $request->payment_method
-                ]);
+            $subscription->pay($request->payment_method);
+        } catch (IncompletePayment $exception) {
+            $paymentIntents = $this->paymentIntents($exception->payment->id);
+            if ($paymentIntents['paymentIntent']['status'] != 'requires_payment_method') {
+                return $paymentIntents;
             }
-        } catch (\Throwable $th) {
-            throw $th;
-        } finally {
-            $stripeSubscription = $subscription->asStripeSubscription();
-            $subscription->update([
-                'stripe_status' => $stripeSubscription->status
-            ]);
-
-            // Create invoice to application database
-            $invoice = $subscription->latestInvoice();
-            Invoice::createFromStripe($invoice);
+        } catch (\Exception $e) {
+            throw $e;
         }
 
         return response()->json([
