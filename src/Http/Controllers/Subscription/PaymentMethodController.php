@@ -5,6 +5,7 @@ namespace Coderstm\Http\Controllers\Subscription;
 use Coderstm\Coderstm;
 use Illuminate\Http\Request;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Cashier\PaymentMethod;
 
 class PaymentMethodController extends Controller
 {
@@ -15,7 +16,7 @@ class PaymentMethodController extends Controller
      */
     public function index(Request $request)
     {
-        return response()->json($this->user()->getPaymentMethods());
+        return response()->json($this->user()->payment_methods);
     }
 
     /**
@@ -38,15 +39,7 @@ class PaymentMethodController extends Controller
             return abort(403, trans('coderstm::messages.payment_method.already'));
         }
 
-        // create or get stripe customer
-        $user->createOrGetStripeCustomer();
-
-        if ($request->boolean('is_default')) {
-            $user->updateDefaultPaymentMethod($paymentMethod);
-            $user->updateDefaultPaymentMethodFromStripe();
-        } else {
-            $user->addPaymentMethod($paymentMethod);
-        }
+        $user->addPaymentMethod($paymentMethod, $request->boolean('is_default'));
 
         return response()->json(['message' => trans('coderstm::messages.payment_method.success')]);
     }
@@ -55,15 +48,15 @@ class PaymentMethodController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  string  $paymentMethod
+     * @param  \Coderstm\Models\Cashier\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $paymentMethod)
+    public function update(Request $request, PaymentMethod $paymentMethod)
     {
         $user = $this->user();
 
         try {
-            $user->updateDefaultPaymentMethod($paymentMethod);
+            $user->updateDefaultPaymentMethod($paymentMethod->stripe_id);
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -74,16 +67,15 @@ class PaymentMethodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  string  $paymentMethod
+     * @param  \Coderstm\Models\Cashier\PaymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $paymentMethod)
+    public function destroy(Request $request, PaymentMethod $paymentMethod)
     {
         $user = $this->user();
 
         try {
-            $paymentMethod = $user->findPaymentMethod($paymentMethod);
-            $paymentMethod->delete();
+            $user->deletePaymentMethod($paymentMethod->stripe_id);
         } catch (\Throwable $th) {
             throw $th;
         }

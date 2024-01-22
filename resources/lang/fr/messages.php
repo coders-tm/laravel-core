@@ -24,7 +24,7 @@ return [
         'none' => 'Pour accéder aux fonctionnalités exclusives de la salle de sport, veuillez souscrire à un abonnement. Vous n\'êtes actuellement abonné à aucune formule.',
         'canceled' => 'Vous avez annulé votre abonnement. Votre abonnement se terminera le :date',
         'past_due' => 'Pour activer votre abonnement, veuillez effectuer le paiement de :amount.',
-        'downgrade' => 'La modification de tarif prendra effet le :date',
+        'downgrade' => 'New plan :plan with :amount will become effective on :date.',
         'active' => 'Prochaine facture :amount le :date',
         'success' => '{0} Vous vous êtes abonné avec succès à la formule :plan.|[1,*] Veuillez contacter notre réception pour effectuer le paiement et finaliser votre abonnement !',
         'cancel' => 'Vous avez annulé votre abonnement avec succès.',

@@ -23,8 +23,9 @@ return [
     'subscription' => [
         'none' => 'To access exclusive gym features, please subscribe to a plan. You are not currently subscribed to any plan.',
         'canceled' => 'You have cancelled your subscription. Your subscription will end on :date',
+        'plan_canceled' => 'Subscribed plan has been deactivated. Your subscription will end on :date',
         'past_due' => 'To activate your subscription, please complete payment of :amount.',
-        'downgrade' => 'Price change will become effective on :date',
+        'downgrade' => 'New plan :plan with :amount will become effective on :date.',
         'active' => 'Next invoice :amount on :date',
         'success' => '{0} You have successfully subscribe to :plan plan.|[1,*] Please contact our reception to make payment and complete your subscription!',
         'cancel' => 'You have successfully cancelled your subscription.',

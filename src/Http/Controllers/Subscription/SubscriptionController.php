@@ -6,14 +6,15 @@ use Coderstm\Coderstm;
 use Stripe\Subscription;
 use Coderstm\Models\Plan;
 use Coderstm\Models\Coupon;
+use Coderstm\Models\Redeem;
 use Illuminate\Support\Arr;
+use Coderstm\Models\Invoice;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Payment;
 use Coderstm\Models\Plan\Price;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Models\Redeem;
 use Illuminate\Validation\ValidationException;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 use Coderstm\Notifications\SubscriptionCancelNotification;
@@ -29,6 +30,7 @@ class SubscriptionController extends Controller
         $user = $this->user();
 
         $subscription = $user->subscription();
+
         if ($user->is_free_forever || !$subscription) {
             return response()->json([
                 'message' => trans('coderstm::messages.subscription.none'),
@@ -37,25 +39,39 @@ class SubscriptionController extends Controller
             ], 200);
         }
 
+        $subscription = $user->subscription()->load([
+            'nextPrice',
+            'planCanceled',
+        ]);
+
         $upcomingInvoice = $subscription->upcomingInvoice();
         $subscription['defaultPaymentMethod'] = $user->default_payment_method ?? null;
 
-        if ($subscription->canceled() && $subscription->onGracePeriod()) {
-            $subscription['message'] = trans('coderstm::messages.subscription.canceled', [
-                'date' => $subscription->ends_at->format('d M, Y')
-            ]);
+        if ($subscription->canceled() && $subscription->onGracePeriod() && !$subscription->hasSchedule()) {
+            if ($subscription->planCanceled) {
+                $subscription['message'] = trans('coderstm::messages.subscription.plan_canceled', [
+                    'date' => $subscription->ends_at->format('d M, Y')
+                ]);
+            } else {
+                $subscription['message'] = trans('coderstm::messages.subscription.canceled', [
+                    'date' => $subscription->ends_at->format('d M, Y')
+                ]);
+            }
         } else if ($subscription->pastDue() || $user->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice();
             $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
                 'amount' => $invoice->realTotal()
             ]);
+            $subscription['hasDue'] = true;
         } else if ($upcomingInvoice) {
             $subscription['upcomingInvoice'] =  [
                 'amount' => $upcomingInvoice->total(),
                 'date' => $upcomingInvoice->date()->toFormattedDateString(),
             ];
-            if ($subscription->is_downgrade) {
+            if ($subscription->hasSchedule()) {
                 $subscription['message'] = trans('coderstm::messages.subscription.downgrade', [
+                    'plan' => $subscription->nextPrice->label,
+                    'amount' => $upcomingInvoice->total(),
                     'date' => $subscription['upcomingInvoice']['date']
                 ]);
             } else {
@@ -103,16 +119,23 @@ class SubscriptionController extends Controller
         try {
             if ($isSubscribed) {
                 $subscription = $user->subscription();
-                if ($price->amount < $subscription->price->amount) {
+                $downgrade = $price->amount < $subscription->price->amount;
+                $needResume = $subscription->canceled() && $subscription->onGracePeriod() && !$subscription->price->is_active;
+
+                if ($downgrade || $needResume) {
                     $this->downgrade($subscription, [
                         'plan' => $planID,
                         'metadata' => $metadata,
                     ]);
                 } else {
                     $subscription->releaseSchedule();
+                    $user->updateStripeCustomer([
+                        'invoice_settings' => ['default_payment_method' => $payment_method],
+                    ]);
                     $subscription->withCoupon($coupon->stripe_id)
                         ->swapAndInvoice($planID, [
                             'metadata' => $metadata,
+                            'default_payment_method' => $payment_method,
                         ]);
                     $upgrade = true;
                 }
@@ -218,6 +241,55 @@ class SubscriptionController extends Controller
 
         return response()->json([
             'message' => trans('coderstm::messages.subscription.resume')
+        ], 200);
+    }
+    public function payment(Request $request)
+    {
+        try {
+            $user = $this->user();
+            $subscription = $user->subscription();
+            if ($subscription->pastDue() || $user->hasIncompletePayment()) {
+                $invoice = $subscription->latestInvoice();
+                return response()->json($this->paymentIntents($invoice->payment_intent), 200);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+
+        abort(422, 'Your subscription has no due payment');
+    }
+    public function pay(Request $request)
+    {
+        $request->validate([
+            'payment_intent' => 'required|string',
+            'payment_method' => 'required|string',
+        ]);
+
+        try {
+            $user = $this->user();
+            $subscription = $user->subscription();
+            if ($subscription->pastDue() || $user->hasIncompletePayment()) {
+                $invoice = $subscription->latestInvoice();
+                $invoice->pay([
+                    'payment_method' => $request->payment_method
+                ]);
+            }
+        } catch (\Throwable $th) {
+            throw $th;
+        } finally {
+            $stripeSubscription = $subscription->asStripeSubscription();
+            $subscription->update([
+                'stripe_status' => $stripeSubscription->status
+            ]);
+
+            // Create invoice to application database
+            $invoice = $subscription->latestInvoice();
+            Invoice::createFromStripe($invoice);
+        }
+
+        return response()->json([
+            'data' => $user->fresh(),
+            'message' => trans('coderstm::messages.subscription.due_payment')
         ], 200);
     }
 
@@ -371,6 +443,7 @@ class SubscriptionController extends Controller
 
             // Update the UserSubscription record with downgrade status
             $subscription->is_downgrade = true;
+            $subscription->next_plan = $options['plan'];
             $subscription->schedule = $subscriptionSchedule->id; // or the date of the next renewal with the downgrade
             $subscription->save();
 

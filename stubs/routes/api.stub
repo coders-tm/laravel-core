@@ -123,6 +123,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('setup-intent', 'getSetupIntent')->name('setup-intent');
         Route::post('subscribe', 'subscribe')->name('subscribe');
+        Route::post('payment', 'payment')->name('payment');
+        Route::post('pay', 'pay')->name('pay');
         Route::post('check-promo-code', 'checkPromoCode')->name('check-promo-code');
         Route::post('resume', 'resume')->name('resume');
         Route::post('confirm', 'confirm')->name('confirm');

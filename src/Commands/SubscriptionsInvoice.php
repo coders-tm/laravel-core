@@ -32,7 +32,7 @@ class SubscriptionsInvoice extends Command
     {
         Subscription::query()->whereRaw('LENGTH(stripe_id) = ?', [28])->each(function ($subscription) {
             try {
-                foreach ($subscription->invoices()->reverse() as $invoice) {
+                foreach ($subscription->invoicesIncludingPending() as $invoice) {
                     Invoice::createFromStripe($invoice, [
                         'subscription_id' => $subscription->id
                     ]);

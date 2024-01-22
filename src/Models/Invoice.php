@@ -21,6 +21,7 @@ class Invoice extends Model
         'total',
         'stripe_status',
         'stripe_id',
+        'payment_intent',
         'note',
         'due_date',
         'subscription_id',
@@ -71,6 +72,7 @@ class Invoice extends Model
             'stripe_id' => $cashierInvoice->id
         ], array_merge([
             'currency' => $cashierInvoice->currency,
+            'payment_intent' => $cashierInvoice->payment_intent,
             'total' => $cashierInvoice->rawRealTotal(),
             'stripe_status' => $cashierInvoice->status,
             'number' => $cashierInvoice->number,

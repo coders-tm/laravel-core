@@ -2,6 +2,7 @@
 
 namespace Coderstm\Models\Cashier;
 
+use Coderstm\Models\Log;
 use Coderstm\Traits\Logable;
 use Laravel\Cashier\Cashier;
 use InvalidArgumentException;
@@ -25,6 +26,7 @@ class Subscription extends CashierSubscription
         'quantity',
         'is_downgrade',
         'schedule',
+        'next_plan',
         'trial_ends_at',
         'ends_at',
         'cancels_at',
@@ -56,10 +58,32 @@ class Subscription extends CashierSubscription
         return $this->belongsTo(Price::class, 'stripe_price', 'stripe_id');
     }
 
+    public function nextPrice(): BelongsTo
+    {
+        return $this->belongsTo(Price::class, 'next_plan', 'stripe_id');
+    }
+
+    public function planCanceled()
+    {
+        return $this->morphOne(Log::class, 'logable')
+            ->where('type', 'plan-canceled')
+            ->orderBy('created_at', 'desc');
+    }
+
+    public function hasSchedule()
+    {
+        return !is_null($this->schedule);
+    }
+
+    public function hasNexPlan()
+    {
+        return !is_null($this->next_plan);
+    }
+
     public function releaseSchedule()
     {
         try {
-            if ($this->schedule) {
+            if ($this->hasSchedule()) {
                 Cashier::stripe()->subscriptionSchedules->release($this->schedule);
                 $this->fill([
                     'schedule' => null,
@@ -130,5 +154,22 @@ class Subscription extends CashierSubscription
         $this->handlePaymentFailure($this);
 
         return $this;
+    }
+
+    /**
+     * Fetches upcoming invoice for this subscription.
+     *
+     * @param  array  $options
+     * @return \Laravel\Cashier\Invoice|null
+     */
+    public function upcomingInvoice(array $options = [])
+    {
+        if ($this->canceled() && !$this->hasSchedule()) {
+            return null;
+        }
+
+        return $this->owner->upcomingInvoice(array_merge([
+            'subscription' => $this->stripe_id,
+        ], $options));
     }
 }

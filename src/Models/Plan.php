@@ -12,6 +12,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Coderstm\Models\Cashier\Subscription;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use function Illuminate\Events\queueable;
 
 class Plan extends Model
 {
@@ -56,7 +57,7 @@ class Plan extends Model
             'stripe_price',    // Foreign key on Subscription model
             'id',       // Local key on Plan model
             'stripe_id'     // Local key on Price model
-        );
+        )->active();
     }
 
     public function getFeatureLinesAttribute()
@@ -178,13 +179,26 @@ class Plan extends Model
     protected static function booted()
     {
         parent::booted();
-        static::updated(function ($model) {
+        static::updated(queueable(function ($model) {
             if ($model->hasStripeId()) {
                 Cashier::stripe()->products->update($model->stripe_id, [
                     'name' => $model->label,
                     'description' => $model->description ?? "",
                 ]);
             }
-        });
+            if ($model->wasChanged('is_active') && !$model->is_active) {
+                foreach ($model->subscriptions as $subscription) {
+                    try {
+                        $subscription->cancel();
+                        $subscription->logs()->create([
+                            'type' => 'plan-canceled',
+                            'message' => 'Subscription has been canceled due to plan deactivation!'
+                        ]);
+                    } catch (\Exception $e) {
+                        //throw $e;
+                    }
+                }
+            }
+        }));
     }
 }

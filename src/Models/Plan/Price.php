@@ -28,6 +28,7 @@ class Price extends Model
 
     protected $casts = [
         'interval' => PlanInterval::class,
+        'is_active' => 'boolean',
     ];
 
     public function plan(): BelongsTo
@@ -91,6 +92,7 @@ class Price extends Model
         parent::boot();
         static::addGlobalScope('default', function (Builder $builder) {
             $builder->withMax('plan as label', 'label');
+            $builder->withMax('plan as is_active', 'is_active');
         });
     }
 }
