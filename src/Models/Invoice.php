@@ -100,6 +100,11 @@ class Invoice extends Model
 
     public function scopeOpen($query)
     {
-        return $query->where('stripe_status', StripeInvoice::STATUS_OPEN);
+        return $query->where('invoices.stripe_status', StripeInvoice::STATUS_OPEN);
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where('invoices.stripe_status', StripeInvoice::STATUS_PAID);
     }
 }

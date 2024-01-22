@@ -277,7 +277,12 @@ class SubscriptionController extends Controller
 
     public function invoices(Request $request)
     {
-        return response()->json($this->user()->appInvoices()->orderByDesc('created_at')->paginate($request->rowsPerPage ?: 10), 200);
+        $invoices = $this->user()
+            ->appInvoices()
+            ->paid()
+            ->orderByDesc('created_at')
+            ->paginate($request->rowsPerPage ?: 10);
+        return response()->json($invoices, 200);
     }
 
     public function downloadInvoice(Request $request, $invoiceId)
