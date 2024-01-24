@@ -17,13 +17,14 @@ class CheckSubscribed
     public function handle($request, Closure $next, $subscribed = false)
     {
         $user = $this->user();
+        $subscription = $user->subscription();
         if ($user->subscribed()) {
             return $next($request);
-        } else if ($user->subscription() && $user->subscription()->cancelled()) {
+        } else if ($subscription && $subscription->canceled()) {
             return response()->json([
                 'cancelled' => true,
                 'message' => trans('coderstm::messages.subscription.canceled', [
-                    'date' => $user->subscription()->ends_at->format('d M, Y')
+                    'date' => $subscription->ends_at->format('d M, Y')
                 ])
             ], 200);
         } else {

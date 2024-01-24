@@ -15,8 +15,8 @@ use Coderstm\Http\Controllers\CashierWebhookController;
 use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController;
-use Coderstm\Http\Controllers\PaymentMethodController as ShopPaymentMethodController;
 use Coderstm\Http\Controllers\Subscription\CouponController;
+use Coderstm\Http\Controllers\PaymentMethodController as ShopPaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,18 +123,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('', 'index')->name('index');
         Route::get('setup-intent', 'getSetupIntent')->name('setup-intent');
         Route::post('subscribe', 'subscribe')->name('subscribe');
-        Route::post('pay', 'pay')->name('pay');
-        Route::post('check-promo-code', 'checkPromoCode')->name('check-promo-code');
         Route::post('resume', 'resume')->name('resume');
         Route::post('confirm', 'confirm')->name('confirm');
+        Route::post('pay', 'pay')->name('pay');
         Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
         Route::post('invoices', 'invoices')->name('invoices');
         Route::get('invoices/{invoiceId}', 'downloadInvoice')->name('invoices.download');
-
-        //Only for subscriber
-        Route::middleware(['subscribed'])->group(function () {
-            Route::post('cancel', 'cancel')->name('cancel');
-        });
+        Route::post('cancel', 'cancel')->name('cancel');
     });
     Route::prefix('payment-methods')->name('payment-methods.')->controller(PaymentMethodController::class)->group(function () {
         Route::post('{paymentMethod}/update', 'update')->name('update');
@@ -177,6 +172,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::resource('coupons', CouponController::class);
 });
 
+Route::post('subscription/check-promo-code', [SubscriptionController::class, 'checkPromoCode'])->name('subscription.check-promo-code');
 Route::get('qrcode/{user}.png', [UserController::class, 'qrcode'])->name('users.qrcode');
 
 // Stripe webhook
