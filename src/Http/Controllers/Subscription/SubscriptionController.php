@@ -221,11 +221,7 @@ class SubscriptionController extends Controller
             $user = $this->user();
             $subscription = $user->subscription();
 
-            if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
-                $subscription->cancelNow();
-            } else {
-                $subscription->cancel();
-            }
+            $subscription->cancel();
 
             $user->notify(new SubscriptionCancelNotification($user, $subscription));
         } catch (\Exception $e) {
