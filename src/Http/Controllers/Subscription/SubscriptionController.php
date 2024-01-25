@@ -145,7 +145,7 @@ class SubscriptionController extends Controller
                     if (!$payment_method) {
                         $send_invoice = [
                             'collection_method' => 'send_invoice',
-                            'days_until_due' => 1
+                            'days_until_due' => 3
                         ];
 
                         $metadata['previous_plan'] = $subscription->stripe_price;
