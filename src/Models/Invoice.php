@@ -107,4 +107,12 @@ class Invoice extends Model
     {
         return $query->where('invoices.stripe_status', StripeInvoice::STATUS_PAID);
     }
+
+    function isOpen(): bool
+    {
+        return in_array($this->stripe_status, [
+            StripeInvoice::STATUS_OPEN,
+            StripeInvoice::STATUS_DRAFT
+        ]);
+    }
 }

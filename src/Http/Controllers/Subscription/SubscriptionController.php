@@ -42,6 +42,8 @@ class SubscriptionController extends Controller
             'planCanceled',
         ]);
 
+        $latestInvoice = $user->latestInvoice;
+
         $upcomingInvoice = $subscription->upcomingInvoice();
 
         if ($subscription->canceled() && $subscription->onGracePeriod() && !$subscription->hasSchedule()) {
@@ -57,6 +59,13 @@ class SubscriptionController extends Controller
         } else if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice();
             $amount = $invoice->realTotal();
+            $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
+                'amount' => $amount
+            ]);
+            $subscription['dueAmount'] = $amount;
+            $subscription['hasDue'] = true;
+        } else if ($latestInvoice && $latestInvoice->isOpen() && $subscription->hasManualUpgrade()) {
+            $amount = $latestInvoice->amount;
             $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
                 'amount' => $amount
             ]);
@@ -80,6 +89,10 @@ class SubscriptionController extends Controller
                 ]);
             }
         }
+
+        $subscription->unsetRelation('nextPrice');
+        $subscription->unsetRelation('planCanceled');
+
         return response()->json($subscription, 200);
     }
 
@@ -99,47 +112,61 @@ class SubscriptionController extends Controller
 
         $user = $this->user();
         $payment_method = $request->input('payment_method');
-        $payment_interval = optional($request)->payment_interval ?? 'month';
-        $plan = Plan::find($request->input('plan'));
-        $price = Price::planById($request->input('plan'), $plan->is_custom ?? $payment_interval);
-        $planID = $price->stripe_id;
-        $isSubscribed = $user->subscribed();
+        $interval = $request->payment_interval ?? 'month';
+        $plan = Plan::find($request->plan);
+        $price = Price::planById($request->plan, $plan->is_custom ? '' : $interval);
+        $stripe_price = $price->stripe_id;
+        $subscribed = $user->subscribed();
         $subscription = null;
         $metadata = $request->input('metadata') ?? [];
         $upgrade = false;
         $coupon = optional(Coupon::findByCode($request->promotion_code));
+        $send_invoice = [];
 
-        if ($isSubscribed && $user->subscription()->stripe_price == $planID) {
+        if ($subscribed && $user->subscription()->stripe_price == $stripe_price) {
             throw ValidationException::withMessages([
-                'plan' => trans('coderstm::validation.subscription.plan_already', ['plan' => $price->plan->label]),
+                'plan' => trans('coderstm::validation.subscription.plan_already', ['plan' => $price->label]),
             ]);
         }
 
         try {
-            if ($isSubscribed) {
+            if ($subscribed) {
                 $subscription = $user->subscription();
                 $downgrade = $price->amount < $subscription->price->amount;
                 $needResume = $subscription->canceled() && $subscription->onGracePeriod() && !$subscription->price->is_active;
 
                 if ($downgrade || $needResume) {
                     $this->downgrade($subscription, [
-                        'plan' => $planID,
+                        'plan' => $stripe_price,
+                        'payment_method' => $payment_method,
                         'metadata' => $metadata,
                     ]);
                 } else {
+                    if (!$payment_method) {
+                        $send_invoice = [
+                            'collection_method' => 'send_invoice',
+                            'days_until_due' => 1
+                        ];
+
+                        $metadata['previous_plan'] = $subscription->stripe_price;
+                        $metadata['is_upgrade'] = true;
+                    }
+
                     $subscription->releaseSchedule();
                     $user->updateStripeCustomer([
                         'invoice_settings' => ['default_payment_method' => $payment_method],
                     ]);
+
                     $subscription->withCoupon($coupon->stripe_id)
-                        ->swapAndInvoice($planID, [
+                        ->swapAndInvoice($stripe_price, array_merge([
                             'metadata' => $metadata,
                             'default_payment_method' => $payment_method,
-                        ]);
+                        ], $send_invoice));
+
                     $upgrade = true;
                 }
             } else {
-                $subscription = $user->newSubscription('default', $planID)
+                $subscription = $user->newSubscription('default', $stripe_price)
                     ->withMetadata($metadata)
                     ->withCoupon($coupon->stripe_id)
                     ->create($payment_method);
@@ -168,7 +195,7 @@ class SubscriptionController extends Controller
 
         return response()->json([
             'subscription' => $subscription,
-            'message' => trans_choice('coderstm::messages.subscription.success', $payment_method ? 0 : 1, ['plan' => $price->plan->label])
+            'message' => trans_choice('coderstm::messages.subscription.success', $payment_method ? 0 : 1, ['plan' => $price->label])
         ]);
     }
 
@@ -236,6 +263,30 @@ class SubscriptionController extends Controller
     public function cancelDowngrade(Request $request)
     {
         $this->user()->subscription()->releaseSchedule();
+        return response()->json([
+            'message' => trans('coderstm::messages.subscription.upgraded')
+        ], 200);
+    }
+
+    public function cancelUpgrade(Request $request)
+    {
+        try {
+            $user = $this->user();
+            $subscription = $user->subscription();
+            // Check if the previous plan of the subscription is not empty
+            if (!$subscription->previous_plan) {
+                throw new \Exception('Subscription upgrade not found!');
+            }
+
+            $subscription->allowPaymentFailures()
+                ->noProrate()
+                ->swap($subscription->previous_plan, [
+                    'metadata' => []
+                ]);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
         return response()->json([
             'message' => trans('coderstm::messages.subscription.upgraded')
         ], 200);
@@ -424,7 +475,7 @@ class SubscriptionController extends Controller
             ];
 
             Cashier::stripe()->subscriptionSchedules->update($subscriptionSchedule->id, [
-                'phases' => $updated_phases
+                'phases' => $updated_phases,
             ]);
 
 

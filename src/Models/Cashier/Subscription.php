@@ -26,8 +26,10 @@ class Subscription extends CashierSubscription
         'stripe_price',
         'quantity',
         'is_downgrade',
+        'is_upgrade',
         'schedule',
         'next_plan',
+        'previous_plan',
         'trial_ends_at',
         'ends_at',
         'cancels_at',
@@ -64,6 +66,11 @@ class Subscription extends CashierSubscription
         return $this->belongsTo(Price::class, 'next_plan', 'stripe_id');
     }
 
+    public function previousPrice(): BelongsTo
+    {
+        return $this->belongsTo(Price::class, 'previous_plan', 'stripe_id');
+    }
+
     public function planCanceled()
     {
         return $this->morphOne(Log::class, 'logable')
@@ -81,6 +88,16 @@ class Subscription extends CashierSubscription
         return !is_null($this->next_plan);
     }
 
+    public function hasPreviousPlan()
+    {
+        return !is_null($this->previous_plan);
+    }
+
+    public function hasManualUpgrade()
+    {
+        return $this->is_upgrade;
+    }
+
     public function releaseSchedule()
     {
         try {
@@ -91,8 +108,8 @@ class Subscription extends CashierSubscription
                     'is_downgrade' => false,
                 ])->save();
             }
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 
@@ -205,7 +222,7 @@ class Subscription extends CashierSubscription
     public function paidOutOfBand($note = 'Cash')
     {
         try {
-            if ($this->pastDue() || $this->hasIncompletePayment()) {
+            if ($this->pastDue() || $this->hasIncompletePayment() || $this->hasManualUpgrade()) {
                 $invoice = $this->latestInvoice();
                 $invoice->pay([
                     'paid_out_of_band' => true
@@ -220,7 +237,9 @@ class Subscription extends CashierSubscription
             $stripeSubscription = $this->asStripeSubscription();
 
             $this->update([
-                'stripe_status' => $stripeSubscription->status
+                'stripe_status' => $stripeSubscription->status,
+                'is_upgrade' => false,
+                'previous_plan' => null,
             ]);
 
             $this->syncLatestInvoice();

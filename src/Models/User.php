@@ -498,9 +498,9 @@ class User extends Admin implements MustVerifyEmail
                 'enquiries as unread_enquiries' => function (Builder $query) {
                     $query->onlyActive();
                 },
-            ])
-                ->withMax('subscriptions as ends_at', 'cancels_at')
-                ->withMax('subscriptions as starts_at', 'created_at');
+            ]);
+            $builder->withMax('subscriptions as ends_at', 'cancels_at');
+            $builder->withMax('subscriptions as starts_at', 'created_at');
         });
     }
 }
