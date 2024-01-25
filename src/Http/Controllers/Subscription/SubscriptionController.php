@@ -281,7 +281,10 @@ class SubscriptionController extends Controller
             $subscription->allowPaymentFailures()
                 ->noProrate()
                 ->swap($subscription->previous_plan, [
-                    'metadata' => []
+                    'metadata' => [
+                        'previous_plan' => null,
+                        'is_upgrade' => false
+                    ]
                 ]);
         } catch (\Exception $e) {
             throw $e;
