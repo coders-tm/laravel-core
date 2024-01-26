@@ -145,11 +145,11 @@ class SubscriptionController extends Controller
                     if (!$payment_method) {
                         $send_invoice = [
                             'collection_method' => 'send_invoice',
-                            'days_until_due' => 3
+                            'days_until_due' => 5
                         ];
 
                         $metadata['previous_plan'] = $subscription->stripe_price;
-                        $metadata['is_upgrade'] = true;
+                        $metadata['is_upgrade'] = 1;
                     }
 
                     $subscription->releaseSchedule();
@@ -283,7 +283,7 @@ class SubscriptionController extends Controller
                 ->swap($subscription->previous_plan, [
                     'metadata' => [
                         'previous_plan' => null,
-                        'is_upgrade' => false
+                        'is_upgrade' => null
                     ]
                 ]);
         } catch (\Exception $e) {

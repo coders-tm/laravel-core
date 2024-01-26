@@ -238,7 +238,7 @@ class Subscription extends CashierSubscription
 
             $this->update([
                 'stripe_status' => $stripeSubscription->status,
-                'is_upgrade' => false,
+                'is_upgrade' => null,
                 'previous_plan' => null,
             ]);
 
