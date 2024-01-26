@@ -227,7 +227,7 @@ class Subscription extends CashierSubscription
     public function paidOutOfBand($note = 'Cash')
     {
         try {
-            if ($this->pastDue() || $this->hasIncompletePayment() || $this->hasManualUpgrade()) {
+            if ($this->pastDue() || $this->hasIncompletePayment()) {
                 $invoice = $this->latestInvoice();
                 $invoice->pay([
                     'paid_out_of_band' => true

@@ -42,8 +42,6 @@ class SubscriptionController extends Controller
             'planCanceled',
         ]);
 
-        $latestInvoice = $user->latestInvoice;
-
         $upcomingInvoice = $subscription->upcomingInvoice();
 
         if ($subscription->canceled() && $subscription->onGracePeriod() && !$subscription->hasSchedule()) {
@@ -59,13 +57,6 @@ class SubscriptionController extends Controller
         } else if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice();
             $amount = $invoice->realTotal();
-            $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
-                'amount' => $amount
-            ]);
-            $subscription['dueAmount'] = $amount;
-            $subscription['hasDue'] = true;
-        } else if ($latestInvoice && $latestInvoice->isOpen() && $subscription->hasManualUpgrade()) {
-            $amount = $latestInvoice->amount;
             $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
                 'amount' => $amount
             ]);
@@ -121,7 +112,6 @@ class SubscriptionController extends Controller
         $metadata = $request->input('metadata') ?? [];
         $upgrade = false;
         $coupon = optional(Coupon::findByCode($request->promotion_code));
-        $send_invoice = [];
 
         if ($subscribed && $user->subscription()->stripe_price == $stripe_price) {
             throw ValidationException::withMessages([
@@ -142,17 +132,14 @@ class SubscriptionController extends Controller
                         'metadata' => $metadata,
                     ]);
                 } else {
-                    if (!$payment_method) {
-                        $send_invoice = [
-                            'collection_method' => 'send_invoice',
-                            'days_until_due' => 5
-                        ];
-
-                        $metadata['previous_plan'] = $subscription->stripe_price;
-                        $metadata['is_upgrade'] = 1;
+                    if (!$payment_method && is_user()) {
+                        throw ValidationException::withMessages([
+                            'payment_method' => trans_choice('coderstm::messages.subscription.success', 1, ['plan' => $price->label]),
+                        ]);
                     }
 
                     $subscription->releaseSchedule();
+
                     $user->updateStripeCustomer([
                         'invoice_settings' => ['default_payment_method' => $payment_method],
                     ]);
@@ -161,7 +148,7 @@ class SubscriptionController extends Controller
                         ->swapAndInvoice($stripe_price, array_merge([
                             'metadata' => $metadata,
                             'default_payment_method' => $payment_method,
-                        ], $send_invoice));
+                        ]));
 
                     $upgrade = true;
                 }
