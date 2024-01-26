@@ -119,6 +119,12 @@ class SubscriptionController extends Controller
             ]);
         }
 
+        if ($user->subscription() && $user->subscription()->pastDue()) {
+            throw ValidationException::withMessages([
+                'past_due' => 'Your subscription is past due. Please make a payment from the billing page or contact our reception for assistance.',
+            ]);
+        }
+
         try {
             if ($subscribed) {
                 $subscription = $user->subscription();
@@ -261,6 +267,7 @@ class SubscriptionController extends Controller
             $user = $this->user();
             $subscription = $user->subscription();
             // Check if the previous plan of the subscription is not empty
+
             if (!$subscription->previous_plan) {
                 throw new \Exception('Subscription upgrade not found!');
             }
