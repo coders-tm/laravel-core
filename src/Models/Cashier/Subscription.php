@@ -46,9 +46,12 @@ class Subscription extends CashierSubscription
         'created' => SubscriptionProcessed::class,
         'updated' => SubscriptionProcessed::class,
     ];
+
     protected $casts = [
         'ends_at' => 'datetime',
         'quantity' => 'integer',
+        'is_upgrade' => 'boolean',
+        'is_downgrade' => 'boolean',
         'trial_ends_at' => 'datetime',
         'cancels_at' => 'datetime',
         'expires_at' => 'datetime',
@@ -210,7 +213,9 @@ class Subscription extends CashierSubscription
             $stripeSubscription = $this->asStripeSubscription();
 
             $this->update([
-                'stripe_status' => $stripeSubscription->status
+                'stripe_status' => $stripeSubscription->status,
+                'is_upgrade' => null,
+                'previous_plan' => null,
             ]);
 
             $this->syncLatestInvoice();
