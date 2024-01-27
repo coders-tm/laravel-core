@@ -77,7 +77,6 @@ class AuthController extends Controller
         $rules = [
             'email' => 'required|email|unique:users',
             'title' => 'required',
-            'plan' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required',
@@ -85,7 +84,6 @@ class AuthController extends Controller
             'city' => 'required',
             'postal_code' => 'required',
             'country' => 'required',
-            'interval' => 'required',
             'password' => 'required|min:6|confirmed',
         ];
 

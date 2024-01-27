@@ -91,7 +91,7 @@ class SubscriptionController extends Controller
     {
         $request->validate([
             'payment_method' => 'required|string',
-            'plan' => 'required',
+            'plan' => 'required|exists:plan_prices,id',
             'metadata' => 'array',
         ]);
 
@@ -103,9 +103,7 @@ class SubscriptionController extends Controller
 
         $user = $this->user();
         $payment_method = $request->input('payment_method');
-        $interval = $request->payment_interval ?? 'month';
-        $plan = Plan::find($request->plan);
-        $price = Price::planById($request->plan, $plan->is_custom ? '' : $interval);
+        $price = Price::find($request->plan);
         $stripe_price = $price->stripe_id;
         $subscribed = $user->subscribed();
         $subscription = null;
