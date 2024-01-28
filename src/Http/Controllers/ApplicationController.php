@@ -28,9 +28,26 @@ class ApplicationController extends Controller
         return response()->json(AppSetting::findByKey($key), 200);
     }
 
-    public function config()
+    public function config(Request $request)
     {
-        return $this->getSettings('config');
+        $response = [];
+        $config = AppSetting::findByKey('config')->filter(function ($item, $key) {
+            return !in_array($key, ['license_key']);
+        });
+
+        if ($request->filled('includes')) {
+            foreach ($request->includes ?? [] as $item) {
+                if ($item === 'payment-methods') {
+                    $response[$item] = PaymentMethod::toPublic();
+                } else {
+                    $response[$item] = AppSetting::findByKey($item);
+                }
+            }
+            $response['config'] = $config;
+            return response()->json($response, 200);
+        }
+
+        return response()->json($config, 200);
     }
 
     public function paymentMethods()
