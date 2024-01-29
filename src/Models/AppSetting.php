@@ -20,20 +20,16 @@ class AppSetting extends Model
 
     static public function create($key, array $options = [])
     {
-        return static::updateOrCreate([
-            'key' => $key
-        ], [
-            'options' => $options
-        ]);
+        return static::updateValue($key, $options);
     }
 
     static public function updateValue($key, array $options = [])
     {
-        $oldValue = static::findByKey($key);
+        $original = static::findByKey($key);
         return static::updateOrCreate([
             'key' => $key
         ], [
-            'options' => $oldValue->merge($options)
+            'options' => $original->merge($options)
         ]);
     }
 
