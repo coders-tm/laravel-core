@@ -2,10 +2,9 @@
 
 namespace Coderstm\Commands;
 
-use Coderstm\Enum\AppStatus;
 use Illuminate\Console\Command;
 use Coderstm\Models\Cashier\Subscription;
-use Coderstm\Models\Invoice;
+use Coderstm\Models\Cashier\Invoice;
 
 class SubscriptionsInvoice extends Command
 {

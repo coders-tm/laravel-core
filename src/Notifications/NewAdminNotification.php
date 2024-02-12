@@ -2,31 +2,28 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\Enquiry;
+use Coderstm\Models\Admin;
 use Illuminate\Bus\Queueable;
-use Illuminate\Support\HtmlString;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class EnquirySourceNotification extends Notification
+class NewAdminNotification extends Notification
 {
     use Queueable;
 
-    public $enquiry;
-    public $message;
-    public $subject;
+    public $admin;
+    public $password;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Enquiry $enquiry)
+    public function __construct(Admin $admin, $password = '********')
     {
-        $this->enquiry = $enquiry;
-        $this->message = nl2br($enquiry->message);
-        $this->subject = $enquiry->subject;
+        $this->admin = $admin;
+        $this->password = $password;
     }
 
     /**
@@ -48,9 +45,15 @@ class EnquirySourceNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->greeting("Hi {$this->enquiry->name},")
-            ->subject($this->subject)
-            ->line(new HtmlString($this->message));
+
+        return (new MailMessage)
+            ->subject('Welcome to ' . config('app.name') . ' - Your New Staff Account Details')
+            ->markdown('emails.admin.new-account', [
+                'name' => $this->admin->first_name,
+                'email' => $this->admin->email,
+                'password' => $this->password,
+                'url' => admin_url('auth/login'),
+            ]);
     }
 
     /**

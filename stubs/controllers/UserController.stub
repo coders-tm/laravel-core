@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Coderstm\Traits\Helpers;
 use Coderstm\Enum\AppStatus;
+use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Coderstm\Http\Controllers\Controller;
-use Coderstm\Models\Invoice;
 use Illuminate\Support\Facades\Password;
+use Coderstm\Http\Controllers\Controller;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserController extends Controller
@@ -34,11 +33,15 @@ class UserController extends Controller
     public function index(Request $request, User $user)
     {
         $user = $user->with($request->includes ?? []);
-        $isCancelled = $request->filled('type') && $request->type == 'cancelled';
+
+        $cancelled = $request->type == 'cancelled';
 
         if ($request->filled('month') || $request->filled('year')) {
-            $column = $isCancelled ? 'ends_at' : 'created_at';
-            $user->whereDateColumn(['month' => $request->month, 'year' => $request->year], $column);
+            $column = $cancelled ? 'ends_at' : 'created_at';
+            $user->whereDateColumn([
+                'month' => $request->month,
+                'year' => $request->year
+            ], $column);
         }
 
         if ($request->filled('filter')) {
@@ -50,21 +53,14 @@ class UserController extends Controller
             }
         }
 
-        if ($request->boolean('isEnquiry')) {
-            $user->onlyEnquiry();
-            if ($request->filled('status')) {
-                $user->where('status', $request->input('status'));
-            }
-        } else if ($request->boolean('option')) {
+        if ($request->boolean('option')) {
             $user->whereIn('status', [AppStatus::ACTIVE, AppStatus::PENDING]);
-        } else if ($isCancelled) {
+        } else if ($cancelled) {
             $user->onlyCancelled();;
-        } else {
-            $user->onlyActive();
-
-            if ($request->filled('type')) {
-                $user->whereTyped($request->input('type'));
-            }
+        } else if ($request->filled('status')) {
+            $user->where('status', $request->input('status'));
+        } else if ($request->filled('type')) {
+            $user->onlyActive()->whereTyped($request->type);
         }
 
         if ($request->filled('rag')) {
@@ -105,19 +101,6 @@ class UserController extends Controller
     }
 
     /**
-     * Display a enquiry listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function enquiry(Request $request, User $user)
-    {
-        $request->merge([
-            'isEnquiry' => true,
-        ]);
-        return $this->index($request, $user);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -129,8 +112,6 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'first_name' => 'required',
             'last_name' => 'required',
-            'plan' => 'required_if:status,Active',
-            'note' => 'required_if:status,Active',
             'password' => 'confirmed',
             'address.line1' => 'required',
             'address.city' => 'required',
@@ -143,7 +124,6 @@ class UserController extends Controller
 
         $request->merge([
             'password' => bcrypt($request->password ?? str()->random(6)),
-            'plan_id' => $request->input('plan.id'),
         ]);
 
         // create the user
@@ -161,7 +141,7 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'data' => $user->fresh(['address', 'notes', 'plan']),
+            'data' => $user->fresh(['address', 'notes']),
             'message' => trans('coderstm::messages.users.store'),
         ], 200);
     }
@@ -174,7 +154,7 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        return response()->json($user->load(['notes', 'plan']), 200);
+        return response()->json($user->load(['notes']), 200);
     }
 
     /**
@@ -190,8 +170,6 @@ class UserController extends Controller
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
-            'plan' => 'required_if:status,Active',
-            'release_at' => 'required_if:status,Hold',
             'email' => "email|unique:users,email,{$user->id}",
             'password' => 'confirmed',
             'address.line1' => 'required',
@@ -209,10 +187,6 @@ class UserController extends Controller
             ]);
         }
 
-        $request->merge([
-            'plan_id' => $request->input('plan.id'),
-        ]);
-
         $user->update($request->input());
 
         if ($request->filled('avatar')) {
@@ -223,13 +197,6 @@ class UserController extends Controller
             ]);
         }
 
-        if ($request->filled('special_note')) {
-            $user->notes()->create([
-                'type' => 'notes',
-                'message' => $request->special_note,
-            ]);
-        }
-
         if ($request->filled('ends_at')) {
             $user = $user->updateEndsAt($request->ends_at);
         }
@@ -237,7 +204,7 @@ class UserController extends Controller
         $user->updateOrCreateAddress($request->input('address'));
 
         return response()->json([
-            'data' => $user->fresh(['address', 'notes', 'plan']),
+            'data' => $user->fresh(['address', 'notes']),
             'message' => trans('coderstm::messages.users.updated'),
         ], 200);
     }
@@ -385,26 +352,9 @@ class UserController extends Controller
     {
         try {
             $subscription = $user->subscription();
-            if ($subscription->pastDue() || $user->hasIncompletePayment()) {
-                $invoice = $subscription->latestInvoice();
-                $invoice->pay([
-                    'paid_out_of_band' => true
-                ]);
-            } else if ($user->onTrial()) {
-                $user->creditBalance($subscription->upcomingInvoice()->amount_due, $request->note ?? 'Cash');
-                $subscription->endTrial();
-            }
-        } catch (\Throwable $th) {
-            throw $th;
-        } finally {
-            $stripeSubscription = $subscription->asStripeSubscription();
-            $subscription->update([
-                'stripe_status' => $stripeSubscription->status
-            ]);
-
-            // Create invoice to application database
-            $invoice = $subscription->latestInvoice();
-            Invoice::createFromStripe($invoice);
+            $subscription->paidOutOfBand($request->note ?? 'Cash');
+        } catch (\Exception $e) {
+            throw $e;
         }
 
         return response()->json([

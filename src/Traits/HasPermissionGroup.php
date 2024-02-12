@@ -3,6 +3,7 @@
 namespace Coderstm\Traits;
 
 use Coderstm\Models\Module;
+use Coderstm\Models\Permission;
 use Illuminate\Support\Collection;
 
 trait HasPermissionGroup
@@ -45,7 +46,7 @@ trait HasPermissionGroup
     public function getModulesAttribute()
     {
         if ($this->is_supper_admin) {
-            $modules = Module::with('permissions')->get();
+            $modules = Module::all();
         } else {
             $permissions = $this->getAllPermissions()
                 ->filter(function ($permission) {
@@ -53,19 +54,26 @@ trait HasPermissionGroup
                 });
             $permissionByModule = $permissions->groupBy('module_id');
 
-            $modules = Module::orderBy('sort_order')->find($permissionByModule->keys())->load('permissions');
-
-            $modules = $modules->map(function ($item) use ($permissionByModule) {
-                return array_merge($item->toArray(), [
-                    'permissions' => $permissionByModule->get($item->id)
-                ]);
-            });
+            $modules = Module::orderBy('sort_order')->find($permissionByModule->keys());
         }
 
-        return $modules->map(function ($item) {
-            return array_merge(collect($item)->toArray(), [
+        return $modules->makeHidden(['created_at', 'deleted_at', 'updated_at'])->map(function ($item) {
+            return array_merge($item->toArray(), [
                 'label' => trans('coderstm::modules.' . $item['name']),
             ]);
         });
+    }
+
+    public function getScopes()
+    {
+        if ($this->is_supper_admin) {
+            return Permission::pluck('scope')->toArray();
+        } else {
+            $permissions = $this->getAllPermissions()
+                ->filter(function ($permission) {
+                    return $permission->pivot->access == 1;
+                });
+            return $permissions->pluck('scope')->toArray();
+        }
     }
 }

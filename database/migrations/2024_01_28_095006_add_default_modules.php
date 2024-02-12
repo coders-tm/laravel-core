@@ -79,12 +79,15 @@ return new class extends Migration
                     'List',
                     'New',
                     'Delete',
+                    "Reports Daily",
+                    "Reports Monthly",
+                    "Reports Yearly"
                 ],
             ],
-            'Settings' => [
-                'sort_order' => 5,
-                'icon' => 'fas fa-gear',
-                'url' => 'settings',
+            'Plans' => [
+                'sort_order' => 4,
+                'icon' => 'fas fa-bookmark',
+                'url' => 'plans',
                 'show_menu' => 1,
                 'sub_items' => [
                     'View',
@@ -94,21 +97,65 @@ return new class extends Migration
                     'Delete',
                 ],
             ],
+            'Coupons' => [
+                'sort_order' => 4,
+                'icon' => 'fas fa-badge-percent',
+                'url' => 'coupons',
+                'show_menu' => 1,
+                'sub_items' => [
+                    'View',
+                    'Edit',
+                    'List',
+                    'New',
+                    'Delete',
+                ],
+            ],
+            'Blogs' => [
+                'sort_order' => 1,
+                'icon' => 'fas fa-square-rss',
+                'url' => 'blogs',
+                'show_menu' => 1,
+                'sub_items' => [
+                    'View',
+                    'Edit',
+                    'List',
+                    'New',
+                    'Delete',
+                ],
+            ],
+            'Settings' => [
+                'sort_order' => 5,
+                'icon' => 'fas fa-gear',
+                'url' => 'settings',
+                'show_menu' => 1,
+                'sub_items' => [
+                    'Edit',
+                    'Plans',
+                    'Coupons',
+                    'Taxes',
+                    'Notifications',
+                    'Payment Methods',
+                ],
+            ],
         ];
 
         foreach ($permissions as $name => $item) {
-            $module = Module::create([
+            $module = Module::updateOrCreate([
                 'name' => $name,
+            ], [
                 'icon' => $item['icon'],
                 'url' => $item['url'],
                 'show_menu' => $item['show_menu'],
                 'sort_order' => $item['sort_order'],
             ]);
 
+            $module->permissions()->forceDelete();
+
             foreach ($item['sub_items'] as $i => $sub_item) {
-                Permission::create([
+                Permission::updateOrCreate([
                     'module_id' => $module['id'],
                     'action' => $sub_item,
+                ], [
                     'scope' => Str::slug($module['name']) . ':' . Str::slug($sub_item),
                 ]);
             }

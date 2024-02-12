@@ -32,7 +32,7 @@ class PlanSeeder extends Seeder
                 ],
                 [
                     'label' => 'Guest pass',
-                    'description' => 'Allows non-members to try out the gym or studio facilities',
+                    'description' => 'Allows non-members to try out the studio facilities',
                     'value' => $item['guest']
                 ]
             ]));

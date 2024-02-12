@@ -8,6 +8,7 @@ use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
@@ -17,7 +18,20 @@ class ApplicationController extends Controller
 {
     public function stats(Request $request)
     {
+        $userModel = Coderstm::$userModel;
+        $userQuery = $userModel::select('users.id', "subscriptions.created_at")->leftJoin('subscriptions', function ($join) {
+            $join->on('subscriptions.user_id', '=', "users.id");
+        })->whereNotNull('subscriptions.created_at');
+
         return response()->json([
+            'total' => $userModel::getStats('total'),
+            'rolling' => $userModel::getStats('rolling'),
+            'end_date' => $userModel::getStats('end_date'),
+            'monthly' => $userModel::getStats('month'),
+            'yearly' => $userModel::getStats('year'),
+            'free' => $userModel::getStats('free'),
+            'max_year' => $userQuery->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
+            'min_year' => 2015,
             'unread_support' => Coderstm::$enquiryModel::onlyActive()->count(),
             'unread_tasks' => Task::onlyActive()->count(),
         ], 200);

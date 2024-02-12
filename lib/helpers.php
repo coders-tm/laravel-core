@@ -1,8 +1,11 @@
 <?php
 
+use Coderstm\Models\Tax;
+use League\ISO3166\ISO3166;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
+use Illuminate\Support\Optional;
 use Symfony\Polyfill\Intl\Icu\Currencies;
 use Illuminate\Support\Facades\Notification;
 
@@ -40,7 +43,7 @@ if (!function_exists('is_admin')) {
 if (!function_exists('app_url')) {
     function app_url($subdomain = 'app')
     {
-        $scheme = request()->getScheme();
+        $scheme = request()->getScheme() ?? 'https';
         if ($subdomain) {
             return "{$scheme}://$subdomain." . config('coderstm.domain');
         }
@@ -52,6 +55,13 @@ if (!function_exists('admin_url')) {
     function admin_url($path = '')
     {
         return config('coderstm.admin_url') . '/' . $path;
+    }
+}
+
+if (!function_exists('member_url')) {
+    function member_url($path = '')
+    {
+        return config('coderstm.member_url') . '/' . $path;
     }
 }
 
@@ -189,5 +199,115 @@ if (!function_exists('payment_methods')) {
     function payment_methods()
     {
         return json_decode(file_get_contents(__DIR__ . '/payment-methods.json'), true);
+    }
+}
+
+if (!function_exists('notifications')) {
+    function notifications()
+    {
+        return json_decode(file_get_contents(__DIR__ . '/notifications.json'), true);
+    }
+}
+
+if (!function_exists('replace_short_code')) {
+    function replace_short_code($message = '', $replace = [])
+    {
+        $replace = array_merge($replace, [
+            '{{APP_NAME}}' => config('app.name'),
+            '{{SUPPORT_EMAIL}}' => config('coderstm.admin_email'),
+            '{{BILLING_PAGE}}' => member_url('billing'),
+        ]);
+
+        foreach ($replace as $key => $value) {
+            $message = str_replace($key, $value, $message);
+        }
+
+        return $message;
+    }
+}
+
+if (!function_exists('has')) {
+    /**
+     * Provide access to optional objects.
+     *
+     * @param  mixed  $value
+     * @param  callable|null  $callback
+     * @return mixed
+     */
+    function has($value = null, callable $callback = null)
+    {
+        $value = is_object($value) ? $value : (object) $value;
+
+        if (is_null($callback)) {
+            return new Optional($value);
+        } elseif (!is_null($value)) {
+            return $callback($value);
+        }
+    }
+}
+
+if (!function_exists('get_country_code')) {
+    function get_country_code(string $country = '')
+    {
+        try {
+            $country = (new ISO3166)->name($country);
+            return $country['alpha2'];
+        } catch (\Exception $e) {
+            return '*';
+        }
+    }
+}
+
+if (!function_exists('country_taxes')) {
+    function country_taxes($countryCode = null, $state = null)
+    {
+        $taxes = Tax::where('code', get_country_code($countryCode))
+            ->orderBy('priority');
+
+        if ($state) {
+            $taxes->whereIn('state', ['*', $state]);
+        } else {
+            $taxes->whereIn('state', ['*']);
+        }
+
+        return $taxes->get()
+            ->map(function ($item) {
+                return array_merge($item->only(['label', 'rate']), [
+                    'type' => $item->compounded ? 'compounded' : 'normal'
+                ]);
+            })->toArray();
+    }
+}
+
+if (!function_exists('default_tax')) {
+    function default_tax()
+    {
+        $taxes = country_taxes(config('app.country'));
+        if (count($taxes) > 0) {
+            return $taxes;
+        }
+        return rest_of_world_tax();
+    }
+}
+
+if (!function_exists('rest_of_world_tax')) {
+    function rest_of_world_tax()
+    {
+        return country_taxes('*');
+    }
+}
+
+if (!function_exists('billing_address_tax')) {
+    function billing_address_tax(array $address = [])
+    {
+        if (isset($address['country']) && !empty($address['country'])) {
+            $stateCode = isset($address['state_code']) ? $address['state_code'] : null;
+            $taxes = country_taxes($address['country'], $stateCode);
+            if (count($taxes) > 0) {
+                return $taxes;
+            }
+        }
+
+        return rest_of_world_tax();
     }
 }

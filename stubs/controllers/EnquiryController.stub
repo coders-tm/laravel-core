@@ -107,7 +107,7 @@ class EnquiryController extends Controller
         }
 
         return response()->json([
-            'data' => $enquiry->load(['user', 'replies.user', 'media']),
+            'data' => $enquiry->load(['user', 'replies.user', 'media', 'admin']),
             'message' => trans('coderstm::messages.enquiry.store'),
         ], 200);
     }
@@ -121,7 +121,7 @@ class EnquiryController extends Controller
     public function show(Request $request, Enquiry $enquiry)
     {
         $enquiry = $enquiry->markedAsSeen();
-        return response()->json($enquiry->load(['user', 'replies.user', 'media']), 200);
+        return response()->json($enquiry->load(['user', 'replies.user', 'media', 'order', 'admin']), 200);
     }
 
     /**

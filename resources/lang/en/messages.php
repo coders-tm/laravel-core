@@ -21,7 +21,7 @@ return [
         'authenticate' => 'We are unable to authenticate your payment method. Please choose a different payment method or try again.',
     ],
     'subscription' => [
-        'none' => 'To access exclusive gym features, please subscribe to a plan. You are not currently subscribed to any plan.',
+        'none' => 'To access exclusive features, please subscribe to a plan. You are not currently subscribed to any plan.',
         'canceled' => 'You have cancelled your subscription. Your subscription will end on :date',
         'plan_canceled' => 'Subscribed plan has been deactivated. Your subscription will end on :date',
         'past_due' => 'To activate your subscription, please complete payment of :amount.',

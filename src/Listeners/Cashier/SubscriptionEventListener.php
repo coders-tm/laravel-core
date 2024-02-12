@@ -3,7 +3,7 @@
 namespace Coderstm\Listeners\Cashier;
 
 use Coderstm\Events\Cashier\SubscriptionProcessed;
-use Coderstm\Models\Invoice;
+use Coderstm\Models\Cashier\Invoice;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SubscriptionEventListener

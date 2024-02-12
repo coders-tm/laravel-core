@@ -117,4 +117,13 @@ class Admin extends Authenticatable
 
         return $query;
     }
+
+    public function toLoginResponse()
+    {
+        $response = $this->append('modules')->toArray();
+
+        $response['permissions'] = $this->getScopes();
+
+        return $response;
+    }
 }

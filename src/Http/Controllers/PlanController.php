@@ -158,4 +158,15 @@ class PlanController extends Controller
             'message' => trans('coderstm::messages.plans.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
         ], 200);
     }
+
+    public function shared(Request $request)
+    {
+        $plan = Plan::with('prices')->onlyActive();
+
+        if ($request->filled('plan_id')) {
+            $plan->orWhere('id', $request->plan_id);
+        }
+
+        return $plan->get();
+    }
 }

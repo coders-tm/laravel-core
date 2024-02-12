@@ -2,6 +2,7 @@
 
 namespace Coderstm\Notifications;
 
+use Coderstm\Models\Notification as Template;
 use Coderstm\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -14,6 +15,7 @@ class UserSignupNotification extends Notification
 
     public $user;
     public $subject;
+    public $message;
     public $subscription;
 
     /**
@@ -26,6 +28,20 @@ class UserSignupNotification extends Notification
         $this->user = $user;
         $this->subject = "Welcome to " . config('app.name') . " - Your Subscription Details";
         $this->subscription = $user->subscription();
+
+        $template = Template::default('user:signup');
+        $shortCodes = [
+            '{{USER_NAME}}' => $this->user->name,
+            '{{USER_ID}}' => $this->user->id,
+            '{{USER_FIRST_NAME}}' => $this->user->first_name,
+            '{{USER_LAST_NAME}}' => $this->user->last_name,
+            '{{PLAN}}' => optional($this->user->price)->label,
+            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount * 100),
+            '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,
+        ];
+
+        $this->subject = replace_short_code($template->subject, $shortCodes);
+        $this->message = replace_short_code($template->content, $shortCodes);
     }
 
     /**
@@ -47,14 +63,10 @@ class UserSignupNotification extends Notification
      */
     public function toMail($notifiable)
     {
-
         return (new MailMessage)
             ->subject($this->subject)
-            ->markdown('coderstm::emails.user.signup', [
-                'name' => $this->user->first_name,
-                'plan' => optional($this->user->price)->label,
-                'price' => format_amount(optional($this->subscription->price)->amount * 100),
-                'interval' => optional($this->subscription->price)->interval,
+            ->markdown('coderstm::emails.notification', [
+                'message' => $this->message
             ]);
     }
 

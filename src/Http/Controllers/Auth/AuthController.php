@@ -55,14 +55,8 @@ class AuthController extends Controller
             // create and return user with token
             $token = $user->createToken($request->device_id, [$guard]);
 
-            if ($user->guard == 'users') {
-                $user = $user->load(['parq', 'blocked'])->toArray();
-            } else if ($user->guard == 'admins') {
-                $user = $user->append('modules')->toArray();
-            }
-
             return response()->json([
-                'user' => $user,
+                'user' => $user->toLoginResponse(),
                 'token' => $token->plainTextToken,
             ], 200);
         } else {
@@ -147,11 +141,7 @@ class AuthController extends Controller
             'lastLogin'
         ]);
 
-        if (guard() == 'users') {
-            $user = $user->load(['parq', 'blocked'])->loadUnreadEnquiries()->toArray();
-        } else if (guard() == 'admins') {
-            $user = $user->append('modules')->toArray();
-        }
+        $user = $user->toLoginResponse();
 
         return response()->json($user, 200);
     }

@@ -45,6 +45,7 @@ class Enquiry extends Model
         'seen' => 'boolean',
         'is_archived' => 'boolean',
         'user_archived' => 'boolean',
+        'source' => 'boolean',
     ];
 
     public function getHasUnseenAttribute()

@@ -26,9 +26,12 @@ return new class extends Migration
             $table->boolean('source')->nullable()->default(true);
             $table->boolean('is_archived')->nullable()->default(false);
             $table->boolean('user_archived')->nullable()->default(false);
+            $table->unsignedBigInteger('admin_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('admin_id')->references('id')->on('admins')->nullOnDelete();
         });
 
         Schema::create('replies', function (Blueprint $table) {

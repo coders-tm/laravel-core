@@ -2,6 +2,7 @@
 
 namespace Coderstm\Notifications;
 
+use Coderstm\Models\Notification as Template;
 use Coderstm\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -28,6 +29,21 @@ class SubscriptionDowngradeNotification extends Notification
         $this->user = $user;
         $this->subscription = $subscription;
         $this->subject = "Subscription Changed - Your Subscription Downgraded";
+
+        $template = Template::default('user:subscription-downgrade');
+        $shortCodes = [
+            '{{USER_NAME}}' => $this->user->name,
+            '{{USER_ID}}' => $this->user->id,
+            '{{USER_FIRST_NAME}}' => $this->user->first_name,
+            '{{USER_LAST_NAME}}' => $this->user->last_name,
+            '{{OLD_PLAN}}' => optional($this->subscription->oldPlan)->label,
+            '{{PLAN}}' => optional($this->user->price)->label,
+            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount * 100),
+            '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,
+        ];
+
+        $this->subject = replace_short_code($template->subject, $shortCodes);
+        $this->message = replace_short_code($template->content, $shortCodes);
     }
 
     /**
@@ -49,15 +65,10 @@ class SubscriptionDowngradeNotification extends Notification
      */
     public function toMail($notifiable)
     {
-
         return (new MailMessage)
             ->subject($this->subject)
-            ->markdown('coderstm::emails.user.subscription-downgrade', [
-                'name' => $this->user->first_name,
-                'oldPlan' => optional($this->subscription->oldPlan)->label,
-                'plan' => optional($this->subscription->price)->label,
-                'price' => format_amount(optional($this->subscription->price)->amount * 100),
-                'interval' => optional($this->subscription->price)->interval,
+            ->markdown('coderstm::emails.notification', [
+                'message' => $this->message
             ]);
     }
 

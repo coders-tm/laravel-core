@@ -10,6 +10,7 @@ use Laravel\Cashier\Cashier;
 use Coderstm\Traits\Billable;
 use Coderstm\Models\Plan\Price;
 use Illuminate\Support\Facades\DB;
+use Coderstm\Models\Cashier\Invoice;
 use Coderstm\Traits\HasBelongsToOne;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -24,18 +25,20 @@ class User extends Admin implements MustVerifyEmail
     protected $guard = "users";
 
     protected $fillable = [
-        'first_name',
-        'last_name',
         'email',
+        'first_name',
+        'gender',
+        'is_active',
+        'last_name',
+        'note',
         'password',
         'phone_number',
-        'is_active',
-        'title',
-        'note',
-        'status',
-        'source',
-        'gender',
         'rag',
+        'release_at',
+        'rfid',
+        'source',
+        'status',
+        'title',
     ];
 
     protected $hidden = [
@@ -44,6 +47,7 @@ class User extends Admin implements MustVerifyEmail
     ];
 
     protected $casts = [
+        'release_at' => 'datetime:Y-m-d',
         'email_verified_at' => 'datetime',
         'rag' => AppRag::class,
         'status' => AppStatus::class,
@@ -478,9 +482,63 @@ class User extends Admin implements MustVerifyEmail
         }
     }
 
+    static public function getStatsByOptions($key, array $options = [])
+    {
+        $user = static::whereDateColumn($options);
+        $cancelled = static::onlyCancelled()->whereDateColumn($options, 'ends_at');
+
+        switch ($key) {
+            case 'total':
+                return $user->count();
+                break;
+
+            case 'rolling':
+                return $user->onlyRolling()->count();
+                break;
+
+            case 'rolling_total':
+                return $user->onlyRolling()->sumAmount();
+                break;
+
+            case 'end_date':
+                return $user->onlyEnds()->count();
+                break;
+
+            case 'end_date_total':
+                return $user->onlyEnds()->sumAmount();
+                break;
+
+            case 'month':
+            case 'year':
+                return $user->onlyPlan($key)->count();
+                break;
+
+            case 'free':
+                return $user->onlyFree()->count();
+                break;
+
+            case 'cancelled':
+                return $cancelled->count();
+                break;
+
+            case 'cancelled_total':
+                return $cancelled->sumAmount(true);
+                break;
+
+            default:
+                return 0;
+                break;
+        }
+    }
+
     static public function getStats($key)
     {
         return static::getStatsByMonthAndYear($key);
+    }
+
+    public function toLoginResponse()
+    {
+        return $this->loadUnreadEnquiries()->toArray();
     }
 
     protected static function boot()

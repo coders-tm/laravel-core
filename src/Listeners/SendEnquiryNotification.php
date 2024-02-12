@@ -4,9 +4,9 @@ namespace Coderstm\Listeners;
 
 use Coderstm\Events\EnquiryCreated;
 use Illuminate\Queue\InteractsWithQueue;
-use Coderstm\Notifications\EnquiryNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Notification;
+use Coderstm\Notifications\Admins\EnquiryNotification;
 
 class SendEnquiryNotification implements ShouldQueue
 {

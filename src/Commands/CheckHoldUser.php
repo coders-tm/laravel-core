@@ -5,7 +5,7 @@ namespace Coderstm\Commands;
 use Coderstm\Models\User;
 use Coderstm\Enum\AppStatus;
 use Illuminate\Console\Command;
-use Coderstm\Notifications\HoldMemberNotification;
+use Coderstm\Notifications\Admins\HoldMemberNotification;
 
 class CheckHoldUser extends Command
 {

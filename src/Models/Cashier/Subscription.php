@@ -3,7 +3,7 @@
 namespace Coderstm\Models\Cashier;
 
 use Coderstm\Models\Log;
-use Coderstm\Models\Invoice;
+use Coderstm\Models\Cashier\Invoice;
 use Coderstm\Traits\Logable;
 use Laravel\Cashier\Cashier;
 use InvalidArgumentException;

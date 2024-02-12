@@ -1,19 +1,21 @@
 <?php
 
-namespace Coderstm\Models;
+namespace Coderstm\Models\Cashier;
 
 use Coderstm\Traits\Core;
 use Laravel\Cashier\Cashier;
-use Coderstm\Models\Invoice\LineItem;
+use Stripe\Invoice as StripeInvoice;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Cashier\Invoice\LineItem;
+use Laravel\Cashier\Invoice as CashierInvoice;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Laravel\Cashier\Invoice as CashierInvoice;
-use Stripe\Invoice as StripeInvoice;
 
 class Invoice extends Model
 {
     use Core;
+
+    protected $table = 'subscription_invoices';
 
     protected $fillable = [
         'number',
@@ -100,12 +102,12 @@ class Invoice extends Model
 
     public function scopeOpen($query)
     {
-        return $query->where('invoices.stripe_status', StripeInvoice::STATUS_OPEN);
+        return $query->where('subscription_invoices.stripe_status', StripeInvoice::STATUS_OPEN);
     }
 
     public function scopePaid($query)
     {
-        return $query->where('invoices.stripe_status', StripeInvoice::STATUS_PAID);
+        return $query->where('subscription_invoices.stripe_status', StripeInvoice::STATUS_PAID);
     }
 
     function isOpen(): bool

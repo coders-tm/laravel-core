@@ -3,6 +3,7 @@
 namespace Coderstm\Policies;
 
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Coupon;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CouponPolicy
@@ -31,18 +32,19 @@ class CouponPolicy
      */
     public function viewAny(Model $admin)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:list');
     }
 
     /**
      * Determine whether the admin can view the model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $admin
+     * @param  \Coderstm\Models\Coupon  $coupon
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Model $admin)
+    public function view(Model $admin, Coupon $coupon)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:view') && ($coupon->user_id == $admin->id || $coupon->hasUser($admin->id));
     }
 
     /**
@@ -53,18 +55,19 @@ class CouponPolicy
      */
     public function create(Model $admin)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:new');
     }
 
     /**
      * Determine whether the admin can update the model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $admin
+     * @param  \Coderstm\Models\Coupon  $coupon
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Model $admin)
+    public function update(Model $admin, Coupon $coupon)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:edit') && ($coupon->user_id == $admin->id || $coupon->hasUser($admin->id));
     }
 
     /**
@@ -75,7 +78,7 @@ class CouponPolicy
      */
     public function delete(Model $admin)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:delete');
     }
 
     /**
@@ -86,7 +89,7 @@ class CouponPolicy
      */
     public function restore(Model $admin)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:restore');
     }
 
     /**
@@ -97,6 +100,6 @@ class CouponPolicy
      */
     public function forceDelete(Model $admin)
     {
-        return $admin->can('finance:coupons');
+        return $admin->can('coupons:forceDelete');
     }
 }

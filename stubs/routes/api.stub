@@ -5,18 +5,19 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EnquiryController;
 use Coderstm\Http\Controllers\LogController;
-use Coderstm\Http\Controllers\Auth\AuthController;
+use Coderstm\Http\Controllers\TaxController;
 use Coderstm\Http\Controllers\FileController;
 use Coderstm\Http\Controllers\PlanController;
 use Coderstm\Http\Controllers\TaskController;
 use Coderstm\Http\Controllers\GroupController;
+use Coderstm\Http\Controllers\Auth\AuthController;
 use Coderstm\Http\Controllers\ApplicationController;
+use Coderstm\Http\Controllers\PaymentMethodController;
 use Coderstm\Http\Controllers\CashierWebhookController;
 use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
-use Coderstm\Http\Controllers\Subscription\SubscriptionController;
-use Coderstm\Http\Controllers\Subscription\PaymentMethodController;
 use Coderstm\Http\Controllers\Subscription\CouponController;
-use Coderstm\Http\Controllers\PaymentMethodController as ShopPaymentMethodController;
+use Coderstm\Http\Controllers\Subscription\SubscriptionController;
+use Coderstm\Http\Controllers\Subscription\PaymentMethodController as UserPaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,7 +96,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('{admin}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
             Route::post('{admin}/change-active', 'changeActive')->name('change-active');
             Route::post('{admin}/change-admin', 'changeAdmin')->name('change-admin');
-            Route::post('{admin}/change-instructor', 'changeInstructor')->name('change-instructor');
         });
     });
     Route::resource('admins', AdminController::class);
@@ -109,16 +109,16 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'show', 'update', 'destroy',
     ]);
 
-    // Shop Payment Methods
+    // App Payment Methods
     Route::group([
-        'controller' => ShopPaymentMethodController::class,
+        'controller' => PaymentMethodController::class,
         'as' => 'payment-methods.',
-        'prefix' => 'shop/payment-methods',
+        'prefix' => 'payment-methods',
     ], function () {
         Route::post('{payment_method}/disable', 'disable')->name('disable');
         Route::post('{payment_method}/enable', 'enable')->name('enable');
     });
-    Route::resource('shop/payment-methods', ShopPaymentMethodController::class)->only([
+    Route::resource('payment-methods', PaymentMethodController::class)->only([
         'index', 'store', 'show', 'update',
     ]);
 });
@@ -166,14 +166,14 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::group([
-        'controller' => PaymentMethodController::class,
-        'prefix' => 'payment-methods',
+        'controller' => UserPaymentMethodController::class,
+        'prefix' => 'users/payment-methods',
         'as' => 'users.payment-methods.'
     ], function () {
         Route::post('{payment_method}/update', 'update')->name('update');
         Route::delete('{payment_method}', 'destroy')->name('destroy');
     });
-    Route::resource('payment-methods', PaymentMethodController::class, ['as' => 'users'])->only([
+    Route::resource('users/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
         'index', 'store',
     ]);
 });
@@ -218,10 +218,18 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('{coupon}/change-active', [CouponController::class, 'changeActive'])->name('change-active');
     });
     Route::resource('coupons', CouponController::class);
+
+    // Taxes
+    Route::resource('taxes', TaxController::class)->only([
+        'index', 'store', 'update', 'destroy'
+    ]);
+});
+
+Route::group(['prefix' => 'shared'], function () {
+    Route::get('plans', [PlanController::class, 'shared'])->name('plans.shared');
 });
 
 Route::post('subscription/check-promo-code', [SubscriptionController::class, 'checkPromoCode'])->name('subscription.check-promo-code');
-Route::get('qrcode/{user}.png', [UserController::class, 'qrcode'])->name('users.qrcode');
 
 // Stripe webhook
 Route::post('stripe/webhook', [CashierWebhookController::class, 'handleWebhook'])->name('stripe.webhook');

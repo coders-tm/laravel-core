@@ -3,7 +3,7 @@
 namespace Coderstm\Listeners\Cashier;
 
 use Carbon\Carbon;
-use Coderstm\Models\Invoice;
+use Coderstm\Models\Cashier\Invoice;
 use Illuminate\Support\Str;
 use Laravel\Cashier\Cashier;
 use Laravel\Cashier\Events\WebhookReceived;

@@ -3,6 +3,7 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
+use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
 use Coderstm\Notifications\SubscriptionCanceledNotification;
 use Illuminate\Console\Command;
 
@@ -38,6 +39,7 @@ class CheckCanceledSubscriptions extends Command
                     try {
                         $user = $subscription->user;
                         $user->notify(new SubscriptionCanceledNotification($user, $subscription));
+                        admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
                         $subscription->logs()->create([
                             'type' => 'canceled-notification',
                             'message' => 'Notification for canceled subscriptions has been successfully sent.'
