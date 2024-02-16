@@ -36,6 +36,8 @@ class SubscriptionExpiredNotification extends Notification
             '{{USER_ID}}' => $this->user->id,
             '{{USER_FIRST_NAME}}' => $this->user->first_name,
             '{{USER_LAST_NAME}}' => $this->user->last_name,
+            '{{USER_EMAIL}}' => $this->user->email,
+            '{{USER_PHONE_NUMBER}}' => $this->user->phone_number,
             '{{PLAN}}' => optional($this->user->price)->label,
             '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount * 100),
             '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,

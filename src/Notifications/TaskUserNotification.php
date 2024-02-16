@@ -42,9 +42,9 @@ class TaskUserNotification extends Notification
         }
 
         $shortCodes = [
-            '{{NAME}}' => $this->user->name,
-            '{{FIRST_NAME}}' => $this->user->first_name,
-            '{{LAST_NAME}}' => $this->user->last_name,
+            '{{ADMIN_NAME}}' => $this->user->name,
+            '{{ADMIN_FIRST_NAME}}' => $this->user->first_name,
+            '{{ADMIN_LAST_NAME}}' => $this->user->last_name,
             '{{TASK_ID}}' => $this->task->id,
             '{{TASK_URL}}' => admin_url("tasks/{$this->task->id}?action=edit"),
             '{{TASK_ATTACHMENTS}}' => $this->attachments,

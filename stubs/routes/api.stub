@@ -3,20 +3,24 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\EnquiryController;
 use Coderstm\Http\Controllers\LogController;
 use Coderstm\Http\Controllers\TaxController;
+use Coderstm\Http\Controllers\BlogController;
 use Coderstm\Http\Controllers\FileController;
 use Coderstm\Http\Controllers\PlanController;
 use Coderstm\Http\Controllers\TaskController;
 use Coderstm\Http\Controllers\GroupController;
 use Coderstm\Http\Controllers\Auth\AuthController;
 use Coderstm\Http\Controllers\ApplicationController;
+use Coderstm\Http\Controllers\NotificationController;
 use Coderstm\Http\Controllers\PaymentMethodController;
 use Coderstm\Http\Controllers\CashierWebhookController;
 use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\CouponController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
+use Coderstm\Http\Controllers\Blog\TagController as BlogTagController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController as UserPaymentMethodController;
 
 /*
@@ -56,6 +60,17 @@ Route::group([
 
 // Core Routes
 Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
+    // Notification templates
+    Route::group([
+        'as' => 'settings.notifications.',
+        'prefix' => 'settings/notifications',
+        'middleware' => 'can:update,notification',
+        'controller' => NotificationController::class
+    ], function () {
+        Route::post('{notification}/mark-as-default', 'markAsDefault')->name('mark-as-default');
+    });
+    Route::resource('settings/notifications', NotificationController::class, ['as' => 'settings']);
+
     // Application Settings
     Route::group([
         'as' => 'application.',
@@ -167,13 +182,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::group([
         'controller' => UserPaymentMethodController::class,
-        'prefix' => 'users/payment-methods',
+        'prefix' => 'user/payment-methods',
         'as' => 'users.payment-methods.'
     ], function () {
         Route::post('{payment_method}/update', 'update')->name('update');
         Route::delete('{payment_method}', 'destroy')->name('destroy');
     });
-    Route::resource('users/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
+    Route::resource('user/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
         'index', 'store',
     ]);
 });
@@ -189,6 +204,12 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'prefix' => 'users',
         'controller' => UserController::class,
     ], function () {
+        Route::group(['controller' => ReportController::class, 'prefix' => 'reports', 'as' => 'reports.'], function () {
+            Route::get('daily', 'reportsDaily')->can('reportsDaily,App\Models\User')->name('daily');
+            Route::get('monthly', 'reportsMonthly')->can('reportsMonthly,App\Models\User')->name('monthly');
+            Route::get('yearly', 'reportsYearly')->can('reportsYearly,App\Models\User')->name('yearly');
+            Route::post('pdf', 'pdf')->can('reportsDaily,App\Models\User')->name('pdf');
+        });
         Route::post('list-by-ids', 'listByIds')->name('list-by-ids');
         Route::middleware('can:update,user')->group(function () {
             Route::post('{user}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
@@ -223,6 +244,28 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::resource('taxes', TaxController::class)->only([
         'index', 'store', 'update', 'destroy'
     ]);
+
+    // Blogs
+    Route::group([
+        'as' => 'blogs.',
+        'prefix' => 'blogs',
+        'controller' => BlogController::class,
+    ], function () {
+        Route::resource('tags', BlogTagController::class, [
+            'middleware' => [
+                'can:create,Coderstm\Models\Blog',
+                'can:update,Coderstm\Models\Blog',
+            ]
+        ])->only(['index', 'store']);
+
+        Route::group([
+            'middleware' => 'can:update,blog',
+        ], function () {
+            Route::post('{blog}/change-active', 'changeActive')->name('change-active');
+            Route::post('{blog}/comments', 'comments')->name('comments');
+        });
+    });
+    Route::resource('blogs', BlogController::class);
 });
 
 Route::group(['prefix' => 'shared'], function () {

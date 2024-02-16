@@ -137,4 +137,14 @@ class NotificationController extends Controller
             'message' => 'Template marked as default successfully!',
         ], 200);
     }
+
+    public function duplicate(Request $request, Notification $notification)
+    {
+        $notification = $notification->duplicate();
+
+        return response()->json([
+            'data' => $notification,
+            'message' => 'Template has been duplicated successfully!',
+        ], 200);
+    }
 }

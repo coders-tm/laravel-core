@@ -36,4 +36,13 @@ class Notification extends Model
     {
         return static::where('type', $type)->where('is_default', 1)->firstOrFail();
     }
+
+    public function duplicate()
+    {
+        $template = $this->replicate(['is_default']);
+
+        $template->save();
+
+        return $template->fresh();
+    }
 }

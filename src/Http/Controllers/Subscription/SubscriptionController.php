@@ -298,6 +298,12 @@ class SubscriptionController extends Controller
 
     public function pay(Request $request)
     {
+        if ($request->input('payment_method') == 'manual') {
+            $request->merge([
+                'payment_method' => null
+            ]);
+        }
+
         $request->validate([
             'payment_method' => 'required|string',
         ]);

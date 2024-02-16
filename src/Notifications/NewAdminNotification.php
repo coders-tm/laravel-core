@@ -3,6 +3,7 @@
 namespace Coderstm\Notifications;
 
 use Coderstm\Models\Admin;
+use Coderstm\Models\Notification as Template;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -14,6 +15,8 @@ class NewAdminNotification extends Notification
 
     public $admin;
     public $password;
+    public $subject;
+    public $message;
 
     /**
      * Create a new notification instance.
@@ -24,6 +27,20 @@ class NewAdminNotification extends Notification
     {
         $this->admin = $admin;
         $this->password = $password;
+
+        $template = Template::default('admin:new-account');
+        $shortCodes = [
+            '{{ADMIN_ID}}' => $this->admin->id,
+            '{{ADMIN_NAME}}' => $this->admin->name,
+            '{{ADMIN_FIRST_NAME}}' => $this->admin->first_name,
+            '{{ADMIN_LAST_NAME}}' => $this->admin->last_name,
+            '{{ADMIN_EMAIL}}' => $this->admin->email,
+            '{{PASSWORD}}' => $this->password,
+            '{{LOGIN_URL}}' => admin_url('auth/login'),
+        ];
+
+        $this->subject = replace_short_code($template->subject, $shortCodes);
+        $this->message = replace_short_code($template->content, $shortCodes);
     }
 
     /**
@@ -45,14 +62,10 @@ class NewAdminNotification extends Notification
      */
     public function toMail($notifiable)
     {
-
         return (new MailMessage)
-            ->subject('Welcome to ' . config('app.name') . ' - Your New Staff Account Details')
-            ->markdown('emails.admin.new-account', [
-                'name' => $this->admin->first_name,
-                'email' => $this->admin->email,
-                'password' => $this->password,
-                'url' => admin_url('auth/login'),
+            ->subject($this->subject)
+            ->markdown('coderstm::emails.notification', [
+                'message' => $this->message
             ]);
     }
 
