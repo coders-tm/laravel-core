@@ -64,12 +64,17 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::group([
         'as' => 'settings.notifications.',
         'prefix' => 'settings/notifications',
-        'middleware' => 'can:update,notification',
+        'middleware' => 'can:update,Coderstm\Models\Notification',
         'controller' => NotificationController::class
     ], function () {
         Route::post('{notification}/mark-as-default', 'markAsDefault')->name('mark-as-default');
+        Route::post('{notification}/duplicate', 'duplicate')->name('duplicate');
     });
-    Route::resource('settings/notifications', NotificationController::class, ['as' => 'settings']);
+    Route::apiResource('settings/notifications', NotificationController::class, [
+        'as' => 'settings',
+        'middleware' => 'can:update,Coderstm\Models\Notification',
+        'only' => ['index', 'show', 'update', 'destroy']
+    ]);
 
     // Application Settings
     Route::group([
@@ -182,13 +187,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::group([
         'controller' => UserPaymentMethodController::class,
-        'prefix' => 'user/payment-methods',
+        'prefix' => 'users/payment-methods',
         'as' => 'users.payment-methods.'
     ], function () {
         Route::post('{payment_method}/update', 'update')->name('update');
         Route::delete('{payment_method}', 'destroy')->name('destroy');
     });
-    Route::resource('user/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
+    Route::resource('users/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
         'index', 'store',
     ]);
 });

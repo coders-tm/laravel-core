@@ -159,20 +159,26 @@ if (!function_exists('admin_notify')) {
     }
 }
 
+if (!function_exists('get_lang_code')) {
+    function get_lang_code($locale)
+    {
+        // Match the language code before '-' or '_'
+        if (preg_match('/^([a-z]{2})[-_]/i', $locale, $matches)) {
+            return strtolower($matches[1]);
+        }
+
+        // If no match found, return the given $locale
+        return $locale;
+    }
+}
 if (!function_exists('app_lang')) {
     function app_lang()
     {
         try {
-            $langs = [
-                'en-US' => 'en',
-                'hi_IN' => 'hi',
-                'fr' => 'fr',
-            ];
-
             $config = app_settings('config');
-            $lang = $config['lang'] ?? 'en-US';
+            $locale = $config['lang'] ?? 'en-US';
 
-            return $langs[$lang];
+            return get_lang_code($locale);
         } catch (\Exception $e) {
             return 'en';
         }
