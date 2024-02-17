@@ -11,12 +11,8 @@ class GroupPolicy
 
     /**
      * Perform pre-authorization checks.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @param  string  $ability
-     * @return void|bool
      */
-    public function before(Model $admin, $ability)
+    public function before(Model $admin, string $ability)
     {
         if ($admin->is_supper_admin) {
             return true;
@@ -25,77 +21,56 @@ class GroupPolicy
 
     /**
      * Determine whether the admin can view any models.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function viewAny(Model $admin)
+    public function viewAny(Model $admin): bool
     {
         return $admin->can('groups:list');
     }
 
     /**
      * Determine whether the admin can view the model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Model $admin)
+    public function view(Model $admin): bool
     {
         return $admin->can('groups:view');
     }
 
     /**
      * Determine whether the admin can create models.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(Model $admin)
+    public function create(Model $admin): bool
     {
         return $admin->can('groups:new');
     }
 
     /**
      * Determine whether the admin can update the model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(Model $admin)
+    public function update(Model $admin): bool
     {
         return $admin->can('groups:edit');
     }
 
     /**
      * Determine whether the admin can delete the model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(Model $admin)
+    public function delete(Model $admin): bool
     {
         return $admin->can('groups:delete');
     }
 
     /**
      * Determine whether the admin can restore the model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(Model $admin)
+    public function restore(Model $admin): bool
     {
         return $admin->can('groups:restore');
     }
 
     /**
      * Determine whether the admin can permanently delete the model.
-     *
-     * @param  \Illuminate\Database\Eloquent\Model  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(Model $admin)
+    public function forceDelete(Model $admin): bool
     {
         return $admin->can('groups:forceDelete');
     }

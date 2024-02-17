@@ -9,11 +9,6 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class NotificationController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Notification::class);
-    }
-
     public function index(Request $request, Notification $notification)
     {
         $notification = $notification->query();
@@ -83,48 +78,14 @@ class NotificationController extends Controller
 
     public function destroy(Notification $notification)
     {
-        if ($notification->default) {
+        if ($notification->is_default) {
             abort(422, 'Default notification can\'t be deleted');
         }
 
-        $notification->delete();
+        $notification->forceDelete();
 
         return response()->json([
             'message' => 'Notification has been deleted successfully!'
-        ], 200);
-    }
-
-    public function destroySelected(Request $request, Notification $notification)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-        $notification->whereIn('id', $request->items)->delete();
-        return response()->json([
-            'message' => 'Notifications has been deleted successfully!',
-        ], 200);
-    }
-
-    public function restore($id)
-    {
-        Notification::onlyTrashed()
-            ->where('id', $id)
-            ->restore();
-        return response()->json([
-            'message' => 'Notification has been restored successfully!',
-        ], 200);
-    }
-
-    public function restoreSelected(Request $request, Notification $notification)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-        $notification->onlyTrashed()
-            ->whereIn('id', $request->items)
-            ->restore();
-        return response()->json([
-            'message' => 'Notifications has been restored successfully!',
         ], 200);
     }
 
