@@ -23,6 +23,15 @@ class AppSetting extends Model
         return static::updateValue($key, $options);
     }
 
+    static public function updateOptions($key, array $options = [])
+    {
+        return static::updateOrCreate([
+            'key' => $key
+        ], [
+            'options' => $options
+        ]);
+    }
+
     static public function updateValue($key, array $options = [])
     {
         $original = static::findByKey($key);

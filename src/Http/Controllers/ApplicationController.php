@@ -88,7 +88,7 @@ class ApplicationController extends Controller
 
         $this->validate($request, $rules);
 
-        AppSetting::updateValue($request->key, $request->options ?? []);
+        AppSetting::updateOptions($request->key, $request->options ?? []);
 
         return response()->json([
             'message' => trans('coderstm::messages.settings_update')
