@@ -23,8 +23,12 @@ class AppSetting extends Model
         return static::updateValue($key, $options);
     }
 
-    static public function updateOptions($key, array $options = [])
+    static public function updateOptions($key, array $options = [], $merge = true)
     {
+        if ($merge) {
+            return static::updateValue($key, $options);
+        }
+
         return static::updateOrCreate([
             'key' => $key
         ], [
