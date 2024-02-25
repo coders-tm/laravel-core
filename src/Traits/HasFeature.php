@@ -29,7 +29,7 @@ trait HasFeature
         $featureValue = $this->getFeatureValue($featureSlug);
         $usage = $this->usages()->byFeatureSlug($featureSlug)->first();
 
-        if (!$usage) {
+        if (!$usage && $featureValue) {
             return true;
         }
 
