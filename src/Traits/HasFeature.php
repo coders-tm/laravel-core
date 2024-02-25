@@ -29,8 +29,8 @@ trait HasFeature
         $featureValue = $this->getFeatureValue($featureSlug);
         $usage = $this->usages()->byFeatureSlug($featureSlug)->first();
 
-        if (!$usage && $featureValue) {
-            return true;
+        if (!$usage) {
+            return (bool) $featureValue;
         }
 
         // If the feature value is zero, let's return false since
