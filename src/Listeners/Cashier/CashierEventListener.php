@@ -81,8 +81,14 @@ class CashierEventListener
                         ]);
                     }
                 }
-            } catch (\Throwable $th) {
-                report($th);
+
+                if ($invoice->wasRecentlyCreated) {
+                    $subscription->usages()->delete();
+                } else {
+                    $subscription->syncUsagesResetAt();
+                }
+            } catch (\Exception $e) {
+                report($e);
             }
         }
     }

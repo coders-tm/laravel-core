@@ -178,6 +178,7 @@ class SubscriptionController extends Controller
             }
 
             if ($upgrade) {
+                $subscription->syncUsagesResetAt();
                 $subscription->oldPlan = $subscription->price;
                 $subscription->price = $price;
                 $user->notify(new SubscriptionUpgradeNotification($user, $subscription));
@@ -254,34 +255,6 @@ class SubscriptionController extends Controller
     public function cancelDowngrade(Request $request)
     {
         $this->user()->subscription()->releaseSchedule();
-        return response()->json([
-            'message' => trans('coderstm::messages.subscription.upgraded')
-        ], 200);
-    }
-
-    public function cancelUpgrade(Request $request)
-    {
-        try {
-            $user = $this->user();
-            $subscription = $user->subscription();
-            // Check if the previous plan of the subscription is not empty
-
-            if (!$subscription->previous_plan) {
-                throw new \Exception('Subscription upgrade not found!');
-            }
-
-            $subscription->allowPaymentFailures()
-                ->noProrate()
-                ->swap($subscription->previous_plan, [
-                    'metadata' => [
-                        'previous_plan' => null,
-                        'is_upgrade' => null
-                    ]
-                ]);
-        } catch (\Exception $e) {
-            throw $e;
-        }
-
         return response()->json([
             'message' => trans('coderstm::messages.subscription.upgraded')
         ], 200);

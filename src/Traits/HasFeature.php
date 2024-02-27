@@ -9,8 +9,6 @@ trait HasFeature
 {
     /**
      * Get all of the usages for the Subscription
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function usages(): HasMany
     {
@@ -19,10 +17,6 @@ trait HasFeature
 
     /**
      * Determine if the feature can be used.
-     *
-     * @param string $featureSlug
-     *
-     * @return bool
      */
     public function canUseFeature(string $featureSlug): bool
     {
@@ -44,10 +38,6 @@ trait HasFeature
     }
     /**
      * Get how many times the feature has been used.
-     *
-     * @param string $featureSlug
-     *
-     * @return int
      */
     public function getFeatureUsage(string $featureSlug): int
     {
@@ -57,10 +47,6 @@ trait HasFeature
 
     /**
      * Get the available uses.
-     *
-     * @param string $featureSlug
-     *
-     * @return int
      */
     public function getFeatureRemainings(string $featureSlug): int
     {
@@ -69,10 +55,6 @@ trait HasFeature
 
     /**
      * Get feature value.
-     *
-     * @param string $featureSlug
-     *
-     * @return mixed
      */
     public function getFeatureValue(string $featureSlug)
     {
@@ -82,11 +64,6 @@ trait HasFeature
 
     /**
      * Record feature usage.
-     *
-     * @param string $featureSlug
-     * @param int    $uses
-     *
-     * @return \Coderstm\Models\Plan\Usage
      */
     public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true): Usage
     {
@@ -116,12 +93,20 @@ trait HasFeature
     }
 
     /**
+     * Sync usages reset date.
+     */
+    public function syncUsagesResetAt(): void
+    {
+        $this->usages()->each(function ($usage) {
+            $feature = $this->price->plan->features()->where('slug', $usage->slug)->first();
+            $usage->reset_at = $feature->getResetDate($this->created_at, $this->price->interval->value);
+            logger($usage->reset_at);
+            $usage->save();
+        });
+    }
+
+    /**
      * Reduce usage.
-     *
-     * @param string $featureSlug
-     * @param int    $uses
-     *
-     * @return \Coderstm\Models\Plan\Usage|null
      */
     public function reduceFeatureUsage(string $featureSlug, int $uses = 1): ?Usage
     {

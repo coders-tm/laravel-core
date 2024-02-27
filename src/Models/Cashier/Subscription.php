@@ -214,8 +214,6 @@ class Subscription extends CashierSubscription
 
             $this->update([
                 'stripe_status' => $stripeSubscription->status,
-                'is_upgrade' => null,
-                'previous_plan' => null,
             ]);
 
             $this->syncLatestInvoice();
@@ -236,15 +234,13 @@ class Subscription extends CashierSubscription
                 $this->owner->creditBalance($this->upcomingInvoice()->amount_due, $note);
                 $this->endTrial();
             }
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (\Exception $e) {
+            throw $e;
         } finally {
             $stripeSubscription = $this->asStripeSubscription();
 
             $this->update([
                 'stripe_status' => $stripeSubscription->status,
-                'is_upgrade' => null,
-                'previous_plan' => null,
             ]);
 
             $this->syncLatestInvoice();
@@ -254,6 +250,12 @@ class Subscription extends CashierSubscription
     public function syncLatestInvoice()
     {
         $invoice = $this->latestInvoice();
-        Invoice::createFromStripe($invoice);
+        $appInvoice = Invoice::createFromStripe($invoice);
+
+        if ($appInvoice->wasRecentlyCreated) {
+            $this->usages()->delete();
+        } else {
+            $this->syncUsagesResetAt();
+        }
     }
 }

@@ -179,7 +179,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('confirm', 'confirm')->name('confirm');
         Route::post('pay', 'pay')->name('pay');
         Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
-        Route::post('cancel-upgrade', 'cancelUpgrade')->name('cancel-upgrade');
         Route::post('invoices', 'invoices')->name('invoices');
         Route::get('invoices/{invoice_id}', 'downloadInvoice')->name('invoices.download');
         Route::post('cancel', 'cancel')->name('cancel');
