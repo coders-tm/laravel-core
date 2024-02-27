@@ -13,17 +13,22 @@ trait Logable
         return $this->morphMany(Log::class, 'logable')->orderBy('created_at', 'desc');
     }
 
-    public function getDisplayableAttribute($attribute, $attributes = [])
+    protected static function getLogName($model)
     {
-        if (isset($attributes[$attribute])) {
-            return $attributes[$attribute];
+        if ($model->logName) {
+            return $model->logName;
         }
-        return str_replace('_', ' ', Str::snake($attribute));
+        return Str::of(class_basename(get_class($model)))->snake()->replace('_', ' ')->title();
     }
 
-    protected static function mapLogValue($key, $value)
+    protected static function getLogValue(string $key, $value)
     {
-        return $value;
+        return static::mapLogValue($key, $value);
+    }
+
+    protected static function mapLogValue(string $key, $value)
+    {
+        return is_array($value) ? implode(", ", array_filter($value)) : $value;
     }
 
     public function getLoggable()
@@ -35,7 +40,7 @@ trait Logable
     {
         parent::boot();
         static::created(function ($model) {
-            $modelName = model_log_name($model);
+            $modelName = static::getLogName($model);
             $data = [
                 'message' => "{$modelName} has been created.",
             ];
@@ -46,22 +51,25 @@ trait Logable
                 'type' => LogType::CREATED,
             ], $data);
         });
-        static::deleted(function ($model) {
-            $modelName = model_log_name($model);
-            $model->logs()->create([
-                'type' => LogType::DELETED,
-                'message' => "{$modelName} has been deleted.",
-            ]);
-        });
         static::updated(function ($model) {
-            $modelName = model_log_name($model);
+            $modelName = static::getLogName($model);
             $options = [];
             foreach ($model->getLoggable() as $key) {
                 if ($model->wasChanged($key)) {
+                    $previous = $model->getOriginal($key);
+                    $current = $model[$key];
                     $options[$key] = [
-                        'previous' => static::mapLogValue($key, $model->getOriginal($key)),
-                        'current' => static::mapLogValue($key, $model[$key]),
+                        '_previous' => $previous,
+                        'previous' => static::getLogValue($key, $previous),
+                        '_current' => $current,
+                        'current' => static::getLogValue($key, $current),
                     ];
+
+                    $method = 'on' . Str::studly(str_replace('.', '_', $key)) . 'Updated';
+
+                    if (method_exists(static::class, $method)) {
+                        static::{$method}($model, $options[$key]);
+                    }
                 }
             }
 
@@ -72,14 +80,26 @@ trait Logable
                     'options' => $options
                 ]);
             }
-
-            if (method_exists(static::class, 'customUpdated')) {
-                static::customUpdated($model, $modelName);
-            }
         });
+        static::deleted(function ($model) {
+            $modelName = static::getLogName($model);
+            $model->logs()->create([
+                'type' => LogType::DELETED,
+                'message' => "{$modelName} has been deleted.",
+            ]);
+        });
+        if (method_exists(static::class, 'forceDeleted')) {
+            static::forceDeleted(function ($model) {
+                $modelName = static::getLogName($model);
+                $model->logs()->create([
+                    'type' => LogType::PERMANENTLY_DELETED,
+                    'message' => "{$modelName} has been permanently deleted.",
+                ]);
+            });
+        }
         if (method_exists(static::class, 'restored')) {
             static::restored(function ($model) {
-                $modelName = class_basename(get_class($model));
+                $modelName = static::getLogName($model);
                 $model->logs()->create([
                     'type' => LogType::RESTORED,
                     'message' => "{$modelName} has been restored.",
