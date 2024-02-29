@@ -178,7 +178,7 @@ class SubscriptionController extends Controller
             }
 
             if ($upgrade) {
-                $subscription->syncUsagesResetAt();
+                $subscription->syncOrResetUsages();
                 $subscription->oldPlan = $subscription->price;
                 $subscription->price = $price;
                 $user->notify(new SubscriptionUpgradeNotification($user, $subscription));

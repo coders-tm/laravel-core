@@ -93,14 +93,16 @@ trait HasFeature
     }
 
     /**
-     * Sync usages reset date.
+     * Sync or reset usages based on plan.
      */
-    public function syncUsagesResetAt(): void
+    public function syncOrResetUsages(): void
     {
         $this->usages()->each(function ($usage) {
             $feature = $this->price->plan->features()->where('slug', $usage->slug)->first();
+            if ($usage->expired()) {
+                $usage->used = 0;
+            }
             $usage->reset_at = $feature->getResetDate($this->created_at, $this->price->interval->value);
-            logger($usage->reset_at);
             $usage->save();
         });
     }

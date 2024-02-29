@@ -255,7 +255,7 @@ class Subscription extends CashierSubscription
         if ($appInvoice->wasRecentlyCreated) {
             $this->usages()->delete();
         } else {
-            $this->syncUsagesResetAt();
+            $this->syncOrResetUsages();
         }
     }
 }
