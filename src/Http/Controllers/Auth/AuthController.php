@@ -211,4 +211,16 @@ class AuthController extends Controller
             'message' => trans('coderstm::messages.password.changed')
         ], 200);
     }
+
+    public function requestAccountDeletion(Request $request, $guard = 'users')
+    {
+        $user = current_user();
+
+        $user->logs()->create([
+            'type' => 'request-account-deletion',
+            'message' => 'User requested deletion of their account.',
+        ]);
+
+        return $this->me($guard);
+    }
 }

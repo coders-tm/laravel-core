@@ -47,6 +47,7 @@ Route::group([
             Route::post('update', 'update')->name('update');
             Route::post('change-password', 'password')->name('change-password');
             Route::post('me', 'me')->name('current');
+            Route::post('request-account-deletion', 'requestAccountDeletion')->name('request-account-deletion');
         });
     });
     Route::group([

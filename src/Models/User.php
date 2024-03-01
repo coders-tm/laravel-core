@@ -157,6 +157,15 @@ class User extends Admin implements MustVerifyEmail
         ]);
     }
 
+    public function requestAccountDeletion()
+    {
+        return $this->morphOne(Log::class, 'logable')
+            ->where('type', 'request-account-deletion')
+            ->where('created_at', '>', now()->subDays(7))
+            ->whereColumn('created_at', 'updated_at')
+            ->latestOfMany();
+    }
+
     /**
      * Scope a query to only include onlyActive
      *
