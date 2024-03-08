@@ -210,6 +210,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'controller' => UserController::class,
     ], function () {
         Route::group(['controller' => ReportController::class, 'prefix' => 'reports', 'as' => 'reports.'], function () {
+            Route::get('/', 'index')->can('reports,App\Models\User')->name('index');
             Route::get('daily', 'reportsDaily')->can('reportsDaily,App\Models\User')->name('daily');
             Route::get('monthly', 'reportsMonthly')->can('reportsMonthly,App\Models\User')->name('monthly');
             Route::get('yearly', 'reportsYearly')->can('reportsYearly,App\Models\User')->name('yearly');

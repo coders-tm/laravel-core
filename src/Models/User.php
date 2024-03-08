@@ -14,7 +14,6 @@ use Coderstm\Models\Cashier\Invoice;
 use Coderstm\Traits\HasBelongsToOne;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Stripe\Subscription as StripeSubscription;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
@@ -325,13 +324,26 @@ class User extends Admin implements MustVerifyEmail
      * @param  bool $cancelled
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSumAmount($query, $cancelled = false)
+    public function scopeSumAmount($query, $date = [])
     {
-        return $query->select('users.id', "plan_prices.amount")->leftJoin('subscriptions', function ($join) use ($cancelled) {
-            $join->on('subscriptions.user_id', '=', "users.id")->where('stripe_status', $cancelled ? StripeSubscription::STATUS_CANCELED : StripeSubscription::STATUS_ACTIVE)->limit(1);
-        })->leftJoin('plan_prices', function ($join) {
-            $join->on('plan_prices.stripe_id', '=', "subscriptions.stripe_price");
-        })->sum("plan_prices.amount");
+        $query->select('users.id', 'plan_prices.amount', 'subscriptions.id')
+            ->leftJoin('subscriptions', function ($join) {
+                $join->on('subscriptions.user_id', '=', 'users.id');
+            })->leftJoin('plan_prices', function ($join) {
+                $join->on('plan_prices.stripe_id', '=', 'subscriptions.stripe_price');
+            });
+
+        if (isset($date['year'])) {
+            $query->whereYear('subscriptions.ends_at', $date['year']);
+        }
+        if (isset($date['month'])) {
+            $query->whereMonth('subscriptions.ends_at', $date['month']);
+        }
+        if (isset($date['day'])) {
+            $query->whereDay('subscriptions.ends_at', $date['day']);
+        }
+
+        return $query->sum('plan_prices.amount');
     }
 
     /**
@@ -442,56 +454,7 @@ class User extends Admin implements MustVerifyEmail
         });
     }
 
-    static public function getStatsByMonthAndYear($key, $month = null, $year = null)
-    {
-        $user = static::onlyActive()->whereDateColumn(['month' => $month, 'year' => $year]);
-        $cancelled = static::onlyCancelled()->whereDateColumn(['month' => $month, 'year' => $year], 'ends_at');
-
-        switch ($key) {
-            case 'total':
-                return $user->count();
-                break;
-
-            case 'rolling':
-                return $user->onlyRolling()->count();
-                break;
-
-            case 'rolling_total':
-                return $user->onlyRolling()->sumAmount();
-                break;
-
-            case 'end_date':
-                return $user->onlyEnds()->count();
-                break;
-
-            case 'end_date_total':
-                return $user->onlyEnds()->sumAmount();
-                break;
-
-            case 'month':
-            case 'year':
-                return $user->onlyPlan($key)->count();
-                break;
-
-            case 'free':
-                return $user->onlyFree()->count();
-                break;
-
-            case 'cancelled':
-                return $cancelled->count();
-                break;
-
-            case 'cancelled_total':
-                return $cancelled->sumAmount(true);
-                break;
-
-            default:
-                return 0;
-                break;
-        }
-    }
-
-    static public function getStatsByOptions($key, array $options = [])
+    static public function stats($key, array $options = [])
     {
         $user = static::whereDateColumn($options);
         $cancelled = static::onlyCancelled()->whereDateColumn($options, 'ends_at');
@@ -531,18 +494,13 @@ class User extends Admin implements MustVerifyEmail
                 break;
 
             case 'cancelled_total':
-                return $cancelled->sumAmount(true);
+                return static::onlyCancelled()->sumAmount($options);
                 break;
 
             default:
                 return 0;
                 break;
         }
-    }
-
-    static public function getStats($key)
-    {
-        return static::getStatsByMonthAndYear($key);
     }
 
     public function toLoginResponse()

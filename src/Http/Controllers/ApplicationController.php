@@ -24,12 +24,12 @@ class ApplicationController extends Controller
         })->whereNotNull('subscriptions.created_at');
 
         return response()->json([
-            'total' => $userModel::getStats('total'),
-            'rolling' => $userModel::getStats('rolling'),
-            'end_date' => $userModel::getStats('end_date'),
-            'monthly' => $userModel::getStats('month'),
-            'yearly' => $userModel::getStats('year'),
-            'free' => $userModel::getStats('free'),
+            'total' => $userModel::stats('total'),
+            'rolling' => $userModel::stats('rolling'),
+            'end_date' => $userModel::stats('end_date'),
+            'monthly' => $userModel::stats('month'),
+            'yearly' => $userModel::stats('year'),
+            'free' => $userModel::stats('free'),
             'max_year' => $userQuery->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
             'min_year' => 2015,
             'unread_support' => Coderstm::$enquiryModel::onlyActive()->count(),
