@@ -2,7 +2,6 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\Notification as Template;
 use Coderstm\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
@@ -13,9 +12,6 @@ class SubscriptionDowngradeNotification extends Notification
 {
     use Queueable;
 
-    public $user;
-    public $subscription;
-    public $status;
     public $subject;
     public $message;
 
@@ -26,26 +22,16 @@ class SubscriptionDowngradeNotification extends Notification
      */
     public function __construct(User $user, $subscription)
     {
-        $this->user = $user;
-        $this->subscription = $subscription;
-        $this->subject = "Subscription Changed - Your Subscription Downgraded";
-
-        $template = Template::default('user:subscription-downgrade');
         $shortCodes = [
-            '{{USER_NAME}}' => $this->user->name,
-            '{{USER_ID}}' => $this->user->id,
-            '{{USER_FIRST_NAME}}' => $this->user->first_name,
-            '{{USER_LAST_NAME}}' => $this->user->last_name,
-            '{{USER_EMAIL}}' => $this->user->email,
-            '{{USER_PHONE_NUMBER}}' => $this->user->phone_number,
-            '{{OLD_PLAN}}' => optional($this->subscription->oldPlan)->label,
-            '{{PLAN}}' => optional($this->user->price)->label,
-            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount * 100),
-            '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,
+            '{{OLD_PLAN}}' => optional($subscription->oldPlan)->label,
         ];
 
-        $this->subject = replace_short_code($template->subject, $shortCodes);
-        $this->message = replace_short_code($template->content, $shortCodes);
+        $template = $subscription->renderNotification('user:subscription-downgrade', $shortCodes);
+
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+
+        $subscription->sendPushNotify('push:subscription-downgrade', $shortCodes);
     }
 
     /**

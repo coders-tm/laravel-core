@@ -9,7 +9,9 @@ use Coderstm\Traits\Fileable;
 use Coderstm\Models\Enquiry\Reply;
 use Illuminate\Support\Facades\DB;
 use Coderstm\Events\EnquiryCreated;
+use Coderstm\Jobs\SendPushNotification;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Jobs\SendWhatsappNotification;
 
 class Enquiry extends Model
 {
@@ -175,6 +177,63 @@ class Enquiry extends Model
             default:
                 return $query->orderBy($column ?: 'created_at', $direction ?? 'asc');
                 break;
+        }
+    }
+
+    public function renderNotification($type = null): Notification
+    {
+        $default = $this->source ? 'user:enquiry-confirmation' : 'user:enquiry-notification';
+
+        $template = Notification::default($type ?? $default);
+        $attachments = '';
+
+        if (count($this->media)) {
+            $attachments = "<p><b><small>Attachments</small></b>:<br>";
+            foreach ($this->media as $media) {
+                $attachments .= "<small><svg style=\"width:10px\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\"><path d=\"M396.2 83.8c-24.4-24.4-64-24.4-88.4 0l-184 184c-42.1 42.1-42.1 110.3 0 152.4s110.3 42.1 152.4 0l152-152c10.9-10.9 28.7-10.9 39.6 0s10.9 28.7 0 39.6l-152 152c-64 64-167.6 64-231.6 0s-64-167.6 0-231.6l184-184c46.3-46.3 121.3-46.3 167.6 0s46.3 121.3 0 167.6l-176 176c-28.6 28.6-75 28.6-103.6 0s-28.6-75 0-103.6l144-144c10.9-10.9 28.7-10.9 39.6 0s10.9 28.7 0 39.6l-144 144c-6.7 6.7-6.7 17.7 0 24.4s17.7 6.7 24.4 0l176-176c24.4-24.4 24.4-64 0-88.4z\"/></svg><a href=\"{$media->url}\">{$media->name}</a></small><br>";
+            }
+            $attachments .= "</p>";
+        }
+
+        $shortCodes = [
+            '{{USER_NAME}}' => optional($this->user)->name ?? $this->name,
+            '{{USER_ID}}' => optional($this->user)->id,
+            '{{USER_FIRST_NAME}}' => optional($this->user)->first_name,
+            '{{USER_LAST_NAME}}' => optional($this->user)->last_name,
+            '{{USER_EMAIL}}' => optional($this->user)->email ?? $this->email,
+            '{{USER_PHONE_NUMBER}}' => optional($this->user)->phone_number ?? $this->phone,
+            '{{ENQUIRY_ID}}' => $this->id,
+            '{{ENQUIRY_URL}}' => member_url("enquiries/{$this->id}?action=edit"),
+            '{{ENQUIRY_ATTACHMENTS}}' => $attachments,
+            '{{ENQUIRY_SUBJECT}}' => $this->subject,
+            '{{ENQUIRY_MESSAGE}}' => $this->message,
+        ];
+
+        return $template->fill([
+            'subject' => replace_short_code($template->subject, $shortCodes),
+            'content' => replace_short_code($template->content, $shortCodes),
+        ]);
+    }
+
+    public function sendPushNotify($type = null)
+    {
+        try {
+            $default = $this->source ? 'push:enquiry-confirmation' : 'push:enquiry-notification';
+
+            $template = $this->renderNotification($type ?? $default);
+
+            SendPushNotification::dispatch($this->user, [
+                'title' => $template->subject,
+                'body' => html_text($template->content)
+            ], [
+                'route' => "/enquiries/{$this->id}?action=edit",
+                'enquiry_id' => $this->id,
+            ]);
+
+            SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n{$template->content}");
+        } catch (\Exception $e) {
+            //throw $e;
+            report($e);
         }
     }
 

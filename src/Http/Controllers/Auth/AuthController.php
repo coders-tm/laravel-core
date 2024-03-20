@@ -223,4 +223,21 @@ class AuthController extends Controller
 
         return $this->me($guard);
     }
+
+    public function addDeviceToken(Request $request)
+    {
+        $this->validate($request, [
+            'device_token' => 'required|string'
+        ]);
+
+        try {
+            current_user()->addDeviceToken($request->device_token);
+        } catch (\Exception $e) {
+            //throw $e;
+        }
+
+        return response()->json([
+            'message' => 'Device token added successfully.'
+        ], 200);
+    }
 }

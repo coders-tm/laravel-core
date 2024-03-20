@@ -215,6 +215,13 @@ if (!function_exists('notifications')) {
     }
 }
 
+if (!function_exists('push_notifications')) {
+    function push_notifications()
+    {
+        return json_decode(file_get_contents(__DIR__ . '/push-notifications.json'), true);
+    }
+}
+
 if (!function_exists('replace_short_code')) {
     function replace_short_code($message = '', $replace = [])
     {
@@ -222,6 +229,8 @@ if (!function_exists('replace_short_code')) {
             '{{APP_NAME}}' => config('app.name'),
             '{{SUPPORT_EMAIL}}' => config('coderstm.admin_email'),
             '{{BILLING_PAGE}}' => member_url('billing'),
+            '{{MEMBER_PAGE}}' => config('coderstm.member_url'),
+            '{{ADMIN_PAGE}}' => config('coderstm.admin_url'),
         ]);
 
         foreach ($replace as $key => $value) {
@@ -315,5 +324,46 @@ if (!function_exists('billing_address_tax')) {
         }
 
         return rest_of_world_tax();
+    }
+}
+
+if (!function_exists('trans_status')) {
+    function trans_status($action = null, $module = null, $attribute = null)
+    {
+        return trans('messages.module.' . $action, [
+            'module' => trans_choice('modules.' . $module, 1),
+            'type' => trans('messages.attributes.' . $attribute)
+        ]);
+    }
+}
+
+if (!function_exists('trans_module')) {
+    function trans_module($action = null, $module = null, $count = 1)
+    {
+        return trans('messages.module.' . $action, ['module' => trans_choice('modules.' . $module, $count)]);
+    }
+}
+
+if (!function_exists('trans_modules')) {
+    function trans_modules($action = null, $module = null)
+    {
+        return trans_module($action, $module, 2);
+    }
+}
+
+if (!function_exists('trans_attribute')) {
+    function trans_attribute($key = null, $type = null)
+    {
+        return trans('messages.' . $key, ['type' => trans('messages.attributes.' . $type)]);
+    }
+}
+
+if (!function_exists('html_text')) {
+    function html_text($html = '')
+    {
+        $html = str_replace('<div><br>', "\n ", $html);
+        $html = str_replace('<br>', "\n ", $html);
+
+        return trim(preg_replace('/\s+/', ' ', strip_tags($html)));
     }
 }

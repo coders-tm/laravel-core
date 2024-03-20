@@ -9,6 +9,7 @@ use Coderstm\Enum\AppStatus;
 use Laravel\Cashier\Cashier;
 use Coderstm\Traits\Billable;
 use Coderstm\Models\Plan\Price;
+use Coderstm\Models\DeviceToken;
 use Illuminate\Support\Facades\DB;
 use Coderstm\Models\Cashier\Invoice;
 use Coderstm\Traits\HasBelongsToOne;
@@ -140,6 +141,11 @@ class User extends Admin implements MustVerifyEmail
     public function enquiries(): HasMany
     {
         return $this->hasMany(Coderstm::$enquiryModel, 'email', 'email');
+    }
+
+    public function deviceTokens(): HasMany
+    {
+        return $this->hasMany(DeviceToken::class);
     }
 
     /**

@@ -2,13 +2,13 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\User;
+use Coderstm\Models\Enquiry\Reply;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class SubscriptionUpgradeNotification extends Notification
+class EnquiryReplyNotification extends Notification
 {
     use Queueable;
 
@@ -20,18 +20,16 @@ class SubscriptionUpgradeNotification extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct(Reply $reply)
     {
-        $shortCodes = [
-            '{{OLD_PLAN}}' => optional($subscription->oldPlan)->label,
-        ];
-
-        $template = $subscription->renderNotification('user:subscription-upgraded', $shortCodes);
+        $template = $reply->renderNotification();
 
         $this->subject = $template->subject;
         $this->message = $template->content;
 
-        $subscription->sendPushNotify('push:subscription-upgraded', $shortCodes);
+        if (!$reply->byAdmin()) {
+            $reply->sendPushNotify();
+        }
     }
 
     /**
@@ -53,6 +51,7 @@ class SubscriptionUpgradeNotification extends Notification
      */
     public function toMail($notifiable)
     {
+
         return (new MailMessage)
             ->subject($this->subject)
             ->markdown('coderstm::emails.notification', [

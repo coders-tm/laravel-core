@@ -63,6 +63,20 @@
         "content": "<div>Hi <b>{{USER_FIRST_NAME}}</b>,</div><div><br></div><div>We appreciate that you’ve taken the time to write us. Please wait for a while, our expert team will contact you soon.</div><div><br></div><div>Thank you for using our portal!</div><div><br></div><div>Regards,</div><div>{{APP_NAME}}</div>"
     },
     {
+        "label": "Enquiry Update Notification",
+        "subject": "[{{APP_NAME}}] Enquiry #{{ENQUIRY_ID}} - {{ENQUIRY_SUBJECT}} has a new update",
+        "is_default": true,
+        "type": "user:enquiry-reply-notification",
+        "content": "<div>Hi {{USER_FIRST_NAME}}</div><div><br></div><div>We thought you’d like to know that an update has been made to your ticket {{ENQUIRY_ID}} - {{ENQUIRY_SUBJECT}}.</div><div><br></div><div>&nbsp;</div><div>--- Ticket Update ---</div><div>{{ENQUIRY_REPLY_MESSAGE}}</div><div><br></div><div>&nbsp;</div><div>Please take a look at the update and respond <a href=\"{{ENQUIRY_URL}}\">here</a>, or by logging into your account and choosing ‘Enquiries’.</div><div><br></div><div>Best regards,</div><div>{{APP_NAME}}<br></div>"
+    },
+    {
+        "label": "[Admin] Enquiry Update Notification",
+        "subject": "[{{APP_NAME}}] Enquiry #{{ENQUIRY_ID}} - {{ENQUIRY_SUBJECT}} has a new update",
+        "is_default": true,
+        "type": "admin:enquiry-reply-notification",
+        "content": "<div>Hi</div><div><br></div><div>We thought you’d like to know that an update has been made the ticket {{ENQUIRY_ID}} - {{ENQUIRY_SUBJECT}}.</div><div><br></div><div>&nbsp;</div><div>--- Ticket Update ---</div><div>{{ENQUIRY_REPLY_MESSAGE}}</div><div><br></div><div>&nbsp;</div><div>Please take a look at the update and respond <a href=\"{{ADMIN_ENQUIRY_URL}}\">here</a>, or by logging into your account and choosing ‘Enquiries’.</div><div><br></div><div>Best regards,</div><div>{{APP_NAME}}<br></div>"
+    },
+    {
         "label": "[Admin] Subscription expired",
         "subject": "[{{APP_NAME}}] Subscription Expired for {{USER_NAME}}",
         "is_default": true,
