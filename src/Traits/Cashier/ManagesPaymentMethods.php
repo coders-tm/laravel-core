@@ -106,9 +106,9 @@ trait ManagesPaymentMethods
 
         $stripePaymentMethod = $this->resolveStripePaymentMethod($paymentMethod);
 
-        $paymentMethod = $this->findByPaymentMethod($stripePaymentMethod->id);
-
-        $paymentMethod->markAsDefault();
+        if($paymentMethod = $this->findByPaymentMethod($stripePaymentMethod->id)) {
+            $paymentMethod->markAsDefault();
+        }
 
         // If the customer already has the payment method as their default, we can bail out
         // of the call now. We don't need to keep adding the same payment method to this
