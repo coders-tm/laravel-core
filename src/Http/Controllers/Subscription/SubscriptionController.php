@@ -27,7 +27,6 @@ class SubscriptionController extends Controller
     public function index(Request $request)
     {
         $user = $this->user();
-
         $subscription = $user->subscription();
 
         if ($user->is_free_forever || !$subscription) {
@@ -35,14 +34,20 @@ class SubscriptionController extends Controller
                 'message' => trans('coderstm::messages.subscription.none'),
                 'upcomingInvoice' => false,
             ], 200);
+        } else if ($user->onGenericTrial()) {
+            $trial_end = $user->trial_ends_at->format('M d, Y');
+            return response()->json([
+                'message' => "You're on trial until $trial_end, <strong>but you haven't subscribed to any plan yet</strong>. Please do so now to contine using the application even after your trial ends.",
+                'upcomingInvoice' => false,
+            ], 200);
         }
+
+        $upcomingInvoice = $subscription->upcomingInvoice();
 
         $subscription = $user->subscription()->load([
             'nextPrice',
             'planCanceled',
         ]);
-
-        $upcomingInvoice = $subscription->upcomingInvoice();
 
         if ($subscription->canceled() && $subscription->onGracePeriod() && !$subscription->hasSchedule()) {
             if ($subscription->planCanceled) {
@@ -67,7 +72,11 @@ class SubscriptionController extends Controller
                 'amount' => $upcomingInvoice->total(),
                 'date' => $upcomingInvoice->date()->toFormattedDateString(),
             ];
-            if ($subscription->hasSchedule()) {
+
+            if ($subscription->onTrial()) {
+                $trial_end = $subscription->trial_ends_at->format('M d, Y');
+                $subscription['message'] = "You're also on trial, until $trial_end. Once it ends, we'll charge you for your plan.";
+            } else if ($subscription->hasSchedule()) {
                 $subscription['message'] = trans('coderstm::messages.subscription.downgrade', [
                     'plan' => $subscription->nextPrice->label,
                     'amount' => $upcomingInvoice->total(),
@@ -81,8 +90,15 @@ class SubscriptionController extends Controller
             }
         }
 
-        $subscription->unsetRelation('nextPrice');
-        $subscription->unsetRelation('planCanceled');
+        $usages = $subscription->usagesToArray();
+
+        $subscription->unsetRelation('nextPrice')
+            ->unsetRelation('planCanceled')
+            ->unsetRelation('owner')
+            ->unsetRelation('usages');
+
+        $subscription['usages'] = $usages;
+        $subscription['has_canceled'] = $subscription->canceled();
 
         return response()->json($subscription, 200);
     }
@@ -103,12 +119,14 @@ class SubscriptionController extends Controller
 
         $user = $this->user();
         $payment_method = $request->input('payment_method');
-        $price = Price::find($request->plan);
+        $price = $this->price($request->plan);
         $stripe_price = $price->stripe_id;
         $subscribed = $user->subscribed();
         $subscription = null;
         $metadata = $request->input('metadata') ?? [];
         $upgrade = false;
+        $trial_end = $user->trial_ends_at;
+        $trial_days = $price->trial_days;
         $coupon = optional(Coupon::findByCode($request->promotion_code));
 
         if ($subscribed && $user->subscription()->stripe_price == $stripe_price) {
@@ -159,8 +177,15 @@ class SubscriptionController extends Controller
             } else {
                 $subscription = $user->newSubscription('default', $stripe_price)
                     ->withMetadata($metadata)
-                    ->withCoupon($coupon->stripe_id)
-                    ->create($payment_method);
+                    ->withCoupon($coupon->stripe_id);
+
+                if ($trial_end && $trial_end->isFuture()) {
+                    $subscription->trialUntil($trial_end);
+                } else if ($trial_days && !$trial_end) {
+                    $subscription->trialUntil(now()->addDays($trial_days));
+                }
+
+                $subscription->create($payment_method);
             }
         } catch (IncompletePayment $exception) {
             $upgrade = false;
@@ -181,7 +206,7 @@ class SubscriptionController extends Controller
                 $subscription->syncOrResetUsages();
                 $subscription->oldPlan = $subscription->price;
                 $subscription->price = $price;
-                $user->notify(new SubscriptionUpgradeNotification($user, $subscription));
+                $user->notify(new SubscriptionUpgradeNotification($subscription));
             }
         }
 
@@ -242,7 +267,7 @@ class SubscriptionController extends Controller
 
             $subscription->cancel();
 
-            $user->notify(new SubscriptionCancelNotification($user, $subscription));
+            $user->notify(new SubscriptionCancelNotification($subscription));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -319,17 +344,6 @@ class SubscriptionController extends Controller
         ], 'my-invoice');
     }
 
-    /**
-     * Creates an intent for payment so we can capture the payment
-     * method for the user.
-     *
-     * @param Request $request The request data from the user.
-     */
-    public function getSetupIntent(Request $request)
-    {
-        return $this->user()->createSetupIntent();
-    }
-
     public function checkPromoCode(Request $request)
     {
         $request->validate([
@@ -396,7 +410,12 @@ class SubscriptionController extends Controller
         if (request()->filled('user_id') && is_admin()) {
             return Coderstm::$userModel::findOrFail(request()->user_id);
         }
-        return current_user();
+        return user();
+    }
+
+    protected function price(string $plan): Price
+    {
+        return Price::find($plan);
     }
 
     protected function downgrade($subscription, array $options = [])
@@ -462,7 +481,7 @@ class SubscriptionController extends Controller
             $subscription->oldPlan = Price::findByStripeId($currPhase->items[0]->price);
             $subscription->price = Price::findByStripeId($options['plan']);
             $user = $this->user();
-            $user->notify(new SubscriptionDowngradeNotification($user, $subscription));
+            $user->notify(new SubscriptionDowngradeNotification($subscription));
         } catch (\Stripe\Exception\ApiErrorException $e) {
             throw $e;
         }

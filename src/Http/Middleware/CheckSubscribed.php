@@ -18,7 +18,7 @@ class CheckSubscribed
     {
         $user = $this->user();
         $subscription = $user->subscription();
-        if ($user->subscribed()) {
+        if ($user->is_subscribed) {
             return $next($request);
         } else if ($subscription && $subscription->canceled()) {
             return response()->json([
@@ -40,6 +40,6 @@ class CheckSubscribed
         if (request()->filled('user_id') && is_admin()) {
             return Coderstm::$userModel::findOrFail(request()->user_id);
         }
-        return current_user();
+        return user();
     }
 }

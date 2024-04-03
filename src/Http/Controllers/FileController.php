@@ -169,12 +169,13 @@ class FileController extends Controller
     {
         try {
             $file = File::findByHash($request->hash ?? '');
+
             if ($request->has('download')) {
                 return Storage::disk($file->disk)->download($file->path, $file->original_file_name);
-            }
-            if ($file->disk == 'cloud') {
+            } else if ($file->disk == 'cloud') {
                 return response()->redirectTo(Storage::disk($file->disk)->url($file->path));
             }
+
             return response()->file(Storage::disk($file->disk)->path($file->path));
         } catch (\Throwable $th) {
             return abort(404, trans('coderstm::messages.files.not_found'));

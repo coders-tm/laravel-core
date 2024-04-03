@@ -9,29 +9,24 @@ use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Services\SubscriptionReports;
 
 class ApplicationController extends Controller
 {
     public function stats(Request $request)
     {
-        $userModel = Coderstm::$userModel;
-        $userQuery = $userModel::select('users.id', "subscriptions.created_at")->leftJoin('subscriptions', function ($join) {
-            $join->on('subscriptions.user_id', '=', "users.id");
-        })->whereNotNull('subscriptions.created_at');
+        $reports = new SubscriptionReports($request);
 
         return response()->json([
-            'total' => $userModel::stats('total'),
-            'rolling' => $userModel::stats('rolling'),
-            'end_date' => $userModel::stats('end_date'),
-            'monthly' => $userModel::stats('month'),
-            'yearly' => $userModel::stats('year'),
-            'free' => $userModel::stats('free'),
-            'max_year' => $userQuery->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
-            'min_year' => 2015,
+            'total' => $reports->count(),
+            'rolling' => $reports->onlyRolling()->count(),
+            'end_date' => $reports->onlyEnds()->count(),
+            'free' => $reports->onlyFree()->count(),
+            'max_year' => Coderstm::$subscriptionModel::query()->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
+            'min_year' => 2000,
             'unread_support' => Coderstm::$enquiryModel::onlyActive()->count(),
             'unread_tasks' => Task::onlyActive()->count(),
         ], 200);
@@ -67,16 +62,6 @@ class ApplicationController extends Controller
     public function paymentMethods()
     {
         return response()->json(PaymentMethod::toPublic(), 200);
-    }
-
-    public function location()
-    {
-        $response = Http::withHeaders([
-            'Accept' => 'application/json',
-            'Content-Type' => 'application/json'
-        ])->get('https://ipinfo.io');
-
-        return $response->json();
     }
 
     public function updateSettings(Request $request)

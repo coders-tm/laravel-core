@@ -2,21 +2,39 @@
 
 namespace Coderstm\Models;
 
+use Coderstm\Coderstm;
 use Coderstm\Traits\Core;
 use Laravel\Cashier\Cashier;
 use Coderstm\Enum\PlanInterval;
-use Coderstm\Models\Plan\Price;
-use Coderstm\Models\Plan\Feature;
 use Coderstm\Traits\SerializeDate;
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Coderstm\Models\Cashier\Subscription;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use function Illuminate\Events\queueable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Plan extends Model
 {
     use Core, SerializeDate;
+
+    /**
+     * The default subscription model class name.
+     *
+     * @var string
+     */
+    protected $subscriptionModel = null;
+
+    /**
+     * The default price model class name.
+     *
+     * @var string
+     */
+    protected $priceModel = 'Coderstm\\Models\\Plan\\Price';
+
+    /**
+     * The default feature model class name.
+     *
+     * @var string
+     */
+    protected $featureModel = 'Coderstm\\Models\\Plan\\Feature';
 
     protected $dateTimeFormat = 'd M, Y \a\t h:i a';
 
@@ -32,6 +50,7 @@ class Plan extends Model
         'custom_fee',
         'monthly_fee',
         'yearly_fee',
+        'trial_days',
         'stripe_id',
     ];
 
@@ -40,19 +59,20 @@ class Plan extends Model
     protected $casts = [
         'is_active' => 'boolean',
         'is_custom' => 'boolean',
+        'trial_days' => 'integer',
         'interval' => PlanInterval::class,
     ];
 
     public function prices(): HasMany
     {
-        return $this->hasMany(Price::class);
+        return $this->hasMany($this->priceModel, 'plan_id');
     }
 
     public function subscriptions()
     {
         return $this->hasManyThrough(
-            Subscription::class,
-            Price::class,
+            $this->subscriptionModel ?? Coderstm::$subscriptionModel,
+            $this->priceModel,
             'plan_id', // Foreign key on Price model
             'stripe_price',    // Foreign key on Subscription model
             'id',       // Local key on Plan model
@@ -67,26 +87,19 @@ class Plan extends Model
 
     public function features(): HasMany
     {
-        return $this->hasMany(Feature::class);
+        return $this->hasMany($this->featureModel);
     }
 
-    public function syncFeatures(Collection $items)
+    public function syncFeatures(array $items = [])
     {
         // delete removed features
-        $this->features()->whereNotIn('id', $items->pluck('id')->filter())->delete();
+        $this->features()->whereNotIn('slug', array_keys($items))->delete();
 
-        // create or updated new features
-        $items->map(function ($item) {
-            return (object) $item;
-        })->each(function ($item) {
-            $this->features()->updateOrCreate([
-                'id' => optional($item)->id,
-            ], [
-                'label' => optional($item)->label,
-                'description' => optional($item)->description,
-                'value' => optional($item)->value,
+        foreach ($items as $key => $value) {
+            $this->features()->updateOrCreate(['slug' => $key], [
+                'value' => $value,
             ]);
-        });
+        }
 
         return $this;
     }
@@ -125,8 +138,8 @@ class Plan extends Model
             $plan->prices()->saveMany($prices);
 
             return $plan;
-        } catch (\Throwable $th) {
-            throw $th;
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 

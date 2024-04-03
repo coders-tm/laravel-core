@@ -34,7 +34,9 @@ class Notification extends Model
 
     public static function default($type = null): static
     {
-        return static::where('type', $type)->where('is_default', 1)->firstOrFail();
+        return static::where('type', $type)
+            ->orderBy('is_default')
+            ->firstOrFail();
     }
 
     public function duplicate()

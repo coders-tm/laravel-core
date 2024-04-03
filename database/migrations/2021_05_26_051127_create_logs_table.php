@@ -25,11 +25,12 @@ return new class extends Migration
             $table->string('type')->default('default');
             $table->text('message')->nullable();
             $table->{$this->jsonable()}('options')->nullable();
-            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->string('admin_id')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('admin_id')->references('id')->on('admins')->nullOnDelete();
         });
+
+        $this->setAutoIncrement('logs');
     }
 };

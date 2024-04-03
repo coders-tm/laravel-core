@@ -2,6 +2,8 @@
 
 namespace Coderstm;
 
+use Laravel\Cashier\Cashier;
+
 class Coderstm
 {
     /**
@@ -33,6 +35,20 @@ class Coderstm
     public static $subscriptionModel = 'Coderstm\\Models\\Cashier\\Subscription';
 
     /**
+     * The default invoice model class name.
+     *
+     * @var string
+     */
+    public static $invoiceModel = 'Coderstm\\Models\\Cashier\\Invoice';
+
+    /**
+     * The default plan model class name.
+     *
+     * @var string
+     */
+    public static $planModel = 'Coderstm\\Models\\Plan';
+
+    /**
      * Indicates if Coderstm's migrations will be run.
      *
      * @var bool
@@ -45,6 +61,13 @@ class Coderstm
      * @var bool
      */
     public static $registersRoutes = true;
+
+    /**
+     *  app short codes.
+     *
+     * @var bool
+     */
+    public static $appShortCodes = [];
 
     /**
      * Determine if Coderstm's migrations should be run.
@@ -99,6 +122,7 @@ class Coderstm
     public static function useUserModel($userModel)
     {
         static::$userModel = $userModel;
+        Cashier::useCustomerModel($userModel);
     }
 
     /**
@@ -124,6 +148,17 @@ class Coderstm
     }
 
     /**
+     * Set the invoice model class name.
+     *
+     * @param  string  $invoiceModel
+     * @return void
+     */
+    public static function useInvoiceModel($invoiceModel)
+    {
+        static::$invoiceModel = $invoiceModel;
+    }
+
+    /**
      * Set the subscription model class name.
      *
      * @param  string  $subscriptionModel
@@ -132,5 +167,28 @@ class Coderstm
     public static function useSubscriptionModel($subscriptionModel)
     {
         static::$subscriptionModel = $subscriptionModel;
+        Cashier::useSubscriptionModel($subscriptionModel);
+    }
+
+    /**
+     * Set the plan model class name.
+     *
+     * @param  string  $planModel
+     * @return void
+     */
+    public static function usePlanModel($planModel)
+    {
+        static::$planModel = $planModel;
+    }
+
+    /**
+     * Set app short codes.
+     *
+     * @param  array  $appShortCodes
+     * @return void
+     */
+    public static function useAppShortCodes(array $appShortCodes)
+    {
+        static::$appShortCodes = $appShortCodes;
     }
 }

@@ -6,17 +6,13 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Enum\AppRag;
 use Coderstm\Enum\AppStatus;
-use Laravel\Cashier\Cashier;
 use Coderstm\Traits\Billable;
-use Coderstm\Models\Plan\Price;
 use Coderstm\Models\DeviceToken;
 use Illuminate\Support\Facades\DB;
-use Coderstm\Models\Cashier\Invoice;
 use Coderstm\Traits\HasBelongsToOne;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class User extends Admin implements MustVerifyEmail
 {
@@ -38,7 +34,6 @@ class User extends Admin implements MustVerifyEmail
         'rfid',
         'source',
         'status',
-        'title',
     ];
 
     protected $hidden = [
@@ -58,7 +53,7 @@ class User extends Admin implements MustVerifyEmail
         'name',
         'member_since',
         'guard',
-        'subscribed',
+        'is_subscribed',
         'has_cancelled',
     ];
 
@@ -66,12 +61,12 @@ class User extends Admin implements MustVerifyEmail
         'avatar',
         'address',
         'lastLogin',
-        'latestInvoice',
+        'latestAppInvoice as latest_invoice',
     ];
 
     public function getNameAttribute()
     {
-        return "{$this->title} {$this->first_name} {$this->last_name}";
+        return "{$this->first_name} {$this->last_name}";
     }
 
     public function getMemberSinceAttribute()
@@ -101,36 +96,6 @@ class User extends Admin implements MustVerifyEmail
             ]);
         }
         return $this;
-    }
-
-    /**
-     * Get all of the invoices for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function appInvoices()
-    {
-        return $this->hasManyThrough(Invoice::class, Cashier::$subscriptionModel);
-    }
-
-    /**
-     * Get the latest invoices for the User
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
-     */
-    public function latestInvoice()
-    {
-        return $this->hasOneThrough(Invoice::class, Cashier::$subscriptionModel)->orderByDesc('created_at');
-    }
-
-    /**
-     * The price that belong to the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOneThrough
-     */
-    public function price(): HasOneThrough
-    {
-        return $this->hasOneThrough(Price::class, Cashier::$subscriptionModel, 'user_id', 'stripe_id', 'id', 'stripe_price')
-            ->orderByDesc('created_at');
     }
 
     /**
@@ -324,35 +289,6 @@ class User extends Admin implements MustVerifyEmail
     }
 
     /**
-     * Scope a query to only include sumAmount
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  bool $cancelled
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeSumAmount($query, $date = [])
-    {
-        $query->select('users.id', 'plan_prices.amount', 'subscriptions.id')
-            ->leftJoin('subscriptions', function ($join) {
-                $join->on('subscriptions.user_id', '=', 'users.id');
-            })->leftJoin('plan_prices', function ($join) {
-                $join->on('plan_prices.stripe_id', '=', 'subscriptions.stripe_price');
-            });
-
-        if (isset($date['year'])) {
-            $query->whereYear('subscriptions.ends_at', $date['year']);
-        }
-        if (isset($date['month'])) {
-            $query->whereMonth('subscriptions.ends_at', $date['month']);
-        }
-        if (isset($date['day'])) {
-            $query->whereDay('subscriptions.ends_at', $date['day']);
-        }
-
-        return $query->sum('plan_prices.amount');
-    }
-
-    /**
      * Scope a query to only include sortBy
      *
      * @param  \Illuminate\Database\Eloquent\Builder $query
@@ -460,58 +396,21 @@ class User extends Admin implements MustVerifyEmail
         });
     }
 
-    static public function stats($key, array $options = [])
-    {
-        $user = static::whereDateColumn($options);
-        $cancelled = static::onlyCancelled()->whereDateColumn($options, 'ends_at');
-
-        switch ($key) {
-            case 'total':
-                return $user->count();
-                break;
-
-            case 'rolling':
-                return $user->onlyRolling()->count();
-                break;
-
-            case 'rolling_total':
-                return $user->onlyRolling()->sumAmount();
-                break;
-
-            case 'end_date':
-                return $user->onlyEnds()->count();
-                break;
-
-            case 'end_date_total':
-                return $user->onlyEnds()->sumAmount();
-                break;
-
-            case 'month':
-            case 'year':
-                return $user->onlyPlan($key)->count();
-                break;
-
-            case 'free':
-                return $user->onlyFree()->count();
-                break;
-
-            case 'cancelled':
-                return $cancelled->count();
-                break;
-
-            case 'cancelled_total':
-                return static::onlyCancelled()->sumAmount($options);
-                break;
-
-            default:
-                return 0;
-                break;
-        }
-    }
-
     public function toLoginResponse()
     {
         return $this->loadUnreadEnquiries()->toArray();
+    }
+
+    public function getShortCodes(): array
+    {
+        return [
+            '{{USER_NAME}}' => $this->name,
+            '{{USER_ID}}' => $this->id,
+            '{{USER_FIRST_NAME}}' => $this->first_name,
+            '{{USER_LAST_NAME}}' => $this->last_name,
+            '{{USER_EMAIL}}' => $this->email,
+            '{{USER_PHONE_NUMBER}}' => $this->phone_number,
+        ];
     }
 
     protected static function boot()

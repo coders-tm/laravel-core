@@ -13,10 +13,6 @@ class EnquiryPolicy
 
     /**
      * Perform pre-authorization checks.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @param  string  $ability
-     * @return void|bool
      */
     public function before(Admin|User $admin, $ability)
     {
@@ -27,9 +23,6 @@ class EnquiryPolicy
 
     /**
      * Determine whether the admin can view any models.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(Admin|User $admin)
     {
@@ -41,24 +34,17 @@ class EnquiryPolicy
 
     /**
      * Determine whether the admin can view the model.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function view(Admin|User $admin, Enquiry $enquiry)
     {
         if (is_user()) {
-            return $enquiry->email == current_user()->email;
+            return $enquiry->email == user()->email;
         }
         return $admin->can('tickets:view');
     }
 
     /**
      * Determine whether the admin can create models.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(Admin|User $admin)
     {
@@ -70,24 +56,17 @@ class EnquiryPolicy
 
     /**
      * Determine whether the admin can update the model.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(Admin|User $admin, Enquiry $enquiry)
     {
         if (is_user()) {
-            return $enquiry->email == current_user()->email;
+            return $enquiry->email == user()->email;
         }
         return $admin->can('tickets:edit');
     }
 
     /**
      * Determine whether the admin can delete the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(Admin $admin)
     {
@@ -96,9 +75,6 @@ class EnquiryPolicy
 
     /**
      * Determine whether the admin can restore the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(Admin $admin)
     {
@@ -107,9 +83,6 @@ class EnquiryPolicy
 
     /**
      * Determine whether the admin can permanently delete the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(Admin $admin)
     {

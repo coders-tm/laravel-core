@@ -32,10 +32,10 @@ class AuthController extends Controller
 
         if (Auth::guard($guard)->attempt($request->only(['email', 'password']))) {
             $user = $request->user($guard);
+            Auth::guard($guard)->logout();
 
             // check user status
             if (!$user->is_active()) {
-                Auth::guard($guard)->logout();
                 abort(403, trans('coderstm::messages.account_disabled'));
             }
 
@@ -51,6 +51,9 @@ class AuthController extends Controller
             } catch (\Throwable $th) {
                 report($th);
             }
+
+            // delete old token with requested device
+            $user->tokens()->where('name', $request->device_id)->delete();
 
             // create and return user with token
             $token = $user->createToken($request->device_id, [$guard]);
@@ -70,7 +73,6 @@ class AuthController extends Controller
     {
         $rules = [
             'email' => 'required|email|unique:users',
-            'title' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'phone_number' => 'required',
@@ -136,7 +138,7 @@ class AuthController extends Controller
 
     public function me($guard = 'users')
     {
-        $user = current_user()->fresh([
+        $user = user()->fresh([
             'address',
             'lastLogin'
         ]);
@@ -148,7 +150,7 @@ class AuthController extends Controller
 
     public function update(Request $request, $guard = 'users')
     {
-        $user = current_user();
+        $user = user();
 
         $rules = [
             'title' => 'required',
@@ -196,7 +198,7 @@ class AuthController extends Controller
         // Validate those rules
         $this->validate($request, $rules);
 
-        $user = current_user();
+        $user = user();
         if (Hash::check($request->old_password,  $user->password)) {
             $user->update([
                 'password' => bcrypt($request->password)
@@ -214,7 +216,7 @@ class AuthController extends Controller
 
     public function requestAccountDeletion(Request $request, $guard = 'users')
     {
-        $user = current_user();
+        $user = user();
 
         $user->logs()->create([
             'type' => 'request-account-deletion',
@@ -231,7 +233,7 @@ class AuthController extends Controller
         ]);
 
         try {
-            current_user()->addDeviceToken($request->device_token);
+            user()->addDeviceToken($request->device_token);
         } catch (\Exception $e) {
             //throw $e;
         }

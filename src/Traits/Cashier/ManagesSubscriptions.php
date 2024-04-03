@@ -20,24 +20,4 @@ trait ManagesSubscriptions
     {
         return new SubscriptionBuilder($this, $name, $prices);
     }
-
-    /**
-     * Get the subscribed status of the user.
-     *
-     * @return bool
-     */
-    public function getSubscribedAttribute()
-    {
-        return $this->subscribed() ?: false;
-    }
-
-    /**
-     * Get the has cancelled status of the user.
-     *
-     * @return bool
-     */
-    public function getHasCancelledAttribute()
-    {
-        return $this->subscribed() ? $this->subscription()->canceled() : false;
-    }
 }

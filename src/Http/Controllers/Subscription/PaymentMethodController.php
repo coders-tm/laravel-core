@@ -83,11 +83,11 @@ class PaymentMethodController extends Controller
         return response()->json(['message' => trans('coderstm::messages.payment_method.destory')]);
     }
 
-    private function user()
+    protected function user()
     {
         if (request()->filled('user_id') && is_admin()) {
             return Coderstm::$userModel::findOrFail(request()->user_id);
         }
-        return current_user();
+        return user();
     }
 }

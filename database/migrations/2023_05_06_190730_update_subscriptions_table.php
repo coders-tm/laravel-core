@@ -1,11 +1,14 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -22,5 +25,7 @@ return new class extends Migration
             $table->dateTime('cancels_at')->nullable()->after('ends_at');
             $table->dateTime('expires_at')->nullable()->after('ends_at');
         });
+
+        $this->setAutoIncrement('subscriptions');
     }
 };

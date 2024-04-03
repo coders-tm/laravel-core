@@ -52,7 +52,7 @@ class Blog extends Model
     public function createComment(array $attributes = [])
     {
         $comment = new Comment($attributes);
-        $comment->user()->associate(current_user());
+        $comment->user()->associate(user());
         return $this->comments()->save($comment);
     }
 

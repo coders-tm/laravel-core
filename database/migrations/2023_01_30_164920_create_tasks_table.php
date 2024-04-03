@@ -1,11 +1,14 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -27,6 +30,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('admins')->nullOnDelete();
         });
 
+        $this->setAutoIncrement('tasks');
+
         Schema::create('task_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
@@ -46,6 +51,8 @@ return new class extends Migration
             $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreign('user_id')->references('id')->on('admins')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        $this->setAutoIncrement('task_replies');
 
         Schema::create('task_archives', function (Blueprint $table) {
             $table->unsignedBigInteger('task_id');

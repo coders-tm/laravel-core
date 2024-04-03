@@ -4,26 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Coderstm\Models\Cashier\Subscription;
+use Coderstm\Services\SubscriptionReports;
 use Illuminate\Http\Resources\Json\ResourceCollection;
-use Illuminate\Support\Facades\DB;
-use Stripe\Subscription as StripeSubscription;
 
 class UserReportsController extends Controller
 {
     public function index(Request $request)
     {
-        $reports = $this->query($request);
+        $reports = new SubscriptionReports($request);
 
         switch ($request->type) {
             case 'rolling':
-                $reports = $this->onlyRolling($request);
+                $reports = $reports->onlyRolling();
                 break;
             case 'end_date':
-                $reports = $this->onlyEnds($request);
+                $reports = $reports->onlyEnds();
                 break;
             case 'cancelled':
-                $reports = $this->onlyCancelled($request);
+                $reports = $reports->onlyCancelled();
+                break;
+            case 'free':
+                $reports = $reports->onlyFree();
+                break;
+            default:
+                $reports = $reports->query();
                 break;
         }
 
@@ -35,18 +39,20 @@ class UserReportsController extends Controller
 
     public function reports(Request $request)
     {
-        $reports = $this->query($request);
-        $rolling = $this->onlyRolling($request);
-        $end_date = $this->onlyEnds($request);
-        $cancelled = $this->onlyCancelled($request);
+        $reports = new SubscriptionReports($request);
+
+        $rolling = $reports->onlyRolling();
+        $end_date = $reports->onlyEnds();
+        $cancelled = $reports->onlyCancelled();
 
         return response()->json([
             'total' => $reports->count(),
+            'total_paid' => $reports->sum('total_paid'),
             'rolling' => $rolling->count(),
-            'rolling_total' => $rolling->sum('total_paid'),
+            'rolling_total' => $rolling->sum('plan_price'),
             'end_date' => $end_date->count(),
-            'end_date_total' => $end_date->sum('total_paid'),
-            'free' => $this->onlyFree($request)->count(),
+            'end_date_total' => $end_date->sum('plan_price'),
+            'free' => $reports->onlyFree($request)->count(),
             'cancelled' => $cancelled->count(),
             'cancelled_total' => $cancelled->sum('plan_price'),
         ], 200);
@@ -70,70 +76,5 @@ class UserReportsController extends Controller
     public function pdf(Request $request)
     {
         return Pdf::loadView('pdfs.reports', $request->only(['rows', 'columns']))->download("reports-{$request->type}.pdf");
-    }
-
-    private function query(Request $request, $column = 'subscription_invoices.created_at')
-    {
-        $query = Subscription::select(
-            'subscriptions.*',
-            'plans.id as plan_id',
-            DB::raw("CONCAT(users.title, ' ', users.first_name, ' ', users.last_name) as user_name"),
-            'plan_prices.amount as plan_price',
-            'plans.label as plan_label',
-            DB::raw("SUM(CASE WHEN subscription_invoices.stripe_status = 'paid' THEN (subscription_invoices.total/100) ELSE 0 END) AS total_paid")
-        )
-            ->join('users', 'users.id', '=', 'subscriptions.user_id')
-            ->join('plan_prices', 'subscriptions.stripe_price', '=', 'plan_prices.stripe_id')
-            ->join('plans', 'plan_prices.plan_id', '=', 'plans.id')
-            ->leftJoin('subscription_invoices', 'subscriptions.id', '=', 'subscription_invoices.subscription_id');
-
-        if ($request->filled('year')) {
-            $query->whereYear($column, $request->year);
-        }
-        if ($request->filled('month')) {
-            $query->whereMonth($column, $request->month);
-        }
-        if ($request->filled('day')) {
-            $query->whereDay($column, $request->day);
-        }
-
-        return $query->groupBy(
-            'users.id',
-            'users.title',
-            'users.first_name',
-            'users.last_name',
-            'subscriptions.id',
-            'subscriptions.stripe_status',
-            'plan_prices.amount',
-            'plans.label',
-            'plans.id'
-        )->havingRaw('COUNT(subscriptions.id) > 0');
-    }
-
-    private function onlyRolling(Request $request)
-    {
-        return $this->query($request)
-            ->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
-            ->whereNull('subscriptions.cancels_at');
-    }
-
-    private function onlyEnds(Request $request)
-    {
-        return $this->query($request)
-            ->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
-            ->whereNotNull('subscriptions.cancels_at');
-    }
-
-    private function onlyFree(Request $request)
-    {
-        return $this->query($request)
-            ->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
-            ->where('plan_prices.amount', 0);
-    }
-
-    private function onlyCancelled(Request $request)
-    {
-        return $this->query($request)
-            ->where('subscriptions.stripe_status', '<>', StripeSubscription::STATUS_ACTIVE);
     }
 }

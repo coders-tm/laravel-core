@@ -14,6 +14,7 @@ return [
     */
 
     'domain' => env('APP_DOMAIN', null),
+    'app_domain' => env('APP_DOMAIN', null),
     'web_prefix' => env('APP_WEB_PREFIX', 'app'),
     'api_prefix' => env('APP_API_PREFIX', 'api'),
     'tunnel_domain' => env('TUNNEL_WEB_DOMAIN', null),
@@ -31,5 +32,5 @@ return [
     */
 
     'admin_url' => env('APP_ADMIN_URL', 'http://localhost'),
-    'member_url' => env('APP_MEMBER_URL', 'http://localhost'),
+    'app_url' => env('APP_MEMBER_URL', 'http://localhost'),
 ];

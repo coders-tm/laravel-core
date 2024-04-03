@@ -63,7 +63,7 @@ class Reply extends Model
 
     public function byAdmin(): bool
     {
-        return $this->user_type === 'Admin';
+        return strpos($this->user_type, 'Admin') !== false;
     }
 
     public function renderNotification($type = null): Notification
@@ -89,7 +89,7 @@ class Reply extends Model
             '{{USER_EMAIL}}' => optional($this->enquiry->user)->email ?? $this->enquiry->email,
             '{{USER_PHONE_NUMBER}}' => optional($this->enquiry->user)->phone_number ?? $this->enquiry->phone,
             '{{ENQUIRY_ID}}' => $this->enquiry_id,
-            '{{ENQUIRY_URL}}' => member_url("enquiries/{$this->enquiry_id}?action=edit"),
+            '{{ENQUIRY_URL}}' => app_url("enquiries/{$this->enquiry_id}?action=edit"),
             '{{ADMIN_ENQUIRY_URL}}' => admin_url("enquiries/{$this->enquiry_id}?action=edit"),
             '{{ENQUIRY_SUBJECT}}' => $this->enquiry->subject,
             '{{ENQUIRY_REPLY_ATTACHMENTS}}' => $attachments,

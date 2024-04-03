@@ -2,7 +2,6 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -20,7 +19,7 @@ class SubscriptionCancelNotification extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct($subscription)
     {
         $template = $subscription->renderNotification('user:subscription-cancel');
 

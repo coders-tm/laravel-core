@@ -4,7 +4,9 @@ namespace Coderstm\Traits;
 
 use PDO;
 use Browser;
+use Coderstm\Models\Module;
 use Illuminate\Support\Str;
+use Coderstm\Models\Permission;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -191,5 +193,31 @@ trait Helpers
         } catch (\Exception $e) {
             //throw $e;
         }
+    }
+
+    protected function updateOrCreateModule($item): Module
+    {
+        $module = Module::updateOrCreate([
+            'name' => $item['name'],
+        ], [
+            'icon' => $item['icon'],
+            'url' => $item['url'],
+            'show_menu' => isset($item['show_menu']) ? $item['show_menu'] : 1,
+            'sort_order' => $item['sort_order'],
+        ]);
+
+        // delete removed permissions
+        $module->permissions()->whereNotIn('action', $item['sub_items'])->forceDelete();
+
+        foreach ($item['sub_items'] as $item) {
+            Permission::updateOrCreate([
+                'scope' => Str::slug($module['name']) . ':' . Str::slug($item),
+            ], [
+                'module_id' => $module['id'],
+                'action' => $item,
+            ]);
+        }
+
+        return $module;
     }
 }

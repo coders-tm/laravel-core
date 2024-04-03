@@ -27,13 +27,7 @@ return new class extends Migration
             $table->boolean('is_default')->nullable()->default(0);
             $table->timestamps();
         });
-    }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('stripe_payment_methods');
+        $this->setAutoIncrement('stripe_payment_methods');
     }
 };

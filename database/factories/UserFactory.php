@@ -27,10 +27,10 @@ class UserFactory extends Factory
         $created_at = fake()->dateTimeBetween('-3 years');
         $gender = ['male', 'female'][rand(0, 1)];
         return [
-            'title' => fake()->title($gender),
             'first_name' => fake()->firstName($gender),
             'last_name' => fake()->lastName(),
             'email' => fake()->unique()->safeEmail,
+            'gender' => $gender,
             'phone_number' => fake()->phoneNumber(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

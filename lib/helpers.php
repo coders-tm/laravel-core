@@ -1,5 +1,6 @@
 <?php
 
+use Coderstm\Coderstm;
 use Coderstm\Models\Tax;
 use League\ISO3166\ISO3166;
 use Illuminate\Support\Str;
@@ -19,8 +20,8 @@ if (!function_exists('guard')) {
     }
 }
 
-if (!function_exists('current_user')) {
-    function current_user()
+if (!function_exists('user')) {
+    function user()
     {
         return request()->user();
     }
@@ -40,8 +41,8 @@ if (!function_exists('is_admin')) {
     }
 }
 
-if (!function_exists('app_url')) {
-    function app_url($subdomain = 'app')
+if (!function_exists('app_domain')) {
+    function app_domain($subdomain = 'app')
     {
         $scheme = request()->getScheme() ?? 'https';
         if ($subdomain) {
@@ -52,16 +53,34 @@ if (!function_exists('app_url')) {
 }
 
 if (!function_exists('admin_url')) {
-    function admin_url($path = '')
+    function admin_url($path = '', $absolute = false)
     {
-        return config('coderstm.admin_url') . '/' . $path;
+        // Check if $path starts with a slash
+        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+
+        // Get the base URL from config
+        $baseUrl = config('coderstm.admin_url');
+
+        // Check if absolute is true
+        // Remove any extra path after the base URL
+        if ($absolute) {
+            $parts = parse_url($baseUrl);
+            $baseUrl = $parts['scheme'] . '://' . $parts['host'];
+            if (isset($parts['port'])) {
+                $baseUrl .= ':' . $parts['port'];
+            }
+        }
+
+        return $baseUrl . $separator . $path;
     }
 }
 
-if (!function_exists('member_url')) {
-    function member_url($path = '')
+if (!function_exists('app_url')) {
+    function app_url($path = '')
     {
-        return config('coderstm.member_url') . '/' . $path;
+        // Check if $path starts with a slash
+        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+        return config('coderstm.app_url') . $separator . $path;
     }
 }
 
@@ -201,37 +220,16 @@ if (!function_exists('company_address')) {
     }
 }
 
-if (!function_exists('payment_methods')) {
-    function payment_methods()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/payment-methods.json'), true);
-    }
-}
-
-if (!function_exists('notifications')) {
-    function notifications()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/notifications.json'), true);
-    }
-}
-
-if (!function_exists('push_notifications')) {
-    function push_notifications()
-    {
-        return json_decode(file_get_contents(__DIR__ . '/push-notifications.json'), true);
-    }
-}
-
 if (!function_exists('replace_short_code')) {
     function replace_short_code($message = '', $replace = [])
     {
-        $replace = array_merge($replace, [
+        $replace = array_merge([
             '{{APP_NAME}}' => config('app.name'),
             '{{SUPPORT_EMAIL}}' => config('coderstm.admin_email'),
-            '{{BILLING_PAGE}}' => member_url('billing'),
-            '{{MEMBER_PAGE}}' => config('coderstm.member_url'),
+            '{{BILLING_PAGE}}' => app_url('billing'),
+            '{{MEMBER_PAGE}}' => config('coderstm.app_url'),
             '{{ADMIN_PAGE}}' => config('coderstm.admin_url'),
-        ]);
+        ], $replace, Coderstm::$appShortCodes);
 
         foreach ($replace as $key => $value) {
             $message = str_replace($key, $value, $message);

@@ -6,6 +6,7 @@ use Coderstm\Models\Plan;
 use Illuminate\Http\Request;
 use Coderstm\Rules\SubscriptionExists;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Feature;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PlanController extends Controller
@@ -55,7 +56,7 @@ class PlanController extends Controller
         $plan = Plan::create($request->input());
 
         if ($request->filled('features')) {
-            $plan->syncFeatures(collect($request->features));
+            $plan->syncFeatures($request->features);
         }
 
         return response()->json([
@@ -83,7 +84,7 @@ class PlanController extends Controller
         $plan->update($request->input());
 
         if ($request->filled('features')) {
-            $plan->syncFeatures(collect($request->features));
+            $plan->syncFeatures($request->features);
         }
 
         return response()->json([
@@ -167,6 +168,11 @@ class PlanController extends Controller
             $plan->orWhere('id', $request->plan_id);
         }
 
-        return $plan->get();
+        return response()->json($plan->get(), 200);
+    }
+
+    public function features(Request $request)
+    {
+        return response()->json(Feature::all(), 200);
     }
 }

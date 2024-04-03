@@ -2,9 +2,8 @@
 
 namespace Coderstm\Listeners\Cashier;
 
-use Coderstm\Events\Cashier\SubscriptionProcessed;
-use Coderstm\Models\Cashier\Invoice;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Coderstm\Events\Cashier\SubscriptionProcessed;
 
 class SubscriptionEventListener
 {
@@ -17,8 +16,6 @@ class SubscriptionEventListener
     public function handle(SubscriptionProcessed $event)
     {
         $subscription = $event->subscription;
-        Invoice::createFromStripe($subscription->latestInvoice(), [
-            'subscription_id' => $subscription->id
-        ]);
+        $subscription->syncLatestInvoice();
     }
 }

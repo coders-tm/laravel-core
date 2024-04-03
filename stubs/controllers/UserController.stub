@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
-use Coderstm\Http\Controllers\Controller;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserController extends Controller
@@ -16,31 +17,21 @@ class UserController extends Controller
     use Helpers;
 
     /**
-     * Create the controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->authorizeResource(User::class);
-    }
-
-    /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, User $user)
+    public function index(Request $request)
     {
-        $user = $user->with($request->includes ?? []);
+        $this->authorize('viewAny', [Coderstm::$userModel]);
 
-        $cancelled = $request->type == 'cancelled';
+        $user = Coderstm::$userModel::with($request->includes ?? []);
+        $isCancelled = $request->filled('type') && $request->type == 'cancelled';
 
         if ($request->filled('month') || $request->filled('year')) {
-            $column = $cancelled ? 'ends_at' : 'created_at';
+            $column = $isCancelled ? 'ends_at' : 'created_at';
             $user->whereDateColumn([
                 'month' => $request->month,
-                'year' => $request->year
+                'year' => $request->year,
+                'day' => $request->day
             ], $column);
         }
 
@@ -53,14 +44,31 @@ class UserController extends Controller
             }
         }
 
-        if ($request->boolean('option')) {
+        if ($request->boolean('isEnquiry')) {
+            $user->onlyEnquiry();
+            if ($request->filled('status')) {
+                $user->where('status', $request->input('status'));
+            }
+        } else if ($request->boolean('option')) {
             $user->whereIn('status', [AppStatus::ACTIVE, AppStatus::PENDING]);
-        } else if ($cancelled) {
-            $user->onlyCancelled();;
-        } else if ($request->filled('status')) {
-            $user->where('status', $request->input('status'));
-        } else if ($request->filled('type')) {
-            $user->onlyActive()->whereTyped($request->type);
+        } else if ($isCancelled) {
+            $user->onlyCancelled();
+        } else {
+            $user->onlyMember();
+
+            if ($request->boolean('status')) {
+                $user->onlyActive();
+            } else if ($request->status == 'late-cancellation') {
+                $user->onlyLateCancellation();
+            } else if ($request->status == 'no-show') {
+                $user->onlyNoShow();
+            } else if ($request->status == 'blocked') {
+                $user->onlyBlocked();
+            }
+
+            if ($request->filled('type')) {
+                $user->whereTyped($request->input('type'));
+            }
         }
 
         if ($request->filled('rag')) {
@@ -79,35 +87,45 @@ class UserController extends Controller
 
     /**
      * Display a options listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function options(Request $request, User $user)
+    public function options(Request $request)
     {
         $request->merge([
             'option' => true
         ]);
-        return $this->index($request, $user);
+
+        return $this->index($request);
     }
 
     /**
      * Display a listing of the resource by ids.
-     *
-     * @return \Illuminate\Http\Response
      */
-    public function listByIds(Request $request, User $user)
+    public function listByIds(Request $request)
     {
-        return $user->whereIn('id', $request->ids)->get();
+        return Coderstm::$userModel::whereIn('id', $request->ids)->get();
+    }
+
+    /**
+     * Display a enquiry listing of the resource.
+     */
+    public function enquiry(Request $request)
+    {
+        $this->authorize('enquiry', [Coderstm::$userModel]);
+
+        $request->merge([
+            'isEnquiry' => true,
+        ]);
+
+        return $this->index($request);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
+        $this->authorize('create', [Coderstm::$userModel]);
+
         $rules = [
             'email' => 'required|email|unique:users',
             'first_name' => 'required',
@@ -127,7 +145,7 @@ class UserController extends Controller
         ]);
 
         // create the user
-        $user = User::create($request->input());
+        $user = Coderstm::$userModel::create($request->input());
 
         // add address to the user
         $user = $user->updateOrCreateAddress($request->input('address'));
@@ -148,24 +166,24 @@ class UserController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return response()->json($user->load(['notes']), 200);
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('view', [$user]);
+
+        return response()->json($user->load(['notes', 'parq']), 200);
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
 
         $rules = [
             'first_name' => 'required',
@@ -197,6 +215,13 @@ class UserController extends Controller
             ]);
         }
 
+        if ($request->filled('special_note')) {
+            $user->notes()->create([
+                'type' => 'notes',
+                'message' => $request->special_note,
+            ]);
+        }
+
         if ($request->filled('ends_at')) {
             $user = $user->updateEndsAt($request->ends_at);
         }
@@ -204,20 +229,22 @@ class UserController extends Controller
         $user->updateOrCreateAddress($request->input('address'));
 
         return response()->json([
-            'data' => $user->fresh(['address', 'notes']),
+            'data' => $user->fresh(['address', 'notes', 'parq']),
             'message' => trans('coderstm::messages.users.updated'),
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('delete', [$user]);
+
         $user->delete();
+
         return response()->json([
             'message' => trans_choice('coderstm::messages.users.destroy', 1),
         ], 200);
@@ -225,18 +252,19 @@ class UserController extends Controller
 
     /**
      * Remove the selected resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function destroySelected(Request $request, User $user)
+    public function destroySelected(Request $request)
     {
+        $this->authorize('delete', [Coderstm::$userModel]);
+
         $this->validate($request, [
             'items' => 'required',
         ]);
-        $user->whereIn('id', $request->items)->each(function ($item) {
+
+        Coderstm::$userModel::whereIn('id', $request->items)->each(function ($item) {
             $item->delete();
         });
+
         return response()->json([
             'message' => trans_choice('coderstm::messages.users.destroy', 2),
         ], 200);
@@ -244,16 +272,15 @@ class UserController extends Controller
 
     /**
      * Restore the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
     public function restore($id)
     {
-        User::onlyTrashed()
-            ->where('id', $id)->each(function ($item) {
-                $item->restore();
-            });
+        $user = Coderstm::$userModel::onlyTrashed()->findOrFail($id);
+
+        $this->authorize('restore', [$user]);
+
+        $user->restore();
+
         return response()->json([
             'message' => trans_choice('coderstm::messages.users.restored', 1),
         ], 200);
@@ -261,19 +288,20 @@ class UserController extends Controller
 
     /**
      * Remove the selected resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function restoreSelected(Request $request, User $user)
+    public function restoreSelected(Request $request)
     {
+        $this->authorize('restore', [Coderstm::$userModel]);
+
         $this->validate($request, [
             'items' => 'required',
         ]);
-        $user->onlyTrashed()
+
+        Coderstm::$userModel::onlyTrashed()
             ->whereIn('id', $request->items)->each(function ($item) {
                 $item->restore();
             });
+
         return response()->json([
             'message' => trans_choice('coderstm::messages.users.restored', 2),
         ], 200);
@@ -281,12 +309,13 @@ class UserController extends Controller
 
     /**
      * Send reset password request to specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function resetPasswordRequest(Request $request, User $user)
+    public function resetPasswordRequest(Request $request, $id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
+
         $status = Password::sendResetLink([
             'email' => $user->email,
         ]);
@@ -299,12 +328,13 @@ class UserController extends Controller
 
     /**
      * Change active of specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
      */
-    public function changeActive(Request $request, User $user)
+    public function changeActive(Request $request, $id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
+
         $user->update([
             'is_active' => !$user->is_active
         ]);
@@ -318,12 +348,12 @@ class UserController extends Controller
 
     /**
      * Create notes for specified resource from storage.
-     *
-     * @param  \App\Models\User $user
-     * @return \Illuminate\Http\Response
      */
-    public function notes(Request $request, User $user)
+    public function notes(Request $request, $id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
 
         if ($request->filled('rag')) {
             $user->update($request->only('rag'));
@@ -348,8 +378,12 @@ class UserController extends Controller
         }
     }
 
-    public function markAsPaid(Request $request, User $user)
+    public function markAsPaid(Request $request, $id)
     {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
+
         try {
             $subscription = $user->subscription();
             $subscription->paidOutOfBand($request->note ?? 'Cash');
@@ -361,5 +395,48 @@ class UserController extends Controller
             'data' => $user->fresh(),
             'message' => trans('coderstm::messages.subscription.due_payment')
         ], 200);
+    }
+
+    public function qrcode($id)
+    {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        try {
+            $qrcode = QrCode::size(512)
+                ->format('png')
+                ->mergeString(file_get_contents(public_path('/icons/favicon-128x128.png')))
+                ->margin(1)
+                ->generate($user->qrcode);
+
+            // Save the image as a temporary file
+            $tempFilePath = storage_path("app/{$user->id}.png");
+            file_put_contents($tempFilePath, $qrcode);
+
+            // Create a response with the image file
+            return Response::download($tempFilePath, "{$user->id}.png", [
+                'Content-Type' => 'image/png',
+            ])->deleteFileAfterSend();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function showByQrcode($qrcode)
+    {
+        try {
+            $user = Coderstm::$userModel::findByQrcode($qrcode);
+            if ($user->subscribed()) {
+                $user->accessColor = 'positive';
+                $user->accessMessage = 'Access has been authorized!';
+                return response()->json($user, 200);
+            } else {
+                $user->noFeature = true;
+                $user->accessColor = 'negative';
+                $user->accessMessage = 'Access Denied: ' . trans('coderstm::messages.subscription.none');
+                return response()->json($user, 200);
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
     }
 }

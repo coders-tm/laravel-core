@@ -1,11 +1,14 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -34,6 +37,8 @@ return new class extends Migration
             $table->foreign('admin_id')->references('id')->on('admins')->nullOnDelete();
         });
 
+        $this->setAutoIncrement('enquiries');
+
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->string('user_type')->nullable();
@@ -46,5 +51,7 @@ return new class extends Migration
 
             $table->foreign('enquiry_id')->references('id')->on('enquiries')->cascadeOnUpdate()->cascadeOnDelete();
         });
+
+        $this->setAutoIncrement('replies');
     }
 };

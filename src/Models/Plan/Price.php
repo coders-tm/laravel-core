@@ -2,9 +2,10 @@
 
 namespace Coderstm\Models\Plan;
 
-use Coderstm\Models\Plan;
+use Coderstm\Coderstm;
 use Laravel\Cashier\Cashier;
 use Coderstm\Enum\PlanInterval;
+use Coderstm\Models\Plan\Feature;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
@@ -33,12 +34,19 @@ class Price extends Model
 
     public function plan(): BelongsTo
     {
-        return $this->belongsTo(Plan::class);
+        return $this->belongsTo(Coderstm::$planModel, 'plan_id');
     }
 
     public function features(): HasMany
     {
         return $this->hasMany(Feature::class, 'plan_id', 'plan_id');
+    }
+
+    public function scopeOnlyActive($query)
+    {
+        return $query->whereHas('plan', function ($query) {
+            $query->onlyActive();
+        });
     }
 
     public function hasPaymentGatewayId()
@@ -91,6 +99,7 @@ class Price extends Model
     {
         parent::boot();
         static::addGlobalScope('default', function (Builder $builder) {
+            $builder->withMax('plan as trial_days', 'trial_days');
             $builder->withMax('plan as label', 'label');
             $builder->withMax('plan as is_active', 'is_active');
         });

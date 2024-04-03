@@ -3,13 +3,16 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class File extends Model
 {
     use Core;
+
+    public static $route = 'files.download';
 
     protected $file;
 
@@ -56,7 +59,7 @@ class File extends Model
     {
         if ($this->file) {
             $this->path = $this->file->storeAs('files', $this->hash . '.' . $this->extension, $this->disk);
-            $this->url = route('files.download', [
+            $this->url = route(static::$route, [
                 'hash' => $this->hash,
                 'path' => $this->original_file_name,
             ]);
@@ -86,32 +89,42 @@ class File extends Model
         return $this->morphTo();
     }
 
-    public function getUrlAttribute($value)
+    protected function url(): Attribute
     {
-        return route('files.download', [
-            'hash' => $this->hash,
-            'path' => $this->original_file_name,
-        ]);
+        return Attribute::make(
+            get: fn ($value) => $value ? $value : route(static::$route, [
+                'hash' => $this->hash,
+                'path' => $this->original_file_name,
+            ]),
+        );
     }
 
-    public function getNameAttribute()
+    protected function name(): Attribute
     {
-        return $this->original_file_name;
+        return Attribute::make(
+            get: fn () => $this->original_file_name,
+        );
     }
 
-    public function getIsImageAttribute()
+    protected function isImage(): Attribute
     {
-        return Str::contains($this->mime_type, 'image') && !$this->is_embed;
+        return Attribute::make(
+            get: fn () => Str::contains($this->mime_type, 'image') && !$this->is_embed,
+        );
     }
 
-    public function getIsPdfAttribute()
+    protected function isPdf(): Attribute
     {
-        return Str::contains($this->mime_type, 'pdf');
+        return Attribute::make(
+            get: fn () => Str::contains($this->mime_type, 'pdf'),
+        );
     }
 
-    public function getIconAttribute()
+    protected function icon(): Attribute
     {
-        return $this->fileType($this->original_file_name);
+        return Attribute::make(
+            get: fn () => $this->fileType($this->original_file_name),
+        );
     }
 
     protected function fileType($file_name)

@@ -83,7 +83,7 @@ class Admin extends Authenticatable
 
     public function scopeExcludeCurrent($query)
     {
-        return $query->where('id', '<>', current_user()->id);
+        return $query->where('id', '<>', user()->id);
     }
 
     public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc')
@@ -125,5 +125,17 @@ class Admin extends Authenticatable
         $response['permissions'] = $this->getScopes();
 
         return $response;
+    }
+
+    public function getShortCodes(): array
+    {
+        return [
+            '{{ADMIN_NAME}}' => $this->name,
+            '{{ADMIN_ID}}' => $this->id,
+            '{{ADMIN_FIRST_NAME}}' => $this->first_name,
+            '{{ADMIN_LAST_NAME}}' => $this->last_name,
+            '{{ADMIN_EMAIL}}' => $this->email,
+            '{{ADMIN_PHONE_NUMBER}}' => $this->phone_number,
+        ];
     }
 }

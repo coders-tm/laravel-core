@@ -2,7 +2,6 @@
 
 namespace App\Policies;
 
-use App\Models\User;
 use App\Models\Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -12,12 +11,8 @@ class UserPolicy
 
     /**
      * Perform pre-authorization checks.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @param  string  $ability
-     * @return void|bool
      */
-    public function before(Admin|User $admin, $ability)
+    public function before(Admin $admin, $ability)
     {
         if ($admin->is_supper_admin) {
             return true;
@@ -26,9 +21,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view any models.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function viewAny(Admin $admin)
     {
@@ -37,24 +29,17 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view the model.
-     *
-     * @param  \App\Models\Admin|User  $admin
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(Admin|User $admin, User $user)
+    public function view(Admin $admin, $user)
     {
         if (is_user()) {
-            return $user->id == current_user()->id;
+            return $user->id == user()->id;
         }
         return $admin->can('members:view');
     }
 
     /**
      * Determine whether the admin can create models.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function create(Admin $admin)
     {
@@ -63,9 +48,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can update the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function update(Admin $admin)
     {
@@ -74,9 +56,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can delete the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function delete(Admin $admin)
     {
@@ -85,9 +64,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can restore the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function restore(Admin $admin)
     {
@@ -96,9 +72,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can permanently delete the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function forceDelete(Admin $admin)
     {
@@ -107,9 +80,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view reports of the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function reports(Admin $admin)
     {
@@ -118,9 +88,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view daily reports of the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function reportsDaily(Admin $admin)
     {
@@ -129,9 +96,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view monthly reports of the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function reportsMonthly(Admin $admin)
     {
@@ -140,9 +104,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view yearly reports of the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function reportsYearly(Admin $admin)
     {
@@ -151,9 +112,6 @@ class UserPolicy
 
     /**
      * Determine whether the admin can view enquiry of the model.
-     *
-     * @param  \App\Models\Admin  $admin
-     * @return \Illuminate\Auth\Access\Response|bool
      */
     public function enquiry(Admin $admin)
     {

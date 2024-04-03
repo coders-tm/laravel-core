@@ -20,7 +20,7 @@ class SubscriptionDowngradeNotification extends Notification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct($subscription)
     {
         $shortCodes = [
             '{{OLD_PLAN}}' => optional($subscription->oldPlan)->label,

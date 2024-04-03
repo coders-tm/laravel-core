@@ -33,13 +33,26 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-    }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('coupons');
+        $this->setAutoIncrement('coupons');
+
+        Schema::create('coupon_plans', function (Blueprint $table) {
+            $table->unsignedBigInteger('coupon_id');
+            $table->unsignedBigInteger('plan_id');
+
+            $table->foreign('plan_id')->references('id')->on('plans')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('coupon_id')->references('id')->on('coupons')->cascadeOnUpdate()->cascadeOnDelete();
+        });
+
+        Schema::create('redeems', function (Blueprint $table) {
+            $table->id();
+            $table->string('redeemable_type');
+            $table->unsignedBigInteger('redeemable_id');
+            $table->unsignedBigInteger('coupon_id');
+            $table->double('amount', 20, 2)->default(0.00)->nullable();
+            $table->timestamps();
+        });
+
+        $this->setAutoIncrement('redeems');
     }
 };

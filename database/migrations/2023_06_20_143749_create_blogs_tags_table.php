@@ -1,11 +1,14 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -23,21 +26,13 @@ return new class extends Migration
             $table->softDeletes();
         });
 
+        $this->setAutoIncrement('blogs_tags');
+
         Schema::create('blogs_taggables', function (Blueprint $table) {
             $table->string('taggable_type')->nullable();
             $table->unsignedBigInteger('taggable_id')->nullable();
             $table->unsignedBigInteger('tag_id');
             $table->foreign('tag_id')->references('id')->on('blogs_tags')->cascadeOnUpdate()->cascadeOnDelete();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('tags');
     }
 };

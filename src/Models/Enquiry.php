@@ -104,7 +104,7 @@ class Enquiry extends Model
     public function createReply(array $attributes = [])
     {
         $reply = new Reply($attributes);
-        $reply->user()->associate(current_user());
+        $reply->user()->associate(user());
         return $this->replies()->save($reply);
     }
 
@@ -124,7 +124,7 @@ class Enquiry extends Model
     public function scopeOnlyOwner($query)
     {
         return $query->whereHas('user', function ($q) {
-            $q->where('id', current_user()->id);
+            $q->where('id', user()->id);
         });
     }
 
@@ -203,7 +203,8 @@ class Enquiry extends Model
             '{{USER_EMAIL}}' => optional($this->user)->email ?? $this->email,
             '{{USER_PHONE_NUMBER}}' => optional($this->user)->phone_number ?? $this->phone,
             '{{ENQUIRY_ID}}' => $this->id,
-            '{{ENQUIRY_URL}}' => member_url("enquiries/{$this->id}?action=edit"),
+            '{{ENQUIRY_URL}}' => app_url("enquiries/{$this->id}?action=edit"),
+            '{{ADMIN_ENQUIRY_URL}}' => admin_url("enquiries/{$this->id}?action=edit"),
             '{{ENQUIRY_ATTACHMENTS}}' => $attachments,
             '{{ENQUIRY_SUBJECT}}' => $this->subject,
             '{{ENQUIRY_MESSAGE}}' => $this->message,
@@ -245,7 +246,7 @@ class Enquiry extends Model
                 $model->status = AppStatus::PENDING->value;
             }
             if (empty($model->email)) {
-                $model->email = optional(current_user())->email;
+                $model->email = optional(user())->email;
             }
         });
     }

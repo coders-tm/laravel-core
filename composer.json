@@ -34,12 +34,13 @@
         "illuminate/contracts": "^9.21|^10.0",
         "illuminate/database": "^9.21|^10.0",
         "illuminate/support": "^9.21|^10.0",
+        "kreait/firebase-php": "^7.9",
         "laravel/cashier": "^14.0",
         "laravel/sanctum": "^3.2",
         "league/iso3166": "^4.3",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-sluggable": "^3.4",
         "stevebauman/location": "^6.5",
-        "simplesoftwareio/simple-qrcode": "^4.2",
         "twilio/sdk": "^7.16"
     },
     "require-dev": {

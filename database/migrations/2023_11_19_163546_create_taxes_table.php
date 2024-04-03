@@ -1,6 +1,7 @@
 <?php
 
 use Coderstm\Models\Tax;
+use Coderstm\Traits\Helpers;
 use League\ISO3166\ISO3166;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -8,6 +9,8 @@ use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -29,35 +32,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        $country = (new ISO3166)->name(config('app.country'));
-        if ($country) {
-            Tax::updateOrCreate([
-                'country' => config('app.country'),
-                'label' => 'VAT',
-                'code' => $country['alpha2'],
-                'state' => '*',
-                'rate' => 10,
-                'priority' => 0,
-            ]);
-        }
-
-        Tax::updateOrCreate([
-            'country' => 'Rest of world',
-            'label' => 'VAT',
-            'code' => '*',
-            'state' => '*',
-            'rate' => 0,
-            'priority' => 0,
-        ]);
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('taxes');
+        $this->setAutoIncrement('taxes');
     }
 };

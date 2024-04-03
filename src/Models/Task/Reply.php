@@ -48,7 +48,7 @@ class Reply extends Model
         parent::booted();
         static::creating(function ($model) {
             if (empty($model->user_id)) {
-                $model->user_id = current_user()->id ?? null;
+                $model->user_id = user()->id ?? null;
             }
         });
         static::created(function ($model) {

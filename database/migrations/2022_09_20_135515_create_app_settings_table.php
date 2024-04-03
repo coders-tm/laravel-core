@@ -23,5 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        $this->setAutoIncrement('app_settings');
     }
 };
