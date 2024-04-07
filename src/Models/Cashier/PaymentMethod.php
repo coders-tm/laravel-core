@@ -25,7 +25,8 @@ class PaymentMethod extends Model
     ];
 
     protected $casts = [
-        'is_default' => 'boolean'
+        'card' => 'json',
+        'is_default' => 'boolean',
     ];
 
     public function markAsDefault()

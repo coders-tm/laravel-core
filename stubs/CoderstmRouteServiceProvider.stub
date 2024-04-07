@@ -47,17 +47,10 @@ class CoderstmRouteServiceProvider extends ServiceProvider
             }
 
             // modify default api route
-            if (config('coderstm.domain')) {
-                Route::domain(config('coderstm.api_prefix') . '.' . config('coderstm.domain'))
-                    ->middleware('api')
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/api.php'));
-            } else {
-                Route::middleware('api')
-                    ->prefix(config('coderstm.api_prefix'))
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/api.php'));
-            }
+            Route::domain(config('coderstm.api_prefix') . '.' . config('coderstm.domain'))
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/api.php'));
 
             if (file_exists(base_path('routes/coderstm/api.php'))) {
                 // register tunnel domain
@@ -67,16 +60,9 @@ class CoderstmRouteServiceProvider extends ServiceProvider
                         ->group(base_path('routes/coderstm/api.php'));
                 }
 
-                // modify default api route
-                if (config('coderstm.domain')) {
-                    Route::domain(config('coderstm.api_prefix') . '.' . config('coderstm.domain'))
-                        ->middleware('api')
-                        ->group(base_path('routes/coderstm/api.php'));
-                } else {
-                    Route::middleware('api')
-                        ->prefix(config('coderstm.api_prefix'))
-                        ->group(base_path('routes/coderstm/api.php'));
-                }
+                Route::domain(config('coderstm.api_prefix') . '.' . config('coderstm.domain'))
+                    ->middleware('api')
+                    ->group(base_path('routes/coderstm/api.php'));
             }
 
             if (file_exists(base_path('routes/coderstm/web.php'))) {
@@ -85,13 +71,14 @@ class CoderstmRouteServiceProvider extends ServiceProvider
                     ->namespace($this->namespace)
                     ->group(base_path('routes/coderstm/web.php'));
 
-                Route::domain('app.' . config('coderstm.domain'))
+                Route::domain(config('coderstm.web_prefix') . '.' . config('coderstm.domain'))
                     ->middleware('web')
                     ->namespace($this->namespace)
                     ->group(base_path('routes/coderstm/web.php'));
             }
 
             Route::middleware('web')
+                ->domain(config('coderstm.domain'))
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });

@@ -175,6 +175,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         'controller' => SubscriptionController::class,
     ], function () {
         Route::get('', 'index')->name('index');
+        Route::get('setup-intent', 'getSetupIntent')->name('setup-intent');
         Route::post('subscribe', 'subscribe')->name('subscribe');
         Route::post('resume', 'resume')->name('resume');
         Route::post('confirm', 'confirm')->name('confirm');
@@ -200,15 +201,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
 // Admin Routes
 Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
-    // Options
-    Route::get('users/options', [UserController::class, 'options']);
-
     // Users
-    Route::group([
-        'as' => 'users.',
-        'prefix' => 'users',
-        'controller' => UserController::class,
-    ], function () {
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
         Route::group(['controller' => UserReportsController::class, 'prefix' => 'reports', 'as' => 'reports.'], function () {
             Route::get('/', 'index')->can('reports,App\Models\User')->name('index');
             Route::get('daily', 'reportsDaily')->can('reportsDaily,App\Models\User')->name('daily');
@@ -216,12 +210,16 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::get('yearly', 'reportsYearly')->can('reportsYearly,App\Models\User')->name('yearly');
             Route::post('pdf', 'pdf')->can('reportsDaily,App\Models\User')->name('pdf');
         });
-        Route::post('list-by-ids', 'listByIds')->name('list-by-ids');
-        Route::middleware('can:update,user')->group(function () {
-            Route::post('{user}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
+        Route::group(['controller' => UserController::class], function () {
+            Route::post('options', 'options')->name('options');
+            Route::post('import', 'import')->name('import');
+            Route::post('list-by-ids', 'listByIds')->name('list-by-ids');
+            Route::get('show-by-qrcode/{qrcode}', 'showByQrcode')->name('show-by-qrcode');
+            Route::get('enquiry', 'enquiry')->can('enquiry,App\Models\User')->name('enquiry');
             Route::post('{user}/change-active', 'changeActive')->name('change-active');
             Route::post('{user}/notes', 'notes')->name('notes');
             Route::post('{user}/mark-as-paid', 'markAsPaid')->name('mark-as-paid');
+            Route::post('{user}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
         });
     });
     Route::resource('users', UserController::class);
@@ -276,7 +274,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
 
 Route::group(['prefix' => 'shared'], function () {
     Route::get('plans', [PlanController::class, 'shared'])->name('plans.shared');
-    Route::get('plan-features', [PlanController::class, 'features'])->name('plans.features');
+    Route::get('plans/features', [PlanController::class, 'features'])->name('plans.features');
 });
 
 Route::post('subscription/check-promo-code', [SubscriptionController::class, 'checkPromoCode'])->name('subscription.check-promo-code');

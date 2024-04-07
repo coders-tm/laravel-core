@@ -29,15 +29,15 @@ class SubscriptionController extends Controller
         $user = $this->user();
         $subscription = $user->subscription();
 
-        if ($user->is_free_forever || !$subscription) {
-            return response()->json([
-                'message' => trans('coderstm::messages.subscription.none'),
-                'upcomingInvoice' => false,
-            ], 200);
-        } else if ($user->onGenericTrial()) {
+        if ($user->onGenericTrial()) {
             $trial_end = $user->trial_ends_at->format('M d, Y');
             return response()->json([
                 'message' => "You're on trial until $trial_end, <strong>but you haven't subscribed to any plan yet</strong>. Please do so now to contine using the application even after your trial ends.",
+                'upcomingInvoice' => false,
+            ], 200);
+        } else if ($user->is_free_forever || !$subscription) {
+            return response()->json([
+                'message' => trans('coderstm::messages.subscription.none'),
                 'upcomingInvoice' => false,
             ], 200);
         }
@@ -410,6 +410,7 @@ class SubscriptionController extends Controller
         if (request()->filled('user_id') && is_admin()) {
             return Coderstm::$userModel::findOrFail(request()->user_id);
         }
+
         return user();
     }
 

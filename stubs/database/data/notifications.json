@@ -180,5 +180,12 @@
         "is_default": true,
         "type": "push:enquiry-confirmation",
         "content": "We appreciate that you’ve taken the time to write us. Please wait for a while, our expert team will contact you soon."
+    },
+    {
+        "label": "Import Completed",
+        "subject": "[{{APP_NAME}}] {{IMPORT_MODEL}} import completed",
+        "is_default": true,
+        "type": "admin:import-completed",
+        "content": "<div>Dear <b>{{ADMIN_FIRST_NAME}}</b>,</div><div><br></div><div>Your {{IMPORT_MODEL}} import is complete. Here are the details:</div><div><br></div><b>Successfully imported</b>: {{IMPORT_SUCCESSED}}<br><strong>Failed</strong>: {{IMPORT_FAILED}}<br><strong>Skipped</strong>: {{IMPORT_SKIPPED}}<div><br><div><div><br></div>Best regards,<br><div>{{APP_NAME}}</div></div></div>"
     }
 ]

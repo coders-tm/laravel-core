@@ -42,10 +42,6 @@ class TaxSeeder extends Seeder
 
     protected function country()
     {
-        // if (tenancy()->initialized) {
-        //     return (new ISO3166)->name(tenant('country'));
-        // }
-
         return (new ISO3166)->name(config('app.country'));
     }
 }

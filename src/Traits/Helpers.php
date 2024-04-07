@@ -4,6 +4,7 @@ namespace Coderstm\Traits;
 
 use PDO;
 use Browser;
+use League\Csv\Reader;
 use Coderstm\Models\Module;
 use Illuminate\Support\Str;
 use Coderstm\Models\Permission;
@@ -131,6 +132,17 @@ trait Helpers
             return $ex;
         }
     }
+
+    protected function csvHeaders($filename = '', $delimiter = ',')
+    {
+        $csv = Reader::createFromPath($filename, 'r');
+        $csv->setHeaderOffset(0);
+        $csv->setDelimiter($delimiter);
+
+        // Normalize CSV headers to remove newlines
+        return array_map('trim', $csv->getHeader());
+    }
+
 
     protected function distance($lat1, $lon1, $lat2, $lon2, $unit = 'mi')
     {

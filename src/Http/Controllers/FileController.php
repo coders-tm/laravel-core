@@ -185,7 +185,7 @@ class FileController extends Controller
     public function uploadFromSource(Request $request)
     {
         $rules = [
-            'source' => 'required',
+            'source' => 'required|url',
         ];
 
         $this->validate($request, $rules);

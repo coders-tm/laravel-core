@@ -3,6 +3,7 @@
 namespace Coderstm\Traits\Cashier;
 
 use Coderstm\Models\Cashier\PaymentMethod;
+use Illuminate\Support\Arr;
 use Laravel\Cashier\Concerns\ManagesPaymentMethods as CashierManagesPaymentMethods;
 use Laravel\Cashier\PaymentMethod as CashierPaymentMethod;
 
@@ -44,7 +45,7 @@ trait ManagesPaymentMethods
         return [
             'stripe_id' => $paymentMethod->id,
             'name' => $paymentMethod->billing_details->name,
-            'card' =>  collect($paymentMethod->card)->only([
+            'card' =>  Arr::only($paymentMethod->card->jsonSerialize(), [
                 'brand',
                 'last4',
                 'exp_month',
@@ -106,7 +107,7 @@ trait ManagesPaymentMethods
 
         $stripePaymentMethod = $this->resolveStripePaymentMethod($paymentMethod);
 
-        if($paymentMethod = $this->findByPaymentMethod($stripePaymentMethod->id)) {
+        if ($paymentMethod = $this->findByPaymentMethod($stripePaymentMethod->id)) {
             $paymentMethod->markAsDefault();
         }
 

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Coderstm\Events\EnquiryReplyCreated;
 use Illuminate\Database\Eloquent\Builder;
 use Coderstm\Jobs\SendWhatsappNotification;
+use Coderstm\Database\Factories\ReplyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reply extends Model
@@ -121,6 +122,16 @@ class Reply extends Model
             //throw $e;
             report($e);
         }
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return ReplyFactory::new();
     }
 
     protected static function booted()

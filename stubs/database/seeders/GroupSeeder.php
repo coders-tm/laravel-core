@@ -16,11 +16,13 @@ class GroupSeeder extends Seeder
     {
         $group = Group::firstOrCreate([
             'name' => 'Admin',
+        ], [
             'description' => 'Full access to the system',
         ]);
 
         $sales = Group::firstOrCreate([
             'name' => 'Sales',
+        ], [
             'description' => 'Limited access to the system',
         ]);
 

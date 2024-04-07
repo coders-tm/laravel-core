@@ -10,8 +10,12 @@ use Laravel\Sanctum\HasApiTokens;
 use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Coderstm\Database\Factories\AdminFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Coderstm\Exceptions\ImportFailedException;
+use Coderstm\Exceptions\ImportSkippedException;
+use League\ISO3166\ISO3166;
 
 class Admin extends Authenticatable
 {
@@ -22,6 +26,7 @@ class Admin extends Authenticatable
     protected $fillable = [
         'first_name',
         'last_name',
+        'gender',
         'email',
         'password',
         'phone_number',
@@ -137,5 +142,69 @@ class Admin extends Authenticatable
             '{{ADMIN_EMAIL}}' => $this->email,
             '{{ADMIN_PHONE_NUMBER}}' => $this->phone_number,
         ];
+    }
+
+    public static function getMappedAttributes(): array
+    {
+        return  [
+            "First Name" => 'first_name',
+            "Surname" => 'last_name',
+            "Gender" => 'gender',
+            "Email Address" => 'email',
+            "Phone Number" => 'phone_number',
+            "Status" => 'status',
+            "Password" => 'password',
+            "Created At" => 'created_at',
+            "Address Line1" => 'line1',
+            "Address Line2" => 'line2',
+            "Country" => 'country',
+            "State" => 'state',
+            "State Code" => 'state_code',
+            "City" => 'city',
+            "Postcode/Zip" => 'postal_code',
+        ];
+    }
+
+    public static function createFromCsv(array $attributes = [], array $options = [])
+    {
+        $replaceByEmail = isset($options['email_overwrite']) && $options['email_overwrite'];
+        $user = static::where('email', $attributes['email'])->first();
+
+        if (!$replaceByEmail && $user) {
+            throw new ImportFailedException;
+        } else if ($user && ($user->wasRecentlyUpdated || $user->wasRecentlyCreated)) {
+            throw new ImportSkippedException;
+        }
+
+        if (isset($attributes['password'])) {
+            $attributes['password'] = bcrypt($attributes['password']);
+        }
+
+        if (isset($attributes['country'])) {
+            $country = (new ISO3166)->name($attributes['country']);
+            $attributes['country_code'] = $country['alpha2'];
+        }
+
+        $user = static::firstOrNew([
+            'email' => $attributes['email']
+        ], $attributes);
+
+        if (isset($attributes['created_at']) && !empty($attributes['created_at'])) {
+            $user->created_at = $attributes['created_at'];
+        }
+
+        $user->save();
+
+        $user->updateOrCreateAddress($attributes);
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return AdminFactory::new();
     }
 }

@@ -168,6 +168,11 @@ class File extends Model
         return $type;
     }
 
+    public function path()
+    {
+        return Storage::disk($this->disk)->path($this->path);
+    }
+
     static public function findByHash(string $hash)
     {
         return static::where('hash', $hash)->firstOrFail();

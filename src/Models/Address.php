@@ -2,6 +2,7 @@
 
 namespace Coderstm\Models;
 
+use Coderstm\Database\Factories\AddressFactory;
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,5 +51,15 @@ class Address extends Model
             'country',
             'postal_code',
         ])->toArray());
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return AddressFactory::new();
     }
 }

@@ -18,29 +18,29 @@ return new class extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('payment_methods')) {
-            Schema::create('payment_methods', function (Blueprint $table) {
-                $table->id();
+        if (Schema::hasTable('payment_methods')) return;
 
-                $table->string('name');
-                $table->string('provider')->default('manual');
-                $table->string('link')->nullable();
-                $table->string('logo')->nullable();
-                $table->text('description')->nullable();
-                $table->{$this->jsonable()}('credentials')->nullable();
-                $table->{$this->jsonable()}('methods')->nullable();
-                $table->boolean('active')->default(false);
-                $table->enum('capture', ['automatic', 'manual'])->nullable()->default('manual');
-                $table->string('additional_details')->nullable();
-                $table->string('payment_instructions')->nullable();
-                $table->boolean('test_mode')->default(false);
-                $table->string('transaction_fee')->default(0);
-                $table->string('webhook')->nullable();
+        Schema::create('payment_methods', function (Blueprint $table) {
+            $table->id();
 
-                $table->timestamps();
-                $table->softDeletes();
-            });
-            $this->setAutoIncrement('payment_methods');
-        }
+            $table->string('name');
+            $table->string('provider')->default('manual');
+            $table->string('link')->nullable();
+            $table->string('logo')->nullable();
+            $table->text('description')->nullable();
+            $table->{$this->jsonable()}('credentials')->nullable();
+            $table->{$this->jsonable()}('methods')->nullable();
+            $table->boolean('active')->default(false);
+            $table->enum('capture', ['automatic', 'manual'])->nullable()->default('manual');
+            $table->string('additional_details')->nullable();
+            $table->string('payment_instructions')->nullable();
+            $table->boolean('test_mode')->default(false);
+            $table->string('transaction_fee')->default(0);
+            $table->string('webhook')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+        $this->setAutoIncrement('payment_methods');
     }
 };

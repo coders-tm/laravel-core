@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('phone_number')->nullable()->after('email');
             $table->boolean('is_active')->nullable()->default(true)->after('remember_token');
             $table->boolean('is_enquiry')->nullable()->default(false)->after('is_active');
-            $table->string('status')->nullable()->after('is_active');
+            $table->string('status')->nullable()->after('is_active')->default('Pending');
             $table->string('gender')->nullable()->after('name');
             $table->string('rag')->nullable()->after('is_active');
             $table->string('username')->nullable()->after('name');

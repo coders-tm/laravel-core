@@ -3,6 +3,7 @@
 namespace Coderstm\Models;
 
 use Coderstm\Coderstm;
+use Coderstm\Database\Factories\EnquiryFactory;
 use Coderstm\Traits\Core;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Fileable;
@@ -236,6 +237,16 @@ class Enquiry extends Model
             //throw $e;
             report($e);
         }
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return EnquiryFactory::new();
     }
 
     protected static function booted()

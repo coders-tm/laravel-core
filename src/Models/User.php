@@ -5,13 +5,17 @@ namespace Coderstm\Models;
 use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Enum\AppRag;
+use League\ISO3166\ISO3166;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Billable;
 use Coderstm\Models\DeviceToken;
 use Illuminate\Support\Facades\DB;
 use Coderstm\Traits\HasBelongsToOne;
 use Illuminate\Database\Eloquent\Builder;
+use Coderstm\Database\Factories\UserFactory;
+use Coderstm\Exceptions\ImportFailedException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Coderstm\Exceptions\ImportSkippedException;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Admin implements MustVerifyEmail
@@ -44,6 +48,7 @@ class User extends Admin implements MustVerifyEmail
     protected $casts = [
         'release_at' => 'datetime:Y-m-d',
         'email_verified_at' => 'datetime',
+        'trial_ends_at' => 'datetime',
         'rag' => AppRag::class,
         'status' => AppStatus::class,
         'is_active' => 'boolean',
@@ -411,6 +416,78 @@ class User extends Admin implements MustVerifyEmail
             '{{USER_EMAIL}}' => $this->email,
             '{{USER_PHONE_NUMBER}}' => $this->phone_number,
         ];
+    }
+
+    public static function getMappedAttributes(): array
+    {
+        return  [
+            "First Name" => 'first_name',
+            "Surname" => 'last_name',
+            "Gender" => 'gender',
+            "Email Address" => 'email',
+            "Phone Number" => 'phone_number',
+            "Status" => 'status',
+            "Deactivates At" => 'deactivates_at',
+            "Password" => 'password',
+            "Created At" => 'created_at',
+            "Plan" => 'plan',
+            "Trial Ends At" => 'trial_ends_at',
+            "Address Line1" => 'line1',
+            "Address Line2" => 'line2',
+            "Country" => 'country',
+            "State" => 'state',
+            "State Code" => 'state_code',
+            "City" => 'city',
+            "Postcode/Zip" => 'postal_code',
+            "Note" => 'note',
+        ];
+    }
+
+    public static function createFromCsv(array $attributes = [], array $options = [])
+    {
+        $replaceByEmail = isset($options['email_overwrite']) && $options['email_overwrite'];
+        $user = static::where('email', $attributes['email'])->first();
+
+        if (!$replaceByEmail && $user) {
+            throw new ImportFailedException;
+        } else if ($user && ($user->wasRecentlyUpdated || $user->wasRecentlyCreated)) {
+            throw new ImportSkippedException;
+        }
+
+        if (isset($attributes['password'])) {
+            $attributes['password'] = bcrypt($attributes['password']);
+        }
+
+        if (isset($attributes['country'])) {
+            $country = (new ISO3166)->name($attributes['country']);
+            $attributes['country_code'] = $country['alpha2'];
+        }
+
+        $user = static::firstOrNew([
+            'email' => $attributes['email']
+        ], $attributes);
+
+        if (isset($attributes['trial_ends_at']) && !empty($attributes['trial_ends_at'])) {
+            $user->trial_ends_at = $attributes['trial_ends_at'];
+        }
+
+        if (isset($attributes['created_at']) && !empty($attributes['created_at'])) {
+            $user->created_at = $attributes['created_at'];
+        }
+
+        $user->save();
+
+        $user->updateOrCreateAddress($attributes);
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 
     protected static function boot()

@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use Coderstm\Coderstm;
+use League\Csv\Reader;
+use Coderstm\Models\File;
+use Coderstm\Models\Import;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
+use Coderstm\Jobs\ProcessCsvImport;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class UserController extends Controller
@@ -438,5 +444,100 @@ class UserController extends Controller
         } catch (\Exception $e) {
             throw $e;
         }
+    }
+
+
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => "required|exists:files,id"
+        ]);
+
+        $file = File::findOrFail($request->file);
+        $path = $file->path(); // file path of csv
+
+        $expectedHeaders = [
+            "First Name" => true,
+            "Surname" => true,
+            "Gender" => true,
+            "Email Address" => true,
+            "Phone Number" => false,
+            "Status" => true,
+            "Deactivates At" => false,
+            "Password" => true,
+            "Created At" => true,
+            "Plan" => true,
+            "Trial Ends At" => true,
+            "Address Line1" => true,
+            "Address Line2" => false,
+            "Country" => true,
+            "State" => true,
+            "State Code" => true,
+            "City" => true,
+            "Postcode/Zip" => false,
+            "Note" => false,
+        ];
+
+        // Read CSV headers
+        $csv = Reader::createFromPath($path, 'r');
+        $csv->setHeaderOffset(0);
+        $csv->setDelimiter(',');
+
+        // Normalize CSV headers to remove newlines
+        $csvHeaders = array_map('trim', $csv->getHeader());
+        $mappedHeaders = Coderstm::$userModel::getMappedAttributes();
+
+        // Map $headers from $mapped
+        $finalHeaders = [];
+        foreach ($csvHeaders as $header) {
+            if (isset($mappedHeaders[$header])) {
+                $finalHeaders[] = $mappedHeaders[$header];
+            } else {
+                $finalHeaders[] = $header;
+            }
+        }
+
+        // Validate unwanted fields
+        $unwantedFields = array_diff($csvHeaders, array_keys($expectedHeaders));
+        if (!empty($unwantedFields)) {
+            throw ValidationException::withMessages([
+                'unwanted' => ['Unwanted CSV headers: ' . implode(', ', $unwantedFields)],
+            ]);
+        }
+
+        // Validate required headers
+        $requiredHeaders = array_keys(array_filter($expectedHeaders));
+        $missingHeaders = array_diff($requiredHeaders, $csvHeaders);
+        if (!empty($missingHeaders)) {
+            throw ValidationException::withMessages([
+                'required' => ['Missing a required header: ' . implode(', ', $missingHeaders)],
+            ]);
+        }
+
+        $rows = array_values([...$csv->getRecords($finalHeaders)]);
+
+        $this->validate(new Request(['rows' => $rows]), [
+            'rows.*.status' => Rule::in(['Pending', 'Active', 'Deactive']),
+            'rows.*.email' => 'email',
+            'rows.*.created_at' => 'date_format:Y-m-d H:i:s',
+            'rows.*.deactivates_at' => 'date_format:Y-m-d H:i:s',
+            'rows.*.trial_ends_at' => 'date_format:Y-m-d H:i:s',
+            // 'rows.*.plan' => 'exists:plans,id',
+        ]);
+
+        $import = Import::create([
+            'model' => Coderstm::$userModel,
+            'file_id' => $file->id,
+            'options' => $request->input(),
+        ]);
+
+        ProcessCsvImport::dispatch($import);
+
+        // Return response indicating the import process has started
+        return response()->json([
+            'message' =>
+            'This could take some time to complete. You can close this dialog box while we upload your file. We will email you once the import finishes.'
+        ], 200);
     }
 }

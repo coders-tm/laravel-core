@@ -48,8 +48,8 @@ class AuthController extends Controller
 
                 // send login alert to user if smtp configured
                 $user->notify(new UserLogin($loginLog));
-            } catch (\Throwable $th) {
-                report($th);
+            } catch (\Exception $e) {
+                report($e);
             }
 
             // delete old token with requested device
@@ -125,7 +125,6 @@ class AuthController extends Controller
     public function logout(Request $request, $guard = 'users')
     {
         try {
-            Auth::guard($guard)->logout();
             $request->user()->currentAccessToken()->delete();
         } catch (\Throwable $th) {
             report($th);

@@ -3,6 +3,7 @@
 namespace Coderstm\Models;
 
 use Coderstm\Coderstm;
+use Coderstm\Database\Factories\TaskFactory;
 use Coderstm\Traits\Core;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Traits\Fileable;
@@ -154,6 +155,16 @@ class Task extends Model
             '{{TASK_MESSAGE}}' => $this->message,
             '{{TASK_CREATED_BY}}' => $this->user->name,
         ];
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return TaskFactory::new();
     }
 
     protected static function booted()
