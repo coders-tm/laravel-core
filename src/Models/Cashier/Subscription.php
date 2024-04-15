@@ -299,14 +299,14 @@ class Subscription extends CashierSubscription
         try {
             $template = $this->renderNotification($type, $shortCodes);
 
-            SendPushNotification::dispatch($this->user, [
+            dispatch(new SendPushNotification($this->user, [
                 'title' => $template->subject,
                 'body' => html_text($template->content)
             ], [
                 'route' => "/billing",
-            ]);
+            ]));
 
-            SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n\n{$template->content}");
+            dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n\n{$template->content}"));
         } catch (\Exception $e) {
             //throw $e;
             report($e);

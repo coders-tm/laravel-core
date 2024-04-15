@@ -72,7 +72,7 @@ class ProcessCsvImport implements ShouldQueue
                     } else {
                         $this->import->addLogs("failed", $key);
                     }
-                    //throw $e;
+                    throw $e;
                 }
             }
 

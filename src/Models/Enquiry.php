@@ -224,15 +224,15 @@ class Enquiry extends Model
 
             $template = $this->renderNotification($type ?? $default);
 
-            SendPushNotification::dispatch($this->user, [
+            dispatch(new SendPushNotification($this->user, [
                 'title' => $template->subject,
                 'body' => html_text($template->content)
             ], [
                 'route' => "/enquiries/{$this->id}?action=edit",
                 'enquiry_id' => $this->id,
-            ]);
+            ]));
 
-            SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n{$template->content}");
+            dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n{$template->content}"));
         } catch (\Exception $e) {
             //throw $e;
             report($e);
