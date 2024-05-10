@@ -43,10 +43,12 @@ class BlogController extends Controller
         $rules = [
             'title' => 'required',
             'description' => 'required',
+            'meta_keywords' => 'max:255',
+            'meta_description' => 'max:255',
             // Images
-            'media' => 'array',
-            'media.*.id' => 'sometimes|required_unless:media.*.src,null|integer',
-            'media.*.src' => 'required_if:media.*.id,null|string',
+            'thumbnail' => 'array',
+            'thumbnail.id' => 'sometimes|required_unless:thumbnail.src,null|integer',
+            'thumbnail.src' => 'required_if:thumbnail.id,null|string',
         ];
 
         // Validate those rules
@@ -58,7 +60,7 @@ class BlogController extends Controller
         $this->saveRelated($request, $blog);
 
         return response()->json([
-            'data' => $blog->fresh(['media', 'thumbnail', 'tags', 'comments']),
+            'data' => $blog->fresh(['thumbnail', 'tags', 'comments']),
             'message' => 'Blog has been created successfully!',
         ], 200);
     }
@@ -74,10 +76,12 @@ class BlogController extends Controller
         $rules = [
             'title' => 'required',
             'description' => 'required',
+            'meta_keywords' => 'max:255',
+            'meta_description' => 'max:255',
             // Images
-            'media' => 'array',
-            'media.*.id' => 'sometimes|required_unless:media.*.src,null|integer',
-            'media.*.src' => 'required_if:media.*.id,null|string',
+            'thumbnail' => 'array',
+            'thumbnail.id' => 'sometimes|required_unless:thumbnail.src,null|integer',
+            'thumbnail.src' => 'required_if:thumbnail.id,null|string',
         ];
 
         // Validate those rules
@@ -89,7 +93,7 @@ class BlogController extends Controller
         $this->saveRelated($request, $blog);
 
         return response()->json([
-            'data' => $blog->fresh(['media', 'thumbnail', 'tags', 'comments']),
+            'data' => $blog->fresh(['thumbnail', 'tags', 'comments']),
             'message' => 'Blog has been updated successfully!',
         ], 200);
     }
@@ -171,8 +175,12 @@ class BlogController extends Controller
     protected function saveRelated(Request $request, Blog $blog)
     {
         // Update media
-        if ($request->filled('media')) {
-            $blog->syncMedia($request->input('media'));
+        if ($request->filled('thumbnail')) {
+            $blog->thumbnail()->sync([
+                $request->input('thumbnail.id') => [
+                    'type' => 'thumbnail'
+                ]
+            ]);
         }
 
         // Update tags

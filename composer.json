@@ -42,7 +42,8 @@
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-sluggable": "^3.4",
         "stevebauman/location": "^7.2.0",
-        "twilio/sdk": "^7.16"
+        "twilio/sdk": "^7.16",
+        "vedmant/laravel-shortcodes": "^1.1"
     },
     "require-dev": {
         "mockery/mockery": "^1.0",
@@ -77,7 +78,8 @@
                 "Coderstm\\Providers\\CoderstmServiceProvider",
                 "Coderstm\\Providers\\CoderstmPermissionsServiceProvider",
                 "Coderstm\\Providers\\CoderstmEventServiceProvider",
-                "Coderstm\\Providers\\FirebaseMessagingServiceProvider"
+                "Coderstm\\Providers\\FirebaseMessagingServiceProvider",
+                "Coderstm\\Providers\\ShortcodeServiceProvider"
             ]
         }
     },

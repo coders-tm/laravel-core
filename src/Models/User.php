@@ -16,6 +16,7 @@ use Coderstm\Database\Factories\UserFactory;
 use Coderstm\Exceptions\ImportFailedException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Coderstm\Exceptions\ImportSkippedException;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Admin implements MustVerifyEmail
@@ -120,8 +121,6 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Eager load unread enquiries counts on the User.
-     *
-     * @return $this
      */
     public function loadUnreadEnquiries()
     {
@@ -143,11 +142,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyActive
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyActive($query)
+    public function scopeOnlyActive($query): Builder
     {
         return $query->where([
             'status' => AppStatus::ACTIVE
@@ -156,11 +152,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyEnquiry
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyEnquiry($query)
+    public function scopeOnlyEnquiry($query): Builder
     {
         return $query->where('status', '<>', AppStatus::ACTIVE);
     }
@@ -168,12 +161,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyCancelled
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param   int $type
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyCancelled($query)
+    public function scopeOnlyCancelled($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
             $q->canceled();
@@ -182,22 +171,16 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyMonthlyPlan
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyMonthlyPlan($query)
+    public function scopeOnlyMonthlyPlan($query): Builder
     {
         return $query->onlyPlan('month');
     }
 
     /**
      * Scope a query to only include onlyYearlyPlan
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyYearlyPlan($query)
+    public function scopeOnlyYearlyPlan($query): Builder
     {
         return $query->onlyPlan('year');
     }
@@ -205,11 +188,9 @@ class User extends Admin implements MustVerifyEmail
     /**
      * Scope a query to only include onlyPlan
      *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
      * @param   string $type year|month|day
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyPlan($query, string $type = 'month')
+    public function scopeOnlyPlan($query, string $type = 'month'): Builder
     {
         return $query->whereHas('subscriptions', function ($q) use ($type) {
             $q->active()
@@ -223,11 +204,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyRolling
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyRolling($query)
+    public function scopeOnlyRolling($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
             $q->active()->whereNull('cancels_at');
@@ -236,11 +214,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyEnds
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyEnds($query)
+    public function scopeOnlyEnds($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
             $q->active()->whereNotNull('cancels_at');
@@ -249,11 +224,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include onlyFree
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeOnlyFree($query)
+    public function scopeOnlyFree($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
             $q->active()->whereHas('price', function ($q) {
@@ -264,11 +236,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include whereTyped
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereTyped($query, string $type = null)
+    public function scopeWhereTyped($query, string $type = null): Builder
     {
         switch ($type) {
             case 'rolling':
@@ -295,11 +264,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include sortBy
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc')
+    public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc'): Builder
     {
         switch ($column) {
             case 'last_login':
@@ -365,11 +331,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include withUnreadEnquiries
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWithUnreadEnquiries($query)
+    public function scopeWithUnreadEnquiries($query): Builder
     {
         return $query->withCount([
             'enquiries as unread_enquiries' => function (Builder $query) {
@@ -380,13 +343,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Scope a query to only include whereDateColumn
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @param  array $date
-     * @param  string $column
-     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWhereDateColumn($query, $date = [], $column = 'created_at')
+    public function scopeWhereDateColumn($query, $date = [], $column = 'created_at'): Builder
     {
         return $query->whereHas('subscriptions', function ($q) use ($date, $column) {
             if (isset($date['year'])) {
@@ -482,10 +440,8 @@ class User extends Admin implements MustVerifyEmail
 
     /**
      * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
      */
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return UserFactory::new();
     }

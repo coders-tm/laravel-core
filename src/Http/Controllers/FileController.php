@@ -197,9 +197,9 @@ class FileController extends Controller
         try {
             $path = "files/" . md5($url) . ".png";
             $media = Http::get($url);
-            Storage::disk('public')->put($path, $media);
+            Storage::disk('local')->put($path, $media);
 
-            $filePath = Storage::disk('public')->path($path);
+            $filePath = Storage::disk('local')->path($path);
 
             $file = new File();
             $file->setHttpFile(new UploadedFile($filePath, $name));

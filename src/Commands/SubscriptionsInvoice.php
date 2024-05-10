@@ -32,9 +32,7 @@ class SubscriptionsInvoice extends Command
         Subscription::query()->whereRaw('LENGTH(stripe_id) = ?', [28])->each(function ($subscription) {
             try {
                 foreach ($subscription->invoicesIncludingPending() as $invoice) {
-                    Invoice::createFromStripe($invoice, [
-                        'subscription_id' => $subscription->id
-                    ]);
+                    Invoice::createFromStripe($invoice, ['subscription_id' => $subscription->id]);
                 }
                 $this->info("[Subscription #{$subscription->id}]: Invoices has been synced!");
             } catch (\Exception $ex) {

@@ -4,12 +4,14 @@ namespace Coderstm\Http\Controllers;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Task;
+use Illuminate\Support\Str;
 use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Services\SubscriptionReports;
@@ -104,5 +106,18 @@ class ApplicationController extends Controller
         return response()->json([
             'message' => 'Test email sent successfully!'
         ], 200);
+    }
+
+    public function shortCode(Request $request)
+    {
+        $request->validate([
+            'content' => 'required|string',
+        ]);
+
+        if (Str::startsWith($request->content, '[calendar')) {
+            return $request->content;
+        }
+
+        return Blade::render($request->content);
     }
 }

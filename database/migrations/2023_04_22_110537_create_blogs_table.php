@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->longText('description');
             $table->string('meta_title')->nullable();
-            $table->text('meta_keywords')->nullable();
-            $table->text('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
             $table->boolean('is_active')->nullable()->default(true);
             $table->timestamps();
             $table->softDeletes();

@@ -10,5 +10,6 @@ return [
     'Coupons' => 'Coupons',
     'Products' => 'Products',
     'Blogs' => 'Blogs',
+    'Pages' => 'Pages',
     'Settings' => 'Settings',
 ];

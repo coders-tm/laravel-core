@@ -11,6 +11,7 @@ use Coderstm\Http\Controllers\BlogController;
 use Coderstm\Http\Controllers\FileController;
 use Coderstm\Http\Controllers\PlanController;
 use Coderstm\Http\Controllers\TaskController;
+use Coderstm\Http\Controllers\PageController;
 use Coderstm\Http\Controllers\GroupController;
 use Coderstm\Http\Controllers\Auth\AuthController;
 use Coderstm\Http\Controllers\ApplicationController;
@@ -21,6 +22,7 @@ use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\CouponController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
 use Coderstm\Http\Controllers\Blog\TagController as BlogTagController;
+use Coderstm\Http\Controllers\Page\TemplateController as PageTemplateController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController as UserPaymentMethodController;
 
 /*
@@ -113,6 +115,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'controller' => AdminController::class,
     ], function () {
         Route::get('options', 'options')->name('options');
+        Route::post('import', 'import')->name('import');
         Route::get('modules', 'modules')->name('modules');
         Route::group(['middleware' => 'can:update,admin'], function () {
             Route::post('{admin}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
@@ -253,7 +256,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::group([
         'as' => 'blogs.',
         'prefix' => 'blogs',
-        'controller' => BlogController::class,
     ], function () {
         Route::resource('tags', BlogTagController::class, [
             'middleware' => [
@@ -264,12 +266,31 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
 
         Route::group([
             'middleware' => 'can:update,blog',
+            'controller' => BlogController::class,
         ], function () {
             Route::post('{blog}/change-active', 'changeActive')->name('change-active');
             Route::post('{blog}/comments', 'comments')->name('comments');
         });
     });
     Route::resource('blogs', BlogController::class);
+
+    // Pages
+    Route::group([
+        'as' => 'pages.',
+        'prefix' => 'pages',
+    ], function () {
+        Route::resource('templates', PageTemplateController::class, [
+            'only' => ['index', 'store', 'destroy', 'show']
+        ]);
+
+        Route::group([
+            // 'middleware' => 'can:update,page',
+            'controller' => PageController::class,
+        ], function () {
+            Route::post('{page}/change-active', 'changeActive')->name('change-active');
+        });
+    });
+    Route::resource('pages', PageController::class);
 });
 
 Route::group(['prefix' => 'shared'], function () {

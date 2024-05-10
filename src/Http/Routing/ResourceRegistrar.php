@@ -186,7 +186,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
     {
         $name = $this->getShallowName($name, $options);
 
-        $uri = $this->getResourceUri($name) . '/{' . $base . '}' . static::$verbs['forceDestroy'];
+        $uri = $this->getResourceUri($name) . '/{' . $base . '}/' . static::$verbs['forceDestroy'];
 
         $action = $this->getResourceAction($name, $controller, 'forceDestroy', $options);
 

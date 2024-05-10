@@ -78,6 +78,13 @@ class Blog extends Model
         return $this;
     }
 
+    public static function findBySlug(string $slug)
+    {
+        return static::where('slug', $slug)
+            ->firstOrFail()
+            ->load('tags');
+    }
+
     protected static function boot()
     {
         parent::boot();

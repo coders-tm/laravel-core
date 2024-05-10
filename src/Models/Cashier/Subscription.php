@@ -36,7 +36,7 @@ class Subscription extends CashierSubscription
 
     protected $fillable = [
         'user_id',
-        'name',
+        'type',
         'stripe_id',
         'stripe_status',
         'stripe_price',
@@ -267,7 +267,7 @@ class Subscription extends CashierSubscription
     {
         $invoice = $this->latestInvoice();
         $invoiceModel = $this->invoiceModel ?? Coderstm::$invoiceModel;
-        $appInvoice = $invoiceModel::createFromStripe($invoice);
+        $appInvoice = $invoiceModel::createFromStripe($invoice, ['subscription_id' => $this->id]);
 
         if ($appInvoice->wasRecentlyCreated) {
             $this->usages()->delete();
