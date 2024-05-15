@@ -152,7 +152,6 @@ class AuthController extends Controller
         $user = user();
 
         $rules = [
-            'title' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
             'address.line1' => 'required',
@@ -166,7 +165,6 @@ class AuthController extends Controller
         $this->validate($request, $rules);
 
         $user->update($request->only([
-            'title',
             'first_name',
             'last_name',
             'email',

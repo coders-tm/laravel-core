@@ -2,15 +2,34 @@
 
 namespace Coderstm\Mail;
 
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
 class TestEmail extends Mailable
 {
-    use SerializesModels;
+    use Queueable, SerializesModels;
 
-    public function build()
+    /**
+     * Get the message envelope.
+     */
+    public function envelope(): Envelope
     {
-        return $this->view('coderstm::emails.test');
+        return new Envelope(
+            subject: 'Test Email',
+        );
+    }
+
+    /**
+     * Get the message content definition.
+     */
+    public function content(): Content
+    {
+        return new Content(
+            markdown: 'coderstm::emails.test',
+        );
     }
 }

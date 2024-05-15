@@ -18,6 +18,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Coderstm\Exceptions\ImportSkippedException;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class User extends Admin implements MustVerifyEmail
 {
@@ -37,6 +38,7 @@ class User extends Admin implements MustVerifyEmail
         'rag',
         'release_at',
         'rfid',
+        'qrcode',
         'source',
         'status',
     ];
@@ -67,7 +69,6 @@ class User extends Admin implements MustVerifyEmail
         'avatar',
         'address',
         'lastLogin',
-        'latestAppInvoice as latest_invoice',
     ];
 
     public function getNameAttribute()
@@ -446,9 +447,45 @@ class User extends Admin implements MustVerifyEmail
         return UserFactory::new();
     }
 
+    static public function findByQrcode($qrcode)
+    {
+        if ($user = static::where('qrcode', $qrcode)->first()) {
+            return $user;
+        } else {
+            throw new ModelNotFoundException('Invalid QR code. Please provide a valid QR code.');
+        }
+    }
+
+    static public function generateUniqueQRCode()
+    {
+        $randomInteger = mt_rand(1000000000, 9999999999);
+
+        while (static::where('qrcode', $randomInteger)->exists()) {
+            $randomInteger = mt_rand(1000000000, 9999999999);
+        }
+
+        return $randomInteger;
+    }
+
+    public function addDeviceToken(string $deviceToken)
+    {
+        if (!$deviceToken) {
+            throw new \InvalidArgumentException('Device token cannot be empty.');
+        }
+
+        return $this->deviceTokens()->updateOrCreate([
+            'token' => $deviceToken
+        ]);
+    }
+
     protected static function boot()
     {
         parent::boot();
+        static::creating(function (self $model) {
+            if (empty($model->qrcode)) {
+                $model->qrcode = static::generateUniqueQRCode();
+            }
+        });
         static::updated(function ($model) {
             Coderstm::$enquiryModel::withoutEvents(function () use ($model) {
                 Coderstm::$enquiryModel::where('email', $model->getOriginal('email'))->update([
