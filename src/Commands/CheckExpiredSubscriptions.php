@@ -35,16 +35,17 @@ class CheckExpiredSubscriptions extends Command
                 $q->where('type', 'expired-notification');
             })->chunkById(100, function ($subscriptions) {
                 foreach ($subscriptions as $subscription) {
-                    $user = $subscription->user;
-                    try {
-                        $user->notify(new SubscriptionExpiredNotification($user, $subscription));
-                        admin_notify(new AdminsSubscriptionExpiredNotification($user, $subscription));
-                        $subscription->logs()->create([
-                            'type' => 'expired-notification',
-                            'message' => 'Notification for expired subscriptions has been successfully sent.'
-                        ]);
-                    } catch (\Throwable $th) {
-                        report($th);
+                    if ($user = $subscription->user) {
+                        try {
+                            $user->notify(new SubscriptionExpiredNotification($user, $subscription));
+                            admin_notify(new AdminsSubscriptionExpiredNotification($user, $subscription));
+                            $subscription->logs()->create([
+                                'type' => 'expired-notification',
+                                'message' => 'Notification for expired subscriptions has been successfully sent.'
+                            ]);
+                        } catch (\Throwable $th) {
+                            report($th);
+                        }
                     }
                 }
             });
