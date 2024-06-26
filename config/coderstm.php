@@ -29,5 +29,5 @@ return [
     */
 
     'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admin'),
-    'app_url' => env('APP_MEMBER_URL', 'http://localhost/app'),
+    'app_url' => env('APP_MEMBER_URL', 'http://localhost/user'),
 ];

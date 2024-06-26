@@ -56,7 +56,7 @@ class CoderstmRouteServiceProvider extends ServiceProvider
                     ->namespace($this->namespace)
                     ->group(base_path('routes/coderstm/web.php'));
 
-                Route::prefix('app')
+                Route::prefix('user')
                     ->middleware('web')
                     ->namespace($this->namespace)
                     ->group(base_path('routes/coderstm/web.php'));
