@@ -41,14 +41,14 @@ if (!function_exists('is_admin')) {
     }
 }
 
-if (!function_exists('app_domain')) {
-    function app_domain($subdomain = 'app')
+if (!function_exists('base_url')) {
+    function base_url($path = '')
     {
-        $scheme = request()->getScheme() ?? 'https';
-        if ($subdomain) {
-            return "{$scheme}://$subdomain." . config('coderstm.domain');
-        }
-        return "{$scheme}://" . config('coderstm.domain');
+        if (!$path) return config('app.url');
+
+        // Check if $path starts with a slash
+        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+        return config('app.url') . $separator . $path;
     }
 }
 
