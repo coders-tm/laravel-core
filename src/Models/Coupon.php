@@ -3,8 +3,8 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
-use Laravel\Cashier\Cashier;
 use Coderstm\Enum\CouponDuration;
+use Coderstm\Models\Subscription\Plan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -88,30 +88,6 @@ class Coupon extends Model
         return $query->where('active', 1);
     }
 
-    public static function create(array $attributes = [])
-    {
-        try {
-            // create a coupon in gateway
-            $stripeCoupon = static::createStripeCoupon($attributes);
-            $promotionCode = static::createStripePromo($stripeCoupon->id, $attributes);
-
-            // Call the parent create method to save the model
-            $coupon = (new static)->fill(
-                collect($attributes)
-                    ->only((new static)->getFillable())
-                    ->toArray()
-            );
-
-            $coupon->stripe_id = $stripeCoupon->id;
-            $coupon->promotion_id = $promotionCode->id;
-            $coupon->save();
-
-            return $coupon;
-        } catch (\Exception $e) {
-            throw $e;
-        }
-    }
-
     public function canApplyToPlan($plan): bool
     {
         if ($this->specific_plans) {
@@ -142,71 +118,10 @@ class Coupon extends Model
         ]);
     }
 
-    public function hasStripeId()
-    {
-        return !is_null($this->stripe_id);
-    }
-
-    public function hasPromotionId()
-    {
-        return !is_null($this->promotion_id);
-    }
-
-    public function createAsStripeCoupon()
-    {
-        if (!$this->hasStripeId()) {
-            $coupon = static::createStripeCoupon($this->toArray());
-            $promotionCode = static::createStripePromo($coupon->id, $this->toArray());
-            $this->stripe_id = $coupon->id;
-            $this->promotion_id = $promotionCode->id;
-            $this->save();
-        }
-        return $this;
-    }
-
     protected static function findByCode($couponCode)
     {
         return static::onlyActive()
             ->where('promotion_code', $couponCode)
             ->first();
-    }
-
-    protected static function createStripePromo(string $coupon, array $attributes = [])
-    {
-        $optional = optional((object) $attributes);
-        $args = collect([
-            'coupon' => $coupon,
-            'code' => $optional->promotion_code,
-            'max_redemptions' => $optional->max_redemptions,
-            'active' => $optional->active,
-        ])->filter();
-        return Cashier::stripe()->promotionCodes->create($args->all());
-    }
-
-    protected static function createStripeCoupon(array $attributes = [])
-    {
-        $optional = optional((object) $attributes);
-        $args = collect([
-            'name' => $optional->name,
-            'currency' => config('cashier.currency'),
-            'duration' => $optional->duration,
-            'duration_in_months' => $optional->duration_in_months,
-            'max_redemptions' => $optional->max_redemptions,
-            'amount_off' => $optional->amount_off,
-            'percent_off' => $optional->percent_off,
-        ])->filter();
-        return Cashier::stripe()->coupons->create($args->all());
-    }
-
-    protected static function booted()
-    {
-        parent::booted();
-        static::updated(function ($model) {
-            if ($model->hasStripeId()) {
-                Cashier::stripe()->coupons->update($model->stripe_id, $model->only([
-                    'name',
-                ]));
-            }
-        });
     }
 }

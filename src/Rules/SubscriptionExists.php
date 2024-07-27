@@ -2,7 +2,7 @@
 
 namespace Coderstm\Rules;
 
-use Coderstm\Models\Plan;
+use Coderstm\Models\Subscription\Plan;
 use Illuminate\Contracts\Validation\Rule;
 
 class SubscriptionExists implements Rule

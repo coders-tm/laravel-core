@@ -2,31 +2,30 @@
 
 namespace Coderstm\Traits;
 
+use Coderstm\Models\Subscription\Usage;
+use Coderstm\Models\Subscription\Feature;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Coderstm\Exceptions\Plan\FeatureNotFoundException;
 
 trait HasFeature
 {
-    /**
-     * The default feature model class name.
-     *
-     * @var string
-     */
-    protected $featureModel = 'Coderstm\\Models\\Feature';
-
-    /**
-     * The default usage model class name.
-     *
-     * @var string
-     */
-    protected $usageModel = 'Coderstm\\Models\\Plan\\Usage';
 
     /**
      * Get all of the usages for the Subscription
      */
     public function usages(): HasMany
     {
-        return $this->hasMany($this->usageModel, 'subscription_id');
+        return $this->hasMany(Usage::class, 'subscription_id');
+    }
+
+    protected function features(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->plan->features->mapWithKeys(function ($item) {
+                return [$item->slug => $item->pivot->value];
+            }),
+        );
     }
 
     /**
@@ -35,19 +34,14 @@ trait HasFeature
     public function usagesToArray()
     {
         $usages = [];
-        $planFeatures = [];
 
         foreach ($this->usages as $usage) {
             $usages[$usage['slug']] = $usage['used'];
         }
 
-        foreach ($this->price->features as $feature) {
-            $planFeatures[$feature['slug']] = $feature['value'];
-        }
-
-        return $this->featureModel::all()->map(function ($item)  use ($planFeatures, $usages) {
+        return Feature::all()->map(function ($item)  use ($usages) {
             $slug = $item->slug;
-            $item->value = isset($planFeatures[$slug]) ? $planFeatures[$slug] : 0;
+            $item->value = isset($this->features[$slug]) ? $this->features[$slug] : 0;
             $item->used = isset($usages[$slug]) ? $usages[$slug] : 0;
             return $item;
         });
@@ -58,7 +52,7 @@ trait HasFeature
      */
     public function canUseFeature(string $featureSlug): bool
     {
-        $feature = $this->featureModel::where('slug', $featureSlug)->first();
+        $feature = Feature::where('slug', $featureSlug)->first();
         $featureValue = $this->getFeatureValue($featureSlug);
         $usage = $this->usages()->byFeatureSlug($featureSlug)->first();
 
@@ -109,8 +103,8 @@ trait HasFeature
      */
     public function getFeatureValue(string $featureSlug)
     {
-        $feature = $this->price->features()->where('slug', $featureSlug)->first();
-        return $feature->value ?? null;
+        $feature = $this->plan->features()->where('slug', $featureSlug)->first();
+        return optional($feature->pivot)->value ?? null;
     }
 
     /**
@@ -118,8 +112,8 @@ trait HasFeature
      */
     public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true)
     {
-        $feature = $this->featureModel::where('slug', $featureSlug)->first();
-        $planFeature = $this->price->features()->where('slug', $featureSlug)->first();
+        $feature = Feature::where('slug', $featureSlug)->first();
+        $planFeature = isset($this->features[$featureSlug]);
 
         if (!$feature) {
             throw new FeatureNotFoundException;
@@ -135,11 +129,11 @@ trait HasFeature
         if (is_null($usage->reset_at) && $feature->resetable) {
             // Set date from subscription creation date so the reset
             // period match the period specified by the subscription's plan.
-            $usage->reset_at = $planFeature->getResetDate($this->created_at, $this->price->interval->value);
+            $usage->reset_at = $this->plan->getResetDate($this->created_at);
         } elseif ($usage->expired()) {
             // If the usage record has been expired, let's assign
             // a new expiration date and reset the uses to zero.
-            $usage->reset_at = $planFeature->getResetDate($usage->reset_at, $this->price->interval->value);
+            $usage->reset_at = $this->plan->getResetDate($usage->reset_at);
             $usage->used = 0;
         }
 
@@ -156,11 +150,10 @@ trait HasFeature
     public function syncOrResetUsages(): void
     {
         $this->usages()->each(function ($usage) {
-            $feature = $this->price->features()->where('slug', $usage->slug)->first();
             if ($usage->expired()) {
                 $usage->used = 0;
             }
-            $usage->reset_at = $feature->getResetDate($this->created_at, $this->price->interval->value);
+            $usage->reset_at = $this->plan->getResetDate($this->created_at);
             $usage->save();
         });
     }

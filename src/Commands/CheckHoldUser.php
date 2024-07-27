@@ -30,7 +30,9 @@ class CheckHoldUser extends Command
      */
     public function handle()
     {
-        User::where('release_at', '<=', now())->each(function ($user) {
+        $users = User::where('release_at', '<=', now());
+
+        foreach ($users->cursor() as $user) {
             $user->update([
                 'status' => AppStatus::ACTIVE->value,
                 'release_at' => null
@@ -41,12 +43,12 @@ class CheckHoldUser extends Command
                 if ($subscription->canceled()) {
                     $subscription = $user->newSubscription('default', $subscription->stripe_price)->create();
                 }
-            } catch (\Throwable $th) {
-                // report($th);
+            } catch (\Exception $e) {
+                report($e);
             }
 
             admin_notify(new HoldMemberNotification($user));
             $this->info("User #{$user->id} has been released!");
-        });
+        }
     }
 }

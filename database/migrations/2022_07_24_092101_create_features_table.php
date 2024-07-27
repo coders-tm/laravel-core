@@ -1,11 +1,14 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -16,11 +19,13 @@ return new class extends Migration
         Schema::create('features', function (Blueprint $table) {
             $table->id();
             $table->string('label');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->enum('type', ['integer', 'boolean'])->nullable()->default('integer');
             $table->boolean('resetable')->nullable()->default(false);
             $table->mediumText('description')->nullable();
             $table->timestamps();
         });
+
+        $this->setAutoIncrement('features');
     }
 };

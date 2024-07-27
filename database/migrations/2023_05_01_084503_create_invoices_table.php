@@ -18,15 +18,21 @@ return new class extends Migration
     {
         Schema::create('subscription_invoices', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('subscription_id')->nullable();
-            $table->string('number')->nullable();
+            $table->string('key')->nullable()->unique();
+            $table->string('number')->nullable()->unique();
+            $table->string('status')->nullable();
             $table->string('currency')->nullable();
-            $table->double('total', 15, 2)->nullable();
-            $table->string('stripe_status')->nullable();
-            $table->string('stripe_id')->nullable();
-            $table->string('payment_intent')->nullable();
+            $table->double('exchange_rate', 15, 4)->default(1);
+            $table->double('sub_total', 15, 2)->nullable();
+            $table->double('tax_total', 15, 2)->nullable();
+            $table->double('discount_total', 15, 2)->nullable();
+            $table->double('grand_total', 15, 2)->nullable();
             $table->text('note')->nullable();
             $table->dateTime('due_date')->nullable();
+            $table->{$this->jsonable()}('billing_address')->nullable();
+            $table->boolean('collect_tax')->nullable()->default(false);
             $table->timestamps();
             $table->softDeletes();
 
@@ -36,15 +42,16 @@ return new class extends Migration
         Schema::create('subscription_invoice_line_items', function (Blueprint $table) {
             $table->id();
 
+            $table->text('title')->nullable();
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('plan_id')->nullable();
             $table->unsignedBigInteger('invoice_id')->nullable();
-            $table->string('stripe_id')->nullable();
-            $table->string('stripe_price')->nullable();
-            $table->string('stripe_plan')->nullable();
-            $table->double('amount', 15, 2)->nullable()->default(0);
             $table->unsignedBigInteger('quantity')->nullable();
+            $table->double('price', 15, 2)->nullable()->default(0);
+            $table->double('total', 15, 2)->nullable()->default(0);
             $table->string('currency')->nullable();
 
+            $table->foreign('plan_id')->references('id')->on('plans')->nullOnDelete();
             $table->foreign('invoice_id')->references('id')->on('subscription_invoices')->cascadeOnUpdate()->cascadeOnDelete();
         });
 

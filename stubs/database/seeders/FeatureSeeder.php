@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Coderstm\Models\Feature;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Coderstm\Models\Subscription\Feature;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class FeatureSeeder extends Seeder
 {

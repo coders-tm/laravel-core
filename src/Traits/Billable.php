@@ -2,19 +2,13 @@
 
 namespace Coderstm\Traits;
 
-use Coderstm\Traits\Cashier\ManagesCustomer;
-use Laravel\Cashier\Concerns\HandlesTaxes;
-use Coderstm\Traits\Cashier\ManagesSubscriptions;
-use Coderstm\Traits\Cashier\ManagesPaymentMethods;
-use Laravel\Cashier\Concerns\ManagesInvoices;
-use Laravel\Cashier\Concerns\PerformsCharges;
+use Coderstm\Traits\Subscription\ManagesCustomer;
+use Coderstm\Traits\Subscription\ManagesInvoices;
+use Coderstm\Traits\Subscription\ManagesSubscriptions;
 
 trait Billable
 {
-    use HandlesTaxes;
     use ManagesCustomer;
     use ManagesInvoices;
-    use ManagesPaymentMethods;
     use ManagesSubscriptions;
-    use PerformsCharges;
 }

@@ -2,8 +2,6 @@
 
 namespace Coderstm;
 
-use Laravel\Cashier\Cashier;
-
 class Coderstm
 {
     /**
@@ -32,21 +30,21 @@ class Coderstm
      *
      * @var string
      */
-    public static $subscriptionModel = 'Coderstm\\Models\\Cashier\\Subscription';
+    public static $subscriptionModel = 'Coderstm\\Models\\Subscription';
 
     /**
      * The default invoice model class name.
      *
      * @var string
      */
-    public static $invoiceModel = 'Coderstm\\Models\\Cashier\\Invoice';
+    public static $invoiceModel = 'Coderstm\\Models\\Subscription\\Invoice';
 
     /**
      * The default plan model class name.
      *
      * @var string
      */
-    public static $planModel = 'Coderstm\\Models\\Plan';
+    public static $planModel = 'Coderstm\\Models\\Subscription\\Plan';
 
     /**
      * Indicates if Coderstm's migrations will be run.
@@ -68,6 +66,13 @@ class Coderstm
      * @var bool
      */
     public static $appShortCodes = [];
+
+    /**
+     * The custom currency formatter.
+     *
+     * @var callable
+     */
+    protected static $formatCurrencyUsing;
 
     /**
      * Determine if Coderstm's migrations should be run.
@@ -122,7 +127,6 @@ class Coderstm
     public static function useUserModel($userModel)
     {
         static::$userModel = $userModel;
-        Cashier::useCustomerModel($userModel);
     }
 
     /**
@@ -167,7 +171,6 @@ class Coderstm
     public static function useSubscriptionModel($subscriptionModel)
     {
         static::$subscriptionModel = $subscriptionModel;
-        Cashier::useSubscriptionModel($subscriptionModel);
     }
 
     /**

@@ -30,25 +30,25 @@ class CheckCanceledSubscriptions extends Command
      */
     public function handle()
     {
-        Coderstm::$subscriptionModel::canceled()
+        $subscriptions = Coderstm::$subscriptionModel::canceled()
             ->where('ends_at', '<=', now())
             ->whereDoesntHave('logs', function ($q) {
                 $q->where('type', 'canceled-notification');
-            })->chunkById(100, function ($subscriptions) {
-                foreach ($subscriptions as $subscription) {
-                    try {
-                        $user = $subscription->user;
-                        $user->notify(new SubscriptionCanceledNotification($user, $subscription));
-                        admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
-                        $subscription->logs()->create([
-                            'type' => 'canceled-notification',
-                            'message' => 'Notification for canceled subscriptions has been successfully sent.'
-                        ]);
-                    } catch (\Throwable $th) {
-                        report($th);
-                    }
-                }
             });
+
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                $user = $subscription->user;
+                $user->notify(new SubscriptionCanceledNotification($user, $subscription));
+                admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
+                $subscription->logs()->create([
+                    'type' => 'canceled-notification',
+                    'message' => 'Notification for canceled subscriptions has been successfully sent.'
+                ]);
+            } catch (\Throwable $th) {
+                report($th);
+            }
+        }
 
 
         $this->info('Expired subscriptions checked and notifications sent.');

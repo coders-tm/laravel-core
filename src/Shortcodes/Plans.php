@@ -2,7 +2,7 @@
 
 namespace Coderstm\Shortcodes;
 
-use Coderstm\Models\Plan;
+use Coderstm\Models\Subscription\Plan;
 use Vedmant\LaravelShortcodes\Shortcode;
 
 class Plans extends Shortcode

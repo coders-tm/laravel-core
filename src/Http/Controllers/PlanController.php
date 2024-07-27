@@ -2,11 +2,11 @@
 
 namespace Coderstm\Http\Controllers;
 
-use Coderstm\Models\Plan;
 use Illuminate\Http\Request;
+use Coderstm\Models\Subscription\Plan;
 use Coderstm\Rules\SubscriptionExists;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Models\Feature;
+use Coderstm\Models\Subscription\Feature;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PlanController extends Controller
@@ -45,8 +45,9 @@ class PlanController extends Controller
     {
         $rules = [
             'label' => 'required',
-            'monthly_fee' => 'required',
-            'yearly_fee' => 'required',
+            'interval' => 'required',
+            'interval_count' => 'required',
+            'price' => 'required',
         ];
 
         // Validate those rules
@@ -60,14 +61,14 @@ class PlanController extends Controller
         }
 
         return response()->json([
-            'data' => $plan->fresh(['prices', 'features']),
+            'data' => $this->toArray($plan->load('features')),
             'message' => trans('coderstm::messages.plans.store'),
         ], 200);
     }
 
     public function show(Plan $plan)
     {
-        return response()->json($plan->load('features'), 200);
+        return response()->json($this->toArray($plan->load('features')), 200);
     }
 
     public function update(Request $request, Plan $plan)
@@ -75,6 +76,9 @@ class PlanController extends Controller
 
         $rules = [
             'label' => 'required',
+            'interval' => 'required',
+            'interval_count' => 'required',
+            'price' => 'required',
         ];
 
         // Validate those rules
@@ -88,9 +92,9 @@ class PlanController extends Controller
         }
 
         return response()->json([
-            'data' => $plan->fresh([
+            'data' => $this->toArray($plan->fresh([
                 'features'
-            ]),
+            ])),
             'message' => trans('coderstm::messages.plans.updated'),
         ], 200);
     }
@@ -162,7 +166,7 @@ class PlanController extends Controller
 
     public function shared(Request $request)
     {
-        $plan = Plan::with('prices')->onlyActive();
+        $plan = Plan::onlyActive();
 
         if ($request->filled('plan_id')) {
             $plan->orWhere('id', $request->plan_id);
@@ -174,5 +178,14 @@ class PlanController extends Controller
     public function features(Request $request)
     {
         return response()->json(Feature::all(), 200);
+    }
+
+    private function toArray(Plan $plan)
+    {
+        return array_merge($plan->toArray(), [
+            'features' => $plan->features->mapWithKeys(function ($item) {
+                return [$item->slug => $item->pivot->value];
+            })->toArray()
+        ]);
     }
 }

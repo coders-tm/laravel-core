@@ -2,9 +2,9 @@
 
 namespace Coderstm\Commands;
 
+use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
 use Illuminate\Console\Command;
-use Coderstm\Models\Cashier\Subscription;
 
 class SubscriptionsCancel extends Command
 {
@@ -29,29 +29,29 @@ class SubscriptionsCancel extends Command
      */
     public function handle()
     {
-        Subscription::query()
+        $subscriptions = Coderstm::$subscriptionModel::query()
             ->active()
             ->where('cancels_at', '<=', now())
             ->whereDoesntHave('logs', function ($query) {
                 $query->where('type', 'canceled');
-            })->chunkById(100, function ($subscriptions) {
-                foreach ($subscriptions as $subscription) {
-                    try {
-                        $user = $subscription->user();
-                        $subscription->cancelNow();
-                        $user->update([
-                            'status' => AppStatus::DEACTIVE->value
-                        ]);
-                        $subscription->logs()->create([
-                            'type' => 'canceled',
-                            'message' => 'Subscription has been canceled successfully!'
-                        ]);
-                        $this->info("User #{$user->id} has been deactivated!");
-                    } catch (\Exception $ex) {
-                        report($ex);
-                        $this->error("User #{$user->id} unable to deactivated! {$ex->getMessage()}");
-                    }
-                }
             });
+
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                $user = $subscription->user();
+                $subscription->cancelNow();
+                $user->update([
+                    'status' => AppStatus::DEACTIVE->value
+                ]);
+                $subscription->logs()->create([
+                    'type' => 'canceled',
+                    'message' => 'Subscription has been canceled successfully!'
+                ]);
+                $this->info("User #{$user->id} has been deactivated!");
+            } catch (\Exception $e) {
+                report($e);
+                $this->error("User #{$user->id} unable to deactivated! {$e->getMessage()}");
+            }
+        }
     }
 }

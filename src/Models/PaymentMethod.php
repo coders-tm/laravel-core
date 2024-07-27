@@ -45,6 +45,11 @@ class PaymentMethod extends Model
         })->all();
     }
 
+    public function payable()
+    {
+        return $this->provider != static::MANUAL;
+    }
+
     public function scopeEnabled($query)
     {
         return $query->where('active', 1);

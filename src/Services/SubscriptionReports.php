@@ -3,9 +3,8 @@
 namespace Coderstm\Services;
 
 use Illuminate\Http\Request;
+use Coderstm\Models\Subscription;
 use Illuminate\Support\Facades\DB;
-use Coderstm\Models\Cashier\Subscription;
-use Stripe\Subscription as StripeSubscription;
 
 class SubscriptionReports
 {
@@ -22,15 +21,13 @@ class SubscriptionReports
     {
         $query = Subscription::select(
             'subscriptions.*',
-            'plans.id as plan_id',
             DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_name"),
-            'plan_prices.amount as plan_price',
+            'plans.price as plan_price',
             'plans.label as plan_label',
-            DB::raw("SUM(CASE WHEN subscription_invoices.stripe_status = 'paid' THEN (subscription_invoices.total/100) ELSE 0 END) AS total_paid")
+            DB::raw("SUM(CASE WHEN subscription_invoices.status = 'paid' THEN subscription_invoices.grand_total ELSE 0 END) AS total_paid")
         )
             ->join('users', 'users.id', '=', 'subscriptions.user_id')
-            ->join('plan_prices', 'subscriptions.stripe_price', '=', 'plan_prices.stripe_id')
-            ->join('plans', 'plan_prices.plan_id', '=', 'plans.id')
+            ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->leftJoin('subscription_invoices', 'subscriptions.id', '=', 'subscription_invoices.subscription_id');
 
         if ($this->request->filled('year')) {
@@ -48,8 +45,8 @@ class SubscriptionReports
             'users.first_name',
             'users.last_name',
             'subscriptions.id',
-            'subscriptions.stripe_status',
-            'plan_prices.amount',
+            'subscriptions.status',
+            'plans.price',
             'plans.label',
             'plans.id'
         )->havingRaw('COUNT(subscriptions.id) > 0');
@@ -67,24 +64,24 @@ class SubscriptionReports
 
     public function onlyRolling()
     {
-        return $this->query()->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
+        return $this->query()->where('subscriptions.status', Subscription::STATUS_ACTIVE)
             ->whereNull('subscriptions.cancels_at');
     }
 
     public function onlyEnds()
     {
-        return $this->query()->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
+        return $this->query()->where('subscriptions.status', Subscription::STATUS_ACTIVE)
             ->whereNotNull('subscriptions.cancels_at');
     }
 
     public function onlyFree()
     {
-        return $this->query()->where('subscriptions.stripe_status', StripeSubscription::STATUS_ACTIVE)
-            ->where('plan_prices.amount', 0);
+        return $this->query()->where('subscriptions.status', Subscription::STATUS_ACTIVE)
+            ->where('plans.price', 0);
     }
 
     public function onlyCancelled()
     {
-        return $this->query()->where('subscriptions.stripe_status', '<>', StripeSubscription::STATUS_ACTIVE);
+        return $this->query()->where('subscriptions.status', '<>', Subscription::STATUS_ACTIVE);
     }
 }

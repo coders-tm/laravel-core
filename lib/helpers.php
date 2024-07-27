@@ -4,11 +4,11 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Tax;
 use League\ISO3166\ISO3166;
 use Illuminate\Support\Str;
-use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
 use Illuminate\Support\Optional;
 use Symfony\Polyfill\Intl\Icu\Currencies;
 use Illuminate\Support\Facades\Notification;
+use Laravel\Cashier\Cashier;
 
 if (!function_exists('guard')) {
     function guard()
@@ -158,7 +158,7 @@ if (!function_exists('model_log_name')) {
 if (!function_exists('format_amount')) {
     function format_amount($amount, $currency = null, $locale = null, array $options = [])
     {
-        return Cashier::formatAmount($amount, $currency, $locale, $options);
+        return Cashier::formatAmount($amount * 100, $currency, $locale, $options);
     }
 }
 

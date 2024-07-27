@@ -2,8 +2,8 @@
     {
         "label": "Free",
         "description": "<strong>1</strong> Locations\n<strong>5</strong> Staff Accounts\n<strong>Unlimited</strong> Members\n<strong>24/7</strong> chat support\nPOS Lite",
-        "monthly_fee": 0,
-        "yearly_fee": 0,
+        "price": 0,
+        "yearly_price": 0,
         "features": {
             "locations": 2,
             "staff": 5,
@@ -16,8 +16,8 @@
     {
         "label": "Basic",
         "description": "<strong>5</strong> Locations\n<strong>50</strong> Staff Accounts\n<strong>Unlimited</strong> Members\n<strong>24/7</strong> chat support\nPOS Lite",
-        "monthly_fee": 4.99,
-        "yearly_fee": 49.99,
+        "price": 4.99,
+        "yearly_price": 49.99,
         "features": {
             "locations": 5,
             "staff": 50,
@@ -30,8 +30,8 @@
     {
         "label": "Pro",
         "description": "<strong>10</strong> Locations\n<strong>100</strong> Staff Accounts\n<strong>Unlimited</strong> Members\n<strong>24/7</strong> chat support\nPOS Lite",
-        "monthly_fee": 9.99,
-        "yearly_fee": 99.9,
+        "price": 9.99,
+        "yearly_price": 99.9,
         "features": {
             "locations": 10,
             "staff": 100,

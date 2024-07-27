@@ -196,9 +196,9 @@ class User extends Admin implements MustVerifyEmail
         return $query->whereHas('subscriptions', function ($q) use ($type) {
             $q->active()
                 ->whereNull('cancels_at')
-                ->whereHas('price', function ($q) use ($type) {
+                ->whereHas('plan', function ($q) use ($type) {
                     $q->whereInterval($type)
-                        ->where('amount', '<>', 0);
+                        ->where('price', '<>', 0);
                 });
         });
     }
@@ -229,8 +229,8 @@ class User extends Admin implements MustVerifyEmail
     public function scopeOnlyFree($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
-            $q->active()->whereHas('price', function ($q) {
-                $q->whereAmount(0);
+            $q->active()->whereHas('plan', function ($q) {
+                $q->wherePrice(0);
             });
         });
     }
@@ -311,10 +311,8 @@ class User extends Admin implements MustVerifyEmail
             case 'price':
                 $query->leftJoin('subscriptions', function ($join) {
                     $join->on('subscriptions.user_id', '=', "users.id")->orderByDesc('created_at')->limit(1);
-                })->leftJoin('plan_prices', function ($join) {
-                    $join->on('plan_prices.stripe_id', '=', "subscriptions.stripe_price");
                 })->leftJoin('plans', function ($join) {
-                    $join->on('plans.id', '=', "plan_prices.plan_id");
+                    $join->on('plans.id', '=', "subscriptions.plan_id");
                 })->orderBy(DB::raw('plans.label'), $direction ?? 'asc');
                 break;
 

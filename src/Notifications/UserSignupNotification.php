@@ -37,7 +37,7 @@ class UserSignupNotification extends Notification
             '{{USER_EMAIL}}' => $this->user->email,
             '{{USER_PHONE_NUMBER}}' => $this->user->phone_number,
             '{{PLAN}}' => optional($this->user->price)->label,
-            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount * 100),
+            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount),
             '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,
         ];
 
