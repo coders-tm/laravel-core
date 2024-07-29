@@ -23,6 +23,7 @@ use Coderstm\Models\Subscription\Invoice\LineItem;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Coderstm\Models\Subscription\Invoice\DiscountLine;
+use Illuminate\Support\Arr;
 
 class Invoice extends Model
 {
@@ -143,7 +144,7 @@ class Invoice extends Model
         foreach ($line_items as $item) {
             $this->line_items()->updateOrCreate([
                 'id' => has($item)->id,
-            ], $item);
+            ], Arr::only($item, (new LineItem())->getFillable()));
         }
     }
 
