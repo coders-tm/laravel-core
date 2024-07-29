@@ -188,6 +188,7 @@ class Invoice extends Model
         return [
             'id' => $this->id,
             'number' => $this->number,
+            'currency' => $this->currency,
             'phone_number' => optional($this->user)->phone_number,
             'user_name' => optional($this->user)->name ?? 'NA',
             'line_items' => $this->line_items,
