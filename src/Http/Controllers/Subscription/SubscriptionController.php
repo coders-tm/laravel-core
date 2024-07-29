@@ -190,7 +190,7 @@ class SubscriptionController extends Controller
                 if ($invoice->hasDue() && $paymentMethod->payable()) {
                     $key = $order->key;
                     $provider = $paymentMethod->provider;
-                    $payment = "/user/payment/$provider?key=$key";
+                    $payment = "/user/payment/$provider?key=$key&redirect=/user/billing";
                 }
             }
         }
