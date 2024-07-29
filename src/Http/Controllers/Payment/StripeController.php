@@ -28,11 +28,9 @@ class StripeController extends Controller
 
 
         return response()->json([
-            'order' => [
-                'key' => $order->key,
+            'order' => array_merge($order->toPublic(), [
                 'billing_details' => $this->billingDetails($order),
-                'amount' => $order->total()
-            ],
+            ]),
             'client_secret' => $paymentIntent->client_secret
         ], 200);
     }

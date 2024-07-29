@@ -4,6 +4,7 @@ namespace Coderstm\Models\Shop\Order;
 
 use Coderstm\Models\Shop\Product\Weight;
 use Coderstm\Models\Shop\Order\DiscountLine;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Coderstm\Models\Shop\LineItem as BaseLineItem;
 
 class LineItem extends BaseLineItem
@@ -58,22 +59,28 @@ class LineItem extends BaseLineItem
         return !is_null($this->discount) ?: false;
     }
 
-    public function getDiscountedPriceAttribute()
+    protected function total(): Attribute
     {
-        if ($this->hasDiscount()) {
-            if ($this->discount->isFixedAmount()) {
-                $price = $this->price - $this->discount->value;
-            } else {
-                $price = round($this->price - ($this->price * $this->discount->value) / 100, 2);
-            }
-            return $price > 0 ? $price : 0;
-        }
-        return $this->price;
+        return Attribute::make(
+            get: fn () => round($this->discounted_price * $this->quantity, 2),
+        );
     }
 
-    public function getTotalAttribute()
+    protected function discountedPrice(): Attribute
     {
-        return round($this->discounted_price * $this->quantity, 2);
+        return Attribute::make(
+            get: function () {
+                if ($this->hasDiscount()) {
+                    if ($this->discount->isFixedAmount()) {
+                        $price = $this->price - $this->discount->value;
+                    } else {
+                        $price = round($this->price - ($this->price * $this->discount->value) / 100, 2);
+                    }
+                    return $price > 0 ? $price : 0;
+                }
+                return $this->price;
+            },
+        );
     }
 
     public function getHasDiscountAttribute()

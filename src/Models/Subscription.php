@@ -799,16 +799,18 @@ class Subscription extends Model
         $toDate = Carbon::parse($period->getEndDate())->format('M d, Y');
         $interval = $plan->interval->value;
         $amount = $plan->formatPrice();
+        $title = "$plan->label  (at $amount / $interval)";
 
         return [
             [
-                'title' => "1 x $plan->label  (at $amount / $interval)",
+                'title' => $title,
                 'description' => "$fromDate - $toDate",
                 'plan_id' => $plan->id,
                 'price' => $plan->price,
                 'total' => $plan->price,
                 'quantity' => 1,
                 'currency' => $plan->currency,
+                'options' => ['title' => $title]
             ]
         ];
     }

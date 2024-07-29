@@ -26,7 +26,7 @@ return new class extends Migration
             $table->unsignedBigInteger('billing_address_id')->nullable();
             $table->text('note')->nullable();
             $table->boolean('collect_tax')->default(true);
-            $table->{$this->jsonable()}('attributes')->nullable();
+            $table->{$this->jsonable()}('options')->nullable();
             $table->string('source')->nullable();
             $table->string('key')->nullable();
             $table->string('currency')->nullable();

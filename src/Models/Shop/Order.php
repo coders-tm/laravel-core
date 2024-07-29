@@ -82,7 +82,7 @@ class Order extends Model
         'currency',
         'exchange_rate',
         'collect_tax',
-        'attributes',
+        'options',
         'source',
         'sub_total',
         'tax_total',
@@ -94,7 +94,7 @@ class Order extends Model
 
     protected $casts = [
         'collect_tax' => 'boolean',
-        'attributes' => 'collection',
+        'options' => 'json',
     ];
 
     protected $hidden = [
@@ -549,6 +549,22 @@ class Order extends Model
     static function findByKey($key): self
     {
         return static::where('key', $key)->firstOrFail();
+    }
+
+    protected function label(): string
+    {
+        return $this->options?->title ?? "#{$this->id}";
+    }
+
+    public function toPublic(): array
+    {
+        return [
+            'key' => $this->key,
+            'currency' => $this->currency,
+            'label' => $this->label(),
+            'line_items' => $this->line_items,
+            'amount' => $this->total()
+        ];
     }
 
     protected static function newFactory()
