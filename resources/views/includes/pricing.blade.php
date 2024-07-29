@@ -5,7 +5,7 @@
         </div>
         <div class="ct-plan-title">
             <h3>{{ $label }}
-                @if ($monthly_fee > 0)
+                @if ($price > 0)
                     <span>*</span>
                 @endif
             </h3>
@@ -19,17 +19,14 @@
             </li>
         @endforeach
     </ul>
-    <div class="ct-plan-amount @if ($monthly_fee <= 0) visibility-hidden @endif">
+    <div class="ct-plan-amount @if ($price <= 0) visibility-hidden @endif">
         <span class="cur_symbol">{{ $cur_symbol }}</span>
-        <span class="ct-ptablebox-price month">{{ $monthly_fee }}</span>
-        <span style="display: none" class="ct-ptablebox-price year">{{ $yearly_fee }}</span>
-        <span class="pac_frequency month">/Per Month</span>
-        <span style="display: none" class="pac_frequency year">/Per Year</span>
+        <span class="ct-ptablebox-price month">{{ $price }}</span>
+        <span class="pac_frequency month">{{ $interval_label }}</span>
     </div>
     <div class="ct-plan-footer">
         <form action="{{ app_url('sign-up') }}" method="get">
             <input type="hidden" name="plan" value="{{ $id }}">
-            <input class="plan-interval" type="hidden" name="interval" value="month">
             <button
                 class="btn btn--md btn--square btn--fill btn--icon-right btn--primary text-center margin_top30 z-index-1">Signup</button>
         </form>

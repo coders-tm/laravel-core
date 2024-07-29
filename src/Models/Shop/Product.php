@@ -127,11 +127,11 @@ class Product extends Model
         return Attribute::make(
             get: function () {
                 if ($this->has_variant) {
-                    $min = format_amount($this->variants_min_price * 100 ?? 0);
-                    $max = format_amount($this->variants_max_price * 100 ?? 0);
+                    $min = format_amount($this->variants_min_price ?? 0);
+                    $max = format_amount($this->variants_max_price ?? 0);
                     return $min != $max ? "{$min} - {$max}" : $min;
                 }
-                return format_amount($this->default_variant_min_price * 100 ?? 0);
+                return format_amount($this->default_variant_min_price ?? 0);
             },
         );
     }

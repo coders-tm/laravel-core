@@ -781,7 +781,7 @@ class Subscription extends Model
             'subscription_id' => $this->id,
             'due_date' => $start ? $this->dateFrom() : $period->getEndDate(),
             'billing_address' => $this->user->address->toArray(),
-            'currency' => $plan->currency,
+            'currency' => config('cashier.currency'),
             'collect_tax' => true,
             'line_items' => $this->generateLineItems($plan, $period),
             'discount' => $this->discount(),
@@ -809,7 +809,6 @@ class Subscription extends Model
                 'price' => $plan->price,
                 'total' => $plan->price,
                 'quantity' => 1,
-                'currency' => $plan->currency,
                 'options' => ['title' => $title]
             ]
         ];

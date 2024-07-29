@@ -17,7 +17,6 @@ class Coupon extends Model
     protected $fillable = [
         'name',
         'promotion_code',
-        'currency',
         'duration',
         'duration_in_months',
         'max_redemptions',

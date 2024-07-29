@@ -63,13 +63,13 @@
                             </p>
                         </td>
                         <td class="text-center">
-                            {{ format_amount($item->price * 100) }}
+                            {{ format_amount($item->price, $currency) }}
                         </td>
                         <td class="text-center">
                             {{ $item->quantity }}
                         </td>
                         <td class="text-right">
-                            {{ format_amount($item->total * 100) }}
+                            {{ format_amount($item->total, $currency) }}
                         </td>
                     </tr>
                 @endforeach

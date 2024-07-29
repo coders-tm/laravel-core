@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('promotion_code')->unique();
             $table->string('promotion_id');
             $table->{$this->jsonable()}('applies_to')->nullable();
-            $table->string('currency')->nullable();
             $table->string('duration');
             $table->unsignedInteger('duration_in_months')->nullable();
             $table->unsignedInteger('max_redemptions')->nullable();

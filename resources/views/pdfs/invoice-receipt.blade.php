@@ -62,11 +62,11 @@
                         <td class="text-center border-top">
                             {{ $item->quantity }}
                         </td>
-                        <td class="text-center border-top">
-                            {{ $item->price() }}
+                        <td class="text-center">
+                            {{ format_amount($item->price, $currency) }}
                         </td>
-                        <td class="text-right border-top">
-                            {{ $item->amount() }}
+                        <td class="text-right">
+                            {{ format_amount($item->total, $currency) }}
                         </td>
                     </tr>
                 @endforeach

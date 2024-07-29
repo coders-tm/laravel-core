@@ -75,13 +75,13 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            {{ $item->price() }}
+                            {{ format_amount($item->price, $currency) }}
                         </td>
                         <td class="text-center">
                             {{ $item->quantity }}
                         </td>
                         <td class="text-right">
-                            {{ $item->amount() }}
+                            {{ format_amount($item->total, $currency) }}
                         </td>
                     </tr>
                 @endforeach

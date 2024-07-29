@@ -24,9 +24,9 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->longText('description')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->string('default_interval')->default('month');
             $table->string('interval')->default('month');
             $table->unsignedInteger('interval_count')->default(1);
-            $table->string('currency', 3)->nullable();
             $table->double('price', 12, 2)->default(0.00);
             $table->unsignedInteger('trial_days')->nullable()->default(0);
             $table->timestamps();

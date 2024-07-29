@@ -49,7 +49,6 @@ return new class extends Migration
             $table->unsignedBigInteger('quantity')->nullable();
             $table->double('price', 15, 2)->nullable()->default(0);
             $table->double('total', 15, 2)->nullable()->default(0);
-            $table->string('currency')->nullable();
 
             $table->foreign('plan_id')->references('id')->on('plans')->nullOnDelete();
             $table->foreign('invoice_id')->references('id')->on('subscription_invoices')->cascadeOnUpdate()->cascadeOnDelete();

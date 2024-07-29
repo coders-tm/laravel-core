@@ -22,26 +22,10 @@ class LineItem extends Model
         'quantity',
         'price',
         'total',
-        'currency',
     ];
 
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
-    }
-
-    public function amount()
-    {
-        return $this->formatAmount($this->total);
-    }
-
-    public function price()
-    {
-        return $this->formatAmount($this->price);
-    }
-
-    protected function formatAmount($amount)
-    {
-        return format_amount($amount, $this->currency);
     }
 }

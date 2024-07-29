@@ -493,41 +493,34 @@ class Order extends Model
         };
     }
 
-    public function posPdf()
+    private function toPdfArray(): array
     {
-        return Pdf::loadView('coderstm::pdfs.order-pos', [
+        return [
             'id' => $this->formated_id,
-            'phone_number' => optional($this->contact)->phone_number,
-            'customer_name' => optional($this->customer)->name ?? 'NA',
-            'line_items' => $this->line_items,
-            'location' => optional($this->location)->address_label,
-            'sub_total' => format_amount($this->sub_total * 100),
-            'tax_total' => format_amount($this->tax_total * 100),
-            'discount_total' => format_amount($this->discount_total * 100),
-            'grand_total' => format_amount($this->grand_total * 100),
-            'paid_total' => format_amount($this->paid_total * 100),
-            'due_amount' => format_amount($this->due_amount * 100),
-            'created_at' => $this->created_at->format('d-m-Y h:i a'),
-        ])->setPaper([0, 0, 260.00, 600.80]);
-    }
-
-    public function receiptPdf()
-    {
-        return Pdf::loadView('coderstm::pdfs.order-receipt', [
-            'id' => $this->formated_id,
+            'currency' => $this->currency,
             'phone_number' => optional($this->contact)->phone_number,
             'customer_name' => optional($this->customer)->name ?? 'NA',
             'billing_address' => optional($this->billing_address)->label,
             'line_items' => $this->line_items,
             'location' => optional($this->location)->address_label,
-            'sub_total' => format_amount($this->sub_total * 100),
-            'tax_total' => format_amount($this->tax_total * 100),
-            'discount_total' => format_amount($this->discount_total * 100),
-            'grand_total' => format_amount($this->grand_total * 100),
-            'paid_total' => format_amount($this->paid_total * 100),
-            'due_amount' => format_amount($this->due_amount * 100),
+            'sub_total' => format_amount($this->sub_total),
+            'tax_total' => format_amount($this->tax_total),
+            'discount_total' => format_amount($this->discount_total),
+            'grand_total' => format_amount($this->grand_total),
+            'paid_total' => format_amount($this->paid_total),
+            'due_amount' => format_amount($this->due_amount),
             'created_at' => $this->created_at->format('d-m-Y h:i a'),
-        ]);
+        ];
+    }
+
+    public function posPdf()
+    {
+        return Pdf::loadView('coderstm::pdfs.order-pos', $this->toPdfArray())->setPaper([0, 0, 260.00, 600.80]);
+    }
+
+    public function receiptPdf()
+    {
+        return Pdf::loadView('coderstm::pdfs.order-receipt', $this->toPdfArray());
     }
 
     public function total()

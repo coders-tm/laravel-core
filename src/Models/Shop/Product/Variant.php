@@ -115,7 +115,7 @@ class Variant extends Model
 
     public function getPriceFormatedAttribute()
     {
-        return format_amount($this->price * 100);
+        return format_amount($this->price);
     }
 
     public function scopeOnlyTrackInventory($query)

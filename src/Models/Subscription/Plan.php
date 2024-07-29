@@ -28,14 +28,14 @@ class Plan extends Model
         'description',
         'note',
         'is_active',
+        'default_interval',
         'interval',
         'interval_count',
-        'currency',
         'price',
         'trial_days',
     ];
 
-    protected $appends = ['feature_lines', 'price_formated'];
+    protected $appends = ['feature_lines', 'price_formated', 'interval_label'];
 
     protected $casts = [
         'is_active' => 'boolean',
@@ -65,6 +65,13 @@ class Plan extends Model
     {
         return Attribute::make(
             get: fn () => $this->formatPrice(),
+        );
+    }
+
+    protected function intervalLabel(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->formatInterval(),
         );
     }
 
@@ -126,20 +133,26 @@ class Plan extends Model
         return $this->formatAmount($this->price);
     }
 
+    protected function formatInterval()
+    {
+        $interval = $this->interval->value;
+
+        if ($this->interval_count > 1) {
+            return "/ {$this->interval_count} {$interval}s";
+        } else {
+            return "/ {$interval}";
+        }
+    }
+
+
     protected function formatAmount($amount)
     {
-        return format_amount($amount, $this->currency);
+        return format_amount($amount);
     }
 
     protected static function booted()
     {
         parent::booted();
-
-        static::creating(function (self $model): void {
-            if (empty($model->currency)) {
-                $model->currency = config('cashier.currency');
-            }
-        });
 
         static::updated(queueable(function ($model) {
             if ($model->wasChanged('is_active') && !$model->is_active) {
