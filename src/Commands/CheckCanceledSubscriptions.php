@@ -3,9 +3,10 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
-use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
-use Coderstm\Notifications\SubscriptionCanceledNotification;
+use Coderstm\Models\Log;
 use Illuminate\Console\Command;
+use Coderstm\Notifications\SubscriptionCanceledNotification;
+use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
 
 class CheckCanceledSubscriptions extends Command
 {
@@ -30,7 +31,8 @@ class CheckCanceledSubscriptions extends Command
      */
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::canceled()
+        $subscriptions = Coderstm::$subscriptionModel::query()
+            ->canceled()
             ->where('ends_at', '<=', now())
             ->whereDoesntHave('logs', function ($q) {
                 $q->where('type', 'canceled-notification');
@@ -45,8 +47,12 @@ class CheckCanceledSubscriptions extends Command
                     'type' => 'canceled-notification',
                     'message' => 'Notification for canceled subscriptions has been successfully sent.'
                 ]);
-            } catch (\Throwable $th) {
-                report($th);
+            } catch (\Exception $e) {
+                $subscription->logs()->create([
+                    'type' => 'canceled-notification',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage()
+                ]);
             }
         }
 

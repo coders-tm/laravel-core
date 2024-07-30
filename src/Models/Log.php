@@ -13,12 +13,17 @@ class Log extends Model
 {
     use HasFactory, Fileable, SerializeDate;
 
+    const STATUS_ERROR = 'error';
+    const STATUS_SUCCESS = 'success';
+    const STATUS_WARNING = 'warning';
+
     protected $dispatchesEvents = [
         'created' => LogCreated::class,
     ];
 
     protected $fillable = [
         'type',
+        'status',
         'message',
         'options',
         'admin_id',

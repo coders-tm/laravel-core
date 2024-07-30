@@ -10,7 +10,7 @@ trait Logable
 {
     public function logs()
     {
-        return $this->morphMany(Log::class, 'logable')->orderBy('created_at', 'desc');
+        return $this->morphMany(Log::class, 'logable');
     }
 
     protected static function getLogName($model)

@@ -37,6 +37,7 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('subscription_id')->references('id')->on('subscriptions')->nullOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->nullOnDelete();
         });
 
         Schema::create('subscription_invoice_line_items', function (Blueprint $table) {

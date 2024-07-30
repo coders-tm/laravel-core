@@ -2,6 +2,7 @@
 
 namespace Coderstm\Commands;
 
+use Coderstm\Models\Log;
 use Coderstm\Models\User;
 use Coderstm\Enum\AppStatus;
 use Illuminate\Console\Command;
@@ -44,7 +45,11 @@ class CheckHoldUser extends Command
                     $subscription = $user->newSubscription('default', $subscription->stripe_price)->create();
                 }
             } catch (\Exception $e) {
-                report($e);
+                $subscription->logs()->create([
+                    'type' => 'hold-release',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage()
+                ]);
             }
 
             admin_notify(new HoldMemberNotification($user));

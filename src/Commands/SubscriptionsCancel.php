@@ -3,6 +3,7 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Log;
 use Coderstm\Enum\AppStatus;
 use Illuminate\Console\Command;
 
@@ -49,8 +50,15 @@ class SubscriptionsCancel extends Command
                 ]);
                 $this->info("User #{$user->id} has been deactivated!");
             } catch (\Exception $e) {
-                report($e);
-                $this->error("User #{$user->id} unable to deactivated! {$e->getMessage()}");
+                $message = "Subscription #{$subscription->id} unable to deactivated! {$e->getMessage()}";
+
+                $subscription->logs()->create([
+                    'type' => 'canceled',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $message
+                ]);
+
+                $this->error($message);
             }
         }
     }
