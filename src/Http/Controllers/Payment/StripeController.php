@@ -31,7 +31,7 @@ class StripeController extends Controller
             'order' => array_merge($order->toPublic(), [
                 'billing_details' => $this->billingDetails($order),
             ]),
-            'client_secret' => $paymentIntent->client_secret
+            'clientSecret' => $paymentIntent->client_secret
         ], 200);
     }
 
@@ -76,6 +76,8 @@ class StripeController extends Controller
                 if ($orderable) {
                     $orderable->paymentConfirmation($order);
                 }
+            } else {
+                // return response()->json(['message' => 'Payment failed'], 500);
             }
 
             return $order;

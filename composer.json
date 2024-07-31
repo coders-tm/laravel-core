@@ -40,6 +40,7 @@
         "league/iso3166": "^4.3",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-sluggable": "^3.4",
+        "srmklive/paypal": "^3.0",
         "stevebauman/location": "^7.2.0",
         "twilio/sdk": "^7.16",
         "vedmant/laravel-shortcodes": "^1.1"

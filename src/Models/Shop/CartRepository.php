@@ -41,11 +41,12 @@ class CartRepository extends Model
             $attributes['tax_lines'] = billing_address_tax($attributes['billing_address']);
         }
 
-        $this->taxes = collect(has($attributes)->tax_lines ?: [])->map(function ($item) {
+        $this->taxes = collect($attributes['tax_lines'] ?: [])->map(function ($item) {
             return Taxline::firstOrNew([
                 'id' => has($item)->id,
             ], $item)->fill($item);
         });
+
         parent::__construct($attributes);
     }
 
@@ -57,6 +58,9 @@ class CartRepository extends Model
     public function getLineItemsAttribute($value)
     {
         return collect($value ?: [])->map(function ($item) {
+            if (!isset($item['taxable'])) {
+                $item['taxable'] = true;
+            }
             return new LineItem($item);
         });
     }

@@ -75,6 +75,11 @@ class PaymentMethod extends Model
         return static::findProvider(static::STRIPE);
     }
 
+    public static function paypal()
+    {
+        return static::findProvider(static::PAYPAL);
+    }
+
     public static function toPublic()
     {
         return static::enabled()->get()->map(function ($item) {

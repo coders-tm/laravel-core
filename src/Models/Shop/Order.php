@@ -346,14 +346,14 @@ class Order extends Model
 
     public function saveRelated(Resource $resource)
     {
-        $cartRepository = new CartRepository($resource->input());
+        $cart = new CartRepository($resource->input());
 
         $resource->merge([
-            'sub_total' => $cartRepository->sub_total,
-            'tax_lines' => $cartRepository->tax_lines->toArray(),
-            'tax_total' => $cartRepository->tax_total,
-            'discount_total' => $cartRepository->discount_total,
-            'grand_total' => $cartRepository->grand_total,
+            'sub_total' => $cart->sub_total,
+            'tax_lines' => $cart->tax_lines->toArray(),
+            'tax_total' => $cart->tax_total,
+            'discount_total' => $cart->discount_total,
+            'grand_total' => $cart->grand_total,
         ]);
 
         $this->fill($resource->only([
@@ -553,9 +553,10 @@ class Order extends Model
     {
         return [
             'key' => $this->key,
-            'currency' => $this->currency,
+            'currency' => Str::upper($this->currency),
             'label' => $this->label(),
             'line_items' => $this->line_items,
+            'raw_amount' => $this->due_amount,
             'amount' => $this->total()
         ];
     }
