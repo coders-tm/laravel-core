@@ -9,9 +9,12 @@ use Laravel\Cashier\Payment;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Traits\Paymentable;
 
 class StripeController extends Controller
 {
+    use Paymentable;
+
     public function token(Request $request)
     {
         $request->validate([
@@ -24,6 +27,7 @@ class StripeController extends Controller
             'automatic_payment_methods' => ['enabled' => true],
             'amount' => $order->grand_total * 100,
             'currency' => $order->currency ?? config('cashier.currency'),
+            'metadata' => ['order_id' => $order->id]
         ]);
 
 
@@ -31,23 +35,15 @@ class StripeController extends Controller
             'order' => array_merge($order->toPublic(), [
                 'billing_details' => $this->billingDetails($order),
             ]),
+            'successUrl' => route('payment.stripe.success', [
+                'key' => $order->key,
+                'redirect' => $request->redirect ?? app_url('/billing')
+            ]),
             'clientSecret' => $paymentIntent->client_secret
         ], 200);
     }
 
-    public function success(Request $request)
-    {
-        $this->processPayment($request);
-
-        return redirect(app_url('/billing'));
-    }
-
-    public function process(Request $request)
-    {
-        return response()->json($this->processPayment($request), 200);
-    }
-
-    private function processPayment(Request $request): Order
+    private function verifyPayment(Request $request): Order
     {
         $request->validate([
             'key' => 'required|string',
@@ -73,7 +69,7 @@ class StripeController extends Controller
                     'status' => $payment->status,
                 ]);
 
-                if ($orderable) {
+                if ($orderable && method_exists($orderable, 'paymentConfirmation')) {
                     $orderable->paymentConfirmation($order);
                 }
             } else {

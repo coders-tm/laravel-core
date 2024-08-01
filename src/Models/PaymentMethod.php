@@ -80,6 +80,11 @@ class PaymentMethod extends Model
         return static::findProvider(static::PAYPAL);
     }
 
+    public static function razorpay()
+    {
+        return static::findProvider(static::RAZORPAY);
+    }
+
     public static function toPublic()
     {
         return static::enabled()->get()->map(function ($item) {

@@ -38,6 +38,7 @@
         "laravel/sanctum": "^4.0",
         "league/csv": "^9.15",
         "league/iso3166": "^4.3",
+        "razorpay/razorpay": "^2.9",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-sluggable": "^3.4",
         "srmklive/paypal": "^3.0",

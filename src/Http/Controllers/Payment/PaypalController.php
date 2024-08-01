@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Traits\Paymentable;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaypalController extends Controller
 {
+    use Paymentable;
+
     protected PayPalClient $provider;
 
     function __construct()
@@ -27,9 +30,27 @@ class PaypalController extends Controller
 
         $order = Order::findByKey($request->key)->load('customer');
 
-        if (true) {
+        $response = $this->provider->createOrder([
+            "intent" => "CAPTURE",
+            "purchase_units" => [
+                [
+                    'reference_id' => $order->id,
+                    "amount" => [
+                        "currency_code" => $order->currency,
+                        "value" => $order->grand_total
+                    ]
+                ]
+            ]
+        ]);
+
+        if (isset($response['id']) && $response['id'] != null) {
             return response()->json([
-                'order' => $order->toPublic()
+                'order' => $order->toPublic(),
+                'orderID' => $response['id'],
+                'successUrl' => route('payment.paypal.success', [
+                    'key' => $order->key,
+                    'redirect' => $request->redirect ?? app_url('/billing')
+                ]),
             ], 200);
         } else {
             return response()->json([
@@ -38,19 +59,7 @@ class PaypalController extends Controller
         }
     }
 
-    public function success(Request $request)
-    {
-        $this->processPayment($request);
-
-        return redirect(app_url('/billing'));
-    }
-
-    public function process(Request $request)
-    {
-        return response()->json($this->processPayment($request), 200);
-    }
-
-    private function processPayment(Request $request): Order
+    private function verifyPayment(Request $request): Order
     {
         $request->validate([
             'key' => 'required|string',
@@ -73,7 +82,7 @@ class PaypalController extends Controller
                     'status' => $payment['status'],
                 ]);
 
-                if ($orderable) {
+                if ($orderable && method_exists($orderable, 'paymentConfirmation')) {
                     $orderable->paymentConfirmation($order);
                 }
             } else {
