@@ -2,11 +2,12 @@
 
 namespace Coderstm\Http\Controllers\Payment;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Coderstm\Models\Shop\Order;
+use Coderstm\Traits\Paymentable;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Traits\Paymentable;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaypalController extends Controller
@@ -36,7 +37,7 @@ class PaypalController extends Controller
                 [
                     'reference_id' => $order->id,
                     "amount" => [
-                        "currency_code" => $order->currency,
+                        "currency_code" => Str::upper($order->currency),
                         "value" => $order->grand_total
                     ]
                 ]

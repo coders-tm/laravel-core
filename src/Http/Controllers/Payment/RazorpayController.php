@@ -38,7 +38,6 @@ class RazorpayController extends Controller
 
         return response()->json([
             'order' => array_merge($order->toPublic(), [
-
                 'billing_details' => $this->billingDetails($order),
             ]),
             'orderID' => $paymentIntent['id'],

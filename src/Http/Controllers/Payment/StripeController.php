@@ -26,7 +26,7 @@ class StripeController extends Controller
         $paymentIntent = Cashier::stripe()->paymentIntents->create([
             'automatic_payment_methods' => ['enabled' => true],
             'amount' => $order->grand_total * 100,
-            'currency' => $order->currency ?? config('cashier.currency'),
+            'currency' => $order->currency,
             'metadata' => ['order_id' => $order->id]
         ]);
 
