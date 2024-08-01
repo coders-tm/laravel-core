@@ -32,7 +32,7 @@ class RazorpayController extends Controller
 
         $paymentIntent = $this->provider->order->create([
             'receipt' => $order->formated_id,
-            'amount' => $order->grand_total * 100,
+            'amount' => (int) $order->grand_total * 100,
             'currency' => Str::upper($order->currency),
         ]);
 
