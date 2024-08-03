@@ -14,8 +14,13 @@ return [
     */
 
     'domain' => env('APP_DOMAIN', null),
+    'app_domain' => env('APP_DOMAIN', null),
+    'api_prefix' => env('APP_API_PREFIX', 'api'),
+    'admin_prefix' => env('APP_ADMIN_PREFIX', 'admin'),
+    'user_prefix' => env('APP_USER_PREFIX', 'user'),
     'tunnel_domain' => env('TUNNEL_WEB_DOMAIN', null),
     'reset_password_url' => env('RESET_PASSWORD_PAGE', '/auth/reset-password'),
+    'admin_email' => env('APP_ADMIN_EMAIL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -28,6 +33,7 @@ return [
     |
     */
 
-    'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admin'),
     'app_url' => env('APP_MEMBER_URL', 'http://localhost/user'),
+    'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admins'),
+
 ];

@@ -713,7 +713,7 @@ class Subscription extends Model
                 'title' => $template->subject,
                 'body' => html_text($template->content)
             ], [
-                'route' => "/billing",
+                'route' => user_route("/billing"),
             ]));
 
             dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n\n{$template->content}"));

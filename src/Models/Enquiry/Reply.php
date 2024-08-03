@@ -113,7 +113,7 @@ class Reply extends Model
                 'title' => $template->subject,
                 'body' => html_text($template->content)
             ], [
-                'route' => "/enquiries/{$this->enquiry_id}?action=edit",
+                'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
                 'enquiry_id' => $this->enquiry_id,
             ]));
 

@@ -84,6 +84,30 @@ if (!function_exists('app_url')) {
     }
 }
 
+if (!function_exists('user_route')) {
+    function user_route($path = '')
+    {
+        $prefix = config('coderstm.user_prefix');
+        $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
+
+        // Check if $path starts with a slash
+        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+        return $prefix . $separator . $path;
+    }
+}
+
+if (!function_exists('admin_route')) {
+    function admin_route($path = '')
+    {
+        $prefix = config('coderstm.admin_prefix');
+        $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
+
+        // Check if $path starts with a slash
+        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+        return $prefix . $separator . $path;
+    }
+}
+
 if (!function_exists('is_active')) {
     function is_active(...$routes)
     {

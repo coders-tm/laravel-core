@@ -228,7 +228,7 @@ class Enquiry extends Model
                 'title' => $template->subject,
                 'body' => html_text($template->content)
             ], [
-                'route' => "/enquiries/{$this->id}?action=edit",
+                'route' => user_route("/enquiries/{$this->id}?action=edit"),
                 'enquiry_id' => $this->id,
             ]));
 
