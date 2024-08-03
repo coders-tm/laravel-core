@@ -93,6 +93,7 @@ class Reply extends Model
             '{{ENQUIRY_URL}}' => app_url("enquiries/{$this->enquiry_id}?action=edit"),
             '{{ADMIN_ENQUIRY_URL}}' => admin_url("enquiries/{$this->enquiry_id}?action=edit"),
             '{{ENQUIRY_SUBJECT}}' => $this->enquiry->subject,
+            '{{ENQUIRY_STATUS}}' => $this->enquiry->status->value,
             '{{ENQUIRY_REPLY_ATTACHMENTS}}' => $attachments,
             '{{ENQUIRY_REPLY_MESSAGE}}' => $this->message,
             '{{ENQUIRY_REPLY_USER}}' => optional($this->user)->name,

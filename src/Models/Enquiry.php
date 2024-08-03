@@ -208,6 +208,7 @@ class Enquiry extends Model
             '{{ADMIN_ENQUIRY_URL}}' => admin_url("enquiries/{$this->id}?action=edit"),
             '{{ENQUIRY_ATTACHMENTS}}' => $attachments,
             '{{ENQUIRY_SUBJECT}}' => $this->subject,
+            '{{ENQUIRY_STATUS}}' => $this->status->value,
             '{{ENQUIRY_MESSAGE}}' => $this->message,
         ];
 
