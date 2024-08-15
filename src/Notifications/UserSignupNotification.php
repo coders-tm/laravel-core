@@ -36,9 +36,9 @@ class UserSignupNotification extends Notification
             '{{USER_FIRST_NAME}}' => $this->user->first_name,
             '{{USER_EMAIL}}' => $this->user->email,
             '{{USER_PHONE_NUMBER}}' => $this->user->phone_number,
-            '{{PLAN}}' => optional($this->user->price)->label,
-            '{{PLAN_PRICE}}' => format_amount(optional($this->subscription->price)->amount),
-            '{{BILLING_CYCLE}}' => optional($this->subscription->price)->interval->value,
+            '{{PLAN}}' => optional($this->subscription->plan)->label,
+            '{{PLAN_PRICE}}' => optional($this->subscription->plan)->formatPrice(),
+            '{{BILLING_CYCLE}}' => optional($this->subscription->plan)->interval_label,
         ];
 
         $this->subject = replace_short_code($template->subject, $shortCodes);

@@ -10,7 +10,7 @@
         "label": "Signup",
         "subject": "Welcome to {{APP_NAME}} - Your Subscription Details",
         "is_default": true,
-        "type": "user:singup",
+        "type": "user:signup",
         "content": "Dear <b>{{USER_FIRST_NAME}}</b>, <div><br></div><div>Thank you for choosing {{APP_NAME}}! We are thrilled to have you as a valued member of our community. As promised, here are the details of your subscription plan:<br><strong><br></strong></div><div><strong>Plan</strong>: {{PLAN}}<br></div><div><strong>Price</strong>: {{PLAN_PRICE}}<br><strong>Billing Cycle</strong>: {{BILLING_CYCLE}}</div><div><br></div><div>With this plan, you'll have access to a wide range of exciting features, exclusive content, and premium benefits. We're confident that you'll find great value and enjoy a seamless experience throughout your subscription. </div><div><br></div><div>If you have any questions or need assistance regarding your subscription, our dedicated support team is here to help. Feel free to reach out to us at {{SUPPORT_EMAIL}}. </div><div><br></div><div>Once again, welcome to {{APP_NAME}}! We can't wait to see what you'll achieve with us.<br></div><div><br>Best regards,</div><div>{{APP_NAME}}</div>"
     },
     {

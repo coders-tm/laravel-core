@@ -57,21 +57,21 @@ class Plan extends Model
     protected function featureLines(): Attribute
     {
         return Attribute::make(
-            get: fn () => !empty($this->description) ? explode("\n", $this->description) : [],
+            get: fn() => !empty($this->description) ? explode("\n", $this->description) : [],
         );
     }
 
     protected function priceFormated(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->formatPrice(),
+            get: fn() => $this->formatPrice(),
         );
     }
 
     protected function intervalLabel(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->formatInterval(),
+            get: fn() => $this->formatInterval(),
         );
     }
 
@@ -138,9 +138,9 @@ class Plan extends Model
         $interval = $this->interval->value;
 
         if ($this->interval_count > 1) {
-            return "/ {$this->interval_count} {$interval}s";
+            return "{$this->interval_count} {$interval}s";
         } else {
-            return "/ {$interval}";
+            return "{$interval}";
         }
     }
 

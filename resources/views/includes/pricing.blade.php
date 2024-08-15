@@ -22,7 +22,7 @@
     <div class="ct-plan-amount @if ($price <= 0) visibility-hidden @endif">
         <span class="cur_symbol">{{ $cur_symbol }}</span>
         <span class="ct-ptablebox-price month">{{ $price }}</span>
-        <span class="pac_frequency month">{{ $interval_label }}</span>
+        <span class="pac_frequency month">/{{ $interval_label }}</span>
     </div>
     <div class="ct-plan-footer">
         <form action="{{ app_url('sign-up') }}" method="get">
