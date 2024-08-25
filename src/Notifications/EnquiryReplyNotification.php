@@ -3,15 +3,9 @@
 namespace Coderstm\Notifications;
 
 use Coderstm\Models\Enquiry\Reply;
-use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 
-class EnquiryReplyNotification extends Notification
+class EnquiryReplyNotification extends BaseNotification
 {
-    use Queueable;
-
     public $subject;
     public $message;
 
@@ -27,48 +21,10 @@ class EnquiryReplyNotification extends Notification
         $this->subject = $template->subject;
         $this->message = $template->content;
 
-        if (!$reply->byAdmin()) {
+        parent::__construct($this->subject, $this->message);
+
+        if (!$reply->byAdmin() && $this->canSendPush()) {
             $reply->sendPushNotify();
         }
-    }
-
-    /**
-     * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function via($notifiable)
-    {
-        return ['mail'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-
-        return (new MailMessage)
-            ->subject($this->subject)
-            ->markdown('coderstm::emails.notification', [
-                'message' => $this->message
-            ]);
-    }
-
-    /**
-     * Get the array representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }

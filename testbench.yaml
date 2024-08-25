@@ -1,0 +1,38 @@
+providers:
+  - Laravel\Cashier\CashierServiceProvider
+  - Coderstm\Providers\CoderstmServiceProvider
+  - Coderstm\Providers\CoderstmPermissionsServiceProvider
+  - Coderstm\Providers\CoderstmEventServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+
+migrations:
+  - workbench/database/migrations
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: "/"
+  user: "hello@coderstm.com"
+  install: true
+  health: false
+  discovers:
+    web: true
+    api: false
+    commands: false
+    components: false
+    views: false
+  build:
+    - asset-publish
+    - create-sqlite-db
+    - db:wipe
+    - migrate:fresh
+  assets:
+    - coderstm-assets
+    - coderstm-controllers
+    - coderstm-database
+    - coderstm-models
+    - coderstm-policies
+    - coderstm-provider
+    - coderstm-routes
+  sync: []

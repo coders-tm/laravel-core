@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Coderstm\Models\Subscription\Feature;
 use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
 use Coderstm\Models\Subscription\Plan;
@@ -28,11 +27,7 @@ class PlanSeeder extends Seeder
                 unset($item['features']);
                 $plan = Plan::create($item);
 
-                $plan->syncFeatures(collect($features)->filter(function ($item, $key) {
-                    return Feature::find($key);
-                })->map(function ($item, $key) {
-                    return array_merge(Feature::find($key)->toArray(), ['value' => $item]);
-                })->toArray());
+                $plan->syncFeatures($features);
             }
         } catch (\Exception $e) {
             report($e);

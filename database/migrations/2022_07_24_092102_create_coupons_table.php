@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('stripe_id');
+            $table->string('stripe_id')->nullable();
             $table->string('promotion_code')->unique();
-            $table->string('promotion_id');
+            $table->string('promotion_id')->nullable();
             $table->{$this->jsonable()}('applies_to')->nullable();
             $table->string('duration');
             $table->unsignedInteger('duration_in_months')->nullable();

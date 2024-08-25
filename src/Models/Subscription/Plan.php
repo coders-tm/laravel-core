@@ -3,6 +3,7 @@
 namespace Coderstm\Models\Subscription;
 
 use Coderstm\Coderstm;
+use Coderstm\Database\Factories\PlanFactory;
 use Coderstm\Traits\Core;
 use Coderstm\Services\Period;
 use Spatie\Sluggable\HasSlug;
@@ -26,7 +27,6 @@ class Plan extends Model
     protected $fillable = [
         'label',
         'description',
-        'note',
         'is_active',
         'default_interval',
         'interval',
@@ -148,6 +148,11 @@ class Plan extends Model
     protected function formatAmount($amount)
     {
         return format_amount($amount);
+    }
+
+    protected static function newFactory()
+    {
+        return PlanFactory::new();
     }
 
     protected static function booted()

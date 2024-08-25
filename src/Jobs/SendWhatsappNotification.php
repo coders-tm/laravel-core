@@ -29,18 +29,13 @@ class SendWhatsappNotification implements ShouldQueue
      */
     public function handle(): void
     {
-        $alert = app_settings('alert');
-
-        // Check if whatsapp notification is enabled in the configuration
-        if ($alert->get('whatsapp')) {
-            $twilio = new Client($alert->get('sid'), $alert->get('token'));
-            $twilio->messages->create(
-                "whatsapp:{$this->phoneNumber}",
-                array(
-                    "from" => "whatsapp:" . $alert->get('from'),
-                    "body" => html_text($this->message),
-                )
-            );
-        }
+        $twilio = new Client(config('alert.sid'), config('alert.token'));
+        $twilio->messages->create(
+            "whatsapp:{$this->phoneNumber}",
+            array(
+                "from" => "whatsapp:" . config('alert.from'),
+                "body" => html_text($this->message),
+            )
+        );
     }
 }

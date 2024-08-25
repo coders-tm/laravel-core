@@ -33,15 +33,12 @@ class SendPushNotification implements ShouldQueue
      */
     public function handle(): void
     {
-        // Check if push notification is enabled in the configuration
-        if (app_settings('alert')->get('push')) {
-            $message = CloudMessage::fromArray([
-                'notification' => $this->notification,
-                'topic' => 'global',
-                'data' => $this->data
-            ]);
+        $message = CloudMessage::fromArray([
+            'notification' => $this->notification,
+            'topic' => 'global',
+            'data' => $this->data
+        ]);
 
-            app(Messaging::class)->sendMulticast($message, $this->deviceTokens);
-        }
+        app(Messaging::class)->sendMulticast($message, $this->deviceTokens);
     }
 }

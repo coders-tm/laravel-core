@@ -7,10 +7,10 @@ use Coderstm\Models\Coupon;
 use Coderstm\Models\Redeem;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Models\PaymentMethod;
-use Coderstm\Models\Subscription\Invoice;
 use Illuminate\Validation\ValidationException;
 use Coderstm\Notifications\SubscriptionCancelNotification;
 use Coderstm\Notifications\SubscriptionUpgradeNotification;
@@ -57,13 +57,13 @@ class SubscriptionController extends Controller
             }
         } else if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice;
-            $amount = $invoice->total();
+            $amount = $invoice?->total();
             $subscription['message'] = trans('coderstm::messages.subscription.past_due', [
                 'amount' => $amount
             ]);
             $subscription['invoice'] = [
                 'amount' => $amount,
-                'key' => $invoice->order_key
+                'key' => $invoice?->key
             ];
             $subscription['hasDue'] = true;
         } else if ($upcomingInvoice) {
@@ -111,8 +111,7 @@ class SubscriptionController extends Controller
             'payment_method' => 'required_if:admin,false|exists:payment_methods,id',
         ]);
 
-        $payment = false;
-        $upgrade = false;
+        $payment = $upgrade = $downgrade = false;
         $subscription = null;
         $user = $this->user();
         $plan = Plan::find($request->plan);
@@ -146,7 +145,7 @@ class SubscriptionController extends Controller
                     ]);
                 } else {
                     $oldPlan = $subscription->plan;
-                    $subscription->withCoupon($request->promotion_code)
+                    $subscription = $subscription->withCoupon($request->promotion_code)
                         ->swap($plan->id);
 
                     $upgrade = true;
@@ -181,14 +180,13 @@ class SubscriptionController extends Controller
                 $user->notify(new SubscriptionUpgradeNotification($subscription));
             }
 
-            if ($request->filled('payment_method')) {
-                $subscription = $subscription->load('latestInvoice.order');
-                $invoice = $subscription->latestInvoice;
-                $order = $invoice->order;
+            if ($request->filled('payment_method') && !$downgrade) {
+                $subscription = $subscription->load('latestInvoice');
+                $latestInvoice = $subscription->latestInvoice;
                 $paymentMethod = PaymentMethod::find($request->payment_method);
 
-                if ($invoice->hasDue() && $paymentMethod->payable()) {
-                    $key = $order->key;
+                if ($latestInvoice->has_due && $paymentMethod->payable()) {
+                    $key = $latestInvoice->key;
                     $provider = $paymentMethod->provider;
                     $payment = "/user/payment/$provider?key=$key&redirect=/user/billing";
                 }
@@ -272,7 +270,7 @@ class SubscriptionController extends Controller
         return response()->json($invoices, 200);
     }
 
-    public function downloadInvoice(Request $request, Invoice $invoice)
+    public function downloadInvoice(Request $request, Order $invoice)
     {
         return $invoice->load('line_items')->download();
     }

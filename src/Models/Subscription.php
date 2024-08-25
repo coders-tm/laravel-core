@@ -21,18 +21,19 @@ use Illuminate\Support\Facades\DB;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Jobs\SendPushNotification;
 use Illuminate\Database\Eloquent\Model;
-use Coderstm\Models\Subscription\Invoice;
-use Coderstm\Events\SubscriptionProcessed;
 use Coderstm\Repository\InvoiceRepository;
 use Coderstm\Jobs\SendWhatsappNotification;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Coderstm\Exceptions\SubscriptionUpdateFailure;
 use Coderstm\Database\Factories\SubscriptionFactory;
+use Coderstm\Notifications\SubscriptionRenewedNotification;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Subscription extends Model
 {
-    use HasFeature, Logable, SerializeDate;
+    use HasFeature, Logable, SerializeDate, HasFactory;
 
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
@@ -71,8 +72,8 @@ class Subscription extends Model
     ];
 
     protected $dispatchesEvents = [
-        'created' => SubscriptionProcessed::class,
-        'updated' => SubscriptionProcessed::class,
+        'created' => \Coderstm\Events\SubscriptionProcessed::class,
+        'updated' => \Coderstm\Events\SubscriptionProcessed::class,
     ];
 
     protected $casts = [
@@ -401,13 +402,29 @@ class Subscription extends Model
         return $this;
     }
 
+    /**
+     * Make sure a subscription is not incomplete when performing changes.
+     *
+     * @return void
+     *
+     * @throws \Laravel\Cashier\Exceptions\SubscriptionUpdateFailure
+     */
+    public function guardAgainstIncomplete()
+    {
+        if ($this->incomplete()) {
+            throw SubscriptionUpdateFailure::incompleteSubscription($this);
+        }
+    }
+
     public function swap($plan): self
     {
         if (empty($plan)) {
             throw new InvalidArgumentException('Please provide a plan when swapping.');
         }
 
-        $plan = Plan::find($plan);
+        $this->guardAgainstIncomplete();
+
+        $plan = Plan::findOrFail($plan);
 
         // If plans does not have the same billing frequency
         // (e.g., interval and interval_count) we will update
@@ -419,7 +436,10 @@ class Subscription extends Model
 
         // Attach new plan to subscription
         $this->plan()->associate($plan);
-        $this->save();
+
+        $this->fill([
+            'ends_at' => null
+        ])->save();
 
         $this->syncUsages();
         $this->generateInvoice(true);
@@ -440,17 +460,20 @@ class Subscription extends Model
             throw new LogicException('Unable to renew canceled ended subscription.');
         }
 
-        $subscription = $this;
+        $sub = $this;
 
-        DB::transaction(function () use ($subscription): void {
+        DB::transaction(function () use ($sub): void {
             // Clear usages data
-            $subscription->usages()->delete();
+            $sub->usages()->delete();
+
+            if ($sub->nextPlan) {
+                $sub->plan()->associate($sub->nextPlan);
+            }
 
             // Renew period
-            $subscription->setPeriod();
-            $subscription->save();
+            $sub->setPeriod()->save();
 
-            $subscription->generateInvoice();
+            $sub->generateInvoice();
         });
 
         return $this;
@@ -524,6 +547,8 @@ class Subscription extends Model
             throw new LogicException('Unable to resume subscription that is not within grace period.');
         }
 
+        $this->guardAgainstIncomplete();
+
         // Finally, we will remove the ending timestamp from the user's record in the
         // local database to indicate that the subscription is active again and is
         // no longer "canceled". Then we shall save this record in the database.
@@ -548,31 +573,36 @@ class Subscription extends Model
     /**
      * Get the latest invoice associated with the Subscription
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function latestInvoice(): HasOne
+    public function latestInvoice(): MorphOne
     {
-        return $this->hasOne(Coderstm::$invoiceModel)->latestOfMany();
+        return $this->morphOne(Coderstm::$orderModel, 'orderable')->latestOfMany();
     }
 
     /**
-     * Get the latest invoice associated with the Subscription
+     * Get the latest paid invoice associated with the Subscription
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
      */
-    public function latestPaidInvoice(): HasOne
+    public function latestPaidInvoice(): MorphOne
     {
-        return $this->hasOne(Coderstm::$invoiceModel)->paid()->latestOfMany();
+        return $this->morphOne(Coderstm::$orderModel, 'orderable')->paid()->latestOfMany();
     }
 
     /**
-     * Get all of the invoices for the Subscription
+     * Get all invoices associated with the Subscription
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function invoices(): HasMany
+    public function invoices(): MorphMany
     {
-        return $this->hasMany(Coderstm::$invoiceModel);
+        return $this->morphMany(Coderstm::$orderModel, 'orderable');
+    }
+
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coupon::class);
     }
 
     /**
@@ -585,10 +615,6 @@ class Subscription extends Model
         return $this->pastDue() || $this->incomplete();
     }
 
-    public function coupon(): BelongsTo
-    {
-        return $this->belongsTo(Coupon::class);
-    }
 
     /**
      * Apply a coupon to the subscription.
@@ -661,6 +687,9 @@ class Subscription extends Model
 
         try {
             if ($this->pastDue() || $this->hasIncompletePayment()) {
+                if ($this->pastDue()) {
+                    $this->user->notify(new SubscriptionRenewedNotification($this));
+                }
                 $invoice = $this->latestInvoice;
                 $invoice->markAsPaid($paymentMethod, [
                     'note' => 'Marked the manual payment as received',
@@ -686,15 +715,17 @@ class Subscription extends Model
         }
     }
 
-    public function renderNotification($type, $shortCodes = []): Notification
+    public function renderNotification($type, $shortCodes = []): ?Notification
     {
         $template = Notification::default($type);
         $userShortCodes = $this->user->getShortCodes() ?? [];
+        $upcomingInvoice = $this->upcomingInvoice();
 
         $shortCodes = array_merge($shortCodes, $userShortCodes, [
             '{{PLAN}}' => optional($this->plan)->label,
             '{{PLAN_PRICE}}' => $this->plan->formatPrice(),
             '{{BILLING_CYCLE}}' => optional($this->plan)->interval->value,
+            '{{NEXT_BILLING_DATE}}' => $upcomingInvoice ? $upcomingInvoice->due_date->format('d M, Y') : '',
             '{{ENDS_AT}}' => $this->ends_at ? $this->ends_at->format('d M, Y') : '',
         ]);
 
@@ -709,14 +740,18 @@ class Subscription extends Model
         try {
             $template = $this->renderNotification($type, $shortCodes);
 
-            dispatch(new SendPushNotification($this->user, [
-                'title' => $template->subject,
-                'body' => html_text($template->content)
-            ], [
-                'route' => user_route("/billing"),
-            ]));
+            if (config('alert.push')) {
+                dispatch(new SendPushNotification($this->user, [
+                    'title' => $template->subject,
+                    'body' => html_text($template->content)
+                ], [
+                    'route' => user_route("/billing"),
+                ]));
+            }
 
-            dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n\n{$template->content}"));
+            if (config('alert.whatsapp')) {
+                dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n\n{$template->content}"));
+            }
         } catch (\Exception $e) {
             //throw $e;
             report($e);
@@ -742,14 +777,12 @@ class Subscription extends Model
             $count = $this->plan->count;
         }
 
-        $period = new Period(
-            $interval,
-            $count,
-            $dateFrom ?? Carbon::now()
-        );
+        $period = new Period($interval, $count, $dateFrom ?? Carbon::now());
 
-        $this->starts_at = $period->getStartDate();
-        $this->expires_at = $period->getEndDate();
+        $this->fill([
+            'starts_at' => $period->getStartDate(),
+            'expires_at' => $period->getEndDate(),
+        ]);
 
         return $this;
     }
@@ -767,7 +800,7 @@ class Subscription extends Model
         return null;
     }
 
-    public function upcomingInvoice($start = false, $dateFrom = null): InvoiceRepository
+    public function upcomingInvoice($start = false, $dateFrom = null): ?InvoiceRepository
     {
         $plan = $this->nextPlan ?? $this->plan;
         $period = new Period(
@@ -777,10 +810,12 @@ class Subscription extends Model
         );
 
         return new InvoiceRepository([
-            'user_id' => $this->user_id,
-            'subscription_id' => $this->id,
+            'source' => 'Membership',
+            'customer_id' => $this->user_id,
+            'orderable_id' => $this->id,
+            'orderable_type' => static::class,
             'due_date' => $start ? $this->dateFrom() : $period->getEndDate(),
-            'billing_address' => $this->user->address->toArray(),
+            'billing_address' => $this->user->address?->toArray(),
             'currency' => config('cashier.currency'),
             'collect_tax' => true,
             'line_items' => $this->generateLineItems($plan, $period),
@@ -790,10 +825,10 @@ class Subscription extends Model
 
     protected function dateFrom()
     {
-        return optional($this->latestPaidInvoice)->due_date ?? $this->created_at;
+        return optional($this->latestPaidInvoice)->due_date ?? $this->starts_at;
     }
 
-    protected function generateLineItems(Plan $plan, $period)
+    protected function generateLineItems($plan, $period)
     {
         $fromDate = Carbon::parse($period->getStartDate())->format('M d, Y');
         $toDate = Carbon::parse($period->getEndDate())->format('M d, Y');
@@ -814,19 +849,33 @@ class Subscription extends Model
         ];
     }
 
-    protected function generateInvoice($start = false): Invoice
+    public function paymentConfirmation(?Order $order)
     {
-        $invoice = Invoice::modifyOrCreate(new Resource($this->upcomingInvoice($start)->toArray()));
+        if ($this->pastDue()) {
+            $this->user->notify(new SubscriptionRenewedNotification($this));
+        }
 
-        if ($invoice->isPaid()) {
+        // making subscription status as active
+        $this->update([
+            'status' => static::STATUS_ACTIVE
+        ]);
+    }
+
+    protected function generateInvoice($start = false): ?Order
+    {
+        $order = Order::modifyOrCreate(new Resource($this->upcomingInvoice($start)->toArray()));
+
+        if ($order->is_paid) {
             $this->status = static::STATUS_ACTIVE;
         } else {
-            $this->status = static::STATUS_INCOMPLETE;
+            $this->status = $start ? static::STATUS_INCOMPLETE : static::STATUS_PAST_DUE;
         }
+
+        $this->next_plan = null;
 
         $this->save();
 
-        return $invoice;
+        return $order;
     }
 
     protected static function newFactory()

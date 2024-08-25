@@ -19,7 +19,8 @@ return new class extends Migration
         Schema::table('subscriptions', function (Blueprint $table) {
             $table->foreignIdFor(Plan::class, 'plan_id')->nullable();
             $table->foreignIdFor(Coupon::class, 'coupon_id')->nullable();
-            $table->string('status');
+            $table->string('status')->nullable();
+            $table->string('stripe_status')->nullable()->change();
             $table->{$this->jsonable()}('options')->nullable();
             $table->timestamp('starts_at')->nullable();
             $table->timestamp('canceled_at')->nullable();

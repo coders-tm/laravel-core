@@ -23,9 +23,9 @@ return new class extends Migration
             $table->nullableMorphs('orderable');
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
-            $table->unsignedBigInteger('billing_address_id')->nullable();
             $table->text('note')->nullable();
             $table->boolean('collect_tax')->default(true);
+            $table->{$this->jsonable()}('billing_address')->nullable();
             $table->{$this->jsonable()}('options')->nullable();
             $table->string('source')->nullable();
             $table->string('key')->nullable();
@@ -39,10 +39,6 @@ return new class extends Migration
 
             $table->timestamps();
             $table->softDeletes();
-
-            $table->foreign('customer_id')->references('id')->on('users')->nullOnDelete();
-            $table->foreign('location_id')->references('id')->on('shop_locations')->nullOnDelete();
-            $table->foreign('billing_address_id')->references('id')->on('addresses')->nullOnDelete();
         });
 
         Schema::create('line_items', function (Blueprint $table) {

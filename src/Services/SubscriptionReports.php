@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services;
 
+use Coderstm\Coderstm;
 use Illuminate\Http\Request;
 use Coderstm\Models\Subscription;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,7 @@ class SubscriptionReports
     protected $request;
     protected $column;
 
-    public function __construct(Request $request, $column = 'subscription_invoices.created_at')
+    public function __construct(Request $request, $column = 'orders.created_at')
     {
         $this->request = $request;
         $this->column = $column;
@@ -24,11 +25,18 @@ class SubscriptionReports
             DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_name"),
             'plans.price as plan_price',
             'plans.label as plan_label',
-            DB::raw("SUM(CASE WHEN subscription_invoices.status = 'paid' THEN subscription_invoices.grand_total ELSE 0 END) AS total_paid")
+            DB::raw("SUM(CASE WHEN statuses.label = 'Paid' THEN orders.grand_total ELSE 0 END) AS total_paid")
         )
             ->join('users', 'users.id', '=', 'subscriptions.user_id')
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
-            ->leftJoin('subscription_invoices', 'subscriptions.id', '=', 'subscription_invoices.subscription_id');
+            ->leftJoin('orders', function ($join) {
+                $join->on('orders.orderable_id', '=', "subscriptions.id")
+                    ->where('orders.orderable_type', '=', Subscription::class);
+            })
+            ->leftJoin('statuses', function ($join) {
+                $join->on('statuses.statusable_id', '=', "orders.id")
+                    ->where('statuses.statusable_type', '=', Coderstm::$orderModel);
+            });
 
         if ($this->request->filled('year')) {
             $query->whereYear($this->column, $this->request->year);
@@ -48,7 +56,8 @@ class SubscriptionReports
             'subscriptions.status',
             'plans.price',
             'plans.label',
-            'plans.id'
+            'plans.id',
+            'orders.id',
         )->havingRaw('COUNT(subscriptions.id) > 0');
     }
 

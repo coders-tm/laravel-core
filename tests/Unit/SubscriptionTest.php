@@ -2,173 +2,165 @@
 
 namespace Coderstm\Tests\Unit;
 
-use InvalidArgumentException;
-use Laravel\Cashier\Exceptions\SubscriptionUpdateFailure;
-use Laravel\Cashier\Subscription;
-use PHPUnit\Framework\TestCase;
-use Stripe\Subscription as StripeSubscription;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Tests\TestCase;
+use Illuminate\Support\Carbon;
+use Workbench\App\Models\User;
+use Workbench\App\Models\Coupon;
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Subscription\Plan;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SubscriptionTest extends TestCase
 {
-    public function test_we_can_check_if_a_subscription_is_incomplete()
+    use RefreshDatabase;
+
+    /** @test */
+    public function it_can_create_a_subscription()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_INCOMPLETE,
+        $user = User::factory()->create();
+        $plan = Plan::factory()->create();
+
+        $subscription = Subscription::create([
+            'type' => 'default',
+            'user_id' => $user->id,
+            'plan_id' => $plan->id,
+            'status' => Subscription::STATUS_ACTIVE,
+            'starts_at' => Carbon::now(),
         ]);
 
-        $this->assertTrue($subscription->incomplete());
-        $this->assertFalse($subscription->pastDue());
-        $this->assertFalse($subscription->active());
+        $this->assertEquals($user->id, $subscription->user_id);
+        $this->assertEquals($plan->id, $subscription->plan_id);
+
+        $subscription->pay(PaymentMethod::stripe()->id);
+
+        $this->assertEquals(Subscription::STATUS_ACTIVE, $subscription->status);
     }
 
-    public function test_we_can_check_if_a_subscription_is_past_due()
+    /** @test */
+    public function it_can_check_if_subscription_is_active()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_PAST_DUE,
+        $subscription = Subscription::factory()->create([
+            'status' => Subscription::STATUS_ACTIVE,
+            'ends_at' => null,
         ]);
 
-        $this->assertFalse($subscription->incomplete());
-        $this->assertTrue($subscription->pastDue());
-        $this->assertFalse($subscription->active());
-    }
+        $subscription->pay(PaymentMethod::stripe()->id);
 
-    public function test_we_can_check_if_a_subscription_is_active()
-    {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_ACTIVE,
-        ]);
-
-        $this->assertFalse($subscription->incomplete());
-        $this->assertFalse($subscription->pastDue());
         $this->assertTrue($subscription->active());
     }
 
-    public function test_an_incomplete_subscription_is_not_valid()
+    /** @test */
+    public function it_can_cancel_a_subscription()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_INCOMPLETE,
+        $subscription = Subscription::factory()->create([
+            'status' => Subscription::STATUS_ACTIVE,
+            'trial_ends_at' => null,
+            'ends_at' => null,
         ]);
 
-        $this->assertFalse($subscription->valid());
+        $subscription->pay(PaymentMethod::stripe()->id);
+
+        $subscription = $subscription->cancel();
+
+        $this->assertNotNull($subscription->ends_at);
+
+        $subscription = $subscription->cancelNow();
+        $this->assertEquals(Subscription::STATUS_CANCELED, $subscription->status);
     }
 
-    public function test_a_past_due_subscription_is_not_valid()
+    /** @test */
+    public function it_can_resume_a_subscription_within_grace_period()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_PAST_DUE,
+        $subscription = Subscription::factory()->create([
+            'status' => Subscription::STATUS_ACTIVE,
+            'ends_at' => Carbon::now()->addDays(5),
         ]);
 
-        $this->assertFalse($subscription->valid());
+        $subscription->pay(PaymentMethod::stripe()->id);
+
+        $subscription = $subscription->resume();
+
+        $this->assertNull($subscription->ends_at);
+        $this->assertEquals(Subscription::STATUS_ACTIVE, $subscription->status);
     }
 
-    public function test_an_active_subscription_is_valid()
+    /** @test */
+    public function it_cannot_resume_a_subscription_outside_grace_period()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_ACTIVE,
+        $subscription = Subscription::factory()->create([
+            'status' => Subscription::STATUS_CANCELED,
+            'ends_at' => Carbon::now()->subDays(1),
         ]);
 
-        $this->assertTrue($subscription->valid());
+        $this->expectException(\LogicException::class);
+
+        $subscription->resume();
     }
 
-    public function test_payment_is_incomplete_when_status_is_incomplete()
+    /** @test */
+    public function it_can_check_if_subscription_is_on_trial()
     {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_INCOMPLETE,
+        $subscription = Subscription::factory()->create([
+            'trial_ends_at' => Carbon::now()->addDays(5),
         ]);
-
-        $this->assertTrue($subscription->hasIncompletePayment());
-    }
-
-    public function test_payment_is_incomplete_when_status_is_past_due()
-    {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_PAST_DUE,
-        ]);
-
-        $this->assertTrue($subscription->hasIncompletePayment());
-    }
-
-    public function test_payment_is_not_incomplete_when_status_is_active()
-    {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_ACTIVE,
-        ]);
-
-        $this->assertFalse($subscription->hasIncompletePayment());
-    }
-
-    public function test_incomplete_subscriptions_cannot_be_swapped()
-    {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_INCOMPLETE,
-        ]);
-
-        $this->expectException(SubscriptionUpdateFailure::class);
-
-        $subscription->swap('premium_price');
-    }
-
-    public function test_incomplete_subscriptions_cannot_update_their_quantity()
-    {
-        $subscription = new Subscription([
-            'stripe_status' => StripeSubscription::STATUS_INCOMPLETE,
-        ]);
-
-        $this->expectException(SubscriptionUpdateFailure::class);
-
-        $subscription->updateQuantity(5);
-    }
-
-    public function test_extending_a_trial_requires_a_date_in_the_future()
-    {
-        $this->expectException(InvalidArgumentException::class);
-
-        (new Subscription)->extendTrial(now()->subDay());
-    }
-
-    public function test_it_can_determine_if_the_subscription_is_on_trial()
-    {
-        $subscription = new Subscription();
-        $subscription->setDateFormat('Y-m-d H:i:s');
-        $subscription->trial_ends_at = now()->addDay();
 
         $this->assertTrue($subscription->onTrial());
-
-        $subscription = new Subscription();
-        $subscription->setDateFormat('Y-m-d H:i:s');
-        $subscription->trial_ends_at = now()->subDay();
-
-        $this->assertFalse($subscription->onTrial());
     }
 
-    public function test_it_can_determine_if_a_trial_has_expired()
+    /** @test */
+    public function it_can_extend_the_trial_period()
     {
-        $subscription = new Subscription();
-        $subscription->setDateFormat('Y-m-d H:i:s');
-        $subscription->trial_ends_at = now()->subDay();
+        $subscription = Subscription::factory()->create([
+            'trial_ends_at' => Carbon::now()->addDays(5)->endOfDay(),
+        ]);
 
-        $this->assertTrue($subscription->hasExpiredTrial());
+        $newTrialEndDate = Carbon::now()->addDays(10)->endOfDay();
+        $subscription->extendTrial($newTrialEndDate);
 
-        $subscription = new Subscription();
-        $subscription->setDateFormat('Y-m-d H:i:s');
-        $subscription->trial_ends_at = now()->addDay();
-
-        $this->assertFalse($subscription->hasExpiredTrial());
+        $this->assertTrue($newTrialEndDate->isSameDay($subscription->trial_ends_at));
     }
 
-    public function test_we_can_check_if_it_has_a_single_price()
+    /** @test */
+    public function it_can_swap_to_a_new_plan()
     {
-        $subscription = new Subscription(['stripe_price' => 'foo']);
+        $subscription = Subscription::factory()->create();
+        $subscription->pay(PaymentMethod::stripe()->id);
 
-        $this->assertTrue($subscription->hasSinglePrice());
-        $this->assertFalse($subscription->hasMultiplePrices());
+        $newPlan = Plan::factory()->create();
+
+        $subscription->swap($newPlan->id);
+
+        $this->assertEquals($newPlan->id, $subscription->plan_id);
     }
 
-    public function test_we_can_check_if_it_has_multiple_prices()
+    /** @test */
+    public function it_can_renew_a_subscription()
     {
-        $subscription = new Subscription(['stripe_price' => null]);
+        $subscription = Subscription::factory()->create([
+            'expires_at' => Carbon::now()->subDays(5),
+            'status' => Subscription::STATUS_ACTIVE
+        ]);
 
-        $this->assertTrue($subscription->hasMultiplePrices());
-        $this->assertFalse($subscription->hasSinglePrice());
+        $subscription->renew();
+
+        $this->assertNull($subscription->ends_at);
+
+        $subscription->pay(PaymentMethod::stripe()->id);
+
+        $this->assertTrue($subscription->active());
+    }
+
+    /** @test */
+    public function it_can_apply_a_coupon_to_a_subscription()
+    {
+        $subscription = Subscription::factory()
+            ->for(User::factory(), 'user')
+            ->create();
+        $coupon = Coupon::factory()->create();
+
+        $subscription->withCoupon($coupon->promotion_code)->save();
+
+        $this->assertEquals($coupon->id, $subscription->coupon_id);
     }
 }

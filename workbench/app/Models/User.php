@@ -1,10 +1,11 @@
 <?php
 
-namespace Coderstm\Tests\Fixtures;
+namespace Workbench\App\Models;
 
-use Coderstm\Models\User as ModelsUser;
+use Coderstm\Models\User as Base;
+use Workbench\Database\Factories\UserFactory;
 
-class User extends ModelsUser
+class User extends Base
 {
     public $taxRates = [];
 
@@ -47,5 +48,13 @@ class User extends ModelsUser
     public function priceTaxRates()
     {
         return $this->priceTaxRates;
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory()
+    {
+        return UserFactory::new();
     }
 }

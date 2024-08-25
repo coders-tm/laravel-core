@@ -384,15 +384,15 @@ class UserController extends Controller
         }
     }
 
-    public function markAsPaid(Request $request, $id)
+    public function markAsPaid(Request $request, User $user)
     {
-        $user = Coderstm::$userModel::findOrFail($id);
-
-        $this->authorize('update', [$user]);
+        $request->validate([
+            'payment_method' => 'required|exists:payment_methods,id',
+        ]);
 
         try {
             $subscription = $user->subscription();
-            $subscription->paidOutOfBand($request->note ?? 'Cash');
+            $subscription->pay($request->payment_method);
         } catch (\Exception $e) {
             throw $e;
         }

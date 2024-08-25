@@ -37,7 +37,7 @@ class Coderstm
      *
      * @var string
      */
-    public static $invoiceModel = 'Coderstm\\Models\\Subscription\\Invoice';
+    public static $orderModel = 'Coderstm\\Models\\Shop\\Order';
 
     /**
      * The default plan model class name.
@@ -152,14 +152,14 @@ class Coderstm
     }
 
     /**
-     * Set the invoice model class name.
+     * Set the order model class name.
      *
-     * @param  string  $invoiceModel
+     * @param  string  $orderModel
      * @return void
      */
-    public static function useInvoiceModel($invoiceModel)
+    public static function useOrderModel($orderModel)
     {
-        static::$invoiceModel = $invoiceModel;
+        static::$orderModel = $orderModel;
     }
 
     /**

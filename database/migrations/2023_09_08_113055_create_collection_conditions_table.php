@@ -1,5 +1,6 @@
 <?php
 
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -7,6 +8,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use Helpers;
+
     /**
      * Run the migrations.
      *
@@ -29,7 +32,7 @@ return new class extends Migration
         });
 
         // set auto increment to 10000
-        DB::statement('ALTER TABLE collection_conditions AUTO_INCREMENT = 10000;');
+        $this->setAutoIncrement('collection_conditions');
     }
 
     /**

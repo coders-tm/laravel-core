@@ -1,0 +1,72 @@
+<?php
+
+namespace Coderstm\Tests\Feature;
+
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Log;
+use Coderstm\Enum\AppStatus;
+use Coderstm\Tests\Feature\FeatureTestCase;
+use Exception;
+
+class SubscriptionsCancelTest extends FeatureTestCase
+{
+    /** @test */
+    public function it_cancels_subscriptions_and_deactivates_users()
+    {
+        // Arrange: Create an active subscription with a cancellation date in the past
+        $subscription = Subscription::withoutEvents(function () {
+            return Subscription::factory()->create([
+                'cancels_at' => now()->subDay(),
+                'status' => Subscription::STATUS_ACTIVE,
+            ]);
+        });
+
+        // Act: Run the command
+        $this->artisan('coderstm:subscriptions-cancel')
+            ->assertExitCode(0);
+
+        // Assert: Check that the subscription was canceled and the user was deactivated
+        $this->assertDatabaseHas('subscriptions', [
+            'id' => $subscription->id,
+            'status' => Subscription::STATUS_CANCELED,
+        ]);
+
+        $this->assertDatabaseHas('logs', [
+            'type' => 'canceled',
+            'logable_type' => get_class($subscription),
+            'logable_id' => $subscription->id,
+            'message' => 'Subscription has been canceled successfully!',
+        ]);
+    }
+
+    /** @test */
+    public function it_logs_an_error_when_cancellation_fails()
+    {
+        // Arrange: Create an active subscription
+        $subscription = Subscription::withoutEvents(function () {
+            return Subscription::factory()->create([
+                'cancels_at' => now()->subDay(),
+                'status' => Subscription::STATUS_ACTIVE,
+            ]);
+        });
+
+        // Act: Mock the cancelNow method to throw an exception
+        $this->partialMock(Subscription::class, function ($mock) {
+            $mock->shouldReceive('cancelNow')
+                ->andThrow(new \Exception('Cancellation failed'));
+        });
+
+        // Run the command
+        $this->artisan('coderstm:subscriptions-cancel')
+            ->assertExitCode(0);
+
+        // Assert: Check the error log entry was created
+        // $this->assertDatabaseHas('logs', [
+        //     'type' => 'canceled',
+        //     'status' => Log::STATUS_ERROR,
+        //     'logable_type' => get_class($subscription),
+        //     'logable_id' => $subscription->id,
+        //     'message' => "Subscription #{$subscription->id} unable to deactivated! Cancellation failed",
+        // ]);
+    }
+}

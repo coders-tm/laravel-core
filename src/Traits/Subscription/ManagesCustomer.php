@@ -6,6 +6,7 @@ use Coderstm\Coderstm;
 use Illuminate\Support\Arr;
 use Laravel\Cashier\Cashier;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
@@ -14,14 +15,14 @@ trait ManagesCustomer
     protected function isSubscribed(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->onTrial() || $this->subscribed('default'),
+            get: fn() => $this->onTrial() || $this->subscribed('default'),
         );
     }
 
     protected function hasCancelled(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->subscribed('default') ? $this->subscription()->canceled() : false,
+            get: fn() => $this->subscribed('default') ? $this->subscription()->canceled() : false,
         );
     }
 
@@ -80,16 +81,16 @@ trait ManagesCustomer
      */
     public function invoices(): HasMany
     {
-        return $this->hasMany(Coderstm::$invoiceModel);
+        return $this->hasMany(Coderstm::$orderModel, 'customer_id');
     }
 
     /**
      * Get the latest invoices for the User
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function latestInvoice()
+    public function latestInvoice(): HasOne
     {
-        return $this->hasMany(Coderstm::$invoiceModel)->latest();
+        return $this->hasOne(Coderstm::$orderModel, 'customer_id')->latest();
     }
 
     protected function billingAddress(): array
@@ -99,7 +100,11 @@ trait ManagesCustomer
             'email' =>  $this->email,
             'phone' =>  $this->phone_number,
             'address' =>  Arr::only($this->address->toArray(), [
-                'line1', 'line2', 'city', 'state', 'postal_code'
+                'line1',
+                'line2',
+                'city',
+                'state',
+                'postal_code'
             ]),
         ];
     }
@@ -118,7 +123,6 @@ trait ManagesCustomer
             'id',
             'id',
             (new Coderstm::$planModel)->getForeignKey()
-        )
-            ->orderByDesc('created_at');
+        )->orderByDesc('created_at');
     }
 }

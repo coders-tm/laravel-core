@@ -3,6 +3,7 @@
 namespace Coderstm\Database\Factories;
 
 use Illuminate\Support\Str;
+use Coderstm\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,7 +16,7 @@ class UserFactory extends Factory
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
      */
-    protected $model = 'App\Models\User';
+    protected $model = 'Coderstm\Models\User';
 
     /**
      * Define the model's default state.
@@ -65,6 +66,16 @@ class UserFactory extends Factory
             return [
                 'is_active' => false,
             ];
+        });
+    }
+
+    /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function ($user) {
+            $user->updateOrCreateAddress(Address::factory()->make()->toArray());
         });
     }
 }

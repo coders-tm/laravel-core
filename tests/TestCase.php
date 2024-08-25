@@ -3,19 +3,20 @@
 namespace Coderstm\Tests;
 
 use Coderstm\Coderstm;
-use Illuminate\Support\Str;
-use InvalidArgumentException;
-use Coderstm\Tests\Fixtures\User;
-use Coderstm\Providers\CoderstmServiceProvider;
-use Coderstm\Providers\CoderstmEventServiceProvider;
-use Laravel\Cashier\CashierServiceProvider;
-use Coderstm\Providers\CoderstmPermissionsServiceProvider;
 use Coderstm\Models\Admin;
+use Illuminate\Support\Str;
 use Coderstm\Models\Enquiry;
+use InvalidArgumentException;
+use Workbench\App\Models\User;
+use Orchestra\Testbench\Concerns\WithWorkbench;
+use Orchestra\Testbench\Attributes\WithMigration;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 
+#[WithMigration]
 abstract class TestCase extends OrchestraTestCase
 {
+    use WithWorkbench;
+
     protected function getEnvironmentSetUp($app)
     {
         $apiKey = config('cashier.secret');
@@ -27,15 +28,5 @@ abstract class TestCase extends OrchestraTestCase
         Coderstm::useUserModel(User::class);
         Coderstm::useAdminModel(Admin::class);
         Coderstm::useEnquiryModel(Enquiry::class);
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            CashierServiceProvider::class,
-            CoderstmServiceProvider::class,
-            CoderstmPermissionsServiceProvider::class,
-            CoderstmEventServiceProvider::class,
-        ];
     }
 }

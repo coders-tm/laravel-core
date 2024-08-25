@@ -27,7 +27,7 @@ class SubscriptionFactory extends Factory
 
         return [
             (new $model)->getForeignKey() => ($model)::factory(),
-            'plan_id' => (Coderstm::$planModel)::factory(),
+            'plan_id' => Coderstm::$planModel::inRandomOrder()->first()?->id,
             'type' => 'default',
             'status' => Subscription::STATUS_ACTIVE,
             'trial_ends_at' => null,

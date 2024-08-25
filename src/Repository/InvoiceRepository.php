@@ -2,20 +2,19 @@
 
 namespace Coderstm\Repository;
 
-use Coderstm\Models\Subscription\Invoice;
+use Coderstm\Models\Shop\Order;
 use Illuminate\Support\Collection;
-use Coderstm\Models\Subscription\Invoice\TaxLine;
-use Coderstm\Models\Subscription\Invoice\LineItem;
-use Coderstm\Models\Subscription\Invoice\DiscountLine;
+use Coderstm\Models\Shop\Order\TaxLine;
+use Coderstm\Models\Shop\Order\LineItem;
+use Coderstm\Models\Shop\Order\DiscountLine;
 
-class InvoiceRepository extends Invoice
+class InvoiceRepository extends Order
 {
     public $timestamps = false;
 
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'due_date',
-        'subscription_id',
         'billing_address',
         'note',
         'currency',
@@ -25,6 +24,9 @@ class InvoiceRepository extends Invoice
         'discount_total',
         'line_items',
         'grand_total',
+        'source',
+        'orderable_id',
+        'orderable_type',
     ];
 
     protected $with = [];

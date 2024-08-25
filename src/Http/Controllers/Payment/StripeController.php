@@ -98,7 +98,7 @@ class StripeController extends Controller
             'email' => $user->email,
             'phone' => $user->phone_number,
             'address' => array_merge($address, [
-                'country' => 'US'
+                'country' => $billing_address['country_code']
             ]),
         ];
     }

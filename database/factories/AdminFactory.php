@@ -2,8 +2,9 @@
 
 namespace Coderstm\Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Coderstm\Models\Address;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AdminFactory extends Factory
 {
@@ -71,6 +72,16 @@ class AdminFactory extends Factory
             return [
                 'is_supper_admin' => true,
             ];
+        });
+    }
+
+    /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function ($user) {
+            $user->updateOrCreateAddress(Address::factory()->make()->toArray());
         });
     }
 }

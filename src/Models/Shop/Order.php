@@ -2,29 +2,30 @@
 
 namespace Coderstm\Models\Shop;
 
-use Coderstm\Traits\OrderStatus;
-use Coderstm\Models\Status;
 use Coderstm\Traits\Core;
 use Coderstm\Models\Refund;
+use Coderstm\Models\Status;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Coderstm\Models\Address;
 use Coderstm\Models\Payment;
-use Coderstm\Models\Shop\Location;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Coderstm\Database\Factories\Shop\OrderFactory;
 use Coderstm\Services\Resource;
+use Coderstm\Traits\Statusable;
+use Coderstm\Traits\OrderStatus;
+use Coderstm\Models\Shop\Location;
+use Illuminate\Support\Collection;
 use Coderstm\Models\Shop\Order\Contact;
 use Coderstm\Models\Shop\Order\TaxLine;
-use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
 use Coderstm\Models\Shop\CartRepository;
 use Coderstm\Models\Shop\Order\Customer;
 use Coderstm\Models\Shop\Order\LineItem;
+use Illuminate\Database\Eloquent\Builder;
 use Coderstm\Models\Shop\Product\Inventory;
 use Coderstm\Models\Shop\Order\DiscountLine;
-use Coderstm\Traits\Statusable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Coderstm\Database\Factories\Shop\OrderFactory;
 
 class Order extends Model
 {
@@ -70,14 +71,12 @@ class Order extends Model
     const REASON_UNKNOWN = 'Unknown';
 
     protected $fillable = [
-        'customer',
         'location',
         'customer_id',
         'orderable_id',
         'orderable_type',
         'location_id',
         'billing_address',
-        'billing_address_id',
         'note',
         'currency',
         'exchange_rate',
@@ -88,19 +87,21 @@ class Order extends Model
         'tax_total',
         'discount_total',
         'grand_total',
+        'due_date',
     ];
 
     protected $dateTimeFormat = 'd M, Y \a\t h:i a';
 
     protected $casts = [
         'collect_tax' => 'boolean',
+        'billing_address' => 'array',
+        'due_date' => 'datetime',
         'options' => 'json',
     ];
 
     protected $hidden = [
         'customer_id',
         'location_id',
-        'billing_address_id',
         'orderable_id',
         'orderable_type',
     ];
@@ -109,7 +110,6 @@ class Order extends Model
         'status',
         'customer',
         'contact',
-        'billing_address',
         'line_items',
         'tax_lines',
         'discount',
@@ -117,6 +117,7 @@ class Order extends Model
 
     protected $appends = [
         'total_line_items',
+        'amount',
         'due_amount',
         'refundable_amount',
         'formated_id',
@@ -135,16 +136,6 @@ class Order extends Model
     public function location()
     {
         return $this->belongsTo(Location::class);
-    }
-
-    public function addresses()
-    {
-        return $this->morphMany(Address::class, 'addressable');
-    }
-
-    public function billing_address()
-    {
-        return $this->belongsTo(Address::class, 'billing_address_id');
     }
 
     public function line_items()
@@ -187,104 +178,104 @@ class Order extends Model
         return $this->morphTo()->withOnly([]);
     }
 
+
     public function hasDiscount(): bool
     {
         return !is_null($this->discount) ?: false;
     }
 
-    public function getFormatedIdAttribute()
+    protected function amount(): Attribute
     {
-        return "#{$this->id}";
+        return Attribute::make(
+            get: fn() => $this->total(),
+        );
     }
 
-    public function getDueAmountAttribute()
+    protected function dueAmount(): Attribute
     {
-        return round($this->grand_total - $this->paid_total, 2);
+        return Attribute::make(
+            get: fn() => round($this->grand_total - $this->paid_total, 2),
+        );
     }
 
-    public function getRefundableAmountAttribute()
+    protected function refundableAmount(): Attribute
     {
-        return round($this->paid_total - $this->refund_total, 2);
+        return Attribute::make(
+            get: fn() => round($this->paid_total - $this->refund_total, 2),
+        );
     }
 
-    public function getHasDueAttribute()
+    protected function formatedId(): Attribute
     {
-        return $this->due_amount > 0;
+        return Attribute::make(
+            get: fn() => "#{$this->id}",
+        );
     }
 
-    public function getHasPaymentAttribute()
+    protected function hasDue(): Attribute
     {
-        return $this->paid_total > 0;
+        return Attribute::make(
+            get: fn() => $this->due_amount > 0,
+        );
     }
 
-    public function getTotalLineItemsAttribute()
+    protected function hasPayment(): Attribute
     {
-        if (!$this->line_items_quantity) {
-            return '0 Items';
-        }
-        return "{$this->line_items_quantity} Item" . ($this->line_items_quantity > 1 ? 's' : '');
+        return Attribute::make(
+            get: fn() => $this->paid_total > 0,
+        );
     }
 
-    public function setCustomerAttribute($attributes)
+    protected function totalLineItems(): Attribute
     {
-        if ($attributes) {
-            $customer = Customer::firstOrCreate([
-                'email' => has($attributes)->email,
-            ], $attributes);
+        return Attribute::make(
+            get: function () {
+                if (!$this->line_items_quantity) {
+                    return '0 Items';
+                }
+                return "{$this->line_items_quantity} Item" . ($this->line_items_quantity > 1 ? 's' : '');
+            },
+        );
+    }
 
-            // add address
-            if ($customer->wasRecentlyCreated) {
-                $customer->updateOrCreateAddress($attributes['address'] ?? []);
-            }
+    protected function isCompleted(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->hasStatus(static::STATUS_COMPLETED),
+        );
+    }
 
-            $this->attributes['customer_id'] = $customer->id;
-        }
+    protected function isCancelled(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->hasStatus(static::STATUS_CANCELLED),
+        );
+    }
+
+    protected function isPaid(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->hasStatus(static::STATUS_PAID),
+        );
+    }
+
+    protected function canEdit(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => !$this->hasStatus(Order::STATUS_CANCELLED) && !$this->hasStatus(Order::STATUS_COMPLETED),
+        );
+    }
+
+    protected function canRefund(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->hasAnyStatus([Order::STATUS_PAID, Order::STATUS_PARTIALLY_PAID]) && !$this->hasStatus(Order::STATUS_REFUNDED),
+        );
     }
 
     public function setLocationAttribute($location)
     {
         $this->attributes['location_id'] = has($location)->id;
-    }
-
-    public function setBillingAddressAttribute($address)
-    {
-        if ($address) {
-            if ($this->billing_address_id) {
-                $this->billing_address->update($address);
-            } else {
-                $address = $this->addresses()->save((new Address($address))->replicate([
-                    'id'
-                ])->fill([
-                    'ref' => 'billing_address',
-                ]));
-                $this->attributes['billing_address_id'] = $address->id;
-            }
-        }
-    }
-
-    public function getIsCompletedAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_COMPLETED);
-    }
-
-    public function getIsCancelledAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_CANCELLED);
-    }
-
-    public function getIsPaidAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_PAID);
-    }
-
-    public function getCanEditAttribute(): bool
-    {
-        return !$this->hasStatus(Order::STATUS_CANCELLED) && !$this->hasStatus(Order::STATUS_COMPLETED);
-    }
-
-    public function getCanRefundAttribute(): bool
-    {
-        return $this->hasAnyStatus([Order::STATUS_PAID, Order::STATUS_PARTIALLY_PAID]) && !$this->hasStatus(Order::STATUS_REFUNDED);
     }
 
     public function syncLineItems(Collection $line_items, $detach = true)
@@ -323,25 +314,29 @@ class Order extends Model
 
     public function duplicate()
     {
-        $replicate = new Resource(static::load([
-            'billing_address',
-        ])->replicate()->toArray());
+        $replicate = new Resource($this->replicate()->toArray());
 
-        return static::createOrUpdate($replicate);
+        return static::modifyOrCreate($replicate);
     }
 
     public static function modifyOrCreate(Resource $resource)
     {
-        return static::createOrUpdate($resource);
-    }
+        $resource->merge([
+            'customer_id' => $resource->input('customer.id') ?? $resource->customer_id,
+        ]);
 
-    public static function createOrUpdate(Resource $resource)
-    {
         $order = static::updateOrCreate([
             'id' => has($resource)->id
         ], $resource->only((new static)->getFillable()));
 
-        return $order->saveRelated($resource);
+        $order = $order->saveRelated($resource);
+
+        if (!$order->has_due) {
+            $order->markedAsPaid();
+            $order->markedAsCompleted();
+        }
+
+        return $order->fresh('status');
     }
 
     public function saveRelated(Resource $resource)
@@ -408,7 +403,7 @@ class Order extends Model
         }
 
         // current instance
-        return $this;
+        return $this->fresh('status');
     }
 
     public function markAsPaid($paymentMethod, array $transaction = [])
@@ -493,6 +488,16 @@ class Order extends Model
         };
     }
 
+    protected function formatAmount($amount)
+    {
+        return format_amount($amount, $this->currency);
+    }
+
+    protected function billingAddress()
+    {
+        return (new Address($this->billing_address ?? []))->label;
+    }
+
     private function toPdfArray(): array
     {
         return [
@@ -500,15 +505,15 @@ class Order extends Model
             'currency' => $this->currency,
             'phone_number' => optional($this->contact)->phone_number,
             'customer_name' => optional($this->customer)->name ?? 'NA',
-            'billing_address' => optional($this->billing_address)->label,
+            'billing_address' => $this->billingAddress(),
             'line_items' => $this->line_items,
             'location' => optional($this->location)->address_label,
-            'sub_total' => format_amount($this->sub_total),
-            'tax_total' => format_amount($this->tax_total),
-            'discount_total' => format_amount($this->discount_total),
-            'grand_total' => format_amount($this->grand_total),
-            'paid_total' => format_amount($this->paid_total),
-            'due_amount' => format_amount($this->due_amount),
+            'sub_total' => $this->formatAmount($this->sub_total),
+            'tax_total' => $this->formatAmount($this->tax_total),
+            'discount_total' => $this->formatAmount($this->discount_total),
+            'grand_total' => $this->formatAmount($this->grand_total),
+            'paid_total' => $this->formatAmount($this->paid_total),
+            'due_amount' => $this->formatAmount($this->due_amount),
             'created_at' => $this->created_at->format('d-m-Y h:i a'),
         ];
     }
@@ -523,9 +528,14 @@ class Order extends Model
         return Pdf::loadView('coderstm::pdfs.order-receipt', $this->toPdfArray());
     }
 
+    public function download()
+    {
+        return $this->receiptPdf()->download("Invoice-{$this->id}.pdf");
+    }
+
     public function total()
     {
-        return format_amount($this->due_amount);
+        return $this->formatAmount($this->grand_total);
     }
 
     protected function generateKey()
@@ -556,9 +566,33 @@ class Order extends Model
             'currency' => Str::upper($this->currency),
             'label' => $this->label(),
             'line_items' => $this->line_items,
-            'raw_amount' => $this->due_amount,
+            'raw_amount' => $this->grand_total,
             'amount' => $this->total()
         ];
+    }
+
+    public function guardInvalidPayment()
+    {
+        if ($this->is_paid) {
+            throw new \InvalidArgumentException('This invoice has already been paid.', 422);
+        }
+
+        if ($this->grand_total <= 0) {
+            throw new \InvalidArgumentException('The invoice amount must be greater than zero.', 422);
+        }
+    }
+
+    /**
+     * Scope a query to only include paid
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePaid($query)
+    {
+        return $query->whereHas('status', function ($q) {
+            $q->where('label', static::STATUS_PAID);
+        });
     }
 
     protected static function newFactory()

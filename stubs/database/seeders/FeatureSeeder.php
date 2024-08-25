@@ -15,16 +15,23 @@ class FeatureSeeder extends Seeder
     {
         $rows = [
             [
-                'label' => 'Classes',
-                'slug' => 'classes',
+                'label' => 'Locations',
+                'slug' => 'locations',
                 'resetable' => true, // false; credit will not reset on subscription renewal
-                'description' => 'Maximum classes can be booked and join.',
+                'description' => 'Maximum locations can be created.',
             ],
             [
-                'label' => 'Guest pass',
-                'slug' => 'guest-pass',
+                'label' => 'Staff',
+                'slug' => 'staff',
                 'resetable' => true,
-                'description' => 'Allows non-members to try out the gym or studio facilities',
+                'description' => 'Maximum staff can be created.',
+            ],
+            [
+                'label' => 'Support',
+                'slug' => 'support',
+                'type' => 'boolean',
+                'resetable' => false,
+                'description' => '24x7 Dedicated Support.',
             ]
         ];
 

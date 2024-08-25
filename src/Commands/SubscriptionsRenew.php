@@ -40,10 +40,10 @@ class SubscriptionsRenew extends Command
 
                 $subscription->logs()->create([
                     'type' => 'renew',
-                    'message' => 'Subscription has been renew successfully!'
+                    'message' => 'Subscription has been renewed successfully!'
                 ]);
 
-                $this->info("Subscription #{$subscription->id} has been renew!");
+                $this->info("Subscription #{$subscription->id} has been renewed!");
             } catch (\Exception $e) {
                 $message = "Subscription #{$subscription->id} unable to renew! {$e->getMessage()}";
 

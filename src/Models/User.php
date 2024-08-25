@@ -16,7 +16,6 @@ use Coderstm\Database\Factories\UserFactory;
 use Coderstm\Exceptions\ImportFailedException;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Coderstm\Exceptions\ImportSkippedException;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
@@ -52,6 +51,8 @@ class User extends Admin implements MustVerifyEmail
         'release_at' => 'datetime:Y-m-d',
         'email_verified_at' => 'datetime',
         'trial_ends_at' => 'datetime',
+        'starts_at' => 'datetime:' . \DateTimeInterface::ATOM,
+        'ends_at' => 'datetime:' . \DateTimeInterface::ATOM,
         'rag' => AppRag::class,
         'status' => AppStatus::class,
         'is_active' => 'boolean',
@@ -440,7 +441,7 @@ class User extends Admin implements MustVerifyEmail
     /**
      * Create a new factory instance for the model.
      */
-    protected static function newFactory(): Factory
+    protected static function newFactory()
     {
         return UserFactory::new();
     }
@@ -498,7 +499,8 @@ class User extends Admin implements MustVerifyEmail
                 },
             ]);
             $builder->withMax('subscriptions as ends_at', 'cancels_at');
-            $builder->withMax('subscriptions as starts_at', 'created_at');
+            $builder->withMax('subscriptions as starts_at', 'starts_at');
+            $builder->withMax('subscriptions as subscription_status', 'status');
         });
     }
 }
