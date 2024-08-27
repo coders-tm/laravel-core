@@ -8,6 +8,7 @@ use Coderstm\Events\LogCreated;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Log extends Model
 {
@@ -66,7 +67,7 @@ class Log extends Model
         return $this->belongsTo(Coderstm::$adminModel)->withOnly([]);
     }
 
-    public function reply()
+    public function reply(): MorphMany
     {
         return $this->morphMany(static::class, 'logable');
     }

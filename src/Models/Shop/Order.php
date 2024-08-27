@@ -178,7 +178,6 @@ class Order extends Model
         return $this->morphTo()->withOnly([]);
     }
 
-
     public function hasDiscount(): bool
     {
         return !is_null($this->discount) ?: false;
@@ -314,7 +313,11 @@ class Order extends Model
 
     public function duplicate()
     {
-        $replicate = new Resource($this->replicate()->toArray());
+        $replicate = new Resource($this->replicate([
+            'created_at',
+            'updated_at',
+            'due_date',
+        ])->toArray());
 
         return static::modifyOrCreate($replicate);
     }

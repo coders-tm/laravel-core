@@ -2,13 +2,14 @@
 
 namespace Coderstm\Models;
 
+use Coderstm\Traits\Logable;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Refund extends Model
 {
-    use SerializeDate;
+    use SerializeDate, Logable;
 
     protected $fillable = [
         'amount',

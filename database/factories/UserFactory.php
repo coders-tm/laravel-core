@@ -7,7 +7,7 @@ use Coderstm\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\User>
  */
 class UserFactory extends Factory
 {
@@ -16,7 +16,7 @@ class UserFactory extends Factory
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
      */
-    protected $model = 'Coderstm\Models\User';
+    protected $model = 'Coderstm\\Models\\User';
 
     /**
      * Define the model's default state.

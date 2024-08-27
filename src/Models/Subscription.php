@@ -708,7 +708,7 @@ class Subscription extends Model
 
     public function syncUsages()
     {
-        if ($this->latestInvoice->wasRecentlyCreated) {
+        if ($this->latestInvoice?->wasRecentlyCreated) {
             $this->usages()->delete();
         } else {
             $this->syncOrResetUsages();

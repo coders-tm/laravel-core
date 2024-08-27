@@ -8,6 +8,7 @@ use League\Csv\Reader;
 use Coderstm\Models\Module;
 use Illuminate\Support\Str;
 use Coderstm\Models\Permission;
+use Coderstm\Services\Helpers as ServicesHelpers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -184,18 +185,9 @@ trait Helpers
         return new LengthAwarePaginator($items->forPage($page, $perPage)->values(), $items->count(), $perPage, $page, $options);
     }
 
-    protected function location()
+    protected static function location()
     {
-        $ip = request()->ip();
-        $location = Location::get($ip);
-        $device = Browser::browserFamily() . ' on ' . Browser::platformFamily();
-        $time = now()->format('M d, Y \a\t g:i a \U\T\C');
-        return collect([
-            'ip' =>  $ip,
-            'device' => $device,
-            'location' => $location ? "{$location->regionName}, {$location->countryCode}" : '',
-            'time' => $time,
-        ]);
+        return ServicesHelpers::location();
     }
 
     protected function setAutoIncrement($table, $increment = 1000000)

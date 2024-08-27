@@ -3,9 +3,10 @@
 namespace Coderstm\Http\Controllers\Auth;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Log;
 use Coderstm\Enum\AppStatus;
-use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
+use Coderstm\Services\Helpers;
 use Coderstm\Events\UserSubscribed;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,8 +16,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    use Helpers;
-
     public function login(Request $request, $guard = 'users')
     {
         $request->validate(
@@ -43,13 +42,17 @@ class AuthController extends Controller
                 // create log
                 $loginLog = $user->logs()->create([
                     'type' => 'login',
-                    'options' => $this->location()
+                    'options' => Helpers::location()
                 ]);
 
                 // send login alert to user if smtp configured
                 $user->notify(new UserLogin($loginLog));
             } catch (\Exception $e) {
-                report($e);
+                $user->logs()->create([
+                    'type' => 'login-alert',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage(),
+                ]);
             }
 
             // delete old token with requested device

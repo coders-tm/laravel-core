@@ -267,54 +267,45 @@ class User extends Admin implements MustVerifyEmail
     /**
      * Scope a query to only include sortBy
      */
+
     public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc'): Builder
     {
         switch ($column) {
             case 'last_login':
-                $query->select("users.*")
-                    ->leftJoin('logs', function ($join) {
-                        $join->on('logs.logable_id', '=', "users.id")
-                            ->where('logs.logable_type', '=', $this->getMorphClass())
-                            ->where('logs.type', 'login');
-                    })
-                    ->addSelect(DB::raw('logs.created_at AS last_login_at'))
-                    ->groupBy("users.id")
-                    ->orderBy('last_login_at', $direction ?? 'asc');
+                $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ?) ' . ($direction ?? 'asc'), [$this->getMorphClass(), 'login']);
                 break;
 
             case 'last_update':
-                $query->select("users.*")
-                    ->leftJoin('logs', function ($join) {
-                        $join->on('logs.logable_id', '=', "users.id")
-                            ->where('logs.logable_type', '=', $this->getMorphClass())
-                            ->where('logs.type', 'notes');
-                    })
-                    ->addSelect(DB::raw('logs.created_at AS last_update_at'))
-                    ->groupBy("users.id")
-                    ->orderBy('last_update_at', $direction ?? 'asc');
+                $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ?) ' . ($direction ?? 'asc'), [$this->getMorphClass(), 'notes']);
                 break;
 
             case 'created_by':
-                $query->select("users.*")
-                    ->leftJoin('logs', function ($join) {
-                        $join->on('logs.logable_id', '=', "users.id")
-                            ->where('logs.logable_type', '=', $this->getMorphClass())
-                            ->where('logs.type', 'created');
-                    })
-                    ->leftJoin('admins', function ($join) {
-                        $join->on('logs.admin_id', '=', "admins.id");
-                    })
-                    ->addSelect(DB::raw('CASE WHEN logs.admin_id IS NOT NULL THEN admins.first_name ELSE JSON_EXTRACT(logs.options, "$.ref") END AS created_by'))
-                    ->groupBy("users.id")
-                    ->orderBy('created_by', $direction ?? 'asc');
+                $query->orderByRaw(
+                    'CASE
+                        WHEN (SELECT admin_id FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1) IS NOT NULL
+                        THEN (SELECT first_name FROM admins WHERE admins.id = (SELECT admin_id FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1))
+                        ELSE JSON_EXTRACT((SELECT options FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1), "$.ref")
+                    END ' . ($direction ?? 'asc'),
+                    [$this->getMorphClass(), 'created', $this->getMorphClass(), 'created', $this->getMorphClass(), 'created']
+                );
                 break;
 
             case 'price':
-                $query->leftJoin('subscriptions', function ($join) {
-                    $join->on('subscriptions.user_id', '=', "users.id")->orderByDesc('created_at')->limit(1);
-                })->leftJoin('plans', function ($join) {
-                    $join->on('plans.id', '=', "subscriptions.plan_id");
-                })->orderBy(DB::raw('plans.label'), $direction ?? 'asc');
+                $query->orderByRaw('(
+                    SELECT label
+                    FROM (
+                        SELECT label
+                        FROM plans
+                        WHERE id = (
+                            SELECT plan_id
+                            FROM subscriptions
+                            WHERE user_id = users.id
+                            ORDER BY created_at DESC
+                            LIMIT 1
+                        )
+                        LIMIT 1
+                    ) AS subquery
+                ) ' . ($direction ?? 'asc'));
                 break;
 
             case 'name':

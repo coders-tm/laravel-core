@@ -2,6 +2,8 @@
 
 namespace Coderstm;
 
+use Illuminate\Support\Facades\Config;
+
 class Coderstm
 {
     /**
@@ -127,6 +129,8 @@ class Coderstm
     public static function useUserModel($userModel)
     {
         static::$userModel = $userModel;
+
+        Config::set('auth.providers.users.model', $userModel);
     }
 
     /**
@@ -138,6 +142,8 @@ class Coderstm
     public static function useAdminModel($adminModel)
     {
         static::$adminModel = $adminModel;
+
+        Config::set('auth.providers.admins.model', $adminModel);
     }
 
     /**

@@ -2,20 +2,22 @@
 
 namespace Coderstm\Models;
 
-use Coderstm\Traits\Core;
 use Coderstm\Models\Log;
+use Coderstm\Traits\Core;
+use League\ISO3166\ISO3166;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\Addressable;
 use Laravel\Sanctum\HasApiTokens;
-use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Coderstm\Database\Factories\AdminFactory;
+use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
+use Coderstm\Database\Factories\AdminFactory;
 use Coderstm\Exceptions\ImportFailedException;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Coderstm\Exceptions\ImportSkippedException;
-use League\ISO3166\ISO3166;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Admin extends Authenticatable
 {
@@ -44,6 +46,7 @@ class Admin extends Authenticatable
         'is_active' => 'boolean',
         'is_supper_admin' => 'boolean',
     ];
+
     protected $appends = [
         'name',
         'guard',
@@ -66,12 +69,12 @@ class Admin extends Authenticatable
         return $this->guard;
     }
 
-    public function lastLogin()
+    public function lastLogin(): MorphOne
     {
         return $this->morphOne(Log::class, 'logable')->where('type', 'login')->latestOfMany();
     }
 
-    public function createdBy()
+    public function createdBy(): MorphOne
     {
         return $this->morphOne(Log::class, 'logable')->whereType('created');
     }
@@ -91,28 +94,16 @@ class Admin extends Authenticatable
         return $query->where('id', '<>', user()->id);
     }
 
-    public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc')
+
+    public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc'): Builder
     {
         switch ($column) {
             case 'last_login':
-                $query->select("{$this->getTable()}.*")
-                    ->leftJoin('logs', function ($join) {
-                        $join->on('logs.logable_id', '=', "{$this->getTable()}.id")
-                            ->where('logs.logable_type', '=', $this->getMorphClass());
-                    })
-                    ->addSelect(DB::raw('logs.created_at AS last_login'))
-                    ->groupBy("{$this->getTable()}.id")
-                    ->orderBy('last_login', $direction ?? 'asc');
-                break;
-
-            case 'email':
-                $query->orderBy('email', $direction ?? 'asc');
+                $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = admins.id AND logs.logable_type = ? AND logs.type = ?) ' . ($direction ?? 'asc'), [$this->getMorphClass(), 'login']);
                 break;
 
             case 'name':
-                $query->select("{$this->getTable()}.*")
-                    ->addSelect(DB::raw("CONCAT(`first_name`, `first_name`) AS name"))
-                    ->orderBy('name', $direction ?? 'asc');
+                $query->orderBy(DB::raw("CONCAT(`first_name`, `last_name`)"), $direction ?? 'asc');
                 break;
 
             default:

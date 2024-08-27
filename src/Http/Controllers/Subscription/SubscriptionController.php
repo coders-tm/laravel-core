@@ -185,7 +185,7 @@ class SubscriptionController extends Controller
                 $latestInvoice = $subscription->latestInvoice;
                 $paymentMethod = PaymentMethod::find($request->payment_method);
 
-                if ($latestInvoice->has_due && $paymentMethod->payable()) {
+                if ($latestInvoice?->has_due && $paymentMethod->payable()) {
                     $key = $latestInvoice->key;
                     $provider = $paymentMethod->provider;
                     $payment = "/user/payment/$provider?key=$key&redirect=/user/billing";

@@ -4,11 +4,12 @@ namespace Coderstm\Traits;
 
 use Coderstm\Enum\LogType;
 use Coderstm\Models\Log;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Str;
 
 trait Logable
 {
-    public function logs()
+    public function logs(): MorphMany
     {
         return $this->morphMany(Log::class, 'logable');
     }
