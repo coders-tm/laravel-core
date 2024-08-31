@@ -577,7 +577,8 @@ class Subscription extends Model
      */
     public function latestInvoice(): MorphOne
     {
-        return $this->morphOne(Coderstm::$orderModel, 'orderable')->latestOfMany();
+        return $this->morphOne(Coderstm::$orderModel, 'orderable')
+            ->orderBy('created_at', 'desc');
     }
 
     /**
@@ -587,7 +588,9 @@ class Subscription extends Model
      */
     public function latestPaidInvoice(): MorphOne
     {
-        return $this->morphOne(Coderstm::$orderModel, 'orderable')->paid()->latestOfMany();
+        return $this->morphOne(Coderstm::$orderModel, 'orderable')
+            ->paid()
+            ->orderBy('created_at', 'desc');
     }
 
     /**

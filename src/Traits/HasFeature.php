@@ -22,7 +22,7 @@ trait HasFeature
     protected function features(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->plan->features->mapWithKeys(function ($item) {
+            get: fn() => $this->plan->features->mapWithKeys(function ($item) {
                 return [$item->slug => $item->pivot->value];
             }),
         );
@@ -104,7 +104,7 @@ trait HasFeature
     public function getFeatureValue(string $featureSlug)
     {
         $feature = $this->plan->features()->where('slug', $featureSlug)->first();
-        return optional($feature->pivot)->value ?? null;
+        return optional($feature?->pivot)->value ?? null;
     }
 
     /**
@@ -113,7 +113,7 @@ trait HasFeature
     public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true)
     {
         $feature = Feature::where('slug', $featureSlug)->first();
-        $planFeature = isset($this->features[$featureSlug]);
+        $planFeature = (isset($this->features[$featureSlug]) && $this->features[$featureSlug]) || !isset($this->features[$featureSlug]);
 
         if (!$feature) {
             throw new FeatureNotFoundException;

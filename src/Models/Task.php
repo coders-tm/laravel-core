@@ -18,6 +18,7 @@ class Task extends Model
 {
     use Core, Fileable, TaskUser;
 
+    // TODO: Add Task Update Notification
     protected $dispatchesEvents = [
         'created' => TaskCreated::class,
     ];
@@ -45,12 +46,14 @@ class Task extends Model
 
     public function replies()
     {
-        return $this->hasMany(Reply::class, 'task_id')->orderBy('created_at', 'desc');
+        return $this->hasMany(Reply::class, 'task_id')
+            ->orderBy('created_at', 'desc');
     }
 
     public function last_reply()
     {
-        return $this->hasOne(Reply::class, 'task_id')->latestOfMany();
+        return $this->hasOne(Reply::class, 'task_id')
+            ->orderBy('created_at', 'desc');
     }
 
     public function archives(): BelongsToMany

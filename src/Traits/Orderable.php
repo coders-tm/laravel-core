@@ -13,6 +13,7 @@ trait Orderable
 
     public function latestOrder()
     {
-        return $this->hasOne(Order::class, 'customer_id')->latestOfMany();
+        return $this->hasOne(Order::class, 'customer_id')
+            ->orderBy('created_at', 'desc');
     }
 }

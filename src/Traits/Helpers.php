@@ -3,7 +3,6 @@
 namespace Coderstm\Traits;
 
 use PDO;
-use Browser;
 use League\Csv\Reader;
 use Coderstm\Models\Module;
 use Illuminate\Support\Str;
@@ -12,7 +11,6 @@ use Coderstm\Services\Helpers as ServicesHelpers;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
-use Stevebauman\Location\Facades\Location;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 trait Helpers

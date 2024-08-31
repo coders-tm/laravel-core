@@ -71,7 +71,9 @@ class Admin extends Authenticatable
 
     public function lastLogin(): MorphOne
     {
-        return $this->morphOne(Log::class, 'logable')->where('type', 'login')->latestOfMany();
+        return $this->morphOne(Log::class, 'logable')
+            ->where('type', 'login')
+            ->orderBy('created_at', 'desc');
     }
 
     public function createdBy(): MorphOne

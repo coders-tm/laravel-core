@@ -69,7 +69,6 @@ class User extends Admin implements MustVerifyEmail
     protected $with = [
         'avatar',
         'address',
-        'lastLogin',
     ];
 
     public function getNameAttribute()
@@ -92,7 +91,8 @@ class User extends Admin implements MustVerifyEmail
 
     public function lastUpdate()
     {
-        return $this->morphOne(Log::class, 'logable')->where('type', 'notes')
+        return $this->morphOne(Log::class, 'logable')
+            ->where('type', 'notes')
             ->orderBy('created_at', 'desc');
     }
 
@@ -139,7 +139,7 @@ class User extends Admin implements MustVerifyEmail
             ->where('type', 'request-account-deletion')
             ->where('created_at', '>', now()->subDays(7))
             ->whereColumn('created_at', 'updated_at')
-            ->latestOfMany();
+            ->orderBy('created_at', 'desc');
     }
 
     /**

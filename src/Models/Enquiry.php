@@ -84,7 +84,7 @@ class Enquiry extends Model
 
     public function last_reply()
     {
-        return $this->hasOne(Reply::class, 'enquiry_id')->latestOfMany();
+        return $this->hasOne(Reply::class, 'enquiry_id')->orderBy('created_at', 'desc');
     }
 
     public function unseen()

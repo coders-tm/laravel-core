@@ -66,6 +66,6 @@ class BaseNotification extends Notification
 
     protected function canSendPush(): bool
     {
-        return is_bool(config('alert.push')) || is_bool(config('alert.whatsapp'));
+        return config('alert.push') || config('alert.whatsapp');
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Coderstm\Services;
 
-use Browser;
+use Jenssegers\Agent\Agent;
+use Coderstm\Models\PaymentMethod;
+use Illuminate\Support\Facades\Config;
 use Stevebauman\Location\Facades\Location;
 
 class Helpers
@@ -12,7 +14,8 @@ class Helpers
         try {
             $ip = request()->ip();
             $location = Location::get($ip);
-            $device = Browser::browserFamily() . ' on ' . Browser::platformFamily();
+            $agent = new Agent();
+            $device = $agent->browser() . ' on ' . $agent->platform();
             $time = now()->format('M d, Y \a\t g:i a \U\T\C');
             return collect([
                 'ip' =>  $ip,
@@ -21,7 +24,92 @@ class Helpers
                 'time' => $time,
             ]);
         } catch (\Exception $e) {
-            return [];
+            throw $e;
+        }
+    }
+
+    public static function loadConfigFromDatabase(...$keys): void
+    {
+        try {
+            $options = [
+                'config' => [
+                    'alias' => 'app',
+                    'email' => [
+                        'coderstm.admin_email',
+                        'mail.from.address',
+                    ],
+                    'name' => ['mail.from.name'],
+                    'currency' => 'cashier.currency',
+                    'timezone' => fn($value) => date_default_timezone_set($value),
+                ]
+            ];
+
+            foreach ($keys as $key) {
+                // Determine the alias to use, defaulting to the key if not specified
+                $option = $options[$key] ?? [];
+                $alias = $option['alias'] ?? $key;
+
+                // Fetch settings from the database
+                foreach (app_settings($key) as $attr => $value) {
+                    // Set the configuration value in the application's config
+                    Config::set("$alias.$attr", $value);
+
+                    // Apply any specific logic defined in the $config array
+                    if (isset($option[$attr])) {
+                        $attribute = $option[$attr];
+
+                        if (is_array($attribute)) {
+                            // If it's an array, set multiple config values
+                            foreach ($attribute as $item) {
+                                Config::set($item, $value);
+                            }
+                        } elseif (is_callable($attribute)) {
+                            // If it's a callable (e.g., a function), execute it
+                            $attribute($value);
+                        } else {
+                            // Otherwise, set the value directly
+                            Config::set($attribute, $value);
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    public static function loadPaymentMethodsConfig(): void
+    {
+        try {
+            // Load cashier config from app payment methods table
+            if ($stripe = PaymentMethod::stripe()) {
+                config([
+                    'cashier.key' => $stripe->configs['API_KEY'],
+                    'cashier.secret' => $stripe->configs['API_SECRET'],
+                    'cashier.webhook.secret' => $stripe->configs['WEBHOOK_SECRET'],
+                ]);
+            }
+
+            // Load paypal config from app payment methods table
+            if ($paypal = PaymentMethod::paypal()) {
+                $mode = $paypal->test_mode ? 'sandbox' : 'live';
+                config([
+                    'paypal.mode' => $mode,
+                    "paypal.{$mode}.client_id" => $paypal->configs['CLIENT_ID'],
+                    "paypal.{$mode}.client_secret" => $paypal->configs['CLIENT_SECRET'],
+                    'paypal.notify_url' => $paypal->webhook,
+                ]);
+            }
+
+            // Load razorpay config from app payment methods table
+            if ($razorpay = PaymentMethod::razorpay()) {
+                config([
+                    "razorpay.key_id" => $razorpay->configs['API_KEY'],
+                    "razorpay.key_secret" => $razorpay->configs['API_SECRET'],
+                ]);
+            }
+        } catch (\Exception $e) {
+            throw $e;
         }
     }
 }
