@@ -23,8 +23,6 @@ class Task extends Model
         'created' => TaskCreated::class,
     ];
 
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
     protected $fillable = [
         'subject',
         'message',

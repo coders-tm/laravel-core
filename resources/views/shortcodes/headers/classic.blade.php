@@ -40,7 +40,7 @@
                                 <div class="header--extra d-flex flex-row align-items-center justify-content-end">
                                     <a id="header--btn"
                                         class="btn btn--md btn--square btn--fill btn--primary pt-15 pb-15"
-                                        href="/contact">GET A APOINTMENT</a>
+                                        href="{{ $ctalink ?? '/contact' }}">{{ $ctalabel }}</a>
                                 </div>
                             </div>
                         </div><!-- site-navigation end-->

@@ -3,6 +3,7 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class AppSetting extends Model
@@ -46,9 +47,18 @@ class AppSetting extends Model
         ]);
     }
 
-    static public function findByKey(string $key)
+    static public function findByKey(string $key): Collection
     {
-        $result = static::where('key', $key)->first();
-        return $result ? $result->options : collect([]);
+        try {
+            $result = static::where('key', $key)->first();
+            return $result ? $result->options : collect();
+        } catch (\Exception $e) {
+            return collect();
+        }
+    }
+
+    static public function value(string $key, string $attribute)
+    {
+        return static::findByKey($key)->get($attribute);
     }
 }

@@ -30,32 +30,18 @@ class Log extends Model
         'admin_id',
     ];
 
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
     protected $hidden = [
         'logable_type',
         'logable_id',
     ];
 
     protected $appends = [
-        'date_time',
         'can_edit',
-        'created_at_human',
     ];
 
     protected $casts = [
         'options' => 'json',
     ];
-
-    public function getDateTimeAttribute()
-    {
-        return $this->created_at->format($this->dateTimeFormat);
-    }
-
-    public function getCreatedAtHumanAttribute()
-    {
-        return $this->created_at->diffForHumans();
-    }
 
     public function logable()
     {

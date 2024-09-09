@@ -9,6 +9,10 @@ class Header extends Shortcode
     public $attributes = [
         'class' => ['default' => 'base-header'],
         'layout' => ['default' => 'classic'],
+        'container' => ['default' => 'container'],
+        'menu' => ['default' => 'menu-1'],
+        'ctalabel' => ['default' => 'Get Started'],
+        'ctalink' => ['default' => ''],
     ];
 
     public function render($content)

@@ -7,7 +7,7 @@ use Coderstm\Traits\Core;
 use League\ISO3166\ISO3166;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\Addressable;
-use Laravel\Sanctum\HasApiTokens;
+use Coderstm\Traits\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Notifications\Notifiable;
@@ -56,8 +56,6 @@ class Admin extends Authenticatable
         'avatar',
         'address',
     ];
-
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
 
     public function getNameAttribute()
     {

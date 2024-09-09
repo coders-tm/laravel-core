@@ -12,8 +12,6 @@ class Customer extends User
 
     protected $table = 'users';
 
-    protected $dateTimeFormat = 'd M, Y';
-
     protected $fillable = [
         'first_name',
         'last_name',

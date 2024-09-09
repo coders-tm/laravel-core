@@ -102,4 +102,9 @@ class RazorpayController extends Controller
             'contact' => $user->phone_number,
         ];
     }
+
+    public function wehbook(Request $request)
+    {
+        return response()->json([], 200);
+    }
 }

@@ -102,4 +102,9 @@ class StripeController extends Controller
             ]),
         ];
     }
+
+    public function wehbook(Request $request)
+    {
+        return response()->json([], 200);
+    }
 }

@@ -25,15 +25,6 @@ class Reply extends Model
 
     protected $with = ['media'];
 
-    protected $appends = ['created_time'];
-
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
-    public function getCreatedTimeAttribute()
-    {
-        return $this->created_at->format('H:i');
-    }
-
     public function task()
     {
         return $this->belongsTo(Task::class);

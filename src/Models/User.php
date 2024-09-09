@@ -48,11 +48,11 @@ class User extends Admin implements MustVerifyEmail
     ];
 
     protected $casts = [
-        'release_at' => 'datetime:Y-m-d',
+        'release_at' => 'datetime',
         'email_verified_at' => 'datetime',
         'trial_ends_at' => 'datetime',
-        'starts_at' => 'datetime:' . \DateTimeInterface::ATOM,
-        'ends_at' => 'datetime:' . \DateTimeInterface::ATOM,
+        'starts_at' => 'datetime',
+        'ends_at' => 'datetime',
         'rag' => AppRag::class,
         'status' => AppStatus::class,
         'is_active' => 'boolean',

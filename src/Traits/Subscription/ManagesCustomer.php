@@ -26,7 +26,7 @@ trait ManagesCustomer
         );
     }
 
-    public function canUseFeature(string $featureSlug): bool
+    public function canUseFeature(string $featureSlug): ?bool
     {
         try {
             return $this->subscription()?->canUseFeature($featureSlug);

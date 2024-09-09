@@ -125,11 +125,7 @@ if (!function_exists('has_recaptcha')) {
 if (!function_exists('app_settings')) {
     function app_settings($key)
     {
-        try {
-            return AppSetting::findByKey($key);
-        } catch (\Exception $e) {
-            return collect();
-        }
+        return AppSetting::findByKey($key);
     }
 }
 
@@ -248,7 +244,9 @@ if (!function_exists('replace_short_code')) {
     function replace_short_code($message = '', $replace = [])
     {
         $replace = array_merge([
+            '{{APP_DOMAIN}}' => config('coderstm.domain'),
             '{{APP_NAME}}' => config('app.name'),
+            '{{APP_URL}}' => config('app.url'),
             '{{SUPPORT_EMAIL}}' => config('coderstm.admin_email'),
             '{{BILLING_PAGE}}' => app_url('billing'),
             '{{MEMBER_PAGE}}' => config('coderstm.app_url'),

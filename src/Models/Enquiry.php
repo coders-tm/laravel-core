@@ -41,8 +41,6 @@ class Enquiry extends Model
 
     protected $withCount = ['unseen'];
 
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
     protected $casts = [
         'status' => AppStatus::class,
         'seen' => 'boolean',

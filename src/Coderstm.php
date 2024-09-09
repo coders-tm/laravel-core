@@ -2,10 +2,20 @@
 
 namespace Coderstm;
 
+use DateTimeInterface;
 use Illuminate\Support\Facades\Config;
 
 class Coderstm
 {
+    /**
+     * The format used for serializing DateTime instances.
+     * This format is applied when converting DateTime objects to strings,
+     * particularly during array/JSON serialization.
+     *
+     * @var string
+     */
+    public static $dateTimeFormat = DateTimeInterface::ATOM;
+
     /**
      * The uaer model class name.
      *

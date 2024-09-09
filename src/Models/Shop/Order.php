@@ -90,8 +90,6 @@ class Order extends Model
         'due_date',
     ];
 
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
     protected $casts = [
         'collect_tax' => 'boolean',
         'billing_address' => 'array',

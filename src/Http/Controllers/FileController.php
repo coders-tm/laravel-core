@@ -53,9 +53,24 @@ class FileController extends Controller
 
         $this->validate($request, $rules);
 
+        if ($request->filled('assets')) {
+            $assets = [];
+
+            foreach ($request->file('media') as $asset) {
+                $file = new File;
+                $file->setHttpFile($asset);
+                $file->save();
+                $assets[] = $file->url;
+            }
+
+            return response()->json(['data' => $assets], 200);
+        }
+
         $file = new File;
         $file->setHttpFile($request->file('media'));
         $file->save();
+
+
         return response()->json(new JsonResource($file->fresh()), 200);
     }
 

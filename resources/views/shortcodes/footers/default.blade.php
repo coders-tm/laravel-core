@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="d-md-flex justify-content-between">
-                        <span>Copyright © {{ date('Y') }}&nbsp;<a href="index.html">{{ config('app.name') }}</a>.
+                        <span>Copyright © {{ date('Y') }}&nbsp;<a href="/">{{ config('app.name') }}</a>.
                             All rights reserved.</span>
                         <ul class="footer-nav-menu">
                             <li><a href="/terms">Terms & Conditions</a></li>

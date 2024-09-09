@@ -22,8 +22,6 @@ class Plan extends Model
 {
     use Core, SerializeDate, HasSlug;
 
-    protected $dateTimeFormat = 'd M, Y \a\t h:i a';
-
     protected $fillable = [
         'label',
         'description',
@@ -143,7 +141,6 @@ class Plan extends Model
             return "{$interval}";
         }
     }
-
 
     protected function formatAmount($amount)
     {

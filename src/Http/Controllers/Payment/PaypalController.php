@@ -95,4 +95,9 @@ class PaypalController extends Controller
             throw $e;
         }
     }
+
+    public function wehbook(Request $request)
+    {
+        return response()->json([], 200);
+    }
 }

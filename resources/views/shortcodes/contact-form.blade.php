@@ -1,5 +1,5 @@
-<form id="{{ $id }}" action="{{ route('contact.submit') }}"
-    class="request_qoute_form wrap-form clearfix {{ $class }}" method="post" novalidate="novalidate">
+<form id="{{ $id }}" action="/contact" class="request_qoute_form wrap-form clearfix {{ $class }}"
+    method="post" novalidate="novalidate">
     @csrf
     <input type="hidden" name="recaptcha_token" id="recaptcha_token">
     <div class="row ct-boxes-spacing-20px">

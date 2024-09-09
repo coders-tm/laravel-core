@@ -300,10 +300,32 @@ Route::group(['prefix' => 'shared'], function () {
 
 Route::post('subscription/check-promo-code', [SubscriptionController::class, 'checkPromoCode'])->name('subscription.check-promo-code');
 
-// Stripe webhook
-Route::post('stripe/webhook', [CashierWebhookController::class, 'handleWebhook'])->name('stripe.webhook');
 Route::group(['controller' => ApplicationController::class, 'prefix' => 'application', 'as' => 'application.'], function () {
     Route::get('location', 'location')->name('location');
     Route::get('config', 'config')->name('config');
     Route::get('payment-methods', 'paymentMethods')->name('payment-methods');
+});
+
+// Wehbooks
+Route::post('stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
+Route::post('paypal/webhook', [PaypalController::class, 'webhook'])->name('paypal.webhook');
+Route::post('razorpay/webhook', [RazorpayController::class, 'webhook'])->name('razorpay.webhook');
+
+// Payment
+Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
+    Route::group(['controller' => StripeController::class, 'prefix' => 'stripe', 'as' => 'stripe.'], function () {
+        Route::get('token', 'token')->name('token');
+        Route::get('success', 'success')->name('success');
+        Route::post('process', 'process')->name('process');
+    });
+    Route::group(['controller' => PaypalController::class, 'prefix' => 'paypal', 'as' => 'paypal.'], function () {
+        Route::get('token', 'token')->name('token');
+        Route::get('success', 'success')->name('success');
+        Route::post('process', 'process')->name('process');
+    });
+    Route::group(['controller' => RazorpayController::class, 'prefix' => 'razorpay', 'as' => 'razorpay.'], function () {
+        Route::get('token', 'token')->name('token');
+        Route::get('success', 'success')->name('success');
+        Route::post('process', 'process')->name('process');
+    });
 });
