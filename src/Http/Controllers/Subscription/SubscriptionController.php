@@ -157,7 +157,7 @@ class SubscriptionController extends Controller
                 if ($trial_end && $trial_end->isFuture()) {
                     $subscription->trialUntil($trial_end);
                 } else if ($trial_days && !$trial_end) {
-                    $subscription->trailDays($trial_days);
+                    $subscription->trialDays($trial_days);
                 }
 
                 $subscription->save();
