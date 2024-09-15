@@ -20,7 +20,19 @@ class SubscriptionReports
 
     public function query()
     {
-        $query = Subscription::select(
+        $query = Subscription::query();
+
+        if ($this->request->filled('year')) {
+            $query->whereYear($this->column, $this->request->year);
+        }
+        if ($this->request->filled('month')) {
+            $query->whereMonth($this->column, $this->request->month);
+        }
+        if ($this->request->filled('day')) {
+            $query->whereDay($this->column, $this->request->day);
+        }
+
+        $query->select(
             'subscriptions.*',
             DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_name"),
             'plans.price as plan_price',
@@ -37,16 +49,6 @@ class SubscriptionReports
                 $join->on('statuses.statusable_id', '=', "orders.id")
                     ->where('statuses.statusable_type', '=', Coderstm::$orderModel);
             });
-
-        if ($this->request->filled('year')) {
-            $query->whereYear($this->column, $this->request->year);
-        }
-        if ($this->request->filled('month')) {
-            $query->whereMonth($this->column, $this->request->month);
-        }
-        if ($this->request->filled('day')) {
-            $query->whereDay($this->column, $this->request->day);
-        }
 
         return $query->groupBy(
             'users.id',

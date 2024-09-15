@@ -6,14 +6,18 @@ use Coderstm\Traits\Core;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Support\Facades\DB;
+use Coderstm\Traits\JsonCompressible;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Page extends Model
 {
-    use Core, HasSlug;
+    use Core, HasSlug, JsonCompressible;
 
     protected $dates = ['created_at', 'updated_at'];
+
+    protected $logIgnore = ['body', 'styles'];
 
     protected $fillable = [
         'title',
@@ -30,8 +34,18 @@ class Page extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'data' => 'json',
     ];
+
+    /**
+     * Interact with the model's JSON data column.
+     */
+    protected function data(): Attribute
+    {
+        return Attribute::make(
+            get: fn(string $value) => $this->uncompress($value),
+            set: fn(array $value) => gzcompress(json_encode($value))
+        );
+    }
 
     public function getSlugOptions(): SlugOptions
     {

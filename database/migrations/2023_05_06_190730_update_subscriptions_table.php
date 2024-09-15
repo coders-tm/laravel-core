@@ -24,6 +24,9 @@ return new class extends Migration
             $table->string('schedule')->nullable()->after('is_downgrade');
             $table->dateTime('cancels_at')->nullable()->after('ends_at');
             $table->dateTime('expires_at')->nullable()->after('ends_at');
+
+            $table->unsignedBigInteger('user_id')->nullable()->change();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnUpdate()->nullOnDelete();
         });
 
         $this->setAutoIncrement('subscriptions');

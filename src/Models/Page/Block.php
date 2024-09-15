@@ -9,15 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Template extends Model
+class Block extends Model
 {
-    use Logable, HasFactory, SerializeDate, JsonCompressible;
+    use HasFactory, Logable, SerializeDate, JsonCompressible;
 
-    protected $table = 'page_templates';
+    protected $table = 'page_blocks';
 
     protected $fillable = [
-        'name',
-        'thumbnail',
         'data',
     ];
 

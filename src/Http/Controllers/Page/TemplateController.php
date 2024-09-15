@@ -25,19 +25,19 @@ class TemplateController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, Template $template)
+    public function index(Request $request)
     {
-        $template = $template->query();
+        $template = Template::query();
 
         if ($request->filled('filter')) {
             $template->where('name', 'like', "%{$request->filter}%");
         }
 
-        if ($request->rowsPerPage == -1) {
+        $template = $template->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc');
+
+        if ($request->isNotFilled('rowsPerPage')) {
             return $template->get();
         }
-
-        $template = $template->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc');
 
         return new ResourceCollection($template->paginate($request->rowsPerPage ?? 15));
     }
@@ -45,7 +45,7 @@ class TemplateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Template $template)
+    public function store(Request $request)
     {
         // Set rules
         $rules = [
@@ -102,6 +102,7 @@ class TemplateController extends Controller
     public function destroy(Template $template)
     {
         $template->delete();
+
         return response()->json([
             'message' => trans_module('destroy', 'template'),
         ], 200);

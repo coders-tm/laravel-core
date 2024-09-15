@@ -5,6 +5,7 @@ namespace Coderstm\Http\Controllers;
 use Coderstm\Models\Page;
 use Illuminate\Http\Request;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Http\Resources\PageCollection;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PageController extends Controller
@@ -24,7 +25,16 @@ class PageController extends Controller
      */
     public function index(Request $request, Page $page)
     {
-        $page = $page->query();
+        $page = $page->query()->select([
+            'id',
+            'title',
+            'slug',
+            'meta_title',
+            'meta_keywords',
+            'meta_description',
+            'is_active',
+            'template',
+        ]);
 
         if ($request->filled('filter')) {
             $page->where(function ($query) use ($request) {
@@ -47,7 +57,7 @@ class PageController extends Controller
 
         $page = $page->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
             ->paginate($request->rowsPerPage ?? 15);
-        return new ResourceCollection($page);
+        return new PageCollection($page);
     }
 
     /**

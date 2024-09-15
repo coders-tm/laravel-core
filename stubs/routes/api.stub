@@ -17,12 +17,12 @@ use Coderstm\Http\Controllers\Auth\AuthController;
 use Coderstm\Http\Controllers\ApplicationController;
 use Coderstm\Http\Controllers\NotificationController;
 use Coderstm\Http\Controllers\PaymentMethodController;
-use Coderstm\Http\Controllers\CashierWebhookController;
 use Coderstm\Http\Controllers\Auth\ForgotPasswordController;
 use Coderstm\Http\Controllers\Subscription\CouponController;
 use Coderstm\Http\Controllers\Subscription\SubscriptionController;
 use Coderstm\Http\Controllers\Blog\TagController as BlogTagController;
 use Coderstm\Http\Controllers\Page\TemplateController as PageTemplateController;
+use Coderstm\Http\Controllers\Page\BlockController as PageBlockController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController as UserPaymentMethodController;
 
 /*
@@ -131,7 +131,9 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     // Logs
     Route::post('logs/{log}/reply', [LogController::class, 'reply'])->name('logs.reply');
     Route::resource('logs', LogController::class)->only([
-        'show', 'update', 'destroy',
+        'show',
+        'update',
+        'destroy',
     ]);
 
     // App Payment Methods
@@ -144,7 +146,10 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('{payment_method}/enable', 'enable')->name('enable');
     });
     Route::resource('payment-methods', PaymentMethodController::class)->only([
-        'index', 'store', 'show', 'update',
+        'index',
+        'store',
+        'show',
+        'update',
     ]);
 });
 
@@ -152,7 +157,9 @@ Route::middleware(['auth:sanctum'])->group(function () {
     // Files
     Route::post('files/upload-from-source', [FileController::class, 'uploadFromSource'])->name('files.upload-from-source');
     Route::resource('files', FileController::class)->except([
-        'destroySelected', 'restore', 'restoreSelected',
+        'destroySelected',
+        'restore',
+        'restoreSelected',
     ]);
 
     // Enquiries
@@ -198,7 +205,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::delete('{payment_method}', 'destroy')->name('destroy');
     });
     Route::resource('users/payment-methods', UserPaymentMethodController::class, ['as' => 'users'])->only([
-        'index', 'store',
+        'index',
+        'store',
     ]);
 });
 
@@ -249,7 +257,10 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
 
     // Taxes
     Route::resource('taxes', TaxController::class)->only([
-        'index', 'store', 'update', 'destroy'
+        'index',
+        'store',
+        'update',
+        'destroy'
     ]);
 
     // Blogs
@@ -279,9 +290,24 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'as' => 'pages.',
         'prefix' => 'pages',
     ], function () {
-        Route::resource('templates', PageTemplateController::class, [
-            'only' => ['index', 'store', 'destroy', 'show']
-        ]);
+        Route::group([
+            'as' => 'templates.',
+            'controller' => PageTemplateController::class
+        ], function () {
+            Route::get('templates', 'index')->name('index');
+            Route::post('templates', 'store')->name('store');
+            Route::get('templates/{template}', 'show')->name('show');
+            Route::delete('templates', 'destroy')->name('destroy');
+        });
+
+        Route::group([
+            'as' => 'blocks.',
+            'controller' => PageBlockController::class
+        ], function () {
+            Route::get('blocks', 'index')->name('index');
+            Route::post('blocks', 'store')->name('store');
+            Route::delete('blocks/{block}', 'destroy')->name('destroy');
+        });
 
         Route::group([
             // 'middleware' => 'can:update,page',
