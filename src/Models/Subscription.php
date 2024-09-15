@@ -193,6 +193,19 @@ class Subscription extends Model
     }
 
     /**
+     * Filter query by free.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return void
+     */
+    public function scopeFree($query)
+    {
+        $query->whereHas('plan', function ($query) {
+            $query->where('price', 0);
+        });
+    }
+
+    /**
      * Determine if the subscription is recurring and not on trial.
      *
      * @return bool

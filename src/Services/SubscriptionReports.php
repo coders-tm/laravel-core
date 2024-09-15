@@ -33,7 +33,9 @@ class SubscriptionReports
         }
 
         $query->select(
-            'subscriptions.*',
+            'subscriptions.id',
+            'subscriptions.status',
+            'subscriptions.ends_at',
             DB::raw("CONCAT(users.first_name, ' ', users.last_name) as user_name"),
             'plans.price as plan_price',
             'plans.label as plan_label',
