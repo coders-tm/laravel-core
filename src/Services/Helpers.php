@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services;
 
+use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\Config;
@@ -123,5 +124,61 @@ class Helpers
     {
         // Regex to match valid hex color codes (3 or 6 characters) or named colors
         return preg_match('/^#(?:[0-9a-fA-F]{3}){1,2}$/', $color);
+    }
+
+    /**
+     * Check if npm is installed and the test command can be executed.
+     *
+     * This method will create a `.npm` file if npm is successfully installed
+     * and the test command executes without errors.
+     *
+     * @throws \Coderstm\Exceptions\NpmNotFoundException If npm is not installed on the server.
+     * @throws \Coderstm\Exceptions\NpmNotInstalledException If the npm test command fails to execute successfully.
+     */
+    public static function checkNpmInstallation(): void
+    {
+        // Define the path for the .npm file
+        $npmFile = base_path('storage/.npm');
+
+        // Check if the .npm file exists
+        if (file_exists($npmFile)) {
+            return; // Npm has already been installed, so we can return
+        }
+
+        // Check if npm is installed by fetching the version
+        $npmVersionCheck = shell_exec('npm -v 2>&1');
+
+        if (!$npmVersionCheck) {
+            throw new \Coderstm\Exceptions\NpmNotFoundException;
+        }
+
+        // Check if npm test command works correctly
+        $npmTestCheck = shell_exec('npx mix --version 2>&1');
+
+        if (strpos($npmTestCheck, 'ERR') !== false) {
+            throw new \Coderstm\Exceptions\NpmNotInstalledException;
+        }
+
+        // Create the .npm file to indicate that npm is installed
+        file_put_contents($npmFile, '');
+    }
+
+    /**
+     * Convert a directory name to its singular form if not in the excluded list.
+     *
+     * @param string $dirName The directory name to convert.
+     * @return string The singular form of the directory name or the original name if excluded.
+     */
+    public static function singularizeDirectoryName(string $dirName): string
+    {
+        // Define the array of names that should not be made singular
+        $excludedDirectories = ['js', 'css', 'sass', 'scss', 'img'];
+
+        // Check if the directory name is not in the excluded list
+        if (!in_array($dirName, $excludedDirectories)) {
+            return Str::singular($dirName); // Return the singular form
+        }
+
+        return $dirName; // Return the original name
     }
 }

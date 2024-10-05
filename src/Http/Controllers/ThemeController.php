@@ -2,18 +2,30 @@
 
 namespace Coderstm\Http\Controllers;
 
-use Coderstm\Models\AppSetting;
 use Illuminate\Support\Str;
 use Coderstm\Services\Theme;
 use Illuminate\Http\Request;
-use Spatie\Browsershot\Browsershot;
+use Coderstm\Jobs\BuildTheme;
+use Coderstm\Services\Helpers;
+use Coderstm\Models\AppSetting;
 use Illuminate\Support\Facades\File;
+use Coderstm\Services\Theme\FileMeta;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Response;
 
 class ThemeController extends Controller
 {
+    protected $basePath;
+
+    public function __construct()
+    {
+        try {
+            Helpers::checkNpmInstallation();
+            $this->basePath = null;
+        } catch (\Exception $e) {
+            $this->basePath = '/views';
+        }
+    }
+
     // List all themes
     public function index()
     {
@@ -73,6 +85,9 @@ class ThemeController extends Controller
     // Clone a theme
     public function clone($theme)
     {
+        // Check if npm is installed and the test command can be run
+        Helpers::checkNpmInstallation();
+
         $config = Theme::config($theme);
         $newThemeName = $config['name'] . ' (Copy)';
         $newThemeKey = Str::slug($newThemeName);
@@ -91,7 +106,10 @@ class ThemeController extends Controller
 
             File::put(Theme::basePath('config.json', $newThemeKey), json_encode($config, JSON_PRETTY_PRINT));
 
-            return response()->json(['message' => 'Theme cloned successfully'], 200);
+            // Dispatch the theme build job to the queue
+            BuildTheme::dispatch($newThemeKey);
+
+            return response()->json(['message' => 'Theme cloned successfully, theme build queued.'], 200);
         }
 
         return response()->json(['message' => 'Theme not found or new theme already exists'], 404);
@@ -100,13 +118,13 @@ class ThemeController extends Controller
     // Get the list of files and directories in a theme with `basepath` for the editor
     public function getFiles($theme)
     {
-        $themePath = Theme::basePath('views', $theme);
+        $themePath = Theme::basePath($this->basePath, $theme);
 
         if (!File::exists($themePath)) {
             return response()->json(['message' => 'Theme not found'], 404);
         }
 
-        $fileTree = $this->getDirectoryStructure($themePath, $themePath);
+        $fileTree = $this->getDirectoryStructure($themePath);
         $themeInfo = $this->info($theme);
 
         return response()->json([
@@ -116,9 +134,10 @@ class ThemeController extends Controller
     }
 
     // Recursive function to build file and folder structure
-    private function getDirectoryStructure($directory, $basepath)
+    private function getDirectoryStructure($directory, $basepath = null)
     {
         $items = [];
+        $basepath = $basepath ?? $directory;
 
         // Get all directories and files in the current directory
         $directories = File::directories($directory);
@@ -127,16 +146,14 @@ class ThemeController extends Controller
         // Add directories to the structure
         foreach ($directories as $dir) {
             $dirName = basename($dir);
+            $relativePath = str_replace($basepath . '/', '', $dir); // Get relative path
 
-            // Exclude the public directory
             if (!in_array($dirName, ['public'])) {
-                // Recursively get directory structure while skipping 'public' and its children
-                $singular = Str::singular($dirName);
+                $singular = Helpers::singularizeDirectoryName($dirName);
                 $items[] = [
                     'name' => $dirName,
-                    'ext' => '.blade.php',
                     'addLabel' => "Add a new $singular",
-                    'basepath' => str_replace($basepath . '/', '', $dir),
+                    'basepath' => $relativePath,
                     'header' => 'directory',
                     'modified_at' => date('Y-m-d H:i:s', filemtime($dir)),
                     'children' => $this->getDirectoryStructure($dir, $basepath)
@@ -146,20 +163,7 @@ class ThemeController extends Controller
 
         // Add files to the structure
         foreach ($files as $file) {
-            $fileName = basename($file->getPathname());
-
-            // Exclude the 'preview.png' file
-            if ($fileName === 'preview.png') {
-                continue; // Skip 'preview.png'
-            }
-
-            $items[] = [
-                'name' => $fileName,
-                'basepath' => str_replace($basepath . '/', '', $file->getPathname()),
-                'icon' => 'fas fa-code',
-                'modified_at' => date('Y-m-d H:i:s', filemtime($file)),
-                'header' => 'file'
-            ];
+            $items[] = (new FileMeta($file, $basepath))->toArray();
         }
 
         return $items;
@@ -168,7 +172,7 @@ class ThemeController extends Controller
     public function getFileContent($theme, Request $request)
     {
         $filePath = $request->input('key');  // The relative path of the selected file
-        $fullPath = realpath(Theme::basePath("views/$filePath", $theme));
+        $fullPath = realpath(Theme::basePath("{$this->basePath}/$filePath", $theme));
 
         if (!$fullPath || !File::exists($fullPath)) {
             return response()->json(['message' => 'File not found or invalid path'], 404);
@@ -188,7 +192,7 @@ class ThemeController extends Controller
     {
         $filePath = $request->input('key');
         $content = $request->input('content');
-        $themePath = Theme::basePath("views/$filePath", $theme);
+        $themePath = Theme::basePath("{$this->basePath}/$filePath", $theme);
 
         // Validate Blade syntax (if it's a .blade.php file)
         if (File::extension($filePath) === 'php') {
@@ -201,6 +205,10 @@ class ThemeController extends Controller
 
         // Save file content
         File::put($themePath, $content);
+
+        if (Str::startsWith($filePath, 'assets')) {
+            BuildTheme::dispatch($theme);
+        }
 
         return response()->json(['message' => 'File saved successfully'], 200);
     }
@@ -216,14 +224,14 @@ class ThemeController extends Controller
 
         $fileName = $request->input('name') . $request->ext;
         $basepath = rtrim($request->input('basepath'), '/');
-        $themePath = Theme::basePath("views/$basepath", $theme);
+        $themePath = Theme::basePath("{$this->basePath}/$basepath", $theme);
 
 
         if (!File::exists($themePath)) {
             return response()->json(['message' => 'Theme not found'], 404);
         }
 
-        $filePath = Theme::basePath("views/$basepath/$fileName", $theme);
+        $filePath = Theme::basePath("{$this->basePath}/$basepath/$fileName", $theme);
 
         // Check if the file already exists
         if (File::exists($filePath)) {
@@ -251,7 +259,7 @@ class ThemeController extends Controller
             'message' => 'File created successfully',
             'file' => [
                 'name' => $fileName,
-                'basepath' => str_replace(Theme::basePath('views', $theme) . '/', '', $filePath),
+                'basepath' => str_replace(Theme::basePath($this->basePath, $theme) . '/', '', $filePath),
                 'icon' => 'fas fa-code',
                 'header' => 'file'
             ]
@@ -265,7 +273,7 @@ class ThemeController extends Controller
         ]);
 
         $filePath = $request->input('key');  // The relative path of the selected file
-        $fullPath = realpath(Theme::basePath('views/' . $filePath, $theme));
+        $fullPath = realpath(Theme::basePath($this->basePath . '/' . $filePath, $theme));
 
         // Check if the file exists
         if (!$fullPath || !File::exists($fullPath)) {
@@ -273,7 +281,7 @@ class ThemeController extends Controller
         }
 
         // Prevent deletion of specific directories or files (like 'public' or 'preview.png')
-        if (str_contains($filePath, 'public') || str_contains($filePath, 'preview.png')) {
+        if (str_contains($filePath, 'public') || str_contains($filePath, 'preview.png') || str_contains($filePath, 'config.json')) {
             return response()->json(['message' => 'This file or directory cannot be deleted'], 403);
         }
 
@@ -284,6 +292,65 @@ class ThemeController extends Controller
         } catch (\Exception $e) {
             return response()->json(['message' => 'Error deleting file', 'error' => $e->getMessage()], 500);
         }
+    }
+
+    public function assetsUpload(Request $request, $theme)
+    {
+        $request->validate([
+            'media' => [
+                'required',
+                'mimetypes:image/jpeg,image/png,image/gif',
+                'max:300', // 300 KB size limit
+            ],
+        ], [
+            'media.required' => 'Please select an image to upload.',
+            'media.mimetypes' => 'The file must be an image (JPEG, PNG, GIF).',
+            'media.max' => 'The file must not be larger than 300 KB.',
+        ]);
+
+        // Define the directory path for the theme assets
+        $fileName = $request->file('media')->getClientOriginalName();
+        $filePath = Theme::basePath("{$this->basePath}assets/img/$fileName", $theme);
+
+        // Check if the file already exists
+        if (File::exists($filePath)) {
+            return response()->json(['message' => 'File already exists'], 422);
+        }
+
+        // Move the uploaded file to the designated path
+        $request->file('media')->move(dirname($filePath), $fileName);
+
+        return response()->json([
+            'name' => $fileName,
+            'basepath' => str_replace(Theme::basePath($this->basePath, $theme) . '/', '', $filePath),
+            'icon' => 'fas fa-image',
+            'header' => 'file'
+        ], 201);
+    }
+
+    public function assets(Request $request, $theme)
+    {
+        // Sanitize the path to prevent directory traversal
+        $path = str_replace(['..', './', '\\'], '', $request->input('path')); // Remove directory traversal sequences
+
+        if (Str::endsWith($path, '.php')) {
+            abort(404);
+        }
+
+        // Generate the full file path for the theme
+        $filePath = Theme::basePath($path, $theme);
+
+        // Use realpath to get the absolute path and ensure it's within the allowed directories
+        $realFilePath = realpath($filePath);
+
+        // Check if the real path is valid and within the intended theme directories
+        if ($realFilePath && File::exists($realFilePath)) {
+            // Return the file with headers
+            return response()->file($realFilePath);
+        }
+
+        // Abort with a 404 if the file is not found or invalid
+        abort(404);
     }
 
     // Show selected theme details
@@ -303,34 +370,5 @@ class ThemeController extends Controller
         }
 
         return null;
-    }
-
-    public function preview($theme)
-    {
-        // Check if the preview image is cached
-        $cacheKey = 'theme_preview_' . $theme;
-        if (Cache::has($cacheKey)) {
-            $cachedImagePath = Cache::get($cacheKey);
-            return Response::file($cachedImagePath);
-        }
-
-        // Generate the preview image
-        $imagePath = Theme::basePath('preview.png', $theme);
-
-        try {
-            // Capture homepage as a PNG using Browsershot
-            Browsershot::url(route('home', ['theme' => $theme]))
-                ->setScreenshotType('jpeg', 50)
-                ->windowSize(1440, 792)
-                ->save($imagePath);
-
-            // Cache the image path for 12 hours
-            Cache::put($cacheKey, $imagePath, 180 * 60 * 4); // Cache for 12 hours
-        } catch (\Exception $e) {
-            return response('Error generating preview', 404);
-        }
-
-        // Return the generated image
-        return Response::file($imagePath);
     }
 }
