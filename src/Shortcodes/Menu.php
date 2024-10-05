@@ -22,7 +22,7 @@ class Menu extends Shortcode
             $items = $menus[$id];
         }
 
-        return $this->view('coderstm::shortcodes.menu', array_merge($atts, [
+        return $this->view('shortcodes.menu', array_merge($atts, [
             'items' => $this->mapAndFilterData($items),
         ]));
     }

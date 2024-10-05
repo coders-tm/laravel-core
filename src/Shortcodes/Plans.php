@@ -21,7 +21,7 @@ class Plans extends Shortcode
             ]);
         });
 
-        return $this->view('coderstm::shortcodes.plans', array_merge($atts, [
+        return $this->view('shortcodes.plans', array_merge($atts, [
             'content' => $content,
             'plans' => $plans
         ]));

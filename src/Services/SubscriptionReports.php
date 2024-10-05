@@ -12,6 +12,8 @@ class SubscriptionReports
     protected $request;
     protected $column;
 
+    public static $subscriptionModel = Subscription::class;
+
     public function __construct(Request $request, $column = 'created_at')
     {
         $this->request = $request;
@@ -20,7 +22,7 @@ class SubscriptionReports
 
     public function query($table = 'subscriptions')
     {
-        $query = Subscription::query();
+        $query = static::$subscriptionModel::query();
 
         if ($this->request->filled('year')) {
             $query->whereYear("$table.{$this->column}", $this->request->year);

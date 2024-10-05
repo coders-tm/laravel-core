@@ -10,8 +10,7 @@
                                 src="{{ config('app.logo', asset('images/logo.png')) }}" alt="{{ config('app.name') }}">
                         </div>
                         <div class="textwidget widget-text">
-                            <p class="pb-10 pr-30">Fitness and Wellbeing is a journey, lifestyle, work life balance or
-                                an interest that improves our lives.</p>
+                            <p class="pb-10 pr-30">{{ $desc }}</p>
                         </div>
                         <div class="order-3">
                             <div class="social-icons square">

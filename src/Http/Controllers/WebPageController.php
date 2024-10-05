@@ -10,18 +10,40 @@ use Coderstm\Rules\ReCaptchaRule;
 
 class WebPageController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $page = $this->getTemplate('home');
+        return $this->render($request, 'home');
+    }
 
-        return view('coderstm::pages', $page->render());
+    public function membership(Request $request)
+    {
+        return $this->render($request, 'membership');
+    }
+
+    public function blogs(Request $request)
+    {
+        return $this->render($request, 'blogs');
+    }
+
+    public function blog(Request $request, $slug)
+    {
+        $blog = Blog::findBySlug($slug);
+
+        $request->merge(['blog' => $blog]);
+
+        return $this->render($request, 'blog');
     }
 
     public function pages(Request $request, $slug)
     {
         $page = Page::findBySlug($slug);
 
-        return view('coderstm::pages', $page->render());
+        return view('layouts.page', $page->render());
+    }
+
+    public function login(Request $request)
+    {
+        return redirect()->to(user_route('/auth/login'));
     }
 
     public function contact(Request $request)
@@ -47,19 +69,10 @@ class WebPageController extends Controller
         ], 200);
     }
 
-    public function blog(Request $request, $slug)
+    private function render(Request $request, string $name)
     {
-        $page = $this->getTemplate('blog');
+        $page = Page::findByTemplate($name);
 
-        $blog = Blog::findBySlug($slug);
-
-        $request->merge(['blog' => $blog]);
-
-        return view('coderstm::pages', $page->render());
-    }
-
-    private function getTemplate(string $name)
-    {
-        return Page::findByTemplate($name);
+        return view('layouts.page', $page->render());
     }
 }

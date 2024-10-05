@@ -18,7 +18,7 @@ class Blogs extends Shortcode
         $atts = $this->atts();
         $blogs = Blog::onlyActive()->paginate($atts['paginate']);
 
-        return $this->view('coderstm::shortcodes.blogs', array_merge($atts, [
+        return $this->view('shortcodes.blogs', array_merge($atts, [
             'content' => $content,
             'blogs' => $blogs
         ]));

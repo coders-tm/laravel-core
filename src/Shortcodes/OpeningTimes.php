@@ -16,7 +16,7 @@ class OpeningTimes extends Shortcode
         $atts = $this->atts();
         $opening_times = opening_times();
 
-        return $this->view('coderstm::shortcodes.opening-times', array_merge($atts, [
+        return $this->view('shortcodes.opening-times', array_merge($atts, [
             'opening_times' => $opening_times
         ]));
     }

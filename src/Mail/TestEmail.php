@@ -29,7 +29,7 @@ class TestEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'coderstm::emails.test',
+            markdown: 'emails.test',
         );
     }
 }

@@ -46,7 +46,7 @@ class BaseNotification extends Notification
 
         return (new MailMessage)
             ->subject($this->subject)
-            ->markdown('coderstm::emails.notification', [
+            ->markdown('emails.notification', [
                 'message' => $this->message
             ]);
     }

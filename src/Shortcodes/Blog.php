@@ -21,7 +21,7 @@ class Blog extends Shortcode
             return '';
         }
 
-        return $this->view('coderstm::shortcodes.blog', array_merge($atts, [
+        return $this->view('shortcodes.blog', array_merge($atts, [
             'blog' => $blog
         ]));
     }

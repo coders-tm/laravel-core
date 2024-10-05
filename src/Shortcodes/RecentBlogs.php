@@ -18,7 +18,7 @@ class RecentBlogs extends Shortcode
         $atts = $this->atts();
         $blogs = Blog::limit($atts['count'])->get();
 
-        return $this->view('coderstm::shortcodes.recent-blogs', array_merge($atts, [
+        return $this->view('shortcodes.recent-blogs', array_merge($atts, [
             'blogs' => $blogs
         ]));
     }

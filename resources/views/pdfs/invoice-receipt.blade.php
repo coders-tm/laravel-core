@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>INVOICE {{ $number }}</title>
-    @include('coderstm::includes.pdf-style')
+    @include('pdfs.style')
 </head>
 
 <body>

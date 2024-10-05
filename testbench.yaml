@@ -29,6 +29,7 @@ workbench:
     - migrate:fresh
   assets:
     - coderstm-assets
+    - coderstm-views
     - coderstm-controllers
     - coderstm-database
     - coderstm-models

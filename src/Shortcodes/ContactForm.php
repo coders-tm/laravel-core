@@ -15,7 +15,7 @@ class ContactForm extends Shortcode
     {
         $atts = $this->atts();
 
-        return $this->view('coderstm::shortcodes.contact-form', array_merge($atts, [
+        return $this->view('shortcodes.contact-form', array_merge($atts, [
             'content' => $content
         ]));
     }

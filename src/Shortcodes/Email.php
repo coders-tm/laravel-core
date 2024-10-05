@@ -12,6 +12,6 @@ class Email extends Shortcode
     {
         $atts = $this->atts();
 
-        return $this->view('coderstm::shortcodes.email', $atts);
+        return $this->view('shortcodes.email', $atts);
     }
 }

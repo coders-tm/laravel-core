@@ -25,6 +25,7 @@ class OrderFactory extends Factory
         return [
             'location_id' => Location::inRandomOrder()->first()->id,
             'collect_tax' => rand(0, 1),
+            'created_at' => fake()->dateTimeBetween('-3 years'),
         ];
     }
 }

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Services\Theme;
 
 class ApplicationController extends Controller
 {
@@ -52,7 +53,9 @@ class ApplicationController extends Controller
                     $response[$item] = AppSetting::findByKey($item);
                 }
             }
+
             $response['config'] = $config;
+
             return response()->json($response, 200);
         }
 
@@ -117,5 +120,59 @@ class ApplicationController extends Controller
         }
 
         return Blade::render($request->content);
+    }
+
+    public function theme()
+    {
+        $theme = false;
+        $editor = [
+            'styles' => [
+                '//cdn.coderstm.com/fontawesome/css/all.min.css',
+                'statics/css/styles.min.css',
+            ],
+            'scripts' => ['~/js/app.js']
+        ];
+
+        // Check if the theme has an editor configuration
+        $config = Theme::config();
+        $theme = Theme::active();
+
+        // Merge theme-specific editor assets with global ones
+        if ($theme) {
+            $editor = array_merge_recursive($editor, $config['editor']);
+        }
+
+        $editor['styles'][] = '~/css/app.css';
+
+        // Map styles and scripts
+        $editor['styles'] = $this->mapAssets($editor['styles'], $theme);
+        $editor['scripts'] = $this->mapAssets($editor['scripts'], $theme);
+
+        return response()->json($editor, 200);
+    }
+
+    private function mapAssets(array $assets, string $theme = null)
+    {
+        return collect($assets)->unique()->map(function ($asset) use ($theme) {
+            // Return external URLs as is
+            if (preg_match('/^(https?:\/\/|\/\/)/', $asset)) {
+                return $asset;
+            }
+
+            // Handle assets prefixed with "~" (for mix or theme)
+            if (strpos($asset, '~') === 0) {
+                $asset = substr($asset, 1);
+                $asset = ($theme) ? theme($asset, $theme) : mix($asset, 'statics');
+
+                if (preg_match('/^(https?:\/\/|\/\/)/', $asset)) {
+                    return (string) $asset;
+                }
+
+                return asset($asset);
+            }
+
+            // Fallback for normal asset paths
+            return asset($asset);
+        })->values();
     }
 }

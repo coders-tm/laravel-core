@@ -36,4 +36,23 @@ return [
     'app_url' => env('APP_MEMBER_URL', 'http://localhost/user'),
     'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admins'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Theme Public Path
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the public path used in the Webpack build process
+    | for themes. The `MIX_THEME_PUBLIC` environment variable allows the
+    | Laravel Mix configuration (found in `webpack.theme.js`) to differentiate
+    | between default theme paths and custom theme paths.
+    |
+    | If the environment variable `MIX_THEME_PUBLIC` is set to "theme", the build
+    | will output files to `themes/{themeName}/public`. Otherwise, it defaults to
+    | `public/themes/{themeName}`. This setup allows for flexibility in managing
+    | theme assets in different directory structures, especially when multiple
+    | themes are involved.
+    |
+    */
+
+    'theme_public' => env('MIX_THEME_PUBLIC', null),
 ];

@@ -18,7 +18,7 @@ class BlogTags extends Shortcode
         $atts = $this->atts();
         $tags = Tag::all();
 
-        return $this->view('coderstm::shortcodes.blog-tags', array_merge($atts, [
+        return $this->view('shortcodes.blog-tags', array_merge($atts, [
             'tags' => $tags
         ]));
     }

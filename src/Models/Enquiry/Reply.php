@@ -62,7 +62,7 @@ class Reply extends Model
 
     public function byAdmin(): bool
     {
-        return strpos($this->user_type, 'Admin') !== false;
+        return str_contains($this->user_type, 'Admin');
     }
 
     public function renderNotification($type = null): Notification

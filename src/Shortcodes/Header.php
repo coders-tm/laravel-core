@@ -20,6 +20,6 @@ class Header extends Shortcode
         $atts = $this->atts();
         $layout = $atts['layout'];
 
-        return $this->view("coderstm::shortcodes.headers.$layout", $atts);
+        return $this->view("shortcodes.headers.$layout", $atts);
     }
 }

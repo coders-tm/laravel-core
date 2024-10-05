@@ -2,13 +2,15 @@
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Tax;
-use League\ISO3166\ISO3166;
+use Coderstm\Services\Mix;
 use Illuminate\Support\Str;
+use League\ISO3166\ISO3166;
+use Coderstm\Services\Theme;
+use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
 use Illuminate\Support\Optional;
 use Symfony\Polyfill\Intl\Icu\Currencies;
 use Illuminate\Support\Facades\Notification;
-use Laravel\Cashier\Cashier;
 
 if (!function_exists('guard')) {
     function guard()
@@ -126,6 +128,13 @@ if (!function_exists('app_settings')) {
     function app_settings($key)
     {
         return AppSetting::findByKey($key);
+    }
+}
+
+if (!function_exists('settings')) {
+    function settings(string $key, string $attribute)
+    {
+        return AppSetting::value($key, $attribute);
     }
 }
 
@@ -385,5 +394,21 @@ if (!function_exists('html_text')) {
         $html = str_replace('<br>', "\n ", $html);
 
         return trim(preg_replace('/\s+/', ' ', strip_tags($html)));
+    }
+}
+
+if (! function_exists('theme')) {
+    /**
+     * Get the path to a versioned theme's Mix file.
+     *
+     * @param  string  $path
+     * @param  string  $themeName
+     * @return \Illuminate\Support\HtmlString|string
+     *
+     * @throws \Exception
+     */
+    function theme($path, $themeName = null)
+    {
+        return app(Mix::class)(...func_get_args());
     }
 }

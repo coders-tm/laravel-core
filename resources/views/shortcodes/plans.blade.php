@@ -13,8 +13,8 @@
     </div> --}}
     <div class="row">
         @foreach ($plans as $key => $plan)
-            <div class="col-lg-4 col-md-12 mb-30">
-                @include('coderstm::includes.pricing', $plan)
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                @include('includes.pricing', $plan)
             </div>
         @endforeach
     </div>

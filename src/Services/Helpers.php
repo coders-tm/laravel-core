@@ -112,4 +112,16 @@ class Helpers
             throw $e;
         }
     }
+
+    /**
+     * Check if the provided string is a valid CSS color.
+     *
+     * @param  string  $color
+     * @return bool
+     */
+    public static function isValidColor($color)
+    {
+        // Regex to match valid hex color codes (3 or 6 characters) or named colors
+        return preg_match('/^#(?:[0-9a-fA-F]{3}){1,2}$/', $color);
+    }
 }

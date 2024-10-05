@@ -63,7 +63,7 @@ trait HasFeature
         if ($feature->isBoolean()) {
             return $featureValue === 1;
         } else if (!$usage) {
-            return $featureValue >= 0;
+            return $featureValue > 0 || $featureValue === -1;
         }
 
         // If the feature value is zero, let's return false since
@@ -72,8 +72,8 @@ trait HasFeature
             return false;
         }
 
-        // If feature value is explicitly set to zero, it can be used
-        else if ($featureValue === 0) {
+        // If feature value is explicitly set to -1, it can be used
+        else if ($featureValue === -1) {
             return true;
         }
 

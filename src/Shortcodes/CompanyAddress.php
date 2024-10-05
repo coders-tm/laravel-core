@@ -12,6 +12,6 @@ class CompanyAddress extends Shortcode
     {
         $atts = $this->atts();
 
-        return $this->view('coderstm::shortcodes.company-address', $atts);
+        return $this->view('shortcodes.company-address', $atts);
     }
 }

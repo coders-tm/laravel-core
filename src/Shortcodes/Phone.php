@@ -12,6 +12,6 @@ class Phone extends Shortcode
     {
         $atts = $this->atts();
 
-        return $this->view('coderstm::shortcodes.phone', $atts);
+        return $this->view('shortcodes.phone', $atts);
     }
 }

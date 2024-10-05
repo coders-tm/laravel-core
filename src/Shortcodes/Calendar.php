@@ -16,6 +16,6 @@ class Calendar extends Shortcode
     {
         $atts = $this->atts();
 
-        return $this->view('coderstm::shortcodes.calendar', $atts);
+        return $this->view('shortcodes.calendar', $atts);
     }
 }

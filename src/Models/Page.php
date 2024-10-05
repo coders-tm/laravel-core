@@ -76,26 +76,35 @@ class Page extends Model
         return $this;
     }
 
-
     public function render()
     {
-        // Define the regex pattern to match script tags within the body
+        // Define the regex pattern to match all <script> tags within the body
         $pattern = '/<script\b[^>]*>(.*?)<\/script>/is';
 
+        // Step 1: Render the body content and default scripts with Blade
         $this->body = Blade::render($this->body);
+        $defaultScripts = view('includes.footer-script')->render();
 
-        // Replace all script tags with an empty string and extract them
+        // Step 2: Use preg_match_all to extract all <script> tags
         preg_match_all($pattern, $this->body, $matches);
 
-        $defaultScripts = view('coderstm::includes.footer-script')->render();
-        $scripts = implode('', array_merge([$defaultScripts], $matches[0]));
+        // Step 3: Store the extracted <script> tags in a separate variable
+        // $matches[0] contains the full script tags (opening and closing)
+        $this->scripts = implode('', array_merge([$defaultScripts], $matches[0]));
+
+        // Step 4: Remove all <script> tags from the body content
         $this->body = preg_replace($pattern, '', $this->body);
 
-        // Add extracted scripts just before the </body> tag
-        $this->body = preg_replace('/<\/body>/', "$scripts</body>", $this->body);
+        // Step 5: Optionally extract only the inner content of the <body> tag
+        $bodyPattern = '/<body\b[^>]*>(.*?)<\/body>/is';
+        if (preg_match($bodyPattern, $this->body, $bodyMatch)) {
+            $this->body = $bodyMatch[1]; // This gets the content inside <body> tags
+        }
 
+        // Return the extracted scripts and the cleaned body content
         return parent::toArray();
     }
+
 
     protected static function boot()
     {
@@ -104,7 +113,7 @@ class Page extends Model
             $url = config('app.url');
             $query->select('*')
                 ->addSelect(DB::raw("SUBSTRING_INDEX(REGEXP_REPLACE(REGEXP_REPLACE(body, '<[^>]+>', ' '), '[[:space:]]+', ' '), ' ', 20) AS short_desc"))
-                ->addSelect(DB::raw("CONCAT('{$url}/', slug) as url"));
+                ->addSelect(DB::raw("CONCAT('{$url}/pages/', slug) as url"));
         });
     }
 }

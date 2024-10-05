@@ -521,12 +521,12 @@ class Order extends Model
 
     public function posPdf()
     {
-        return Pdf::loadView('coderstm::pdfs.order-pos', $this->toPdfArray())->setPaper([0, 0, 260.00, 600.80]);
+        return Pdf::loadView('pdfs.order-pos', $this->toPdfArray())->setPaper([0, 0, 260.00, 600.80]);
     }
 
     public function receiptPdf()
     {
-        return Pdf::loadView('coderstm::pdfs.order-receipt', $this->toPdfArray());
+        return Pdf::loadView('pdfs.order-receipt', $this->toPdfArray());
     }
 
     public function download()

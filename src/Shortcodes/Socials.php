@@ -16,7 +16,7 @@ class Socials extends Shortcode
         $atts = $this->atts();
         $socials = app_settings('socials');
 
-        return $this->view('coderstm::shortcodes.socials', array_merge($atts, [
+        return $this->view('shortcodes.socials', array_merge($atts, [
             'socials' => $socials,
         ]));
     }

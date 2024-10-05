@@ -22,16 +22,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.coderstm.com">
     <link rel="stylesheet" type="text/css" href="https://cdn.coderstm.com/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/styles.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/js/fullcalendar/main.min.css') }}" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.coderstm.com/gimmer/css/styles.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('statics/css/styles.css') }}" />
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap-grid.min.css" />
+
+    {{-- App Style --}}
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/app.css', 'statics') }}" />
+
+    {{-- Editor Styles --}}
     <style type="text/css">
         {!! $styles ?? '' !!}
     </style>
 </head>
 
-{!! $body ?? '' !!}
+<body>
+    {{-- Editor Content --}}
+    {!! $body ?? '' !!}
+
+    {{-- App Script --}}
+    <script src="{{ mix('js/app.js', 'statics') }}"></script>
+
+    {{-- Editor Scripts --}}
+    {!! $scripts ?? '' !!}
+</body>
 
 </html>

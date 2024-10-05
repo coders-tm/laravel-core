@@ -3,7 +3,7 @@
         <li class="mega-menu-item {{ $item['active'] }}">
             <a class="mega-menu-link" href="{{ $item['href'] }}">{{ $item['label'] }}</a>
             @if (isset($item['items']) && count($item['items']))
-                @include('coderstm::includes.sub-menu', $item)
+                @include('includes.sub-menu', $item)
             @endif
         </li>
     @endforeach
