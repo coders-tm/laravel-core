@@ -48,15 +48,3 @@ mix
       port: 8090,
     },
   });
-
-// Additional production-specific configuration
-if (mix.inProduction()) {
-  mix
-    .copy("dist/spa/index.html", "resources/views/app.blade.php")
-    .copyDirectory("dist/spa", "public")
-
-    // Delete the 'index.html' file from the 'public' directory
-    .then(() => {
-      fs.remove("public/index.html");
-    });
-}

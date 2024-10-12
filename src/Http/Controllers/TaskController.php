@@ -74,7 +74,7 @@ class TaskController extends Controller
 
         return response()->json([
             'data' => $task->load(['users', 'replies.user', 'media']),
-            'message' => trans('coderstm::messages.tasks.store'),
+            'message' => trans('messages.tasks.store'),
         ], 200);
     }
 
@@ -99,7 +99,7 @@ class TaskController extends Controller
     {
         $task->delete();
         return response()->json([
-            'message' => trans_choice('coderstm::messages.tasks.destroy', 1),
+            'message' => trans_choice('messages.tasks.destroy', 1),
         ], 200);
     }
 
@@ -118,7 +118,7 @@ class TaskController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.tasks.destroy', 2),
+            'message' => trans_choice('messages.tasks.destroy', 2),
         ], 200);
     }
 
@@ -135,7 +135,7 @@ class TaskController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.tasks.restored', 1),
+            'message' => trans_choice('messages.tasks.restored', 1),
         ], 200);
     }
 
@@ -155,7 +155,7 @@ class TaskController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.tasks.restored', 2),
+            'message' => trans_choice('messages.tasks.restored', 2),
         ], 200);
     }
 
@@ -185,7 +185,7 @@ class TaskController extends Controller
 
         return response()->json([
             'data' => $reply->fresh(['media', 'user']),
-            'message' => trans('coderstm::messages.tasks.reply'),
+            'message' => trans('messages.tasks.reply'),
         ], 200);
     }
 
@@ -206,7 +206,7 @@ class TaskController extends Controller
         $type = !$task->is_archived ? 'archived' : 'unarchive';
 
         return response()->json([
-            'message' => trans('coderstm::messages.tasks.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.tasks.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 }

@@ -12,6 +12,8 @@ class BaseNotification extends Notification
 
     public $subject;
     public $message;
+    public $fromAddress;
+    public $fromName;
 
     /**
      * Create a new notification instance.
@@ -43,12 +45,16 @@ class BaseNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $mailMessage = (new MailMessage)
+            ->subject($this->subject);
 
-        return (new MailMessage)
-            ->subject($this->subject)
-            ->markdown('emails.notification', [
-                'message' => $this->message
-            ]);
+        if ($this->fromAddress) {
+            $mailMessage = $mailMessage->from($this->fromAddress, $this->fromName ?? app('name'));
+        }
+
+        return $mailMessage->markdown('emails.notification', [
+            'message' => $this->message
+        ]);
     }
 
     /**

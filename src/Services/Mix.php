@@ -9,8 +9,6 @@ use Illuminate\Support\Str;
 
 class Mix
 {
-    public static $publicPath = true;
-
     /**
      * Get the path to a versioned Mix file.
      *
@@ -46,15 +44,11 @@ class Mix
 
         $manifestPath = static::assetsPath('mix-manifest.json', $themeName);
 
-        if (! isset($manifests[$manifestPath])) {
-            if (! is_file($manifestPath)) {
-                throw new Exception("Mix manifest not found at: {$manifestPath}");
-            }
-
+        if (! isset($manifests[$manifestPath]) && is_file($manifestPath)) {
             $manifests[$manifestPath] = json_decode(file_get_contents($manifestPath), true);
         }
 
-        $manifest = $manifests[$manifestPath];
+        $manifest = $manifests[$manifestPath] ?? [];
 
         $themeFile = Theme::url($manifest[$path] ?? $path);
 
@@ -63,10 +57,8 @@ class Mix
 
     private static function assetsPath(string $path, string $themeName)
     {
-        if (static::$publicPath) {
-            return public_path("themes/$themeName/$path");
-        }
+        $mixPath = Theme::mixPath($themeName);
 
-        return Theme::publicPath(...func_get_args());
+        return public_path("$mixPath/$path");
     }
 }

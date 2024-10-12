@@ -1,5 +1,6 @@
 providers:
   - Laravel\Cashier\CashierServiceProvider
+  - Coderstm\Providers\ThemeServiceProvider
   - Coderstm\Providers\CoderstmServiceProvider
   - Coderstm\Providers\CoderstmPermissionsServiceProvider
   - Coderstm\Providers\CoderstmEventServiceProvider
@@ -29,11 +30,4 @@ workbench:
     - migrate:fresh
   assets:
     - coderstm-assets
-    - coderstm-views
-    - coderstm-controllers
-    - coderstm-database
-    - coderstm-models
-    - coderstm-policies
-    - coderstm-provider
-    - coderstm-routes
   sync: []

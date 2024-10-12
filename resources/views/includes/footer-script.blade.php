@@ -1,6 +1,4 @@
-<script src="{{ asset('statics/js/jquery-3.6.0.min.js') }}"></script>
 <script src="{{ asset('statics/js/jquery-migrate-3.3.2.min.js') }}"></script>
-<script src="{{ asset('statics/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('statics/js/jquery.easing.js') }}"></script>
 <script src="{{ asset('statics/js/jquery-waypoints.js') }}"></script>
 <script src="{{ asset('statics/js/jquery-validate.js') }}"></script>

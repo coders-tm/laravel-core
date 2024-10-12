@@ -134,7 +134,7 @@ class FileController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.files.destroy', 2),
+            'message' => trans_choice('messages.files.destroy', 2),
         ], 200);
     }
 
@@ -151,7 +151,7 @@ class FileController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.files.restored', 1),
+            'message' => trans_choice('messages.files.restored', 1),
         ], 200);
     }
 
@@ -171,7 +171,7 @@ class FileController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.files.restored', 2),
+            'message' => trans_choice('messages.files.restored', 2),
         ], 200);
     }
 
@@ -193,7 +193,7 @@ class FileController extends Controller
 
             return response()->file(Storage::disk($file->disk)->path($file->path));
         } catch (\Throwable $th) {
-            return abort(404, trans('coderstm::messages.files.not_found'));
+            return abort(404, trans('messages.files.not_found'));
         }
     }
 

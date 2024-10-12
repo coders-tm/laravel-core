@@ -81,7 +81,7 @@ class ApplicationController extends Controller
         AppSetting::updateOptions($request->key, $request->options ?? [], $merge);
 
         return response()->json([
-            'message' => trans('coderstm::messages.settings_update')
+            'message' => trans('messages.settings_update')
         ], 200);
     }
 

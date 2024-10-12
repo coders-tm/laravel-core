@@ -5,9 +5,9 @@ use Coderstm\Models\Tax;
 use Coderstm\Services\Mix;
 use Illuminate\Support\Str;
 use League\ISO3166\ISO3166;
-use Coderstm\Services\Theme;
 use Laravel\Cashier\Cashier;
 use Coderstm\Models\AppSetting;
+use Coderstm\Services\AdminNotification;
 use Illuminate\Support\Optional;
 use Symfony\Polyfill\Intl\Icu\Currencies;
 use Illuminate\Support\Facades\Notification;
@@ -201,9 +201,7 @@ if (!function_exists('currency_symbol')) {
 if (!function_exists('admin_notify')) {
     function admin_notify($notification)
     {
-        return Notification::route('mail', [
-            config('coderstm.admin_email') => config('app.name')
-        ])->notify($notification);
+        return app(AdminNotification::class)(...func_get_args());
     }
 }
 

@@ -10,6 +10,12 @@ use Coderstm\Rules\ReCaptchaRule;
 
 class WebPageController extends Controller
 {
+    public $templateRoutes = [
+        'home' => '/',
+        'blog' => '/blogs',
+        'membership' => '/membership',
+    ];
+
     public function index(Request $request)
     {
         return $this->render($request, 'home');
@@ -37,8 +43,13 @@ class WebPageController extends Controller
     public function pages(Request $request, $slug)
     {
         $page = Page::findBySlug($slug);
+        $template = $page->template;
 
-        return view('layouts.page', $page->render());
+        if ($template) {
+            return redirect()->to($this->templateRoutes[$template] ?? $template);
+        }
+
+        return $page->render();
     }
 
     public function login(Request $request)
@@ -69,10 +80,10 @@ class WebPageController extends Controller
         ], 200);
     }
 
-    private function render(Request $request, string $name)
+    public function render(Request $request, string $name)
     {
         $page = Page::findByTemplate($name);
 
-        return view('layouts.page', $page->render());
+        return $page->render();
     }
 }

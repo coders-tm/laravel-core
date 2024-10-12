@@ -38,21 +38,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Theme Public Path
+    | Theme Asset Path Resolution
     |--------------------------------------------------------------------------
     |
-    | This value determines the public path used in the Webpack build process
-    | for themes. The `MIX_THEME_PUBLIC` environment variable allows the
-    | Laravel Mix configuration (found in `webpack.theme.js`) to differentiate
-    | between default theme paths and custom theme paths.
+    | This method determines the public path for theme assets during runtime.
+    | It first checks for a `.public` file within the theme directory to define
+    | a custom path for the assets. If the `.public` file exists and contains
+    | a valid path, that path will be used. Otherwise, it defaults to
+    | `public/themes/{themeName}`.
     |
-    | If the environment variable `MIX_THEME_PUBLIC` is set to "theme", the build
-    | will output files to `themes/{themeName}/public`. Otherwise, it defaults to
-    | `public/themes/{themeName}`. This setup allows for flexibility in managing
-    | theme assets in different directory structures, especially when multiple
-    | themes are involved.
+    | This approach allows themes to have customizable asset paths, enabling
+    | flexible directory structures when managing multiple themes with unique
+    | asset requirements.
     |
     */
 
-    'theme_public' => env('MIX_THEME_PUBLIC', null),
+    'theme_public' => env('MIX_THEME_PUBLIC', false),
 ];

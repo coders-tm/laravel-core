@@ -21,17 +21,17 @@ class ForgotPasswordController extends Controller
         $status = Password::broker($guard)->sendResetLink($request->only('email'));
         if ($status === Password::INVALID_USER) {
             return response()->json([
-                'message' => trans('coderstm::messages.invalid_user')
+                'message' => trans('messages.invalid_user')
             ], 403);
         } elseif ($status === PasswordBroker::RESET_THROTTLED) {
             return response()->json([
-                'message' => trans('coderstm::messages.reset_throttled')
+                'message' => trans('messages.reset_throttled')
             ], 403);
         }
 
         return response()->json([
             'status' => $status,
-            'message' => trans('coderstm::messages.reset_email_sent')
+            'message' => trans('messages.reset_email_sent')
         ], 200);
     }
 
@@ -43,7 +43,7 @@ class ForgotPasswordController extends Controller
                 'password_confirmation' => 'required'
             ],
             [
-                'password_confirmation.required' => trans('coderstm::validation.password.confirmation')
+                'password_confirmation.required' => trans('validation.password.confirmation')
             ]
         );
 
@@ -62,13 +62,13 @@ class ForgotPasswordController extends Controller
 
         if ($status !== Password::PASSWORD_RESET) {
             return response()->json([
-                'message' => trans('coderstm::messages.invalid_token')
+                'message' => trans('messages.invalid_token')
             ], 403);
         }
 
         return response()->json([
             'status' => $status,
-            'message' => trans('coderstm::messages.password.reset')
+            'message' => trans('messages.password.reset')
         ], 200);
     }
 }

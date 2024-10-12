@@ -35,6 +35,6 @@ class ReCaptchaRule implements Rule
      */
     public function message()
     {
-        return trans('coderstm::validation.recaptch');
+        return trans('validation.recaptch');
     }
 }

@@ -166,7 +166,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(['address', 'notes']),
-            'message' => trans('coderstm::messages.users.store'),
+            'message' => trans('messages.users.store'),
         ], 200);
     }
 
@@ -236,7 +236,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(['address', 'notes', 'parq']),
-            'message' => trans('coderstm::messages.users.updated'),
+            'message' => trans('messages.users.updated'),
         ], 200);
     }
 
@@ -252,7 +252,7 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.users.destroy', 1),
+            'message' => trans_choice('messages.users.destroy', 1),
         ], 200);
     }
 
@@ -272,7 +272,7 @@ class UserController extends Controller
         });
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.users.destroy', 2),
+            'message' => trans_choice('messages.users.destroy', 2),
         ], 200);
     }
 
@@ -288,7 +288,7 @@ class UserController extends Controller
         $user->restore();
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.users.restored', 1),
+            'message' => trans_choice('messages.users.restored', 1),
         ], 200);
     }
 
@@ -309,7 +309,7 @@ class UserController extends Controller
             });
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.users.restored', 2),
+            'message' => trans_choice('messages.users.restored', 2),
         ], 200);
     }
 
@@ -328,7 +328,7 @@ class UserController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => trans('coderstm::messages.users.password'),
+            'message' => trans('messages.users.password'),
         ], 200);
     }
 
@@ -348,7 +348,7 @@ class UserController extends Controller
         $type = !$user->is_active ? 'archived' : 'unarchive';
 
         return response()->json([
-            'message' => trans('coderstm::messages.users.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.users.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -374,12 +374,12 @@ class UserController extends Controller
 
             return response()->json([
                 'data' => $note->load('admin'),
-                'message' => trans('coderstm::messages.users.note'),
+                'message' => trans('messages.users.note'),
             ], 200);
         } else {
             return response()->json([
                 'data' => null,
-                'message' => trans('coderstm::messages.users.note'),
+                'message' => trans('messages.users.note'),
             ], 200);
         }
     }
@@ -399,7 +399,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(),
-            'message' => trans('coderstm::messages.subscription.due_payment')
+            'message' => trans('messages.subscription.due_payment')
         ], 200);
     }
 
@@ -438,7 +438,7 @@ class UserController extends Controller
             } else {
                 $user->noFeature = true;
                 $user->accessColor = 'negative';
-                $user->accessMessage = 'Access Denied: ' . trans('coderstm::messages.subscription.none');
+                $user->accessMessage = 'Access Denied: ' . trans('messages.subscription.none');
                 return response()->json($user, 200);
             }
         } catch (\Exception $e) {

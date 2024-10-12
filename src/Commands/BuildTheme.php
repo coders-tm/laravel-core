@@ -8,7 +8,7 @@ use Illuminate\Console\Command;
 class BuildTheme extends Command
 {
     // The name and signature of the console command
-    protected $signature = 'coderstm:theme-build {name}';
+    protected $signature = 'coderstm:theme-build {name} {--path} {--theme-public}';
 
     // The console command description
     protected $description = 'Build a theme using npm run theme:build --name={theme-name}';
@@ -26,8 +26,12 @@ class BuildTheme extends Command
         // Get the theme name from the command argument
         $themeName = $this->argument('name');
 
-        // Run the npm command to build the theme
-        $npmBuildCommand = "npm run theme:build --name={$themeName}";
+        // Check if the theme-public option is provided
+        $themePath = $this->option('path');
+        $themePublic = $this->option('theme-public') ? 'true' : 'false';
+
+        // Build the npm command with optional theme-public flag
+        $npmBuildCommand = "npm run theme:build --name={$themeName} --path={$themePath} --theme-public={$themePublic}";
 
         $output = null;
         $resultCode = null;
@@ -42,7 +46,7 @@ class BuildTheme extends Command
 
         // Check if the command was successful
         if ($resultCode === 0) {
-            $this->info("Theme '{$themeName}' built successfully!");
+            $this->info("Theme '{$themeName}' built successfully with public flag: {$themePublic}!");
         } else {
             $this->error("Failed to build the theme '{$themeName}'. Please check the npm output.");
         }

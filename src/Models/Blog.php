@@ -81,6 +81,7 @@ class Blog extends Model
     public static function findBySlug(string $slug)
     {
         return static::where('slug', $slug)
+            ->where('is_active', true)
             ->firstOrFail()
             ->load('tags');
     }

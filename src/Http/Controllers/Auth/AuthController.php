@@ -24,8 +24,8 @@ class AuthController extends Controller
                 'password' => 'required',
             ],
             [
-                'email.required' => trans('coderstm::validation.email.required'),
-                'email.exists' => trans('coderstm::validation.email.exists'),
+                'email.required' => trans('validation.email.required'),
+                'email.exists' => trans('validation.email.exists'),
             ]
         );
 
@@ -35,7 +35,7 @@ class AuthController extends Controller
 
             // check user status
             if (!$user->is_active()) {
-                abort(403, trans('coderstm::messages.account_disabled'));
+                abort(403, trans('messages.account_disabled'));
             }
 
             try {
@@ -67,7 +67,7 @@ class AuthController extends Controller
             ], 200);
         } else {
             throw ValidationException::withMessages([
-                'password' => [trans('coderstm::validation.password.match')],
+                'password' => [trans('validation.password.match')],
             ]);
         }
     }
@@ -134,7 +134,7 @@ class AuthController extends Controller
         }
 
         return response()->json([
-            'message' => trans('coderstm::messages.logout')
+            'message' => trans('messages.logout')
         ], 200);
     }
 
@@ -205,12 +205,12 @@ class AuthController extends Controller
             ]);
         } else {
             throw ValidationException::withMessages([
-                'old_password' => [trans('coderstm::validation.password.old_match')],
+                'old_password' => [trans('validation.password.old_match')],
             ]);
         }
 
         return response()->json([
-            'message' => trans('coderstm::messages.password.changed')
+            'message' => trans('messages.password.changed')
         ], 200);
     }
 

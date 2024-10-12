@@ -88,7 +88,7 @@ class Theme extends Base
      */
     public static function basePath(string $path = null, string $theme = null): ?string
     {
-        return self::finder()->getThemePath($theme, $path);
+        return self::finder()->getThemePath($theme ?? self::active(), $path);
     }
 
     /**
@@ -117,24 +117,41 @@ class Theme extends Base
         return File::exists($themePath) ? $themePath : null;
     }
 
+    public static function mixPath($theme = null)
+    {
+        $theme = $theme ?? self::active();
+        $publicPath = Theme::basePath('.public', $theme);
+
+        if (is_file($publicPath)) {
+            $path = rtrim(file_get_contents($publicPath));
+            if (! str_starts_with($path, '/')) {
+                $path = "/{$path}";
+            }
+            return $path;
+        }
+
+        return "/themes/$theme";
+    }
+
     /**
      * Get theme's asset url.
      */
     public static function url(string $asset, bool $absolute = true): ?string
     {
         $theme = self::active();
+        $mixPath = self::mixPath($theme);
 
         if (! str_starts_with($asset, '/')) {
             $asset = "/{$asset}";
         }
 
-        $path = "/themes/$theme" . $asset;
+        $path = $mixPath . $asset;
 
         return $absolute ? $path : url($path);
     }
 
-    public static function useThemePublic(): void
+    public static function useThemePublic(): bool
     {
-        Mix::$publicPath = false;
+        return config('coderstm.theme_public') === true;
     }
 }

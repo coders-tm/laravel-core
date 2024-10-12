@@ -59,7 +59,7 @@ class CouponController extends Controller
 
         return response()->json([
             'data' => $coupon->fresh(['plans']),
-            'message' => trans('coderstm::messages.coupons.store'),
+            'message' => trans('messages.coupons.store'),
         ], 200);
     }
 
@@ -89,7 +89,7 @@ class CouponController extends Controller
 
         return response()->json([
             'data' => $coupon->fresh(['plans']),
-            'message' => trans('coderstm::messages.coupons.updated'),
+            'message' => trans('messages.coupons.updated'),
         ], 200);
     }
 
@@ -97,7 +97,7 @@ class CouponController extends Controller
     {
         $coupon->delete();
         return response()->json([
-            'message' => trans_choice('coderstm::messages.coupons.destroy', 1),
+            'message' => trans_choice('messages.coupons.destroy', 1),
         ], 200);
     }
 
@@ -110,7 +110,7 @@ class CouponController extends Controller
             $item->delete();
         });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.coupons.destroy', 2),
+            'message' => trans_choice('messages.coupons.destroy', 2),
         ], 200);
     }
 
@@ -121,7 +121,7 @@ class CouponController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.coupons.restored', 1),
+            'message' => trans_choice('messages.coupons.restored', 1),
         ], 200);
     }
 
@@ -135,7 +135,7 @@ class CouponController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.coupons.restored', 2),
+            'message' => trans_choice('messages.coupons.restored', 2),
         ], 200);
     }
 
@@ -147,7 +147,7 @@ class CouponController extends Controller
 
         $type = $coupon->active ? 'active' : 'deactive';
         return response()->json([
-            'message' => trans('coderstm::messages.coupons.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.coupons.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 }

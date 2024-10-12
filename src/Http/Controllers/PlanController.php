@@ -62,7 +62,7 @@ class PlanController extends Controller
 
         return response()->json([
             'data' => $this->toArray($plan->load('features')),
-            'message' => trans('coderstm::messages.plans.store'),
+            'message' => trans('messages.plans.store'),
         ], 200);
     }
 
@@ -95,7 +95,7 @@ class PlanController extends Controller
             'data' => $this->toArray($plan->fresh([
                 'features'
             ])),
-            'message' => trans('coderstm::messages.plans.updated'),
+            'message' => trans('messages.plans.updated'),
         ], 200);
     }
 
@@ -107,7 +107,7 @@ class PlanController extends Controller
 
         $plan->delete();
         return response()->json([
-            'message' => trans_choice('coderstm::messages.plans.destroy', 1),
+            'message' => trans_choice('messages.plans.destroy', 1),
         ], 200);
     }
 
@@ -123,7 +123,7 @@ class PlanController extends Controller
         });
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.plans.destroy', 2),
+            'message' => trans_choice('messages.plans.destroy', 2),
         ], 200);
     }
 
@@ -134,7 +134,7 @@ class PlanController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.plans.restored', 1),
+            'message' => trans_choice('messages.plans.restored', 1),
         ], 200);
     }
 
@@ -148,7 +148,7 @@ class PlanController extends Controller
                 $item->restore();
             });
         return response()->json([
-            'message' => trans_choice('coderstm::messages.plans.restored', 2),
+            'message' => trans_choice('messages.plans.restored', 2),
         ], 200);
     }
 
@@ -160,7 +160,7 @@ class PlanController extends Controller
 
         $type = $plan->is_active ? 'active' : 'deactive';
         return response()->json([
-            'message' => trans('coderstm::messages.plans.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.plans.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 

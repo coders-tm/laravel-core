@@ -62,6 +62,16 @@ class Admin extends Authenticatable
         return "{$this->first_name} {$this->last_name}";
     }
 
+    /**
+     * Route notifications for the mail channel.
+     *
+     * @return  array<string, string>|string
+     */
+    public function routeNotificationForMail($notification): array|string
+    {
+        return [$this->email => $this->name];
+    }
+
     public function getGuardAttribute()
     {
         return $this->guard;

@@ -101,7 +101,7 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $admin->load('groups', 'permissions'),
-            'message' => trans('coderstm::messages.staff.store'),
+            'message' => trans('messages.staff.store'),
         ], 200);
     }
 
@@ -160,7 +160,7 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $this->toArray($admin->load('groups', 'permissions')),
-            'message' => trans('coderstm::messages.staff.updated'),
+            'message' => trans('messages.staff.updated'),
         ], 200);
     }
 
@@ -176,7 +176,7 @@ class AdminController extends Controller
         $admin->delete();
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.staff.destroy', 1),
+            'message' => trans_choice('messages.staff.destroy', 1),
         ], 200);
     }
 
@@ -194,7 +194,7 @@ class AdminController extends Controller
         });
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.staff.destroy', 2),
+            'message' => trans_choice('messages.staff.destroy', 2),
         ], 200);
     }
 
@@ -210,7 +210,7 @@ class AdminController extends Controller
         $admin->restore();
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.staff.restored', 1),
+            'message' => trans_choice('messages.staff.restored', 1),
         ], 200);
     }
 
@@ -229,7 +229,7 @@ class AdminController extends Controller
             });
 
         return response()->json([
-            'message' => trans_choice('coderstm::messages.staff.restored', 2),
+            'message' => trans_choice('messages.staff.restored', 2),
         ], 200);
     }
 
@@ -239,7 +239,7 @@ class AdminController extends Controller
     public function modules(Request $request)
     {
         $modules = Module::with('permissions')->get()->map(function ($item) {
-            $item->label = trans('coderstm::modules.' . $item->name);
+            $item->label = trans('modules.' . $item->name);
             return $item;
         });
 
@@ -259,7 +259,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => trans('coderstm::messages.staff.password'),
+            'message' => trans('messages.staff.password'),
         ], 200);
     }
 
@@ -274,7 +274,7 @@ class AdminController extends Controller
 
         if ($admin->id == user()->id) {
             return response()->json([
-                'message' => trans('coderstm::messages.staff.admin_error'),
+                'message' => trans('messages.staff.admin_error'),
             ], 403);
         }
 
@@ -285,7 +285,7 @@ class AdminController extends Controller
         $type = $admin->is_supper_admin ? 'marked' : 'unmarked';
 
         return response()->json([
-            'message' => trans('coderstm::messages.staff.admin_success', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.staff.admin_success', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -300,7 +300,7 @@ class AdminController extends Controller
 
         if ($admin->id == user()->id) {
             return response()->json([
-                'message' => trans('coderstm::messages.staff.reply'),
+                'message' => trans('messages.staff.reply'),
             ], 403);
         }
 
@@ -311,7 +311,7 @@ class AdminController extends Controller
         $type = !$admin->is_active ? 'active' : 'deactive';
 
         return response()->json([
-            'message' => trans('coderstm::messages.staff.status', ['type' => trans('coderstm::messages.attributes.' . $type)]),
+            'message' => trans('messages.staff.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 

@@ -6,26 +6,15 @@ use Coderstm\Models\Page;
 use Illuminate\Http\Request;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Http\Resources\PageCollection;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PageController extends Controller
 {
     /**
-     * Create the controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->authorizeResource(Page::class);
-    }
-
-    /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, Page $page)
+    public function index(Request $request)
     {
-        $page = $page->query()->select([
+        $page = Page::query()->select([
             'id',
             'title',
             'slug',
@@ -63,14 +52,15 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Page $page)
+    public function store(Request $request)
     {
         // Set rules
         $rules = [
             'title' => 'required',
             'data' => 'array',
-            'body' => 'string',
-            'styles' => 'string',
+            'html' => 'array',
+            'html.body' => 'string',
+            'html.css' => 'string',
             'meta_keywords' => 'max:255',
             'meta_description' => 'max:255',
         ];
@@ -108,8 +98,9 @@ class PageController extends Controller
         $rules = [
             'title' => 'string',
             'data' => 'array',
-            'body' => 'string',
-            'styles' => 'string',
+            'html' => 'array',
+            'html.body' => 'string',
+            'html.css' => 'string',
             'meta_keywords' => 'max:255',
             'meta_description' => 'max:255',
         ];
@@ -122,6 +113,10 @@ class PageController extends Controller
 
         if ($request->filled('template')) {
             $page->setTemplate($request->template);
+        }
+
+        if ($request->boolean('publish')) {
+            $page->publish($request->html);
         }
 
         return response()->json([
@@ -149,9 +144,11 @@ class PageController extends Controller
         $this->validate($request, [
             'items' => 'required',
         ]);
-        $page->whereIn('id', $request->items)->each(function ($item) {
+
+        Page::whereIn('id', $request->items)->each(function ($item) {
             $item->delete();
         });
+
         return response()->json([
             'message' => trans_modules('destroy', 'page'),
         ], 200);
@@ -174,13 +171,13 @@ class PageController extends Controller
     /**
      * Remove the selected resource from storage.
      */
-    public function restoreSelected(Request $request, Page $page)
+    public function restoreSelected(Request $request)
     {
         $this->validate($request, [
             'items' => 'required',
         ]);
 
-        $page->onlyTrashed()
+        Page::onlyTrashed()
             ->whereIn('id', $request->items)->each(function ($item) {
                 $item->restore();
             });

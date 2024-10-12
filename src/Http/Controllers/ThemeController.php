@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Blade;
 class ThemeController extends Controller
 {
     protected $basePath;
+    public $homeRoute = 'home';
 
     public function __construct()
     {
@@ -39,7 +40,7 @@ class ThemeController extends Controller
                 $config['key'] = basename($folder); // Add theme path to the response
                 $config['active'] = Theme::active() == $config['key']; // Add theme active to the response
                 $config['modified_at'] = date('Y-m-d H:i:s', filemtime($folder));
-                $config['preview'] = route('home', ['theme' => $config['key']]);
+                $config['preview'] = route($this->homeRoute, ['theme' => $config['key']]);
                 return $config;
             }
             return null;
@@ -90,7 +91,7 @@ class ThemeController extends Controller
 
         $config = Theme::config($theme);
         $newThemeName = $config['name'] . ' (Copy)';
-        $newThemeKey = Str::slug($newThemeName);
+        $newThemeKey = Str::slug($theme . '-' . now()->timestamp);
 
         $themePath = Theme::basePath('', $theme);
         $newThemePath = Theme::basePath('', $newThemeKey);
@@ -364,7 +365,7 @@ class ThemeController extends Controller
             $config['key'] = $theme; // Add theme path to the response
             $config['active'] = Theme::active() == $theme; // Add theme active to the response
             $config['modified_at'] = date('Y-m-d H:i:s', filemtime($folder));
-            $config['preview'] = route('home', ['theme' => $theme]);
+            $config['preview'] = route($this->homeRoute, ['theme' => $theme]);
 
             return $config;
         }
