@@ -68,6 +68,17 @@ trait HasEditor
         static::put($this->viewPath(), $parsedContent);
     }
 
+    public function toPublic(): array
+    {
+        return [
+            'title' => $this->title,
+            'slug' => $this->slug,
+            'meta_title' => $this->meta_title,
+            'meta_keywords' => $this->meta_keywords,
+            'meta_description' => $this->meta_description,
+        ];
+    }
+
     /**
      * Render the page view.
      *
@@ -76,13 +87,7 @@ trait HasEditor
      */
     public function render(array $data = [])
     {
-        return view($this->viewName(), array_merge($data, [
-            'title' => $this->title,
-            'slug' => $this->slug,
-            'meta_title' => $this->meta_title,
-            'meta_keywords' => $this->meta_keywords,
-            'meta_description' => $this->meta_description,
-        ]));
+        return view($this->viewName(), array_merge($data, $this->toPublic()));
     }
 
     /**

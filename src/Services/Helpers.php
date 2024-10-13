@@ -142,25 +142,26 @@ class Helpers
 
         // Check if the .npm file exists
         if (file_exists($npmFile)) {
-            return; // Npm has already been installed, so we can return
+            // Retrieve the npm binary path from the configuration
+            $npmBinPath = config('coderstm.npm_bin');
+
+            // Check if npm is installed by fetching the version
+            $npmVersionCheck = shell_exec("{$npmBinPath}/npm -v 2>&1");
+
+            if (!$npmVersionCheck) {
+                throw new \Coderstm\Exceptions\NpmNotFoundException;
+            }
+
+            // Check if npm test command works correctly
+            $npmTestCheck = shell_exec("{$npmBinPath}/npx mix --version 2>&1");
+
+            if (strpos($npmTestCheck, 'ERR') !== false) {
+                throw new \Coderstm\Exceptions\NpmNotInstalledException;
+            }
+
+            // Create the .npm file to indicate that npm is installed
+            file_put_contents($npmFile, '');
         }
-
-        // Check if npm is installed by fetching the version
-        $npmVersionCheck = shell_exec('npm -v 2>&1');
-
-        if (!$npmVersionCheck) {
-            throw new \Coderstm\Exceptions\NpmNotFoundException;
-        }
-
-        // Check if npm test command works correctly
-        $npmTestCheck = shell_exec('npx mix --version 2>&1');
-
-        if (strpos($npmTestCheck, 'ERR') !== false) {
-            throw new \Coderstm\Exceptions\NpmNotInstalledException;
-        }
-
-        // Create the .npm file to indicate that npm is installed
-        file_put_contents($npmFile, '');
     }
 
     /**

@@ -54,4 +54,27 @@ return [
     */
 
     'theme_public' => env('MIX_THEME_PUBLIC', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | NPM Binary Path Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This configuration defines the path to the npm binary used for
+    | building themes within the application. The path can be set in
+    | the .env file as 'NPM_BIN_PATH'. If it is not defined, it
+    | defaults to '/usr/bin'.
+    |
+    | By allowing the npm binary path to be configured dynamically,
+    | this setup enables compatibility with various server environments,
+    | ensuring that the application can locate the npm executable
+    | regardless of where it is hosted.
+    |
+    | This flexibility is particularly useful for developers working
+    | in different environments or deploying to servers with
+    | unique directory structures.
+    |
+    */
+
+    'npm_bin' => env('NPM_BIN_PATH', '/usr/bin'),
 ];

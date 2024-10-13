@@ -7,7 +7,8 @@
                     <div class="widget widget--text clearfix">
                         <div class="footer-logo">
                             <img id="footer-logo-img" class="img-center"
-                                src="{{ config('app.logo', asset('images/logo.png')) }}" alt="{{ config('app.name') }}">
+                                src="{{ config('app.logo-alt', asset('images/logo-alt.png')) }}"
+                                alt="{{ config('app.name') }}">
                         </div>
                         <div class="textwidget widget-text">
                             <p class="pb-10 pr-30">{{ $desc }}</p>
@@ -49,8 +50,8 @@
                         <span>Copyright © {{ date('Y') }}&nbsp;<a href="/">{{ config('app.name') }}</a>.
                             All rights reserved.</span>
                         <ul class="footer-nav-menu">
-                            <li><a href="/terms">Terms & Conditions</a></li>
-                            <li><a href="/privacy">Privacy Policy</a></li>
+                            <li><a href="/pages/terms">Terms & Conditions</a></li>
+                            <li><a href="/pages/privacy">Privacy Policy</a></li>
                         </ul>
                     </div>
                 </div>

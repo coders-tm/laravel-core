@@ -45,6 +45,8 @@ class WebPageController extends Controller
         $page = Page::findBySlug($slug);
         $template = $page->template;
 
+        $request->merge(['page' => $page->toPublic()]);
+
         if ($template) {
             return redirect()->to($this->templateRoutes[$template] ?? $template);
         }
@@ -54,7 +56,7 @@ class WebPageController extends Controller
 
     public function login(Request $request)
     {
-        return redirect()->to(user_route('/auth/login'));
+        return redirect()->to(app_url('/auth/login'));
     }
 
     public function contact(Request $request)
@@ -83,6 +85,8 @@ class WebPageController extends Controller
     public function render(Request $request, string $name)
     {
         $page = Page::findByTemplate($name);
+
+        $request->merge(['page' => $page->toPublic()]);
 
         return $page->render();
     }

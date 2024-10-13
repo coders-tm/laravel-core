@@ -22,7 +22,7 @@ if (themePublic) {
     let randomPath;
 
     do {
-      randomPath = Math.floor(100000 + Math.random() * 900000); // Generate a random 6-digit number
+      randomPath = Math.floor(10000000 + Math.random() * 90000000); // Generate a random 6-digit number
       publicPath = path.join("public/themes", randomPath.toString());
     } while (fs.existsSync(publicPath)); // Keep generating if the directory exists
 
@@ -38,6 +38,23 @@ if (themePublic) {
 if (!fs.existsSync(publicPath)) {
   fs.mkdirSync(publicPath, { recursive: true });
 }
+
+// Function to calculate the devServer config
+const getDevServerConfig = () => {
+  if (!mix.inProduction()) {
+    return {
+      https: {
+        key: fs.readFileSync(process.env.MIX_CERTIFICATE_KEY),
+        cert: fs.readFileSync(process.env.MIX_CERTIFICATE_CERT),
+      },
+      // Additional devServer options can be added here
+    };
+  }
+  return {}; // Return {} in production
+};
+
+// Assign devServer configuration based on the environment
+const devServerConfig = getDevServerConfig();
 
 /*
 |--------------------------------------------------------------------------
@@ -72,16 +89,7 @@ mix
         "@": path.resolve(__dirname, `${themePath}/assets/js/`), // Set alias for JS
       },
     },
-    devServer: {
-      static: {
-        directory: path.resolve(__dirname, `${themePath}/assets`), // Specify public folder to serve
-      },
-      compress: true,
-      https: {
-        key: fs.readFileSync(process.env.MIX_CERTIFICATE_KEY), // SSL key
-        cert: fs.readFileSync(process.env.MIX_CERTIFICATE_CERT), // SSL certificate
-      },
-    },
+    devServer: devServerConfig,
   })
   .options({
     hmrOptions: {

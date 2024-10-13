@@ -11,7 +11,7 @@
  .. Isotope
  .. Prettyphoto
  .. Slick_slider
- .. Back to top 
+ .. Back to top
 
  =============== */
 
@@ -89,9 +89,16 @@ jQuery(function ($) {
         $("nav.main-menu ul.menu").each(function () {
           // Dropdown Fade Toggle
           $("a.mega-menu-link", this).on("click", function (e) {
-            e.preventDefault();
             var t = $(this);
-            t.toggleClass("active").next("ul").toggleClass("active");
+
+            // Check if href is '#'
+            if (t.attr("href") === "#") {
+              e.preventDefault(); // Prevent default behavior for '#'
+              t.toggleClass("active").next("ul").toggleClass("active");
+            } else {
+              // If it's a valid URL, allow the default behavior (go to the link)
+              window.location.href = t.attr("href");
+            }
           });
 
           // Megamenu style

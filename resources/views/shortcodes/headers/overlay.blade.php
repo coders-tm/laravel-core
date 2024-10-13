@@ -9,7 +9,10 @@
                                 <div class="site-branding">
                                     <a class="home-link" href="{{ route('home') }}" title="{{ config('app.name') }}"
                                         rel="home">
-                                        <img id="logo-img" class="img-left"
+                                        <img id="logo-img" class="img-left standardlogo"
+                                            src="{{ config('app.logo-alt', asset('images/logo-alt.png')) }}"
+                                            alt="{{ config('app.name') }}">
+                                        <img id="logo-dark" class="img-center stickylogo"
                                             src="{{ config('app.logo', asset('images/logo.png')) }}"
                                             alt="{{ config('app.name') }}">
                                     </a>

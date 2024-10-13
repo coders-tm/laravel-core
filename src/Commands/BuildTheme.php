@@ -30,8 +30,14 @@ class BuildTheme extends Command
         $themePath = $this->option('path');
         $themePublic = $this->option('theme-public') ? 'true' : 'false';
 
+        // Change the current working directory to the base path of the application
+        chdir(base_path());
+
+        // Retrieve the npm binary path from the configuration
+        $npmBinPath = config('coderstm.npm_bin');
+
         // Build the npm command with optional theme-public flag
-        $npmBuildCommand = "npm run theme:build --name={$themeName} --path={$themePath} --theme-public={$themePublic}";
+        $npmBuildCommand = "{$npmBinPath}/npm run theme:build --name={$themeName} --path={$themePath} --theme-public={$themePublic}";
 
         $output = null;
         $resultCode = null;
