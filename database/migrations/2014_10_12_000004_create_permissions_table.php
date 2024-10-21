@@ -18,12 +18,16 @@ return new class extends Migration
     {
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('module_id')->nullable();
-            $table->string('action')->nullable();
-            $table->string('scope')->nullable()->unique();
+
+            $table->unsignedBigInteger('module_id')->index();
+
+            $table->string('action');
+            $table->string('scope')->unique();
             $table->text('description')->nullable();
+
             $table->timestamps();
-            $table->foreign('module_id')->references('id')->on('modules')->cascadeOnUpdate()->cascadeOnDelete();
+
+            $table->foreign('module_id')->references('id')->on('modules')->cascadeOnDelete();
         });
 
         $this->setAutoIncrement('permissions');

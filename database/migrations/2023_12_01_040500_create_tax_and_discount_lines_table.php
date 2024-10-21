@@ -24,9 +24,11 @@ return new class extends Migration
             $table->unsignedBigInteger('taxable_id')->nullable();
 
             $table->string('label');
-            $table->enum('type', ['normal', 'harmonized', 'compounded'])->nullable()->default('normal');
-            $table->integer('rate')->nullable()->default(0);
-            $table->decimal('amount', 10, 2)->nullable()->default(0);
+            $table->enum('type', ['normal', 'harmonized', 'compounded'])->default('normal');
+            $table->decimal('rate', 5, 2)->default(0);
+            $table->decimal('amount', 10, 2)->default(0);
+
+            $table->index(['taxable_type', 'taxable_id']);
         });
 
         $this->setAutoIncrement('tax_lines');
@@ -37,9 +39,11 @@ return new class extends Migration
             $table->string('discountable_type')->nullable();
             $table->unsignedBigInteger('discountable_id')->nullable();
 
-            $table->enum('type', ['percentage', 'fixed_amount'])->nullable()->default('fixed_amount');
+            $table->enum('type', ['percentage', 'fixed_amount'])->default('fixed_amount');
             $table->decimal('value', 20, 2)->default(0.00);
             $table->string('description')->nullable();
+
+            $table->index(['discountable_type', 'discountable_id']);
         });
 
         $this->setAutoIncrement('discount_lines');

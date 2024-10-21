@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name')->nullable();
-            $table->string('slug')->nullable()->unique();
-            $table->string('status')->default('Active');
+            $table->string('name')->nullable()->index();
+            $table->string('slug')->nullable()->unique()->index();
+            $table->string('status')->default('Active')->index();
             $table->text('description')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable()->index();
 
             $table->timestamps();
             $table->softDeletes();

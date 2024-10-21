@@ -24,6 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('statusable_id')->nullable();
 
             $table->string('label');
+
+            $table->index(['statusable_type', 'statusable_id']);
         });
 
         $this->setAutoIncrement('statuses');

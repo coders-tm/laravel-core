@@ -1,7 +1,6 @@
 <?php
 
 use Coderstm\Traits\Helpers;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -21,8 +20,8 @@ return new class extends Migration
             $table->id();
 
             $table->nullableMorphs('orderable');
-            $table->unsignedBigInteger('customer_id')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable()->index();
+            $table->unsignedBigInteger('location_id')->nullable()->index();
             $table->text('note')->nullable();
             $table->boolean('collect_tax')->default(true);
             $table->{$this->jsonable()}('billing_address')->nullable();
@@ -38,7 +37,7 @@ return new class extends Migration
             $table->dateTime('due_date')->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
 
         Schema::create('line_items', function (Blueprint $table) {
@@ -46,47 +45,46 @@ return new class extends Migration
 
             $table->string('itemable_type')->nullable();
             $table->unsignedBigInteger('itemable_id')->nullable();
-
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->unsignedBigInteger('variant_id')->nullable();
+            $table->unsignedBigInteger('product_id')->nullable()->index();
+            $table->unsignedBigInteger('variant_id')->nullable()->index();
             $table->string('title')->nullable();
             $table->string('variant_title')->nullable();
             $table->string('sku')->nullable();
             $table->boolean('taxable')->default(true);
             $table->boolean('is_custom')->nullable()->default(false);
             $table->decimal('price', 10, 2)->nullable();
-            $table->unsignedBigInteger('accepted')->nullable();
-            $table->unsignedBigInteger('rejected')->nullable();
-            $table->unsignedBigInteger('quantity')->nullable();
+            $table->unsignedSmallInteger('accepted')->nullable();
+            $table->unsignedSmallInteger('rejected')->nullable();
+            $table->unsignedSmallInteger('quantity')->nullable();
             $table->{$this->jsonable()}('attributes')->nullable();
             $table->boolean('is_product_deleted')->nullable();
             $table->boolean('is_variant_deleted')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
+
             $table->foreign('product_id')->references('id')->on('products')->nullOnDelete();
             $table->foreign('variant_id')->references('id')->on('variants')->nullOnDelete();
+
+            $table->index(['itemable_type', 'itemable_id']);
         });
 
         Schema::create('refunds', function (Blueprint $table) {
             $table->id();
-
             $table->unsignedBigInteger('order_id')->nullable();
             $table->unsignedBigInteger('payment_id')->nullable();
             $table->double('amount', 20, 2)->default(0.00);
             $table->text('reason')->nullable();
 
             $table->timestamps();
-            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('payment_id')->references('id')->on('payments')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
+            $table->foreign('payment_id')->references('id')->on('payments')->cascadeOnDelete();
         });
 
         Schema::create('order_contacts', function (Blueprint $table) {
             $table->id();
-
             $table->string('contactable_type')->nullable();
             $table->unsignedBigInteger('contactable_id')->nullable();
-
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
         });
@@ -95,15 +93,5 @@ return new class extends Migration
         $this->setAutoIncrement('line_items');
         $this->setAutoIncrement('refunds');
         $this->setAutoIncrement('order_contacts');
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('orders');
     }
 };

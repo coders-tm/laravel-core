@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->string('title')->nullable();
+            $table->string('title')->nullable()->index();
             $table->longText('description')->nullable();
-            $table->string('slug')->nullable()->unique();
-            $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('vendor_id')->nullable();
-            $table->boolean('has_variant')->default(false);
-            $table->string('status')->default('Active');
+            $table->string('slug')->nullable()->unique()->index();
+            $table->unsignedBigInteger('category_id')->nullable()->index();
+            $table->unsignedBigInteger('vendor_id')->nullable()->index();
+            $table->boolean('has_variant')->default(false)->index();
+            $table->string('status')->default('Active')->index();
             $table->string('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();

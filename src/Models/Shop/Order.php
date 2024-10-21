@@ -108,9 +108,6 @@ class Order extends Model
         'status',
         'customer',
         'contact',
-        'line_items',
-        'tax_lines',
-        'discount',
     ];
 
     protected $appends = [

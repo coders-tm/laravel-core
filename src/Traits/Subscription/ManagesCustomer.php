@@ -5,25 +5,20 @@ namespace Coderstm\Traits\Subscription;
 use Coderstm\Coderstm;
 use Illuminate\Support\Arr;
 use Laravel\Cashier\Cashier;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 trait ManagesCustomer
 {
-    protected function isSubscribed(): Attribute
+    public function isSubscribed(): bool
     {
-        return Attribute::make(
-            get: fn() => $this->onTrial() || $this->subscribed('default'),
-        );
+        return $this->onTrial() || $this->subscribed();
     }
 
-    protected function hasCancelled(): Attribute
+    public function hasCancelled(): bool
     {
-        return Attribute::make(
-            get: fn() => $this->subscribed('default') ? $this->subscription()->canceled() : false,
-        );
+        return $this->subscribed() ? $this->subscription()->canceled() : false;
     }
 
     public function canUseFeature(string $featureSlug): ?bool

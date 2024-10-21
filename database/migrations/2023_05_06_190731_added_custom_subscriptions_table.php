@@ -17,30 +17,32 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('subscriptions', function (Blueprint $table) {
-            $table->foreignIdFor(Plan::class, 'plan_id')->nullable();
-            $table->foreignIdFor(Coupon::class, 'coupon_id')->nullable();
-            $table->string('status')->nullable();
+            $table->foreignIdFor(Plan::class, 'plan_id')->nullable()->index();
+            $table->foreignIdFor(Coupon::class, 'coupon_id')->nullable()->index();
+            $table->string('status')->nullable()->index();
             $table->string('stripe_status')->nullable()->change();
             $table->{$this->jsonable()}('options')->nullable();
-            $table->timestamp('starts_at')->nullable();
-            $table->timestamp('canceled_at')->nullable();
+            $table->timestamp('starts_at')->nullable()->index();
+            $table->timestamp('canceled_at')->nullable()->index();
             $table->string('stripe_id')->nullable()->change();
 
-            $table->foreign('plan_id')->references('id')->on('plans')->cascadeOnUpdate()->nullOnDelete();
-            $table->foreign('coupon_id')->references('id')->on('coupons')->cascadeOnUpdate()->nullOnDelete();
+            $table->foreign('plan_id')->references('id')->on('plans')->nullOnDelete();
+            $table->foreign('coupon_id')->references('id')->on('coupons')->nullOnDelete();
         });
 
         Schema::create('subscription_usages', function (Blueprint $table) {
             $table->id();
 
             $table->string('slug');
-            $table->integer('used')->unsigned()->default(0);
+            $table->unsignedInteger('used')->default(0);
             $table->unsignedBigInteger('subscription_id');
             $table->dateTime('reset_at')->nullable();
 
             $table->unique(['slug', 'subscription_id']);
-            $table->foreign('subscription_id')->references('id')->on('subscriptions')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('slug')->references('slug')->on('features')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->index(['slug', 'subscription_id']);
+
+            $table->foreign('subscription_id')->references('id')->on('subscriptions')->cascadeOnDelete();
+            $table->foreign('slug')->references('slug')->on('features')->cascadeOnDelete();
         });
 
         $this->setAutoIncrement('subscription_usages');

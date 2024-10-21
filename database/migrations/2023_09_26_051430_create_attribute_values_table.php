@@ -20,11 +20,10 @@ return new class extends Migration
             $table->boolean('has_thumbnail')->nullable()->default(false);
             $table->string('color')->nullable();
 
-            $table->unsignedBigInteger('attribute_id');
+            $table->unsignedBigInteger('attribute_id')->index();
             $table->timestamps();
-            $table->softDeletes();
 
-            $table->foreign('attribute_id')->references('id')->on('attributes')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreign('attribute_id')->references('id')->on('attributes')->cascadeOnDelete();
         });
     }
 

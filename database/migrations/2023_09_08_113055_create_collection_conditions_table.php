@@ -24,11 +24,12 @@ return new class extends Migration
             $table->string('relation')->nullable();
             $table->string('value')->nullable();
 
-            $table->unsignedBigInteger('collection_id');
+            $table->unsignedBigInteger('collection_id')->index();
 
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('collection_id')->references('id')->on('collections')->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->foreign('collection_id')->references('id')->on('collections')->cascadeOnDelete();
         });
 
         // set auto increment to 10000

@@ -20,16 +20,16 @@ return new class extends Migration
             $table->id();
 
             $table->string('name')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->nullable()->index();
             $table->string('phone')->nullable();
             $table->string('subject')->nullable();
             $table->text('message')->nullable();
-            $table->string('status')->nullable();
-            $table->boolean('seen')->nullable()->default(false);
-            $table->boolean('source')->nullable()->default(true);
-            $table->boolean('is_archived')->nullable()->default(false);
-            $table->boolean('user_archived')->nullable()->default(false);
-            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->string('status')->nullable()->index();
+            $table->boolean('seen')->default(false)->index();
+            $table->boolean('source')->default(true)->index();
+            $table->boolean('is_archived')->default(false)->index();
+            $table->boolean('user_archived')->default(false)->index();
+            $table->unsignedBigInteger('admin_id')->nullable()->index();
 
             $table->timestamps();
             $table->softDeletes();
@@ -41,15 +41,20 @@ return new class extends Migration
 
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
+
             $table->string('user_type')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('enquiry_id');
+
+            $table->unsignedBigInteger('enquiry_id')->index();
+
             $table->text('message')->nullable();
-            $table->boolean('seen')->nullable()->default(false);
-            $table->boolean('staff_only')->nullable()->default(false);
+            $table->boolean('seen')->default(false)->index();
+            $table->boolean('staff_only')->default(false)->index();
             $table->timestamps();
 
-            $table->foreign('enquiry_id')->references('id')->on('enquiries')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('enquiry_id')->references('id')->on('enquiries')->cascadeOnDelete();
+
+            $table->index(['user_type', 'user_id']);
         });
 
         $this->setAutoIncrement('replies');

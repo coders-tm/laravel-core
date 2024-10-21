@@ -22,17 +22,19 @@ return new class extends Migration
             $table->string('paymentable_type')->nullable();
             $table->unsignedBigInteger('paymentable_id')->nullable();
 
-            $table->unsignedBigInteger('payment_method_id')->nullable();
-            $table->string('transaction_id')->nullable();
-            $table->double('amount', 20, 2)->default(0.00);
-            $table->boolean('capturable')->nullable()->default(true);
-            $table->string('status')->nullable();
+            $table->unsignedBigInteger('payment_method_id')->index()->nullable();
+            $table->string('transaction_id')->index()->nullable();
+            $table->decimal('amount', 20, 2)->default(0.00);
+            $table->boolean('capturable')->default(true);
+            $table->string('status')->index()->nullable();
             $table->text('note')->nullable();
             $table->{$this->jsonable()}('options')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->cascadeOnDelete();
+
+            $table->index(['paymentable_type', 'paymentable_id']);
         });
 
         $this->setAutoIncrement('payments');

@@ -25,6 +25,8 @@ return new class extends Migration
 
             $table->string('unit')->default('kg');
             $table->decimal('value', 10, 3)->default(0.00);
+
+            $table->index(['weightable_type', 'weightable_id']);
         });
 
         // set auto increment to 10000

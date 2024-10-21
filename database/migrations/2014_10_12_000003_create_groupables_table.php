@@ -18,7 +18,11 @@ return new class extends Migration
             $table->unsignedBigInteger('groupable_id');
             $table->unsignedBigInteger('group_id');
 
-            $table->foreign('group_id')->references('id')->on('groups')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('group_id')->references('id')->on('groups')->cascadeOnDelete();
+
+            $table->primary(['groupable_type', 'groupable_id', 'group_id']);
+
+            $table->index(['groupable_type', 'groupable_id']);
         });
     }
 };

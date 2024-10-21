@@ -50,6 +50,7 @@ class User extends Admin implements MustVerifyEmail
     protected $casts = [
         'release_at' => 'datetime',
         'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
         'trial_ends_at' => 'datetime',
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
@@ -62,13 +63,10 @@ class User extends Admin implements MustVerifyEmail
         'name',
         'member_since',
         'guard',
-        'is_subscribed',
-        'has_cancelled',
     ];
 
     protected $with = [
         'avatar',
-        'address',
     ];
 
     public function getNameAttribute()
@@ -478,14 +476,14 @@ class User extends Admin implements MustVerifyEmail
         ]);
     }
 
-    protected static function boot()
+    protected static function booted()
     {
-        parent::boot();
         static::creating(function (self $model) {
             if (empty($model->qrcode)) {
                 $model->qrcode = static::generateUniqueQRCode();
             }
         });
+
         static::updated(function ($model) {
             Coderstm::$enquiryModel::withoutEvents(function () use ($model) {
                 Coderstm::$enquiryModel::where('email', $model->getOriginal('email'))->update([
@@ -493,15 +491,30 @@ class User extends Admin implements MustVerifyEmail
                 ]);
             });
         });
+
         static::addGlobalScope('default', function (Builder $builder) {
+            $builder->withMax('subscriptions as ends_at', 'cancels_at');
+            $builder->withMax('subscriptions as starts_at', 'starts_at');
+            $builder->withMax('subscriptions as subscription_status', 'status');
+            $builder->withMax('lastLogin as last_login_at', 'created_at');
+
             $builder->withCount([
                 'enquiries as unread_enquiries' => function (Builder $query) {
                     $query->onlyActive();
                 },
+                'subscriptions as is_subscribed' => function (Builder $query) {
+                    $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
+                        ->where(function ($q) {
+                            $q->where('trial_ends_at', '>', now())
+                                ->orWhere('ends_at', null);
+                        })
+                        ->where('status', Subscription::STATUS_ACTIVE);
+                },
+                'subscriptions as has_cancelled' => function (Builder $query) {
+                    $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
+                        ->whereNotNull('ends_at');
+                },
             ]);
-            $builder->withMax('subscriptions as ends_at', 'cancels_at');
-            $builder->withMax('subscriptions as starts_at', 'starts_at');
-            $builder->withMax('subscriptions as subscription_status', 'status');
         });
     }
 }

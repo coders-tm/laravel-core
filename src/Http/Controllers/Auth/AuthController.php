@@ -140,9 +140,8 @@ class AuthController extends Controller
 
     public function me($guard = 'users')
     {
-        $user = user()->fresh([
+        $user = user()->loadMissing([
             'address',
-            'lastLogin'
         ]);
 
         $user = $user->toLoginResponse();

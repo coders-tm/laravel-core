@@ -14,10 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('collectionables', function (Blueprint $table) {
-            $table->string('collectionable_type')->nullable();
-            $table->unsignedBigInteger('collectionable_id')->nullable();
+            $table->string('collectionable_type');
+            $table->unsignedBigInteger('collectionable_id');
             $table->unsignedBigInteger('collection_id');
-            $table->foreign('collection_id')->references('id')->on('collections')->cascadeOnUpdate()->cascadeOnDelete();
+
+            $table->foreign('collection_id')->references('id')->on('collections')->cascadeOnDelete();
+
+            $table->primary(['collectionable_type', 'collectionable_id', 'collection_id']);
+
+            $table->index(['collectionable_type', 'collectionable_id']);
         });
     }
 

@@ -23,14 +23,17 @@ return new class extends Migration
             $table->string('logable_type')->nullable();
             $table->unsignedBigInteger('logable_id')->nullable();
 
-            $table->string('type')->default('default');
-            $table->string('status')->default(Log::STATUS_SUCCESS)->nullable();
+            $table->string('type')->default('default')->index();
+            $table->string('status')->default(Log::STATUS_SUCCESS)->index();
             $table->text('message')->nullable();
             $table->{$this->jsonable()}('options')->nullable();
-            $table->string('admin_id')->nullable();
+
+            $table->unsignedBigInteger('admin_id')->nullable()->index();
 
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['logable_type', 'logable_id']);
         });
 
         $this->setAutoIncrement('logs');

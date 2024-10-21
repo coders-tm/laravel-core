@@ -473,21 +473,21 @@ class Subscription extends Model
             throw new LogicException('Unable to renew canceled ended subscription.');
         }
 
-        $sub = $this;
+        // $sub = $this;
 
-        DB::transaction(function () use ($sub): void {
-            // Clear usages data
-            $sub->usages()->delete();
+        // DB::transaction(function () use ($sub): void {
+        // Clear usages data
+        $this->usages()->delete();
 
-            if ($sub->nextPlan) {
-                $sub->plan()->associate($sub->nextPlan);
-            }
+        if ($this->nextPlan) {
+            $this->plan()->associate($this->nextPlan);
+        }
 
-            // Renew period
-            $sub->setPeriod()->save();
+        // Renew period
+        $this->setPeriod()->save();
 
-            $sub->generateInvoice();
-        });
+        $this->generateInvoice();
+        // });
 
         return $this;
     }
@@ -591,18 +591,6 @@ class Subscription extends Model
     public function latestInvoice(): MorphOne
     {
         return $this->morphOne(Coderstm::$orderModel, 'orderable')
-            ->orderBy('created_at', 'desc');
-    }
-
-    /**
-     * Get the latest paid invoice associated with the Subscription
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
-    public function latestPaidInvoice(): MorphOne
-    {
-        return $this->morphOne(Coderstm::$orderModel, 'orderable')
-            ->paid()
             ->orderBy('created_at', 'desc');
     }
 
@@ -790,7 +778,7 @@ class Subscription extends Model
         }
 
         if (empty($count)) {
-            $count = $this->plan->count;
+            $count = $this->plan->interval_count;
         }
 
         $period = new Period($interval, $count, $dateFrom ?? Carbon::now());
@@ -841,7 +829,7 @@ class Subscription extends Model
 
     protected function dateFrom()
     {
-        return optional($this->latestPaidInvoice)->due_date ?? $this->starts_at;
+        return $this->starts_at ?? $this->created_at;
     }
 
     protected function generateLineItems($plan, $period)

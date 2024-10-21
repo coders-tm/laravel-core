@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('option_id');
             $table->unsignedBigInteger('value_id');
 
-            $table->foreign('option_id')->references('id')->on('options')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('value_id')->references('id')->on('attribute_values')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('option_id')->references('id')->on('options')->cascadeOnDelete();
+            $table->foreign('value_id')->references('id')->on('attribute_values')->cascadeOnDelete();
 
             $table->primary(['option_id', 'value_id']);
         });

@@ -16,15 +16,16 @@ return new class extends Migration
         Schema::create('collections', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name')->nullable();
-            $table->string('slug')->nullable()->unique();
+            $table->string('name')->nullable()->index();
+            $table->string('slug')->nullable()->unique()->index();
             $table->string('type')->nullable();
-            $table->string('status')->default('Active');
+            $table->string('status')->default('Active')->index();
             $table->string('conditions_type')->nullable();
             $table->text('description')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_keywords')->nullable();
             $table->text('meta_description')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

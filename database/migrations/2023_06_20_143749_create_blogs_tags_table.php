@@ -19,8 +19,8 @@ return new class extends Migration
         Schema::create('blogs_tags', function (Blueprint $table) {
             $table->id();
 
-            $table->string('label')->nullable();
-            $table->string('slug')->nullable()->unique();
+            $table->string('label')->nullable()->index();
+            $table->string('slug')->nullable()->unique()->index();
 
             $table->timestamps();
             $table->softDeletes();
@@ -31,8 +31,12 @@ return new class extends Migration
         Schema::create('blogs_taggables', function (Blueprint $table) {
             $table->string('taggable_type')->nullable();
             $table->unsignedBigInteger('taggable_id')->nullable();
-            $table->unsignedBigInteger('tag_id');
-            $table->foreign('tag_id')->references('id')->on('blogs_tags')->cascadeOnUpdate()->cascadeOnDelete();
+
+            $table->unsignedBigInteger('tag_id')->index();
+
+            $table->foreign('tag_id')->references('id')->on('blogs_tags')->cascadeOnDelete();
+
+            $table->index(['taggable_type', 'taggable_id']);
         });
     }
 };

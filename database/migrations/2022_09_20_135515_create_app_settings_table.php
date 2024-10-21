@@ -18,7 +18,7 @@ return new class extends Migration
     {
         Schema::create('app_settings', function (Blueprint $table) {
             $table->id();
-            $table->string('key')->unique();
+            $table->string('key')->unique()->index();
             $table->{$this->jsonable()}('options')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -18,9 +18,11 @@ return new class extends Migration
             $table->unsignedBigInteger('fileable_id');
             $table->unsignedBigInteger('file_id');
             $table->string('order')->default(0)->nullable();
-            $table->string('type')->nullable();
+            $table->string('type')->nullable()->index();
 
-            $table->foreign('file_id')->references('id')->on('files')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('file_id')->references('id')->on('files')->cascadeOnDelete();
+
+            $table->index(['fileable_type', 'fileable_id']);
         });
     }
 };

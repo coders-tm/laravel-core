@@ -43,6 +43,7 @@ class Admin extends Authenticatable
 
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
         'is_active' => 'boolean',
         'is_supper_admin' => 'boolean',
     ];
@@ -54,7 +55,6 @@ class Admin extends Authenticatable
 
     protected $with = [
         'avatar',
-        'address',
     ];
 
     public function getNameAttribute()
@@ -207,5 +207,12 @@ class Admin extends Authenticatable
     protected static function newFactory()
     {
         return AdminFactory::new();
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('default', function (Builder $builder) {
+            $builder->withMax('lastLogin as last_login_at', 'created_at');
+        });
     }
 }

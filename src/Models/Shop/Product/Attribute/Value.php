@@ -2,14 +2,16 @@
 
 namespace Coderstm\Models\Shop\Product\Attribute;
 
-use Coderstm\Traits\Core;
+use Coderstm\Traits\Logable;
 use Coderstm\Traits\Fileable;
-use Coderstm\Models\Shop\Product\Attribute;
+use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Shop\Product\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Value extends Model
 {
-    use Core, Fileable;
+    use HasFactory, Logable, SerializeDate, Fileable;
 
     protected $table = 'attribute_values';
 

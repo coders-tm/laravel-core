@@ -21,9 +21,9 @@ return new class extends Migration
 
             $table->string('label')->nullable();
             $table->string('subject')->nullable();
-            $table->string('type')->nullable();
+            $table->string('type')->nullable()->index();
             $table->text('content')->nullable();
-            $table->boolean('is_default')->nullable()->default(false);
+            $table->boolean('is_default')->default(false)->index();
 
             $table->timestamps();
             $table->softDeletes();

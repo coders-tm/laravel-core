@@ -20,18 +20,19 @@ return new class extends Migration
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('available')->default(0);
-            $table->integer('incoming')->default(0);
+            $table->unsignedInteger('available')->default(0);
+            $table->unsignedInteger('incoming')->default(0);
             $table->boolean('active')->default(true);
             $table->boolean('tracking')->default(true);
 
-            $table->unsignedBigInteger('variant_id');
-            $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('variant_id')->index();
+            $table->unsignedBigInteger('location_id')->index();
 
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('variant_id')->references('id')->on('variants')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreign('location_id')->references('id')->on('shop_locations')->cascadeOnDelete()->cascadeOnUpdate();
+
+            $table->foreign('variant_id')->references('id')->on('variants')->cascadeOnDelete();
+            $table->foreign('location_id')->references('id')->on('shop_locations')->cascadeOnDelete();
         });
 
         // set auto increment to 10000

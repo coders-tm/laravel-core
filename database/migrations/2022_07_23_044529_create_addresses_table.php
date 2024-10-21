@@ -18,7 +18,10 @@ return new class extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
+
             $table->nullableMorphs('addressable');
+
+            $table->string('name')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('company')->nullable();
@@ -27,12 +30,15 @@ return new class extends Migration
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('state_code')->nullable();
-            $table->string('postal_code')->nullable();
+
+            $table->string('postal_code')->nullable()->index();
             $table->string('country')->nullable();
-            $table->string('country_code')->nullable();
+            $table->string('country_code')->nullable()->index();
+
             $table->string('phone_number')->nullable();
-            $table->boolean('default')->default(false);
-            $table->string('ref')->nullable();
+            $table->boolean('default')->default(false)->index();
+
+            $table->string('ref')->nullable()->index();
             $table->timestamps();
             $table->softDeletes();
         });

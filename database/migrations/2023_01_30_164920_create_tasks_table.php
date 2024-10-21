@@ -19,7 +19,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('subject')->nullable();
             $table->text('message')->nullable();
             $table->string('status')->nullable();
@@ -36,8 +36,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
 
-            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
         });
 
         Schema::create('task_replies', function (Blueprint $table) {
@@ -48,8 +50,10 @@ return new class extends Migration
             $table->text('message')->nullable();
             $table->timestamps();
 
-            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
         });
 
         $this->setAutoIncrement('task_replies');
@@ -58,8 +62,10 @@ return new class extends Migration
             $table->unsignedBigInteger('task_id');
             $table->unsignedBigInteger('user_id');
 
-            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
         });
     }
 };

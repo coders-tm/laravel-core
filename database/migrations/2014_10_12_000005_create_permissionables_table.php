@@ -16,10 +16,14 @@ return new class extends Migration
         Schema::create('permissionables', function (Blueprint $table) {
             $table->string('permissionable_type');
             $table->unsignedBigInteger('permissionable_id');
-            $table->unsignedBigInteger('permission_id');
-            $table->boolean('access')->default(false)->nullable();
 
-            $table->foreign('permission_id')->references('id')->on('permissions')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->unsignedBigInteger('permission_id');
+
+            $table->boolean('access')->default(false);
+
+            $table->foreign('permission_id')->references('id')->on('permissions')->cascadeOnDelete();
+
+            $table->unique(['permissionable_type', 'permissionable_id', 'permission_id'], 'permissionable_unique');
         });
     }
 };
