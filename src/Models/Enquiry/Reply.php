@@ -109,7 +109,7 @@ class Reply extends Model
             $template = $this->renderNotification($type ?? 'push:enquiry-reply-notification');
 
             if (config('alert.push')) {
-                dispatch(new SendPushNotification($this->user, [
+                dispatch(new SendPushNotification($this->enquiry->user, [
                     'title' => $template->subject,
                     'body' => html_text($template->content)
                 ], [
@@ -119,7 +119,7 @@ class Reply extends Model
             }
 
             if (config('alert.whatsapp')) {
-                dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n{$template->content}"));
+                dispatch(new SendWhatsappNotification($this->enquiry->user, "{$template->subject}\n{$template->content}"));
             }
         } catch (\Exception $e) {
             //throw $e;

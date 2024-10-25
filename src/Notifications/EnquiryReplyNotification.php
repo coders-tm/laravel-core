@@ -23,7 +23,7 @@ class EnquiryReplyNotification extends BaseNotification
 
         parent::__construct($this->subject, $this->message);
 
-        if (!$reply->byAdmin() && $this->canSendPush()) {
+        if ($reply->byAdmin() && $this->canSendPush()) {
             $reply->sendPushNotify();
         }
     }
