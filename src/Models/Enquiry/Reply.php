@@ -107,19 +107,20 @@ class Reply extends Model
     {
         try {
             $template = $this->renderNotification($type ?? 'push:enquiry-reply-notification');
+            $user = $this->enquiry->user;
 
-            if (config('alert.push')) {
-                dispatch(new SendPushNotification($this->enquiry->user, [
+            if ($user->canSendPushNotification()) {
+                SendPushNotification::dispatch($user, [
                     'title' => $template->subject,
                     'body' => html_text($template->content)
                 ], [
                     'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
                     'enquiry_id' => $this->enquiry_id,
-                ]));
+                ]);
             }
 
-            if (config('alert.whatsapp')) {
-                dispatch(new SendWhatsappNotification($this->enquiry->user, "{$template->subject}\n{$template->content}"));
+            if ($user->canSendWhatsappNotification()) {
+                SendWhatsappNotification::dispatch($user, "{$template->subject}\n{$template->content}");
             }
         } catch (\Exception $e) {
             //throw $e;

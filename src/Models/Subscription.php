@@ -17,7 +17,6 @@ use Coderstm\Services\Resource;
 use Coderstm\Traits\HasFeature;
 use Coderstm\Models\Notification;
 use Coderstm\Traits\SerializeDate;
-use Illuminate\Support\Facades\DB;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Jobs\SendPushNotification;
 use Illuminate\Database\Eloquent\Model;
@@ -744,17 +743,17 @@ class Subscription extends Model
         try {
             $template = $this->renderNotification($type, $shortCodes);
 
-            if (config('alert.push')) {
-                dispatch(new SendPushNotification($this->user, [
+            if ($this->user->canSendPushNotification()) {
+                SendPushNotification::dispatch($this->user, [
                     'title' => $template->subject,
                     'body' => html_text($template->content)
                 ], [
                     'route' => user_route("/billing"),
-                ]));
+                ]);
             }
 
-            if (config('alert.whatsapp')) {
-                dispatch(new SendWhatsappNotification($this->user, "{$template->subject}\n\n{$template->content}"));
+            if ($this->user->canSendWhatsappNotification()) {
+                SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n\n{$template->content}");
             }
         } catch (\Exception $e) {
             //throw $e;

@@ -476,6 +476,16 @@ class User extends Admin implements MustVerifyEmail
         ]);
     }
 
+    public function canSendPushNotification(): bool
+    {
+        return $this->deviceTokens->count() > 0 && config('alert.push');
+    }
+
+    public function canSendWhatsappNotification(): bool
+    {
+        return !empty($this->phone_number) && config('alert.whatsapp');
+    }
+
     protected static function booted()
     {
         static::creating(function (self $model) {
