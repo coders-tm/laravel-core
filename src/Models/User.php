@@ -512,18 +512,6 @@ class User extends Admin implements MustVerifyEmail
                 'enquiries as unread_enquiries' => function (Builder $query) {
                     $query->onlyActive();
                 },
-                'subscriptions as is_subscribed' => function (Builder $query) {
-                    $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
-                        ->where(function ($q) {
-                            $q->where('trial_ends_at', '>', now())
-                                ->orWhere('ends_at', null);
-                        })
-                        ->where('status', Subscription::STATUS_ACTIVE);
-                },
-                'subscriptions as has_cancelled' => function (Builder $query) {
-                    $query->select(DB::raw('IF(COUNT(*) > 0, 1, 0)'))
-                        ->whereNotNull('ends_at');
-                },
             ]);
         });
     }

@@ -18,7 +18,7 @@ class CheckSubscribed
     {
         $user = $this->user();
         $subscription = $user->subscription();
-        if ($user->is_subscribed) {
+        if ($user->subscribed()) {
             return $next($request);
         } else if ($subscription && $subscription->canceled()) {
             return response()->json([
