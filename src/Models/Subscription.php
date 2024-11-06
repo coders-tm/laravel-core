@@ -699,9 +699,9 @@ class Subscription extends Model
                 ]);
             }
         } finally {
-            $this->update([
+            $this->setPeriod()->fill([
                 'status' => static::STATUS_ACTIVE,
-            ]);
+            ])->save();
 
             $this->syncUsages();
         }
@@ -783,6 +783,7 @@ class Subscription extends Model
         $period = new Period($interval, $count, $dateFrom ?? Carbon::now());
 
         $this->fill([
+            'ends_at' => $this->ends_at->lt(now()) ? null :  $this->ends_at,
             'starts_at' => $period->getStartDate(),
             'expires_at' => $period->getEndDate(),
         ]);
@@ -859,9 +860,9 @@ class Subscription extends Model
         }
 
         // making subscription status as active
-        $this->update([
-            'status' => static::STATUS_ACTIVE
-        ]);
+        $this->setPeriod()->fill([
+            'status' => static::STATUS_ACTIVE,
+        ])->save();
     }
 
     protected function generateInvoice($start = false): ?Order

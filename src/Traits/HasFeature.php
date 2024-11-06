@@ -129,7 +129,7 @@ trait HasFeature
         if (is_null($usage->reset_at) && $feature->resetable) {
             // Set date from subscription creation date so the reset
             // period match the period specified by the subscription's plan.
-            $usage->reset_at = $this->plan->getResetDate($this->created_at);
+            $usage->reset_at = $this->plan->getResetDate($this->dateFrom());
         } elseif ($usage->expired()) {
             // If the usage record has been expired, let's assign
             // a new expiration date and reset the uses to zero.
@@ -153,7 +153,7 @@ trait HasFeature
             if ($usage->expired()) {
                 $usage->used = 0;
             }
-            $usage->reset_at = $this->plan->getResetDate($this->created_at);
+            $usage->reset_at = $this->plan->getResetDate($this->dateFrom());
             $usage->save();
         });
     }
