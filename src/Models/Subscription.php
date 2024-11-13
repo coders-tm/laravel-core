@@ -783,7 +783,7 @@ class Subscription extends Model
         $period = new Period($interval, $count, $dateFrom ?? Carbon::now());
 
         $this->fill([
-            'ends_at' => $this->ends_at->lt(now()) ? null :  $this->ends_at,
+            'ends_at' => $this->ends_at?->lt(now()) ? null :  $this->ends_at,
             'starts_at' => $period->getStartDate(),
             'expires_at' => $period->getEndDate(),
         ]);

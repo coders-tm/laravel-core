@@ -70,6 +70,9 @@ class Order extends Model
     const REASON_DECLINED = 'Payment declined';
     const REASON_UNKNOWN = 'Unknown';
 
+    // TODO: Fix this issue of array to string converstion
+    protected $logIgnore = ['options'];
+
     protected $fillable = [
         'location',
         'customer_id',
