@@ -98,7 +98,7 @@ class PaypalController extends Controller
         }
     }
 
-    public function wehbook(Request $request)
+    public function webhook(Request $request)
     {
         return response()->json([], 200);
     }
