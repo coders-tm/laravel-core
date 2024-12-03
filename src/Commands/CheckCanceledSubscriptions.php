@@ -36,17 +36,18 @@ class CheckCanceledSubscriptions extends Command
             ->where('ends_at', '<=', now())
             ->whereDoesntHave('logs', function ($q) {
                 $q->where('type', 'canceled-notification');
-            });
+            })->with(['user']);
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
-                $user = $subscription->user;
-                $user->notify(new SubscriptionCanceledNotification($user, $subscription));
-                admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
-                $subscription->logs()->create([
-                    'type' => 'canceled-notification',
-                    'message' => 'Notification for canceled subscriptions has been successfully sent.'
-                ]);
+                if ($user = $subscription->user) {
+                    $user->notify(new SubscriptionCanceledNotification($user, $subscription));
+                    admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
+                    $subscription->logs()->create([
+                        'type' => 'canceled-notification',
+                        'message' => 'Notification for canceled subscriptions has been successfully sent.'
+                    ]);
+                }
             } catch (\Exception $e) {
                 $subscription->logs()->create([
                     'type' => 'canceled-notification',

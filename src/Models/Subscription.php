@@ -30,6 +30,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use function Illuminate\Events\queueable;
+
 class Subscription extends Model
 {
     use HasFeature, Logable, SerializeDate, HasFactory;
@@ -682,6 +684,15 @@ class Subscription extends Model
             ->orderBy('created_at', 'desc');
     }
 
+    public function sendRenewNotification()
+    {
+        if ($this->pastDue()) {
+            queueable(function () {
+                $this->user->notify(new SubscriptionRenewedNotification($this));
+            });
+        }
+    }
+
     public function pay($paymentMethod)
     {
         if (empty($paymentMethod)) {
@@ -690,9 +701,7 @@ class Subscription extends Model
 
         try {
             if ($this->pastDue() || $this->hasIncompletePayment()) {
-                if ($this->pastDue()) {
-                    $this->user->notify(new SubscriptionRenewedNotification($this));
-                }
+                $this->sendRenewNotification();
                 $invoice = $this->latestInvoice;
                 $invoice->markAsPaid($paymentMethod, [
                     'note' => 'Marked the manual payment as received',
@@ -855,9 +864,7 @@ class Subscription extends Model
 
     public function paymentConfirmation(?Order $order)
     {
-        if ($this->pastDue()) {
-            $this->user->notify(new SubscriptionRenewedNotification($this));
-        }
+        $this->sendRenewNotification();
 
         // making subscription status as active
         $this->setPeriod()->fill([

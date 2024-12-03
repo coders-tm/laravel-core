@@ -23,9 +23,15 @@ if (!function_exists('guard')) {
 }
 
 if (!function_exists('user')) {
-    function user()
+    function user(string $key = null)
     {
-        return request()->user();
+        $user =  request()->user();
+
+        if ($key && $user) {
+            return $user[$key];
+        }
+
+        return $user;
     }
 }
 
