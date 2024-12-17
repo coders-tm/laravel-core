@@ -2,8 +2,10 @@
 
 namespace Coderstm\Services;
 
+use Coderstm\Models\Module;
 use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
+use Coderstm\Models\Permission;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\Config;
 use Stevebauman\Location\Facades\Location;
@@ -181,5 +183,36 @@ class Helpers
         }
 
         return $dirName; // Return the original name
+    }
+
+    public static function updateOrCreateModule($item, bool $remove = false): ?Module
+    {
+        if ($remove) {
+            Module::where('name', $item['name'])->delete();
+            return null;
+        }
+
+        $module = Module::updateOrCreate([
+            'name' => $item['name'],
+        ], [
+            'icon' => $item['icon'],
+            'url' => $item['url'],
+            'show_menu' => isset($item['show_menu']) ? $item['show_menu'] : 1,
+            'sort_order' => $item['sort_order'],
+        ]);
+
+        // delete removed permissions
+        $module->permissions()->whereNotIn('action', $item['sub_items'])->forceDelete();
+
+        foreach ($item['sub_items'] as $item) {
+            Permission::updateOrCreate([
+                'scope' => Str::slug($module['name']) . ':' . Str::slug($item),
+            ], [
+                'module_id' => $module['id'],
+                'action' => $item,
+            ]);
+        }
+
+        return $module;
     }
 }

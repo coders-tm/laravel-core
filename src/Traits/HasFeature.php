@@ -159,6 +159,17 @@ trait HasFeature
     }
 
     /**
+     * Reset usages based on plan.
+     */
+    public function resetUsages(): void
+    {
+        $this->usages()->update([
+            'used' => 0,
+            'reset_at' => $this->plan->getResetDate(now())
+        ]);
+    }
+
+    /**
      * Reduce usage.
      */
     public function reduceFeatureUsage(string $featureSlug, int $uses = 1)
