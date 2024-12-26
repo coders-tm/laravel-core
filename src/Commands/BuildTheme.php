@@ -45,9 +45,11 @@ class BuildTheme extends Command
         // Execute the npm build command
         exec($npmBuildCommand, $output, $resultCode);
 
-        // Output npm response
-        foreach ($output as $line) {
-            $this->line($line);
+        if (app()->environment('local')) {
+            // Output npm response
+            foreach ($output as $line) {
+                $this->line($line);
+            }
         }
 
         // Check if the command was successful

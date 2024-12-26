@@ -41,8 +41,8 @@ class CheckCanceledSubscriptions extends Command
         foreach ($subscriptions->cursor() as $subscription) {
             try {
                 if ($user = $subscription->user) {
-                    $user->notify(new SubscriptionCanceledNotification($user, $subscription));
-                    admin_notify(new AdminsSubscriptionCanceledNotification($user, $subscription));
+                    $user->notify(new SubscriptionCanceledNotification($subscription));
+                    admin_notify(new AdminsSubscriptionCanceledNotification($subscription));
                     $subscription->logs()->create([
                         'type' => 'canceled-notification',
                         'message' => 'Notification for canceled subscriptions has been successfully sent.'

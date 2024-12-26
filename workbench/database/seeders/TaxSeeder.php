@@ -1,6 +1,6 @@
 <?php
 
-namespace Workbench\Database\Seeders;
+namespace Database\Seeders;
 
 use Coderstm\Models\Tax;
 use League\ISO3166\ISO3166;

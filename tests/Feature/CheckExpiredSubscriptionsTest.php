@@ -4,7 +4,6 @@ namespace Coderstm\Tests\Feature;
 
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
-use Illuminate\Support\Facades\Artisan;
 use Coderstm\Tests\Feature\FeatureTestCase;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;

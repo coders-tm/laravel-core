@@ -1,9 +1,9 @@
 <?php
 
-namespace Workbench\App\Models;
+namespace App\Models;
 
 use Coderstm\Models\User as Base;
-use Workbench\Database\Factories\UserFactory;
+use Coderstm\Database\Factories\UserFactory;
 
 class User extends Base
 {

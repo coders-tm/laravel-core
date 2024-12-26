@@ -2,8 +2,6 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\User;
-
 class SubscriptionExpiredNotification extends BaseNotification
 {
     public $subject;
@@ -14,7 +12,7 @@ class SubscriptionExpiredNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct($subscription)
     {
         $template = $subscription->renderNotification('user:subscription-expired');
 

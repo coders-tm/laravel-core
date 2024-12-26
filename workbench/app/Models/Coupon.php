@@ -1,9 +1,9 @@
 <?php
 
-namespace Workbench\App\Models;
+namespace App\Models;
 
 use Coderstm\Models\Coupon as Base;
-use Workbench\Database\Factories\CouponFactory;
+use Database\Factories\CouponFactory;
 
 class Coupon extends Base
 {

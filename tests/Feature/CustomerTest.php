@@ -3,7 +3,7 @@
 namespace Coderstm\Tests\Feature;
 
 use Carbon\Carbon;
-use Workbench\App\Models\User;
+use App\Models\User;
 use Coderstm\Tests\Feature\FeatureTestCase;
 
 class CustomerTest extends FeatureTestCase

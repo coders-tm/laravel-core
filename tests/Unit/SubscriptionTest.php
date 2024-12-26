@@ -5,16 +5,13 @@ namespace Coderstm\Tests\Unit;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Tests\TestCase;
 use Illuminate\Support\Carbon;
-use Workbench\App\Models\User;
-use Workbench\App\Models\Coupon;
+use App\Models\User;
+use App\Models\Coupon;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class SubscriptionTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
     public function it_can_create_a_subscription()
     {

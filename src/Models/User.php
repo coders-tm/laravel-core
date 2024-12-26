@@ -247,7 +247,7 @@ class User extends Admin implements MustVerifyEmail
     /**
      * Scope a query to only include whereTyped
      */
-    public function scopeWhereTyped($query, string $type = null): Builder
+    public function scopeWhereTyped($query, ?string $type = null): Builder
     {
         switch ($type) {
             case 'rolling':

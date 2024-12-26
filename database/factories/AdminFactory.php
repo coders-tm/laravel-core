@@ -13,7 +13,7 @@ class AdminFactory extends Factory
      *
      * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
      */
-    protected $model = 'App\Models\Admin';
+    protected $model = 'Coderstm\Models\Admin';
 
     /**
      * Define the model's default state.

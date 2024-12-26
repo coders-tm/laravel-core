@@ -2,10 +2,8 @@
 
 namespace Coderstm\Tests\Feature;
 
-use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
-use Coderstm\Models\PaymentMethod;
-use Illuminate\Support\Facades\Artisan;
+use Coderstm\Models\Subscription\Plan;
 use Coderstm\Tests\Feature\FeatureTestCase;
 
 class SubscriptionsRenewTest extends FeatureTestCase
@@ -13,6 +11,8 @@ class SubscriptionsRenewTest extends FeatureTestCase
     /** @test */
     public function it_renews_active_subscriptions()
     {
+        Plan::factory()->create();
+
         // Arrange: Create an active subscription
         $subscription = Subscription::withoutEvents(function () {
             return Subscription::factory()->create([

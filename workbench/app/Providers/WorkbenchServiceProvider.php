@@ -1,7 +1,8 @@
 <?php
 
-namespace Workbench\App\Providers;
+namespace App\Providers;
 
+use Coderstm\Services\Theme;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,5 +22,7 @@ class WorkbenchServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Config::set("mail.default", 'log');
+        Config::set("app.country", 'United States');
+        Theme::set('foundation');
     }
 }

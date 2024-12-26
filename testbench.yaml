@@ -1,16 +1,18 @@
 providers:
   - Laravel\Cashier\CashierServiceProvider
+  - Qirolab\Theme\ThemeServiceProvider
+  - Laravel\Sanctum\SanctumServiceProvider
   - Coderstm\Providers\ThemeServiceProvider
   - Coderstm\Providers\CoderstmServiceProvider
   - Coderstm\Providers\CoderstmPermissionsServiceProvider
   - Coderstm\Providers\CoderstmEventServiceProvider
-  - Workbench\App\Providers\WorkbenchServiceProvider
+  - App\Providers\WorkbenchServiceProvider
 
 migrations:
   - workbench/database/migrations
 
 seeders:
-  - Workbench\Database\Seeders\DatabaseSeeder
+  - Database\Seeders\DatabaseSeeder
 
 workbench:
   start: "/"
@@ -30,4 +32,8 @@ workbench:
     - migrate:fresh
   assets:
     - coderstm-assets
-  sync: []
+  sync:
+    - from: ./config/auth.php
+      to: workbench/config/auth.php
+    - from: ./config/sanctum.php
+      to: workbench/config/sanctum.php

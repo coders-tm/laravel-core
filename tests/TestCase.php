@@ -2,31 +2,17 @@
 
 namespace Coderstm\Tests;
 
-use Coderstm\Coderstm;
-use Coderstm\Models\Admin;
-use Illuminate\Support\Str;
-use Coderstm\Models\Enquiry;
-use InvalidArgumentException;
-use Workbench\App\Models\User;
-use Orchestra\Testbench\Concerns\WithWorkbench;
-use Orchestra\Testbench\Attributes\WithMigration;
-use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Orchestra\Testbench\Concerns\WithLaravelMigrations;
 
-#[WithMigration]
-abstract class TestCase extends OrchestraTestCase
+class TestCase extends BaseTestCase
 {
-    use WithWorkbench;
+    use RefreshDatabase, WithLaravelMigrations;
 
-    protected function getEnvironmentSetUp($app)
+    protected function setUp(): void
     {
-        $apiKey = config('cashier.secret');
+        parent::setUp();
 
-        if ($apiKey && !Str::startsWith($apiKey, 'sk_test_')) {
-            throw new InvalidArgumentException('Tests may not be run with a production Stripe key.');
-        }
-
-        Coderstm::useUserModel(User::class);
-        Coderstm::useAdminModel(Admin::class);
-        Coderstm::useEnquiryModel(Enquiry::class);
+        $this->seed();
     }
 }

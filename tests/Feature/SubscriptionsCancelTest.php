@@ -2,11 +2,9 @@
 
 namespace Coderstm\Tests\Feature;
 
-use Coderstm\Models\Subscription;
 use Coderstm\Models\Log;
-use Coderstm\Enum\AppStatus;
+use Coderstm\Models\Subscription;
 use Coderstm\Tests\Feature\FeatureTestCase;
-use Exception;
 
 class SubscriptionsCancelTest extends FeatureTestCase
 {
@@ -61,12 +59,11 @@ class SubscriptionsCancelTest extends FeatureTestCase
             ->assertExitCode(0);
 
         // Assert: Check the error log entry was created
-        // $this->assertDatabaseHas('logs', [
-        //     'type' => 'canceled',
-        //     'status' => Log::STATUS_ERROR,
-        //     'logable_type' => get_class($subscription),
-        //     'logable_id' => $subscription->id,
-        //     'message' => "Subscription #{$subscription->id} unable to deactivated! Cancellation failed",
-        // ]);
+        $this->assertDatabaseHas('logs', [
+            'type' => 'canceled',
+            'status' => Log::STATUS_ERROR,
+            'logable_type' => get_class($subscription),
+            'logable_id' => $subscription->id,
+        ]);
     }
 }

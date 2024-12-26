@@ -99,7 +99,7 @@ class SubscriptionTest extends FeatureTestCase
 
     public function test_incomplete_subscriptions_cannot_be_swapped()
     {
-        $plans = Plan::all()->pluck('id');
+        $plans = Plan::factory(2)->create()->pluck('id')->toArray();
         $subscription = new Subscription([
             'status' => Subscription::STATUS_INCOMPLETE,
         ]);

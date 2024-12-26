@@ -2,8 +2,6 @@
 
 namespace Coderstm\Notifications;
 
-use Coderstm\Models\User;
-
 class SubscriptionCanceledNotification extends BaseNotification
 {
     public $subject;
@@ -14,7 +12,7 @@ class SubscriptionCanceledNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct($subscription)
     {
         $template = $subscription->renderNotification('user:subscription-canceled');
 

@@ -23,7 +23,7 @@ if (!function_exists('guard')) {
 }
 
 if (!function_exists('user')) {
-    function user(string $key = null)
+    function user(?string $key = null)
     {
         $user =  request()->user();
 
@@ -52,11 +52,13 @@ if (!function_exists('is_admin')) {
 if (!function_exists('base_url')) {
     function base_url($path = '')
     {
-        if (!$path) return config('app.url');
+        $baseUrl = rtrim(config('app.url'), '/');
+
+        if (!$path) return $baseUrl;
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return config('app.url') . $separator . $path;
+        return $baseUrl . $separator . $path;
     }
 }
 
@@ -67,7 +69,7 @@ if (!function_exists('admin_url')) {
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
 
         // Get the base URL from config
-        $baseUrl = config('coderstm.admin_url');
+        $baseUrl = rtrim(config('coderstm.admin_url'), '/');
 
         // Check if absolute is true
         // Remove any extra path after the base URL
@@ -79,16 +81,20 @@ if (!function_exists('admin_url')) {
             }
         }
 
-        return $baseUrl . $separator . $path;
+        return $path ? $baseUrl . $separator . $path : $baseUrl;
     }
 }
 
 if (!function_exists('app_url')) {
     function app_url($path = '')
     {
+        if (empty($path)) {
+            return config('coderstm.app_url');
+        }
+
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return config('coderstm.app_url') . $separator . $path;
+        return rtrim(config('coderstm.app_url'), '/') . $separator . $path;
     }
 }
 
@@ -97,6 +103,10 @@ if (!function_exists('user_route')) {
     {
         $prefix = config('coderstm.user_prefix');
         $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
+
+        if (empty($path)) {
+            return $prefix;
+        }
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
@@ -109,6 +119,10 @@ if (!function_exists('admin_route')) {
     {
         $prefix = config('coderstm.admin_prefix');
         $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
+
+        if (empty($path)) {
+            return $prefix;
+        }
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
@@ -227,8 +241,8 @@ if (!function_exists('app_lang')) {
     function app_lang()
     {
         try {
-            $config = app_settings('config');
-            $locale = $config['lang'] ?? 'en-US';
+            $lang = settings('config', 'lang');
+            $locale = $lang ?? 'en-US';
 
             return get_lang_code($locale);
         } catch (\Exception $e) {
@@ -282,7 +296,7 @@ if (!function_exists('has')) {
      * @param  callable|null  $callback
      * @return mixed
      */
-    function has($value = null, callable $callback = null)
+    function has($value = null, ?callable $callback = null)
     {
         $value = is_object($value) ? $value : (object) $value;
 
@@ -295,8 +309,12 @@ if (!function_exists('has')) {
 }
 
 if (!function_exists('get_country_code')) {
-    function get_country_code(string $country = '')
+    function get_country_code($country)
     {
+        if (empty($country)) {
+            return '*';
+        }
+
         try {
             $country = (new ISO3166)->name($country);
             return $country['alpha2'];

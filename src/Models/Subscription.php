@@ -506,8 +506,10 @@ class Subscription extends Model
         if ($this->onTrial()) {
             $this->ends_at = $this->trial_ends_at;
         } else {
-            $this->ends_at = $this->plan->getResetDate($this->created_at);
+            $this->ends_at = $this->expires_at;
         }
+
+        $this->canceled_at = now();
 
         $this->save();
 
@@ -517,16 +519,17 @@ class Subscription extends Model
     /**
      * Cancel the subscription at a specific moment in time.
      *
-     * @param  \DateTimeInterface  $endsAt
+     * @param  \DateTimeInterface|null  $endsAt
      * @return $this
      */
-    public function cancelAt(DateTimeInterface $endsAt)
+    public function cancelAt(?DateTimeInterface $endsAt)
     {
         if ($endsAt instanceof DateTimeInterface) {
             $this->ends_at = $endsAt->getTimestamp();
         }
 
         $this->status = static::STATUS_CANCELED;
+        $this->canceled_at = now();
 
         $this->save();
 
@@ -542,7 +545,8 @@ class Subscription extends Model
     {
         $this->fill([
             'status' => static::STATUS_CANCELED,
-            'ends_at' => Carbon::now(),
+            'ends_at' => now(),
+            'canceled_at' => now(),
         ])->save();
 
         return $this;
@@ -569,6 +573,7 @@ class Subscription extends Model
         $this->fill([
             'status' => static::STATUS_ACTIVE,
             'ends_at' => null,
+            'canceled_at' => null,
         ])->save();
 
         return $this;
@@ -739,6 +744,8 @@ class Subscription extends Model
             '{{BILLING_CYCLE}}' => optional($this->plan)->interval->value,
             '{{NEXT_BILLING_DATE}}' => $upcomingInvoice ? $upcomingInvoice->due_date->format('d M, Y') : '',
             '{{ENDS_AT}}' => $this->ends_at ? $this->ends_at->format('d M, Y') : '',
+            '{{STARTS_AT}}' => $this->starts_at ? $this->starts_at->format('d M, Y') : '',
+            '{{EXPIRES_AT}}' => $this->expires_at ? $this->expires_at->format('d M, Y') : '',
         ]);
 
         return $template->fill([

@@ -1,6 +1,6 @@
 <?php
 
-namespace Workbench\Database\Seeders;
+namespace Database\Seeders;
 
 use Coderstm\Models\Page;
 use Coderstm\Traits\Helpers;

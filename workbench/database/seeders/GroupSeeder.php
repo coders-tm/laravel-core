@@ -1,6 +1,6 @@
 <?php
 
-namespace Workbench\Database\Seeders;
+namespace Database\Seeders;
 
 use Coderstm\Models\Group;
 use Coderstm\Models\Permission;

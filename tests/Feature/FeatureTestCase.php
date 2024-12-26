@@ -5,7 +5,7 @@ namespace Coderstm\Tests\Feature;
 use Stripe\StripeClient;
 use Coderstm\Tests\TestCase;
 use Laravel\Cashier\Cashier;
-use Workbench\App\Models\User;
+use App\Models\User;
 use Stripe\ApiRequestor as StripeApiRequestor;
 use Stripe\HttpClient\CurlClient as StripeCurlClient;
 
@@ -18,6 +18,8 @@ abstract class FeatureTestCase extends TestCase
         }
 
         parent::setUp();
+
+        config(['app.url' => 'http://localhost']);
 
         $curl = new StripeCurlClient([CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1]);
         $curl->setEnableHttp2(false);

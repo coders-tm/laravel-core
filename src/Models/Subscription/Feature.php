@@ -4,6 +4,7 @@ namespace Coderstm\Models\Subscription;
 
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Database\Factories\FeatureFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Feature extends Model
@@ -32,5 +33,15 @@ class Feature extends Model
     static function findBySlug($slug): ?self
     {
         return static::where('slug', $slug)->first();
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return FeatureFactory::new();
     }
 }

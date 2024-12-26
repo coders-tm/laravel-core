@@ -2,7 +2,6 @@
 
 namespace Coderstm\Notifications\Admins;
 
-use Coderstm\Models\User;
 use Coderstm\Notifications\BaseNotification;
 
 class SubscriptionCanceledNotification extends BaseNotification
@@ -15,7 +14,7 @@ class SubscriptionCanceledNotification extends BaseNotification
      *
      * @return void
      */
-    public function __construct(User $user, $subscription)
+    public function __construct($subscription)
     {
         $template = $subscription->renderNotification('admin:subscription-cancel');
 

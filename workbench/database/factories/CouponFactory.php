@@ -1,9 +1,9 @@
 <?php
 
-namespace Workbench\Database\Factories;
+namespace Database\Factories;
 
 use Illuminate\Support\Str;
-use Workbench\App\Models\Coupon;
+use App\Models\Coupon;
 use Coderstm\Enum\CouponDuration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
