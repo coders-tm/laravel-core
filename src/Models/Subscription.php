@@ -73,8 +73,8 @@ class Subscription extends Model
     ];
 
     protected $dispatchesEvents = [
-        'created' => \Coderstm\Events\SubscriptionProcessed::class,
-        'updated' => \Coderstm\Events\SubscriptionProcessed::class,
+        'created' => \Coderstm\Events\SubscriptionCreated::class,
+        'updated' => \Coderstm\Events\SubscriptionUpdated::class,
     ];
 
     protected $casts = [
@@ -698,7 +698,27 @@ class Subscription extends Model
         }
     }
 
-    public function pay($paymentMethod)
+    public function assertRenewable()
+    {
+        if ($this->ended()) {
+            throw new LogicException('Unable to renew canceled ended subscription.');
+        }
+
+        if ($this->onGracePeriod()) {
+            throw new LogicException('Unable to renew subscription that is not within grace period.');
+        }
+    }
+
+    public function assertChargeable()
+    {
+        if ($this->pastDue() || $this->hasIncompletePayment()) {
+            return;
+        }
+
+        throw new LogicException('Unable to charge subscription that is not past due.');
+    }
+
+    public function pay($paymentMethod, array $options = [])
     {
         if (empty($paymentMethod)) {
             throw new InvalidArgumentException('Please provide a payment method.');
@@ -710,7 +730,7 @@ class Subscription extends Model
                 $invoice = $this->latestInvoice;
                 $invoice->markAsPaid($paymentMethod, [
                     'note' => 'Marked the manual payment as received',
-                ]);
+                ] + $options);
             }
         } finally {
             $this->setPeriod()->fill([

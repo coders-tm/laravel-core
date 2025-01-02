@@ -177,6 +177,9 @@ class SubscriptionController extends Controller
                 $subscription->syncOrResetUsages();
                 $subscription->oldPlan = $oldPlan;
                 $subscription->plan = $plan;
+
+                event(new \Coderstm\Events\SubscriptionUpgraded($subscription));
+
                 $user->notify(new SubscriptionUpgradeNotification($subscription));
             }
 
@@ -208,6 +211,8 @@ class SubscriptionController extends Controller
 
             $subscription->cancel();
 
+            event(new \Coderstm\Events\SubscriptionCancel($subscription));
+
             $user->notify(new SubscriptionCancelNotification($subscription));
         } catch (\Exception $e) {
             throw $e;
@@ -228,7 +233,9 @@ class SubscriptionController extends Controller
 
     public function resume(Request $request)
     {
-        $this->user()->subscription()->resume();
+        $subscription = $this->user()->subscription()->resume();
+
+        event(new \Coderstm\Events\SubscriptionResume($subscription));
 
         return response()->json([
             'message' => trans('messages.subscription.resume')
@@ -245,7 +252,7 @@ class SubscriptionController extends Controller
         try {
             $user = $this->user();
             $subscription = $user->subscription();
-            $subscription->pay();
+            $subscription->pay($request->payment_method);
         } catch (\Exception $e) {
             throw $e;
         }
@@ -338,6 +345,7 @@ class SubscriptionController extends Controller
             $subscription->oldPlan = Plan::find($subscription->plan_id);
             $subscription->plan = Plan::find($options['plan']);
             $user = $this->user();
+
             $user->notify(new SubscriptionDowngradeNotification($subscription));
         } catch (\Exception $e) {
             throw $e;

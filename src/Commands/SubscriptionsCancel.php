@@ -41,6 +41,9 @@ class SubscriptionsCancel extends Command
             try {
                 $user = $subscription->user();
                 $subscription->cancelNow();
+
+                event(new \Coderstm\Events\SubscriptionCancelled($subscription));
+
                 $user->update([
                     'status' => AppStatus::DEACTIVE->value
                 ]);

@@ -39,8 +39,11 @@ class CheckExpiredSubscriptions extends Command
         foreach ($subscriptions->cursor() as $subscription) {
             if ($user = $subscription->user) {
                 try {
+                    event(new \Coderstm\Events\SubscriptionExpired($subscription));
+
                     $user->notify(new SubscriptionExpiredNotification($subscription));
                     admin_notify(new AdminsSubscriptionExpiredNotification($subscription));
+
                     $subscription->logs()->create([
                         'type' => 'expired-notification',
                         'message' => 'Notification for expired subscriptions has been successfully sent.'

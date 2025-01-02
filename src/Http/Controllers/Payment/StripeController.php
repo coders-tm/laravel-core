@@ -102,9 +102,4 @@ class StripeController extends Controller
             ]),
         ];
     }
-
-    public function webhook(Request $request)
-    {
-        return response()->json([], 200);
-    }
 }

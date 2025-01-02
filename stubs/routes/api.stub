@@ -24,6 +24,7 @@ use Coderstm\Http\Controllers\Blog\TagController as BlogTagController;
 use Coderstm\Http\Controllers\Page\TemplateController as PageTemplateController;
 use Coderstm\Http\Controllers\Page\BlockController as PageBlockController;
 use Coderstm\Http\Controllers\Subscription\PaymentMethodController as UserPaymentMethodController;
+use Coderstm\Http\Controllers\Wehbook;
 
 /*
 |--------------------------------------------------------------------------
@@ -333,7 +334,7 @@ Route::group(['controller' => ApplicationController::class, 'prefix' => 'applica
 });
 
 // Wehbooks
-Route::post('stripe/webhook', [StripeController::class, 'webhook'])->name('stripe.webhook');
+Route::post('stripe/webhook', [Wehbook\StripeController::class, 'handleWebhook'])->name('stripe.webhook');
 Route::post('paypal/webhook', [PaypalController::class, 'webhook'])->name('paypal.webhook');
 Route::post('razorpay/webhook', [RazorpayController::class, 'webhook'])->name('razorpay.webhook');
 

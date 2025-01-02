@@ -38,6 +38,8 @@ class SubscriptionsRenew extends Command
             try {
                 $subscription->renew();
 
+                event(new \Coderstm\Events\SubscriptionExpired($subscription));
+
                 $subscription->logs()->create([
                     'type' => 'renew',
                     'message' => 'Subscription has been renewed successfully!'

@@ -108,4 +108,15 @@ class PaymentMethod extends Model
             ]), $credentials);
         });
     }
+
+    public static function __callStatic($method, $parameters)
+    {
+        if (preg_match('/(.+)Id$/', $method, $matches)) {
+            $providerMethod = $matches[1];
+            if (method_exists(static::class, $providerMethod)) {
+                return static::$providerMethod()?->id;
+            }
+        }
+        return parent::__callStatic($method, $parameters);
+    }
 }
