@@ -38,8 +38,8 @@ class PaymentMethodController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
-            'provider' => 'required',
+            'name' => 'required|string',
+            'provider' => 'required|string',
         ];
 
         $this->validate($request, $rules);
@@ -73,8 +73,8 @@ class PaymentMethodController extends Controller
     public function update(Request $request, PaymentMethod $paymentMethod)
     {
         $rules = [
-            'name' => 'required',
-            'provider' => 'required',
+            'name' => 'required|string',
+            'provider' => 'required|string',
         ];
 
         $this->validate($request, $rules);

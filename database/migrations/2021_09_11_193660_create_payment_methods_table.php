@@ -22,6 +22,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name');
+            $table->string('label')->nullable();
             $table->string('provider')->default('manual')->index();
             $table->string('link')->nullable();
             $table->string('logo')->nullable();

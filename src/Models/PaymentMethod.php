@@ -4,6 +4,7 @@ namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class PaymentMethod extends Model
 {
@@ -16,6 +17,7 @@ class PaymentMethod extends Model
 
     protected $fillable = [
         'name',
+        'label',
         'provider',
         'link',
         'logo',
@@ -37,6 +39,14 @@ class PaymentMethod extends Model
         'credentials' => 'collection',
         'methods' => 'array',
     ];
+
+    protected function label(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $value ?? $this->name,
+        );
+    }
+
 
     public function getConfigsAttribute()
     {
@@ -98,6 +108,7 @@ class PaymentMethod extends Model
             }
             return array_merge($item->only([
                 'name',
+                'label',
                 'id',
                 'provider',
                 'logo',
