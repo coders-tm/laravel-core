@@ -160,7 +160,7 @@ class Product extends Model
     protected function available(): Attribute
     {
         return Attribute::make(
-            get: fn () => "{$this->total_inventories_available} available",
+            get: fn() => "{$this->total_inventories_available} available",
         );
     }
 
@@ -242,11 +242,11 @@ class Product extends Model
 
         // Process new options
         foreach ($options as $option) {
-            $newValues = collect($option['values']);
+            $option = array_filter($option);
+            $newValues = collect($option['values'] ?? []);
             $singleOption = $this->options()->where('name', $option['name'])->first();
-            // $previousValues = $singleOption && !$option['is_custom'] ? $singleOption->values : false;
 
-            if ($option['is_custom'] && isset($option['values'])) {
+            if (isset($option['values']) && isset($option['is_custom']) && $option['is_custom']) {
                 $option['custom_values'] = $newValues;
             }
 
@@ -254,7 +254,7 @@ class Product extends Model
                 'name' => $option['name'],
             ], $option);
 
-            if (isset($option['attribute_id'], $option['values']) && $singleOption) {
+            if (isset($option['attribute_id'], $option['values']) && $option['attribute_id'] && $singleOption) {
                 $singleOption->attribue_values()->sync([]);
                 foreach ($newValues->pluck('name') as $value) {
                     $singleOption->attribue_values()->attach(Value::firstOrCreate([
