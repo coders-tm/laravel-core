@@ -75,9 +75,9 @@ class SubscriptionController extends Controller
             if ($subscription->onTrial()) {
                 $trial_end = $subscription->trial_ends_at->format('M d, Y');
                 $subscription['message'] = "You're also on trial, until $trial_end. Once it ends, we'll charge you for your plan.";
-            } else if ($subscription->is_downgrade) {
+            } else if ($subscription->hasDowngrade()) {
                 $subscription['message'] = trans('messages.subscription.downgrade', [
-                    'plan' => $subscription->nextPlan->label,
+                    'plan' => $subscription->nextPlan?->label,
                     'amount' => $upcomingInvoice->total(),
                     'date' => $subscription['upcomingInvoice']['date']
                 ]);
@@ -330,7 +330,7 @@ class SubscriptionController extends Controller
     protected function downgrade($subscription, array $options = [])
     {
 
-        if (!isset($options['plan'])) {
+        if (!isset($options['plan']) || !$options['plan']) {
             throw ValidationException::withMessages([
                 'plan' => trans('validation.subscriptions.downgrade_plan'),
             ]);

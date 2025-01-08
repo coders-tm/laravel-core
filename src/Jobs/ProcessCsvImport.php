@@ -2,16 +2,17 @@
 
 namespace Coderstm\Jobs;
 
-use Coderstm\Exceptions\ImportSkippedException;
-use Coderstm\Models\Import;
-use Coderstm\Notifications\ImportCompletedNotification;
 use League\Csv\Reader;
+use Coderstm\Models\Import;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
+use Coderstm\Exceptions\ImportFailedException;
+use Coderstm\Exceptions\ImportSkippedException;
+use Coderstm\Notifications\ImportCompletedNotification;
 
 class ProcessCsvImport implements ShouldQueue
 {
@@ -69,10 +70,11 @@ class ProcessCsvImport implements ShouldQueue
                 } catch (\Exception $e) {
                     if ($e instanceof ImportSkippedException) {
                         $this->import->addLogs("skipped", $key);
-                    } else {
+                    } else if ($e instanceof ImportFailedException) {
                         $this->import->addLogs("failed", $key);
+                    } else {
+                        throw $e;
                     }
-                    throw $e;
                 }
             }
 
@@ -83,8 +85,12 @@ class ProcessCsvImport implements ShouldQueue
             $this->import->update(['status' => Import::STATUS_COMPLETED]);
             admin_notify(new ImportCompletedNotification($this->import));
         } catch (\Exception $e) {
+            // Update import status to failed
+            $this->import->update(['status' => Import::STATUS_FAILED]);
+
             // Rollback the transaction in case of an error
             DB::rollback();
+
             throw $e;
         }
     }

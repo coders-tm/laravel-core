@@ -169,7 +169,7 @@ class Admin extends Authenticatable
     public static function createFromCsv(array $attributes = [], array $options = [])
     {
         $replaceByEmail = isset($options['email_overwrite']) && $options['email_overwrite'];
-        $user = static::where('email', $attributes['email'])->first();
+        $user = static::where('email', $attributes['email'])->withTrashed()->first();
 
         if (!$replaceByEmail && $user) {
             throw new ImportFailedException;
@@ -193,6 +193,8 @@ class Admin extends Authenticatable
         if (isset($attributes['created_at']) && !empty($attributes['created_at'])) {
             $user->created_at = $attributes['created_at'];
         }
+
+        $user->deleted_at = null;
 
         $user->save();
 
