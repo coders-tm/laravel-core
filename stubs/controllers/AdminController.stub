@@ -239,7 +239,7 @@ class AdminController extends Controller
     public function modules(Request $request)
     {
         $modules = Module::with('permissions')->get()->map(function ($item) {
-            $item->label = trans('modules.' . $item->name);
+            $item->label = __($item->name);
             return $item;
         });
 

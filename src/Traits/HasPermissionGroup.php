@@ -59,7 +59,7 @@ trait HasPermissionGroup
 
         return $modules->makeHidden(['created_at', 'deleted_at', 'updated_at'])->map(function ($item) {
             return array_merge($item->toArray(), [
-                'label' => trans('modules.' . $item['name']),
+                'label' => __($item['name']),
             ]);
         });
     }

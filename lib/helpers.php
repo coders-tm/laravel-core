@@ -382,7 +382,7 @@ if (!function_exists('trans_status')) {
     function trans_status($action = null, $module = null, $attribute = null)
     {
         return trans('messages.module.' . $action, [
-            'module' => trans_choice('modules.' . $module, 1),
+            'module' => trans_choice($module, 1),
             'type' => trans('messages.attributes.' . $attribute)
         ]);
     }
@@ -391,7 +391,7 @@ if (!function_exists('trans_status')) {
 if (!function_exists('trans_module')) {
     function trans_module($action = null, $module = null, $count = 1)
     {
-        return trans('messages.module.' . $action, ['module' => trans_choice('modules.' . $module, $count)]);
+        return trans('messages.module.' . $action, ['module' => trans_choice($module, $count)]);
     }
 }
 

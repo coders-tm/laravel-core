@@ -291,6 +291,16 @@ class Subscription extends Model
     }
 
     /**
+     * Determine if the subscription is on downgrade.
+     *
+     * @return bool
+     */
+    public function hasDowngrade()
+    {
+        return $this->is_downgrade && $this->next_plan;
+    }
+
+    /**
      * Filter query by on trial.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -910,6 +920,7 @@ class Subscription extends Model
         }
 
         $this->next_plan = null;
+        $this->is_downgrade = false;
 
         $this->save();
 
