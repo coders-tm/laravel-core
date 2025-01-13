@@ -408,7 +408,7 @@ class HelpersTest extends BaseTestCase
 
     public function test_currency_symbol()
     {
-        $currenciesMock = \Mockery::mock('alias:Symfony\Polyfill\Intl\Icu\Currencies');
+        $currenciesMock = \Mockery::mock('Symfony\Polyfill\Intl\Icu\Currencies');
         $currenciesMock->shouldReceive('getSymbol')->with('USD')->andReturn('$');
         $this->assertEquals('$', currency_symbol('USD'));
     }

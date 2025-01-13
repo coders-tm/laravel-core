@@ -45,6 +45,10 @@ class ApplicationController extends Controller
             return !in_array($key, ['license_key']);
         });
 
+        $config->merge([
+            'currency_symbol' => currency_symbol(),
+        ]);
+
         if ($request->filled('includes')) {
             foreach ($request->includes ?? [] as $item) {
                 if ($item === 'payment-methods') {

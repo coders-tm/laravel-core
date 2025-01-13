@@ -184,6 +184,9 @@ class PlanController extends Controller
     {
         return array_merge($plan->toArray(), [
             'features' => $plan->features->mapWithKeys(function ($item) {
+                if ($item->isBoolean()) {
+                    return [$item->slug => (bool) $item->pivot->value];
+                }
                 return [$item->slug => $item->pivot->value];
             })->toArray()
         ]);

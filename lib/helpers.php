@@ -207,6 +207,23 @@ if (!function_exists('model_log_name')) {
 if (!function_exists('format_amount')) {
     function format_amount($amount, $currency = null, $locale = null, array $options = [])
     {
+        $currency = strtoupper($currency ?? config('cashier.currency'));
+        $symbol = currency_symbol($currency);
+
+        // If unsupported currency
+        if (in_array($currency, ['RWF', 'JPY', 'KRW'])) {
+            // If the currency symbol is more than one character
+            if (mb_strlen($symbol) > 1) {
+                return number_format($amount, 2) . ' ' . $symbol;
+            }
+            return $symbol . number_format($amount, 2);
+        }
+
+        // If the currency symbol is more than one character
+        if (mb_strlen($symbol) > 1) {
+            return number_format($amount, 2) . ' ' . $symbol;
+        }
+
         return Cashier::formatAmount($amount * 100, $currency, $locale, $options);
     }
 }

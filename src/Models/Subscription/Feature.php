@@ -5,6 +5,7 @@ namespace Coderstm\Models\Subscription;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Coderstm\Database\Factories\FeatureFactory;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Feature extends Model

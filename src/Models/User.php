@@ -505,7 +505,7 @@ class User extends Admin implements MustVerifyEmail
         });
 
         static::addGlobalScope('default', function (Builder $builder) {
-            $builder->withMax('subscriptions as ends_at', 'cancels_at');
+            $builder->withMax('subscriptions as ends_at', 'expires_at');
             $builder->withMax('subscriptions as starts_at', 'starts_at');
             $builder->withMax('subscriptions as subscription_status', 'status');
             $builder->withMax('lastLogin as last_login_at', 'created_at');

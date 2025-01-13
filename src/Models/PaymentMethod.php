@@ -47,7 +47,6 @@ class PaymentMethod extends Model
         );
     }
 
-
     public function getConfigsAttribute()
     {
         return $this->credentials->mapWithKeys(function ($item) {
