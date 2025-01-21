@@ -38,34 +38,69 @@ class CoderstmRouteServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
 
         $this->routes(function () {
-            // modify default api route
+            $this->mapApiRoutes();
+            $this->mapWebRoutes();
+        });
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     */
+    protected function mapWebRoutes(): void
+    {
+        if (file_exists(base_path('routes/coderstm/web.php'))) {
+            Route::prefix('admin')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/coderstm/web.php'));
+
+            Route::prefix('user')
+                ->middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/coderstm/web.php'));
+        }
+
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     */
+    protected function mapApiRoutes(): void
+    {
+        // tunnel domain's api routes
+        if (config('coderstm.tunnel_domain')) {
             Route::prefix('api')
+                ->domain(config('coderstm.tunnel_domain'))
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
+        }
 
-            if (file_exists(base_path('routes/coderstm/api.php'))) {
+        // modify default api route
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+
+        if (file_exists(base_path('routes/coderstm/api.php'))) {
+            if (config('coderstm.tunnel_domain')) {
                 Route::prefix('api')
+                    ->domain(config('coderstm.tunnel_domain'))
                     ->middleware('api')
                     ->group(base_path('routes/coderstm/api.php'));
             }
 
-            if (file_exists(base_path('routes/coderstm/web.php'))) {
-                Route::prefix('admin')
-                    ->middleware('web')
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/coderstm/web.php'));
-
-                Route::prefix('user')
-                    ->middleware('web')
-                    ->namespace($this->namespace)
-                    ->group(base_path('routes/coderstm/web.php'));
-            }
-
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(base_path('routes/coderstm/api.php'));
+        }
     }
 
     /**
@@ -76,7 +111,7 @@ class CoderstmRouteServiceProvider extends ServiceProvider
     protected function configureRateLimiting()
     {
         RateLimiter::for('api', function (Request $request) {
-            return Limit::perMinute(60);
+            return Limit::perMinute(60 * 20)->by($request->user()?->id ?: $request->ip());
         });
     }
 }
