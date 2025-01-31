@@ -21,7 +21,7 @@ class SettingsSeeder extends Seeder
         $items = json_decode(replace_short_code(file_get_contents(database_path('data/app-settings.json'))), true);
 
         foreach ($items as $item) {
-            AppSetting::updateOrInsert([
+            AppSetting::insertOrIgnore([
                 'key' => $item['key']
             ], $item);
         }

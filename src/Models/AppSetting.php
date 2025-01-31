@@ -51,7 +51,7 @@ class AppSetting extends Model
     {
         try {
             $result = static::where('key', $key)->first();
-            return $result ? $result->options : collect();
+            return $result->options ?? collect();
         } catch (\Exception $e) {
             return collect();
         }

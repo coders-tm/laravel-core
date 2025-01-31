@@ -86,13 +86,12 @@
         <div class="form-group">
             <label for="license">License key</label>
             <input name=license value="{{ old('license') }}" class="form-control" id="license"
-                placeholder="7|Inqgp67S5AyLc6Epe73KK8d4OHyTkIHiSBrmUay0">
+                placeholder="23224D84-2E7A4C5D-9187AADD-E41DCCDD">
             @error('license')
                 <small id="passwordHelpError" class="form-text text-danger">{{ $message }}</small>
             @enderror
             <small id="licenseHelp" class="form-text text-muted">To obtain or renew your license, please <a
-                    href="http://coderstm.com">visit our website</a> or
-                contact our support team at <a href="mailto:hello@coderstm.com">hello@coderstm.com</a></small>
+                    href="https://coderstm.com/user/licenses">visit our website</a></small>
         </div>
         <button class="btn btn-primary btn-block" type="submit">Update</button>
     </form>

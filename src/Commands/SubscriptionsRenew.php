@@ -38,7 +38,7 @@ class SubscriptionsRenew extends Command
             try {
                 $subscription->renew();
 
-                event(new \Coderstm\Events\SubscriptionExpired($subscription));
+                event(new \Coderstm\Events\SubscriptionRenewed($subscription));
 
                 $subscription->logs()->create([
                     'type' => 'renew',
