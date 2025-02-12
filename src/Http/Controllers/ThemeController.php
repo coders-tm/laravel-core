@@ -82,9 +82,13 @@ class ThemeController extends Controller
         $themePath = Theme::basePath('', $theme);
         $newThemePath = Theme::basePath('', $newThemeKey);
 
+        $themeMixPath = Theme::assetsPath($theme);
+        $newThemeMixPath = Theme::assetsPath($newThemeKey);
+
         if (File::exists($themePath) && !File::exists($newThemePath)) {
             // Clone theme directory
             File::copyDirectory($themePath, $newThemePath);
+            File::copyDirectory($themeMixPath, $newThemeMixPath);
 
             // Update the config.json of the cloned theme
             $config = Theme::config($newThemeKey);
@@ -103,7 +107,7 @@ class ThemeController extends Controller
     public function getFiles($theme)
     {
         $themePath = Theme::basePath($this->basePath, $theme);
-        $assetsPath = public_path(Theme::mixPath($theme));
+        $assetsPath = Theme::assetsPath($theme);
 
         if (!File::exists($themePath)) {
             return response()->json(['message' => 'Theme not found'], 404);
@@ -170,7 +174,7 @@ class ThemeController extends Controller
 
         if (Str::startsWith($filePath, 'assets')) {
             $filePath = str_replace('assets/', '', $filePath);
-            $fullPath = public_path(Theme::mixPath($theme) . '/' . $filePath);
+            $fullPath = Theme::assetsPath($theme, $filePath);
         } else {
             $fullPath = Theme::basePath("{$this->basePath}/$filePath", $theme);
         }
@@ -198,7 +202,7 @@ class ThemeController extends Controller
 
         if (Str::startsWith($filePath, 'assets')) {
             $filePath = str_replace('assets/', '', $filePath);
-            $fullPath = public_path(Theme::mixPath($theme) . '/' . $filePath);
+            $fullPath = Theme::assetsPath($theme, $filePath);
         } else {
             $fullPath = Theme::basePath("{$this->basePath}/$filePath", $theme);
         }
