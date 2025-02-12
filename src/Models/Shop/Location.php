@@ -55,6 +55,17 @@ class Location extends Model
         ])->toArray());
     }
 
+    /**
+     * Scope a query to only include onlyActive
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeOnlyActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
     protected static function newFactory()
     {
         return LocationFactory::new();

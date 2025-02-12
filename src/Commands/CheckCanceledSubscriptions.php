@@ -34,9 +34,8 @@ class CheckCanceledSubscriptions extends Command
         $subscriptions = Coderstm::$subscriptionModel::query()
             ->canceled()
             ->where('ends_at', '<=', now())
-            ->whereDoesntHave('logs', function ($q) {
-                $q->where('type', 'canceled-notification');
-            })->with(['user']);
+            ->doesntHaveAction('canceled-notification')
+            ->with(['user']);
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
@@ -50,6 +49,8 @@ class CheckCanceledSubscriptions extends Command
                         'type' => 'canceled-notification',
                         'message' => 'Notification for canceled subscriptions has been successfully sent.'
                     ]);
+
+                    $subscription->attachAction('canceled-notification');
                 }
             } catch (\Exception $e) {
                 $subscription->logs()->create([

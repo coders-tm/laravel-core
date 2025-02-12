@@ -36,6 +36,8 @@ class Subscription extends Model
 {
     use HasFeature, Logable, SerializeDate, HasFactory;
 
+    use \Coderstm\Traits\Actionable;
+
     const STATUS_ACTIVE = 'active';
     const STATUS_CANCELED = 'canceled';
     const STATUS_INCOMPLETE = 'incomplete';
@@ -489,6 +491,8 @@ class Subscription extends Model
         // DB::transaction(function () use ($sub): void {
         // Clear usages data
         $this->usages()->delete();
+
+        $this->detachActions();
 
         if ($this->nextPlan) {
             $this->plan()->associate($this->nextPlan);
