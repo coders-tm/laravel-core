@@ -8,11 +8,13 @@ class FileMeta
 {
     protected $file;
     protected $basepath;
+    protected $prefix;
 
-    public function __construct($file, $basepath)
+    public function __construct($file, $basepath, $prefix = null)
     {
         $this->file = $file;
         $this->basepath = $basepath;
+        $this->prefix = $prefix;
     }
 
     public function toArray()
@@ -21,9 +23,15 @@ class FileMeta
             'header' => 'file',
         ];
 
+        $basepath = str_replace($this->basepath . '/', '', $this->file->getPathname());
+
+        if ($this->prefix) {
+            $basepath = $this->prefix . '/' . $basepath;
+        }
+
         // Basic info
         $fileInfo['name'] = basename($this->file->getPathname());
-        $fileInfo['basepath'] = str_replace($this->basepath . '/', '', $this->file->getPathname());
+        $fileInfo['basepath'] = $basepath;
         $fileInfo['size'] = $this->getSize();
 
         $fileInfo['modified_at'] = $this->getModifiedAt();
