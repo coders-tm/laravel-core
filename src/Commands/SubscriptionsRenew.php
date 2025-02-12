@@ -45,6 +45,8 @@ class SubscriptionsRenew extends Command
                     'message' => 'Subscription has been renewed successfully!'
                 ]);
 
+                $subscription->attachAction('renew');
+
                 $this->info("Subscription #{$subscription->id} has been renewed!");
             } catch (\Exception $e) {
                 $message = "Subscription #{$subscription->id} unable to renew! {$e->getMessage()}";
@@ -56,6 +58,8 @@ class SubscriptionsRenew extends Command
                 ]);
 
                 $this->error($message);
+
+                report($e);
             }
         }
     }
