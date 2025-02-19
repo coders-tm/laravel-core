@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('status')->nullable()->index();
             $table->string('stripe_status')->nullable()->change();
             $table->{$this->jsonable()}('options')->nullable();
-            $table->timestamp('starts_at')->nullable()->index();
-            $table->timestamp('canceled_at')->nullable()->index();
+            $table->timestamp('starts_at')->nullable()->index()->after('trial_ends_at');
+            $table->timestamp('canceled_at')->nullable()->index()->after('ends_at');
             $table->string('stripe_id')->nullable()->change();
 
             $table->foreign('plan_id')->references('id')->on('plans')->nullOnDelete();
