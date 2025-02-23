@@ -76,10 +76,7 @@ class WebPageController extends Controller
             'message',
         ]));
 
-        return response()->json([
-            'success' => true,
-            'message' => trans('messages.contact_success_submit')
-        ], 200);
+        return redirect()->back()->with('success', 'Your enquiry has been submitted successfully.');
     }
 
     public function render(Request $request, string $name)
