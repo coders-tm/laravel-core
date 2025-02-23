@@ -25,6 +25,7 @@ class InvoiceRepository extends Order
         'line_items',
         'grand_total',
         'source',
+        'discount',
         'orderable_id',
         'orderable_type',
     ];
@@ -76,7 +77,13 @@ class InvoiceRepository extends Order
     public function getLineItemsAttribute($value)
     {
         return collect($value ?: [])->map(function ($item) {
-            return new LineItem($item);
+            $lineItem = new LineItem($item);
+
+            if (isset($item['discount'])) {
+                $lineItem->setRelation('discount', new DiscountLine($item['discount']));
+            }
+
+            return $lineItem;
         });
     }
 

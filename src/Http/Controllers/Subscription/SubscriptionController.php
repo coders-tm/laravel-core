@@ -170,6 +170,9 @@ class SubscriptionController extends Controller
                     'redeemable_type' => get_class($subscription),
                     'redeemable_id' => $subscription->id,
                     'coupon_id' => $coupon->id,
+                ], [
+                    'user_id' => $user->id,
+                    'amount' => $coupon->getAmount($plan->price),
                 ]);
             }
 
@@ -299,6 +302,20 @@ class SubscriptionController extends Controller
         if (!$coupon) {
             throw ValidationException::withMessages([
                 'promotion_code' => ['Invalid coupon code'],
+            ]);
+        }
+
+        // if the coupon is not active
+        if (!$coupon->isActive()) {
+            throw ValidationException::withMessages([
+                'promotion_code' => ['Coupon is not active'],
+            ]);
+        }
+
+        // if the coupon is expired
+        if ($coupon->isExpired()) {
+            throw ValidationException::withMessages([
+                'promotion_code' => ['Coupon has expired'],
             ]);
         }
 
