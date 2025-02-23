@@ -841,10 +841,35 @@ class Subscription extends Model
         return $this;
     }
 
+    public function canApplyCoupon(Coupon $coupon = null): ?Coupon
+    {
+        $coupon = $coupon ?? $this->coupon;
+
+        if ($coupon && $coupon->canApply($this->plan)) {
+            // if coupon duration is once, we will check if the user has already used the coupon
+            if ($coupon->duration->value === 'once') {
+                if ($coupon->redeems()->where('user_id', $this->user_id)->exists()) {
+                    return null;
+                }
+            }
+
+            // if coupon duration is repeating, we will check if the user has already used the coupon
+            if ($coupon->duration->value === 'repeating') {
+                if ($coupon->redeems()->where('user_id', $this->user_id)->count() >= $coupon->duration_in_months) {
+                    return null;
+                }
+            }
+
+            return $coupon;
+        }
+
+        return null;
+    }
+
     protected function discount()
     {
         // Check if coupon exists
-        if ($coupon = $this->coupon) {
+        if ($coupon = $this->canApplyCoupon()) {
             return [
                 'type' => $coupon->fixed ? 'fixed_amount' : 'percentage',
                 'value' => $coupon->fixed ? $coupon->amount_off : $coupon->percent_off,
@@ -873,7 +898,6 @@ class Subscription extends Model
             'currency' => config('cashier.currency'),
             'collect_tax' => true,
             'line_items' => $this->generateLineItems($plan, $period),
-            'discount' => $this->discount(),
         ]);
     }
 
@@ -898,7 +922,8 @@ class Subscription extends Model
                 'price' => $plan->price,
                 'total' => $plan->price,
                 'quantity' => 1,
-                'options' => ['title' => $title]
+                'options' => ['title' => $title],
+                'discount' => $this->discount(),
             ]
         ];
     }

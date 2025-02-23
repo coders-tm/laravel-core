@@ -58,14 +58,14 @@ class CouponController extends Controller
         $coupon = $coupon->syncPlans($request->plans ?? []);
 
         return response()->json([
-            'data' => $coupon->fresh(['plans']),
+            'data' => $coupon->fresh(['plans', 'logs']),
             'message' => trans('messages.coupons.store'),
         ], 200);
     }
 
     public function show(Coupon $coupon)
     {
-        return response()->json($coupon->load('plans'), 200);
+        return response()->json($coupon->load('plans', 'logs'), 200);
     }
 
     public function update(Request $request, Coupon $coupon)
@@ -88,7 +88,7 @@ class CouponController extends Controller
         $coupon = $coupon->syncPlans($request->plans ?? []);
 
         return response()->json([
-            'data' => $coupon->fresh(['plans']),
+            'data' => $coupon->fresh(['plans', 'logs']),
             'message' => trans('messages.coupons.updated'),
         ], 200);
     }
@@ -148,6 +148,23 @@ class CouponController extends Controller
         $type = $coupon->active ? 'active' : 'deactive';
         return response()->json([
             'message' => trans('messages.coupons.status', ['type' => trans('messages.attributes.' . $type)]),
+        ], 200);
+    }
+
+    /**
+     * Create logs for specified resource from storage.
+     */
+    public function logs(Request $request, Coupon $coupon)
+    {
+        $this->validate($request, [
+            'message' => 'required',
+        ]);
+
+        $note = $coupon->logs()->create($request->input());
+
+        return response()->json([
+            'data' => $note->load('admin'),
+            'message' => __('New log has been created.'),
         ], 200);
     }
 }
