@@ -21,10 +21,26 @@ class SubscriptionRenewedNotification extends BaseNotification
         $this->subject = $template->subject;
         $this->message = $template->content;
 
-        parent::__construct($this->subject, $this->message);
+        $pushTemplate = $subscription->renderPushNotification('push:subscription-renewed');
 
-        if ($this->canSendPush()) {
-            $subscription->sendPushNotify('push:subscription-renewed');
-        }
+        $this->pushSubject = $pushTemplate->subject;
+        $this->pushMessage = $pushTemplate->content;
+        $this->pushData = $pushTemplate->data;
+
+        $this->whatsappContent = $pushTemplate->whatsappContent;
+    }
+
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @return array<int, string>
+     */
+    public function via(object $notifiable): array
+    {
+        return [
+            'mail',
+            FcmChannel::class,
+            TwilioWhatsappChannel::class,
+        ];
     }
 }

@@ -33,6 +33,7 @@ class CheckExpiredSubscriptions extends Command
     {
         $subscriptions = Coderstm::$subscriptionModel::where('expires_at', '<=', now())
             ->doesntHaveAction('expired-notification')
+            ->has('user')
             ->with(['user']);
 
         foreach ($subscriptions->cursor() as $subscription) {

@@ -788,27 +788,18 @@ class Subscription extends Model
         ]);
     }
 
-    public function sendPushNotify($type, $shortCodes = [])
+    public function renderPushNotification($type, $shortCodes = [])
     {
-        try {
-            $template = $this->renderNotification($type, $shortCodes);
+        $template = $this->renderNotification($type, $shortCodes);
 
-            if ($this->user->canSendPushNotification()) {
-                SendPushNotification::dispatch($this->user, [
-                    'title' => $template->subject,
-                    'body' => html_text($template->content)
-                ], [
-                    'route' => user_route("/billing"),
-                ]);
-            }
-
-            if ($this->user->canSendWhatsappNotification()) {
-                SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n\n{$template->content}");
-            }
-        } catch (\Exception $e) {
-            //throw $e;
-            report($e);
-        }
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => $template->content,
+            'whatsappContent' => "{$template->subject}\n{$template->content}",
+            'data' => [
+                'route' => user_route("/billing"),
+            ]
+        ]);
     }
 
     /**

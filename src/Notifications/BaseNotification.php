@@ -4,6 +4,8 @@ namespace Coderstm\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
+use Kreait\Firebase\Messaging\CloudMessage;
+use NotificationChannels\Twilio\TwilioSmsMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class BaseNotification extends Notification
@@ -14,6 +16,14 @@ class BaseNotification extends Notification
     public $message;
     public $fromAddress;
     public $fromName;
+
+    public $whatsappContent;
+    public $whatsappMedia;
+
+    public $pushSubject;
+    public $pushMessage;
+    public $pushImage;
+    public $pushData = [];
 
     /**
      * Create a new notification instance.
@@ -36,7 +46,6 @@ class BaseNotification extends Notification
         return ['mail'];
     }
 
-
     /**
      * Get the mail representation of the notification.
      */
@@ -55,6 +64,30 @@ class BaseNotification extends Notification
     }
 
     /**
+     * Get the FCM representation of the notification.
+     */
+    public function toFcm($notifiable): CloudMessage
+    {
+        return CloudMessage::fromArray([
+            'notification' => array_filter([
+                'title' => $this->pushSubject,
+                'body' => $this->pushMessage,
+                'image' => $this->pushImage,
+            ]),
+            'topic' => 'global',
+            'data' => array_filter($this->pushData)
+        ]);
+    }
+
+    /**
+     * Get the Twilio representation of the notification.
+     */
+    public function toTwilio($notifiable)
+    {
+        return html_text($this->whatsappContent);
+    }
+
+    /**
      * Get the array representation of the notification.
      *
      * @return array<string, mixed>
@@ -64,10 +97,5 @@ class BaseNotification extends Notification
         return [
             //
         ];
-    }
-
-    protected function canSendPush(): bool
-    {
-        return config('alert.push') || config('alert.whatsapp');
     }
 }

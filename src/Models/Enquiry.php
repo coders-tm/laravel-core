@@ -216,30 +216,20 @@ class Enquiry extends Model
         ]);
     }
 
-    public function sendPushNotify($type = null)
+    public function renderPushNotification($type = null)
     {
-        try {
-            $default = $this->source ? 'push:enquiry-confirmation' : 'push:enquiry-notification';
+        $default = $this->source ? 'push:enquiry-confirmation' : 'push:enquiry-notification';
+        $template = $this->renderNotification($type ?? $default);
 
-            $template = $this->renderNotification($type ?? $default);
-
-            if ($this->user->canSendPushNotification()) {
-                SendPushNotification::dispatch($this->user, [
-                    'title' => $template->subject,
-                    'body' => html_text($template->content)
-                ], [
-                    'route' => user_route("/enquiries/{$this->id}?action=edit"),
-                    'enquiry_id' => $this->id,
-                ]);
-            }
-
-            if ($this->user->canSendWhatsappNotification()) {
-                SendWhatsappNotification::dispatch($this->user, "{$template->subject}\n{$template->content}");
-            }
-        } catch (\Exception $e) {
-            //throw $e;
-            report($e);
-        }
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => $template->content,
+            'whatsappContent' => "{$template->subject}\n{$template->content}",
+            'data' => [
+                'route' => user_route("/enquiries/{$this->id}?action=edit"),
+                'enquiry_id' => (string) $this->id,
+            ]
+        ]);
     }
 
     /**

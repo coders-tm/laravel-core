@@ -39,7 +39,8 @@
     "illuminate/support": "^11.0",
     "illuminate/view": "^11.0",
     "jenssegers/agent": "^2.6",
-    "kreait/firebase-php": "^7.9",
+    "kreait/laravel-firebase": "^6.0",
+    "laravel-notification-channels/fcm": "^5.0",
     "laravel/cashier": "^15.0",
     "laravel/sanctum": "^4.0",
     "league/csv": "^9.15",
@@ -89,8 +90,7 @@
         "Coderstm\\Providers\\CoderstmServiceProvider",
         "Coderstm\\Providers\\CoderstmPermissionsServiceProvider",
         "Coderstm\\Providers\\CoderstmEventServiceProvider",
-        "Coderstm\\Providers\\ShortcodeServiceProvider",
-        "Coderstm\\Providers\\FirebaseMessagingServiceProvider"
+        "Coderstm\\Providers\\ShortcodeServiceProvider"
       ]
     }
   },

@@ -84,6 +84,16 @@ class User extends Admin implements MustVerifyEmail
         return [$this->email => $this->name];
     }
 
+    public function routeNotificationForFcm(): array
+    {
+        return $this->deviceTokens()->pluck('token')->toArray();
+    }
+
+    public function routeNotificationForTwilio()
+    {
+        return $this->phone_number;
+    }
+
     public function getMemberSinceAttribute()
     {
         return $this->created_at->format('Y');
@@ -476,16 +486,6 @@ class User extends Admin implements MustVerifyEmail
         return $this->deviceTokens()->updateOrCreate([
             'token' => $deviceToken
         ]);
-    }
-
-    public function canSendPushNotification(): bool
-    {
-        return $this->deviceTokens->count() > 0 && config('alert.push');
-    }
-
-    public function canSendWhatsappNotification(): bool
-    {
-        return !empty($this->phone_number) && config('alert.whatsapp');
     }
 
     protected static function booted()

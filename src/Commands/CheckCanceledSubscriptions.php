@@ -35,6 +35,7 @@ class CheckCanceledSubscriptions extends Command
             ->canceled()
             ->where('ends_at', '<=', now())
             ->doesntHaveAction('canceled-notification')
+            ->has('user')
             ->with(['user']);
 
         foreach ($subscriptions->cursor() as $subscription) {

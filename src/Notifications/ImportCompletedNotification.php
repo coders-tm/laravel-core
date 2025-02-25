@@ -21,9 +21,9 @@ class ImportCompletedNotification extends BaseNotification
         $template = Template::default('admin:import-completed');
         $shortCodes = $this->import->getShortCodes();
 
-        $this->subject = replace_short_code($template->subject, $shortCodes);
-        $this->message = replace_short_code($template->content, $shortCodes);
+        $subject = replace_short_code($template->subject, $shortCodes);
+        $message = replace_short_code($template->content, $shortCodes);
 
-        parent::__construct($this->subject, $this->message);
+        parent::__construct($subject, $message);
     }
 }

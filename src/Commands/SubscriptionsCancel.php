@@ -33,6 +33,7 @@ class SubscriptionsCancel extends Command
         $subscriptions = Coderstm::$subscriptionModel::query()
             ->active()
             ->where('cancels_at', '<=', now())
+            ->has('user')
             ->doesntHaveAction('canceled');
 
         foreach ($subscriptions->cursor() as $subscription) {
