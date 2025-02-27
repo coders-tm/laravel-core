@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 use Coderstm\Mail\TestEmail;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
-use Coderstm\Models\Subscription;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -22,10 +21,10 @@ class ApplicationController extends Controller
     public function stats(Request $request)
     {
         return response()->json([
-            'total' => Subscription::query()->count(),
-            'rolling' => Subscription::query()->active()->count(),
-            'end_date' => Subscription::query()->ended()->count(),
-            'free' => Subscription::query()->active()->free()->count(),
+            'total' => Coderstm::$subscriptionModel::query()->count(),
+            'rolling' => Coderstm::$subscriptionModel::query()->active()->count(),
+            'end_date' => Coderstm::$subscriptionModel::query()->ended()->count(),
+            'free' => Coderstm::$subscriptionModel::query()->active()->free()->count(),
             'max_year' => Coderstm::$subscriptionModel::query()->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
             'min_year' => 2000,
             'unread_support' => Coderstm::$enquiryModel::onlyActive()->count(),

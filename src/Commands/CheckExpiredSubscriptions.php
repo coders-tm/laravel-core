@@ -33,12 +33,14 @@ class CheckExpiredSubscriptions extends Command
     {
         $subscriptions = Coderstm::$subscriptionModel::where('expires_at', '<=', now())
             ->doesntHaveAction('expired-notification')
-            ->has('user')
+            ->hasUser()
             ->with(['user']);
 
         foreach ($subscriptions->cursor() as $subscription) {
-            if ($user = $subscription->user) {
-                try {
+            try {
+                $subscription->attachAction('expired-notification');
+
+                if ($user = $subscription->user) {
                     event(new \Coderstm\Events\SubscriptionExpired($subscription));
 
                     $user->notify(new SubscriptionExpiredNotification($subscription));
@@ -48,15 +50,13 @@ class CheckExpiredSubscriptions extends Command
                         'type' => 'expired-notification',
                         'message' => 'Notification for expired subscriptions has been successfully sent.'
                     ]);
-
-                    $subscription->attachAction('expired-notification');
-                } catch (\Exception $e) {
-                    $subscription->logs()->create([
-                        'type' => 'expired-notification',
-                        'status' => Log::STATUS_ERROR,
-                        'message' => $e->getMessage()
-                    ]);
                 }
+            } catch (\Exception $e) {
+                $subscription->logs()->create([
+                    'type' => 'expired-notification',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage()
+                ]);
             }
         }
 

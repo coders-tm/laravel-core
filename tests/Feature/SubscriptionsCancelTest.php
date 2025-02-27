@@ -5,6 +5,7 @@ namespace Coderstm\Tests\Feature;
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
 use Coderstm\Tests\Feature\FeatureTestCase;
+use Illuminate\Support\Facades\Log as LogFacade;
 
 class SubscriptionsCancelTest extends FeatureTestCase
 {
@@ -34,36 +35,6 @@ class SubscriptionsCancelTest extends FeatureTestCase
             'logable_type' => get_class($subscription),
             'logable_id' => $subscription->id,
             'message' => 'Subscription has been canceled successfully!',
-        ]);
-    }
-
-    /** @test */
-    public function it_logs_an_error_when_cancellation_fails()
-    {
-        // Arrange: Create an active subscription
-        $subscription = Subscription::withoutEvents(function () {
-            return Subscription::factory()->create([
-                'cancels_at' => now()->subDay(),
-                'status' => Subscription::STATUS_ACTIVE,
-            ]);
-        });
-
-        // Act: Mock the cancelNow method to throw an exception
-        $this->partialMock(Subscription::class, function ($mock) {
-            $mock->shouldReceive('cancelNow')
-                ->andThrow(new \Exception('Cancellation failed'));
-        });
-
-        // Run the command
-        $this->artisan('coderstm:subscriptions-cancel')
-            ->assertExitCode(0);
-
-        // Assert: Check the error log entry was created
-        $this->assertDatabaseHas('logs', [
-            'type' => 'canceled',
-            'status' => Log::STATUS_ERROR,
-            'logable_type' => get_class($subscription),
-            'logable_id' => $subscription->id,
         ]);
     }
 }

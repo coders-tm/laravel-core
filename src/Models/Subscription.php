@@ -18,10 +18,8 @@ use Coderstm\Traits\HasFeature;
 use Coderstm\Models\Notification;
 use Coderstm\Traits\SerializeDate;
 use Coderstm\Models\Subscription\Plan;
-use Coderstm\Jobs\SendPushNotification;
 use Illuminate\Database\Eloquent\Model;
 use Coderstm\Repository\InvoiceRepository;
-use Coderstm\Jobs\SendWhatsappNotification;
 use Coderstm\Exceptions\SubscriptionUpdateFailure;
 use Coderstm\Database\Factories\SubscriptionFactory;
 use Coderstm\Notifications\SubscriptionRenewedNotification;
@@ -89,6 +87,11 @@ class Subscription extends Model
         'canceled_at' => 'datetime',
     ];
 
+    public function getUserForeignKey()
+    {
+        return (new Coderstm::$subscriptionUserModel)->getForeignKey();
+    }
+
     public function user(): BelongsTo
     {
         return $this->owner();
@@ -96,9 +99,18 @@ class Subscription extends Model
 
     public function owner(): BelongsTo
     {
-        $model = Coderstm::$userModel;
+        return $this->belongsTo(Coderstm::$subscriptionUserModel, $this->getUserForeignKey());
+    }
 
-        return $this->belongsTo($model, (new $model)->getForeignKey());
+    /**
+     * Scope a query to only include has user.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeHasUser($query)
+    {
+        return $query->whereNotNull($this->getUserForeignKey());
     }
 
     /**
@@ -835,18 +847,20 @@ class Subscription extends Model
     public function canApplyCoupon(Coupon $coupon = null): ?Coupon
     {
         $coupon = $coupon ?? $this->coupon;
+        $foreignKey = $this->getUserForeignKey();
+        $userId = $this->{$foreignKey};
 
         if ($coupon && $coupon->canApply($this->plan)) {
             // if coupon duration is once, we will check if the user has already used the coupon
             if ($coupon->duration->value === 'once') {
-                if ($coupon->redeems()->where('user_id', $this->user_id)->exists()) {
+                if ($coupon->redeems()->where($foreignKey, $userId)->exists()) {
                     return null;
                 }
             }
 
             // if coupon duration is repeating, we will check if the user has already used the coupon
             if ($coupon->duration->value === 'repeating') {
-                if ($coupon->redeems()->where('user_id', $this->user_id)->count() >= $coupon->duration_in_months) {
+                if ($coupon->redeems()->where($foreignKey, $userId)->count() >= $coupon->duration_in_months) {
                     return null;
                 }
             }
@@ -881,7 +895,7 @@ class Subscription extends Model
 
         return new InvoiceRepository([
             'source' => 'Membership',
-            'customer_id' => $this->user_id,
+            'customer_id' => $this->user->id,
             'orderable_id' => $this->id,
             'orderable_type' => static::class,
             'due_date' => $start ? $this->dateFrom() : $period->getEndDate(),

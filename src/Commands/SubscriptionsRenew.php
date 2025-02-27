@@ -31,11 +31,14 @@ class SubscriptionsRenew extends Command
     {
         $subscriptions = Coderstm::$subscriptionModel::query()
             ->active()
+            ->hasUser()
             ->where('expires_at', '<=', now());
 
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
+                $subscription->attachAction('renew');
+
                 $subscription->renew();
 
                 event(new \Coderstm\Events\SubscriptionRenewed($subscription));
@@ -44,8 +47,6 @@ class SubscriptionsRenew extends Command
                     'type' => 'renew',
                     'message' => 'Subscription has been renewed successfully!'
                 ]);
-
-                $subscription->attachAction('renew');
 
                 $this->info("Subscription #{$subscription->id} has been renewed!");
             } catch (\Exception $e) {
@@ -58,8 +59,6 @@ class SubscriptionsRenew extends Command
                 ]);
 
                 $this->error($message);
-
-                report($e);
             }
         }
     }

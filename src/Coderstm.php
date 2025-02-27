@@ -17,11 +17,18 @@ class Coderstm
     public static $dateTimeFormat = DateTimeInterface::ATOM;
 
     /**
-     * The uaer model class name.
+     * The user model class name.
      *
      * @var string
      */
     public static $userModel = 'App\\Models\\User';
+
+    /**
+     * The subscription user model class name.
+     *
+     * @var string
+     */
+    public static $subscriptionUserModel = 'App\\Models\\User';
 
     /**
      * The default admin model class name.
@@ -140,7 +147,20 @@ class Coderstm
     {
         static::$userModel = $userModel;
 
+        static::useSubscriptionUserModel($userModel);
+
         Config::set('auth.providers.users.model', $userModel);
+    }
+
+    /**
+     * Set the subscription user model class name.
+     *
+     * @param  string  $subscriptionUserModel
+     * @return void
+     */
+    public static function useSubscriptionUserModel($subscriptionUserModel)
+    {
+        static::$subscriptionUserModel = $subscriptionUserModel;
     }
 
     /**
