@@ -223,8 +223,8 @@ class Enquiry extends Model
 
         return optional((object) [
             'subject' => $template->subject,
-            'content' => $template->content,
-            'whatsappContent' => "{$template->subject}\n{$template->content}",
+            'content' => html_text($template->content),
+            'whatsappContent' => html_text("{$template->subject}\n{$template->content}"),
             'data' => [
                 'route' => user_route("/enquiries/{$this->id}?action=edit"),
                 'enquiry_id' => (string) $this->id,

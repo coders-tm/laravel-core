@@ -109,8 +109,8 @@ class Reply extends Model
 
         return optional((object) [
             'subject' => $template->subject,
-            'content' => $template->content,
-            'whatsappContent' => "{$template->subject}\n{$template->content}",
+            'content' => html_text($template->content),
+            'whatsappContent' => html_text("{$template->subject}\n{$template->content}"),
             'data' => [
                 'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
                 'enquiry_id' => (string) $this->enquiry_id,

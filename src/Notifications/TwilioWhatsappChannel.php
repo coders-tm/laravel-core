@@ -30,7 +30,7 @@ class TwilioWhatsappChannel
             "whatsapp:$to",
             array(
                 "from" => "whatsapp:$from",
-                "body" => $message,
+                "body" => html_text($message),
             )
         );
     }

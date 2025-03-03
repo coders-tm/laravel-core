@@ -3,7 +3,6 @@
 namespace Coderstm\Notifications;
 
 use Coderstm\Models\Enquiry;
-use NotificationChannels\Fcm\FcmChannel;
 
 class EnquiryConfirmation extends BaseNotification
 {
