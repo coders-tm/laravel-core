@@ -74,9 +74,14 @@ class PaymentMethod extends Model
         return $query->where('provider', 'manual');
     }
 
+    public static function has($provider)
+    {
+        return static::enabled()->where('provider', $provider)->exists();
+    }
+
     public static function findProvider($provider)
     {
-        return static::firstWhere('provider', $provider);
+        return static::enabled()->firstWhere('provider', $provider);
     }
 
     public static function stripe()

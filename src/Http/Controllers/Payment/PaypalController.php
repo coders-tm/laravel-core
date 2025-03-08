@@ -18,8 +18,9 @@ class PaypalController extends Controller
 
     function __construct()
     {
-        if (config('paypal.client_id')) {
-            $this->provider = new PayPalClient;
+        $this->provider = new PayPalClient;
+
+        if (PaymentMethod::has('paypal')) {
             $this->provider->setApiCredentials(config('paypal'));
             $this->provider->getAccessToken();
         }
