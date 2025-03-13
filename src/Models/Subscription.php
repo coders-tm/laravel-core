@@ -887,6 +887,11 @@ class Subscription extends Model
     public function upcomingInvoice($start = false, $dateFrom = null): ?InvoiceRepository
     {
         $plan = $this->nextPlan ?? $this->plan;
+
+        if (!$plan) {
+            return null;
+        }
+
         $period = new Period(
             $plan->interval->value,
             $plan->interval_count,

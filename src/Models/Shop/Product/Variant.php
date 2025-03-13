@@ -36,7 +36,7 @@ class Variant extends Model
     protected $appends = [
         'inventories_available',
         'title',
-        'price_formated',
+        'price_formatted',
         'in_stock',
     ];
 
@@ -113,7 +113,7 @@ class Variant extends Model
         })->join(' / ');
     }
 
-    public function getPriceFormatedAttribute()
+    public function getPriceFormattedAttribute()
     {
         return format_amount($this->price);
     }

@@ -33,7 +33,7 @@ class Plan extends Model
         'trial_days',
     ];
 
-    protected $appends = ['feature_lines', 'price_formated', 'interval_label'];
+    protected $appends = ['feature_lines', 'price_formatted', 'interval_label'];
 
     protected $casts = [
         'is_active' => 'boolean',
@@ -59,7 +59,7 @@ class Plan extends Model
         );
     }
 
-    protected function priceFormated(): Attribute
+    protected function priceFormatted(): Attribute
     {
         return Attribute::make(
             get: fn() => $this->formatPrice(),

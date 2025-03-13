@@ -48,6 +48,15 @@ trait ManagesCustomer
         }
     }
 
+    public function getFeatureRemainings(string $featureSlug): int
+    {
+        try {
+            return $this->subscription()?->getFeatureRemainings($featureSlug);
+        } catch (\Exception $e) {
+            return 0;
+        }
+    }
+
     /**
      * Get the Stripe supported currency used by the customer.
      *

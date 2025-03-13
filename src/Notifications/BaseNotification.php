@@ -5,7 +5,6 @@ namespace Coderstm\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Kreait\Firebase\Messaging\CloudMessage;
-use NotificationChannels\Twilio\TwilioSmsMessage;
 use Illuminate\Notifications\Messages\MailMessage;
 
 class BaseNotification extends Notification
