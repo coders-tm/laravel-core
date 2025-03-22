@@ -51,7 +51,7 @@ trait ManagesCustomer
     public function getFeatureRemainings(string $featureSlug): int
     {
         try {
-            return $this->subscription()?->getFeatureRemainings($featureSlug);
+            return $this->subscription()?->getFeatureRemainings($featureSlug) ?? 0;
         } catch (\Exception $e) {
             return 0;
         }
