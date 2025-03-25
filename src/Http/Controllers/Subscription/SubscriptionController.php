@@ -108,7 +108,9 @@ class SubscriptionController extends Controller
     {
         $request->validate([
             'plan' => 'required|exists:plans,id',
-            'payment_method' => 'required_if:admin,false|exists:payment_methods,id',
+            'payment_method' => 'required_unless:admin,true|exists:payment_methods,id',
+        ], [
+            'payment_method.required_unless' => 'Please select a payment method to proceed with the subscription.',
         ]);
 
         $payment = $upgrade = $downgrade = false;

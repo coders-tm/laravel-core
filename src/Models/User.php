@@ -114,11 +114,11 @@ class User extends Admin implements MustVerifyEmail
             ->orderBy('created_at', 'desc');
     }
 
-    public function updateEndsAt($endsAt = null)
+    public function updateCancelsAt($dateAt = null)
     {
         if ($this->subscription()) {
             $this->subscription()->update([
-                'cancels_at' => $endsAt,
+                'cancels_at' => $dateAt,
             ]);
         }
         return $this;
@@ -506,6 +506,7 @@ class User extends Admin implements MustVerifyEmail
 
         static::addGlobalScope('default', function (Builder $builder) {
             $builder->withMax('subscriptions as ends_at', 'expires_at');
+            $builder->withMax('subscriptions as cancels_at', 'cancels_at');
             $builder->withMax('subscriptions as starts_at', 'starts_at');
             $builder->withMax('subscriptions as subscription_status', 'status');
             $builder->withMax('lastLogin as last_login_at', 'created_at');

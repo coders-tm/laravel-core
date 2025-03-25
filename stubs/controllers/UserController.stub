@@ -228,8 +228,8 @@ class UserController extends Controller
             ]);
         }
 
-        if ($request->filled('ends_at')) {
-            $user = $user->updateEndsAt($request->ends_at);
+        if ($request->filled('cancels_at')) {
+            $user = $user->updateCancelsAt($request->cancels_at);
         }
 
         $user->updateOrCreateAddress($request->input('address'));
