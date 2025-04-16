@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Coderstm\Models\Permission;
 use Coderstm\Models\PaymentMethod;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Stevebauman\Location\Facades\Location;
 
@@ -34,6 +35,22 @@ class Helpers
     public static function loadConfigFromDatabase(...$keys): void
     {
         try {
+            $cacheKey = 'app_config_' . md5(implode('_', $keys));
+            $cacheDuration = 60; // Cache for 60 minutes
+
+            // Return from cache if available
+            if (Cache::has($cacheKey)) {
+                $cachedConfigs = Cache::get($cacheKey);
+                foreach ($cachedConfigs as $key => $configs) {
+                    foreach ($configs as $alias => $items) {
+                        foreach ($items as $attr => $value) {
+                            Config::set("$alias.$attr", $value);
+                        }
+                    }
+                }
+                return;
+            }
+
             $options = [
                 'config' => [
                     'alias' => 'app',
@@ -47,13 +64,20 @@ class Helpers
                 ]
             ];
 
+            $cachedConfigs = [];
+
             foreach ($keys as $key) {
                 // Determine the alias to use, defaulting to the key if not specified
                 $option = $options[$key] ?? [];
                 $alias = $option['alias'] ?? $key;
+                $cachedConfigs[$key] = [];
+                $cachedConfigs[$key][$alias] = [];
 
                 // Fetch settings from the database
                 foreach (app_settings($key) as $attr => $value) {
+                    // Store for caching
+                    $cachedConfigs[$key][$alias][$attr] = $value;
+
                     // Set the configuration value in the application's config
                     Config::set("$alias.$attr", $value);
 
@@ -76,6 +100,9 @@ class Helpers
                     }
                 }
             }
+
+            // Store in cache
+            Cache::put($cacheKey, $cachedConfigs, now()->addMinutes($cacheDuration));
         } catch (\Exception $e) {
             throw $e;
         }
@@ -84,33 +111,67 @@ class Helpers
     public static function loadPaymentMethodsConfig(): void
     {
         try {
+            $cacheKey = 'payment_methods_config';
+            $cacheDuration = 60; // Cache for 60 minutes
+
+            // Return from cache if available
+            if (Cache::has($cacheKey)) {
+                $paymentConfigs = Cache::get($cacheKey);
+
+                if (!empty($paymentConfigs['stripe'])) {
+                    config($paymentConfigs['stripe']);
+                }
+
+                if (!empty($paymentConfigs['paypal'])) {
+                    config($paymentConfigs['paypal']);
+                }
+
+                if (!empty($paymentConfigs['razorpay'])) {
+                    config($paymentConfigs['razorpay']);
+                }
+
+                return;
+            }
+
+            $paymentConfigs = [
+                'stripe' => [],
+                'paypal' => [],
+                'razorpay' => []
+            ];
+
             // Load cashier config from app payment methods table
             if ($stripe = PaymentMethod::stripe()) {
-                config([
+                $paymentConfigs['stripe'] = [
                     'cashier.key' => $stripe->configs['API_KEY'],
                     'cashier.secret' => $stripe->configs['API_SECRET'],
                     'cashier.webhook.secret' => $stripe->configs['WEBHOOK_SECRET'],
-                ]);
+                ];
+                config($paymentConfigs['stripe']);
             }
 
             // Load paypal config from app payment methods table
             if ($paypal = PaymentMethod::paypal()) {
                 $mode = $paypal->test_mode ? 'sandbox' : 'live';
-                config([
+                $paymentConfigs['paypal'] = [
                     'paypal.mode' => $mode,
                     "paypal.{$mode}.client_id" => $paypal->configs['CLIENT_ID'],
                     "paypal.{$mode}.client_secret" => $paypal->configs['CLIENT_SECRET'],
                     'paypal.notify_url' => $paypal->webhook,
-                ]);
+                ];
+                config($paymentConfigs['paypal']);
             }
 
             // Load razorpay config from app payment methods table
             if ($razorpay = PaymentMethod::razorpay()) {
-                config([
+                $paymentConfigs['razorpay'] = [
                     "razorpay.key_id" => $razorpay->configs['API_KEY'],
                     "razorpay.key_secret" => $razorpay->configs['API_SECRET'],
-                ]);
+                ];
+                config($paymentConfigs['razorpay']);
             }
+
+            // Store in cache
+            Cache::put($cacheKey, $paymentConfigs, now()->addMinutes($cacheDuration));
         } catch (\Exception $e) {
             throw $e;
         }
