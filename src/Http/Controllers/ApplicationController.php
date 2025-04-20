@@ -6,15 +6,16 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Task;
 use Illuminate\Support\Str;
 use Coderstm\Mail\TestEmail;
+use Coderstm\Services\Theme;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Services\Theme;
 
 class ApplicationController extends Controller
 {
@@ -82,6 +83,10 @@ class ApplicationController extends Controller
         $merge = in_array($request->key, ['config']);
 
         AppSetting::updateOptions($request->key, $request->options ?? [], $merge);
+
+        // Clear the cache for the specific key
+        $cacheKey = "app_config_{$request->key}";
+        Cache::forget($cacheKey);
 
         return response()->json([
             'message' => trans('messages.settings_update')

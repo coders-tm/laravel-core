@@ -35,22 +35,6 @@ class Helpers
     public static function loadConfigFromDatabase(...$keys): void
     {
         try {
-            $cacheKey = 'app_config_' . md5(implode('_', $keys));
-            $cacheDuration = 60; // Cache for 60 minutes
-
-            // Return from cache if available
-            if (Cache::has($cacheKey)) {
-                $cachedConfigs = Cache::get($cacheKey);
-                foreach ($cachedConfigs as $key => $configs) {
-                    foreach ($configs as $alias => $items) {
-                        foreach ($items as $attr => $value) {
-                            Config::set("$alias.$attr", $value);
-                        }
-                    }
-                }
-                return;
-            }
-
             $options = [
                 'config' => [
                     'alias' => 'app',
@@ -64,19 +48,31 @@ class Helpers
                 ]
             ];
 
-            $cachedConfigs = [];
-
             foreach ($keys as $key) {
+                $cacheKey = "app_config_{$key}";
+                $cacheDuration = 24 * 60 * 60; // Cache for 24 hours
+
+                // Return from cache if available
+                if (Cache::has($cacheKey)) {
+                    $cachedConfig = Cache::get($cacheKey);
+                    $alias = array_key_first($cachedConfig);
+
+                    foreach ($cachedConfig[$alias] as $attr => $value) {
+                        Config::set("$alias.$attr", $value);
+                    }
+
+                    continue;
+                }
+
                 // Determine the alias to use, defaulting to the key if not specified
                 $option = $options[$key] ?? [];
                 $alias = $option['alias'] ?? $key;
-                $cachedConfigs[$key] = [];
-                $cachedConfigs[$key][$alias] = [];
+                $cachedConfig = [$alias => []];
 
                 // Fetch settings from the database
                 foreach (app_settings($key) as $attr => $value) {
                     // Store for caching
-                    $cachedConfigs[$key][$alias][$attr] = $value;
+                    $cachedConfig[$alias][$attr] = $value;
 
                     // Set the configuration value in the application's config
                     Config::set("$alias.$attr", $value);
@@ -99,10 +95,10 @@ class Helpers
                         }
                     }
                 }
-            }
 
-            // Store in cache
-            Cache::put($cacheKey, $cachedConfigs, now()->addMinutes($cacheDuration));
+                // Store in cache
+                Cache::put($cacheKey, $cachedConfig, now()->addMinutes($cacheDuration));
+            }
         } catch (\Exception $e) {
             throw $e;
         }
