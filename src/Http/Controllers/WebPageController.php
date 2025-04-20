@@ -7,6 +7,7 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Blog;
 use Illuminate\Http\Request;
 use Coderstm\Rules\ReCaptchaRule;
+use Illuminate\Support\Facades\Cache;
 
 class WebPageController extends Controller
 {
@@ -33,7 +34,9 @@ class WebPageController extends Controller
 
     public function blog(Request $request, $slug)
     {
-        $blog = Blog::findBySlug($slug);
+        $blog = Cache::remember("blog_{$slug}", 60, function () use ($slug) {
+            return Blog::findBySlug($slug);
+        });
 
         $request->merge(['blog' => $blog]);
 
@@ -42,7 +45,10 @@ class WebPageController extends Controller
 
     public function pages(Request $request, $slug)
     {
-        $page = Page::findBySlug($slug);
+        $page = Cache::remember("page_{$slug}", 60, function () use ($slug) {
+            return Page::findBySlug($slug);
+        });
+
         $template = $page->template;
 
         $request->merge(['page' => $page->toPublic()]);
@@ -81,7 +87,9 @@ class WebPageController extends Controller
 
     public function render(Request $request, string $name)
     {
-        $page = Page::findByTemplate($name);
+        $page = Cache::remember("page_{$name}", 60, function () use ($name) {
+            return Page::findByTemplate($name);
+        });
 
         $request->merge(['page' => $page->toPublic()]);
 

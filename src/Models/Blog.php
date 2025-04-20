@@ -82,8 +82,8 @@ class Blog extends Model
     {
         return static::where('slug', $slug)
             ->where('is_active', true)
-            ->firstOrFail()
-            ->load('tags');
+            ->with('tags')
+            ->firstOrFail();
     }
 
     protected static function boot()
