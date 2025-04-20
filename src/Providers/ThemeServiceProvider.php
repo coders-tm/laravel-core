@@ -1,11 +1,11 @@
 <?php
 /*   __________________________________________________
     |  Obfuscated by YAK Pro - Php Obfuscator  2.0.16  |
-    |              on 2025-04-20 17:43:38              |
+    |              on 2025-04-20 18:09:16              |
     |    GitHub: https://github.com/pk-fr/yakpro-po    |
     |__________________________________________________|
 */
 /*
 
 */
- namespace Coderstm\Providers; use Coderstm\Services\Mix; use Coderstm\Services\Theme; use Illuminate\Support\Facades\File; use Illuminate\Support\Facades\Route; use Illuminate\Support\ServiceProvider; use Coderstm\Services\MaskSensitiveConfig; use Coderstm\Http\Middleware\RequestThemeMiddleware; class ThemeServiceProvider extends ServiceProvider { public function register() : void { $this->app->singleton(Mix::class); $this->app->singleton("\142\154\x61\x64\145\x2e\143\157\x6d\x70\151\154\145\162", function () { return new MaskSensitiveConfig($this->app["\x66\151\154\145\163"], $this->app["\x63\157\156\146\x69\147"]["\x76\151\x65\x77\x2e\x63\x6f\155\160\x69\x6c\x65\x64"]); }); } public function boot() : void { goto Em0HD; y5R_i: thG7u: goto I6mnz; IzWD7: Theme::set($theme); goto y5R_i; Em0HD: if (!($theme = settings("\164\x68\x65\x6d\145", "\x61\143\x74\x69\x76\145"))) { goto thG7u; } goto IzWD7; P9k3f: $kernel->pushMiddleware(RequestThemeMiddleware::class); goto sM7Za; I6mnz: $kernel = $this->app->make("\111\x6c\154\165\155\x69\x6e\x61\164\145\x5c\x43\157\156\x74\162\x61\x63\164\x73\134\110\x74\164\x70\134\113\145\162\x6e\145\x6c"); goto P9k3f; sM7Za: } }
+ namespace Coderstm\Providers; use Coderstm\Services\Mix; use Coderstm\Services\Theme; use Illuminate\Support\Facades\File; use Illuminate\Support\Facades\Route; use Illuminate\Support\ServiceProvider; use Coderstm\Services\MaskSensitiveConfig; use Coderstm\Http\Middleware\RequestThemeMiddleware; class ThemeServiceProvider extends ServiceProvider { public function register() : void { $this->app->singleton(Mix::class); $this->app->singleton("\x62\154\141\x64\145\x2e\x63\157\x6d\160\x69\154\145\x72", function () { return new MaskSensitiveConfig($this->app["\146\151\154\x65\x73"], $this->app["\143\x6f\x6e\x66\151\147"]["\166\x69\145\167\56\143\x6f\155\160\x69\x6c\x65\144"]); }); } public function boot() : void { goto LrEKU; LrEKU: if (!($theme = settings("\164\x68\x65\155\x65", "\141\x63\164\151\x76\x65"))) { goto m0vS5; } goto Sbxjs; TAUtG: $kernel = $this->app->make("\x49\154\154\x75\x6d\x69\156\x61\164\145\x5c\x43\x6f\x6e\x74\162\141\143\x74\x73\x5c\x48\164\164\160\134\113\145\x72\x6e\x65\154"); goto UOMkk; UOMkk: $kernel->pushMiddleware(RequestThemeMiddleware::class); goto Q9l1P; fVqYT: m0vS5: goto TAUtG; Sbxjs: Theme::set($theme); goto fVqYT; Q9l1P: } }

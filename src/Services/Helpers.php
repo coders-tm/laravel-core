@@ -52,28 +52,14 @@ class Helpers
                 $cacheKey = "app_config_{$key}";
                 $cacheDuration = 24 * 60 * 60; // Cache for 24 hours
 
-                // Return from cache if available
-                if (Cache::has($cacheKey)) {
-                    $cachedConfig = Cache::get($cacheKey);
-                    $alias = array_key_first($cachedConfig);
+                $cachedConfig = Cache::remember($cacheKey, $cacheDuration, function () use ($key) {
+                    return app_settings($key);
+                });
 
-                    foreach ($cachedConfig[$alias] as $attr => $value) {
-                        Config::set("$alias.$attr", $value);
-                    }
-
-                    continue;
-                }
-
-                // Determine the alias to use, defaulting to the key if not specified
                 $option = $options[$key] ?? [];
                 $alias = $option['alias'] ?? $key;
-                $cachedConfig = [$alias => []];
-
                 // Fetch settings from the database
-                foreach (app_settings($key) as $attr => $value) {
-                    // Store for caching
-                    $cachedConfig[$alias][$attr] = $value;
-
+                foreach ($cachedConfig as $attr => $value) {
                     // Set the configuration value in the application's config
                     Config::set("$alias.$attr", $value);
 
@@ -95,9 +81,6 @@ class Helpers
                         }
                     }
                 }
-
-                // Store in cache
-                Cache::put($cacheKey, $cachedConfig, now()->addMinutes($cacheDuration));
             }
         } catch (\Exception $e) {
             throw $e;
@@ -108,7 +91,7 @@ class Helpers
     {
         try {
             $cacheKey = 'payment_methods_config';
-            $cacheDuration = 60; // Cache for 60 minutes
+            $cacheDuration = 60 * 60 * 24; // Cache for 60 minutes
 
             // Return from cache if available
             if (Cache::has($cacheKey)) {
@@ -167,7 +150,7 @@ class Helpers
             }
 
             // Store in cache
-            Cache::put($cacheKey, $paymentConfigs, now()->addMinutes($cacheDuration));
+            Cache::put($cacheKey, $paymentConfigs, $cacheDuration);
         } catch (\Exception $e) {
             throw $e;
         }
