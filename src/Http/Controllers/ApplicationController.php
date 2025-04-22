@@ -41,9 +41,7 @@ class ApplicationController extends Controller
     public function config(Request $request)
     {
         $response = [];
-        $config = AppSetting::findByKey('config')->filter(function ($item, $key) {
-            return !in_array($key, ['license_key']);
-        });
+        $config = AppSetting::findByKey('config');
 
         $config->merge([
             'currency_symbol' => currency_symbol(),
