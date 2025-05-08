@@ -18,10 +18,12 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run()
     {
-        $paymentMethods = json_decode(file_get_contents(database_path('data/payment-methods.json')), true);
+        $paymentMethods = replace_short_code(file_get_contents(database_path('data/payment-methods.json')), [
+            '{{API_URL}}' => base_url('api'),
+        ]);
+        $paymentMethods = json_decode($paymentMethods, true);
 
         foreach ($paymentMethods as $paymentMethod) {
-            $webhook = isset($paymentMethod['webhook']) ? str_replace('{API_URL}', base_url('api'), $paymentMethod['webhook']) : null;
             $credentials = isset($paymentMethod['credentials']) ? $paymentMethod['credentials'] : [];
 
             if ($paymentMethod['provider'] === PaymentMethod::STRIPE) {
@@ -37,7 +39,6 @@ class PaymentMethodSeeder extends Seeder
                             $item['value'] = config('cashier.webhook.secret');
                             break;
                     }
-
                     return $item;
                 })->toArray();
             }
@@ -45,7 +46,6 @@ class PaymentMethodSeeder extends Seeder
             PaymentMethod::firstOrCreate([
                 'provider' => $paymentMethod['provider']
             ], array_merge($paymentMethod, [
-                'webhook' => $webhook,
                 'credentials' => $credentials,
             ]));
         }

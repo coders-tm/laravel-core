@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Coderstm\Models\Permission;
 use Coderstm\Models\PaymentMethod;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Stevebauman\Location\Facades\Location;
 
@@ -32,10 +32,17 @@ class Helpers
         }
     }
 
-    public static function loadConfigFromDatabase(...$keys): void
+    /**
+     * Load configuration settings from database and override Laravel config values
+     *
+     * @deprecated This method is deprecated and will be removed in a future version. Use Coderstm\Model\AppSetting::syncConfigFromDatabase() instead.
+     * @return void
+     */
+    public static function loadConfigFromDatabase(): void
     {
         try {
-            $options = [
+            // Get the configuration mapping from settings to Laravel config
+            $overrideMap = config('coderstm.settings_override', [
                 'config' => [
                     'alias' => 'app',
                     'email' => [
@@ -46,111 +53,65 @@ class Helpers
                     'currency' => 'cashier.currency',
                     'timezone' => fn($value) => date_default_timezone_set($value),
                 ]
-            ];
+            ]);
 
-            foreach ($keys as $key) {
-                $cacheKey = "app_config_{$key}";
-                $cacheDuration = 24 * 60 * 60; // Cache for 24 hours
+            // Load all settings at once to reduce database calls
+            $allSettings = settings();
 
-                $cachedConfig = Cache::remember($cacheKey, $cacheDuration, function () use ($key) {
-                    return app_settings($key);
-                });
+            // Process each setting group (app, mail, etc)
+            foreach ($allSettings as $settingKey => $settingValues) {
+                // Skip if not a collection/array
+                if (!is_iterable($settingValues)) {
+                    continue;
+                }
 
-                $option = $options[$key] ?? [];
-                $alias = $option['alias'] ?? $key;
-                // Fetch settings from the database
-                foreach ($cachedConfig as $attr => $value) {
-                    // Set the configuration value in the application's config
-                    Config::set("$alias.$attr", $value);
+                // Get mapping rules for this setting key
+                $mappingRules = $overrideMap[$settingKey] ?? [];
+                $configAlias = $mappingRules['alias'] ?? $settingKey;
 
-                    // Apply any specific logic defined in the $config array
-                    if (isset($option[$attr])) {
-                        $attribute = $option[$attr];
+                // Apply each setting value to the appropriate config
+                foreach ($settingValues as $property => $value) {
+                    // Always set the value in its original location
+                    Config::set("$configAlias.$property", $value);
 
-                        if (is_array($attribute)) {
-                            // If it's an array, set multiple config values
-                            foreach ($attribute as $item) {
-                                Config::set($item, $value);
-                            }
-                        } elseif (is_callable($attribute)) {
-                            // If it's a callable (e.g., a function), execute it
-                            $attribute($value);
-                        } else {
-                            // Otherwise, set the value directly
-                            Config::set($attribute, $value);
+                    // Skip if no special mapping exists
+                    if (!isset($mappingRules[$property])) {
+                        continue;
+                    }
+
+                    $mapping = $mappingRules[$property];
+
+                    // Handle different mapping types
+                    if (is_array($mapping)) {
+                        // Map to multiple config keys
+                        foreach ($mapping as $configKey) {
+                            Config::set($configKey, $value);
                         }
+                    } elseif (is_callable($mapping)) {
+                        // Execute custom logic
+                        $mapping($value);
+                    } else {
+                        // Direct mapping to a different config key
+                        Config::set($mapping, $value);
                     }
                 }
             }
         } catch (\Exception $e) {
-            throw $e;
+            // Log the error instead of just re-throwing
+            Log::error("Failed to load config from database: {$e->getMessage()}");
         }
     }
 
+    /**
+     * Load payment methods configuration from database
+     *
+     * @deprecated This method is deprecated and will be removed in a future version. Use Coderstm\Models\PaymentMethod::loadPaymentMethodsConfig() instead.
+     * @return void
+     */
     public static function loadPaymentMethodsConfig(): void
     {
         try {
-            $cacheKey = 'payment_methods_config';
-            $cacheDuration = 60 * 60 * 24; // Cache for 60 minutes
-
-            // Return from cache if available
-            if (Cache::has($cacheKey)) {
-                $paymentConfigs = Cache::get($cacheKey);
-
-                if (!empty($paymentConfigs['stripe'])) {
-                    config($paymentConfigs['stripe']);
-                }
-
-                if (!empty($paymentConfigs['paypal'])) {
-                    config($paymentConfigs['paypal']);
-                }
-
-                if (!empty($paymentConfigs['razorpay'])) {
-                    config($paymentConfigs['razorpay']);
-                }
-
-                return;
-            }
-
-            $paymentConfigs = [
-                'stripe' => [],
-                'paypal' => [],
-                'razorpay' => []
-            ];
-
-            // Load cashier config from app payment methods table
-            if ($stripe = PaymentMethod::stripe()) {
-                $paymentConfigs['stripe'] = [
-                    'cashier.key' => $stripe->configs['API_KEY'],
-                    'cashier.secret' => $stripe->configs['API_SECRET'],
-                    'cashier.webhook.secret' => $stripe->configs['WEBHOOK_SECRET'],
-                ];
-                config($paymentConfigs['stripe']);
-            }
-
-            // Load paypal config from app payment methods table
-            if ($paypal = PaymentMethod::paypal()) {
-                $mode = $paypal->test_mode ? 'sandbox' : 'live';
-                $paymentConfigs['paypal'] = [
-                    'paypal.mode' => $mode,
-                    "paypal.{$mode}.client_id" => $paypal->configs['CLIENT_ID'],
-                    "paypal.{$mode}.client_secret" => $paypal->configs['CLIENT_SECRET'],
-                    'paypal.notify_url' => $paypal->webhook,
-                ];
-                config($paymentConfigs['paypal']);
-            }
-
-            // Load razorpay config from app payment methods table
-            if ($razorpay = PaymentMethod::razorpay()) {
-                $paymentConfigs['razorpay'] = [
-                    "razorpay.key_id" => $razorpay->configs['API_KEY'],
-                    "razorpay.key_secret" => $razorpay->configs['API_SECRET'],
-                ];
-                config($paymentConfigs['razorpay']);
-            }
-
-            // Store in cache
-            Cache::put($cacheKey, $paymentConfigs, $cacheDuration);
+            PaymentMethod::syncConfig();
         } catch (\Exception $e) {
             throw $e;
         }

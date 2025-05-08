@@ -15,7 +15,7 @@ class Menu extends Shortcode
     {
         $items  = [];
         $atts = $this->atts();
-        $menus = app_settings('menus');
+        $menus = settings('menus');
         $id = $atts['id'];
 
         if (isset($menus[$id]) &&  $menus[$id]) {

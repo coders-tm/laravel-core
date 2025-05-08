@@ -37,6 +37,31 @@ return [
     'app_url' => env('APP_MEMBER_URL', 'http://localhost/user'),
     'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admins'),
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Settings to Config Override Mapping
+    |--------------------------------------------------------------------------
+    |
+    | This configuration defines how app settings from the database override
+    | Laravel's configuration values. When settings are loaded, the system will
+    | automatically update the corresponding config values based on this mapping.
+    |
+    */
+
+    'settings_override' => [
+        'config' => [
+            'alias' => 'app',
+            'email' => [
+                'coderstm.admin_email',
+                'mail.from.address',
+            ],
+            'name' => ['mail.from.name'],
+            'currency' => 'cashier.currency',
+            'timezone' => fn($value) => date_default_timezone_set($value),
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Theme Asset Path Resolution

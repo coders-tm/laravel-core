@@ -5,10 +5,11 @@ namespace Coderstm\Tests\Feature;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Tests\Feature\FeatureTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class SubscriptionsRenewTest extends FeatureTestCase
 {
-    /** @test */
+    #[Test]
     public function it_renews_active_subscriptions()
     {
         Plan::factory()->create();
@@ -32,7 +33,7 @@ class SubscriptionsRenewTest extends FeatureTestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_logs_an_error_when_renewal_fails()
     {
         // Arrange: Create an active subscription and mock the renew method to throw an exception

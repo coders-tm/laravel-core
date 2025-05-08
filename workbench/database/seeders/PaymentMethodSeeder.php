@@ -9,7 +9,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PaymentMethodSeeder extends Seeder
 {
-    use Helpers;
+    use Helpers, WithoutModelEvents;
 
     /**
      * Run the database seeds.

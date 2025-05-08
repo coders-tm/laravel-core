@@ -7,6 +7,8 @@ use Coderstm\Models\Subscription;
 use Orchestra\Testbench\TestCase;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription\Plan;
+use PHPUnit\Framework\Attributes\Test;
+use Coderstm\Contracts\SubscriptionStatus;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -28,11 +30,11 @@ class CheckSubscribedMiddlewareTest extends TestCase
         })->middleware(['subscribed', 'api']);
     }
 
-    /** @test */
+    #[Test]
     public function it_allows_subscribed_users()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
         ]);
@@ -48,15 +50,18 @@ class CheckSubscribedMiddlewareTest extends TestCase
             ->assertJson(['message' => 'You are subscribed!']);
     }
 
-    /** @test */
+    #[Test]
     public function it_blocks_unsubscribed_users()
     {
         $plan = Plan::factory()->create(['price' => 1000]);
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
             'plan_id' => $plan->id,
+        ]);
+
+        $subscription->update([
+            'status' => SubscriptionStatus::PAST_DUE,
         ]);
 
         $this->actingAs($subscription->user);
@@ -67,11 +72,11 @@ class CheckSubscribedMiddlewareTest extends TestCase
         $response->assertJson(['subscribed' => false, 'message' => trans('messages.subscription.none')]);
     }
 
-    /** @test */
+    #[Test]
     public function it_not_blocked_when_active_canceled_subscriptions()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
         ]);
@@ -88,11 +93,11 @@ class CheckSubscribedMiddlewareTest extends TestCase
         $response->assertJson(['cancelled' => true, 'message' => trans('messages.subscription.canceled', ['date' => $subscription->ends_at->format('d M, Y')])]);
     }
 
-    /** @test */
+    #[Test]
     public function it_blocks_canceled_subscriptions()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
         ]);

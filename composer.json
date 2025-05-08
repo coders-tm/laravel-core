@@ -28,6 +28,7 @@
     "barryvdh/laravel-dompdf": "^3.1",
     "creativeorange/gravatar": "^1.0",
     "doctrine/dbal": "^3.4",
+    "gocardless/gocardless-pro": "^6.6",
     "illuminate/console": "^12.0",
     "illuminate/contracts": "^12.0",
     "illuminate/database": "^12.0",

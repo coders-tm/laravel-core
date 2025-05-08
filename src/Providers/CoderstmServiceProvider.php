@@ -1,11 +1,193 @@
-<?php
-/*   __________________________________________________
-    |  Obfuscated by YAK Pro - Php Obfuscator  2.0.16  |
-    |              on 2025-04-22 01:53:54              |
-    |    GitHub: https://github.com/pk-fr/yakpro-po    |
-    |__________________________________________________|
-*/
-/*
-
-*/
- namespace Coderstm\Providers; use Coderstm\Coderstm; use Coderstm\Commands; use Coderstm\Services\Helpers; use Illuminate\Support\Facades\App; use Illuminate\Pagination\Paginator; use Illuminate\Support\Facades\Route; use Illuminate\Support\ServiceProvider; use Coderstm\Http\Middleware; class CoderstmServiceProvider extends ServiceProvider { public function register() { goto po7XW; f4jb6: $this->app->bind(\Illuminate\Routing\ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class); goto FCqCr; FCqCr: $this->app->singleton(\Coderstm\Services\AdminNotification::class); goto UllaA; po7XW: $this->configure(); goto f4jb6; UllaA: } public function boot() { goto Ozoz8; qBQRb: $this->registerCommands(); goto Vl8wa; uSMcE: $this->loadConfigFromDatabase(); goto o8nhw; wJSkV: App::setLocale(app_lang()); goto uSMcE; o8nhw: Paginator::useBootstrapFive(); goto jah7D; Vl8wa: $this->defineLicenseRoutes(); goto wJSkV; lYXEn: $this->registerPublishing(); goto qBQRb; N0u1L: $this->registerResources(); goto ndSJJ; ul902: $this->loadMigrationsFrom(["\166\145\x6e\144\x6f\162\57\154\x61\162\141\166\145\154\57\x63\x61\163\150\151\145\162\57\144\141\164\141\x62\x61\163\x65\57\x6d\x69\x67\x72\141\164\x69\157\156\163", "\166\145\156\x64\157\x72\x2f\154\141\162\141\166\x65\x6c\57\163\x61\x6e\143\164\x75\x6d\x2f\x64\141\164\141\x62\x61\x73\x65\57\155\x69\x67\x72\141\x74\151\x6f\x6e\x73"]); goto qoAia; vlk0s: $kernel->pushMiddleware(License::class); goto ul902; ndSJJ: $this->registerMigrations(); goto lYXEn; jah7D: $kernel = $this->app->make("\111\x6c\154\x75\155\151\156\141\x74\145\x5c\x43\x6f\x6e\164\x72\x61\143\164\163\x5c\110\x74\164\x70\x5c\x4b\x65\x72\156\145\154"); goto vlk0s; Ozoz8: $this->registerRouteMiddleware(); goto N0u1L; qoAia: } protected function configure() { $this->mergeConfigFrom($this->packagePath("\143\157\156\x66\x69\x67\57\x63\x6f\x64\145\x72\163\164\155\56\160\150\x70"), "\143\157\x64\x65\x72\x73\164\x6d"); } protected function registerMigrations() { goto D8MRc; gSDuu: $this->loadMigrationsFrom($this->packagePath("\x64\141\x74\x61\x62\x61\x73\145\x2f\155\151\x67\162\141\x74\151\x6f\x6e\x73")); goto Zq16S; Zq16S: KeDbN: goto TznFw; D8MRc: if (!Coderstm::shouldRunMigrations()) { goto KeDbN; } goto gSDuu; TznFw: } protected function loadConfigFromDatabase() { try { Helpers::loadConfigFromDatabase("\143\x6f\x6e\146\151\x67", "\x6d\x61\x69\x6c", "\141\x6c\145\x72\x74", "\141\144\x64\x72\145\x73\163", "\x74\150\145\x6d\x65", "\x73\157\143\x69\141\x6c\163"); Helpers::loadPaymentMethodsConfig(); } catch (\Exception $e) { report($e); } } protected function registerResources() { $this->loadViewsFrom($this->packagePath("\x72\145\x73\157\x75\x72\x63\145\163\57\x76\151\145\x77\x73"), "\143\157\x64\x65\162\x73\164\155"); } protected function registerPublishing() { goto qGxcs; AfMnj: bCG73: goto ye8hF; QNmR3: $this->publishes([$this->packagePath("\x63\157\x6e\146\x69\x67\x2f\x63\x6f\x64\145\x72\x73\x74\155\x2e\x70\x68\160") => $this->app->configPath("\x63\157\x64\x65\162\163\164\x6d\56\160\150\x70")], "\x63\157\x64\x65\x72\163\164\155\x2d\143\x6f\156\x66\151\147"); goto TWIIn; QOuGA: $this->publishes([$this->packagePath("\160\x75\142\154\x69\143") => public_path("\163\x74\141\164\151\143\163"), $this->packageStubPath("\x64\x61\164\141\142\x61\x73\x65") => $this->app->databasePath(), $this->packageStubPath("\162\x6f\165\x74\145\163\x2f\x77\x65\142\56\x73\164\165\x62") => $this->app->basePath("\162\157\165\x74\145\163\x2f\143\157\x64\145\162\x73\x74\155\57\167\x65\x62\56\160\150\160"), $this->packageStubPath("\x72\157\165\164\145\x73\57\x61\x70\x69\x2e\163\x74\x75\x62") => $this->app->basePath("\x72\x6f\165\x74\145\163\x2f\143\157\144\x65\x72\x73\x74\155\57\141\160\x69\x2e\x70\x68\160"), $this->packagePath("\162\145\x73\x6f\x75\162\143\x65\x73\x2f\166\x69\x65\167\x73\57\145\x6d\x61\151\154\x73") => resource_path("\166\151\x65\167\163\57\145\155\141\151\154\163"), $this->packagePath("\x72\145\x73\x6f\x75\162\143\145\x73\x2f\x76\151\x65\x77\x73\x2f\x70\144\x66\x73") => resource_path("\x76\151\x65\167\163\57\160\x64\146\x73"), $this->packagePath("\x72\145\x73\x6f\165\162\x63\145\163\x2f\166\151\145\167\163\57\x73\150\x6f\x72\164\143\x6f\144\x65\x73") => resource_path("\x76\x69\x65\x77\163\x2f\163\150\157\162\164\143\x6f\144\145\163"), $this->packagePath("\x72\x65\163\157\165\162\143\145\x73\57\166\x69\x65\x77\163\x2f\151\x6e\143\154\165\x64\x65\x73") => resource_path("\166\x69\145\x77\163\x2f\x69\x6e\143\154\x75\144\145\163"), $this->packagePath("\162\x65\x73\x6f\x75\162\143\145\x73\x2f\x76\x69\145\x77\163\x2f\154\x61\171\157\x75\164\163") => resource_path("\166\x69\145\x77\163\57\154\x61\171\x6f\165\164\163"), $this->packageStubPath("\x76\151\145\x77\163\x2f\x61\160\x70\56\x62\x6c\141\144\145\x2e\163\164\165\142") => resource_path("\166\151\x65\x77\x73\x2f\x61\x70\160\56\142\154\x61\x64\x65\56\x70\150\160"), $this->packageStubPath("\164\150\145\x6d\x65") => $this->app->basePath("\x74\x68\x65\155\x65\163\57\146\157\x75\156\144\x61\164\151\157\x6e"), $this->packageStubPath("\167\145\x62\160\141\x63\153\x2e\x74\150\x65\x6d\145\x2e\155\x69\x78\56\152\163") => $this->app->basePath("\167\145\x62\x70\x61\x63\x6b\56\164\x68\x65\155\x65\56\155\151\x78\x2e\x6a\x73"), $this->packageStubPath("\x63\x6f\156\164\162\157\x6c\154\145\x72\x73\57\101\144\155\151\156\x43\x6f\156\164\162\x6f\x6c\154\x65\162\56\x73\164\165\142") => app_path("\110\164\164\x70\57\x43\157\156\164\162\157\154\x6c\x65\x72\x73\x2f\x41\x64\155\151\x6e\103\157\x6e\164\x72\x6f\x6c\x6c\x65\x72\56\x70\150\x70"), $this->packageStubPath("\x63\157\x6e\x74\162\157\154\x6c\145\x72\x73\57\x55\x73\145\162\x43\x6f\156\164\x72\x6f\154\x6c\145\x72\x2e\163\164\x75\142") => app_path("\x48\164\x74\160\57\x43\x6f\156\x74\162\x6f\154\x6c\145\162\x73\57\x55\163\x65\162\x43\x6f\x6e\x74\x72\157\x6c\154\145\x72\56\x70\x68\x70"), $this->packageStubPath("\x63\x6f\x6e\164\162\157\154\154\145\162\x73\x2f\x55\163\x65\162\122\145\x70\157\x72\164\x73\x43\x6f\x6e\164\162\x6f\x6c\x6c\x65\x72\56\x73\164\165\142") => app_path("\110\164\x74\160\57\103\157\x6e\164\x72\157\154\x6c\x65\x72\x73\x2f\125\x73\145\162\x52\145\160\x6f\x72\164\163\x43\157\x6e\x74\x72\157\x6c\154\x65\x72\x2e\x70\150\x70"), $this->packageStubPath("\x63\x6f\156\x74\162\157\154\x6c\145\162\163\57\x45\156\x71\165\x69\162\x79\x43\157\156\x74\162\157\154\154\145\162\56\x73\x74\165\142") => app_path("\x48\164\x74\x70\57\103\157\156\164\162\157\154\x6c\145\162\x73\57\105\x6e\x71\x75\x69\x72\x79\x43\x6f\x6e\x74\x72\x6f\x6c\x6c\145\x72\x2e\x70\x68\x70"), $this->packageStubPath("\155\x6f\144\145\154\x73\57\101\x64\x6d\x69\156\x2e\x73\x74\165\x62") => app_path("\115\157\x64\145\x6c\x73\57\x41\x64\x6d\x69\x6e\56\160\x68\160"), $this->packageStubPath("\x6d\157\144\145\x6c\x73\x2f\x55\163\145\162\x2e\x73\x74\x75\x62") => app_path("\115\x6f\144\x65\154\163\57\125\x73\x65\162\x2e\160\x68\160"), $this->packageStubPath("\155\157\x64\x65\x6c\x73\57\105\x6e\x71\x75\151\x72\171\x2e\x73\164\165\x62") => app_path("\x4d\x6f\144\x65\x6c\163\x2f\x45\x6e\x71\165\x69\162\x79\56\160\150\160"), $this->packageStubPath("\x70\x6f\x6c\151\x63\x69\145\x73\x2f\x41\144\x6d\151\156\120\157\154\x69\143\x79\56\x73\164\x75\x62") => app_path("\120\157\x6c\151\143\x69\145\x73\x2f\x41\144\x6d\x69\x6e\120\x6f\154\151\143\171\56\x70\150\160"), $this->packageStubPath("\160\157\x6c\x69\x63\151\x65\163\x2f\x55\163\145\162\x50\x6f\x6c\151\143\171\x2e\163\x74\x75\x62") => app_path("\x50\x6f\154\151\x63\151\145\x73\x2f\x55\x73\145\x72\x50\x6f\154\151\x63\171\x2e\160\x68\x70"), $this->packageStubPath("\x70\157\x6c\x69\143\151\x65\x73\57\105\156\x71\165\151\162\x79\x50\x6f\154\151\x63\171\x2e\x73\x74\x75\142") => app_path("\120\x6f\x6c\x69\143\151\x65\163\x2f\105\156\x71\x75\x69\162\x79\120\157\x6c\x69\x63\x79\x2e\x70\150\160"), $this->packageStubPath("\103\x6f\144\145\x72\163\x74\155\x53\145\162\x76\x69\x63\145\120\x72\x6f\x76\151\x64\x65\162\x2e\x73\164\x75\142") => app_path("\120\x72\x6f\166\x69\144\x65\x72\163\57\103\x6f\144\x65\162\163\164\x6d\123\x65\x72\x76\151\x63\145\x50\x72\x6f\166\151\144\145\x72\56\160\x68\x70"), $this->packageStubPath("\x43\157\x64\x65\x72\x73\164\x6d\122\x6f\165\164\x65\x53\145\162\166\151\x63\x65\120\x72\157\166\x69\x64\x65\162\56\x73\164\x75\142") => app_path("\x50\x72\157\166\151\144\145\162\x73\57\103\157\144\x65\162\163\164\155\122\157\165\x74\x65\123\x65\x72\x76\151\143\145\120\x72\157\x76\151\144\145\x72\x2e\160\150\x70"), $this->packageStubPath("\160\141\x67\145\x2e\x73\x74\165\x62") => resource_path("\160\x61\147\145\x2e\x73\164\165\142"), $this->packagePath("\162\x65\163\x6f\165\x72\x63\145\x73\x2f\x6c\x61\x6e\x67") => resource_path("\x6c\x61\156\x67")], "\x63\157\144\145\162\x73\x74\155\x2d\x61\163\163\145\x74\x73"); goto AfMnj; qGxcs: if (!$this->app->runningInConsole()) { goto bCG73; } goto QNmR3; TWIIn: $this->publishes([$this->packagePath("\144\141\164\141\142\x61\x73\x65\57\155\151\x67\162\x61\164\x69\x6f\156\163") => $this->app->databasePath("\x6d\151\147\x72\141\x74\x69\x6f\156\x73")], "\143\157\x64\145\x72\x73\164\x6d\55\155\x69\x67\162\141\164\x69\157\156\163"); goto QOuGA; ye8hF: } protected function registerRouteMiddleware() { goto CF2if; CF2if: Route::aliasMiddleware("\164\150\x65\155\145", Middleware\ThemeMiddleware::class); goto kqW7o; kqW7o: Route::aliasMiddleware("\x67\165\141\162\144", Middleware\GuardMiddleware::class); goto m2kDC; m2kDC: Route::aliasMiddleware("\163\165\142\163\143\x72\x69\142\145\144", Middleware\CheckSubscribed::class); goto xqt2y; xqt2y: } protected function registerCommands() { goto fpjt2; fpjt2: if (!$this->app->runningInConsole()) { goto t5eJN; } goto mnEU5; mnEU5: $this->commands([Commands\InstallCommand::class, Commands\SubscriptionsCancel::class, Commands\CheckCanceledSubscriptions::class, Commands\ResetSubscriptionsUsages::class, Commands\CheckHoldUser::class, Commands\CheckExpiredSubscriptions::class, Commands\BuildTheme::class, Commands\SubscriptionsRenew::class, Commands\LangParseCommand::class]); goto DfhEh; DfhEh: t5eJN: goto peJEY; peJEY: } protected function defineLicenseRoutes() { goto OKwoZ; OKwoZ: if (!app()->routesAreCached()) { goto gWbTD; } goto M5xgK; qNcaL: gWbTD: goto Y6LlF; Y6LlF: Route::group(["\x70\162\x65\x66\151\x78" => "\154\x69\143\x65\156\x73\x65"], function () { Route::get("\57\x6d\141\x6e\141\147\145", [License::class, "\155\141\156\141\x67\145"])->middleware("\167\145\x62")->name("\154\x69\x63\145\156\163\145\x2d\x6d\x61\156\x61\x67\x65"); Route::post("\57\165\160\x64\x61\164\145", [License::class, "\165\160\x64\x61\x74\x65"])->middleware("\167\x65\x62")->name("\x6c\151\x63\145\x6e\163\x65\x2d\165\160\144\141\x74\145"); }); goto K5Vam; M5xgK: return; goto qNcaL; K5Vam: } protected function packagePath(string $path) { return __DIR__ . "\57\56\x2e\x2f\56\x2e\57" . $path; } protected function packageStubPath(string $path) { return __DIR__ . "\x2f\x2e\56\57\56\x2e\x2f\x73\x74\165\x62\x73\x2f" . $path; } }
+<?php //00ba3
+// **************************************************************************
+// *                                                                        *
+// * Coderstm - The Complete Client Management, Billing & Support Solution  *
+// * Copyright (C) Coderstm Ltd. All Rights Reserved,                       *
+// * Version:4.7.1                                                          *
+// * Build Date:3 Jan 2025                                                  *
+// *                                                                        *
+// **************************************************************************
+// *                                                                        *
+// * Email: hello@coderstm.com                                              *
+// * Website: https://www.coderstm.com                                      *
+// *                                                                        *
+// **************************************************************************
+// *                                                                        *
+// * This software is furnished under a license and may be used and copied  *
+// * only in accordance with the terms of such license and with the         *
+// * inclusion of the above copyright notice. This software or any other    *
+// * copies thereof may not be provided or otherwise made available to any  *
+// * other person. No title to and ownership of the software is hereby      *
+// * transferred.                                                           *
+// *                                                                        *
+// * You may not reverse engineer, decompile, defeat license encryption     *
+// * mechanisms, or disassemble this software product or software product   *
+// * license. Coderstm may terminate this license if you don't comply with  *
+// * any of the terms and conditions set forth in our end user license      *
+// * agreement. In such event, licensee agrees to return licensor or        *
+// * destroy all copies of software upon termination of the license.        *
+// *                                                                        *
+// **************************************************************************
+if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
+?>
+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

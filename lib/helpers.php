@@ -10,7 +10,6 @@ use Coderstm\Models\AppSetting;
 use Coderstm\Services\AdminNotification;
 use Illuminate\Support\Optional;
 use Symfony\Polyfill\Intl\Icu\Currencies;
-use Illuminate\Support\Facades\Notification;
 
 if (!function_exists('guard')) {
     function guard()
@@ -50,83 +49,110 @@ if (!function_exists('is_admin')) {
 }
 
 if (!function_exists('base_url')) {
-    function base_url($path = '')
+    function base_url($path = '', $query = [])
     {
         $baseUrl = rtrim(config('app.url'), '/');
 
-        if (!$path) return $baseUrl;
+        if (!$path && empty($query)) return $baseUrl;
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return $baseUrl . $separator . $path;
+        $url = $path ? $baseUrl . $separator . $path : $baseUrl;
+
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
     }
 }
 
 if (!function_exists('admin_url')) {
-    function admin_url($path = '', $absolute = false)
+    function admin_url($path = '', $query = [])
     {
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
 
         // Get the base URL from config
         $baseUrl = rtrim(config('coderstm.admin_url'), '/');
+        $url = $path ? $baseUrl . $separator . $path : $baseUrl;
 
-        // Check if absolute is true
-        // Remove any extra path after the base URL
-        if ($absolute) {
-            $parts = parse_url($baseUrl);
-            $baseUrl = $parts['scheme'] . '://' . $parts['host'];
-            if (isset($parts['port'])) {
-                $baseUrl .= ':' . $parts['port'];
-            }
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
         }
 
-        return $path ? $baseUrl . $separator . $path : $baseUrl;
+        return $url;
     }
 }
 
 if (!function_exists('app_url')) {
-    function app_url($path = '')
+    function app_url($path = '', $query = [])
     {
-        if (empty($path)) {
-            return config('coderstm.app_url');
+        // Get the base URL from config
+        $baseUrl = rtrim(config('coderstm.app_url'), '/');
+
+        if (empty($path) && empty($query)) {
+            return $baseUrl;
         }
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return rtrim(config('coderstm.app_url'), '/') . $separator . $path;
+        $url = $path ? $baseUrl . $separator . $path : $baseUrl;
+
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
     }
 }
 
 if (!function_exists('user_route')) {
-    function user_route($path = '')
+    function user_route($path = '', $query = [])
     {
         $prefix = config('coderstm.user_prefix');
         $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
 
         if (empty($path)) {
-            return $prefix;
+            $url = $prefix;
+        } else {
+            // Check if $path starts with a slash
+            $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+            $url = $prefix . $separator . $path;
         }
 
-        // Check if $path starts with a slash
-        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return $prefix . $separator . $path;
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
     }
 }
 
 if (!function_exists('admin_route')) {
-    function admin_route($path = '')
+    function admin_route($path = '', $query = [])
     {
         $prefix = config('coderstm.admin_prefix');
         $prefix = (substr($prefix, 0, 1) === '/') ? $prefix : '/' . $prefix;
 
         if (empty($path)) {
-            return $prefix;
+            $url = $prefix;
+        } else {
+            // Check if $path starts with a slash
+            $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+            $url = $prefix . $separator . $path;
         }
 
-        // Check if $path starts with a slash
-        $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        return $prefix . $separator . $path;
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
     }
 }
 
@@ -145,6 +171,13 @@ if (!function_exists('has_recaptcha')) {
 }
 
 if (!function_exists('app_settings')) {
+    /**
+     * Get the specified setting value.
+     *
+     * @param string $key
+     * @return \Illuminate\Support\Collection
+     * @deprecated Use settings() helper function instead. This function will be removed in a future release.
+     */
     function app_settings($key)
     {
         return AppSetting::findByKey($key);
@@ -152,16 +185,86 @@ if (!function_exists('app_settings')) {
 }
 
 if (!function_exists('settings')) {
-    function settings(string $key, string $attribute)
+    /**
+     * Get / set the specified setting value.
+     *
+     * If an array is passed as the key, we will assume you want to set multiple values.
+     *
+     * @param  string|array|null  $key
+     * @param  mixed  $default
+     * @return mixed|\Coderstm\Models\AppSetting
+     */
+    function settings($key = null, $default = null)
     {
-        return AppSetting::value($key, $attribute);
+        if (is_null($key)) {
+            return \Coderstm\Models\AppSetting::getSettings();
+        }
+
+        if (is_array($key)) {
+            foreach ($key as $k => $value) {
+                $segments = explode('.', $k);
+                $settingKey = array_shift($segments);
+
+                if (empty($segments)) {
+                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $value, false);
+                } else {
+                    $options = \Coderstm\Models\AppSetting::findByKey($settingKey); // Already returns array
+                    array_set($options, implode('.', $segments), $value);
+                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $options, false);
+                }
+            }
+            return true;
+        }
+
+        return \Coderstm\Models\AppSetting::get($key, $default);
+    }
+}
+
+if (!function_exists('array_set')) {
+    /**
+     * Set an array item to a given value using "dot" notation.
+     *
+     * @param  array  $array
+     * @param  string  $key
+     * @param  mixed  $value
+     * @return array
+     */
+    function array_set(&$array, $key, $value)
+    {
+        if (is_null($key)) {
+            return $array = $value;
+        }
+
+        $keys = explode('.', $key);
+
+        foreach ($keys as $i => $key) {
+            if (count($keys) === 1) {
+                break;
+            }
+
+            unset($keys[$i]);
+
+            // If the key doesn't exist at this depth, we will just create an empty array
+            // to hold the next value, allowing us to create the arrays to hold final
+            // values at the correct depth. Then we'll keep digging into the array.
+            if (!isset($array[$key]) || !is_array($array[$key])) {
+                $array[$key] = [];
+            }
+
+            $array = &$array[$key];
+        }
+
+        $array[array_shift($keys)] = $value;
+
+        return $array;
     }
 }
 
 if (!function_exists('opening_times')) {
     function opening_times()
     {
-        return app_settings('opening-times')->map(function ($item, $key) {
+        $times = settings('opening-times', []);
+        return collect($times)->map(function ($item, $key) {
             $item['is_today'] = now()->format('l') == $item['name'];
             return $item;
         });
@@ -258,8 +361,7 @@ if (!function_exists('app_lang')) {
     function app_lang()
     {
         try {
-            $lang = settings('config', 'lang');
-            $locale = $lang ?? 'en-US';
+            $locale = settings('config.lang', 'en-US');
 
             return get_lang_code($locale);
         } catch (\Exception $e) {
@@ -271,14 +373,15 @@ if (!function_exists('app_lang')) {
 if (!function_exists('company_address')) {
     function company_address($html = false)
     {
-        $address = optional((object) app_settings('address')->toArray());
+        $address = settings('address', []);
+        $addressObj = optional((object) $address);
         $keys = [
-            'company' => $address->company,
-            'line1' => $address->line1,
-            'line2' => $address->line2,
-            'city' => $address->city,
-            'state' => $address->state ? "{$address->state}, {$address->postal_code}" : '',
-            'country' => $address->country,
+            'company' => $addressObj->company,
+            'line1' => $addressObj->line1,
+            'line2' => $addressObj->line2,
+            'city' => $addressObj->city,
+            'state' => $addressObj->state ? "{$addressObj->state}, {$addressObj->postal_code}" : '',
+            'country' => $addressObj->country,
         ];
         return collect($keys)->filter()->implode($html ? '<br>' : ', ');
     }

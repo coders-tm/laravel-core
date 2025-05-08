@@ -7,14 +7,15 @@ use Coderstm\Models\Coupon;
 use Coderstm\Models\Redeem;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
-use Coderstm\Models\Shop\Order;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Events\SubscriptionPlanChanged;
 use Illuminate\Validation\ValidationException;
 use Coderstm\Notifications\SubscriptionCancelNotification;
 use Coderstm\Notifications\SubscriptionUpgradeNotification;
 use Coderstm\Notifications\SubscriptionDowngradeNotification;
+use Coderstm\Services\GatewaySubscriptionFactory;
 
 class SubscriptionController extends Controller
 {
@@ -113,7 +114,9 @@ class SubscriptionController extends Controller
             'payment_method.required_unless' => 'Please select a payment method to proceed with the subscription.',
         ]);
 
-        $payment = $upgrade = $downgrade = false;
+        $upgrade = $downgrade = false;
+        $paymentMethod = PaymentMethod::find($request->payment_method);
+        $provider = $paymentMethod?->provider;
         $subscription = null;
         $user = $this->user();
         $plan = Plan::find($request->plan);
@@ -123,12 +126,14 @@ class SubscriptionController extends Controller
         $coupon = optional(Coupon::findByCode($request->promotion_code));
         $oldPlan = null;
 
+        // Check for existing subscription with same plan
         if ($subscribed && $user->subscription()->plan_id == $plan->id) {
             throw ValidationException::withMessages([
                 'plan' => trans('validation.subscription.plan_already', ['plan' => $plan->label]),
             ]);
         }
 
+        // Check for past due subscription
         if ($user->subscription() && $user->subscription()->pastDue()) {
             throw ValidationException::withMessages([
                 'past_due' => 'Your subscription is past due. Please make a payment from the billing page or contact our reception for assistance.',
@@ -162,6 +167,8 @@ class SubscriptionController extends Controller
                     $subscription->trialDays($trial_days);
                 }
 
+                $subscription->provider = $provider;
+
                 $subscription->save();
             }
         } catch (\Exception $e) {
@@ -188,24 +195,10 @@ class SubscriptionController extends Controller
                 $user->notify(new SubscriptionUpgradeNotification($subscription));
             }
 
-            if ($request->filled('payment_method') && !$downgrade) {
-                $subscription = $subscription->load('latestInvoice');
-                $latestInvoice = $subscription->latestInvoice;
-                $paymentMethod = PaymentMethod::find($request->payment_method);
+            $gateway = GatewaySubscriptionFactory::make($subscription);
 
-                if ($latestInvoice?->has_due && $paymentMethod->payable()) {
-                    $key = $latestInvoice->key;
-                    $provider = $paymentMethod->provider;
-                    $payment = "/user/payment/$provider?key=$key&redirect=/user/billing";
-                }
-            }
+            return response()->json($gateway->setup(), 200);
         }
-
-        return response()->json([
-            'subscription' => $subscription,
-            'payment' => $payment,
-            'message' => trans_choice('messages.subscription.success', $payment ? 1 : 0, ['plan' => $plan->label])
-        ]);
     }
 
     public function cancel(Request $request)
@@ -266,25 +259,6 @@ class SubscriptionController extends Controller
             'data' => $user->fresh(),
             'message' => trans('messages.subscription.due_payment')
         ], 200);
-    }
-
-    public function invoices(Request $request)
-    {
-        $invoices = $this->user()
-            ->invoices()
-            ->orderByDesc('created_at');
-
-        if ($request->filled('status')) {
-            $invoices->whereStatus($request->status);
-        }
-
-        $invoices = $invoices->paginate($request->rowsPerPage ?: 10);
-        return response()->json($invoices, 200);
-    }
-
-    public function downloadInvoice(Request $request, Order $invoice)
-    {
-        return $invoice->load('line_items')->download();
     }
 
     public function checkPromoCode(Request $request)
@@ -361,9 +335,15 @@ class SubscriptionController extends Controller
             $subscription->next_plan = $options['plan'];
             $subscription->save();
 
-            $subscription->oldPlan = Plan::find($subscription->plan_id);
-            $subscription->plan = Plan::find($options['plan']);
+            $oldPlan = Plan::find($subscription->plan_id);
+            $newPlan = Plan::find($options['plan']);
+
+            $subscription->oldPlan = $oldPlan;
+            $subscription->plan = $newPlan;
             $user = $this->user();
+
+            // Update the subscription plan
+            event(new SubscriptionPlanChanged($subscription, $oldPlan, $newPlan));
 
             $user->notify(new SubscriptionDowngradeNotification($subscription));
         } catch (\Exception $e) {

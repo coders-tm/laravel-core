@@ -1,11 +1,225 @@
-<?php
-/*   __________________________________________________
-    |  Obfuscated by YAK Pro - Php Obfuscator  2.0.16  |
-    |              on 2025-04-22 01:53:54              |
-    |    GitHub: https://github.com/pk-fr/yakpro-po    |
-    |__________________________________________________|
-*/
-/*
-
-*/
- namespace Coderstm\Providers; use Closure; use Carbon\Carbon; use Illuminate\Support\Str; use Illuminate\Http\Request; use Coderstm\Models\AppSetting; use Illuminate\Support\Facades\Auth; use Illuminate\Support\Facades\Http; use Illuminate\Support\Facades\Config; use Illuminate\Validation\ValidationException; class License { private static $publicKey = "\55\55\55\55\55\x42\105\x47\x49\116\40\120\125\102\114\111\103\x20\x4b\x45\x59\55\x2d\55\x2d\55\xa\x4d\x49\x49\x43\x49\x6a\x41\116\x42\147\153\161\x68\x6b\x69\x47\x39\x77\60\102\101\x51\105\106\x41\x41\117\x43\101\x67\x38\101\x4d\x49\x49\103\x43\147\x4b\103\101\x67\x45\101\x71\62\152\x61\130\53\x39\x74\131\x61\155\130\x4a\147\122\x34\x66\53\x5a\x56\12\x62\x63\x6e\x6f\114\x39\x4c\112\x54\166\67\x66\165\x6a\x32\x77\x33\x7a\x59\105\171\163\x77\x4b\147\x47\x6d\x37\x36\x43\x6e\x77\x5a\164\130\71\71\70\116\155\x44\x69\x61\x51\x4d\x4b\107\104\143\115\121\156\x34\66\151\x53\110\153\160\144\x74\x69\x46\x4c\12\112\113\62\x75\110\167\x4e\170\x77\120\x53\x65\x4b\x48\x7a\x70\x75\145\114\152\157\x45\x6d\153\x51\x69\x5a\x2f\x77\x32\x45\150\x69\150\x72\x5a\163\63\x6f\x46\x54\x63\153\x78\x4a\61\x6d\x64\143\x46\146\101\117\131\122\x56\x37\x67\x47\x56\x63\x77\132\x39\12\x33\165\166\x43\x47\x61\x4e\x75\147\103\x5a\x4f\x61\x36\161\132\x41\x76\172\x37\104\104\162\165\102\x77\x58\x6e\144\x6b\104\127\x75\x6c\x44\x6a\145\164\125\57\x6c\x75\x54\53\x5a\x44\105\x79\67\156\x4c\111\125\x72\165\x6e\162\x78\153\117\x68\150\57\57\xa\62\x73\167\153\x59\x77\154\153\x47\x65\x35\163\101\x68\150\x68\170\x7a\152\141\123\x38\x5a\70\x69\x79\x4d\162\x70\x6c\x31\71\x4b\x69\115\60\113\63\x61\x48\x51\121\142\x51\111\156\x4a\x58\x51\102\65\116\x44\x58\x42\63\x44\101\x50\67\102\156\x79\156\xa\x64\66\x62\x2b\x38\61\121\x71\124\165\x4b\163\151\171\111\63\x45\x42\x62\x78\104\61\x6b\167\x66\172\70\132\152\x6d\x49\x58\111\x74\157\x62\x64\x48\147\x36\x44\x63\x66\x78\157\152\x58\x55\x75\65\63\113\114\66\125\117\x67\141\x59\142\x56\x64\x39\130\12\165\x55\x6f\125\125\121\53\x32\x78\x47\x56\104\x6b\x6c\x39\116\106\106\x54\x33\57\107\x78\170\132\162\61\x38\61\x45\x31\x35\71\114\104\70\127\x4e\53\x79\170\x61\x4e\x57\164\154\62\x56\53\116\112\66\166\101\x58\x56\x4d\x66\141\101\x4c\66\x47\x77\xa\125\x79\60\124\x4d\130\160\x46\x52\172\x4e\171\166\x38\154\x6f\x49\x4a\x59\x56\154\x67\126\165\x73\61\143\160\131\x48\160\x72\116\x6e\x2f\102\x76\123\132\61\x74\x33\x54\113\x64\x61\x6d\113\127\143\x55\x62\171\165\162\60\x41\123\x55\x38\x57\131\116\x78\12\166\61\x7a\71\123\x55\x49\x46\71\132\x79\x2b\61\x5a\64\x62\x47\104\x61\130\63\x66\x78\104\x59\124\x59\146\x65\122\x70\x56\155\x75\160\x6d\113\x59\115\x67\154\70\154\70\x57\163\101\57\62\x59\x45\x68\106\x71\154\x78\107\x36\107\125\127\x34\103\167\xa\x43\x33\150\x55\x36\x71\117\112\132\53\145\144\112\x37\63\x34\101\112\x4f\x4a\x6b\152\x58\110\x69\104\x33\x43\145\106\147\x4f\x53\121\x4d\150\x71\115\166\x48\122\x55\157\163\x64\114\70\60\x37\132\105\x37\x58\x4f\x31\71\x76\x37\131\151\120\x54\x47\67\12\63\152\152\x77\113\163\116\141\x78\x69\53\x43\x7a\165\x63\x55\116\x4a\131\53\x49\111\x71\x69\63\112\70\x4d\144\x6f\x69\x6e\102\x69\x34\x56\124\x7a\x49\x7a\132\160\x46\x69\150\x41\x42\105\104\x38\67\150\x66\x5a\x6e\x34\x52\121\x2f\x74\x72\70\166\x56\12\x38\x52\x50\x30\x72\x36\x54\127\101\x6b\x59\141\117\x2f\x56\x4f\131\x55\x73\x52\x79\x51\x55\x43\101\167\x45\x41\x41\121\x3d\75\xa\55\x2d\55\x2d\55\x45\x4e\x44\x20\x50\125\x42\x4c\x49\103\x20\x4b\x45\131\x2d\x2d\55\55\55"; private static $privateKey = "\55\x2d\55\x2d\x2d\x42\105\x47\111\116\40\x50\x52\111\126\x41\124\x45\x20\x4b\105\131\55\x2d\x2d\55\55\12\x4d\x49\111\112\121\147\111\x42\101\104\x41\116\x42\147\153\161\x68\x6b\x69\107\x39\x77\x30\102\101\x51\105\106\101\x41\x53\x43\103\x53\x77\167\147\x67\x6b\157\x41\x67\x45\x41\101\157\x49\103\x41\x51\x43\x72\141\x4e\x70\146\67\62\x31\150\x71\132\x63\155\xa\x42\x48\150\x2f\x35\x6c\x56\164\x79\x65\147\166\x30\163\154\x4f\57\x74\x2b\x36\120\142\x44\146\116\147\124\x4b\172\x41\x71\x41\x61\x62\166\x6f\x4b\146\102\x6d\61\x66\x33\x33\167\x32\131\117\x4a\160\x41\x77\x6f\x59\116\x77\x78\x43\146\152\161\x4a\111\x65\xa\x53\x6c\x32\x32\x49\x55\x73\153\162\x61\64\x66\101\63\x48\101\x39\x4a\x34\157\146\x4f\x6d\x35\x34\x75\x4f\147\x53\141\x52\x43\112\156\x2f\x44\x59\x53\107\x4b\x47\x74\x6d\172\145\x67\x56\116\171\x54\x45\156\127\x5a\x31\x77\x56\x38\x41\65\150\106\130\x75\xa\101\x5a\x56\172\102\x6e\63\145\x36\70\111\x5a\157\x32\x36\101\x4a\153\x35\x72\161\x70\153\103\x2f\x50\x73\115\x4f\x75\x34\110\102\x65\x64\62\121\116\141\66\x55\x4f\x4e\66\x31\x54\x2b\127\65\120\x35\x6b\115\124\x4c\165\143\x73\150\x53\165\x36\x65\x76\12\x47\x51\66\107\x48\x2f\x2f\141\172\x43\122\x6a\103\127\121\x5a\67\155\167\103\x47\x47\110\110\117\116\160\114\x78\156\x79\114\111\x79\x75\x6d\x58\x58\x30\161\111\172\x51\x72\144\x6f\x64\102\x42\164\x41\151\x63\154\144\x41\110\x6b\60\x4e\143\110\143\x4d\12\x41\x2f\163\x47\146\x4b\144\x33\160\x76\x37\172\x56\103\x70\117\64\161\x79\114\111\152\143\x51\x46\166\105\x50\x57\124\x42\x2f\120\170\x6d\117\x59\150\143\x69\x32\150\164\x30\145\104\157\116\x78\57\107\x69\x4e\x64\x53\67\156\x63\x6f\x76\160\121\x36\x42\12\x70\x68\164\126\63\61\x65\x35\x53\150\122\x52\104\67\x62\x45\x5a\x55\117\x53\130\60\60\x55\126\x50\x66\x38\142\110\106\155\166\130\x7a\x55\x54\x58\156\60\x73\120\170\131\63\67\114\106\157\61\141\x32\x58\x5a\x58\64\x30\156\161\x38\102\144\x55\x78\xa\x39\157\x41\x76\x6f\142\102\x54\x4c\x52\x4d\170\145\153\x56\x48\115\63\x4b\x2f\171\x57\x67\x67\x6c\150\x57\127\x42\x57\x36\x7a\x56\171\x6c\x67\145\155\163\x32\146\70\107\x39\112\156\127\63\144\115\x70\x31\161\x59\160\132\170\x52\166\113\x36\x76\x51\102\xa\x4a\x54\x78\132\147\x33\107\x2f\130\120\61\x4a\121\x67\x58\61\156\114\x37\x56\156\150\163\x59\x4e\160\x66\x64\x2f\105\x4e\x68\116\x68\x39\65\107\154\127\141\66\x6d\x59\160\147\171\103\x58\x79\x58\170\x61\x77\x44\57\x5a\x67\123\105\x57\x71\x58\x45\x62\12\157\x5a\122\x62\x67\x4c\101\114\x65\x46\124\x71\x6f\64\x6c\156\65\x35\x30\x6e\166\146\147\101\153\x34\x6d\x53\x4e\x63\145\x49\x50\x63\x4a\64\127\101\x35\x4a\x41\x79\107\x6f\x79\x38\x64\x46\x53\151\x78\60\166\172\124\x74\153\x54\x74\x63\x37\130\x32\57\12\x74\151\111\71\x4d\142\x76\x65\117\x50\101\x71\167\x31\x72\107\114\x34\x4c\x4f\x35\x78\121\60\x6c\152\64\x67\x69\161\x4c\143\156\167\170\62\x69\113\143\107\x4c\x68\126\x50\x4d\152\116\x6d\153\x57\x4b\x45\x41\105\121\120\172\x75\x46\x39\x6d\x66\x68\106\12\x44\x2b\x32\166\x79\x39\x58\170\x45\x2f\x53\x76\x70\116\x59\x43\x52\x68\157\x37\x39\125\65\x68\x53\170\x48\x4a\x42\x51\x49\104\x41\x51\x41\102\x41\x6f\111\x43\101\x45\147\157\x79\111\x48\112\154\103\x55\147\154\x57\x4a\x71\125\x47\x59\142\x69\x38\x77\x2f\12\x79\x78\x44\123\x37\x6d\x39\153\x69\x62\57\157\x4e\x35\x30\111\x4b\x79\x56\113\x6c\x34\115\x75\166\x2b\x33\102\x4e\150\x53\x38\163\x6f\106\113\x7a\x35\170\x57\142\113\x34\153\127\107\x61\170\x46\x55\57\x59\x52\70\143\x62\162\x47\66\x2f\x66\154\x68\120\12\x43\x33\127\x2f\x35\57\x51\x41\x70\164\112\112\156\70\126\151\53\x45\x75\151\160\116\125\x36\x53\164\x2f\x76\x39\111\x51\x6b\x77\x4a\x41\x33\132\x71\x4d\172\71\x77\67\156\121\x59\155\x70\124\x32\x47\110\x54\x66\x74\63\x7a\x44\147\124\166\101\161\x4c\xa\x2b\x6e\142\x37\x6e\x38\155\x77\106\161\x52\160\x75\141\x65\x52\64\64\x66\156\x43\x51\x79\111\x31\153\x4f\x6f\153\x52\x7a\63\142\x34\122\x6d\x34\114\107\57\67\152\x34\x30\x6e\147\156\x57\x35\x58\105\66\60\141\x45\x37\142\x61\x74\127\x4c\x6b\157\157\xa\126\131\x73\x68\171\130\120\110\x4e\x4d\x33\x2f\101\x4b\x36\x7a\122\165\x62\x4f\150\117\103\x34\x4b\151\151\x4c\x77\x2b\x54\x6f\x31\x41\x34\x57\x42\107\x4f\103\111\x44\63\x59\x48\71\x58\70\171\x35\x68\105\122\70\107\x56\162\127\x67\x79\x4d\x76\147\103\xa\x6f\x2b\x4c\102\102\106\171\131\x50\x57\131\110\120\x65\110\62\156\x6e\x33\x46\111\115\67\64\x75\x2b\x50\x2b\x64\106\x6e\62\115\x73\145\160\x30\61\161\x34\x32\121\x62\145\110\x5a\x50\163\110\x64\106\110\x37\132\x37\x7a\61\102\70\x6d\x2b\154\x44\171\xa\61\x33\170\x2f\x56\x76\x59\x33\x43\152\x32\112\110\x4b\x54\x75\x44\161\102\x4d\x7a\x58\162\172\145\x47\x62\x53\x4d\62\146\165\x59\154\x71\125\x31\x63\x57\160\x63\x65\x59\164\x72\x7a\125\x54\103\x33\x76\162\x41\161\x67\x7a\67\x68\141\111\x75\x6e\110\67\12\102\x38\62\66\171\x6b\172\163\x5a\57\151\x43\x47\71\61\x56\145\x4a\120\x57\x62\x66\156\x66\x61\122\125\x67\x53\x35\x4d\63\154\x71\172\x30\x70\57\x58\x46\x6e\152\x55\126\x38\x6e\124\142\x52\x64\63\153\141\x50\172\x64\x4f\145\157\x56\122\x5a\142\x67\xa\x49\131\x6a\165\102\64\107\142\146\150\x63\122\151\x73\x32\126\x4a\x68\166\x61\x64\61\x44\150\x6f\151\64\130\116\115\67\x53\x34\62\x63\103\161\x30\127\x52\110\x61\x44\61\123\164\160\x52\x67\x56\x56\x72\170\110\x34\142\162\164\x6c\164\x44\126\125\x4d\12\x54\153\x2b\124\66\x6f\141\131\x6d\x6c\63\172\x67\163\112\x73\156\x68\64\x30\111\x53\x42\121\144\x61\x6a\123\126\x63\x51\166\127\x50\131\x48\161\x55\x38\116\x56\161\145\x41\102\114\161\166\156\170\111\143\x59\x50\x55\164\117\172\x79\67\x55\x4a\171\160\xa\61\53\62\x70\172\104\x6f\x69\x42\61\126\x66\172\103\x69\144\111\112\141\x6e\x68\x57\156\113\x44\101\154\x59\163\106\x30\x74\x37\x69\x79\x64\x2f\x48\x4a\123\161\126\125\66\x77\160\x77\155\67\116\141\70\x52\156\104\x38\x77\x49\126\x61\x6c\x45\161\107\12\x79\x48\x38\160\x4f\156\x30\x56\60\x38\60\x6b\x34\142\x55\x57\x59\x48\162\104\x41\157\111\102\x41\121\104\171\131\114\x4b\142\x2f\x57\x4b\105\x4d\142\x6a\71\60\x53\62\67\70\114\147\x35\x53\x6b\111\x51\x4e\156\65\x73\x44\x50\x55\x45\166\153\63\x68\xa\127\x36\110\67\x45\166\x32\166\71\131\x64\x33\144\110\x41\x62\121\x53\164\152\111\53\121\x64\104\121\x57\66\120\x61\53\146\120\66\x4b\x66\x68\63\x6e\x4e\106\150\142\122\x62\121\126\61\x65\112\x4d\53\120\x33\117\x44\x45\146\65\127\163\172\x2b\143\xa\104\x46\x6b\144\170\101\154\x64\172\164\144\x44\172\x37\x35\x75\x47\x34\123\114\x39\x45\120\x4c\121\x37\x42\x30\171\x6b\113\x66\117\x77\161\163\166\x63\144\x38\124\x75\125\57\x4a\x54\x62\170\x31\x41\x56\x59\x36\x76\154\154\166\106\x44\67\124\67\x69\x55\xa\x37\103\x56\117\x67\x74\102\x74\x6a\120\131\x70\x75\x34\x65\164\x62\162\144\x30\x5a\x72\x54\x74\x67\66\123\123\x5a\141\166\x63\62\165\122\x4f\x73\102\113\53\x48\150\x78\67\165\x55\x6d\143\x65\162\x62\113\x2f\x6a\116\152\x32\110\110\125\147\57\x32\163\12\163\x52\x52\146\x30\131\155\121\53\x2f\156\126\116\107\65\165\126\71\x69\x61\147\120\162\x34\116\144\107\x45\x2f\122\153\114\x4c\x36\x72\x52\x4c\121\x54\x4d\x6a\105\x79\112\142\116\117\157\x32\145\x61\x50\62\x48\172\123\x2f\x4e\163\155\x71\x66\172\116\12\x52\x71\107\x50\154\x49\x52\160\x37\147\x5a\x6d\145\x66\x49\170\110\144\121\x47\x79\x67\145\144\64\x38\167\x30\x57\x2f\x44\x53\x2b\x58\142\165\143\162\166\163\x4f\155\131\66\101\x55\x51\x37\x41\157\111\102\x41\121\103\61\x43\170\114\x79\104\x56\102\x6c\12\x30\132\102\60\x61\102\x67\x32\53\64\x47\x35\x59\x31\132\61\132\116\167\x2b\110\x45\164\x5a\x53\126\112\x65\157\120\x6e\150\164\x74\146\x74\x77\63\x52\115\x6e\x53\x72\104\x54\x4d\x74\x57\x6e\63\x4a\x59\x36\66\x76\142\x58\x4e\170\126\x53\151\x75\x50\12\x67\147\131\x52\x4e\x6f\165\x61\x79\x4a\x78\x79\x30\x39\113\x35\x38\x4b\154\161\167\114\167\x4e\x76\x5a\120\66\150\x52\166\x43\x4c\x72\x7a\x6f\172\60\67\x68\x4f\53\64\111\x49\x77\x6b\122\65\x6d\x4f\146\153\117\x6a\x58\172\114\x6d\53\66\x75\x56\161\12\160\127\x4e\171\105\x4e\x37\66\161\x55\130\117\145\154\125\150\53\x5a\x71\x49\111\x39\106\x58\x2b\x44\x4b\x51\x2f\x75\x74\171\107\x51\112\x4e\x38\171\x4a\x53\166\114\x2b\x53\151\x45\143\x52\x4a\x48\x33\115\165\x6c\x39\160\62\x57\x64\145\147\111\105\161\xa\x52\x44\105\130\x70\x33\x68\130\x30\110\x72\157\x48\x4b\142\155\114\162\116\106\x54\70\151\53\117\157\125\144\x4c\x41\x34\110\163\70\66\163\x6d\102\66\x41\x6c\131\x67\65\160\x67\x56\104\117\102\145\x52\163\x39\x41\x31\x71\x49\x53\125\x71\x65\155\x7a\12\141\170\105\145\125\120\61\x36\110\143\x31\x62\x51\x33\x32\x65\160\164\123\145\161\x32\53\126\126\x69\x75\121\x73\157\x30\x4a\x4b\x43\106\x43\x62\x62\x56\101\161\x62\65\x4c\121\x62\110\123\x34\162\x48\x48\x44\152\144\151\126\x67\141\x71\102\x57\171\131\12\x42\x78\x55\120\64\x71\x2f\131\x74\x70\x4f\57\x41\157\x49\x42\101\121\x43\110\x55\62\121\106\x34\151\x68\123\x4a\x4b\172\152\60\x68\x6e\x56\62\x43\131\x54\x6e\160\x6c\141\x45\147\x4c\164\x38\171\111\117\x50\165\x36\145\x78\x35\155\144\x35\106\x47\x4f\12\x48\53\x6b\x39\x30\x64\x34\x52\66\131\130\53\x2b\x58\x67\x51\156\105\145\65\x58\x31\62\x68\67\126\141\166\x2b\127\125\x52\x45\66\143\x7a\60\x4d\156\53\x64\64\67\107\142\x34\x6a\x67\101\156\x6a\x65\105\131\x43\x50\143\x50\x6d\105\166\x41\112\x36\xa\170\116\x53\x39\167\115\x7a\x54\x44\x7a\167\156\x49\57\x2b\x43\x43\163\64\110\x74\x7a\x49\122\125\x31\x61\63\143\144\x4a\151\x58\x6d\x35\x79\156\x69\127\141\x53\143\127\x65\x69\162\163\161\x69\125\125\170\165\66\x59\x55\x52\x2f\104\x67\142\x2f\x74\116\xa\x58\x79\x6e\106\x7a\x54\x57\x49\161\x4d\x74\63\103\171\x30\x7a\145\x34\x2b\60\x53\x56\x33\x32\x6c\161\122\x6f\112\x72\151\x67\x4f\65\x47\164\x70\160\x73\x70\x36\x66\64\114\x51\x6e\151\121\x34\x37\x56\x53\x63\125\164\53\x55\166\x52\115\x4e\x32\113\x32\12\x64\62\x6c\142\106\70\131\143\x68\66\x47\x68\123\x69\x68\126\60\172\66\x6a\x49\117\x6b\116\x72\x4e\123\124\x71\66\x34\106\x51\163\121\x73\x36\x6e\x30\x57\x78\x6d\161\x4c\156\x39\x53\x35\166\x49\110\152\x69\x58\x39\152\131\x57\x38\164\103\153\101\x51\xa\x49\116\171\152\71\x4b\167\67\x72\x69\x72\x47\x69\66\102\114\105\x48\146\x67\x4f\101\105\171\x32\151\121\x45\113\x44\x30\x79\x50\x4c\x7a\70\x33\x39\64\156\x41\157\x49\x42\101\101\145\65\x54\124\x6d\145\x62\x38\x75\x6f\121\x53\x31\62\115\63\x4a\106\12\x45\113\x66\105\111\124\x41\x6f\53\127\170\x38\x38\111\157\x43\x6f\x73\x7a\x2b\165\x53\160\x30\104\157\160\x4b\123\x47\x2f\163\126\x4b\113\x34\141\101\x52\165\x45\x51\x62\123\x4a\171\142\x59\x73\61\x33\x41\113\106\x4f\142\104\110\70\x33\x67\x49\125\53\12\x41\x63\66\60\x55\x73\x30\x30\x41\x30\x5a\127\161\x71\70\x37\x59\x31\x44\x51\61\120\160\x58\x33\x42\x39\x69\155\115\x37\162\x4b\x36\x43\126\x50\150\x48\x52\x62\156\x61\x6b\x54\x41\162\111\65\x54\120\114\x2b\x62\127\x76\105\113\163\x52\x4a\124\111\60\12\146\x70\110\163\152\x69\x31\101\x35\x4f\114\151\x42\106\x42\157\x65\154\57\116\121\x47\x5a\102\x77\x75\116\157\145\x42\112\156\x6b\170\124\x42\x55\x36\x62\142\153\67\112\153\125\x53\x58\x47\67\x4b\64\120\x64\x58\x4e\x45\x4c\x59\121\x41\x31\x52\127\x4b\12\101\63\122\142\160\112\x4d\x31\x63\164\x69\107\113\164\65\x53\x79\x4e\115\x52\x79\150\x64\171\x43\x47\115\70\x71\x6a\x42\x36\x4d\114\107\153\67\x35\171\113\x6a\x42\x62\x66\x51\121\x62\x4a\102\x62\x38\x42\x38\115\x4b\103\x30\164\167\153\x51\107\167\170\xa\125\125\62\x50\x64\65\103\112\116\132\x44\x2f\x5a\x32\144\x4c\x6f\144\147\x75\x68\145\63\141\x46\110\x45\164\106\x51\161\112\x4d\62\x45\x71\x6b\106\145\141\67\106\113\71\x76\x49\x63\x70\146\x47\144\115\x69\57\x47\101\x65\x39\x6d\116\x70\x6b\x72\x73\xa\156\x79\153\103\147\x67\105\x41\x4d\x31\61\171\107\x74\x4a\x6d\x49\x57\112\x63\167\132\112\144\x61\x30\x75\x66\57\x76\x6a\70\x37\x34\57\102\65\117\x72\61\x56\160\x68\165\x42\122\x35\x4a\x74\x70\53\71\107\113\124\x6f\x55\163\x35\130\110\106\x2b\x6e\xa\x56\131\63\117\125\x6f\107\x50\67\x64\101\107\121\x77\x6c\x47\x44\164\145\x70\x54\122\65\165\x4f\120\x56\117\60\157\x53\x56\x75\x44\120\x4c\147\111\x75\125\x4a\132\157\x2b\x66\x6d\167\x63\x42\101\x51\63\x63\x59\x6c\126\x58\x35\116\x73\66\x48\64\x68\12\x52\x59\x52\132\154\116\x50\x32\x34\x78\x70\x38\x46\165\57\125\x4d\x65\x78\107\163\x36\125\146\165\171\x30\x4a\161\101\x49\147\x79\101\x6a\144\x73\x75\x6b\x72\144\x70\111\145\x53\151\171\x51\107\x4b\171\113\130\113\167\x6b\x52\x56\x70\x66\113\171\x74\x62\12\123\x70\145\121\x43\122\57\x37\155\153\x6d\101\114\152\x6a\143\x7a\104\71\150\x51\67\x72\x76\x56\132\156\145\130\106\172\x59\x39\120\121\x5a\144\170\x55\71\115\x74\116\x48\x71\61\x6b\x48\x62\132\x2f\121\x68\145\147\101\144\x2f\x43\x74\x69\x45\126\121\12\170\117\165\143\125\153\112\x43\127\113\x59\161\143\102\x39\x38\x5a\x53\x79\151\x77\71\x56\x6e\150\x54\61\x75\150\x39\x44\x67\62\x75\116\x36\x31\x35\144\112\x6a\131\x42\x4a\150\152\x54\x79\127\x65\115\x69\117\x63\172\126\x34\166\x4f\143\107\66\x67\67\xa\x67\70\x32\x65\66\53\120\x53\154\x68\144\x55\171\x67\64\154\116\x61\61\154\57\63\166\161\144\121\x6a\x69\71\121\75\75\xa\55\x2d\55\x2d\x2d\x45\x4e\x44\x20\120\122\111\x56\x41\x54\105\x20\113\x45\x59\x2d\55\x2d\x2d\55"; const LICENSE_FILE = "\x4c\x49\x43\x45\116\123\x45"; private static function read() { goto U8s0N; U8s0N: $encryptedLicense = file_get_contents(storage_path(static::LICENSE_FILE)); goto kq86Y; kq86Y: openssl_private_decrypt($encryptedLicense, $decryptedLicense, static::$privateKey); goto IvLdo; IvLdo: return json_decode($decryptedLicense, false); goto CvSKh; CvSKh: } public static function write(array $licenseContent) { goto t5I5E; W4adM: return optional((object) $licenseContent); goto lJPKS; t5I5E: openssl_public_encrypt(json_encode($licenseContent), $encryptedLicense, static::$publicKey); goto x735p; x735p: file_put_contents(storage_path(static::LICENSE_FILE), $encryptedLicense); goto W4adM; lJPKS: } public static function removeLicense() : void { goto Xc_1T; FvKGu: DI87Q: goto xtodS; Xc_1T: if (!static::hasLicense()) { goto DI87Q; } goto klXfS; klXfS: unlink(storage_path(static::LICENSE_FILE)); goto FvKGu; xtodS: } public static function hasLicense() : bool { return file_exists(storage_path(static::LICENSE_FILE)); } private static function fetchLicense() { goto rDSPr; daLmj: return optional((object) ["\151\156\166\141\154\x69\144" => true]); goto Na5al; aw2qn: try { goto g6rHI; UOXfL: if (!$response->ok()) { goto H03Ag; } goto KhP3Z; p6PXZ: H03Ag: goto kEm7G; g6rHI: $response = Http::withToken(config("\143\x6f\x64\145\x72\x73\164\x6d\56\154\151\x63\x65\156\163\x65\x5f\153\145\x79"))->post("\150\164\164\160\163\x3a\57\x2f\x61\x70\151\x2e\143\157\144\145\162\x73\x74\x6d\x2e\x63\x6f\155\x2f\154\x69\143\145\x6e\163\x65\163\x2f\143\150\145\143\153", ["\x64\x6f\155\141\151\x6e" => config("\143\157\144\145\162\x73\164\x6d\56\x64\157\155\x61\151\156"), "\157\x70\164\x69\157\156\163" => ["\162\x6f\157\164" => base_path()]]); goto UOXfL; DW21J: return static::write(array_merge($license, ["\x65\x78\160\151\162\145\163\137\141\164" => now()->addMinutes(5)->timestamp])); goto p6PXZ; KhP3Z: $license = $response->json(); goto DW21J; kEm7G: } catch (\Exception $e) { goto LEMjB; K2h8O: PJl3D: goto d3CXh; si2yo: KfwNk: goto K2h8O; xq2RQ: ln6IK: goto Jp02t; twEeH: return static::read(); goto w6Jj2; XISKD: if (!($e->response && $e->response->serverError() && static::hasLicense())) { goto fhkHu; } goto twEeH; lRGuk: HMpYH: goto XISKD; WGxzB: if ($e instanceof \Illuminate\Http\Client\ConnectionException) { goto ln6IK; } goto w_bnv; CU7sH: return static::read(); goto si2yo; LEMjB: if ($e instanceof \Illuminate\Http\Client\RequestException) { goto HMpYH; } goto WGxzB; Jp02t: if (!static::hasLicense()) { goto KfwNk; } goto CU7sH; MCIsh: goto PJl3D; goto xq2RQ; w6Jj2: fhkHu: goto MCIsh; w_bnv: goto PJl3D; goto lRGuk; d3CXh: return optional((object) ["\x69\x6e\x76\141\x6c\151\144" => true, "\x6d\145\x73\x73\x61\x67\145" => $e->getMessage()]); goto lOVXi; lOVXi: } goto daLmj; rDSPr: if (!static::hasLicense()) { goto zh_j3; } goto FWQDl; FWQDl: $license = static::read(); goto KojrN; KojrN: if (!Carbon::createFromTimestamp($license->expires_at)->gt(now())) { goto aYYKl; } goto mEFwd; mEFwd: return $license; goto TTFXP; TTFXP: aYYKl: goto uyZC1; uyZC1: zh_j3: goto aw2qn; Na5al: } public static function validate() { goto cI8RO; Gko3r: static::removeLicense(); goto Pu1hA; kq3kv: $active = $license->active && !$license->expired && !$license->invalid; goto pVrf_; cI8RO: $license = static::fetchLicense(); goto kq3kv; Pu1hA: return false; goto eDWO6; pVrf_: $rootMatched = base_path() == $license->root; goto xLDmY; c3t1A: return true; goto h2VdJ; xLDmY: if (!($active && $rootMatched)) { goto XeOhL; } goto c3t1A; h2VdJ: XeOhL: goto Gko3r; eDWO6: } public function handle(Request $request, Closure $next) { goto Jhlf2; nz8bG: rMdoJ: goto aV2z7; G9UNZ: vrSKR: goto YshsK; xg9UW: return redirect()->route("\154\x69\x63\x65\156\x73\x65\x2d\155\141\x6e\141\147\x65"); goto MySCe; klwDN: return $next($request); goto G9UNZ; YshsK: $requestUrl = $request->url(); goto MsHAv; Jhlf2: if (!file_exists(storage_path("\56" . static::LICENSE_FILE))) { goto rMdoJ; } goto h5p4V; MySCe: clxQ7: goto GNlKt; SUZ0_: if (!(($requestUrl == $adminUrl || Str::startsWith($requestUrl, $adminUrl)) && static::validate() == false)) { goto clxQ7; } goto xg9UW; aV2z7: if (!($request->is("\52\154\151\143\x65\x6e\163\x65\57\155\x61\156\x61\x67\x65") || $request->is("\x2a\x6c\x69\143\x65\156\x73\x65\x2f\x75\x70\144\141\164\x65"))) { goto vrSKR; } goto klwDN; GNlKt: return $next($request); goto yqwVA; MsHAv: $adminUrl = config("\x63\x6f\144\x65\x72\x73\x74\x6d\56\141\144\155\151\x6e\137\165\162\154"); goto SUZ0_; h5p4V: return $next($request); goto nz8bG; yqwVA: } public function manage() { return view("\x63\x6f\x64\x65\162\x73\164\155\x3a\x3a\154\151\143\145\x6e\x73\x65"); } public function update() { goto IZh5Z; fFb6u: pXb3y: goto XVOh5; nS4BA: Auth::guard("\x61\144\155\151\156\163")->logout(); goto MTwAC; AYAiB: $request->validate(["\145\x6d\141\x69\154" => "\x72\x65\161\165\151\x72\145\x64\174\145\x6d\141\151\x6c\174\145\170\x69\x73\x74\x73\72\141\x64\x6d\x69\156\163\54\x65\155\x61\151\x6c", "\160\141\163\x73\x77\157\x72\x64" => "\x72\x65\x71\x75\151\x72\x65\144", "\154\151\143\x65\156\x73\x65" => "\x72\x65\161\165\151\x72\145\x64"], ["\x65\155\x61\151\154\56\x72\x65\x71\x75\x69\x72\145\144" => trans("\x76\141\154\151\144\x61\164\x69\157\x6e\x2e\145\x6d\141\x69\154\56\x72\x65\x71\x75\x69\162\145\144"), "\145\155\141\151\x6c\56\145\x78\x69\163\164\163" => trans("\x76\141\154\151\144\141\x74\151\157\156\56\145\155\141\x69\x6c\56\145\x78\151\x73\x74\163")]); goto sUsbW; iKM32: if (static::validate()) { goto QINMx; } goto r9KNL; osAtD: goto u5Ewy; goto zT86s; zTSye: $envPath = base_path("\56\145\x6e\x76"); goto njuZz; XRdN_: file_put_contents($envPath, $envContent); goto iKM32; njuZz: $envContent = file_get_contents($envPath); goto FHWco; r9KNL: throw ValidationException::withMessages(["\154\151\x63\x65\x6e\x73\145" => ["\x54\x68\145\x20\154\x69\143\x65\x6e\x73\145\40\153\x65\171\40\160\162\x6f\x76\x69\x64\x65\x64\40\151\x73\40\x6e\157\164\40\166\141\x6c\x69\x64\56"]]); goto LVFMy; d67z8: throw ValidationException::withMessages(["\x65\155\141\151\x6c" => ["\131\157\165\162\40\x61\143\143\x6f\165\x6e\164\40\x68\141\x73\x20\142\145\145\156\x20\x64\151\163\x61\x62\x6c\x65\x64\56"]]); goto fFb6u; XjDi2: $user = $request->user("\141\144\155\151\x6e\x73"); goto nS4BA; FHWco: $envContent = preg_replace("\57\136\101\120\x50\x5f\x4c\x49\103\x45\116\123\105\x5f\113\105\131\75\56\52\57\155", "\101\120\x50\137\114\x49\103\105\116\123\x45\137\113\x45\131\75" . $request->license, $envContent); goto XRdN_; zT86s: TPWME: goto XjDi2; MTwAC: if ($user->is_active()) { goto pXb3y; } goto d67z8; sUsbW: if (Auth::guard("\141\x64\x6d\x69\156\x73")->attempt($request->only(["\145\x6d\141\151\x6c", "\x70\141\163\x73\x77\157\x72\144"]))) { goto TPWME; } goto tvycJ; Zf8pb: QINMx: goto hufH6; tvycJ: throw ValidationException::withMessages(["\160\141\x73\x73\167\157\x72\144" => [trans("\166\x61\x6c\x69\144\141\x74\x69\x6f\156\x2e\160\141\x73\163\167\x6f\162\144\56\x6d\141\x74\143\150")]]); goto osAtD; XVOh5: Config::set("\143\157\x64\145\162\163\164\x6d\56\x6c\x69\143\x65\156\x73\145\x5f\153\x65\171", $request->license); goto zTSye; IZh5Z: $request = request(); goto AYAiB; LVFMy: goto j4LV0; goto Zf8pb; M_rkZ: u5Ewy: goto EY_6m; hufH6: return redirect(admin_url("\141\x75\164\150\x2f\154\157\147\151\156")); goto SkyC7; SkyC7: j4LV0: goto M_rkZ; EY_6m: } }
+<?php //00ba3
+// **************************************************************************
+// *                                                                        *
+// * Coderstm - The Complete Client Management, Billing & Support Solution  *
+// * Copyright (C) Coderstm Ltd. All Rights Reserved,                       *
+// * Version:4.7.1                                                          *
+// * Build Date:3 Jan 2025                                                  *
+// *                                                                        *
+// **************************************************************************
+// *                                                                        *
+// * Email: hello@coderstm.com                                              *
+// * Website: https://www.coderstm.com                                      *
+// *                                                                        *
+// **************************************************************************
+// *                                                                        *
+// * This software is furnished under a license and may be used and copied  *
+// * only in accordance with the terms of such license and with the         *
+// * inclusion of the above copyright notice. This software or any other    *
+// * copies thereof may not be provided or otherwise made available to any  *
+// * other person. No title to and ownership of the software is hereby      *
+// * transferred.                                                           *
+// *                                                                        *
+// * You may not reverse engineer, decompile, defeat license encryption     *
+// * mechanisms, or disassemble this software product or software product   *
+// * license. Coderstm may terminate this license if you don't comply with  *
+// * any of the terms and conditions set forth in our end user license      *
+// * agreement. In such event, licensee agrees to return licensor or        *
+// * destroy all copies of software upon termination of the license.        *
+// *                                                                        *
+// **************************************************************************
+if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
+?>
+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

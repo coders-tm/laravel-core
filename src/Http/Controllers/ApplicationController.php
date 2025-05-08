@@ -41,9 +41,10 @@ class ApplicationController extends Controller
     public function config(Request $request)
     {
         $response = [];
-        $config = AppSetting::findByKey('config');
 
-        $config->merge([
+        $config = array_merge(AppSetting::findByKey('config'), [
+            'domain' => config('coderstm.domain'),
+            'app_url' => config('app.url'),
             'currency_symbol' => currency_symbol(),
         ]);
 
@@ -157,7 +158,7 @@ class ApplicationController extends Controller
         return response()->json($editor, 200);
     }
 
-    private function mapAssets(array $assets, string $theme = null)
+    private function mapAssets(array $assets, ?string $theme = null)
     {
         return collect($assets)->unique()->map(function ($asset) use ($theme) {
             // Return external URLs as is
