@@ -308,6 +308,10 @@ trait HasSubscriptionStatus
      */
     public function hasIncompletePayment()
     {
+        if ($this->latestInvoice && $this->latestInvoice->has_due) {
+            return true;
+        }
+
         return $this->pastDue() || $this->incomplete();
     }
 
