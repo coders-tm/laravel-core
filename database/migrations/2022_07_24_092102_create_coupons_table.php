@@ -49,6 +49,7 @@ return new class extends Migration
             $table->unsignedBigInteger('redeemable_id');
             $table->unsignedBigInteger('coupon_id')->index();
             $table->double('amount', 20, 2)->default(0.00)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->timestamps();
 
             $table->foreign('coupon_id')->references('id')->on('coupons')->cascadeOnDelete();

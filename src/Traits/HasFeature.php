@@ -22,7 +22,7 @@ trait HasFeature
     protected function features(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->plan->features->mapWithKeys(function ($item) {
+            get: fn() => $this->plan?->features->mapWithKeys(function ($item) {
                 return [$item->slug => $item->pivot->value];
             }),
         );
@@ -43,6 +43,7 @@ trait HasFeature
             $slug = $item->slug;
             $item->value = isset($this->features[$slug]) ? $this->features[$slug] : 0;
             $item->used = isset($usages[$slug]) ? $usages[$slug] : 0;
+            $item->remaining = $item->value - $item->used;
             return $item;
         });
     }
@@ -52,6 +53,10 @@ trait HasFeature
      */
     public function canUseFeature(string $featureSlug): bool
     {
+        if (!$this->valid()) {
+            return false;
+        }
+
         $feature = Feature::where('slug', $featureSlug)->first();
         $featureValue = $this->getFeatureValue($featureSlug);
         $usage = $this->usages()->byFeatureSlug($featureSlug)->first();
@@ -95,6 +100,10 @@ trait HasFeature
      */
     public function getFeatureRemainings(string $featureSlug): int
     {
+        if (!$this->valid()) {
+            return 0;
+        }
+
         return $this->getFeatureValue($featureSlug) - $this->getFeatureUsage($featureSlug);
     }
 

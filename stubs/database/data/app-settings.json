@@ -5,7 +5,7 @@
   },
   {
     "key": "config",
-    "options": "{\"lang\":\"en-US\",\"name\":\"AppName\",\"timezone\":\"Asia\\/Calcutta\",\"phone\":\"+9733014543\",\"email\":\"hello@coderstm.com\",\"country\":\"India\",\"currency\":\"usd\",\"shop\":true,\"license_key\":\"27|FB8y5tpXIVde6AIyQE60hP6r7vhdIPprlHmRtUYx\"}"
+    "options": "{\"lang\":\"en-US\",\"name\":\"AppName\",\"timezone\":\"Asia\\/Calcutta\",\"phone\":\"+9733014543\",\"email\":\"hello@coderstm.com\",\"country\":\"India\",\"currency\":\"usd\",\"shop\":true}"
   },
   {
     "key": "mail",

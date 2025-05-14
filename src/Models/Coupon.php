@@ -41,28 +41,28 @@ class Coupon extends Model
     protected function hasExpiresAt(): Attribute
     {
         return Attribute::make(
-            get: fn () => !is_null($this->expires_at),
+            get: fn() => !is_null($this->expires_at),
         );
     }
 
     protected function hasMaxRedemptions(): Attribute
     {
         return Attribute::make(
-            get: fn () => !is_null($this->max_redemptions),
+            get: fn() => !is_null($this->max_redemptions),
         );
     }
 
     protected function specificPlans(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->plans->count() > 0,
+            get: fn() => $this->plans->count() > 0,
         );
     }
 
     protected function currency(): Attribute
     {
         return Attribute::make(
-            set: fn () => config('cashier.currency'),
+            set: fn() => config('cashier.currency'),
         );
     }
 
@@ -87,9 +87,24 @@ class Coupon extends Model
         return $query->where('active', 1);
     }
 
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function isExpired(): bool
+    {
+        return $this->expires_at && $this->expires_at->isPast();
+    }
+
+    public function canApply($plan = null): bool
+    {
+        return $this->isActive() && !$this->isExpired() && !$this->checkRaxRedemptions() && $this->canApplyToPlan($plan);
+    }
+
     public function canApplyToPlan($plan): bool
     {
-        if ($this->specific_plans) {
+        if ($this->specific_plans && $plan) {
             return (bool) $this->plans()->whereIn('id', [$plan])->count();
         }
         return true;
@@ -101,6 +116,14 @@ class Coupon extends Model
             return $this->redeems_count >= $this->max_redemptions;
         }
         return false;
+    }
+
+    public function getAmount($amount): float
+    {
+        if ($this->fixed) {
+            return $this->amount_off;
+        }
+        return round($amount * ($this->percent_off / 100), 2);
     }
 
     public function toPublic()

@@ -12,7 +12,7 @@ class PlanFactory extends Factory
 
     public function definition()
     {
-        $interval = $this->faker->randomElement(['day', 'week', 'month', 'year']);
+        $interval = $this->faker->randomElement(['week', 'month', 'year']);
 
         return [
             'label' => $this->faker->word,

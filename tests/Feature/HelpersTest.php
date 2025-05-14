@@ -108,14 +108,14 @@ class HelpersTest extends FeatureTestCase
     public function test_settings()
     {
         AppSetting::updateValue('config', ['name' => 'value']);
-        $this->assertEquals('value', settings('config', 'name'));
+        $this->assertEquals('value', settings('config.name'));
     }
 
     public function test_app_settings()
     {
         $settings = AppSetting::updateValue('foo', ['bar' => 'baz']);
 
-        $this->assertEquals($settings->options, app_settings('foo'));
+        $this->assertEquals($settings, settings('foo'));
     }
 
     public function test_admin_notify()

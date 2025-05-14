@@ -17,11 +17,18 @@ class Coderstm
     public static $dateTimeFormat = DateTimeInterface::ATOM;
 
     /**
-     * The uaer model class name.
+     * The user model class name.
      *
      * @var string
      */
     public static $userModel = 'App\\Models\\User';
+
+    /**
+     * The subscription user model class name.
+     *
+     * @var string
+     */
+    public static $subscriptionUserModel = 'App\\Models\\User';
 
     /**
      * The default admin model class name.
@@ -87,6 +94,13 @@ class Coderstm
     protected static $formatCurrencyUsing;
 
     /**
+     * The cached GoCardless client instance.
+     *
+     * @var \GoCardlessPro\Client
+     */
+    protected static $gocardlessClient;
+
+    /**
      * Determine if Coderstm's migrations should be run.
      *
      * @return bool
@@ -140,7 +154,20 @@ class Coderstm
     {
         static::$userModel = $userModel;
 
+        static::useSubscriptionUserModel($userModel);
+
         Config::set('auth.providers.users.model', $userModel);
+    }
+
+    /**
+     * Set the subscription user model class name.
+     *
+     * @param  string  $subscriptionUserModel
+     * @return void
+     */
+    public static function useSubscriptionUserModel($subscriptionUserModel)
+    {
+        static::$subscriptionUserModel = $subscriptionUserModel;
     }
 
     /**
@@ -209,5 +236,32 @@ class Coderstm
     public static function useAppShortCodes(array $appShortCodes)
     {
         static::$appShortCodes = $appShortCodes;
+    }
+
+    /**
+     * Get the GoCardless client instance.
+     *
+     * @param  array  $options
+     * @return \GoCardlessPro\Client
+     */
+    public static function gocardless(array $options = []): \GoCardlessPro\Client
+    {
+        if (static::$gocardlessClient) {
+            return static::$gocardlessClient;
+        }
+
+        $environment = config('gocardless.environment', 'sandbox');
+        $accessToken = config('gocardless.access_token');
+
+        if (! $accessToken) {
+            throw new \Exception('GoCardless access token not set. Please configure your GoCardless payment method.');
+        }
+
+        $clientOptions = array_merge([
+            'environment' => $environment,
+            'access_token' => $accessToken,
+        ], $options);
+
+        return static::$gocardlessClient = new \GoCardlessPro\Client($clientOptions);
     }
 }

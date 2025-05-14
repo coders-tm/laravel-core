@@ -133,6 +133,21 @@ class Theme extends Base
         return "/themes/$theme";
     }
 
+    public static function assetsPath(string $themeName, string $path = null)
+    {
+        $mixPath = Theme::mixPath($themeName);
+
+        if (! $path) {
+            return public_path($mixPath);
+        }
+
+        if (str_starts_with($path, '/')) {
+            $path = ltrim($path, '/');
+        }
+
+        return public_path("$mixPath/$path");
+    }
+
     /**
      * Get theme's asset url.
      */

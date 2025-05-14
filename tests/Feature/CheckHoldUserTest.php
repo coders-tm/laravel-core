@@ -5,6 +5,7 @@ namespace Coderstm\Tests\Feature;
 use Coderstm\Models\User;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Models\Subscription;
+use Coderstm\Contracts\SubscriptionStatus;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Coderstm\Notifications\Admins\HoldMemberNotification;
@@ -22,7 +23,7 @@ class CheckHoldUserTest extends FeatureTestCase
         Subscription::withoutEvents(function () use ($user) {
             return Subscription::factory()->create([
                 'user_id' => $user->id,
-                'status' => Subscription::STATUS_CANCELED,
+                'status' => SubscriptionStatus::CANCELED,
             ]);
         });
 

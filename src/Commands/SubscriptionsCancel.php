@@ -33,27 +33,30 @@ class SubscriptionsCancel extends Command
         $subscriptions = Coderstm::$subscriptionModel::query()
             ->active()
             ->where('cancels_at', '<=', now())
-            ->doesntHaveAction('canceled');
+            ->hasUser()
+            ->doesntHaveAction('canceled')
+            ->with('user');
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
-                $user = $subscription->user();
-                $subscription->cancelNow();
-
-                event(new \Coderstm\Events\SubscriptionCancelled($subscription));
-
-                $user->update([
-                    'status' => AppStatus::DEACTIVE->value
-                ]);
-
-                $subscription->logs()->create([
-                    'type' => 'canceled',
-                    'message' => 'Subscription has been canceled successfully!'
-                ]);
-
                 $subscription->attachAction('canceled');
 
-                $this->info("User #{$user->id} has been deactivated!");
+                if ($user = $subscription->user) {
+                    $subscription->cancelNow();
+
+                    event(new \Coderstm\Events\SubscriptionCancelled($subscription));
+
+                    $user->update([
+                        'status' => AppStatus::DEACTIVE->value
+                    ]);
+
+                    $subscription->logs()->create([
+                        'type' => 'canceled',
+                        'message' => 'Subscription has been canceled successfully!'
+                    ]);
+
+                    $this->info("User #{$user->id} has been deactivated!");
+                }
             } catch (\Exception $e) {
                 $message = "Subscription #{$subscription->id} unable to deactivated! {$e->getMessage()}";
 

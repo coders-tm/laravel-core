@@ -84,6 +84,16 @@ class User extends Admin implements MustVerifyEmail
         return [$this->email => $this->name];
     }
 
+    public function routeNotificationForFcm(): array
+    {
+        return $this->deviceTokens()->pluck('token')->toArray();
+    }
+
+    public function routeNotificationForTwilio()
+    {
+        return $this->phone_number;
+    }
+
     public function getMemberSinceAttribute()
     {
         return $this->created_at->format('Y');
@@ -104,11 +114,11 @@ class User extends Admin implements MustVerifyEmail
             ->orderBy('created_at', 'desc');
     }
 
-    public function updateEndsAt($endsAt = null)
+    public function updateCancelsAt($dateAt = null)
     {
         if ($this->subscription()) {
             $this->subscription()->update([
-                'cancels_at' => $endsAt,
+                'cancels_at' => $dateAt,
             ]);
         }
         return $this;
@@ -478,16 +488,6 @@ class User extends Admin implements MustVerifyEmail
         ]);
     }
 
-    public function canSendPushNotification(): bool
-    {
-        return $this->deviceTokens->count() > 0 && config('alert.push');
-    }
-
-    public function canSendWhatsappNotification(): bool
-    {
-        return !empty($this->phone_number) && config('alert.whatsapp');
-    }
-
     protected static function booted()
     {
         static::creating(function (self $model) {
@@ -506,6 +506,7 @@ class User extends Admin implements MustVerifyEmail
 
         static::addGlobalScope('default', function (Builder $builder) {
             $builder->withMax('subscriptions as ends_at', 'expires_at');
+            $builder->withMax('subscriptions as cancels_at', 'cancels_at');
             $builder->withMax('subscriptions as starts_at', 'starts_at');
             $builder->withMax('subscriptions as subscription_status', 'status');
             $builder->withMax('lastLogin as last_login_at', 'created_at');

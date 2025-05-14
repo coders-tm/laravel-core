@@ -103,29 +103,19 @@ class Reply extends Model
         ]);
     }
 
-    public function sendPushNotify($type = null)
+    public function renderPushNotification($type = null)
     {
-        try {
-            $template = $this->renderNotification($type ?? 'push:enquiry-reply-notification');
-            $user = $this->enquiry->user;
+        $template = $this->renderNotification($type ?? 'push:enquiry-reply-notification');
 
-            if ($user->canSendPushNotification()) {
-                SendPushNotification::dispatch($user, [
-                    'title' => $template->subject,
-                    'body' => html_text($template->content)
-                ], [
-                    'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
-                    'enquiry_id' => $this->enquiry_id,
-                ]);
-            }
-
-            if ($user->canSendWhatsappNotification()) {
-                SendWhatsappNotification::dispatch($user, "{$template->subject}\n{$template->content}");
-            }
-        } catch (\Exception $e) {
-            //throw $e;
-            report($e);
-        }
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => html_text($template->content),
+            'whatsappContent' => html_text("{$template->subject}\n{$template->content}"),
+            'data' => [
+                'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
+                'enquiry_id' => (string) $this->enquiry_id,
+            ]
+        ]);
     }
 
     /**

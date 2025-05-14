@@ -5,6 +5,7 @@ namespace Coderstm\Commands;
 use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Illuminate\Console\Command;
+use Coderstm\Events\ResetFeatureUsages;
 
 class ResetSubscriptionsUsages extends Command
 {
@@ -38,6 +39,8 @@ class ResetSubscriptionsUsages extends Command
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
+                event(new ResetFeatureUsages($subscription, $subscription->usagesToArray()));
+
                 $subscription->resetUsages();
 
                 $subscription->logs()->create([

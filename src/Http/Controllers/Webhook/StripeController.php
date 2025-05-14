@@ -2,14 +2,14 @@
 
 namespace Coderstm\Http\Controllers\Webhook;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Laravel\Cashier\Events\WebhookReceived;
-use Laravel\Cashier\Http\Middleware\VerifyWebhookSignature;
-use Symfony\Component\HttpFoundation\Response;
 use Stripe\Stripe;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Laravel\Cashier\Events\WebhookHandled;
+use Laravel\Cashier\Events\WebhookReceived;
+use Symfony\Component\HttpFoundation\Response;
+use Laravel\Cashier\Http\Middleware\VerifyWebhookSignature;
 
 class StripeController extends Controller
 {

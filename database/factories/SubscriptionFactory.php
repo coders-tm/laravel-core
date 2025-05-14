@@ -5,6 +5,7 @@ namespace Coderstm\Database\Factories;
 use Coderstm\Coderstm;
 use DateTimeInterface;
 use Coderstm\Models\Subscription;
+use Coderstm\Contracts\SubscriptionStatus;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SubscriptionFactory extends Factory
@@ -29,7 +30,7 @@ class SubscriptionFactory extends Factory
             (new $model)->getForeignKey() => ($model)::factory(),
             'plan_id' => Coderstm::$planModel::inRandomOrder()->first()?->id,
             'type' => 'default',
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
         ];
@@ -43,7 +44,7 @@ class SubscriptionFactory extends Factory
     public function active(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
         ]);
     }
 
@@ -55,7 +56,7 @@ class SubscriptionFactory extends Factory
     public function trialing(DateTimeInterface $trialEndsAt = null): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_TRIALING,
+            'status' => SubscriptionStatus::TRIALING,
             'trial_ends_at' => $trialEndsAt,
         ]);
     }
@@ -68,7 +69,7 @@ class SubscriptionFactory extends Factory
     public function canceled(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_CANCELED,
+            'status' => SubscriptionStatus::CANCELED,
             'ends_at' => now(),
         ]);
     }
@@ -81,7 +82,7 @@ class SubscriptionFactory extends Factory
     public function incomplete(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_INCOMPLETE,
+            'status' => SubscriptionStatus::INCOMPLETE,
         ]);
     }
 
@@ -93,7 +94,7 @@ class SubscriptionFactory extends Factory
     public function incompleteAndExpired(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_INCOMPLETE_EXPIRED,
+            'status' => SubscriptionStatus::INCOMPLETE_EXPIRED,
         ]);
     }
 
@@ -105,7 +106,7 @@ class SubscriptionFactory extends Factory
     public function pastDue(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_PAST_DUE,
+            'status' => SubscriptionStatus::PAST_DUE,
         ]);
     }
 
@@ -117,7 +118,7 @@ class SubscriptionFactory extends Factory
     public function unpaid(): static
     {
         return $this->state([
-            'status' => Subscription::STATUS_UNPAID,
+            'status' => SubscriptionStatus::UNPAID,
         ]);
     }
 }

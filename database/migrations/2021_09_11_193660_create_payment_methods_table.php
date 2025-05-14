@@ -36,6 +36,7 @@ return new class extends Migration
             $table->boolean('test_mode')->default(false);
             $table->decimal('transaction_fee', 10, 2)->default(0.00);
             $table->text('webhook')->nullable();
+            $table->{$this->jsonable()}('options')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

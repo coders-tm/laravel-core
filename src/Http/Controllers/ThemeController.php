@@ -5,7 +5,6 @@ namespace Coderstm\Http\Controllers;
 use Illuminate\Support\Str;
 use Coderstm\Services\Theme;
 use Illuminate\Http\Request;
-use Coderstm\Jobs\BuildTheme;
 use Coderstm\Services\Helpers;
 use Coderstm\Models\AppSetting;
 use Illuminate\Support\Facades\File;
@@ -14,18 +13,8 @@ use Illuminate\Support\Facades\Blade;
 
 class ThemeController extends Controller
 {
-    protected $basePath;
+    protected $basePath = null;
     public $homeRoute = 'home';
-
-    public function __construct()
-    {
-        try {
-            Helpers::checkNpmInstallation();
-            $this->basePath = null;
-        } catch (\Exception $e) {
-            $this->basePath = '/views';
-        }
-    }
 
     // List all themes
     public function index()
@@ -86,9 +75,6 @@ class ThemeController extends Controller
     // Clone a theme
     public function clone($theme)
     {
-        // Check if npm is installed and the test command can be run
-        Helpers::checkNpmInstallation();
-
         $config = Theme::config($theme);
         $newThemeName = $config['name'] . ' (Copy)';
         $newThemeKey = Str::slug($theme . '-' . now()->timestamp);
@@ -96,9 +82,13 @@ class ThemeController extends Controller
         $themePath = Theme::basePath('', $theme);
         $newThemePath = Theme::basePath('', $newThemeKey);
 
+        $themeMixPath = Theme::assetsPath($theme);
+        $newThemeMixPath = Theme::assetsPath($newThemeKey);
+
         if (File::exists($themePath) && !File::exists($newThemePath)) {
             // Clone theme directory
             File::copyDirectory($themePath, $newThemePath);
+            File::copyDirectory($themeMixPath, $newThemeMixPath);
 
             // Update the config.json of the cloned theme
             $config = Theme::config($newThemeKey);
@@ -106,9 +96,6 @@ class ThemeController extends Controller
             $config['parent'] = $theme;
 
             File::put(Theme::basePath('config.json', $newThemeKey), json_encode($config, JSON_PRETTY_PRINT));
-
-            // Dispatch the theme build job to the queue
-            BuildTheme::dispatch($newThemeKey);
 
             return response()->json(['message' => 'Theme cloned successfully, theme build queued.'], 200);
         }
@@ -120,6 +107,7 @@ class ThemeController extends Controller
     public function getFiles($theme)
     {
         $themePath = Theme::basePath($this->basePath, $theme);
+        $assetsPath = Theme::assetsPath($theme);
 
         if (!File::exists($themePath)) {
             return response()->json(['message' => 'Theme not found'], 404);
@@ -127,15 +115,23 @@ class ThemeController extends Controller
 
         $fileTree = $this->getDirectoryStructure($themePath);
         $themeInfo = $this->info($theme);
+        $assetsTree = $this->getDirectoryStructure($assetsPath, 'assets');
+
+        $fileTree = collect($fileTree)->map(function ($item) use ($assetsTree) {
+            if (isset($item['basepath']) && Str::startsWith($item['basepath'], 'assets')) {
+                $item['children'] = $assetsTree;
+            }
+            return $item;
+        });
 
         return response()->json([
-            'files' => $fileTree,
+            'files' => $fileTree->values(),
             'info' => $themeInfo
         ], 200);
     }
 
     // Recursive function to build file and folder structure
-    private function getDirectoryStructure($directory, $basepath = null)
+    private function getDirectoryStructure($directory, $prefix = null, $basepath = null)
     {
         $items = [];
         $basepath = $basepath ?? $directory;
@@ -148,23 +144,25 @@ class ThemeController extends Controller
         foreach ($directories as $dir) {
             $dirName = basename($dir);
             $relativePath = str_replace($basepath . '/', '', $dir); // Get relative path
+            $relativePath = $prefix ? $prefix . '/' . $relativePath : $relativePath;
 
             if (!in_array($dirName, ['public'])) {
                 $singular = Helpers::singularizeDirectoryName($dirName);
+                $assets = $dirName === 'assets';
                 $items[] = [
                     'name' => $dirName,
                     'addLabel' => "Add a new $singular",
                     'basepath' => $relativePath,
                     'header' => 'directory',
                     'modified_at' => date('Y-m-d H:i:s', filemtime($dir)),
-                    'children' => $this->getDirectoryStructure($dir, $basepath)
+                    'children' => $assets ? [] : $this->getDirectoryStructure($dir, $prefix, $basepath)
                 ];
             }
         }
 
         // Add files to the structure
         foreach ($files as $file) {
-            $items[] = (new FileMeta($file, $basepath))->toArray();
+            $items[] = (new FileMeta($file, $basepath, $prefix))->toArray();
         }
 
         return $items;
@@ -173,7 +171,15 @@ class ThemeController extends Controller
     public function getFileContent($theme, Request $request)
     {
         $filePath = $request->input('key');  // The relative path of the selected file
-        $fullPath = realpath(Theme::basePath("{$this->basePath}/$filePath", $theme));
+
+        if (Str::startsWith($filePath, 'assets')) {
+            $filePath = str_replace('assets/', '', $filePath);
+            $fullPath = Theme::assetsPath($theme, $filePath);
+        } else {
+            $fullPath = Theme::basePath("{$this->basePath}/$filePath", $theme);
+        }
+
+        $fullPath = realpath($fullPath);
 
         if (!$fullPath || !File::exists($fullPath)) {
             return response()->json(['message' => 'File not found or invalid path'], 404);
@@ -193,7 +199,15 @@ class ThemeController extends Controller
     {
         $filePath = $request->input('key');
         $content = $request->input('content');
-        $themePath = Theme::basePath("{$this->basePath}/$filePath", $theme);
+
+        if (Str::startsWith($filePath, 'assets')) {
+            $filePath = str_replace('assets/', '', $filePath);
+            $fullPath = Theme::assetsPath($theme, $filePath);
+        } else {
+            $fullPath = Theme::basePath("{$this->basePath}/$filePath", $theme);
+        }
+
+        $themePath = realpath($fullPath);
 
         // Validate Blade syntax (if it's a .blade.php file)
         if (File::extension($filePath) === 'php') {
@@ -206,10 +220,6 @@ class ThemeController extends Controller
 
         // Save file content
         File::put($themePath, $content);
-
-        if (Str::startsWith($filePath, 'assets')) {
-            BuildTheme::dispatch($theme);
-        }
 
         return response()->json(['message' => 'File saved successfully'], 200);
     }

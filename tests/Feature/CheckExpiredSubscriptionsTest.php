@@ -9,10 +9,11 @@ use Illuminate\Support\Facades\Notification;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Coderstm\Notifications\SubscriptionExpiredNotification;
 use Coderstm\Notifications\Admins\SubscriptionExpiredNotification as AdminsSubscriptionExpiredNotification;
+use PHPUnit\Framework\Attributes\Test;
 
 class CheckExpiredSubscriptionsTest extends FeatureTestCase
 {
-    /** @test */
+    #[Test]
     public function it_sends_notifications_for_expired_subscriptions()
     {
         // Arrange
@@ -45,7 +46,7 @@ class CheckExpiredSubscriptionsTest extends FeatureTestCase
         ]);
     }
 
-    /** @test */
+    #[Test]
     public function it_logs_an_error_when_notification_fails()
     {
         // Arrange: Mock notification to throw an exception

@@ -47,17 +47,20 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        $rules = [
+        $request->validate([
             'media' => 'required',
-        ];
+            'disk' => 'sometimes|in:local,public,s3,cloud',
+        ]);
 
-        $this->validate($request, $rules);
+        $disk = $request->input('disk', config('filesystems.default'));
 
         if ($request->filled('assets')) {
             $assets = [];
 
             foreach ($request->file('media') as $asset) {
-                $file = new File;
+                $file = new File([
+                    'disk' => $disk,
+                ]);
                 $file->setHttpFile($asset);
                 $file->save();
                 $assets[] = $file->url;
@@ -66,7 +69,9 @@ class FileController extends Controller
             return response()->json(['data' => $assets], 200);
         }
 
-        $file = new File;
+        $file = new File([
+            'disk' => $disk,
+        ]);
         $file->setHttpFile($request->file('media'));
         $file->save();
 

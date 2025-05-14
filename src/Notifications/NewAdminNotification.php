@@ -30,12 +30,12 @@ class NewAdminNotification extends BaseNotification
             '{{ADMIN_LAST_NAME}}' => $this->admin->last_name,
             '{{ADMIN_EMAIL}}' => $this->admin->email,
             '{{PASSWORD}}' => $this->password,
-            '{{LOGIN_URL}}' => admin_url('auth/login', true),
+            '{{LOGIN_URL}}' => admin_url('auth/login'),
         ];
 
-        $this->subject = replace_short_code($template->subject, $shortCodes);
-        $this->message = replace_short_code($template->content, $shortCodes);
+        $subject = replace_short_code($template->subject, $shortCodes);
+        $message = replace_short_code($template->content, $shortCodes);
 
-        parent::__construct($this->subject, $this->message);
+        parent::__construct($subject, $message);
     }
 }

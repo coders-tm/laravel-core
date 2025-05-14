@@ -20,6 +20,11 @@ class SubscriptionReports
         $this->column = $column;
     }
 
+    public static function useSubscriptionModel($model)
+    {
+        static::$subscriptionModel = $model;
+    }
+
     public function query($table = 'subscriptions')
     {
         $query = static::$subscriptionModel::query();

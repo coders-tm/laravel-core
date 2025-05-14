@@ -18,7 +18,6 @@ class File extends Model
 
     protected $fillable = [
         'disk',
-        'url',
         'path',
         'original_file_name',
         'hash',
@@ -59,10 +58,9 @@ class File extends Model
     {
         if ($this->file) {
             $this->path = $this->file->storeAs('files', $this->hash . '.' . $this->extension, $this->disk);
-            $this->url = route(static::$route, [
-                'hash' => $this->hash,
-                'path' => $this->original_file_name,
-            ]);
+            if ($this->disk == 's3') {
+                $this->url = Storage::disk($this->disk)->url($this->path);
+            }
         }
         return parent::save($options);
     }
@@ -92,38 +90,35 @@ class File extends Model
     protected function url(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $value ? $value : route(static::$route, [
-                'hash' => $this->hash,
-                'path' => $this->original_file_name,
-            ]),
+            get: fn($value) => $value ? $value : Storage::disk($this->disk)->url($this->path),
         );
     }
 
     protected function name(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->original_file_name,
+            get: fn() => $this->original_file_name,
         );
     }
 
     protected function isImage(): Attribute
     {
         return Attribute::make(
-            get: fn () => Str::contains($this->mime_type, 'image') && !$this->is_embed,
+            get: fn() => Str::contains($this->mime_type, 'image') && !$this->is_embed,
         );
     }
 
     protected function isPdf(): Attribute
     {
         return Attribute::make(
-            get: fn () => Str::contains($this->mime_type, 'pdf'),
+            get: fn() => Str::contains($this->mime_type, 'pdf'),
         );
     }
 
     protected function icon(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->fileType($this->original_file_name),
+            get: fn() => $this->fileType($this->original_file_name),
         );
     }
 

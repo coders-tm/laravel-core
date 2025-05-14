@@ -6,26 +6,26 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Task;
 use Illuminate\Support\Str;
 use Coderstm\Mail\TestEmail;
+use Coderstm\Services\Theme;
 use Illuminate\Http\Request;
 use Coderstm\Models\AppSetting;
-use Coderstm\Models\Subscription;
 use Coderstm\Models\PaymentMethod;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Services\Theme;
 
 class ApplicationController extends Controller
 {
     public function stats(Request $request)
     {
         return response()->json([
-            'total' => Subscription::query()->count(),
-            'rolling' => Subscription::query()->active()->count(),
-            'end_date' => Subscription::query()->ended()->count(),
-            'free' => Subscription::query()->active()->free()->count(),
+            'total' => Coderstm::$subscriptionModel::query()->count(),
+            'rolling' => Coderstm::$subscriptionModel::query()->active()->count(),
+            'end_date' => Coderstm::$subscriptionModel::query()->ended()->count(),
+            'free' => Coderstm::$subscriptionModel::query()->active()->free()->count(),
             'max_year' => Coderstm::$subscriptionModel::query()->max(DB::raw("DATE_FORMAT(subscriptions.created_at,'%Y')")),
             'min_year' => 2000,
             'unread_support' => Coderstm::$enquiryModel::onlyActive()->count(),
@@ -41,11 +41,10 @@ class ApplicationController extends Controller
     public function config(Request $request)
     {
         $response = [];
-        $config = AppSetting::findByKey('config')->filter(function ($item, $key) {
-            return !in_array($key, ['license_key']);
-        });
 
-        $config->merge([
+        $config = array_merge(AppSetting::findByKey('config'), [
+            'domain' => config('coderstm.domain'),
+            'app_url' => config('app.url'),
             'currency_symbol' => currency_symbol(),
         ]);
 
@@ -83,6 +82,10 @@ class ApplicationController extends Controller
         $merge = in_array($request->key, ['config']);
 
         AppSetting::updateOptions($request->key, $request->options ?? [], $merge);
+
+        // Clear the cache for the specific key
+        $cacheKey = "app_config_{$request->key}";
+        Cache::forget($cacheKey);
 
         return response()->json([
             'message' => trans('messages.settings_update')
@@ -155,7 +158,7 @@ class ApplicationController extends Controller
         return response()->json($editor, 200);
     }
 
-    private function mapAssets(array $assets, string $theme = null)
+    private function mapAssets(array $assets, ?string $theme = null)
     {
         return collect($assets)->unique()->map(function ($asset) use ($theme) {
             // Return external URLs as is

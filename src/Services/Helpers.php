@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Jenssegers\Agent\Agent;
 use Coderstm\Models\Permission;
 use Coderstm\Models\PaymentMethod;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Config;
 use Stevebauman\Location\Facades\Location;
 
@@ -31,10 +32,17 @@ class Helpers
         }
     }
 
-    public static function loadConfigFromDatabase(...$keys): void
+    /**
+     * Load configuration settings from database and override Laravel config values
+     *
+     * @deprecated This method is deprecated and will be removed in a future version. Use Coderstm\Model\AppSetting::syncConfigFromDatabase() instead.
+     * @return void
+     */
+    public static function loadConfigFromDatabase(): void
     {
         try {
-            $options = [
+            // Get the configuration mapping from settings to Laravel config
+            $overrideMap = config('coderstm.settings_override', [
                 'config' => [
                     'alias' => 'app',
                     'email' => [
@@ -45,72 +53,65 @@ class Helpers
                     'currency' => 'cashier.currency',
                     'timezone' => fn($value) => date_default_timezone_set($value),
                 ]
-            ];
+            ]);
 
-            foreach ($keys as $key) {
-                // Determine the alias to use, defaulting to the key if not specified
-                $option = $options[$key] ?? [];
-                $alias = $option['alias'] ?? $key;
+            // Load all settings at once to reduce database calls
+            $allSettings = settings();
 
-                // Fetch settings from the database
-                foreach (app_settings($key) as $attr => $value) {
-                    // Set the configuration value in the application's config
-                    Config::set("$alias.$attr", $value);
+            // Process each setting group (app, mail, etc)
+            foreach ($allSettings as $settingKey => $settingValues) {
+                // Skip if not a collection/array
+                if (!is_iterable($settingValues)) {
+                    continue;
+                }
 
-                    // Apply any specific logic defined in the $config array
-                    if (isset($option[$attr])) {
-                        $attribute = $option[$attr];
+                // Get mapping rules for this setting key
+                $mappingRules = $overrideMap[$settingKey] ?? [];
+                $configAlias = $mappingRules['alias'] ?? $settingKey;
 
-                        if (is_array($attribute)) {
-                            // If it's an array, set multiple config values
-                            foreach ($attribute as $item) {
-                                Config::set($item, $value);
-                            }
-                        } elseif (is_callable($attribute)) {
-                            // If it's a callable (e.g., a function), execute it
-                            $attribute($value);
-                        } else {
-                            // Otherwise, set the value directly
-                            Config::set($attribute, $value);
+                // Apply each setting value to the appropriate config
+                foreach ($settingValues as $property => $value) {
+                    // Always set the value in its original location
+                    Config::set("$configAlias.$property", $value);
+
+                    // Skip if no special mapping exists
+                    if (!isset($mappingRules[$property])) {
+                        continue;
+                    }
+
+                    $mapping = $mappingRules[$property];
+
+                    // Handle different mapping types
+                    if (is_array($mapping)) {
+                        // Map to multiple config keys
+                        foreach ($mapping as $configKey) {
+                            Config::set($configKey, $value);
                         }
+                    } elseif (is_callable($mapping)) {
+                        // Execute custom logic
+                        $mapping($value);
+                    } else {
+                        // Direct mapping to a different config key
+                        Config::set($mapping, $value);
                     }
                 }
             }
         } catch (\Exception $e) {
-            throw $e;
+            // Log the error instead of just re-throwing
+            Log::error("Failed to load config from database: {$e->getMessage()}");
         }
     }
 
+    /**
+     * Load payment methods configuration from database
+     *
+     * @deprecated This method is deprecated and will be removed in a future version. Use Coderstm\Models\PaymentMethod::loadPaymentMethodsConfig() instead.
+     * @return void
+     */
     public static function loadPaymentMethodsConfig(): void
     {
         try {
-            // Load cashier config from app payment methods table
-            if ($stripe = PaymentMethod::stripe()) {
-                config([
-                    'cashier.key' => $stripe->configs['API_KEY'],
-                    'cashier.secret' => $stripe->configs['API_SECRET'],
-                    'cashier.webhook.secret' => $stripe->configs['WEBHOOK_SECRET'],
-                ]);
-            }
-
-            // Load paypal config from app payment methods table
-            if ($paypal = PaymentMethod::paypal()) {
-                $mode = $paypal->test_mode ? 'sandbox' : 'live';
-                config([
-                    'paypal.mode' => $mode,
-                    "paypal.{$mode}.client_id" => $paypal->configs['CLIENT_ID'],
-                    "paypal.{$mode}.client_secret" => $paypal->configs['CLIENT_SECRET'],
-                    'paypal.notify_url' => $paypal->webhook,
-                ]);
-            }
-
-            // Load razorpay config from app payment methods table
-            if ($razorpay = PaymentMethod::razorpay()) {
-                config([
-                    "razorpay.key_id" => $razorpay->configs['API_KEY'],
-                    "razorpay.key_secret" => $razorpay->configs['API_SECRET'],
-                ]);
-            }
+            PaymentMethod::syncConfig();
         } catch (\Exception $e) {
             throw $e;
         }

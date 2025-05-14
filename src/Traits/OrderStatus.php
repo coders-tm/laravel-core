@@ -26,6 +26,7 @@ trait OrderStatus
             Order::STATUS_PAYMENT_SUCCESS,
             Order::STATUS_PARTIALLY_PAID,
             Order::STATUS_PAID,
+            Order::STATUS_OPEN,
         ]), $status);
     }
 

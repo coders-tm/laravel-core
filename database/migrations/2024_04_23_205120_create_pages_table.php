@@ -18,9 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->binary('data')->nullable();
-            $table->longText('body')->nullable();
-            $table->longText('styles')->nullable();
+            $table->{$this->jsonable()}('data')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();
@@ -35,7 +33,7 @@ return new class extends Migration
         Schema::create('page_templates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->binary('data')->nullable();
+            $table->{$this->jsonable()}('data')->nullable();
             $table->text('thumbnail')->nullable();
             $table->timestamps();
         });

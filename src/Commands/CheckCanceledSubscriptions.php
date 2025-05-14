@@ -35,10 +35,13 @@ class CheckCanceledSubscriptions extends Command
             ->canceled()
             ->where('ends_at', '<=', now())
             ->doesntHaveAction('canceled-notification')
-            ->with(['user']);
+            ->hasUser()
+            ->with('user');
 
         foreach ($subscriptions->cursor() as $subscription) {
             try {
+                $subscription->attachAction('canceled-notification');
+
                 if ($user = $subscription->user) {
                     event(new \Coderstm\Events\SubscriptionCancelled($subscription));
 
@@ -49,8 +52,6 @@ class CheckCanceledSubscriptions extends Command
                         'type' => 'canceled-notification',
                         'message' => 'Notification for canceled subscriptions has been successfully sent.'
                     ]);
-
-                    $subscription->attachAction('canceled-notification');
                 }
             } catch (\Exception $e) {
                 $subscription->logs()->create([

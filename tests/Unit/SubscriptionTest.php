@@ -2,17 +2,19 @@
 
 namespace Coderstm\Tests\Unit;
 
-use Coderstm\Models\PaymentMethod;
-use Coderstm\Tests\TestCase;
-use Illuminate\Support\Carbon;
 use App\Models\User;
 use App\Models\Coupon;
+use Coderstm\Tests\TestCase;
+use Illuminate\Support\Carbon;
 use Coderstm\Models\Subscription;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription\Plan;
+use PHPUnit\Framework\Attributes\Test;
+use Coderstm\Contracts\SubscriptionStatus;
 
 class SubscriptionTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_can_create_a_subscription()
     {
         $user = User::factory()->create();
@@ -22,7 +24,7 @@ class SubscriptionTest extends TestCase
             'type' => 'default',
             'user_id' => $user->id,
             'plan_id' => $plan->id,
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'starts_at' => Carbon::now(),
         ]);
 
@@ -31,14 +33,14 @@ class SubscriptionTest extends TestCase
 
         $subscription->pay(PaymentMethod::stripe()->id);
 
-        $this->assertEquals(Subscription::STATUS_ACTIVE, $subscription->status);
+        $this->assertEquals(SubscriptionStatus::ACTIVE, $subscription->status);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_check_if_subscription_is_active()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'ends_at' => null,
         ]);
 
@@ -47,11 +49,11 @@ class SubscriptionTest extends TestCase
         $this->assertTrue($subscription->active());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_cancel_a_subscription()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'ends_at' => null,
         ]);
@@ -63,14 +65,14 @@ class SubscriptionTest extends TestCase
         $this->assertNotNull($subscription->ends_at);
 
         $subscription = $subscription->cancelNow();
-        $this->assertEquals(Subscription::STATUS_CANCELED, $subscription->status);
+        $this->assertEquals(SubscriptionStatus::CANCELED, $subscription->status);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_resume_a_subscription_within_grace_period()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
             'ends_at' => Carbon::now()->addDays(5),
         ]);
 
@@ -79,14 +81,14 @@ class SubscriptionTest extends TestCase
         $subscription = $subscription->resume();
 
         $this->assertNull($subscription->ends_at);
-        $this->assertEquals(Subscription::STATUS_ACTIVE, $subscription->status);
+        $this->assertEquals(SubscriptionStatus::ACTIVE, $subscription->status);
     }
 
-    /** @test */
+    #[Test]
     public function it_cannot_resume_a_subscription_outside_grace_period()
     {
         $subscription = Subscription::factory()->create([
-            'status' => Subscription::STATUS_CANCELED,
+            'status' => SubscriptionStatus::CANCELED,
             'ends_at' => Carbon::now()->subDays(1),
         ]);
 
@@ -95,7 +97,7 @@ class SubscriptionTest extends TestCase
         $subscription->resume();
     }
 
-    /** @test */
+    #[Test]
     public function it_can_check_if_subscription_is_on_trial()
     {
         $subscription = Subscription::factory()->create([
@@ -105,7 +107,7 @@ class SubscriptionTest extends TestCase
         $this->assertTrue($subscription->onTrial());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_extend_the_trial_period()
     {
         $subscription = Subscription::factory()->create([
@@ -118,7 +120,7 @@ class SubscriptionTest extends TestCase
         $this->assertTrue($newTrialEndDate->isSameDay($subscription->trial_ends_at));
     }
 
-    /** @test */
+    #[Test]
     public function it_can_swap_to_a_new_plan()
     {
         $subscription = Subscription::factory()->create();
@@ -131,12 +133,12 @@ class SubscriptionTest extends TestCase
         $this->assertEquals($newPlan->id, $subscription->plan_id);
     }
 
-    /** @test */
+    #[Test]
     public function it_can_renew_a_subscription()
     {
         $subscription = Subscription::factory()->create([
             'expires_at' => Carbon::now()->subDays(5),
-            'status' => Subscription::STATUS_ACTIVE
+            'status' => SubscriptionStatus::ACTIVE
         ]);
 
         $subscription->renew();
@@ -148,7 +150,7 @@ class SubscriptionTest extends TestCase
         $this->assertTrue($subscription->active());
     }
 
-    /** @test */
+    #[Test]
     public function it_can_apply_a_coupon_to_a_subscription()
     {
         $subscription = Subscription::factory()

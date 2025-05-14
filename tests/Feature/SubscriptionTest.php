@@ -5,6 +5,7 @@ namespace Coderstm\Tests\Feature;
 use InvalidArgumentException;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
+use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Tests\Feature\FeatureTestCase;
 use Coderstm\Exceptions\SubscriptionUpdateFailure;
 
@@ -13,7 +14,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_we_can_check_if_a_subscription_is_incomplete()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_INCOMPLETE,
+            'status' => SubscriptionStatus::INCOMPLETE,
         ]);
 
         $this->assertTrue($subscription->incomplete());
@@ -24,7 +25,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_we_can_check_if_a_subscription_is_past_due()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_PAST_DUE,
+            'status' => SubscriptionStatus::PAST_DUE,
         ]);
 
         $this->assertFalse($subscription->incomplete());
@@ -35,7 +36,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_we_can_check_if_a_subscription_is_active()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
         ]);
 
         $this->assertFalse($subscription->incomplete());
@@ -46,7 +47,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_an_incomplete_subscription_is_not_valid()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_INCOMPLETE,
+            'status' => SubscriptionStatus::INCOMPLETE,
         ]);
 
         $this->assertFalse($subscription->valid());
@@ -55,7 +56,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_a_past_due_subscription_is_not_valid()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_PAST_DUE,
+            'status' => SubscriptionStatus::PAST_DUE,
         ]);
 
         $this->assertFalse($subscription->valid());
@@ -64,7 +65,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_an_active_subscription_is_valid()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
         ]);
 
         $this->assertTrue($subscription->valid());
@@ -73,7 +74,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_payment_is_incomplete_when_status_is_incomplete()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_INCOMPLETE,
+            'status' => SubscriptionStatus::INCOMPLETE,
         ]);
 
         $this->assertTrue($subscription->hasIncompletePayment());
@@ -82,7 +83,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_payment_is_incomplete_when_status_is_past_due()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_PAST_DUE,
+            'status' => SubscriptionStatus::PAST_DUE,
         ]);
 
         $this->assertTrue($subscription->hasIncompletePayment());
@@ -91,7 +92,7 @@ class SubscriptionTest extends FeatureTestCase
     public function test_payment_is_not_incomplete_when_status_is_active()
     {
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_ACTIVE,
+            'status' => SubscriptionStatus::ACTIVE,
         ]);
 
         $this->assertFalse($subscription->hasIncompletePayment());
@@ -101,7 +102,7 @@ class SubscriptionTest extends FeatureTestCase
     {
         $plans = Plan::factory(2)->create()->pluck('id')->toArray();
         $subscription = new Subscription([
-            'status' => Subscription::STATUS_INCOMPLETE,
+            'status' => SubscriptionStatus::INCOMPLETE,
         ]);
 
         $subscription->setRelation('plan', Plan::find($plans[0]));

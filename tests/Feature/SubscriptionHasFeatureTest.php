@@ -11,6 +11,7 @@ class SubscriptionHasFeatureTest extends FeatureTestCase
     public function test_can_use_feature()
     {
         $subscription = Subscription::factory()->create();
+        $subscription->update(['status' => 'active']);
         $feature = Feature::factory()->countable()->create(['slug' => 'test-feature']);
         $subscription->plan->features()->attach($feature, ['value' => 10]);
 

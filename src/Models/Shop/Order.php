@@ -334,7 +334,6 @@ class Order extends Model
 
         if (!$order->has_due) {
             $order->markedAsPaid();
-            $order->markedAsCompleted();
         }
 
         return $order->fresh('status');
@@ -422,7 +421,44 @@ class Order extends Model
 
         // marked order status as paid
         $this->markedAsPaid();
-        $this->markedAsCompleted();
+
+        return $this->fresh(['payments', 'status']);
+    }
+
+    public function markAsPaymentPending($paymentMethod, array $transaction = [])
+    {
+        $transaction = optional((object) $transaction);
+
+        $this->payments()->updateOrCreate([
+            'payment_method_id' => $paymentMethod,
+            'transaction_id' => $transaction->id,
+        ], [
+            'amount' => $transaction->amount ?? $this->due_amount,
+            'status' => $transaction->status ?? 'pending',
+            'note' => $transaction->note,
+        ]);
+
+        // marked order status as payment pending
+        $this->markedAsPaymentPending();
+
+        return $this->fresh(['payments', 'status']);
+    }
+
+    public function markAsPaymentFailed($paymentMethod, array $transaction = [])
+    {
+        $transaction = optional((object) $transaction);
+
+        $this->payments()->updateOrCreate([
+            'payment_method_id' => $paymentMethod,
+            'transaction_id' => $transaction->id,
+        ], [
+            'amount' => $transaction->amount ?? $this->due_amount,
+            'status' => $transaction->status ?? 'failed',
+            'note' => $transaction->note,
+        ]);
+
+        // marked order status as payment failed
+        $this->markedAsPaymentFailed();
 
         return $this->fresh(['payments', 'status']);
     }
@@ -537,6 +573,11 @@ class Order extends Model
     public function total()
     {
         return $this->formatAmount($this->grand_total);
+    }
+
+    public function rawAmount()
+    {
+        return (int) ($this->grand_total * 100);
     }
 
     protected function generateKey()
