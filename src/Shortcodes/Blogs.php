@@ -16,7 +16,7 @@ class Blogs extends Shortcode
     public function render($content)
     {
         $atts = $this->atts();
-        $blogs = Blog::onlyActive()->paginate($atts['paginate']);
+        $blogs = Blog::onlyActive()->orderBy('created_at', 'desc')->paginate($atts['paginate']);
 
         return $this->view('shortcodes.blogs', array_merge($atts, [
             'content' => $content,
