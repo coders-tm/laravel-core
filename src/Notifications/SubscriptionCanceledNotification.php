@@ -19,13 +19,17 @@ class SubscriptionCanceledNotification extends BaseNotification
         $this->subject = $template->subject;
         $this->message = $template->content;
 
-        $pushTemplate = $subscription->renderPushNotification('push:subscription-canceled');
+        try {
+            $pushTemplate = $subscription->renderPushNotification('push:subscription-canceled');
 
-        $this->pushSubject = $pushTemplate->subject;
-        $this->pushMessage = $pushTemplate->content;
-        $this->pushData = $pushTemplate->data;
+            $this->pushSubject = $pushTemplate->subject;
+            $this->pushMessage = $pushTemplate->content;
+            $this->pushData = $pushTemplate->data;
 
-        $this->whatsappContent = $pushTemplate->whatsappContent;
+            $this->whatsappContent = $pushTemplate->whatsappContent;
+        } catch (\Exception $e) {
+            //throw $e;
+        }
     }
 
     /**

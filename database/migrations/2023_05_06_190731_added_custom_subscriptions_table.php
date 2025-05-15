@@ -17,6 +17,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('subscriptions', function (Blueprint $table) {
+            $table->string('provider')->nullable()->index()->after('id');
             $table->foreignIdFor(Plan::class, 'plan_id')->nullable()->index();
             $table->foreignIdFor(Coupon::class, 'coupon_id')->nullable()->index();
             $table->string('status')->nullable()->index();

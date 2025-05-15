@@ -23,6 +23,11 @@ class StripeController extends Controller
 
         $order = Order::findByKey($request->key)->load('customer');
 
+        logger()->info('Stripe token request', [
+            'order' => $order->toArray(),
+            'request' => $request->all()
+        ]);
+
         $paymentIntent = Cashier::stripe()->paymentIntents->create([
             'automatic_payment_methods' => ['enabled' => true],
             'amount' => $order->grand_total * 100,
