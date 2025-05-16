@@ -15,6 +15,10 @@ class DeleteExpiredNotificationTokens
     {
         $report = Arr::get($event->data, 'report');
 
+        if (!$report instanceof SendReport) {
+            return;
+        }
+
         $target = $report->target();
 
         $event->notifiable->deviceTokens()
