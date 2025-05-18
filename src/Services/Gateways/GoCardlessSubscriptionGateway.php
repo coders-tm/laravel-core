@@ -412,6 +412,10 @@ class GoCardlessSubscriptionGateway extends CommonSubscriptionGateway
         // Convert to lowercase and remove any trailing 's'
         $normalizedInterval = strtolower(rtrim($interval, 's'));
 
+        if ($normalizedInterval === 'day') {
+            throw new \Exception('GoCardless does not support daily recurring payments. Please select a weekly or longer interval.');
+        }
+
         // Return mapped value or default to 'monthly' if not found
         return $map[$normalizedInterval] ?? 'monthly';
     }
