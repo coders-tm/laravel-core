@@ -206,11 +206,11 @@ if (!function_exists('settings')) {
                 $settingKey = array_shift($segments);
 
                 if (empty($segments)) {
-                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $value, false);
+                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $value);
                 } else {
                     $options = \Coderstm\Models\AppSetting::findByKey($settingKey); // Already returns array
                     array_set($options, implode('.', $segments), $value);
-                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $options, false);
+                    \Coderstm\Models\AppSetting::updateOptions($settingKey, $options);
                 }
             }
             return true;
