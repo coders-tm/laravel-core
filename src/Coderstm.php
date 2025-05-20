@@ -250,8 +250,8 @@ class Coderstm
             return static::$gocardlessClient;
         }
 
-        $environment = config('gocardless.environment', 'sandbox');
-        $accessToken = config('gocardless.access_token');
+        $environment = $options['environment'] ?? config('gocardless.environment', 'sandbox');
+        $accessToken = $options['access_token'] ?? config('gocardless.access_token');
 
         if (! $accessToken) {
             throw new \Exception('GoCardless access token not set. Please configure your GoCardless payment method.');
