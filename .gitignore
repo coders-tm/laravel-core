@@ -7,3 +7,7 @@ composer.lock
 /phpunit.xml
 .phpunit.result.cache
 example
+/backup_*
+*.backup
+*.backup.*
+/encoder
