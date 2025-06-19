@@ -1,0 +1,102 @@
+<?php
+
+return [
+    'account_disabled' => 'Votre compte a été désactivé et ne peut pas accéder à cette application. Veuillez contacter l\'administrateur.',
+    'logout' => 'Vous avez été déconnecté avec succès !',
+    'access_denied' => 'Vous n\'avez pas la permission d\'accéder. Veuillez contacter votre administrateur pour demander l\'accès.',
+    'unauthenticated' => 'Non authentifié.',
+    'password' => [
+        'changed' => 'Le mot de passe a été modifié avec succès !',
+        'reset' => 'Réinitialisation du mot de passe réussie !'
+    ],
+    'invalid_token' => 'Jeton invalide ou le jeton a peut-être expiré !',
+    'invalid_user' => 'Utilisateur introuvable !',
+    'reset_throttled' => 'Email de réinitialisation du mot de passe déjà envoyé. Veuillez réessayer ultérieurement !',
+    'reset_email_sent' => 'Lien de réinitialisation du mot de passe envoyé avec succès !',
+    'payment_method' => [
+        'already' => 'Le mode de paiement existe déjà dans votre compte.',
+        'success' => 'Vous avez ajouté avec succès un nouveau mode de paiement.',
+        'default' => 'Vous avez mis à jour avec succès le mode de paiement par défaut.',
+        'destroy' => 'Vous avez supprimé avec succès le mode de paiement.',
+        'authenticate' => 'Nous ne pouvons pas authentifier votre mode de paiement. Veuillez choisir un mode de paiement différent ou réessayer.'
+    ],
+    'subscription' => [
+        'none' => 'Pour accéder aux fonctionnalités exclusives de la salle de sport, veuillez souscrire à un abonnement. Vous n\'êtes actuellement abonné à aucune formule.',
+        'canceled' => 'Vous avez annulé votre abonnement. Votre abonnement se terminera le :date',
+        'past_due' => 'Pour activer votre abonnement, veuillez effectuer le paiement de :amount.',
+        'downgrade' => 'New plan :plan with :amount will become effective on :date.',
+        'active' => 'Prochaine facture :amount le :date',
+        'success' => '{0} Vous vous êtes abonné avec succès à la formule :plan.|[1,*] Veuillez contacter notre réception pour effectuer le paiement et finaliser votre abonnement !',
+        'cancel' => 'Vous avez annulé votre abonnement avec succès.',
+        'upgraded' => 'Vous avez réussi à mettre à niveau votre abonnement.',
+        'resume' => 'Vous avez réussi à reprendre votre abonnement.',
+        'due_payment' => 'Le paiement dû a été reçu.',
+    ],
+    'settings_update' => 'Les paramètres de l\'application ont été mis à jour avec succès !',
+    'files' => [
+        'destroy' => '{1} Le fichier a été supprimé avec succès !|[2,*] Les fichiers ont été supprimés avec succès !',
+        'restored' => '{1} Le fichier a été restauré avec succès !|[2,*] Les fichiers ont été restaurés avec succès !',
+        'not_found' => 'Fichier introuvable !',
+    ],
+    'groups' => [
+        'store' => 'Le groupe a été créé avec succès !',
+        'updated' => 'Le groupe a été mis à jour avec succès !',
+        'destroy' => '{1} Le groupe a été supprimé avec succès !|[2,*] Les groupes ont été supprimés avec succès !',
+        'restored' => '{1} Le groupe a été restauré avec succès !|[2,*] Les groupes ont été restaurés avec succès !',
+    ],
+    'plans' => [
+        'store' => 'Le plan a été créé avec succès !',
+        'updated' => 'Le plan a été mis à jour avec succès !',
+        'destroy' => '{1} Le plan a été supprimé avec succès !|[2,*] Les plans ont été supprimés avec succès !',
+        'restored' => '{1} Le plan a été restauré avec succès !|[2,*] Les plans ont été restaurés avec succès !',
+        'status' => 'Le plan a été marqué comme :type avec succès !',
+    ],
+    'logs' => [
+        'updated' => 'Le journal a été mis à jour avec succès !',
+        'destroy' => 'Le journal a été supprimé avec succès !',
+        'reply' => 'La réponse au journal a été créée avec succès !',
+    ],
+    'tasks' => [
+        'store' => 'La tâche a été créée avec succès !',
+        'updated' => 'La tâche a été mise à jour avec succès !',
+        'destroy' => '{1} La tâche a été supprimée avec succès !|[2,*] Les tâches ont été supprimées avec succès !',
+        'restored' => '{1} La tâche a été restaurée avec succès !|[2,*] Les tâches ont été restaurées avec succès !',
+        'status' => 'La tâche a été marquée comme :type avec succès !',
+        'reply' => 'La réponse a été créée avec succès !',
+    ],
+    'enquiry' => [
+        'store' => 'L\'enquête a été créée avec succès !',
+        'updated' => 'L\'enquête a été mise à jour avec succès !',
+        'destroy' => '{1} L\'enquête a été supprimée avec succès !|[2,*] Les enquêtes ont été supprimées avec succès !',
+        'restored' => '{1} L\'enquête a été restaurée avec succès !|[2,*] Les enquêtes ont été restaurées avec succès !',
+        'status' => 'L\'enquête a été marquée comme :type avec succès !',
+        'reply' => 'La réponse a été créée avec succès !',
+    ],
+    'staff' => [
+        'store' => 'Le compte du personnel a été créé avec succès !',
+        'updated' => 'Le compte du personnel a été mis à jour avec succès !',
+        'destroy' => '{1} Le compte du personnel a été supprimé avec succès !|[2,*] Les comptes du personnel ont été supprimés avec succès !',
+        'restored' => '{1} Le compte du personnel a été restauré avec succès !|[2,*] Les comptes du personnel ont été restaurés avec succès !',
+        'status' => 'Le compte du personnel a été marqué comme :type avec succès !',
+        'password' => 'Lien de réinitialisation du mot de passe envoyé avec succès !',
+        'admin_error' => 'Le personnel ne peut pas mettre à jour les autorisations de son propre compte.',
+        'admin_success' => 'Le compte du personnel :type en tant qu\'administrateur avec succès !',
+    ],
+    'users' => [
+        'store' => 'Le compte utilisateur a été créé avec succès !',
+        'updated' => 'Le compte utilisateur a été mis à jour avec succès !',
+        'destroy' => '{1} Le compte utilisateur a été supprimé avec succès !|[2,*] Les comptes utilisateurs ont été supprimés avec succès !',
+        'restored' => '{1} Le compte utilisateur a été restauré avec succès !|[2,*] Les comptes utilisateurs ont été restaurés avec succès !',
+        'status' => 'Le compte utilisateur a été marqué comme :type avec succès !',
+        'password' => 'Lien de réinitialisation du mot de passe envoyé avec succès !',
+        'note' => 'La note a été ajoutée avec succès !',
+    ],
+    'attributes' => [
+        'active' => 'actif',
+        'deactive' => 'inactif',
+        'archived' => 'archivé',
+        'unarchive' => 'désarchivé',
+        'marked' => 'marqué',
+        'unmarked' => 'non marqué',
+    ]
+];

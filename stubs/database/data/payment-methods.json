@@ -1,0 +1,195 @@
+[
+  {
+    "name": "Stripe",
+    "provider": "stripe",
+    "link": "https://stripe.com/",
+    "webhook": "{{API_URL}}/stripe/webhook",
+    "active": true,
+    "logo": "fab fa-cc-stripe",
+    "description": "Millions of businesses of all sizes—from startups to large enterprises—use Stripe’s software and APIs to accept payments, send payouts, and manage their businesses online.",
+    "credentials": [
+      {
+        "key": "API_KEY",
+        "value": "",
+        "label": "Publishable key",
+        "publish": true
+      },
+      {
+        "key": "API_SECRET",
+        "value": "",
+        "label": "Secret key"
+      },
+      {
+        "key": "WEBHOOK_SECRET",
+        "value": "",
+        "label": "Webhook secret"
+      }
+    ],
+    "methods": [
+      {
+        "key": "visa",
+        "label": "Visa",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "mastercard",
+        "label": "Mastercard",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "american_express",
+        "label": "American Express",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "rupay",
+        "label": "RuPay",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      }
+    ]
+  },
+  {
+    "name": "GoCardless",
+    "provider": "gocardless",
+    "link": "https://gocardless.com/",
+    "webhook": "{{API_URL}}/gocardless/webhook",
+    "active": false,
+    "logo": "fas fa-university",
+    "description": "GoCardless is a global leader in Direct Debit, helping businesses collect recurring and one-off payments with minimal effort.",
+    "credentials": [
+      {
+        "key": "ACCESS_TOKEN",
+        "value": "",
+        "label": "Access Token"
+      },
+      {
+        "key": "WEBHOOK_SECRET",
+        "value": "",
+        "label": "Webhook Secret"
+      }
+    ],
+    "methods": [
+      {
+        "key": "direct_debit",
+        "label": "Direct Debit",
+        "enabled": true,
+        "type": "DIRECT_DEBIT"
+      }
+    ]
+  },
+  {
+    "name": "Razorpay (Cards, UPI, NetBanking, Wallets, Paypal)",
+    "provider": "razorpay",
+    "link": "https://razorpay.com/",
+    "logo": "https://coderstm.com/logos/razorpay-logo.svg",
+    "webhook": "{{API_URL}}/razorpay/webhook",
+    "description": "Accept payments from customers. Automate payouts to vendors & employees. Never run out of working capital.",
+    "credentials": [
+      {
+        "key": "API_KEY",
+        "value": "",
+        "label": "API Key ID",
+        "publish": true
+      },
+      {
+        "key": "API_SECRET",
+        "value": "",
+        "label": "API Key Secret"
+      }
+    ],
+    "methods": [
+      {
+        "key": "visa",
+        "label": "Visa",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "mastercard",
+        "label": "Mastercard",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "american_express",
+        "label": "American Express",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "rupay",
+        "label": "RuPay",
+        "enabled": true,
+        "type": "CREDIT_CARD"
+      },
+      {
+        "key": "airtel_money",
+        "label": "Airtel Money",
+        "enabled": true,
+        "type": "OTHER"
+      },
+      {
+        "key": "freecharge",
+        "label": "Freecharge",
+        "enabled": true,
+        "type": "OTHER"
+      },
+      {
+        "key": "ola_money",
+        "label": "Ola Money",
+        "enabled": true,
+        "type": "OTHER"
+      },
+      {
+        "key": "paytm",
+        "label": "Paytm",
+        "enabled": true,
+        "type": "OTHER"
+      },
+      {
+        "key": "mobikwik",
+        "label": "MobiKwik",
+        "enabled": true,
+        "type": "OTHER"
+      },
+      {
+        "key": "payzapp",
+        "label": "PayZapp",
+        "enabled": true,
+        "type": "OTHER"
+      }
+    ]
+  },
+  {
+    "name": "Paypal Express Checkout",
+    "provider": "paypal",
+    "link": "https://www.paypal.com/us/cgi-bin/webscr?cmd=_additional-payment-overview-outside",
+    "logo": "fab fa-cc-paypal",
+    "webhook": "{{API_URL}}/paypal/webhook",
+    "description": "Receive payments in foreign currencies with PayPal. Manage payment approval in payment preferences in PayPal.",
+    "credentials": [
+      {
+        "key": "CLIENT_ID",
+        "value": "",
+        "label": "Client ID",
+        "publish": true
+      },
+      {
+        "key": "CLIENT_SECRET",
+        "value": "",
+        "label": "Client Secret"
+      }
+    ]
+  },
+  {
+    "name": "Cash",
+    "provider": "manual",
+    "active": true,
+    "logo": "fas fa-money-check-dollar",
+    "description": "Pay in cash at our store"
+  }
+]
