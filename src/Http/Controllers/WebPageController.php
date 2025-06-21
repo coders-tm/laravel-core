@@ -34,7 +34,7 @@ class WebPageController extends Controller
 
     public function blog(Request $request, $slug)
     {
-        $blog = Cache::remember("blog_{$slug}", 60, function () use ($slug) {
+        $blog = Cache::rememberForever("blog_{$slug}", function () use ($slug) {
             return Blog::findBySlug($slug);
         });
 
@@ -45,7 +45,7 @@ class WebPageController extends Controller
 
     public function pages(Request $request, $slug)
     {
-        $page = Cache::remember("page_{$slug}", 60, function () use ($slug) {
+        $page = Cache::rememberForever("page_{$slug}", function () use ($slug) {
             return Page::findBySlug($slug);
         });
 
@@ -87,7 +87,7 @@ class WebPageController extends Controller
 
     public function render(Request $request, string $name)
     {
-        $page = Cache::remember("page_{$name}", 60, function () use ($name) {
+        $page = Cache::rememberForever("page_{$name}", function () use ($name) {
             return Page::findByTemplate($name);
         });
 

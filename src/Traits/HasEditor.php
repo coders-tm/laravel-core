@@ -46,11 +46,25 @@ trait HasEditor
     public function publish(array $data): void
     {
         $content = '';
+        $id = '';
+        $class = '';
         $style = $data['css'] ?? '';
+        $body = $data['body'] ?? '';
 
+        // Extract id attribute
+        if (preg_match('/\bid="([^"]*)"/', $body, $idMatches)) {
+            $id = $idMatches[1];
+        }
+
+        // Extract class attribute
+        if (preg_match('/\bclass="([^"]*)"/', $body, $classMatches)) {
+            $class = $classMatches[1];
+        }
+
+        // This gets the content inside <body> tags
         $bodyPattern = '/<body\b[^>]*>(.*?)<\/body>/is';
-        if (preg_match($bodyPattern, $data['body'], $bodyMatch)) {
-            $content = $bodyMatch[1]; // This gets the content inside <body> tags
+        if (preg_match($bodyPattern, $body, $bodyMatch)) {
+            $content = $bodyMatch[1];
         }
 
         // Load the page stub template
@@ -59,8 +73,8 @@ trait HasEditor
 
         // Replace placeholders in the stub with actual content
         $parsedContent = str_replace(
-            ['{{ style }}', '{{ content }}'],
-            [$style, $content],
+            ['{{ style }}', '{{ content }}', '{{ id }}', '{{ class }}'],
+            [$style, $content, $id, $class],
             $stubContent
         );
 

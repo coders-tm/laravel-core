@@ -133,10 +133,7 @@ class ApplicationController extends Controller
     {
         $theme = false;
         $editor = [
-            'styles' => [
-                '//cdn.coderstm.com/fontawesome/css/all.min.css',
-                'statics/css/styles.min.css',
-            ],
+            'styles' => [],
             'scripts' => ['~/js/app.js']
         ];
 

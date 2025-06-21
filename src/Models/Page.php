@@ -4,10 +4,11 @@ namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
 use Spatie\Sluggable\HasSlug;
-use Coderstm\Interface\Editorable;
 use Coderstm\Traits\HasEditor;
 use Spatie\Sluggable\SlugOptions;
+use Coderstm\Interface\Editorable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model implements Editorable
@@ -70,6 +71,13 @@ class Page extends Model implements Editorable
     protected static function booted()
     {
         parent::booted();
+
+        static::updated(function ($page) {
+            if ($slug = $page->getOriginal('slug')) {
+                Cache::forget("blog_{$slug}");
+            }
+            Cache::forget("page_{$page->slug}");
+        });
 
         static::addGlobalScope('url', function ($query) {
             $url = config('app.url');
