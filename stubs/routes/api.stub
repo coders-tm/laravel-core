@@ -264,7 +264,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('{page}/change-active', 'changeActive')->name('change-active');
         });
     });
-    Route::resource('pages', Coderstm\PageController::class);
+    Route::resource('pages', Coderstm\PageController::class)->middleware('preserve.json.whitespace');
 
     Route::group(['prefix' => 'themes', 'as' => 'themes.'], function () {
         Route::get('/', [Coderstm\ThemeController::class, 'index'])->name('index');
