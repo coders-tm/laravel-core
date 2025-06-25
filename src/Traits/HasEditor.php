@@ -90,6 +90,11 @@ trait HasEditor
             'meta_title' => $this->meta_title,
             'meta_keywords' => $this->meta_keywords,
             'meta_description' => $this->meta_description,
+            'seo' => [
+                'title' => $this->meta_title,
+                'keywords' => $this->meta_keywords,
+                'description' => $this->meta_description,
+            ],
         ];
     }
 

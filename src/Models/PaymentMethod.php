@@ -3,9 +3,10 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class PaymentMethod extends Model
@@ -20,6 +21,7 @@ class PaymentMethod extends Model
     const DIRECT_DEBIT = 'direct_debit';
 
     const CACHE_KEY = 'payment_methods_configurations';
+    public static string $cacheKey = self::CACHE_KEY;
 
     protected $fillable = [
         'name',
@@ -47,6 +49,11 @@ class PaymentMethod extends Model
         'methods' => 'array',
         'options' => 'array',
     ];
+
+    protected static function cacheKey(): string
+    {
+        return static::$cacheKey ?? static::CACHE_KEY;
+    }
 
     protected function label(): Attribute
     {
@@ -186,7 +193,7 @@ class PaymentMethod extends Model
     public static function updateProviderCache(string $provider): void
     {
         // Get all cached configs
-        $allConfigs = Cache::get(self::CACHE_KEY, []);
+        $allConfigs = Cache::get(self::cacheKey(), []);
 
         // Update or remove the specified provider
         $config = self::getProviderConfig($provider);
@@ -200,7 +207,7 @@ class PaymentMethod extends Model
         }
 
         // Store updated configs back to cache
-        Cache::forever(self::CACHE_KEY, $allConfigs);
+        Cache::forever(self::cacheKey(), $allConfigs);
     }
 
     /**
@@ -282,7 +289,7 @@ class PaymentMethod extends Model
      */
     public static function applyProviderConfig(string $provider): void
     {
-        $allConfigs = Cache::get(self::CACHE_KEY, []);
+        $allConfigs = Cache::get(self::cacheKey(), []);
 
         if (isset($allConfigs[$provider]) && !empty($allConfigs[$provider])) {
             config($allConfigs[$provider]);
@@ -320,7 +327,7 @@ class PaymentMethod extends Model
             $providers = [self::STRIPE, self::PAYPAL, self::RAZORPAY, self::GOCARDLESS];
 
             // Use rememberForever for efficient caching
-            $configs = Cache::rememberForever(self::CACHE_KEY, function () use ($providers) {
+            $configs = Cache::rememberForever(self::cacheKey(), function () use ($providers) {
                 $allConfigs = [];
 
                 // Fetch all active payment methods in a single query

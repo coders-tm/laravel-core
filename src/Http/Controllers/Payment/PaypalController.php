@@ -2,28 +2,17 @@
 
 namespace Coderstm\Http\Controllers\Payment;
 
+use Coderstm\Coderstm;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Paymentable;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Http\Controllers\Controller;
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaypalController extends Controller
 {
     use Paymentable;
-
-    protected PayPalClient $provider;
-
-    function __construct()
-    {
-        if (PaymentMethod::has('paypal')) {
-            $this->provider = new PayPalClient;
-            $this->provider->setApiCredentials(config('paypal'));
-            $this->provider->getAccessToken();
-        }
-    }
 
     public function token(Request $request)
     {
@@ -33,7 +22,7 @@ class PaypalController extends Controller
 
         $order = Order::findByKey($request->key)->load('customer');
 
-        $response = $this->provider->createOrder([
+        $response = Coderstm::paypal()->createOrder([
             "intent" => "CAPTURE",
             "purchase_units" => [
                 [
@@ -57,7 +46,8 @@ class PaypalController extends Controller
             ], 200);
         } else {
             return response()->json([
-                'error' => $response['message'] ?? 'Something went wrong.'
+                'response' => $response,
+                'error' => $response['error']['message'] ?? 'Something went wrong.'
             ], 500);
         }
     }
@@ -76,7 +66,7 @@ class PaypalController extends Controller
         $orderable = $order->orderable;
 
         try {
-            $payment = $this->provider->capturePaymentOrder($orderID);
+            $payment = Coderstm::paypal()->capturePaymentOrder($orderID);
 
             if (isset($payment['status']) && $payment['status'] == 'COMPLETED') {
                 $order->markAsPaid(PaymentMethod::paypal()->id, [

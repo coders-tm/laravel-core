@@ -2,24 +2,17 @@
 
 namespace Coderstm\Http\Controllers\Payment;
 
+use Coderstm\Coderstm;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Paymentable;
-use Razorpay\Api\Api as Razorpay;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Http\Controllers\Controller;
 
 class RazorpayController extends Controller
 {
     use Paymentable;
-
-    protected Razorpay $provider;
-
-    function __construct()
-    {
-        $this->provider = new Razorpay(config('razorpay.key_id'), config('razorpay.key_secret'));
-    }
 
     public function token(Request $request)
     {
@@ -29,7 +22,7 @@ class RazorpayController extends Controller
 
         $order = Order::findByKey($request->key)->load('customer');
 
-        $paymentIntent = $this->provider->order->create([
+        $paymentIntent = Coderstm::razorpay()->order->create([
             'receipt' => $order->formated_id,
             'amount' => (int) $order->grand_total * 100,
             'currency' => Str::upper($order->currency),
@@ -61,14 +54,14 @@ class RazorpayController extends Controller
 
         try {
             // Verify the signature
-            $this->provider->utility->verifyPaymentSignature($request->only([
+            Coderstm::razorpay()->utility->verifyPaymentSignature($request->only([
                 'razorpay_signature',
                 'razorpay_payment_id',
                 'razorpay_order_id',
             ]));
 
             // Fetch the payment details
-            $payment = $this->provider->payment->fetch($request->razorpay_payment_id);
+            $payment = Coderstm::razorpay()->payment->fetch($request->razorpay_payment_id);
 
             // Payment is successful, proceed with your business logic
             $order->markAsPaid(PaymentMethod::razorpay()->id, [

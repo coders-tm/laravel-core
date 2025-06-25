@@ -101,6 +101,18 @@ class Coderstm
     protected static $gocardlessClient;
 
     /**
+     * The cached PayPal client instance.
+     *  @var \Srmklive\PayPal\Services\PayPal
+     */
+    protected static $paypalClient;
+
+    /**
+     * The cached Razorpay client instance.
+     *  @var \Razorpay\Api\Api
+     */
+    protected static $razorpayClient;
+
+    /**
      * Determine if Coderstm's migrations should be run.
      *
      * @return bool
@@ -263,5 +275,46 @@ class Coderstm
         ], $options);
 
         return static::$gocardlessClient = new \GoCardlessPro\Client($clientOptions);
+    }
+
+    /**
+     * Get the paypal client instance.
+     *  @param  array  $options
+     * @return \Srmklive\PayPal\Services\PayPal
+     */
+    public static function paypal(array $options = []): \Srmklive\PayPal\Services\PayPal
+    {
+        if (static::$paypalClient) {
+            return static::$paypalClient;
+        }
+
+        $options = array_merge(config('paypal'), $options);
+
+        $provider = new \Srmklive\PayPal\Services\PayPal;
+        $provider->setApiCredentials(config('paypal'));
+        $provider->getAccessToken();
+
+        return static::$paypalClient = $provider;
+    }
+
+    /**
+     * Get the razorpay client instance.
+     *  @param  array  $options
+     * @return \Razorpay\Api\Api
+     */
+    public static function razorpay(array $options = []): \Razorpay\Api\Api
+    {
+        if (static::$razorpayClient) {
+            return static::$razorpayClient;
+        }
+
+        $keyId = $options['key_id'] ?? config('razorpay.key_id');
+        $keySecret = $options['key_secret'] ?? config('razorpay.key_secret');
+
+        if (empty($keyId) || empty($keySecret)) {
+            throw new \Exception('Razorpay key ID and secret are required. Please configure your Razorpay payment method.');
+        }
+
+        return static::$razorpayClient = new \Razorpay\Api\Api($keyId, $keySecret);
     }
 }

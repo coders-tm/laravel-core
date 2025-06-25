@@ -110,6 +110,26 @@ if (!function_exists('app_url')) {
     }
 }
 
+if (!function_exists('base_route')) {
+    function base_route($path = '', $query = [])
+    {
+        if (empty($path)) {
+            $url =  '/';
+        } else {
+            // Check if $path starts with a slash
+            $separator = (substr($path, 0, 1) === '/') ? '' : '/';
+            $url = $separator . $path;
+        }
+
+        // Append query parameters if provided
+        if (!empty($query)) {
+            $url .= '?' . http_build_query($query);
+        }
+
+        return $url;
+    }
+}
+
 if (!function_exists('user_route')) {
     function user_route($path = '', $query = [])
     {
