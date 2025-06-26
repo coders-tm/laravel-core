@@ -15,7 +15,7 @@ trait HasSubscriptionStatus
      */
     public function valid()
     {
-        return $this->active() || $this->onTrial() || $this->onGracePeriod() || $this->isPending();
+        return $this->active() || $this->onTrial() || $this->onGracePeriod();
     }
 
     /**
