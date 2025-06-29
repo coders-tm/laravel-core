@@ -11,17 +11,9 @@ use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Events\GoCardless\FlowCompleted;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Services\GatewaySubscriptionFactory;
-use GoCardlessPro\Client as GoCardlessClient;
 
 class GoCardlessController extends Controller
 {
-    protected GoCardlessClient $provider;
-
-    function __construct()
-    {
-        $this->provider = Coderstm::gocardless();
-    }
-
     /**
      * Handle the redirect after successful GoCardless flow completion
      *

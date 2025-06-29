@@ -24,17 +24,21 @@ class Blog extends Model
         'meta_keywords',
         'meta_description',
         'is_active',
+        'options',
+        'category'
     ];
 
     protected $with = [
-        'media',
         'thumbnail',
         'tags',
     ];
 
+    protected $logIgnore = ['options'];
+
     protected $casts = [
         'is_active' => 'boolean',
         'created_at' => 'datetime',
+        'options' => 'json',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -87,22 +91,60 @@ class Blog extends Model
             ->firstOrFail();
     }
 
+    public static function setReadTimeOption($description, array $options = [])
+    {
+        $description = strip_tags($description ?? '');
+        $wordCount = str_word_count($description);
+        $readTime = max(1, ceil($wordCount / 200));
+        $options['read_time'] = $readTime;
+        return $options;
+    }
+
     protected static function booted()
     {
         parent::booted();
 
+        static::creating(function ($blog) {
+            $blog->options = static::setReadTimeOption($blog->description, $blog->options ?? []);
+        });
+
+        static::updating(function ($blog) {
+            if ($blog->isDirty('description')) {
+                $blog->options = static::setReadTimeOption($blog->description, $blog->options ?? []);
+            }
+        });
+
         static::updated(function ($blog) {
+            // Clear old slug cache if slug changed
             if ($slug = $blog->getOriginal('slug')) {
                 Cache::forget("blog_{$slug}");
             }
+
+            // Clear current blog cache
             Cache::forget("blog_{$blog->slug}");
+
+            // Clear related caches using the BlogService
+            app('blog')->clearBlogCache($blog);
+            app('blog')->clearRecentBlogCache();
+        });
+
+        static::created(function ($blog) {
+            // Clear recent blogs cache when a new blog is created
+            app('blog')->clearRecentBlogCache();
+        });
+
+        static::deleted(function ($blog) {
+            // Clear all caches related to this blog
+            Cache::forget("blog_{$blog->slug}");
+            app('blog')->clearBlogCache($blog);
+            app('blog')->clearRecentBlogCache();
         });
 
         static::addGlobalScope('short_desc', function ($query) {
             $url = config('app.url');
             $query->select('*')
                 ->addSelect(DB::raw("SUBSTRING_INDEX(REGEXP_REPLACE(REGEXP_REPLACE(description, '<[^>]+>', ' '), '[[:space:]]+', ' '), ' ', 20) AS short_desc"))
-                ->addSelect(DB::raw("CONCAT('{$url}/blogs/', slug) as url"));
+                ->addSelect(DB::raw("CONCAT('{$url}/blog/', slug) as url"));
         });
     }
 }

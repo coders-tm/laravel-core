@@ -2,13 +2,12 @@
 
 namespace Coderstm\Shortcodes;
 
-use Coderstm\Models\Blog\Tag;
 use Vedmant\LaravelShortcodes\Shortcode;
 
 class BlogTags extends Shortcode
 {
     public $attributes = [
-        'layout'  => [
+        'style'  => [
             'default'     => 'default',
         ],
     ];
@@ -16,7 +15,7 @@ class BlogTags extends Shortcode
     public function render($content)
     {
         $atts = $this->atts();
-        $tags = Tag::all();
+        $tags = blog('tags', []);
 
         return $this->view('shortcodes.blog-tags', array_merge($atts, [
             'tags' => $tags

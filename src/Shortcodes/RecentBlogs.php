@@ -8,15 +8,15 @@ use Vedmant\LaravelShortcodes\Shortcode;
 class RecentBlogs extends Shortcode
 {
     public $attributes = [
-        'count'  => [
-            'default'     => 4,
+        'limit' => [
+            'default' => 4,
         ],
     ];
 
     public function render($content)
     {
         $atts = $this->atts();
-        $blogs = Blog::limit($atts['count'])->get();
+        $blogs = app('blog')->recent($atts['limit']);
 
         return $this->view('shortcodes.recent-blogs', array_merge($atts, [
             'blogs' => $blogs

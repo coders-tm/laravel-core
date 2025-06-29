@@ -15,14 +15,19 @@ class Blog extends Shortcode
     public function render($content)
     {
         $atts = $this->atts();
-        $blog = request()->input('blog') ?? Post::inRandomOrder()->first();
+        $blog = blog() ?? Post::inRandomOrder()->first();
 
         if (!$blog) {
             return '';
         }
 
-        return $this->view('shortcodes.blog', array_merge($atts, [
-            'blog' => $blog
-        ]));
+        // Get related blogs if available
+        $related = app('blog')->related($blog, 3);
+
+        return $this->view('shortcodes.blog', array_merge(
+            $atts,
+            $blog->toArray(),
+            ['related' => $related]
+        ));
     }
 }

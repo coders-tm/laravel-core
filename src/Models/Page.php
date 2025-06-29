@@ -17,7 +17,7 @@ class Page extends Model implements Editorable
 
     protected $dates = ['created_at', 'updated_at'];
 
-    protected $logIgnore = ['data'];
+    protected $logIgnore = ['data', 'options'];
 
     protected $fillable = [
         'title',
@@ -28,11 +28,13 @@ class Page extends Model implements Editorable
         'is_active',
         'template',
         'data',
+        'options'
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
         'data' => 'json',
+        'options' => 'json',
     ];
 
     public function getSlugOptions(): SlugOptions
@@ -52,9 +54,7 @@ class Page extends Model implements Editorable
 
     public static function findByTemplate(string $template): static
     {
-        return static::where('template', $template)
-            ->where('is_active', true)
-            ->firstOrFail();
+        return static::where('template', $template)->firstOrFail();
     }
 
     public function setTemplate($name)

@@ -19,8 +19,10 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('category')->nullable()->index();
             $table->string('slug')->unique()->index();
             $table->longText('description');
+            $table->{$this->jsonable()}('options')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->string('meta_description')->nullable();

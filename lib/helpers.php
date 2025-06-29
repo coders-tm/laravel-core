@@ -574,3 +574,21 @@ if (! function_exists('theme')) {
         return app(Mix::class)(...func_get_args());
     }
 }
+
+if (!function_exists('blog')) {
+    /**
+     * Get the current blog from the request.
+     *
+     * @param  string|null  $key
+     * @param  mixed  $default
+     * @return mixed|\Coderstm\Models\Blog
+     */
+    function blog($key = null, $default = null)
+    {
+        if ($key) {
+            return request()->input('blog') ? optional(request()->input('blog'))->$key ?? $default : $default;
+        }
+
+        return request()->input('blog');
+    }
+}

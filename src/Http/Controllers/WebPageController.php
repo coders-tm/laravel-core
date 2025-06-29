@@ -13,7 +13,7 @@ class WebPageController extends Controller
 {
     public $templateRoutes = [
         'home' => '/',
-        'blog' => '/blogs',
+        'blog' => '/blog',
         'membership' => '/membership',
     ];
 
@@ -38,6 +38,7 @@ class WebPageController extends Controller
             return Blog::findBySlug($slug);
         });
 
+        // Set blog in request so it can be accessed globally
         $request->merge(['blog' => $blog]);
 
         return $this->render($request, 'blog');
