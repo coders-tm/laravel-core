@@ -319,11 +319,6 @@ class PaymentMethod extends Model
     public static function syncConfig(): void
     {
         try {
-            // Check if the payment_methods table exists before querying
-            if (!Schema::hasTable('payment_methods')) {
-                return;
-            }
-
             $providers = [self::STRIPE, self::PAYPAL, self::RAZORPAY, self::GOCARDLESS];
 
             // Use rememberForever for efficient caching
@@ -347,7 +342,8 @@ class PaymentMethod extends Model
             // Apply all configurations
             self::applyConfig($configs);
         } catch (\Exception $e) {
-            throw $e;
+            // Log the error instead of just re-throwing
+            Log::error("Failed to synchronize payment provider configurations: {$e->getMessage()}");
         }
     }
 }
