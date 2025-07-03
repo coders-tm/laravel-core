@@ -33,6 +33,34 @@ jobs:
           tools: composer:v2
           coverage: none
 
+      - name: Verify ionCube Loader
+        run: |
+          echo "Checking ionCube Loader installation..."
+          php -m | grep -i ioncube || {
+            echo "ionCube Loader not found, installing manually..."
+
+            # Download ionCube Loaders
+            wget -O ioncube.tar.gz https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
+            tar -xzf ioncube.tar.gz
+
+            # Get PHP version info
+            PHP_VERSION=${{ matrix.php }}
+            PHP_EXT_DIR=$(php -r "echo ini_get('extension_dir');")
+            PHP_INI_DIR=$(php --ini | grep "Scan for additional" | cut -d: -f2 | xargs)
+
+            # Copy the loader
+            sudo cp ioncube/ioncube_loader_lin_${PHP_VERSION}.so $PHP_EXT_DIR/
+
+            # Create ionCube configuration file
+            echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" | sudo tee $PHP_INI_DIR/00-ioncube.ini
+
+            echo "ionCube Loader installed successfully"
+          }
+
+          # Final verification
+          echo "ionCube Loader status:"
+          php -m | grep -i ioncube
+
       - name: Install dependencies
         run: |
           composer update --prefer-dist --no-interaction --no-progress --with="illuminate/contracts=^${{ matrix.laravel }}"
