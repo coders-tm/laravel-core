@@ -79,9 +79,7 @@ class ApplicationController extends Controller
 
         $this->validate($request, $rules);
 
-        $merge = in_array($request->key, ['config']);
-
-        AppSetting::updateOptions($request->key, $request->options ?? [], $merge);
+        AppSetting::updateValue($request->key, $request->options ?? []);
 
         // Clear the cache for the specific key
         $cacheKey = "app_config_{$request->key}";

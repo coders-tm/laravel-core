@@ -21,6 +21,7 @@ class WorkbenchServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Config::set("cache.default", 'array');
         Config::set("mail.default", 'log');
         Config::set("app.country", 'United States');
         Theme::set('foundation');

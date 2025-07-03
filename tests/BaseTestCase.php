@@ -17,6 +17,9 @@ class BaseTestCase extends OrchestraTestCase
 
     protected function getEnvironmentSetUp($app)
     {
+        // Use array cache driver for tests instead of database
+        $app['config']->set('cache.default', 'array');
+
         $apiKey = config('cashier.secret');
 
         if ($apiKey && !Str::startsWith($apiKey, 'sk_test_')) {

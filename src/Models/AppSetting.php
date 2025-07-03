@@ -61,20 +61,17 @@ class AppSetting extends Model
         return $result;
     }
 
-    static public function updateOptions($key, array $options = [], $merge = true)
+    /**
+     * Update a setting value and return only its options
+     * @param string $key
+     * @param array $options
+     * @return array
+     * @deprecated Use updateValue() instead.
+     */
+    static public function updateOptions($key, array $options = [])
     {
-        if ($merge) {
-            return static::updateValue($key, $options);
-        }
-
-        $result = static::updateOrCreate([
-            'key' => $key
-        ], [
-            'options' => $options
-        ]);
-
-        static::clearCache();
-        return $result;
+        trigger_error('AppSetting::updateOptions() is deprecated. Use updateValue() instead.', E_USER_DEPRECATED);
+        return static::updateValue($key, $options);
     }
 
     /**
@@ -90,7 +87,7 @@ class AppSetting extends Model
         $model = static::updateOrCreate([
             'key' => $key
         ], [
-            'options' => array_merge($original, $options)
+            'options' => array_filter(array_merge($original, $options))
         ]);
 
         // Update cache efficiently for just this key instead of clearing all
@@ -292,6 +289,13 @@ class AppSetting extends Model
         $segments = explode('.', $key);
         $settingKey = array_shift($segments);
 
+        // First try to find by the whole key
+        if ($options = static::findByKey($key)) {
+            return $options;
+        }
+
+        // If not found, try to find by the main key only
+        // This allows for both 'app.name' and 'app' to work
         $options = static::findByKey($settingKey);
 
         if (empty($options)) {

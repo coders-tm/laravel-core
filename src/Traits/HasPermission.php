@@ -4,6 +4,7 @@ namespace Coderstm\Traits;
 
 use Coderstm\Models\Permission;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 trait HasPermission
 {
@@ -31,6 +32,8 @@ trait HasPermission
         } else {
             $this->permissions()->syncWithoutDetaching($permissions);
         }
+        // Clear cached permissions for this user
+        Cache::forget("user_permissions_{$this->id}");
         return $this;
     }
 
@@ -46,7 +49,9 @@ trait HasPermission
      */
     public function getAllPermissions(): Collection
     {
-        return $this->permissions->sort()->values();
+        return Cache::rememberForever("user_permissions_{$this->id}", function () {
+            return $this->permissions->sort()->values();
+        });
     }
 
     public function hasPermission($permission)
