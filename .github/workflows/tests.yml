@@ -51,8 +51,8 @@ jobs:
             # Copy the loader
             sudo cp ioncube/ioncube_loader_lin_${PHP_VERSION}.so $PHP_EXT_DIR/
 
-            # Create ionCube configuration file
-            echo "zend_extension=ioncube_loader_lin_${PHP_VERSION}.so" | sudo tee $PHP_INI_DIR/00-ioncube.ini
+            # Create ionCube configuration file with full path
+            echo "zend_extension=$PHP_EXT_DIR/ioncube_loader_lin_${PHP_VERSION}.so" | sudo tee $PHP_INI_DIR/00-ioncube.ini
 
             echo "ionCube Loader installed successfully"
           }
