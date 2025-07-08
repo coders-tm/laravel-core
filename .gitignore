@@ -1,6 +1,7 @@
 .DS_Store
 .thumbs.db
 *.bak
+*.zip
 /vendor
 
 composer.lock

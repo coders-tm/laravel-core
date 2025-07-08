@@ -30,6 +30,7 @@ class Plan extends Model
         'interval_count',
         'price',
         'trial_days',
+        'options',
     ];
 
     protected $appends = ['feature_lines', 'price_formatted', 'interval_label'];
@@ -38,6 +39,7 @@ class Plan extends Model
         'is_active' => 'boolean',
         'trial_days' => 'integer',
         'interval' => PlanInterval::class,
+        'options' => 'json',
     ];
 
     public function subscriptions(): HasMany

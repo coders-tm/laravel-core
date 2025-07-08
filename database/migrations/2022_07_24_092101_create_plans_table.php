@@ -29,6 +29,7 @@ return new class extends Migration
             $table->unsignedInteger('interval_count')->default(1);
             $table->double('price', 12, 2)->default(0.00);
             $table->unsignedInteger('trial_days')->nullable()->default(0);
+            $table->{$this->jsonable()}('options')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

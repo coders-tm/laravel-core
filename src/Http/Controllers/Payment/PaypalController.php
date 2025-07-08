@@ -29,7 +29,7 @@ class PaypalController extends Controller
                     'reference_id' => $order->id,
                     "amount" => [
                         "currency_code" => Str::upper($order->currency),
-                        "value" => $order->grand_total
+                        "value" => (string)round($order->grand_total, 2),
                     ]
                 ]
             ]
