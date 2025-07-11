@@ -535,7 +535,7 @@ class Order extends Model
         return (new Address($this->billing_address ?? []))->label;
     }
 
-    private function toPdfArray(): array
+    public function toPdfArray(): array
     {
         return [
             'id' => $this->formated_id,
