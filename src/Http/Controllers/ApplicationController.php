@@ -79,7 +79,7 @@ class ApplicationController extends Controller
 
         $this->validate($request, $rules);
 
-        AppSetting::updateValue($request->key, $request->options ?? []);
+        AppSetting::updateValue($request->key, $request->options ?? [], true);
 
         // Clear the cache for the specific key
         $cacheKey = "app_config_{$request->key}";

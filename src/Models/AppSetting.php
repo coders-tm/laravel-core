@@ -21,6 +21,10 @@ class AppSetting extends Model
         'options' => 'array',
     ];
 
+    protected $logIgnore = [
+        'options',
+    ];
+
     /**
      * Cache key for all settings
      */
@@ -70,7 +74,6 @@ class AppSetting extends Model
      */
     static public function updateOptions($key, array $options = [])
     {
-        trigger_error('AppSetting::updateOptions() is deprecated. Use updateValue() instead.', E_USER_DEPRECATED);
         return static::updateValue($key, $options);
     }
 
@@ -81,9 +84,9 @@ class AppSetting extends Model
      * @param array $options
      * @return array
      */
-    static public function updateValue($key, array $options = [])
+    static public function updateValue($key, array $options = [], bool $replace = false)
     {
-        $original = static::findByKey($key);
+        $original = $replace ? [] : static::findByKey($key);
         $model = static::updateOrCreate([
             'key' => $key
         ], [

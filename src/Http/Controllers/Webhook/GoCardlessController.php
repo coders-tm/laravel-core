@@ -11,7 +11,6 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Log;
 use Coderstm\Events\GoCardless\Mandate;
 use Coderstm\Events\GoCardless\Payment;
-use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Events\GoCardless\WebhookHandled;
 use Symfony\Component\HttpFoundation\Response;
 use Coderstm\Events\GoCardless\WebhookReceived;
