@@ -2,17 +2,18 @@
 
 namespace Coderstm\Models\Shop\Product;
 
-use Coderstm\Database\Factories\Shop\Product\VariantFactory;
 use Coderstm\Traits\Core;
-use Coderstm\Models\Shop\Product;
-use Coderstm\Models\Shop\LineItem;
 use Coderstm\Traits\Fileable;
 use Coderstm\Services\Resource;
-use Coderstm\Models\Shop\Product\Weight;
-use Coderstm\Models\Shop\Product\Inventory;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\LineItem;
+use Coderstm\Models\Subscription\Plan;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Shop\Product\Weight;
 use Illuminate\Database\Eloquent\Builder;
+use Coderstm\Models\Shop\Product\Inventory;
 use Coderstm\Models\Shop\Product\Variant\Option;
+use Coderstm\Database\Factories\Shop\Product\VariantFactory;
 
 class Variant extends Model
 {
@@ -23,6 +24,7 @@ class Variant extends Model
         'compare_at_price',
         'cost_per_item',
         'taxable',
+        'recurring',
         'track_inventory',
         'out_of_stock_track_inventory',
         'sku',
@@ -49,6 +51,7 @@ class Variant extends Model
 
     protected $casts = [
         'taxable' => 'boolean',
+        'recurring' => 'boolean',
         'track_inventory' => 'boolean',
         'out_of_stock_track_inventory' => 'boolean',
         'is_default' => 'boolean',
@@ -82,6 +85,35 @@ class Variant extends Model
     public function options()
     {
         return $this->hasMany(Option::class);
+    }
+
+    public function recurringPlans()
+    {
+        return $this->hasMany(Plan::class, 'variant_id');
+    }
+
+    public function getOptions()
+    {
+        return $this->options->map(function ($option) {
+            return [
+                'id' => $option->id,
+                'name' => $option->name,
+                'value' => $option->value,
+            ];
+        })->toArray();
+    }
+
+    public function getOptionsWithValues()
+    {
+        return $this->options->map(function ($option) {
+            return [
+                'id' => $option->id,
+                'name' => $option->name,
+                'value' => $option->value,
+                'values' => $option->values,
+                'type' => $option->attribute->type,
+            ];
+        })->toArray();
     }
 
     public function getInventoriesAvailableAttribute()
@@ -189,6 +221,18 @@ class Variant extends Model
                         }
                     }
                 }
+            }
+        }
+
+        // Handle recurring plans
+        if ($resource->filled('recurring_plans')) {
+            $planIds = collect($resource['recurring_plans'])->pluck('id')->filter();
+            $this->recurringPlans()->whereNotIn('id', $planIds)->delete();
+            foreach ($resource['recurring_plans'] as $planData) {
+                $this->recurringPlans()->updateOrCreate(
+                    ['id' => $planData['id'] ?? null],
+                    $planData
+                );
             }
         }
 

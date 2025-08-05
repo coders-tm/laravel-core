@@ -35,7 +35,7 @@ class TaxSeeder extends Seeder
             'label' => 'VAT',
             'code' => '*',
             'state' => '*',
-            'rate' => 0,
+            'rate' => 5,
             'priority' => 0,
         ]);
     }

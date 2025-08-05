@@ -3,10 +3,10 @@
 namespace Coderstm\Traits\Subscription;
 
 use Carbon\Carbon;
-use Coderstm\Contracts\SubscriptionStatus;
-use Coderstm\Models\Shop\Order;
 use Coderstm\Services\Period;
+use Coderstm\Models\Shop\Order;
 use Coderstm\Services\Resource;
+use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Repository\InvoiceRepository;
 
 trait HandlesSubscriptionInvoices
@@ -169,7 +169,7 @@ trait HandlesSubscriptionInvoices
      * Generate a new invoice for the subscription.
      *
      * @param bool $start Whether this is a start invoice
-     * @return Order|null
+     * @return \Coderstm\Models\Shop\Order|null
      */
     protected function generateInvoice($start = false): ?Order
     {

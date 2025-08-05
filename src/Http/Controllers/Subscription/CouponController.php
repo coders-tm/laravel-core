@@ -5,6 +5,7 @@ namespace Coderstm\Http\Controllers\Subscription;
 use Coderstm\Models\Coupon;
 use Illuminate\Http\Request;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Http\Resources\CouponResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class CouponController extends Controller
@@ -65,7 +66,7 @@ class CouponController extends Controller
 
     public function show(Coupon $coupon)
     {
-        return response()->json($coupon->load('plans', 'logs'), 200);
+        return response()->json(new CouponResource($coupon->load('plans', 'logs')), 200);
     }
 
     public function update(Request $request, Coupon $coupon)

@@ -22,12 +22,12 @@ if (!function_exists('guard')) {
 }
 
 if (!function_exists('user')) {
-    function user(?string $key = null)
+    function user(?string $key = null, $default = null)
     {
         $user =  request()->user();
 
         if ($key && $user) {
-            return $user[$key];
+            return $user[$key] ?? $default;
         }
 
         return $user;

@@ -44,7 +44,7 @@ trait ManagesSubscriptionCoupon
         $foreignKey = $this->getUserForeignKey();
         $userId = $this->{$foreignKey};
 
-        if ($coupon && $coupon->canApply($this->plan)) {
+        if ($coupon && $coupon->canApplyToPlan($this->plan)) {
             // if coupon duration is once, we will check if the user has already used the coupon
             if ($coupon->duration->value === 'once') {
                 if ($coupon->redeems()->where($foreignKey, $userId)->exists()) {

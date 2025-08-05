@@ -17,14 +17,14 @@ return new class extends Migration
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
+            $table->string('type')->default('plan')->comment('Type of coupon: plan, product, or cart');
+            $table->enum('discount_type', ['percentage', 'fixed', 'override'])->default('percentage');
+            $table->double('value', 10, 2)->default(0);
             $table->string('promotion_code')->unique()->index();
-            $table->{$this->jsonable()}('applies_to')->nullable();
             $table->string('duration');
             $table->unsignedInteger('duration_in_months')->nullable();
             $table->unsignedInteger('max_redemptions')->nullable();
-            $table->unsignedBigInteger('amount_off')->nullable();
-            $table->unsignedSmallInteger('percent_off')->nullable();
-            $table->boolean('fixed')->default(false);
+            $table->boolean('auto_apply')->default(false);
             $table->boolean('active')->default(true)->index();
             $table->dateTime('expires_at')->nullable()->index();
             $table->timestamps();

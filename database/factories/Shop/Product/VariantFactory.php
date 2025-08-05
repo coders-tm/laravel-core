@@ -29,4 +29,40 @@ class VariantFactory extends Factory
             'out_of_stock_track_inventory' => rand(0, 1),
         ];
     }
+
+    public function isDefault()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_default' => true,
+            ];
+        });
+    }
+
+    public function taxable()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'taxable' => true,
+            ];
+        });
+    }
+
+    public function nonTaxable()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'taxable' => false,
+            ];
+        });
+    }
+
+    public function forProduct($productId)
+    {
+        return $this->state(function (array $attributes) use ($productId) {
+            return [
+                'product_id' => $productId,
+            ];
+        });
+    }
 }

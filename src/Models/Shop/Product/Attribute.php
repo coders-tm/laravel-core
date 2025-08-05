@@ -2,11 +2,12 @@
 
 namespace Coderstm\Models\Shop\Product;
 
-use Illuminate\Database\Eloquent\Model;
-use Coderstm\Models\Shop\Product\Attribute\Value;
 use Coderstm\Traits\Core;
 use Spatie\Sluggable\HasSlug;
+use Coderstm\Models\Shop\Product;
 use Spatie\Sluggable\SlugOptions;
+use Illuminate\Database\Eloquent\Model;
+use Coderstm\Models\Shop\Product\Attribute\Value;
 
 class Attribute extends Model
 {
@@ -14,12 +15,8 @@ class Attribute extends Model
 
     protected $fillable = [
         'name',
-        'is_button',
+        'type',
         'slug',
-    ];
-
-    protected $casts = [
-        'is_button' => 'boolean',
     ];
 
     protected $with = [
@@ -29,6 +26,11 @@ class Attribute extends Model
     public function values()
     {
         return $this->hasMany(Value::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'options');
     }
 
     public function getSlugOptions(): SlugOptions

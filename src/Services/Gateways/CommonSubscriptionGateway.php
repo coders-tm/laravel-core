@@ -24,7 +24,7 @@ class CommonSubscriptionGateway implements SubscriptionGateway
     protected $user;
 
     /**
-     * @var \Coderstm\Models\Order
+     * @var \Coderstm\Models\Shop\Order
      */
     protected $order;
 

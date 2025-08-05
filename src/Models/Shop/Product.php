@@ -287,7 +287,7 @@ class Product extends Model
             $item->delete();
         });
 
-        // Process vaiants
+        // Process variants
         foreach (collect($variants) as $item) {
             // Create or Update the variant
             $item['is_default'] = false;

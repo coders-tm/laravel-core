@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('label')->nullable();
             $table->string('provider')->default('manual')->index();
+            $table->string('integration_via')->nullable();
             $table->string('link')->nullable();
             $table->string('logo')->nullable();
             $table->text('description')->nullable();
@@ -37,6 +38,7 @@ return new class extends Migration
             $table->decimal('transaction_fee', 10, 2)->default(0.00);
             $table->text('webhook')->nullable();
             $table->{$this->jsonable()}('options')->nullable();
+            $table->integer('order')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

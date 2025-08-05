@@ -20,18 +20,19 @@ return new class extends Migration
         Schema::create('variants', function (Blueprint $table) {
             $table->id();
 
-            $table->decimal('price', 20, 2)->default(0.00);
-            $table->decimal('compare_at_price', 20, 2)->default(0.00);
-            $table->decimal('cost_per_item', 20, 2)->default(0.00);
+            $table->double('price', 20, 2)->default(0.00);
+            $table->double('compare_at_price', 20, 2)->default(0.00);
+            $table->double('cost_per_item', 20, 2)->default(0.00);
             $table->boolean('taxable')->default(true);
             $table->boolean('track_inventory')->default(true);
             $table->boolean('out_of_stock_track_inventory')->default(false);
             $table->string('sku')->nullable();
-            $table->decimal('weight', 10, 3)->default(0.00);
+            $table->double('weight', 10, 3)->default(0.00);
             $table->string('weight_unit')->nullable()->default('kg');
             $table->string('origin')->nullable();
             $table->string('harmonized_system_code')->nullable();
             $table->string('barcode')->nullable();
+            $table->boolean('recurring')->nullable()->default(false);
             $table->boolean('is_default')->nullable()->default(false);
             $table->unsignedBigInteger('media_id')->nullable();
 
@@ -62,6 +63,16 @@ return new class extends Migration
         });
 
         $this->setAutoIncrement('variants');
+
+        // Add variant_id to plans table
+        // This allows plans to be associated with specific variants
+        Schema::table('plans', function (Blueprint $table) {
+            $table->unsignedBigInteger('variant_id')->nullable()->after('id');
+
+            // Add indexes for performance
+            $table->index(['variant_id', 'interval']);
+            $table->foreign('variant_id')->references('id')->on('variants')->cascadeOnDelete();
+        });
     }
 
     /**

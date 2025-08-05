@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Coderstm\Coderstm;
 use Coderstm\Services\Period;
 use InvalidArgumentException;
+use Coderstm\Contracts\SubscriptionStatus;
 
 trait ManagesSubscriptions
 {
@@ -13,32 +14,46 @@ trait ManagesSubscriptions
      * Begin creating a new subscription.
      *
      * @param  string  $type
-     * @param  string $plan
+     * @param  \Coderstm\Models\Subscription\Plan $plan
+     * @param  array  $metadata
      * @return \Coderstm\Models\Subscription
      */
-    public function newSubscription(string $type, $plan)
+    public function newSubscription(string $type, $plan, array $metadata = [])
     {
         if (empty($plan)) {
             throw new InvalidArgumentException('Please provide a plan when new subscription.');
         }
 
-        $plan = Coderstm::$planModel::find($plan);
+        // If plan is not already a model instance, find it by ID
+        if (!$plan instanceof Coderstm::$planModel) {
+            $plan = Coderstm::$planModel::find($plan);
+        }
 
+        if (!$plan) {
+            throw new InvalidArgumentException('Invalid plan provided. Please ensure the plan exists.');
+        }
+
+        // Calculate trial period
         $trial = new Period(
             'day',
             $plan->trial_days,
             Carbon::now()
         );
 
+        // Determine the start date for the regular billing period
+        $billingStartDate = $trial->getEndDate();
+
+        // Calculate the regular billing period
         $period = new Period(
             $plan->interval->value,
             $plan->interval_count,
-            $trial->getEndDate()
+            $billingStartDate
         );
 
         return new Coderstm::$subscriptionModel([
             'type' => $type,
             'plan_id' => $plan->getKey(),
+            'status' => $plan->trial_days ? SubscriptionStatus::TRIALING : SubscriptionStatus::PENDING,
             'trial_ends_at' => $plan->trial_days ? $trial->getEndDate() : null,
             'starts_at' => $period->getStartDate(),
             'expires_at' => $period->getEndDate(),
@@ -66,6 +81,50 @@ trait ManagesSubscriptions
         }
 
         return !$plan || $subscription->hasPlan($plan);
+    }
+
+    /**
+     * Determine if the model is in an intro pricing period via coupon.
+     *
+     * @param  string  $type
+     * @param  string|null  $plan
+     * @return bool
+     */
+    public function onIntroPricing($type = 'default', $plan = null)
+    {
+        $subscription = $this->subscription($type);
+
+        if (!$subscription || !$subscription->coupon) {
+            return false;
+        }
+
+        $coupon = $subscription->coupon;
+
+        // Check if this is an intro pricing coupon
+        if (!$coupon->is_intro_pricing) {
+            return false;
+        }
+
+        // Check if coupon can still be applied
+        if (!$coupon->canApplyToPlan($subscription->plan_id)) {
+            return false;
+        }
+
+        // Check based on coupon duration type
+        switch ($coupon->duration->value) {
+            case 'once':
+                return $subscription->invoices()->count() <= 1;
+
+            case 'repeating':
+                $monthsElapsed = $subscription->starts_at->diffInMonths(Carbon::now());
+                return $monthsElapsed < $coupon->duration_in_months;
+
+            case 'forever':
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     /**
@@ -167,6 +226,23 @@ trait ManagesSubscriptions
         }
 
         return !$plan || $subscription->hasPlan($plan);
+    }
+
+    /**
+     * Get the current effective price for a subscription.
+     *
+     * @param  string  $type
+     * @return float
+     */
+    public function getCurrentSubscriptionPrice($type = 'default')
+    {
+        $subscription = $this->subscription($type);
+
+        if (!$subscription || !$subscription->plan) {
+            return 0;
+        }
+
+        return $subscription->getCurrentPrice();
     }
 
     /**

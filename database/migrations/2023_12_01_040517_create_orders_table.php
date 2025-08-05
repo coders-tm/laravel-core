@@ -18,23 +18,34 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->default('draft');
 
             $table->nullableMorphs('orderable');
             $table->unsignedBigInteger('customer_id')->nullable()->index();
             $table->unsignedBigInteger('location_id')->nullable()->index();
+            $table->unsignedBigInteger('checkout_id')->nullable()->index();
             $table->text('note')->nullable();
             $table->boolean('collect_tax')->default(true);
             $table->{$this->jsonable()}('billing_address')->nullable();
-            $table->{$this->jsonable()}('options')->nullable();
+            $table->{$this->jsonable()}('shipping_address')->nullable();
+            $table->{$this->jsonable()}('metadata')->nullable();
             $table->string('source')->nullable();
             $table->string('key')->nullable();
             $table->string('currency')->nullable();
             $table->double('exchange_rate', 15, 4)->default(1);
             $table->double('sub_total', 20, 2)->default(0.00);
             $table->double('tax_total', 20, 2)->default(0.00);
+            $table->double('shipping_total', 10, 2)->default(0);
             $table->double('discount_total', 20, 2)->default(0.00);
             $table->double('grand_total', 20, 2)->default(0.00);
+            $table->enum('fulfillment_status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending');
+            $table->enum('payment_status', ['pending', 'processing', 'paid', 'failed', 'refunded', 'partially_refunded'])->default('pending');
+            $table->string('tracking_number')->nullable();
+            $table->string('tracking_company')->nullable();
             $table->dateTime('due_date')->nullable();
+            $table->timestamp('shipped_at')->nullable();
+            $table->timestamp('delivered_at')->nullable();
+            $table->timestamp('cancelled_at')->nullable();
 
             $table->timestamps();
             $table->softDeletes()->index();
@@ -57,6 +68,7 @@ return new class extends Migration
             $table->unsignedSmallInteger('rejected')->nullable();
             $table->unsignedSmallInteger('quantity')->nullable();
             $table->{$this->jsonable()}('attributes')->nullable();
+            $table->{$this->jsonable()}('metadata')->nullable();
             $table->boolean('is_product_deleted')->nullable();
             $table->boolean('is_variant_deleted')->nullable();
 
@@ -75,6 +87,7 @@ return new class extends Migration
             $table->unsignedBigInteger('payment_id')->nullable();
             $table->double('amount', 20, 2)->default(0.00);
             $table->text('reason')->nullable();
+            $table->{$this->jsonable()}('metadata')->nullable();
 
             $table->timestamps();
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();

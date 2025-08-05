@@ -27,8 +27,8 @@ class ProductFactory extends Factory
             'title' => fake()->sentence,
             'description' => fake()->paragraph,
             'has_variant' => rand(0, 1),
-            'category' => Category::inRandomOrder()->first()->toArray(),
-            'vendor' => Vendor::inRandomOrder()->first()->toArray(),
+            'category' => Category::inRandomOrder()->first()?->toArray(),
+            'vendor' => Vendor::inRandomOrder()->first()?->toArray(),
         ];
     }
 }

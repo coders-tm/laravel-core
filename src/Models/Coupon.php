@@ -6,6 +6,7 @@ use Coderstm\Traits\Core;
 use Coderstm\Enum\CouponDuration;
 use Coderstm\Models\Subscription\Plan;
 use Illuminate\Database\Eloquent\Model;
+use Coderstm\Database\Factories\CouponFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -17,26 +18,35 @@ class Coupon extends Model
     protected $fillable = [
         'name',
         'promotion_code',
+        'type',
         'duration',
         'duration_in_months',
         'max_redemptions',
-        'percent_off',
-        'amount_off',
-        'fixed',
+        'value',
+        'discount_type',
         'active',
         'expires_at',
+        'auto_apply',
     ];
 
     protected $casts = [
         'expires_at' => 'datetime',
         'active' => 'boolean',
-        'fixed' => 'boolean',
+        'auto_apply' => 'boolean',
+        'value' => 'decimal:2',
         'duration' => CouponDuration::class,
     ];
 
     protected $withCount = ['redeems'];
 
-    protected $appends = ['has_max_redemptions', 'specific_plans', 'has_expires_at'];
+    protected $appends = ['has_max_redemptions', 'specific_plans', 'specific_products', 'has_expires_at'];
+
+    const TYPE_PLAN = 'plan';
+    const TYPE_PRODUCT = 'product';
+
+    const DISCOUNT_TYPE_PERCENTAGE = 'percentage';
+    const DISCOUNT_TYPE_FIXED = 'fixed';
+    const DISCOUNT_TYPE_OVERRIDE = 'override';
 
     protected function hasExpiresAt(): Attribute
     {
@@ -59,6 +69,13 @@ class Coupon extends Model
         );
     }
 
+    protected function specificProducts(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->products->count() > 0,
+        );
+    }
+
     protected function currency(): Attribute
     {
         return Attribute::make(
@@ -76,15 +93,40 @@ class Coupon extends Model
         return $this->belongsToMany(Plan::class, 'coupon_plans', 'coupon_id', 'plan_id');
     }
 
+    public function products(): BelongsToMany
+    {
+        return $this->belongsToMany('Coderstm\Models\Shop\Product', 'coupon_products', 'coupon_id', 'product_id');
+    }
+
     public function syncPlans(array $items = [])
     {
         $this->plans()->sync(collect($items)->pluck('id'));
         return $this;
     }
 
+    public function syncProducts(array $items = [])
+    {
+        $this->products()->sync(collect($items)->pluck('id'));
+        return $this;
+    }
+
     public function scopeOnlyActive($query)
     {
         return $query->where('active', 1);
+    }
+
+    public function scopeAutoApplicable($query)
+    {
+        return $query->onlyActive()
+            ->where('auto_apply', true)
+            ->where(function ($q) {
+                $q->whereNull('max_redemptions')
+                    ->orWhereRaw('(select count(*) from redeems where coupons.id = redeems.coupon_id) < max_redemptions');
+            })
+            ->where(function ($q) {
+                $q->whereNull('expires_at')
+                    ->orWhere('expires_at', '>', now());
+            });
     }
 
     public function isActive(): bool
@@ -97,17 +139,72 @@ class Coupon extends Model
         return $this->expires_at && $this->expires_at->isPast();
     }
 
-    public function canApply($plan = null): bool
+    /**
+     * Check if the coupon can be applied to a given item (plan or product)
+     *
+     * @param mixed $item
+     * @param string $type
+     * @return bool
+     */
+    public function canApply($item, string $type = self::TYPE_PLAN): bool
     {
-        return $this->isActive() && !$this->isExpired() && !$this->checkRaxRedemptions() && $this->canApplyToPlan($plan);
+        if (!$this->isActive() || $this->isExpired() || $this->checkRaxRedemptions()) {
+            return false;
+        }
+
+        if ($type === self::TYPE_PLAN) {
+            return $this->canApplyToPlan($item);
+        } elseif ($type === self::TYPE_PRODUCT) {
+            return $this->canApplyToProduct($item);
+        }
+
+        return false;
     }
 
+    /**
+     * Check if the coupon can be applied to a specific plan
+     *
+     * @param mixed $plan
+     * @return bool
+     */
     public function canApplyToPlan($plan): bool
     {
-        if ($this->specific_plans && $plan) {
-            return (bool) $this->plans()->whereIn('id', [$plan])->count();
+        // If no restrictions are set, coupon applies to everything
+        $hasRestrictions = $this->plans()->exists();
+
+        if (!$hasRestrictions && $this->type === self::TYPE_PLAN) {
+            return true;
         }
-        return true;
+
+        // Check specific restrictions
+        if ($plan && $this->plans()->where('plan_id', $plan)->exists()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check if the coupon can be applied to a specific product
+     *
+     * @param mixed $product
+     * @return bool
+     */
+    public function canApplyToProduct($product): bool
+    {
+        // If no restrictions are set, coupon applies to everything
+        $hasRestrictions = $this->products()->exists();
+
+        if (!$hasRestrictions && $this->type === self::TYPE_PRODUCT) {
+            return true;
+        }
+
+        // Check specific restrictions
+        if ($product && $this->products()->where('product_id', $product)->exists()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function checkRaxRedemptions(): bool
@@ -120,10 +217,35 @@ class Coupon extends Model
 
     public function getAmount($amount): float
     {
-        if ($this->fixed) {
-            return $this->amount_off;
+        // If override price is set, return the difference between original and override price
+        if ($this->discount_type === 'override' && $this->value !== null) {
+            return max(0, $amount - $this->value);
         }
-        return round($amount * ($this->percent_off / 100), 2);
+
+        if ($this->discount_type === 'fixed') {
+            return $this->value;
+        }
+
+        // Default to percentage
+        return round($amount * ($this->value / 100), 2);
+    }
+
+    public function getFinalPrice($originalPrice): float
+    {
+        // If override price is set, return the override price directly
+        if ($this->discount_type === 'override' && $this->value !== null) {
+            return $this->value;
+        }
+
+        // Otherwise calculate discounted price
+        $discountAmount = $this->getAmount($originalPrice);
+        return max(0, $originalPrice - $discountAmount);
+    }
+
+    public function getDiscountPriority($basePrice): float
+    {
+        // Priority based on discount amount only
+        return $this->getAmount($basePrice);
     }
 
     public function toPublic()
@@ -134,16 +256,20 @@ class Coupon extends Model
             'currency',
             'duration',
             'duration_in_months',
-            'percent_off',
-            'amount_off',
-            'fixed',
+            'value',
+            'discount_type',
         ]);
     }
 
-    protected static function findByCode($couponCode)
+    public static function findByCode($couponCode)
     {
         return static::onlyActive()
             ->where('promotion_code', $couponCode)
             ->first();
+    }
+
+    protected static function newFactory()
+    {
+        return CouponFactory::new();
     }
 }

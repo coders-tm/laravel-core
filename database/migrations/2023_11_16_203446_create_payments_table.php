@@ -24,11 +24,16 @@ return new class extends Migration
 
             $table->unsignedBigInteger('payment_method_id')->index()->nullable();
             $table->string('transaction_id')->index()->nullable();
-            $table->decimal('amount', 20, 2)->default(0.00);
+            $table->double('amount', 20, 2)->default(0.00);
+            $table->string('currency', 3)->default('USD');
+            $table->double('fees', 10, 2)->nullable();
+            $table->double('net_amount', 10, 2)->nullable();
+            $table->double('refund_amount', 10, 2)->default(0);
             $table->boolean('capturable')->default(true);
             $table->string('status')->index()->nullable();
+            $table->timestamp('processed_at')->nullable();
             $table->text('note')->nullable();
-            $table->{$this->jsonable()}('options')->nullable();
+            $table->json('metadata')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

@@ -2,19 +2,20 @@
 
 namespace Coderstm\Models\Subscription;
 
+use Carbon\Carbon;
 use Coderstm\Coderstm;
-use Coderstm\Database\Factories\PlanFactory;
 use Coderstm\Traits\Core;
 use Coderstm\Services\Period;
 use Spatie\Sluggable\HasSlug;
-use Illuminate\Support\Carbon;
 use Coderstm\Enum\PlanInterval;
 use Spatie\Sluggable\SlugOptions;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Model;
 use Coderstm\Models\Subscription\Feature;
+use Coderstm\Database\Factories\PlanFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Plan extends Model
@@ -30,21 +31,40 @@ class Plan extends Model
         'interval_count',
         'price',
         'trial_days',
-        'options',
+        'variant_id',
+        'metadata',
     ];
 
-    protected $appends = ['feature_lines', 'price_formatted', 'interval_label'];
+    protected $appends = ['feature_lines', 'price_formatted', 'interval_label', 'effective_price', 'has_trial_period'];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'interval_count' => 'integer',
         'trial_days' => 'integer',
         'interval' => PlanInterval::class,
-        'options' => 'json',
+        'metadata' => 'json',
     ];
 
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Coderstm::$subscriptionModel)->active();
+    }
+
+    public function variant(): BelongsTo
+    {
+        return $this->belongsTo(\Coderstm\Models\Shop\Product\Variant::class, 'variant_id');
+    }
+
+    public function product()
+    {
+        return $this->hasOneThrough(
+            \Coderstm\Models\Shop\Product::class,
+            \Coderstm\Models\Shop\Product\Variant::class,
+            'id',
+            'id',
+            'variant_id',
+            'product_id'
+        );
     }
 
     public function getResetDate(?Carbon $dateFrom): Carbon
@@ -71,6 +91,20 @@ class Plan extends Model
     {
         return Attribute::make(
             get: fn() => $this->formatInterval(),
+        );
+    }
+
+    protected function effectivePrice(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->getEffectivePrice(),
+        );
+    }
+
+    protected function hasTrialPeriod(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->hasTrial(),
         );
     }
 
@@ -103,6 +137,32 @@ class Plan extends Model
     public function hasTrial(): bool
     {
         return $this->trial_days > 0;
+    }
+
+    public function getTrialEndDate(?Carbon $startDate = null): ?Carbon
+    {
+        if (!$this->hasTrial()) {
+            return null;
+        }
+
+        $start = $startDate ?? now();
+        return $start->copy()->addDays($this->trial_days);
+    }
+
+    public function getEffectivePrice(?Carbon $currentDate = null): float
+    {
+        $now = $currentDate ?? now();
+
+        // If in trial period, price is 0
+        if ($this->hasTrial()) {
+            $trialEnd = $this->getTrialEndDate();
+            if ($trialEnd && $now->lte($trialEnd)) {
+                return 0;
+            }
+        }
+
+        // Intro pricing is now handled via coupons
+        return $this->price;
     }
 
     public function activate(): self

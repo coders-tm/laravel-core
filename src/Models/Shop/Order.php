@@ -4,21 +4,20 @@ namespace Coderstm\Models\Shop;
 
 use Coderstm\Traits\Core;
 use Coderstm\Models\Refund;
-use Coderstm\Models\Status;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Coderstm\Models\Address;
 use Coderstm\Models\Payment;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Coderstm\Services\Resource;
-use Coderstm\Traits\Statusable;
 use Coderstm\Traits\OrderStatus;
 use Coderstm\Models\Shop\Location;
 use Illuminate\Support\Collection;
 use Coderstm\Models\Shop\Order\Contact;
 use Coderstm\Models\Shop\Order\TaxLine;
+use Coderstm\Repository\CartRepository;
 use Illuminate\Database\Eloquent\Model;
-use Coderstm\Models\Shop\CartRepository;
+use Coderstm\Contracts\PaymentInterface;
 use Coderstm\Models\Shop\Order\Customer;
 use Coderstm\Models\Shop\Order\LineItem;
 use Illuminate\Database\Eloquent\Builder;
@@ -29,35 +28,9 @@ use Coderstm\Database\Factories\Shop\OrderFactory;
 
 class Order extends Model
 {
-    use Core, Statusable, OrderStatus;
+    use Core, OrderStatus;
 
-    const STATUS_OPEN = 'Open';
-    const STATUS_PENDING = 'Pending';
-    const STATUS_COMPLETED = 'Completed';
-    const STATUS_CANCELLED = 'Cancelled';
-    const STATUS_DECLINED = 'Declined';
-    const STATUS_DISPUTED = 'Disputed';
-    const STATUS_ARCHIVED = 'Archived';
-
-    const STATUS_PAYMENT_PENDING = 'Payment pending';
-    const STATUS_PAYMENT_FAILED = 'Payment failed';
-    const STATUS_PAYMENT_SUCCESS = 'Payment success';
-    const STATUS_PARTIALLY_PAID = 'Partially paid';
-    const STATUS_PAID = 'Paid';
-
-    const STATUS_UNFULFILLED = 'Unfulfilled';
-    const STATUS_FULFILLED = 'Fulfilled';
-    const STATUS_PARTIALLY_FULFILLED = 'Partially fulfilled';
-    const STATUS_AWAITING_PICKUP = 'Awaiting pickup';
-
-    const STATUS_REFUNDED = 'Refunded';
-    const STATUS_PARTIALLY_REFUNDED = 'Partially refunded';
-
-    const STATUS_RETURN_INPROGRESS = 'Return in progress';
-    const STATUS_RETURNED = 'Returned';
-
-    const STATUS_MANUAL_VERIFICATION_REQUIRED = 'Manual verification required';
-
+    // Cancellation reasons constants
     const REASON_CUSTOMER = 'Customer changed/cancelled order';
     const REASON_SIZE_TOO_SMALL = 'Size was too small';
     const REASON_SIZE_TOO_LARGE = 'Size was too large';
@@ -80,24 +53,45 @@ class Order extends Model
         'orderable_type',
         'location_id',
         'billing_address',
+        'shipping_address',
         'note',
         'currency',
         'exchange_rate',
         'collect_tax',
-        'options',
         'source',
         'sub_total',
+        'shipping_total',
         'tax_total',
         'discount_total',
         'grand_total',
         'due_date',
+        // Additional shop-specific fields
+        'checkout_id',
+        'status',
+        'payment_status',
+        'fulfillment_status',
+        'shipped_at',
+        'delivered_at',
+        'tracking_number',
+        'tracking_company',
+        'cancelled_at',
+        'metadata',
     ];
 
     protected $casts = [
         'collect_tax' => 'boolean',
         'billing_address' => 'array',
+        'shipping_address' => 'array',
         'due_date' => 'datetime',
-        'options' => 'json',
+        'metadata' => 'array',
+        'shipped_at' => 'datetime',
+        'delivered_at' => 'datetime',
+        'cancelled_at' => 'datetime',
+        'sub_total' => 'decimal:2',
+        'tax_total' => 'decimal:2',
+        'shipping_total' => 'decimal:2',
+        'discount_total' => 'decimal:2',
+        'grand_total' => 'decimal:2',
     ];
 
     protected $hidden = [
@@ -108,7 +102,6 @@ class Order extends Model
     ];
 
     protected $with = [
-        'status',
         'customer',
         'contact',
     ];
@@ -121,9 +114,11 @@ class Order extends Model
         'formated_id',
         'has_due',
         'has_payment',
+        'is_paid',
+        'is_cancelled',
+        'is_completed',
         'can_edit',
         'can_refund',
-        'is_cancelled',
     ];
 
     public function customer()
@@ -148,12 +143,8 @@ class Order extends Model
 
     public function payments()
     {
-        return $this->morphMany(Payment::class, 'paymentable');
-    }
-
-    public function status()
-    {
-        return $this->morphMany(Status::class, 'statusable');
+        return $this->morphMany(Payment::class, 'paymentable')
+            ->where('status', Payment::STATUS_COMPLETED);
     }
 
     public function discount()
@@ -238,35 +229,36 @@ class Order extends Model
     protected function isCompleted(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->hasStatus(static::STATUS_COMPLETED),
+            get: fn() => $this->status === self::STATUS_DELIVERED,
         );
     }
 
     protected function isCancelled(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->hasStatus(static::STATUS_CANCELLED),
+            get: fn() => $this->status === self::STATUS_CANCELLED,
         );
     }
 
     protected function isPaid(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->hasStatus(static::STATUS_PAID),
+            get: fn() => $this->payment_status === self::STATUS_PAID,
         );
     }
 
     protected function canEdit(): Attribute
     {
         return Attribute::make(
-            get: fn() => !$this->hasStatus(Order::STATUS_CANCELLED) && !$this->hasStatus(Order::STATUS_COMPLETED),
+            get: fn() => !in_array($this->status, [self::STATUS_CANCELLED, self::STATUS_DELIVERED]),
         );
     }
 
     protected function canRefund(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->hasAnyStatus([Order::STATUS_PAID, Order::STATUS_PARTIALLY_PAID]) && !$this->hasStatus(Order::STATUS_REFUNDED),
+            get: fn() => in_array($this->payment_status, [self::STATUS_PAID]) &&
+                !in_array($this->payment_status, [self::STATUS_REFUNDED]),
         );
     }
 
@@ -320,8 +312,12 @@ class Order extends Model
         return static::modifyOrCreate($replicate);
     }
 
-    public static function modifyOrCreate(Resource $resource)
+    public static function modifyOrCreate($resource): self
     {
+        if (is_array($resource)) {
+            $resource = new Resource($resource);
+        }
+
         $resource->merge([
             'customer_id' => $resource->input('customer.id') ?? $resource->customer_id,
         ]);
@@ -333,43 +329,83 @@ class Order extends Model
         $order = $order->saveRelated($resource);
 
         if (!$order->has_due) {
-            $order->markedAsPaid();
+            $order->markAsPaid();
         }
 
-        return $order->fresh('status');
+        return $order;
     }
 
-    public function saveRelated(Resource $resource)
+    public function saveRelated($resource): self
     {
-        $cart = new CartRepository($resource->input());
+        if (is_array($resource)) {
+            $resource = new Resource($resource);
+        }
 
-        $resource->merge([
-            'sub_total' => $cart->sub_total,
-            'tax_lines' => $cart->tax_lines->toArray(),
-            'tax_total' => $cart->tax_total,
-            'discount_total' => $cart->discount_total,
-            'grand_total' => $cart->grand_total,
-        ]);
+        // Check if we should preserve existing tax calculations (e.g., from checkout)
+        $preserveTaxCalculations = $resource->boolean('preserve_tax_calculations', false);
 
-        $this->fill($resource->only([
-            'sub_total',
-            'tax_total',
-            'discount_total',
-            'grand_total',
-        ]))->save();
+        if ($preserveTaxCalculations && $resource->filled('tax_lines') && $resource->filled('tax_total')) {
+            // Use the provided tax values without recalculation
+            $this->fill([
+                'sub_total' => $resource->sub_total,
+                'tax_total' => $resource->tax_total,
+                'discount_total' => $resource->discount_total ?? 0,
+                'grand_total' => $resource->grand_total,
+            ])->save();
+
+            // Directly sync the tax lines without recalculation
+            if ($resource->filled('tax_lines')) {
+                $tax_lines = collect($resource->tax_lines);
+                $this->tax_lines()->whereNotIn('id', $tax_lines->pluck('id')->filter())->delete();
+                $tax_lines->each(function ($tax) {
+                    $this->tax_lines()->updateOrCreate([
+                        'id' => has($tax)->id,
+                    ], $tax);
+                });
+            }
+        } else {
+            // Use CartRepository for calculation (existing behavior)
+            $cart = new CartRepository($resource->input());
+
+            $resource->merge([
+                'sub_total' => $cart->sub_total,
+                'tax_lines' => $cart->tax_lines->toArray(),
+                'tax_total' => $cart->tax_total,
+                'discount_total' => $cart->discount_total,
+                'grand_total' => $cart->grand_total,
+            ]);
+
+            $this->fill([
+                'sub_total' => $cart->sub_total,
+                'tax_total' => $cart->tax_total,
+                'discount_total' => $cart->discount_total,
+                'grand_total' => $cart->grand_total,
+            ])->save();
+
+            // update order tax lines
+            if ($resource->filled('tax_lines')) {
+                $tax_lines = collect($resource->tax_lines);
+                $this->tax_lines()->whereNotIn('id', $tax_lines->pluck('id')->filter())->delete();
+                $tax_lines->each(function ($tax) {
+                    $this->tax_lines()->updateOrCreate([
+                        'id' => has($tax)->id,
+                    ], $tax);
+                });
+            }
+        }
 
         // update order line_items
         if ($resource->filled('line_items')) {
             $this->syncLineItems(collect($resource->input('line_items')));
         }
 
-        // update customer
-        if ($resource->boolean('contact.update_customer_profile') && $this->customer) {
-            $this->customer->update(Arr::only($resource->contact, ['email', 'phone_number']));
-        }
-
         // update order contact
         if ($resource->hasAny(['contact.email', 'contact.phone_number'])) {
+            // update customer
+            if ($resource->boolean('contact.update_customer_profile') && $this->customer) {
+                $this->customer->update(Arr::only($resource->contact, ['email', 'phone_number']));
+            }
+
             if ($this->contact) {
                 $this->contact->update((new Contact($resource->contact))->toArray());
             } else {
@@ -391,76 +427,91 @@ class Order extends Model
             $this->discount()->delete();
         }
 
-        // update order tax lines
-        if ($resource->filled('tax_lines')) {
-            $tax_lines = collect($resource->tax_lines);
-            $this->tax_lines()->whereNotIn('id', $tax_lines->pluck('id')->filter())->delete();
-            $tax_lines->each(function ($tax) {
-                $this->tax_lines()->updateOrCreate([
-                    'id' => has($tax)->id,
-                ], $tax);
-            });
-        }
-
         // current instance
-        return $this->fresh('status');
+        return $this;
     }
 
-    public function markAsPaid($paymentMethod, array $transaction = [])
+    /**
+     * Mark order as paid
+     */
+    public function markAsPaid($payment = null, array $transaction = [])
     {
-        $transaction = optional((object) $transaction);
-
-        $this->payments()->updateOrCreate([
-            'payment_method_id' => $paymentMethod,
-            'transaction_id' => $transaction->id,
-        ], [
-            'amount' => $transaction->amount ?? $this->due_amount,
-            'status' => $transaction->status ?? 'success',
-            'note' => $transaction->note,
-        ]);
-
-        // marked order status as paid
-        $this->markedAsPaid();
-
-        return $this->fresh(['payments', 'status']);
+        return $this->updatePaymentStatus(
+            $payment,
+            $transaction,
+            Payment::STATUS_COMPLETED,
+            self::STATUS_PAID,
+            self::STATUS_PROCESSING
+        );
     }
 
-    public function markAsPaymentPending($paymentMethod, array $transaction = [])
+    /**
+     * Mark order as payment pending
+     */
+    public function markAsPaymentPending($payment = null, array $transaction = [])
     {
-        $transaction = optional((object) $transaction);
-
-        $this->payments()->updateOrCreate([
-            'payment_method_id' => $paymentMethod,
-            'transaction_id' => $transaction->id,
-        ], [
-            'amount' => $transaction->amount ?? $this->due_amount,
-            'status' => $transaction->status ?? 'pending',
-            'note' => $transaction->note,
-        ]);
-
-        // marked order status as payment pending
-        $this->markedAsPaymentPending();
-
-        return $this->fresh(['payments', 'status']);
+        return $this->updatePaymentStatus(
+            $payment,
+            $transaction,
+            Payment::STATUS_PENDING,
+            self::STATUS_PAYMENT_PENDING,
+            self::STATUS_PENDING_PAYMENT
+        );
     }
 
-    public function markAsPaymentFailed($paymentMethod, array $transaction = [])
+    /**
+     * Mark order as payment failed
+     */
+    public function markAsPaymentFailed($payment = null, array $transaction = [])
     {
-        $transaction = optional((object) $transaction);
+        return $this->updatePaymentStatus(
+            $payment,
+            $transaction,
+            Payment::STATUS_FAILED,
+            self::STATUS_PAYMENT_FAILED,
+            self::STATUS_PENDING_PAYMENT
+        );
+    }
 
-        $this->payments()->updateOrCreate([
-            'payment_method_id' => $paymentMethod,
-            'transaction_id' => $transaction->id,
-        ], [
-            'amount' => $transaction->amount ?? $this->due_amount,
-            'status' => $transaction->status ?? 'failed',
-            'note' => $transaction->note,
+    /**
+     * Update payment and order status in a centralized way
+     */
+    private function updatePaymentStatus(
+        $payment,
+        array $transaction,
+        string $paymentStatus,
+        string $orderPaymentStatus,
+        string $orderStatus
+    ) {
+        $this->handlePaymentStatusChange($payment, $transaction, $paymentStatus);
+
+        $this->update([
+            'payment_status' => $orderPaymentStatus,
+            'status' => $orderStatus,
         ]);
 
-        // marked order status as payment failed
-        $this->markedAsPaymentFailed();
+        return $this->fresh(['payments']);
+    }
 
-        return $this->fresh(['payments', 'status']);
+    /**
+     * Handle payment creation logic for different payment statuses
+     */
+    private function handlePaymentStatusChange($payment, array $transaction, string $paymentStatus)
+    {
+        if ($payment instanceof PaymentInterface) {
+            $this->createPayment($payment);
+        } elseif ($payment) {
+            $this->createPayment([
+                'payment_method_id' => $payment,
+                'transaction_id' => $transaction['id'] ?? null,
+                'amount' => $transaction['amount'] ?? $this->grand_total,
+                'status' => $paymentStatus,
+                'note' => $transaction['note'] ?? null,
+                'currency' => $transaction['currency'] ?? $this->currency,
+                'gateway_response' => $transaction['gateway_response'] ?? null,
+                'processed_at' => $transaction['processed_at'] ?? now(),
+            ]);
+        }
     }
 
     protected function adjustInventory(LineItem $lineItem, $location_id)
@@ -501,21 +552,17 @@ class Order extends Model
 
     public function scopeOnlyOwner($query)
     {
-        return $query->where('customer_id', user()->id);
+        return $query->where('customer_id', user('id'));
     }
 
-    public function scopeWhereHasStatus($query, $status)
+    public function scopeWhereStatus($query, $status)
     {
-        return $query->whereHas('status', function ($q) use ($status) {
-            $q->where('label', $status);
-        });
+        return $query->where('status', $status);
     }
 
     public function scopeWhereInStatus($query, array $status = [])
     {
-        return $query->whereHas('status', function ($q) use ($status) {
-            $q->whereIn('label', $status);
-        });
+        return $query->whereIn('status', $status);
     }
 
     public function restock()
@@ -624,17 +671,100 @@ class Order extends Model
         }
     }
 
-    /**
-     * Scope a query to only include paid
-     *
-     * @param  \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
     public function scopePaid($query)
     {
-        return $query->whereHas('status', function ($q) {
-            $q->where('label', static::STATUS_PAID);
-        });
+        return $query->where('payment_status', self::STATUS_PAID);
+    }
+
+    public function scopeByStatus($query, $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopePending($query)
+    {
+        return $query->where('status', self::STATUS_PENDING_PAYMENT);
+    }
+
+    public function scopeByPaymentStatus($query, $paymentStatus)
+    {
+        return $query->where('payment_status', $paymentStatus);
+    }
+
+    public function scopeByFulfillmentStatus($query, $fulfillmentStatus)
+    {
+        return $query->where('fulfillment_status', $fulfillmentStatus);
+    }
+
+    public function isPendingPayment(): bool
+    {
+        return $this->payment_status === self::STATUS_PAYMENT_PENDING;
+    }
+
+    public function isShipped(): bool
+    {
+        return in_array($this->status, [self::STATUS_SHIPPED, self::STATUS_DELIVERED]);
+    }
+
+    public function markAsShipped($trackingNumber = null, $trackingCompany = null): bool
+    {
+        return $this->update([
+            'status' => self::STATUS_SHIPPED,
+            'fulfillment_status' => self::STATUS_FULFILLMENT_SHIPPED,
+            'shipped_at' => now(),
+            'tracking_number' => $trackingNumber,
+            'tracking_company' => $trackingCompany,
+        ]);
+    }
+
+    public function markAsDelivered(): bool
+    {
+        return $this->update([
+            'status' => self::STATUS_DELIVERED,
+            'fulfillment_status' => self::STATUS_FULFILLMENT_DELIVERED,
+            'delivered_at' => now(),
+        ]);
+    }
+
+    public function cancel($reason = null): bool
+    {
+        return $this->update([
+            'status' => self::STATUS_CANCELLED,
+            'fulfillment_status' => self::STATUS_FULFILLMENT_CANCELLED,
+            'cancelled_at' => now(),
+            'cancel_reason' => $reason,
+        ]);
+    }
+
+    public function markAsCompleted()
+    {
+        return $this->markedAsCompleted();
+    }
+
+    public function markAsOpen()
+    {
+        return $this->markedAsOpen();
+    }
+
+    /**
+     * Get shipping address as string
+     */
+    protected function shippingAddress()
+    {
+        return (new Address($this->shipping_address ?? []))->label;
+    }
+
+    /**
+     * Create payment for this order
+     */
+    public function createPayment($attributes = [])
+    {
+        if ($attributes instanceof PaymentInterface) {
+            // Convert PaymentInterface to array
+            $attributes = $attributes->toArray();
+        }
+
+        return Payment::createForOrder($this, $attributes);
     }
 
     protected static function newFactory()
@@ -649,6 +779,10 @@ class Order extends Model
         static::creating(function ($model) {
             $model->generateKey();
 
+            if (empty($model->status)) {
+                $model->status = self::STATUS_PENDING;
+            }
+
             if (empty($model->currency)) {
                 $model->currency = config('cashier.currency');
             }
@@ -660,10 +794,6 @@ class Order extends Model
             if (empty($model->location)) {
                 $model->location = Location::first()?->toArray();
             }
-        });
-
-        static::created(function ($model) {
-            $model->attachStatus(self::STATUS_OPEN);
         });
 
         static::addGlobalScope('count', function (Builder $builder) {

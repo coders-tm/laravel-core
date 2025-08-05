@@ -26,7 +26,9 @@ class PaymentMethodController extends Controller
             $paymentMethod = $paymentMethod->manual();
         }
 
-        return response()->json($paymentMethod->get(), 200);
+        $paymentMethod = $paymentMethod->orderBy('order', 'asc')->get();
+
+        return response()->json($paymentMethod, 200);
     }
 
     /**
@@ -78,6 +80,13 @@ class PaymentMethodController extends Controller
         ];
 
         $this->validate($request, $rules);
+
+        // Check if the payment method integration_via is enabled
+        if ($paymentMethod->integration_via && !config("{$paymentMethod->integration_via}.enabled", false)) {
+            return response()->json([
+                'message' => "This payment method is not enabled for integration. Please enable  {$paymentMethod->integration_via} first, then try again.",
+            ], 422);
+        }
 
         $paymentMethod->update($request->input());
 

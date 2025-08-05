@@ -3,9 +3,8 @@
 namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
@@ -16,9 +15,16 @@ class PaymentMethod extends Model
     const STRIPE = 'stripe';
     const RAZORPAY = 'razorpay';
     const PAYPAL = 'paypal';
-    const MANUAL = 'manual';
     const GOCARDLESS = 'gocardless';
+    const KLARNA = 'klarna';
+    const MERCADOPAGO = 'mercadopago';
+    const PAYSTACK = 'paystack';
+    const XENDIT = 'xendit';
+    const FLUTTERWAVE = 'flutterwave';
+    const APPLE_PAY = 'apple_pay';
+    const GOOGLE_PAY = 'google_pay';
     const DIRECT_DEBIT = 'direct_debit';
+    const MANUAL = 'manual';
 
     const CACHE_KEY = 'payment_methods_configurations';
     public static string $cacheKey = self::CACHE_KEY;
@@ -27,6 +33,7 @@ class PaymentMethod extends Model
         'name',
         'label',
         'provider',
+        'integration_via',
         'link',
         'logo',
         'description',
@@ -40,6 +47,7 @@ class PaymentMethod extends Model
         'transaction_fee',
         'webhook',
         'options',
+        'order'
     ];
 
     protected $casts = [
@@ -49,6 +57,8 @@ class PaymentMethod extends Model
         'methods' => 'array',
         'options' => 'array',
     ];
+
+    protected $appends = ['parent'];
 
     protected static function cacheKey(): string
     {
@@ -62,7 +72,21 @@ class PaymentMethod extends Model
         );
     }
 
-    public function getConfigsAttribute()
+    protected function parent(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->integration_via && config($this->integration_via . '.enabled', false),
+        );
+    }
+
+    protected function configs(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->getConfigs(),
+        );
+    }
+
+    public function getConfigs()
     {
         return $this->credentials->mapWithKeys(function ($item) {
             return [$item['key'] => $item['value']];
@@ -119,9 +143,16 @@ class PaymentMethod extends Model
         return static::findProvider(static::GOCARDLESS);
     }
 
+    public static function flutterwave()
+    {
+        return static::findProvider(static::FLUTTERWAVE);
+    }
+
     public static function toPublic()
     {
-        return static::enabled()->get()->map(function ($item) {
+        return static::enabled()->orderBy('order')->get()->filter(function ($item) {
+            return empty($item->integration_via) || config("{$item->integration_via}.enabled", false);
+        })->map(function ($item) {
             $credentials = [];
             if ($item->credentials) {
                 $credentials = $item->credentials->filter(function ($item) {
@@ -135,6 +166,7 @@ class PaymentMethod extends Model
                 'label',
                 'id',
                 'provider',
+                'integration_via',
                 'logo',
                 'payment_instructions',
                 'additional_details',
@@ -165,7 +197,7 @@ class PaymentMethod extends Model
         // Update only the affected provider's configuration when saved or deleted
         static::saved(function ($paymentMethod) {
             $provider = $paymentMethod->provider;
-            if (in_array($provider, [self::STRIPE, self::PAYPAL, self::RAZORPAY, self::GOCARDLESS])) {
+            if ($provider !== self::MANUAL) {
                 // Update only this specific provider's configuration
                 self::updateProviderCache($provider);
                 // Apply the updated config
@@ -175,7 +207,7 @@ class PaymentMethod extends Model
 
         static::deleted(function ($paymentMethod) {
             $provider = $paymentMethod->provider;
-            if (in_array($provider, [self::STRIPE, self::PAYPAL, self::RAZORPAY, self::GOCARDLESS])) {
+            if ($provider !== self::MANUAL) {
                 // Update only this specific provider's configuration
                 self::updateProviderCache($provider);
                 // Apply the updated config
@@ -233,6 +265,7 @@ class PaymentMethod extends Model
                     'cashier.key' => $paymentMethod->configs['API_KEY'],
                     'cashier.secret' => $paymentMethod->configs['API_SECRET'],
                     'cashier.webhook.secret' => $paymentMethod->configs['WEBHOOK_SECRET'],
+                    'stripe.enabled' => $paymentMethod->active,
                 ];
 
             case self::PAYPAL:
@@ -243,6 +276,7 @@ class PaymentMethod extends Model
                     "paypal.{$mode}.client_id" => $paymentMethod->configs['CLIENT_ID'],
                     "paypal.{$mode}.client_secret" => $paymentMethod->configs['CLIENT_SECRET'],
                     'paypal.notify_url' => $paymentMethod->webhook,
+                    'paypal.enabled' => $paymentMethod->active,
                 ];
 
             case self::RAZORPAY:
@@ -250,6 +284,7 @@ class PaymentMethod extends Model
                     'razorpay.id' => $paymentMethod->id,
                     'razorpay.key_id' => $paymentMethod->configs['API_KEY'],
                     'razorpay.key_secret' => $paymentMethod->configs['API_SECRET'],
+                    'razorpay.enabled' => $paymentMethod->active,
                 ];
 
             case self::GOCARDLESS:
@@ -273,7 +308,75 @@ class PaymentMethod extends Model
                         'US' => 'ach',       // USA
                         'CA' => 'pad',       // Canada
                         'SE' => 'autogiro',  // Sweden
-                    ]
+                    ],
+                    'gocardless.enabled' => $paymentMethod->active,
+                ];
+
+            case self::KLARNA:
+                return [
+                    'klarna.id' => $paymentMethod->id,
+                    'klarna.api_key' => $paymentMethod->configs['API_KEY'],
+                    'klarna.api_secret' => $paymentMethod->configs['API_SECRET'],
+                    'klarna.webhook_url' => $paymentMethod->webhook,
+                    'klarna.test_mode' => $paymentMethod->test_mode,
+                    'klarna.enabled' => $paymentMethod->active,
+                ];
+
+            case self::MERCADOPAGO:
+                return [
+                    'mercadopago.id' => $paymentMethod->id,
+                    'mercadopago.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
+                    'mercadopago.access_token' => $paymentMethod->configs['ACCESS_TOKEN'],
+                    'mercadopago.webhook_url' => $paymentMethod->webhook,
+                    'mercadopago.test_mode' => $paymentMethod->test_mode,
+                    'mercadopago.enabled' => $paymentMethod->active,
+                ];
+
+            case self::PAYSTACK:
+                return [
+                    'paystack.id' => $paymentMethod->id,
+                    'paystack.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
+                    'paystack.secret_key' => $paymentMethod->configs['SECRET_KEY'],
+                    'paystack.webhook_url' => $paymentMethod->webhook,
+                    'paystack.test_mode' => $paymentMethod->test_mode,
+                    'paystack.enabled' => $paymentMethod->active,
+                ];
+
+            case self::XENDIT:
+                return [
+                    'xendit.id' => $paymentMethod->id,
+                    'xendit.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
+                    'xendit.secret_key' => $paymentMethod->configs['SECRET_KEY'],
+                    'xendit.webhook_url' => $paymentMethod->webhook,
+                    'xendit.test_mode' => $paymentMethod->test_mode,
+                    'xendit.enabled' => $paymentMethod->active,
+                ];
+
+            case self::FLUTTERWAVE:
+                return [
+                    'flutterwave.id' => $paymentMethod->id,
+                    'flutterwave.client_id' => $paymentMethod->configs['CLIENT_ID'],
+                    'flutterwave.client_secret' => $paymentMethod->configs['CLIENT_SECRET'],
+                    'flutterwave.encryption_key' => $paymentMethod->configs['ENCRYPTION_KEY'],
+                    'flutterwave.webhook_url' => $paymentMethod->webhook,
+                    'flutterwave.test_mode' => $paymentMethod->test_mode,
+                    'flutterwave.enabled' => $paymentMethod->active,
+                ];
+
+            case self::APPLE_PAY:
+                // Apple Pay is integrated via Stripe, so no direct config needed
+                return [
+                    'apple_pay.id' => $paymentMethod->id,
+                    'apple_pay.integration_via' => $paymentMethod->integration_via,
+                    'apple_pay.enabled' => $paymentMethod->active,
+                ];
+
+            case self::GOOGLE_PAY:
+                // Google Pay is integrated via Stripe, so no direct config needed
+                return [
+                    'google_pay.id' => $paymentMethod->id,
+                    'google_pay.integration_via' => $paymentMethod->integration_via,
+                    'google_pay.enabled' => $paymentMethod->active,
                 ];
 
             default:
@@ -319,21 +422,19 @@ class PaymentMethod extends Model
     public static function syncConfig(): void
     {
         try {
-            $providers = [self::STRIPE, self::PAYPAL, self::RAZORPAY, self::GOCARDLESS];
-
             // Use rememberForever for efficient caching
-            $configs = Cache::rememberForever(self::cacheKey(), function () use ($providers) {
+            $configs = Cache::rememberForever(self::cacheKey(), function () {
                 $allConfigs = [];
 
                 // Fetch all active payment methods in a single query
-                $paymentMethods = self::enabled()
-                    ->whereIn('provider', $providers)
+                $providers = self::enabled()
+                    ->where('provider', '<>', self::MANUAL) // Exclude manual payment methods
                     ->get()
-                    ->keyBy('provider');
+                    ->keyBy('provider')
+                    ->keys();
+
                 foreach ($providers as $provider) {
-                    if ($paymentMethods->has($provider)) {
-                        $allConfigs[$provider] = self::getProviderConfig($provider);
-                    }
+                    $allConfigs[$provider] = self::getProviderConfig($provider);
                 }
 
                 return $allConfigs;

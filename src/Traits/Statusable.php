@@ -2,57 +2,178 @@
 
 namespace Coderstm\Traits;
 
-trait Statusable
+trait OrderStatus
 {
-    public function attachStatus(string $status)
+    // General order status constants
+    const STATUS_OPEN = 'open';
+    const STATUS_PENDING = 'pending';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_CANCELLED = 'cancelled';
+    const STATUS_DECLINED = 'declined';
+    const STATUS_DISPUTED = 'disputed';
+    const STATUS_ARCHIVED = 'archived';
+
+    // Additional order status constants
+    const STATUS_PENDING_PAYMENT = 'pending_payment';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_SHIPPED = 'shipped';
+    const STATUS_DELIVERED = 'delivered';
+
+    // Payment status constants (old style)
+    const STATUS_PAYMENT_PENDING = 'payment_pending';
+    const STATUS_PAYMENT_FAILED = 'payment_failed';
+    const STATUS_PAYMENT_SUCCESS = 'payment_success';
+    const STATUS_PARTIALLY_PAID = 'partially_paid';
+    const STATUS_PAID = 'paid';
+
+    // Fulfillment status constants
+    const STATUS_UNFULFILLED = 'unfulfilled';
+    const STATUS_FULFILLED = 'fulfilled';
+    const STATUS_PARTIALLY_FULFILLED = 'partially_fulfilled';
+    const STATUS_AWAITING_PICKUP = 'awaiting_pickup';
+
+    // Additional fulfillment status constants
+    const STATUS_FULFILLMENT_CANCELLED = 'fulfillment_cancelled';
+    const STATUS_FULFILLMENT_DELIVERED = 'fulfillment_delivered';
+    const STATUS_FULFILLMENT_SHIPPED = 'fulfillment_shipped';
+
+    // Refund status constants
+    const STATUS_REFUNDED = 'refunded';
+    const STATUS_PARTIALLY_REFUNDED = 'partially_refunded';
+
+    // Return status constants
+    const STATUS_RETURN_INPROGRESS = 'return_in_progress';
+    const STATUS_RETURNED = 'returned';
+
+    // Other status constants
+    const STATUS_MANUAL_VERIFICATION_REQUIRED = 'manual_verification_required';
+
+    /**
+     * Mark order as open
+     */
+    public function markAsOpen()
     {
-        return $this->status()->firstOrCreate([
-            'label' => $status,
+        $this->update([
+            'status' => static::STATUS_PENDING_PAYMENT,
+            'payment_status' => static::STATUS_PAYMENT_PENDING,
         ]);
+        return $this;
     }
 
-    public function detachStatus(array $status)
+    /**
+     * Mark order as pending
+     */
+    public function markAsPending()
     {
-        return $this->status()->whereIn('label', $status)->delete();
+        $this->update([
+            'status' => static::STATUS_PROCESSING,
+        ]);
+        return $this;
     }
 
-    public function updateStatus($collection, $status)
+    /**
+     * Mark order as completed
+     */
+    public function markAsCompleted()
     {
-        // return if status doesn't contain to collection
-        if (!$collection->contains($status)) {
-            return false;
+        $this->update([
+            'status' => static::STATUS_DELIVERED,
+            'fulfillment_status' => static::STATUS_FULFILLMENT_DELIVERED,
+            'delivered_at' => now(),
+        ]);
+        return $this;
+    }
+
+    /**
+     * Mark order as cancelled
+     */
+    public function markAsCancelled($reason = null)
+    {
+        $this->update([
+            'status' => static::STATUS_CANCELLED,
+            'fulfillment_status' => static::STATUS_FULFILLMENT_CANCELLED,
+            'cancelled_at' => now(),
+        ]);
+
+        $reasonMessage = $this->getCancellationReason($reason);
+
+        $this->logs()->create([
+            'type' => "canceled",
+            'message' => "Order has been canceled. Reason: " . $reasonMessage,
+        ]);
+
+        return $this;
+    }
+
+    /**
+     * Get cancellation reason message with fallback
+     */
+    protected function getCancellationReason($reason)
+    {
+        if (empty($reason)) {
+            return 'No reason provided';
         }
 
-        // remove current status if available
-        $this->detachStatus($collection->diff([$status])->all());
+        // Try to get the constant value
+        $constantName = "Coderstm\Models\Shop\Order::REASON_" . strtoupper($reason);
 
-        // attach the status
-        return $this->attachStatus($status);
+        if (defined($constantName)) {
+            return constant($constantName);
+        }
+
+        // Fallback to the provided reason (format it nicely)
+        return ucfirst(str_replace('_', ' ', strtolower($reason)));
     }
 
-    public function hasStatus(string $status)
+    /**
+     * Mark order as partially paid
+     */
+    public function markAsPartiallyPaid()
     {
-        return $this->status->contains('label', $status);
+        $this->update([
+            'payment_status' => static::STATUS_PARTIALLY_PAID,
+        ]);
+        return $this;
     }
 
-    public function hasAnyStatus(array $status)
+    /**
+     * Mark order as refunded
+     */
+    public function markAsRefunded()
     {
-        return $this->status->contains(function ($item, $key) use ($status) {
-            return in_array($item->label, $status);
-        });
+        $this->update([
+            'payment_status' => static::STATUS_REFUNDED,
+        ]);
+        return $this;
     }
 
-    public function scopeWhereHasStatus($query, $status)
+    /**
+     * Mark order as partially refunded
+     */
+    public function markAsPartiallyRefunded()
     {
-        return $query->whereHas('status', function ($q) use ($status) {
-            $q->where('label', $status);
-        });
+        $this->update([
+            'payment_status' => static::STATUS_PARTIALLY_REFUNDED,
+        ]);
+        return $this;
     }
 
-    public function scopeWhereInStatus($query, array $status = [])
+    /**
+     * Sync current status based on payment totals
+     */
+
+    public function syncCurrentStatus()
     {
-        return $query->whereHas('status', function ($q) use ($status) {
-            $q->whereIn('label', $status);
-        });
+        if ($this->refund_total == $this->paid_total) {
+            $this->markAsRefunded();
+        } else if ($this->refund_total > 0) {
+            $this->markAsPartiallyRefunded();
+        } else {
+            // Remove refund status if no refunds
+            if (in_array($this->payment_status, [static::STATUS_REFUNDED, static::STATUS_PARTIALLY_REFUNDED])) {
+                $this->update(['payment_status' => static::STATUS_PAID]);
+            }
+        }
+        return $this;
     }
 }

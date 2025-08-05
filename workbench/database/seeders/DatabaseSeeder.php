@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             TaxSeeder::class,
             PageSeeder::class,
+            ShopSeeder::class,
         ]);
     }
 }

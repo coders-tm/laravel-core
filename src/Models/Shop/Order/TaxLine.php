@@ -18,6 +18,9 @@ class TaxLine extends Model
         'type',
     ];
 
+    const TYPE_NORMAL = 'normal';
+    const TYPE_COMPOUND = 'compound';
+
     protected $hidden = [
         'taxable_type',
         'taxable_id',

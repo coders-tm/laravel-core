@@ -32,6 +32,14 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
             $table->foreign('vendor_id')->references('id')->on('vendors')->nullOnDelete();
         });
+
+        Schema::create('coupon_products', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('coupon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+            $table->unique(['coupon_id', 'product_id']);
+        });
     }
 
     /**

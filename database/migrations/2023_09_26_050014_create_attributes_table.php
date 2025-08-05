@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('name')->nullable();
-            $table->boolean('is_button')->default(false);
+            $table->string('type')->nullable();
             $table->string('slug')->nullable()->unique();
             $table->timestamps();
             $table->softDeletes();

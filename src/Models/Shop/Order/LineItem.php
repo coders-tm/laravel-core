@@ -18,6 +18,7 @@ class LineItem extends BaseLineItem
         'price',
         'quantity',
         'taxable',
+        'metadata',
         'is_custom',
         'is_product_deleted',
         'is_variant_deleted',
@@ -38,6 +39,7 @@ class LineItem extends BaseLineItem
     ];
 
     protected $casts = [
+        'metadata' => 'json',
         'is_product_deleted' => 'boolean',
         'is_variant_deleted' => 'boolean',
         'taxable' => 'boolean',
@@ -62,7 +64,7 @@ class LineItem extends BaseLineItem
     protected function total(): Attribute
     {
         return Attribute::make(
-            get: fn () => round($this->discounted_price * $this->quantity, 2),
+            get: fn() => round($this->discounted_price * $this->quantity, 2),
         );
     }
 

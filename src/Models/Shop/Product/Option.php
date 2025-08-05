@@ -107,4 +107,13 @@ class Option extends Model
             }
         }
     }
+
+    protected static function booted()
+    {
+        parent::booted();
+
+        static::addGlobalScope('type', function ($builder) {
+            $builder->withMax('attribute as type', 'type');
+        });
+    }
 }

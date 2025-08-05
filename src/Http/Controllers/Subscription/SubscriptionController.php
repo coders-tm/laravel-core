@@ -159,15 +159,14 @@ class SubscriptionController extends Controller
                 }
             } else {
                 $subscription = $user->newSubscription('default', $plan->id)
-                    ->withCoupon($request->promotion_code);
+                    ->withCoupon($request->promotion_code)
+                    ->provider($provider);
 
                 if ($trial_end && $trial_end->isFuture()) {
                     $subscription->trialUntil($trial_end);
                 } else if ($trial_days && !$trial_end) {
                     $subscription->trialDays($trial_days);
                 }
-
-                $subscription->provider = $provider;
 
                 $subscription->save();
             }

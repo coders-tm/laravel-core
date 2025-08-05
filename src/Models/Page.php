@@ -6,7 +6,7 @@ use Coderstm\Traits\Core;
 use Spatie\Sluggable\HasSlug;
 use Coderstm\Traits\HasEditor;
 use Spatie\Sluggable\SlugOptions;
-use Coderstm\Interface\Editorable;
+use Coderstm\Contracts\Editorable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Model;

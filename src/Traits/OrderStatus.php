@@ -2,141 +2,181 @@
 
 namespace Coderstm\Traits;
 
-use Coderstm\Models\Shop\Order;
 
 trait OrderStatus
 {
-    public function generalStatus(string $status)
+    // General order status constants
+    const STATUS_OPEN = 'open';
+    const STATUS_DRAFT = 'draft';
+    const STATUS_PENDING = 'pending';
+    const STATUS_COMPLETED = 'completed';
+    const STATUS_CANCELLED = 'cancelled';
+    const STATUS_DECLINED = 'declined';
+    const STATUS_DISPUTED = 'disputed';
+    const STATUS_ARCHIVED = 'archived';
+
+
+    // Additional order status constants
+    const STATUS_PENDING_PAYMENT = 'pending_payment';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_SHIPPED = 'shipped';
+    const STATUS_DELIVERED = 'delivered';
+
+    // Payment status constants (old style)
+    const STATUS_PAYMENT_PENDING = 'payment_pending';
+    const STATUS_PAYMENT_FAILED = 'payment_failed';
+    const STATUS_PAYMENT_SUCCESS = 'payment_success';
+    const STATUS_PARTIALLY_PAID = 'partially_paid';
+    const STATUS_PAID = 'paid';
+
+    // Fulfillment status constants
+    const STATUS_UNFULFILLED = 'unfulfilled';
+    const STATUS_FULFILLED = 'fulfilled';
+    const STATUS_PARTIALLY_FULFILLED = 'partially_fulfilled';
+    const STATUS_AWAITING_PICKUP = 'awaiting_pickup';
+
+    // Additional fulfillment status constants
+    const STATUS_FULFILLMENT_CANCELLED = 'fulfillment_cancelled';
+    const STATUS_FULFILLMENT_DELIVERED = 'fulfillment_delivered';
+    const STATUS_FULFILLMENT_SHIPPED = 'fulfillment_shipped';
+
+    // Refund status constants
+    const STATUS_REFUNDED = 'refunded';
+    const STATUS_PARTIALLY_REFUNDED = 'partially_refunded';
+
+    // Return status constants
+    const STATUS_RETURN_INPROGRESS = 'return_in_progress';
+    const STATUS_RETURNED = 'returned';
+
+    // Other status constants
+    const STATUS_MANUAL_VERIFICATION_REQUIRED = 'manual_verification_required';
+
+    /**
+     * Mark order as open
+     */
+    public function markAsOpen()
     {
-        return $this->updateStatus(collect([
-            Order::STATUS_OPEN,
-            Order::STATUS_PENDING,
-            Order::STATUS_COMPLETED,
-            Order::STATUS_CANCELLED,
-            Order::STATUS_DECLINED,
-            Order::STATUS_DISPUTED,
-        ]), $status);
+        $this->update([
+            'status' => static::STATUS_PENDING_PAYMENT,
+            'payment_status' => static::STATUS_PAYMENT_PENDING,
+        ]);
+        return $this;
     }
 
-    public function paymentStatus(string $status)
+    /**
+     * Mark order as pending
+     */
+    public function markAsPending()
     {
-        return $this->updateStatus(collect([
-            Order::STATUS_PAYMENT_PENDING,
-            Order::STATUS_PAYMENT_FAILED,
-            Order::STATUS_PAYMENT_SUCCESS,
-            Order::STATUS_PARTIALLY_PAID,
-            Order::STATUS_PAID,
-            Order::STATUS_OPEN,
-        ]), $status);
+        $this->update([
+            'status' => static::STATUS_PROCESSING,
+        ]);
+        return $this;
     }
 
-    public function refundStatus(string $status)
+    /**
+     * Mark order as completed
+     */
+    public function markAsCompleted()
     {
-        return $this->updateStatus(collect([
-            Order::STATUS_REFUNDED,
-            Order::STATUS_PARTIALLY_REFUNDED,
-        ]), $status);
+        $this->update([
+            'status' => static::STATUS_DELIVERED,
+            'fulfillment_status' => static::STATUS_FULFILLMENT_DELIVERED,
+            'delivered_at' => now(),
+        ]);
+        return $this;
     }
 
-    public function markedAsOpen()
+    /**
+     * Mark order as cancelled
+     */
+    public function markAsCancelled($reason = null)
     {
-        $this->generalStatus(Order::STATUS_OPEN);
+        $this->update([
+            'status' => static::STATUS_CANCELLED,
+            'fulfillment_status' => static::STATUS_FULFILLMENT_CANCELLED,
+            'cancelled_at' => now(),
+        ]);
+
+        $reasonMessage = $this->getCancellationReason($reason);
+
+        $this->logs()->create([
+            'type' => "canceled",
+            'message' => "Order has been canceled. Reason: " . $reasonMessage,
+        ]);
+
+        return $this;
     }
 
-    public function markedAsPending()
+    /**
+     * Get cancellation reason message with fallback
+     */
+    protected function getCancellationReason($reason)
     {
-        $this->generalStatus(Order::STATUS_PENDING);
+        if (empty($reason)) {
+            return 'No reason provided';
+        }
+
+        // Try to get the constant value
+        $constantName = "Modules\Shop\Models\Order::REASON_" . strtoupper($reason);
+
+        if (defined($constantName)) {
+            return constant($constantName);
+        }
+
+        // Fallback to the provided reason (format it nicely)
+        return ucfirst(str_replace('_', ' ', strtolower($reason)));
     }
 
-    public function markedAsCompleted()
+    /**
+     * Mark order as partially paid
+     */
+    public function markAsPartiallyPaid()
     {
-        $this->generalStatus(Order::STATUS_COMPLETED);
+        $this->update([
+            'payment_status' => static::STATUS_PARTIALLY_PAID,
+        ]);
+        return $this;
     }
 
-    public function markedAsCancelled()
+    /**
+     * Mark order as refunded
+     */
+    public function markAsRefunded()
     {
-        $this->generalStatus(Order::STATUS_CANCELLED);
+        $this->update([
+            'payment_status' => static::STATUS_REFUNDED,
+        ]);
+        return $this;
     }
 
-    public function markedAsArchived()
+    /**
+     * Mark order as partially refunded
+     */
+    public function markAsPartiallyRefunded()
     {
-        $this->attachStatus(Order::STATUS_ARCHIVED);
+        $this->update([
+            'payment_status' => static::STATUS_PARTIALLY_REFUNDED,
+        ]);
+        return $this;
     }
 
-    public function markedAsUnarchived()
-    {
-        $this->detachStatus([Order::STATUS_ARCHIVED]);
-    }
-
-    public function markedAsPaid()
-    {
-        $this->paymentStatus(Order::STATUS_PAID);
-    }
-
-    public function markedAsPartiallyPaid()
-    {
-        $this->paymentStatus(Order::STATUS_PARTIALLY_PAID);
-    }
-
-    public function markedAsPaymentPending()
-    {
-        $this->paymentStatus(Order::STATUS_PAYMENT_PENDING);
-    }
-
-    public function markedAsPaymentFailed()
-    {
-        $this->paymentStatus(Order::STATUS_PAYMENT_FAILED);
-    }
-
-    public function markedAsPaymentSuccess()
-    {
-        $this->paymentStatus(Order::STATUS_PAYMENT_SUCCESS);
-    }
-
-    public function markedAsRefunded()
-    {
-        $this->refundStatus(Order::STATUS_REFUNDED);
-    }
-
-    public function markedAsPartiallyRefunded()
-    {
-        $this->refundStatus(Order::STATUS_PARTIALLY_REFUNDED);
-    }
+    /**
+     * Sync current status based on payment totals
+     */
 
     public function syncCurrentStatus()
     {
         if ($this->refund_total == $this->paid_total) {
-            $this->markedAsRefunded();
+            $this->markAsRefunded();
         } else if ($this->refund_total > 0) {
-            $this->markedAsPartiallyRefunded();
+            $this->markAsPartiallyRefunded();
         } else {
-            $this->detachStatus([Order::STATUS_REFUNDED, Order::STATUS_PARTIALLY_REFUNDED]);
+            // Remove refund status if no refunds
+            if (in_array($this->payment_status, [static::STATUS_REFUNDED, static::STATUS_PARTIALLY_REFUNDED])) {
+                $this->update(['payment_status' => static::STATUS_PAID]);
+            }
         }
         return $this;
-    }
-
-    public function getIsCompletedAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_COMPLETED);
-    }
-
-    public function getIsCancelledAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_CANCELLED);
-    }
-
-    public function getIsPaidAttribute(): bool
-    {
-        return $this->hasStatus(Order::STATUS_PAID);
-    }
-
-    public function getCanEditAttribute(): bool
-    {
-        return !$this->hasStatus(Order::STATUS_CANCELLED) && !$this->hasStatus(Order::STATUS_COMPLETED);
-    }
-
-    public function getCanRefundAttribute(): bool
-    {
-        return $this->hasAnyStatus([Order::STATUS_PAID, Order::STATUS_PARTIALLY_PAID]) && !$this->hasStatus(Order::STATUS_REFUNDED);
     }
 }

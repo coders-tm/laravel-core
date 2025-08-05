@@ -25,8 +25,8 @@ return new class extends Migration
 
             $table->string('label');
             $table->enum('type', ['normal', 'harmonized', 'compounded'])->default('normal');
-            $table->decimal('rate', 5, 2)->default(0);
-            $table->decimal('amount', 10, 2)->default(0);
+            $table->double('rate', 5, 2)->default(0);
+            $table->double('amount', 10, 2)->default(0);
 
             $table->index(['taxable_type', 'taxable_id']);
         });
@@ -39,11 +39,15 @@ return new class extends Migration
             $table->string('discountable_type')->nullable();
             $table->unsignedBigInteger('discountable_id')->nullable();
 
-            $table->enum('type', ['percentage', 'fixed_amount'])->default('fixed_amount');
-            $table->decimal('value', 20, 2)->default(0.00);
+            $table->enum('type', ['percentage', 'fixed_amount', 'price_override'])->default('fixed_amount');
+            $table->double('value', 20, 2)->default(0.00);
             $table->string('description')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->string('coupon_code')->nullable();
 
             $table->index(['discountable_type', 'discountable_id']);
+            $table->foreign('coupon_id')->references('id')->on('coupons')->nullOnDelete();
+            $table->index(['coupon_id', 'coupon_code']);
         });
 
         $this->setAutoIncrement('discount_lines');

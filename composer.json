@@ -28,6 +28,7 @@
     "barryvdh/laravel-dompdf": "^3.1",
     "creativeorange/gravatar": "^1.0",
     "doctrine/dbal": "^3.4",
+    "flutterwavedev/flutterwave-v3": "^1.1",
     "gocardless/gocardless-pro": "^6.6",
     "illuminate/console": "^12.0",
     "illuminate/contracts": "^12.0",
@@ -46,6 +47,7 @@
     "laravel/sanctum": "^4.0",
     "league/csv": "^9.15",
     "league/iso3166": "^4.3",
+    "mercadopago/dx-php": "^3.5",
     "nesbot/carbon": "^3.0",
     "qirolab/laravel-themer": "^2.4",
     "razorpay/razorpay": "^2.9",
@@ -57,7 +59,9 @@
     "symfony/http-kernel": "^7.0",
     "symfony/polyfill-intl-icu": "^1.22.1",
     "twilio/sdk": "^7.16",
-    "vedmant/laravel-shortcodes": "^1.1"
+    "vedmant/laravel-shortcodes": "^1.1",
+    "xendit/xendit-php": "^7.0",
+    "yabacon/paystack-php": "^2.2"
   },
   "require-dev": {
     "mockery/mockery": "^1.6",
