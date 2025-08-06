@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
+use Coderstm\Models\Shop\Product;
 use Coderstm\Models\Shop\Checkout;
 use App\Http\Controllers\Controller;
+use Coderstm\Models\Shop\Product\Variant;
 use Coderstm\Repository\CheckoutRepository;
 
 class CartController extends Controller
@@ -16,7 +18,7 @@ class CartController extends Controller
             'status' => 'draft',
         ]);
 
-        $repository = CheckoutRepository::fromRequest($request, $checkout);
+        $repository = CheckoutRepository::fromCheckout($checkout);
 
         return response()->json($repository->getCartItems(), 200);
     }
@@ -53,8 +55,8 @@ class CartController extends Controller
             ]);
         } else {
             // Add new item
-            $product = \Coderstm\Models\Shop\Product::find($request->product_id);
-            $variant = \Coderstm\Models\Shop\Product\Variant::find($request->variant_id);
+            $product = Product::find($request->product_id);
+            $variant = Variant::find($request->variant_id);
             $options = $variant->getOptions();
 
             $checkout->line_items()->create([
@@ -75,7 +77,8 @@ class CartController extends Controller
         // Refresh checkout to ensure line items are up-to-date
         $checkout->refresh(['line_items']);
 
-        $repository = CheckoutRepository::fromRequest($request, $checkout);
+        // Create repository from checkout with proper customer data handling
+        $repository = CheckoutRepository::fromCheckout($checkout);
 
         // Calculate and save totals after adding item (auto-coupons handled in fromRequest)
         $repository->calculate();
@@ -106,7 +109,7 @@ class CartController extends Controller
         // Refresh checkout to ensure line items are up-to-date
         $checkout->refresh(['line_items']);
 
-        $repository = CheckoutRepository::fromRequest($request, $checkout);
+        $repository = CheckoutRepository::fromCheckout($checkout);
 
         // Calculate and save totals after updating item (auto-coupons handled in fromRequest)
         $repository->calculate();
@@ -138,7 +141,7 @@ class CartController extends Controller
         // This is necessary to ensure the repository has the latest state
         $checkout->refresh(['line_items']);
 
-        $repository = CheckoutRepository::fromRequest($request, $checkout);
+        $repository = CheckoutRepository::fromCheckout($checkout);
 
         // Calculate and save totals after removing item (auto-coupons handled in fromRequest)
         $repository->calculate();

@@ -102,7 +102,7 @@ class CheckoutRepository extends BaseRepository
     public static function fromCheckout(Checkout $checkout): self
     {
         $attributes = [
-            'customer' => $checkout->customer,
+            'customer' => $checkout->customer?->toArray() ?? [],
             'line_items' => $checkout->line_items?->map(function ($item) {
                 $itemArray = $item->toArray();
                 if (isset($itemArray['metadata']['plan_id'])) {
@@ -157,7 +157,6 @@ class CheckoutRepository extends BaseRepository
         }
 
         $checkout->fill([
-            'customer' => $customer,
             'billing_address' => $request->billing_address ?? $checkout->billing_address,
             'shipping_address' => $request->shipping_address ?? $checkout->shipping_address,
             'currency' => $checkout->currency ?? config('app.currency', 'USD'),
