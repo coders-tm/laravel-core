@@ -21,10 +21,10 @@ workbench:
   health: false
   discovers:
     web: true
-    api: false
+    api: true
     commands: false
     components: false
-    views: false
+    views: true
   build:
     - asset-publish
     - create-sqlite-db
