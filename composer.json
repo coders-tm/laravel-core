@@ -1,0 +1,127 @@
+{
+  "name": "coderstm/laravel-core",
+  "description": "Laravel Core package that provides essential core functionalities and utilities for Laravel applications.",
+  "keywords": [
+    "laravel",
+    "sanctum",
+    "auth",
+    "enquiry",
+    "multi auth guard",
+    "tasks management",
+    "log",
+    "subscription"
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/coders-tm/laravel-core/issues",
+    "source": "https://github.com/coders-tm/laravel-core"
+  },
+  "authors": [
+    {
+      "name": "Dipak Sarkar",
+      "email": "hello@dipaksarkar.in"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*",
+    "barryvdh/laravel-dompdf": "^3.1",
+    "creativeorange/gravatar": "^1.0",
+    "doctrine/dbal": "^3.4",
+    "gocardless/gocardless-pro": "^6.6",
+    "illuminate/console": "^12.0",
+    "illuminate/contracts": "^12.0",
+    "illuminate/database": "^12.0",
+    "illuminate/http": "^12.0",
+    "illuminate/log": "^12.0",
+    "illuminate/notifications": "^12.0",
+    "illuminate/pagination": "^12.0",
+    "illuminate/routing": "^12.0",
+    "illuminate/support": "^12.0",
+    "illuminate/view": "^12.0",
+    "jenssegers/agent": "^2.6",
+    "kreait/laravel-firebase": "^6.0",
+    "laravel-notification-channels/fcm": "^5.0",
+    "laravel/cashier": "^15.0",
+    "laravel/sanctum": "^4.0",
+    "league/csv": "^9.15",
+    "league/iso3166": "^4.3",
+    "nesbot/carbon": "^3.0",
+    "qirolab/laravel-themer": "^2.4",
+    "razorpay/razorpay": "^2.9",
+    "simplesoftwareio/simple-qrcode": "^4.2",
+    "spatie/laravel-sluggable": "^3.7",
+    "srmklive/paypal": "^3.0",
+    "stevebauman/location": "^7.2.0",
+    "symfony/console": "^7.0",
+    "symfony/http-kernel": "^7.0",
+    "symfony/polyfill-intl-icu": "^1.22.1",
+    "twilio/sdk": "^7.16",
+    "vedmant/laravel-shortcodes": "^1.1"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.6",
+    "nunomaduro/collision": "^8.1",
+    "orchestra/testbench": "^10.0",
+    "phpstan/phpstan": "^1.10",
+    "phpunit/phpunit": "^11.5"
+  },
+  "suggest": {
+    "ext-intl": "Allows for more locales besides the default \"en\" when formatting money values.",
+    "dompdf/dompdf": "Required when generating and downloading invoice PDF's using Dompdf (^2.0)."
+  },
+  "autoload": {
+    "psr-4": {
+      "Coderstm\\": "src/",
+      "Coderstm\\Database\\Factories\\": "database/factories/",
+      "Coderstm\\Database\\Seeders\\": "database/seeders/"
+    },
+    "files": [
+      "lib/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Coderstm\\Tests\\": "tests/",
+      "App\\": "workbench/app/",
+      "Database\\Factories\\": "workbench/database/factories/",
+      "Database\\Seeders\\": "workbench/database/seeders/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Coderstm\\Providers\\ThemeServiceProvider",
+        "Coderstm\\Providers\\CoderstmServiceProvider",
+        "Coderstm\\Providers\\CoderstmPermissionsServiceProvider",
+        "Coderstm\\Providers\\CoderstmEventServiceProvider",
+        "Coderstm\\Providers\\ShortcodeServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "post-autoload-dump": [
+      "@clear",
+      "@prepare"
+    ],
+    "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+    "prepare": "@php vendor/bin/testbench package:discover --ansi",
+    "build": "@php vendor/bin/testbench workbench:build --ansi",
+    "serve": [
+      "Composer\\Config::disableProcessTimeout",
+      "@build",
+      "@php vendor/bin/testbench serve --ansi"
+    ],
+    "lint": [
+      "@php vendor/bin/phpstan analyse --verbose --ansi"
+    ],
+    "test": [
+      "@php vendor/bin/phpunit"
+    ]
+  }
+}
