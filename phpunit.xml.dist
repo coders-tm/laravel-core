@@ -18,5 +18,6 @@
     <env name="APP_DOMAIN" value="localhost" />
     <env name="APP_ADMIN_EMAIL" value="hello@example.com" />
     <env name="MAIL_FROM_ADDRESS" value="hello@example.com" />
+    <env name="STRIPE_SECRET" value="sk_test_dev_secret_key"/>
   </php>
 </phpunit>
