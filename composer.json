@@ -66,7 +66,7 @@
   "require-dev": {
     "mockery/mockery": "^1.6",
     "nunomaduro/collision": "^8.1",
-    "orchestra/testbench": "^10.0",
+    "orchestra/testbench": "^10.6",
     "phpstan/phpstan": "^1.10",
     "phpunit/phpunit": "^11.5"
   },
@@ -87,9 +87,12 @@
   "autoload-dev": {
     "psr-4": {
       "Coderstm\\Tests\\": "tests/",
-      "App\\": "workbench/app/",
-      "Database\\Factories\\": "workbench/database/factories/",
-      "Database\\Seeders\\": "workbench/database/seeders/"
+      "Workbench\\App\\": "workbench/app/",
+      "Workbench\\Database\\Factories\\": "workbench/database/factories/",
+      "Workbench\\Database\\Seeders\\": "workbench/database/seeders/",
+      "App\\": "vendor/orchestra/testbench-core/laravel/app/",
+      "Database\\Factories\\": "vendor/orchestra/testbench-core/laravel/database/factories/",
+      "Database\\Seeders\\": "vendor/orchestra/testbench-core/laravel/database/seeders/"
     }
   },
   "extra": {
@@ -109,6 +112,12 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
+    "lint": [
+      "@php vendor/bin/phpstan analyse --verbose --ansi"
+    ],
+    "test": [
+      "@php vendor/bin/testbench package:test --ansi"
+    ],
     "post-autoload-dump": [
       "@clear",
       "@prepare"
@@ -120,12 +129,6 @@
       "Composer\\Config::disableProcessTimeout",
       "@build",
       "@php vendor/bin/testbench serve --ansi"
-    ],
-    "lint": [
-      "@php vendor/bin/phpstan analyse --verbose --ansi"
-    ],
-    "test": [
-      "@php vendor/bin/phpunit"
     ]
   }
 }

@@ -50,6 +50,8 @@ return [
     'settings_override' => [
         'config' => [
             'alias' => 'app',
+            'subscription' => 'coderstm.subscription',
+            'checkout' => 'coderstm.shop',
             'email' => [
                 'coderstm.admin_email',
                 'mail.from.address',
@@ -114,4 +116,40 @@ return [
 
     'license_key' => env('APP_LICENSE_KEY'),
     'app_id' => env('APP_ID', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Subscription
+    |--------------------------------------------------------------------------
+    |
+    | Controls subscription-specific behaviors.
+    |
+    */
+    'subscription' => [
+        // When true, activating a late payer anchors from the open invoice's intended
+        // start date (last unpaid period start) + plan duration; otherwise, uses today.
+        'anchor_from_invoice' => (bool) env('SUBSCRIPTION_ANCHOR_FROM_INVOICE', true),
+
+        // Controls when plan downgrades take effect:
+        // 'immediate' - Apply downgrade immediately upon request
+        // 'next_renewal' - Schedule downgrade for next billing cycle (default)
+        'downgrade_timing' => env('SUBSCRIPTION_DOWNGRADE_TIMING', 'next_renewal'),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Shop
+    |--------------------------------------------------------------------------
+    |
+    | This section contains configuration options related to the shop
+    | functionality, including cart management, checkout processes,
+    | and order handling.
+    |
+    */
+
+    'shop' => [
+        // Number of hours of inactivity before a cart is considered abandoned
+        'abandoned_cart_hours' => (int) env('ABANDONED_CART_HOURS', 2),
+    ],
+
 ];

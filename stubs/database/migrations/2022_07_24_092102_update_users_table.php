@@ -25,6 +25,7 @@ return new class extends Migration
             $table->boolean('is_enquiry')->nullable()->default(false)->after('is_active');
             $table->string('status')->nullable()->after('is_active')->default('Pending');
             $table->string('gender')->nullable()->after('name');
+            $table->date('dob')->nullable()->after('gender');
             $table->string('rag')->nullable()->after('is_active');
             $table->string('username')->nullable()->after('name');
             $table->string('note')->nullable()->after('phone_number');

@@ -21,7 +21,7 @@ class TaxSeeder extends Seeder
     {
         if ($country = $this->country()) {
             Tax::updateOrCreate([
-                'country' => config('app.country'),
+                'country' => config('app.country', 'United States'),
                 'label' => 'VAT',
                 'code' => $country['alpha2'],
                 'state' => '*',
@@ -31,7 +31,7 @@ class TaxSeeder extends Seeder
         }
 
         Tax::updateOrCreate([
-            'country' => 'Rest of world',
+            'country' => __('Rest of world'),
             'label' => 'VAT',
             'code' => '*',
             'state' => '*',
@@ -42,6 +42,6 @@ class TaxSeeder extends Seeder
 
     protected function country()
     {
-        return (new ISO3166)->name(config('app.country'));
+        return (new ISO3166)->name(config('app.country', 'United States'));
     }
 }
