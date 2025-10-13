@@ -557,10 +557,11 @@ class UserController extends Controller
                     'date' => $subscription->expires_at->format('d M, Y')
                 ]);
             }
-        } else if ($subscription->pastDue() || $subscription->hasIncompletePayment()) {
+        } else if ($subscription->expired() || $subscription->hasIncompletePayment()) {
             $invoice = $subscription->latestInvoice;
             $amount = $invoice?->total();
-            $subscription['message'] = trans('messages.subscription.past_due', [
+            $subscription['message'] = __('Your subscription is :status, Please make a payment of :amount to continue enjoying our services.', [
+                'status' => $subscription->status,
                 'amount' => $amount
             ]);
             $subscription['invoice'] = [

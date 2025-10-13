@@ -129,11 +129,6 @@ return [
         // When true, activating a late payer anchors from the open invoice's intended
         // start date (last unpaid period start) + plan duration; otherwise, uses today.
         'anchor_from_invoice' => (bool) env('SUBSCRIPTION_ANCHOR_FROM_INVOICE', true),
-
-        // Controls when plan downgrades take effect:
-        // 'immediate' - Apply downgrade immediately upon request
-        // 'next_renewal' - Schedule downgrade for next billing cycle (default)
-        'downgrade_timing' => env('SUBSCRIPTION_DOWNGRADE_TIMING', 'next_renewal'),
     ],
 
     /*

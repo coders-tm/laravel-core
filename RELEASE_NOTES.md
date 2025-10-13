@@ -24,7 +24,7 @@ This major release introduces significant architectural improvements to the subs
 
 **Key Highlights:**
 
--   🔄 Subscription field restructuring (`ends_at` → `canceled_at`, `expires_at`)
+-   🔄 Subscription field restructuring (`ends_at` → `expires_at`)
 -   🛍️ Complete e-commerce shop system with checkout, cart, and order management
 -   💳 Unified payment processor with multi-gateway support
 -   🎟️ Enhanced coupon system with product-level and plan-level coupons
@@ -41,25 +41,8 @@ This major release introduces significant architectural improvements to the subs
 
 #### Changed Columns:
 
--   `subscriptions.ends_at` → `subscriptions.canceled_at`
+-   `subscriptions.ends_at` → `subscriptions.expires_at`
 -   Added `subscriptions.expires_at` for subscription expiration tracking
-
-**Migration Required:**
-
-```php
-// Existing data migration
-Schema::table('subscriptions', function (Blueprint $table) {
-    // Rename ends_at to canceled_at
-    if (Schema::hasColumn('subscriptions', 'ends_at')) {
-        $table->renameColumn('ends_at', 'canceled_at');
-    }
-
-    // Add expires_at column
-    if (!Schema::hasColumn('subscriptions', 'expires_at')) {
-        $table->timestamp('expires_at')->nullable()->after('canceled_at');
-    }
-});
-```
 
 **Code Changes Required:**
 
@@ -76,9 +59,9 @@ $subscription->cancel()    // sets canceled_at
 
 **Affected Methods:**
 
--   `Subscription::cancel()` - Now sets `canceled_at` instead of `ends_at`
--   `Subscription::resume()` - Checks `canceled_at` for grace period
--   `Subscription::onGracePeriod()` - Uses `expires_at` and `canceled_at`
+-   `Subscription::cancel()` - Now sets `expires_at` instead of `ends_at`
+-   `Subscription::resume()` - Checks `expires_at` for grace period
+-   `Subscription::onGracePeriod()` - Uses `expires_at`
 
 ---
 

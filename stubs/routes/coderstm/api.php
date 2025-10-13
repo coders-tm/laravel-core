@@ -182,9 +182,8 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             'controller' => Subscription\AdminSubscriptionController::class,
         ], function () {
             Route::get('', 'index')->name('index');
-            Route::post('subscribe', 'subscribe')->name('subscribe');
+            Route::post('update', 'update')->name('update');
             Route::post('resume', 'resume')->name('resume');
-            Route::post('pay', 'pay')->name('pay');
             Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
             Route::post('cancel', 'cancel')->name('cancel');
         });
