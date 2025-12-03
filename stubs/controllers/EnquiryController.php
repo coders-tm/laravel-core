@@ -9,13 +9,11 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EnquiryController extends Controller
 {
-    /**
-     * Create the controller instance.
-     *
-     * @return void
-     */
+    use \Coderstm\Traits\HasResourceActions;
+
     public function __construct()
     {
+        $this->useModel(Enquiry::class);
         $this->authorizeResource(Enquiry::class);
     }
 
@@ -24,9 +22,9 @@ class EnquiryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Enquiry $enquiry)
+    public function index(Request $request)
     {
-        $enquiry = $enquiry->query();
+        $enquiry = Enquiry::query();
 
         if ($request->filled('filter')) {
             $enquiry->where('subject', 'like', "%{$request->filter}%")
@@ -66,7 +64,7 @@ class EnquiryController extends Controller
             'user' => 'required_if:admin,true|array',
         ];
 
-        $this->validate($request, $rules);
+        $request->validate($rules);
 
         $request->merge([
             'source' => !$request->boolean('admin')
@@ -88,7 +86,7 @@ class EnquiryController extends Controller
             });
 
             return response()->json([
-                'message' => trans('messages.enquiry.store'),
+                'message' => __('Enquiry has been created successfully!'),
             ], 200);
         }
 
@@ -108,7 +106,7 @@ class EnquiryController extends Controller
 
         return response()->json([
             'data' => $enquiry->load(['user', 'replies.user', 'media', 'admin']),
-            'message' => trans('messages.enquiry.store'),
+            'message' => __('Enquiry has been created successfully!'),
         ], 200);
     }
 
@@ -118,80 +116,11 @@ class EnquiryController extends Controller
      * @param  \App\Models\Enquiry  $enquiry
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Enquiry $enquiry)
+    public function show(Request $request)
     {
+        $enquiry = Enquiry::findOrFail($request->id);
         $enquiry = $enquiry->markedAsSeen();
         return response()->json($enquiry->load(['user', 'replies.user', 'media', 'order', 'admin']), 200);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Request $request, Enquiry $enquiry)
-    {
-        $enquiry->delete();
-        return response()->json([
-            'message' => trans_choice('messages.enquiry.destroy', 1),
-        ], 200);
-    }
-
-    /**
-     * Remove the selected resource from storage.
-     *
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Http\Response
-     */
-    public function destroySelected(Request $request, Enquiry $enquiry)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-        $enquiry->whereIn('id', $request->items)->each(function ($item) {
-            $item->delete();
-        });
-        return response()->json([
-            'message' => trans_choice('messages.enquiry.destroy', 2),
-        ], 200);
-    }
-
-    /**
-     * Restore the specified resource from storage.
-     *
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Http\Response
-     */
-    public function restore($id)
-    {
-        Enquiry::onlyTrashed()
-            ->where('id', $id)->each(function ($item) {
-                $item->restore();
-            });
-        return response()->json([
-            'message' => trans_choice('messages.enquiry.restored', 1),
-        ], 200);
-    }
-
-    /**
-     * Remove the selected resource from storage.
-     *
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Http\Response
-     */
-    public function restoreSelected(Request $request, Enquiry $enquiry)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-        $enquiry->onlyTrashed()
-            ->whereIn('id', $request->items)->each(function ($item) {
-                $item->restore();
-            });
-        return response()->json([
-            'message' => trans_choice('messages.enquiry.restored', 2),
-        ], 200);
     }
 
     /**
@@ -220,7 +149,7 @@ class EnquiryController extends Controller
 
         return response()->json([
             'data' => $reply->fresh(['media', 'user']),
-            'message' => trans('messages.enquiry.reply'),
+            'message' => __('Reply has been created successfully!'),
         ], 200);
     }
 
@@ -239,7 +168,7 @@ class EnquiryController extends Controller
         $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
 
         return response()->json([
-            'message' => trans('messages.enquiry.status', ['type' => trans('messages.attributes.' . $type)]),
+            'message' => __('Enquiry marked as :type successfully!', ['type' => __($type)]),
         ], 200);
     }
 
@@ -258,7 +187,7 @@ class EnquiryController extends Controller
         $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
 
         return response()->json([
-            'message' => trans('messages.enquiry.status', ['type' => trans('messages.attributes.' . $type)]),
+            'message' => __('Enquiry marked as :type successfully!', ['type' => __($type)]),
         ], 200);
     }
 }

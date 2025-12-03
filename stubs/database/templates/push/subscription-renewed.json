@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Subscription renewed",
+  "subject": "Subscription Renewal Required - Your Subscription Has Expired",
+  "type": "push:subscription-renewed"
+}

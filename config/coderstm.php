@@ -16,7 +16,6 @@ return [
     'app_domain' => env('APP_DOMAIN', null),
     'api_prefix' => env('APP_API_PREFIX', 'api'),
     'admin_prefix' => env('APP_ADMIN_PREFIX', 'admin'),
-    'user_prefix' => env('APP_USER_PREFIX', 'user'),
     'tunnel_domain' => env('TUNNEL_WEB_DOMAIN', null),
     'reset_password_url' => env('RESET_PASSWORD_PAGE', '/auth/reset-password'),
     'admin_email' => env('APP_ADMIN_EMAIL', null),
@@ -32,8 +31,8 @@ return [
     |
     */
 
-    'app_url' => env('APP_MEMBER_URL', 'http://localhost/user'),
-    'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admins'),
+    'app_url' => env('APP_URL', 'http://localhost'),
+    'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admin'),
 
 
     /*
@@ -129,6 +128,9 @@ return [
         // When true, activating a late payer anchors from the open invoice's intended
         // start date (last unpaid period start) + plan duration; otherwise, uses today.
         'anchor_from_invoice' => (bool) env('SUBSCRIPTION_ANCHOR_FROM_INVOICE', true),
+
+        // Grace period in days for overdue payments before subscription expires
+        'grace_period_days' => (int) env('SUBSCRIPTION_GRACE_PERIOD_DAYS', 7),
     ],
 
     /*
@@ -145,6 +147,41 @@ return [
     'shop' => [
         // Number of hours of inactivity before a cart is considered abandoned
         'abandoned_cart_hours' => (int) env('ABANDONED_CART_HOURS', 2),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Wallet Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This section contains configuration options for the wallet system,
+    | including automatic charging for subscription renewals.
+    |
+    */
+
+    'wallet' => [
+        // Enable wallet functionality
+        'enabled' => (bool) env('WALLET_ENABLED', true),
+
+        // Automatically charge from wallet during subscription renewal if balance is available
+        'auto_charge_on_renewal' => (bool) env('WALLET_AUTO_CHARGE_ON_RENEWAL', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Reports
+    |--------------------------------------------------------------------------
+    |
+    | This section contains configuration options for the reports system,
+    | including export thresholds and queue management.
+    |
+    */
+
+    'reports' => [
+        // Maximum number of records to export immediately
+        // Exports exceeding this limit will be queued for background processing
+        // This prevents browser timeouts and memory issues with large datasets
+        'export_threshold' => (int) env('REPORT_EXPORT_THRESHOLD', 1000),
     ],
 
 ];

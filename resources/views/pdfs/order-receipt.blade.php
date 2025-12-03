@@ -105,6 +105,59 @@
                 </tr>
             </tbody>
         </table>
+        @if (!empty($payments))
+            <div style="margin-top: 30px; padding: 15px; background-color: #f9f9f9; border: 1px solid #e0e0e0;">
+                <div
+                    style="font-size: 14px; font-weight: bold; margin-bottom: 15px; padding-bottom: 8px; border-bottom: 2px solid #333;">
+                    PAYMENT INFORMATION
+                </div>
+                @foreach ($payments as $payment)
+                    <div
+                        style="margin-bottom: {{ $loop->last ? '0' : '15px' }}; padding-bottom: {{ $loop->last ? '0' : '15px' }}; border-bottom: {{ $loop->last ? 'none' : '1px dashed #ccc' }};">
+                        <table cellspacing="0" style="width: 100%;">
+                            <tr>
+                                <td style="width: 30%; padding: 3px 0; font-size: 11px; color: #666;">Payment Method:
+                                </td>
+                                <td style="padding: 3px 0; font-size: 12px; font-weight: bold;">
+                                    {{ $payment['payment_method']['name'] ?? 'N/A' }}
+                                </td>
+                            </tr>
+                            @if ($payment['transaction_id'])
+                                <tr>
+                                    <td style="padding: 3px 0; font-size: 11px; color: #666;">Transaction ID:</td>
+                                    <td style="padding: 3px 0; font-size: 11px; font-family: monospace; color: #333;">
+                                        {{ $payment['transaction_id'] }}
+                                    </td>
+                                </tr>
+                            @endif
+                            <tr>
+                                <td style="padding: 3px 0; font-size: 11px; color: #666;">Amount Paid:</td>
+                                <td style="padding: 3px 0; font-size: 13px; font-weight: bold; color: #2e7d32;">
+                                    {{ $payment['amount'] }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 3px 0; font-size: 11px; color: #666;">Payment Date:</td>
+                                <td style="padding: 3px 0; font-size: 11px; color: #333;">
+                                    {{ $payment['date'] }}
+                                </td>
+                            </tr>
+                            @if ($payment['status'])
+                                <tr>
+                                    <td style="padding: 3px 0; font-size: 11px; color: #666;">Status:</td>
+                                    <td style="padding: 3px 0;">
+                                        <span
+                                            style="display: inline-block; padding: 2px 8px; font-size: 10px; font-weight: bold; text-transform: uppercase; background-color: #4caf50; color: white; border-radius: 3px;">
+                                            {{ $payment['status'] }}
+                                        </span>
+                                    </td>
+                                </tr>
+                            @endif
+                        </table>
+                    </div>
+                @endforeach
+            </div>
+        @endif
         <div style=" margin-bottom: 40px"></div>
         <div class="text-center" style="margin: 20px 0">Thank you for shopping with us!</div>
         <div class="text-center text-bold">{{ config('app.name') }}</div>

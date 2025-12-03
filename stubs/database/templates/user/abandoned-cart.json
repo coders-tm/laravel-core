@@ -1,0 +1,5 @@
+{
+  "label": "Abandoned Cart Recovery",
+  "subject": "{{ $cart->first_name }}, you left items in your cart!",
+  "type": "user:abandoned-cart"
+}

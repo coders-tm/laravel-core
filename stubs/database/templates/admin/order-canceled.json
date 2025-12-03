@@ -1,0 +1,5 @@
+{
+  "label": "Order Canceled (Admin)",
+  "subject": "Order Canceled - Order {{ $order->number }}",
+  "type": "admin:order-canceled"
+}

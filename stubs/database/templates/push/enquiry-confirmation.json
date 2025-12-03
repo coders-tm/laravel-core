@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Enquiry Confirmation",
+  "subject": "Enquiry #{{ENQUIRY_ID}} - Enquiry Confirmation",
+  "type": "push:enquiry-confirmation"
+}

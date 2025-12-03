@@ -100,6 +100,14 @@ return [
         'note' => 'Note has been added successfully!',
     ],
 
+    'module' => [
+        'store' => ':module has been created successfully!',
+        'update' => ':module has been updated successfully!',
+        'destroy' => '{1} :module has been deleted successfully!|[2,*] :module has been deleted successfully!',
+        'force_destroy' => '{1} :module has been permanently deleted successfully!|[2,*] :module has been permanently deleted successfully!',
+        'restore' => '{1} :module has been restored successfully!|[2,*] :module has been restored successfully!',
+    ],
+
     'attributes' => [
         'active' => 'active',
         'deactive' => 'deactive',

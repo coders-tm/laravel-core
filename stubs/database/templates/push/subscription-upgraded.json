@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Subscription upgraded",
+  "subject": "Subscription Changed - Your Subscription Upgraded",
+  "type": "push:subscription-upgraded"
+}

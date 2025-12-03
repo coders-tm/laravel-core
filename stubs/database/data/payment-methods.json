@@ -558,5 +558,14 @@
     "logo": "fas fa-university",
     "description": "Pay via bank transfer",
     "payment_instructions": "Please transfer the amount to the following bank account:\n\n**Bank Name:** Your Bank Name\n**Account Number:** 1234567890\n**Account Name:** Your Account Name\n\nOnce the transfer is complete, please send us a confirmation email with the transaction details."
+  },
+  {
+    "name": "Wallet Balance",
+    "provider": "wallet",
+    "active": true,
+    "logo": "fas fa-wallet",
+    "description": "Pay using your wallet balance. Fast, secure, and instant payment from your account balance.",
+    "credentials": [],
+    "methods": []
   }
 ]

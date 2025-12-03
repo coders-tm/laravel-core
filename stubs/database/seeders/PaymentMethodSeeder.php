@@ -19,29 +19,15 @@ class PaymentMethodSeeder extends Seeder
     public function run()
     {
         $paymentMethods = replace_short_code(file_get_contents(database_path('data/payment-methods.json')), [
-            '{{API_URL}}' => base_url('api'),
+            'api_url' => base_url('api'),
         ]);
         $paymentMethods = json_decode($paymentMethods, true);
 
         foreach ($paymentMethods as $paymentMethod) {
             $credentials = isset($paymentMethod['credentials']) ? $paymentMethod['credentials'] : [];
 
-            if ($paymentMethod['provider'] === PaymentMethod::STRIPE) {
-                $credentials = collect($credentials)->map(function ($item) {
-                    switch ($item['key']) {
-                        case 'API_KEY':
-                            $item['value'] = config('cashier.key');
-                            break;
-                        case 'API_SECRET':
-                            $item['value'] = config('cashier.secret');
-                            break;
-                        case 'WEBHOOK_SECRET':
-                            $item['value'] = config('cashier.webhook.secret');
-                            break;
-                    }
-                    return $item;
-                })->toArray();
-            }
+            // Map credentials from environment variables based on provider
+            $credentials = $this->mapCredentialsFromEnv($paymentMethod['provider'], $credentials);
 
             PaymentMethod::firstOrCreate([
                 'provider' => $paymentMethod['provider']
@@ -49,5 +35,92 @@ class PaymentMethodSeeder extends Seeder
                 'credentials' => $credentials,
             ]));
         }
+    }
+
+    /**
+     * Map credentials from environment variables for the given provider.
+     *
+     * @param string $provider
+     * @param array $credentials
+     * @return array
+     */
+    protected function mapCredentialsFromEnv(string $provider, array $credentials): array
+    {
+        $envMap = $this->getEnvMapForProvider($provider);
+
+        if (empty($envMap)) {
+            return $credentials;
+        }
+
+        return collect($credentials)->map(function ($item) use ($envMap) {
+            $key = $item['key'];
+
+            if (isset($envMap[$key])) {
+                $envValue = $envMap[$key];
+
+                // Handle both direct env keys and config paths
+                if (is_callable($envValue)) {
+                    $value = $envValue();
+                } elseif (str_starts_with($envValue, 'config:')) {
+                    $value = config(substr($envValue, 7));
+                } else {
+                    $value = env($envValue);
+                }
+
+                // Only override if env value exists
+                if ($value !== null && $value !== '') {
+                    $item['value'] = $value;
+                }
+            }
+
+            return $item;
+        })->toArray();
+    }
+
+    /**
+     * Get environment variable mapping for the given provider.
+     *
+     * @param string $provider
+     * @return array
+     */
+    protected function getEnvMapForProvider(string $provider): array
+    {
+        return match ($provider) {
+            PaymentMethod::STRIPE => [
+                'API_KEY' => 'config:cashier.key',
+                'API_SECRET' => 'config:cashier.secret',
+                'WEBHOOK_SECRET' => 'config:cashier.webhook.secret',
+            ],
+            PaymentMethod::PAYSTACK => [
+                'PUBLIC_KEY' => 'PAYSTACK_PUBLIC_KEY',
+                'SECRET_KEY' => 'PAYSTACK_SECRET_KEY',
+            ],
+            PaymentMethod::XENDIT => [
+                'PUBLIC_KEY' => 'XENDIT_PUBLIC_KEY',
+                'SECRET_KEY' => 'XENDIT_SECRET_KEY',
+            ],
+            PaymentMethod::FLUTTERWAVE => [
+                'CLIENT_ID' => 'FLUTTERWAVE_CLIENT_ID',
+                'CLIENT_SECRET' => 'FLUTTERWAVE_CLIENT_SECRET',
+                'ENCRYPTION_KEY' => 'FLUTTERWAVE_ENCRYPTION_KEY',
+            ],
+            PaymentMethod::GOCARDLESS => [
+                'ACCESS_TOKEN' => 'GOCARDLESS_ACCESS_TOKEN',
+                'WEBHOOK_SECRET' => 'GOCARDLESS_WEBHOOK_SECRET',
+            ],
+            PaymentMethod::KLARNA => [
+                'API_KEY' => 'KLARNA_API_KEY',
+                'API_SECRET' => 'KLARNA_API_SECRET',
+            ],
+            PaymentMethod::PAYPAL => [
+                'CLIENT_ID' => 'PAYPAL_CLIENT_ID',
+                'CLIENT_SECRET' => 'PAYPAL_CLIENT_SECRET',
+            ],
+            PaymentMethod::RAZORPAY => [
+                'API_KEY' => 'RAZORPAY_API_KEY',
+                'API_SECRET' => 'RAZORPAY_API_SECRET',
+            ],
+            default => [],
+        };
     }
 }

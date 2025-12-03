@@ -7,18 +7,20 @@ use Coderstm\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\CentralUser;
 use Illuminate\Support\Facades\Password;
 use Coderstm\Notifications\NewAdminNotification;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class AdminController extends Controller
 {
+    use \Coderstm\Traits\HasResourceActions;
+
     /**
      * Create the controller instance.
      */
     public function __construct()
     {
+        $this->useModel(Coderstm::$adminModel);
         $this->authorizeResource(Coderstm::$adminModel, 'admin', [
             'except' => ['show', 'update', 'destroy', 'restore']
         ]);
@@ -83,7 +85,7 @@ class AdminController extends Controller
             'password' => 'required|min:6|confirmed',
         ];
 
-        $this->validate($request, $rules);
+        $request->validate($rules);
 
         $password = $request->filled('password') ? $request->password : fake()->regexify('/^IN@\d{3}[A-Z]{4}$/');
 
@@ -101,16 +103,16 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $admin->load('groups', 'permissions'),
-            'message' => trans('messages.staff.store'),
+            'message' => __('Staff account has been created successfully!'),
         ], 200);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($admin)
     {
-        $admin = Coderstm::$adminModel::findOrFail($id);
+        $admin = Coderstm::$adminModel::findOrFail($admin);
 
         $this->authorize('view', [$admin]);
 
@@ -125,9 +127,9 @@ class AdminController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $admin)
     {
-        $admin = Coderstm::$adminModel::findOrFail($id);
+        $admin = Coderstm::$adminModel::findOrFail($admin);
 
         $this->authorize('update', [$admin]);
 
@@ -140,7 +142,7 @@ class AdminController extends Controller
         ];
 
         // Validate those rules
-        $this->validate($request, $rules);
+        $request->validate($rules);
 
         if ($request->filled('password')) {
             $request->merge([
@@ -160,76 +162,7 @@ class AdminController extends Controller
 
         return response()->json([
             'data' => $this->toArray($admin->load('groups', 'permissions')),
-            'message' => trans('messages.staff.updated'),
-        ], 200);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        $admin = Coderstm::$adminModel::findOrFail($id);
-
-        $this->authorize('delete', [$admin]);
-
-        $admin->delete();
-
-        return response()->json([
-            'message' => trans_choice('messages.staff.destroy', 1),
-        ], 200);
-    }
-
-    /**
-     * Remove the selected resource from storage.
-     */
-    public function destroySelected(Request $request)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-
-        Coderstm::$adminModel::whereIn('id', $request->items)->each(function ($item) {
-            $item->delete();
-        });
-
-        return response()->json([
-            'message' => trans_choice('messages.staff.destroy', 2),
-        ], 200);
-    }
-
-    /**
-     * Restore the specified resource from storage.
-     */
-    public function restore($id)
-    {
-        $admin = Coderstm::$adminModel::onlyTrashed()->findOrFail($id);
-
-        $this->authorize('restore', [$admin]);
-
-        $admin->restore();
-
-        return response()->json([
-            'message' => trans_choice('messages.staff.restored', 1),
-        ], 200);
-    }
-
-    /**
-     * Remove the selected resource from storage.
-     */
-    public function restoreSelected(Request $request)
-    {
-        $this->validate($request, [
-            'items' => 'required',
-        ]);
-
-        Coderstm::$adminModel::onlyTrashed()
-            ->whereIn('id', $request->items)->each(function ($item) {
-                $item->restore();
-            });
-
-        return response()->json([
-            'message' => trans_choice('messages.staff.restored', 2),
+            'message' => __('Staff account has been updated successfully!'),
         ], 200);
     }
 
@@ -259,7 +192,7 @@ class AdminController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => trans('messages.staff.password'),
+            'message' => __('Password reset link sent successfully!'),
         ], 200);
     }
 
@@ -274,7 +207,7 @@ class AdminController extends Controller
 
         if ($admin->id == user()->id) {
             return response()->json([
-                'message' => trans('messages.staff.admin_error'),
+                'message' => __('Staff can not update permissions of his/her self account.'),
             ], 403);
         }
 
@@ -285,7 +218,7 @@ class AdminController extends Controller
         $type = $admin->is_supper_admin ? 'marked' : 'unmarked';
 
         return response()->json([
-            'message' => trans('messages.staff.admin_success', ['type' => trans('messages.attributes.' . $type)]),
+            'message' => __('Staff account :type as admin successfully!', ['type' => __($type)]),
         ], 200);
     }
 
@@ -300,7 +233,7 @@ class AdminController extends Controller
 
         if ($admin->id == user()->id) {
             return response()->json([
-                'message' => trans('messages.staff.reply'),
+                'message' => __('Reply has been created successfully!'),
             ], 403);
         }
 
@@ -311,7 +244,7 @@ class AdminController extends Controller
         $type = !$admin->is_active ? 'active' : 'deactive';
 
         return response()->json([
-            'message' => trans('messages.staff.status', ['type' => trans('messages.attributes.' . $type)]),
+            'message' => __('Staff account marked as :type successfully!', ['type' => __($type)]),
         ], 200);
     }
 

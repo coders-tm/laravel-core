@@ -1,0 +1,5 @@
+{
+  "label": "Enquiry Confirmation",
+  "subject": "[{{ $app->name }}] Enquiry #{{ $enquiry->id }} - Enquiry Confirmation",
+  "type": "user:enquiry-confirmation"
+}

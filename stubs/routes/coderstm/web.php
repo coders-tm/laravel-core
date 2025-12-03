@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use Coderstm\Http\Controllers\Payment;
+use Coderstm\Http\Controllers as Coderstm;
 
 // Payments
 Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
     Route::get('gocardless/success', [Payment\GoCardlessController::class, 'success'])->name('gocardless.success');
-    Route::get('stripe/success', [Payment\StripeController::class, 'success'])->name('stripe.success');
-    Route::get('paypal/success', [Payment\PaypalController::class, 'success'])->name('paypal.success');
-    Route::get('razorpay/success', [Payment\RazorpayController::class, 'success'])->name('razorpay.success');
+    Route::get('{provider}/success', [Coderstm\PaymentController::class, 'handleSuccess'])->name('success');
+    Route::get('{provider}/cancel', [Coderstm\PaymentController::class, 'handleCancel'])->name('cancel');
 });
 
 // Admin Frontend

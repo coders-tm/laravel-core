@@ -1,0 +1,5 @@
+{
+  "label": "Order Delivered",
+  "subject": "Your Order Has Been Delivered - Order {{ $order->number }}",
+  "type": "user:order-delivered"
+}

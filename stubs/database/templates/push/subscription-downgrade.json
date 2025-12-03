@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Subscription downgrade",
+  "subject": "Your Subscription Downgraded",
+  "type": "push:subscription-downgrade"
+}
