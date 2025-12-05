@@ -12,5 +12,3 @@ example
 *.backup
 *.backup.*
 /encoder
-/gympify
-/logs

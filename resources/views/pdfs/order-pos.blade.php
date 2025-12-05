@@ -121,51 +121,6 @@
                 </tr>
             </tbody>
         </table>
-        @if (!empty($payments))
-            <table style="margin: 15px 0 10px 0" cellspacing="0">
-                <tr>
-                    <td class="text-center" style="font-size: 15px; padding: 8px 0;">
-                        -------------------- PAYMENT INFO --------------------
-                    </td>
-                </tr>
-            </table>
-            <table style="margin: 0" cellspacing="0" class="table">
-                @foreach ($payments as $index => $payment)
-                    <tr>
-                        <td colspan="2" class="text-bold" style="padding: 5px 0 2px 0; font-size: 12px;">
-                            {{ $payment['payment_method']['name'] ?? 'N/A' }}
-                        </td>
-                    </tr>
-                    @if ($payment['transaction_id'])
-                        <tr>
-                            <td style="padding: 0 0 2px 0; font-size: 11px; width: 35%;">Transaction ID:</td>
-                            <td style="padding: 0 0 2px 0; font-size: 11px;">{{ $payment['transaction_id'] }}</td>
-                        </tr>
-                    @endif
-                    <tr>
-                        <td style="padding: 0 0 2px 0; font-size: 11px;">Amount:</td>
-                        <td class="text-bold" style="padding: 0 0 2px 0; font-size: 11px;">{{ $payment['amount'] }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0 0 5px 0; font-size: 11px;">Date:</td>
-                        <td style="padding: 0 0 5px 0; font-size: 11px;">{{ $payment['date'] }}</td>
-                    </tr>
-                    @if (!$loop->last)
-                        <tr>
-                            <td colspan="2" style="border-bottom: 1px dashed #ccc; padding: 3px 0;"></td>
-                        </tr>
-                    @endif
-                @endforeach
-            </table>
-            <table style="margin: 5px 0 0 0" cellspacing="0">
-                <tr>
-                    <td class="text-center" style="font-size: 15px; padding: 5px 0;">
-                        ------------------------------------------------------
-                    </td>
-                </tr>
-            </table>
-        @endif
         <div class="text-center" style="margin: 20px 0">Thank you for shopping with us!</div>
     </main>
 </body>

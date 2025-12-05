@@ -7,30 +7,20 @@ use League\Csv\Reader;
 use Coderstm\Models\File;
 use Coderstm\Models\Import;
 use Coderstm\Enum\AppStatus;
+use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Coderstm\Jobs\ProcessCsvImport;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Coderstm\Models\User;
 
 class UserController extends Controller
 {
-    use \Coderstm\Traits\Helpers;
-    use \Coderstm\Traits\HasResourceActions;
-
-    /**
-     * Create the controller instance.
-     */
-    public function __construct()
-    {
-        $this->useModel(Coderstm::$userModel);
-        $this->authorizeResource(Coderstm::$userModel, 'user', [
-            'except' => ['show', 'update', 'destroy', 'restore']
-        ]);
-    }
+    use Helpers;
 
     /**
      * Display a listing of the resource.
@@ -43,7 +33,7 @@ class UserController extends Controller
         $isCancelled = $request->filled('type') && $request->type == 'cancelled';
 
         if ($request->filled('month') || $request->filled('year')) {
-            $column = $isCancelled ? 'expires_at' : 'created_at';
+            $column = $isCancelled ? 'ends_at' : 'created_at';
             $user->whereDateColumn([
                 'month' => $request->month,
                 'year' => $request->year,
@@ -195,7 +185,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user,
-            'message' => __('User account has been created successfully!'),
+            'message' => trans('messages.users.store'),
         ], 200);
     }
 
@@ -271,7 +261,99 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user,
-            'message' => __('User account has been updated successfully!'),
+            'message' => trans('messages.users.updated'),
+        ], 200);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy($id)
+    {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('delete', [$user]);
+
+        $user->delete();
+
+        return response()->json([
+            'message' => trans_choice('messages.users.destroy', 1),
+        ], 200);
+    }
+
+    /**
+     * Remove the selected resource from storage.
+     */
+    public function destroySelected(Request $request)
+    {
+        $this->authorize('delete', [Coderstm::$userModel]);
+
+        $this->validate($request, [
+            'items' => 'required',
+        ]);
+
+        Coderstm::$userModel::whereIn('id', $request->items)->each(function ($item) {
+            $item->delete();
+        });
+
+        return response()->json([
+            'message' => trans_choice('messages.users.destroy', 2),
+        ], 200);
+    }
+
+    /**
+     * Restore the specified resource from storage.
+     */
+    public function restore($id)
+    {
+        $user = Coderstm::$userModel::onlyTrashed()->findOrFail($id);
+
+        $this->authorize('restore', [$user]);
+
+        $user->restore();
+
+        return response()->json([
+            'message' => trans_choice('messages.users.restored', 1),
+        ], 200);
+    }
+
+    /**
+     * Remove the selected resource from storage.
+     */
+    public function restoreSelected(Request $request)
+    {
+        $this->authorize('restore', [Coderstm::$userModel]);
+
+        $this->validate($request, [
+            'items' => 'required',
+        ]);
+
+        Coderstm::$userModel::onlyTrashed()
+            ->whereIn('id', $request->items)->each(function ($item) {
+                $item->restore();
+            });
+
+        return response()->json([
+            'message' => trans_choice('messages.users.restored', 2),
+        ], 200);
+    }
+
+    /**
+     * Send reset password request to specified resource from storage.
+     */
+    public function resetPasswordRequest(Request $request, $id)
+    {
+        $user = Coderstm::$userModel::findOrFail($id);
+
+        $this->authorize('update', [$user]);
+
+        $status = Password::sendResetLink([
+            'email' => $user->email,
+        ]);
+
+        return response()->json([
+            'status' => $status,
+            'message' => trans('messages.users.password'),
         ], 200);
     }
 
@@ -291,7 +373,7 @@ class UserController extends Controller
         $type = !$user->is_active ? 'archived' : 'unarchive';
 
         return response()->json([
-            'message' => __('User account marked as :type successfully!', ['type' => __($type)]),
+            'message' => trans('messages.users.status', ['type' => trans('messages.attributes.' . $type)]),
         ], 200);
     }
 
@@ -317,12 +399,12 @@ class UserController extends Controller
 
             return response()->json([
                 'data' => $note->load('admin'),
-                'message' => __('Note has been added successfully!'),
+                'message' => trans('messages.users.note'),
             ], 200);
         } else {
             return response()->json([
                 'data' => null,
-                'message' => __('Note has been added successfully!'),
+                'message' => trans('messages.users.note'),
             ], 200);
         }
     }
@@ -342,35 +424,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $user->fresh(),
-            'message' => __('Due payment has been received.')
-        ], 200);
-    }
-
-    /**
-     * Send a password reset request to the specified user.
-     */
-    public function resetPasswordRequest(Request $request, $id)
-    {
-        $user = Coderstm::$userModel::findOrFail($id);
-
-        $this->authorize('update', [$user]);
-
-        // Create password reset token
-        $token = \Illuminate\Support\Facades\Password::createToken($user);
-
-        // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
-        $baseUrl = config('app.frontend_url') ?: config('app.url');
-        $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
-
-        // Send notification using common template system
-        $user->notify(new \Coderstm\Notifications\UserResetPasswordNotification($user, [
-            'token' => $token,
-            'url' => $resetUrl,
-            'expires' => config('auth.passwords.users.expire', 60),
-        ]));
-
-        return response()->json([
-            'message' => __('Password reset email has been sent.')
+            'message' => trans('messages.subscription.due_payment')
         ], 200);
     }
 
@@ -428,7 +482,7 @@ class UserController extends Controller
         $unwantedFields = array_diff($csvHeaders, array_keys($expectedHeaders));
         if (!empty($unwantedFields)) {
             throw ValidationException::withMessages([
-                'unwanted' => [__('Unwanted CSV headers: :headers', ['headers' => implode(', ', $unwantedFields)])],
+                'unwanted' => ['Unwanted CSV headers: ' . implode(', ', $unwantedFields)],
             ]);
         }
 
@@ -437,7 +491,7 @@ class UserController extends Controller
         $missingHeaders = array_diff($requiredHeaders, $csvHeaders);
         if (!empty($missingHeaders)) {
             throw ValidationException::withMessages([
-                'required' => [__('Missing a required header: :headers', ['headers' => implode(', ', $missingHeaders)])],
+                'required' => ['Missing a required header: ' . implode(', ', $missingHeaders)],
             ]);
         }
 
@@ -462,7 +516,8 @@ class UserController extends Controller
 
         // Return response indicating the import process has started
         return response()->json([
-            'message' => __('This could take some time to complete. You can close this dialog box while we upload your file. We will email you once the import finishes.')
+            'message' =>
+            'This could take some time to complete. You can close this dialog box while we upload your file. We will email you once the import finishes.'
         ], 200);
     }
 
@@ -476,11 +531,11 @@ class UserController extends Controller
 
         if ($user->onGenericTrial()) {
             $trial_end = $user->trial_ends_at->format('M d, Y');
-            $user['subscription_message'] = __("User is on trial until :date, <strong>but hasn't subscribed to any plan yet</strong>. User needs to subscribe to continue using the application even after the trial ends.", ['date' => $trial_end]);
+            $user['subscription_message'] = "User is on trial until $trial_end, <strong>but hasn't subscribed to any plan yet</strong>. User needs to subscribe to continue using the application even after the trial ends.";
             $user['upcomingInvoice'] = false;
             return $user;
         } else if ($user->is_free_forever || !$subscription) {
-            $user['subscription_message'] = __('To access exclusive features, please subscribe to a plan. You are not currently subscribed to any plan.');
+            $user['subscription_message'] = trans('messages.subscription.none');
             $user['upcomingInvoice'] = false;
             return $user;
         }
@@ -492,13 +547,13 @@ class UserController extends Controller
             'planCanceled',
         ]);
 
-        if ($subscription->canceled() && $subscription->canceledOnGracePeriod()) {
+        if ($subscription->canceled() && $subscription->onGracePeriod()) {
             if ($subscription->planCanceled) {
-                $subscription['message'] = __('Subscribed plan has been deactivated. Your subscription will end on :date', [
+                $subscription['message'] = trans('messages.subscription.plan_canceled', [
                     'date' => $subscription->expires_at->format('d M, Y')
                 ]);
             } else {
-                $subscription['message'] = __('You have cancelled your subscription. Your subscription will end on :date', [
+                $subscription['message'] = trans('messages.subscription.canceled', [
                     'date' => $subscription->expires_at->format('d M, Y')
                 ]);
             }
@@ -522,15 +577,15 @@ class UserController extends Controller
 
             if ($subscription->onTrial()) {
                 $trial_end = $subscription->trial_ends_at->format('M d, Y');
-                $subscription['message'] = __("User is also on trial, until :date. Once it ends, user will be charged for the plan.", ['date' => $trial_end]);
+                $subscription['message'] = "User is also on trial, until $trial_end. Once it ends, user will be charged for the plan.";
             } else if ($subscription->hasDowngrade()) {
-                $subscription['message'] = __('New plan :plan with :amount will become effective on :date.', [
+                $subscription['message'] = trans('messages.subscription.downgrade', [
                     'plan' => $subscription->nextPlan?->label,
                     'amount' => $upcomingInvoice->total(),
                     'date' => $subscription['upcomingInvoice']['date']
                 ]);
             } else {
-                $subscription['message'] = __('Next invoice :amount on :date', [
+                $subscription['message'] = trans('messages.subscription.active', [
                     'amount' => $subscription['upcomingInvoice']['amount'],
                     'date' => $subscription['upcomingInvoice']['date']
                 ]);

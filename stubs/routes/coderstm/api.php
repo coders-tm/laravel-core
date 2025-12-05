@@ -9,8 +9,6 @@ use Coderstm\Http\Controllers\Blog;
 use Coderstm\Http\Controllers\Page;
 use Coderstm\Http\Controllers\Webhook;
 use Coderstm\Http\Controllers\Payment;
-use Coderstm\Http\Controllers\User\WalletController;
-use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
 
 // Auth Routes
 Route::group([
@@ -164,86 +162,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 });
 
-// User Routes
-Route::middleware(['auth:sanctum', 'guard:users'])->group(function () {
-    // Wallet
-    Route::group([
-        'as' => 'user.wallet.',
-        'prefix' => 'user/wallet',
-        'controller' => WalletController::class,
-    ], function () {
-        Route::get('balance', 'balance')->name('balance');
-        Route::get('transactions', 'transactions')->name('transactions');
-    });
-});
-
 // Admin Routes
 Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
-    // Reports & Analytics
-    Route::group([
-        'as' => 'reports.',
-        'prefix' => 'reports',
-    ], function () {
-        // Dashboard Overview
-        Route::get('dashboard', [Coderstm\Admin\ReportsController::class, 'dashboard'])->name('dashboard');
-        Route::get('charts', [Coderstm\Admin\ReportsController::class, 'charts'])->name('charts');
-        Route::post('clear-cache', [Coderstm\Admin\ReportsController::class, 'clearCache'])->name('clear-cache');
-
-        // Report Exports Management
-        Route::group([
-            'as' => 'exports.',
-            'prefix' => 'exports',
-            'controller' => Coderstm\Admin\ReportExportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::post('/', 'store')->name('store');
-            Route::get('{reportExport}', 'show')->name('show');
-            Route::get('{reportExport}/download', 'download')->name('download');
-            Route::delete('{reportExport}', 'destroy')->name('destroy');
-            Route::post('{reportExport}/retry', 'retry')->name('retry');
-            Route::post('destroy-multiple', 'destroyMultiple')->name('destroy-multiple');
-            Route::post('cleanup', 'cleanup')->name('cleanup');
-        });
-
-        // Subscription Reports
-        Route::group([
-            'as' => 'subscriptions.',
-            'prefix' => 'subscriptions',
-            'controller' => Coderstm\Admin\SubscriptionReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('export', 'export')->name('export');
-        });
-
-        // Order Reports
-        Route::group([
-            'as' => 'orders.',
-            'prefix' => 'orders',
-            'controller' => Coderstm\Admin\OrderReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('top-products-by-revenue', 'topProductsByRevenue')->name('top-products-revenue');
-            Route::get('top-products-by-units', 'topProductsByUnits')->name('top-products-units');
-            Route::get('top-discount-codes', 'topDiscountCodes')->name('top-discount-codes');
-            Route::get('revenue-by-country', 'revenueByCountry')->name('revenue-country');
-            Route::get('revenue-by-region', 'revenueByRegion')->name('revenue-region');
-            Route::get('export', 'export')->name('export');
-        });
-
-        // Customer Reports
-        Route::group([
-            'as' => 'customers.',
-            'prefix' => 'customers',
-            'controller' => Coderstm\Admin\CustomerReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('export', 'export')->name('export');
-        });
-    });
-
     // Users
     Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
         Route::group(['controller' => App\UserController::class], function () {
@@ -266,18 +186,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('resume', 'resume')->name('resume');
             Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
             Route::post('cancel', 'cancel')->name('cancel');
-        });
-
-        // User Wallet Management
-        Route::group([
-            'as' => 'wallet.',
-            'prefix' => '{user}/wallet',
-            'controller' => AdminWalletController::class,
-        ], function () {
-            Route::get('balance', 'balance')->name('balance');
-            Route::get('transactions', 'transactions')->name('transactions');
-            Route::post('credit', 'credit')->name('credit');
-            Route::post('debit', 'debit')->name('debit');
         });
     });
     Route::resource('users', App\UserController::class);
@@ -397,9 +305,30 @@ Route::post('gocardless/webhook', [Webhook\GoCardlessController::class, 'handleW
 
 // Payments
 Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
-    Route::get('status/{token}', [Coderstm\PaymentController::class, 'status'])->name('status');
-    Route::post('{provider}/setup-intent', [Coderstm\PaymentController::class, 'setupPaymentIntent'])->name('setup-intent');
-    Route::post('{provider}/confirm', [Coderstm\PaymentController::class, 'confirmPayment'])->name('confirm');
+    Route::group([
+        'controller' => Payment\StripeController::class,
+        'prefix' => 'stripe',
+        'as' => 'stripe.'
+    ], function () {
+        Route::get('token', 'token')->name('token');
+        Route::post('process', 'process')->name('process');
+    });
+    Route::group([
+        'controller' => Payment\PaypalController::class,
+        'prefix' => 'paypal',
+        'as' => 'paypal.'
+    ], function () {
+        Route::get('token', 'token')->name('token');
+        Route::post('process', 'process')->name('process');
+    });
+    Route::group([
+        'controller' => Payment\RazorpayController::class,
+        'prefix' => 'razorpay',
+        'as' => 'razorpay.'
+    ], function () {
+        Route::get('token', 'token')->name('token');
+        Route::post('process', 'process')->name('process');
+    });
 });
 
 Route::get('/themes/{theme}/assets', [Coderstm\ThemeController::class, 'assets'])->name('themes.assets.preview');

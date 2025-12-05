@@ -1,7 +1,6 @@
-laravel: "@testbench"
+laravel: '@testbench'
 
 providers:
-  - Barryvdh\DomPDF\ServiceProvider
   - Laravel\Cashier\CashierServiceProvider
   - Qirolab\Theme\ThemeServiceProvider
   - Laravel\Sanctum\SanctumServiceProvider
@@ -25,8 +24,8 @@ workbench:
   install: true
   health: false
   discovers:
-    web: false
-    api: false
+    web: true
+    api: true
     commands: true
     components: false
     factories: true
@@ -44,4 +43,6 @@ workbench:
       to: workbench/config/auth.php
     - from: ./config/sanctum.php
       to: workbench/config/sanctum.php
+    - from: storage
+      to: workbench/storage
       reverse: true

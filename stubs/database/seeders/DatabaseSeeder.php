@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             PaymentMethodSeeder::class,
             PlanSeeder::class,
             TaxSeeder::class,
-            // PageSeeder::class,
+            PageSeeder::class,
         ]);
     }
 }
