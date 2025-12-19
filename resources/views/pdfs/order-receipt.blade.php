@@ -60,6 +60,10 @@
                                     <br>
                                     {{ $item->variant_title }}
                                 @endif
+                                @if (isset($item->metadata['description']))
+                                    <br>
+                                    {{ $item->metadata['description'] }}
+                                @endif
                             </p>
                         </td>
                         <td class="text-center">

@@ -1,2 +1,62 @@
+.DS_Store
+.thumbs.db
+node_modules
+/src/store
+
+# Quasar core related directories
+.quasar
+dist
+*.pem
+
+# Cordova related directories and files
+/src-cordova/node_modules
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
+
+# Capacitor related directories and files
+/src-capacitor/www
+/src-capacitor/node_modules
+
+# BEX related directories and files
+/src-bex/www
+/src-bex/js/core
+
+#laravel folders/files
+/storage/*.key
+/storage/*LICENSE
+/vendor
+/.idea
+/.vagrant
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+.env
+storage/.installed
+storage/cashier-product
+storage/tenant-*
+public/storage
+public/uploads
+public/sitemap.xml
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.bak
+old-site
+.phpunit.result.cache
+storage/firebase-credentials.json
+.env.frontend.dev
+hot
+.npm
 .env
 .env.dusk

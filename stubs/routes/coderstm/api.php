@@ -12,6 +12,9 @@ use Coderstm\Http\Controllers\Payment;
 use Coderstm\Http\Controllers\User\WalletController;
 use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
 
+// Subscription Promo Code Check Route
+Route::post('subscriptions/check-promo-code', [Subscription\SubscriptionController::class, 'checkPromoCode'])->name('subscriptions.check-promo-code');
+
 // Auth Routes
 Route::group([
     'as' => 'auth.',
@@ -143,24 +146,24 @@ Route::middleware(['auth:sanctum'])->group(function () {
 Route::middleware(['auth:sanctum'])->group(function () {
     // Subscription
     Route::group([
-        'as' => 'subscription.',
-        'prefix' => 'subscription',
-        'controller' => Subscription\SubscriptionController::class,
+        'as' => 'subscriptions.',
+        'prefix' => 'subscriptions',
     ], function () {
-        Route::get('', 'index')->name('index');
-        Route::post('subscribe', 'subscribe')->name('subscribe');
-        Route::post('resume', 'resume')->name('resume');
-        Route::post('pay', 'pay')->name('pay');
-        Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
-        Route::post('cancel', 'cancel')->name('cancel');
+        Route::get('/', [Subscription\SubscriptionController::class, 'index'])->name('index');
+        Route::get('/current', [Subscription\SubscriptionController::class, 'current'])->name('current');
+        Route::post('/subscribe', [Subscription\SubscriptionController::class, 'subscribe'])->name('subscribe');
+        Route::get('/{subscription}', [Subscription\SubscriptionController::class, 'show'])->name('show');
+        Route::post('/{subscription}/resume', [Subscription\SubscriptionController::class, 'resume'])->name('resume');
+        Route::post('/{subscription}/cancel-downgrade', [Subscription\SubscriptionController::class, 'cancelDowngrade'])->name('cancel-downgrade');
+        Route::post('/{subscription}/cancel', [Subscription\SubscriptionController::class, 'cancel'])->name('cancel');
+        Route::get('/{subscription}/invoices', [Subscription\SubscriptionController::class, 'invoices'])->name('invoices');
     });
     Route::group([
         'as' => 'invoices.',
         'prefix' => 'invoices',
-        'controller' => Coderstm\InvoiceController::class,
     ], function () {
-        Route::post('/', 'invoices');
-        Route::get('/{invoice}', 'downloadInvoice')->name('download');
+        Route::post('/', [Coderstm\InvoiceController::class, 'invoices']);
+        Route::get('/{invoice}', [Coderstm\InvoiceController::class, 'downloadInvoice'])->name('download');
     });
 });
 
@@ -184,10 +187,13 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'as' => 'reports.',
         'prefix' => 'reports',
     ], function () {
-        // Dashboard Overview
-        Route::get('dashboard', [Coderstm\Admin\ReportsController::class, 'dashboard'])->name('dashboard');
-        Route::get('charts', [Coderstm\Admin\ReportsController::class, 'charts'])->name('charts');
-        Route::post('clear-cache', [Coderstm\Admin\ReportsController::class, 'clearCache'])->name('clear-cache');
+        // Dashboard & Overview
+        Route::controller(Coderstm\Admin\ReportsController::class)->group(function () {
+            Route::get('charts', 'charts')->name('charts');
+            Route::get('metrics', 'metrics')->name('metrics');
+            Route::get('kpis', 'kpis')->name('kpis');
+            Route::post('clear-cache', 'clearCache')->name('clear-cache');
+        });
 
         // Report Exports Management
         Route::group([
@@ -197,51 +203,26 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         ], function () {
             Route::get('/', 'index')->name('index');
             Route::post('/', 'store')->name('store');
+            Route::get('/data', 'data')->name('data');
+            Route::get('/available', 'available')->name('available');
+            Route::get('/metadata', 'metadata')->name('metadata');
+            Route::post('cleanup', 'cleanup')->name('cleanup');
+            Route::delete('destroy', 'destroyMultiple')->name('destroy-multiple');
             Route::get('{reportExport}', 'show')->name('show');
             Route::get('{reportExport}/download', 'download')->name('download');
             Route::delete('{reportExport}', 'destroy')->name('destroy');
             Route::post('{reportExport}/retry', 'retry')->name('retry');
-            Route::post('destroy-multiple', 'destroyMultiple')->name('destroy-multiple');
-            Route::post('cleanup', 'cleanup')->name('cleanup');
         });
+    });
 
-        // Subscription Reports
-        Route::group([
-            'as' => 'subscriptions.',
-            'prefix' => 'subscriptions',
-            'controller' => Coderstm\Admin\SubscriptionReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('export', 'export')->name('export');
-        });
-
-        // Order Reports
-        Route::group([
-            'as' => 'orders.',
-            'prefix' => 'orders',
-            'controller' => Coderstm\Admin\OrderReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('top-products-by-revenue', 'topProductsByRevenue')->name('top-products-revenue');
-            Route::get('top-products-by-units', 'topProductsByUnits')->name('top-products-units');
-            Route::get('top-discount-codes', 'topDiscountCodes')->name('top-discount-codes');
-            Route::get('revenue-by-country', 'revenueByCountry')->name('revenue-country');
-            Route::get('revenue-by-region', 'revenueByRegion')->name('revenue-region');
-            Route::get('export', 'export')->name('export');
-        });
-
-        // Customer Reports
-        Route::group([
-            'as' => 'customers.',
-            'prefix' => 'customers',
-            'controller' => Coderstm\Admin\CustomerReportsController::class,
-        ], function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('metrics', 'metrics')->name('metrics');
-            Route::get('export', 'export')->name('export');
-        });
+    // Subscription
+    Route::group([
+        'as' => 'subscriptions.',
+        'prefix' => 'subscriptions',
+    ], function () {
+        Route::post('/', [Subscription\SubscriptionController::class, 'store'])->name('store');
+        Route::post('/{subscription}', [Subscription\SubscriptionController::class, 'update'])->name('update');
+        Route::post('/{subscription}/pay', [Subscription\SubscriptionController::class, 'pay'])->name('pay');
     });
 
     // Users
@@ -253,19 +234,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('{user}/notes', 'notes')->name('notes');
             Route::post('{user}/mark-as-paid', 'markAsPaid')->name('mark-as-paid');
             Route::post('{user}/reset-password-request', 'resetPasswordRequest')->name('reset-password-request');
-        });
-
-        // User Subscription Management
-        Route::group([
-            'as' => 'subscription.',
-            'prefix' => '{user}/subscription',
-            'controller' => Subscription\AdminSubscriptionController::class,
-        ], function () {
-            Route::get('', 'index')->name('index');
-            Route::post('update', 'update')->name('update');
-            Route::post('resume', 'resume')->name('resume');
-            Route::post('cancel-downgrade', 'cancelDowngrade')->name('cancel-downgrade');
-            Route::post('cancel', 'cancel')->name('cancel');
         });
 
         // User Wallet Management
@@ -296,10 +264,11 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::group([
         'as' => 'coupons.',
         'prefix' => 'coupons',
-        'middleware' => 'can:update,coupon',
     ], function () {
         Route::post('{coupon}/change-active', [Subscription\CouponController::class, 'changeActive'])->name('change-active');
         Route::post('{coupon}/logs', [Subscription\CouponController::class, 'logs'])->name('logs');
+        Route::get('products', [Subscription\CouponController::class, 'products'])->name('products');
+        Route::get('plans', [Subscription\CouponController::class, 'plans'])->name('plans');
     });
     Route::resource('coupons', Subscription\CouponController::class);
 
@@ -381,8 +350,6 @@ Route::group(['prefix' => 'shared'], function () {
     Route::get('plans', [Coderstm\PlanController::class, 'shared'])->name('plans.shared');
     Route::get('plans/features', [Coderstm\PlanController::class, 'features'])->name('plans.features');
 });
-
-Route::post('subscription/check-promo-code', [Subscription\SubscriptionController::class, 'checkPromoCode'])->name('subscription.check-promo-code');
 
 Route::group(['controller' => Coderstm\ApplicationController::class, 'prefix' => 'application', 'as' => 'application.'], function () {
     Route::get('config', 'config')->name('config');

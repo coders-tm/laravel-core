@@ -124,13 +124,18 @@ return [
     | Controls subscription-specific behaviors.
     |
     */
+
     'subscription' => [
         // When true, activating a late payer anchors from the open invoice's intended
         // start date (last unpaid period start) + plan duration; otherwise, uses today.
         'anchor_from_invoice' => (bool) env('SUBSCRIPTION_ANCHOR_FROM_INVOICE', true),
 
         // Grace period in days for overdue payments before subscription expires
-        'grace_period_days' => (int) env('SUBSCRIPTION_GRACE_PERIOD_DAYS', 7),
+        'grace_period_days' => (int) env('SUBSCRIPTION_GRACE_PERIOD_DAYS', 0),
+
+        // Freeze configuration
+        'freeze_fee' => (float) env('SUBSCRIPTION_FREEZE_FEE', 0.00), // Fee charged per freeze period
+        'allow_freeze' => (bool) env('SUBSCRIPTION_ALLOW_FREEZE', true), // Enable/disable freeze functionality
     ],
 
     /*
@@ -165,23 +170,6 @@ return [
 
         // Automatically charge from wallet during subscription renewal if balance is available
         'auto_charge_on_renewal' => (bool) env('WALLET_AUTO_CHARGE_ON_RENEWAL', true),
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
-    | Reports
-    |--------------------------------------------------------------------------
-    |
-    | This section contains configuration options for the reports system,
-    | including export thresholds and queue management.
-    |
-    */
-
-    'reports' => [
-        // Maximum number of records to export immediately
-        // Exports exceeding this limit will be queued for background processing
-        // This prevents browser timeouts and memory issues with large datasets
-        'export_threshold' => (int) env('REPORT_EXPORT_THRESHOLD', 1000),
     ],
 
 ];

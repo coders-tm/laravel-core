@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('rag')->nullable()->after('is_active');
             $table->string('username')->nullable()->after('name');
             $table->string('note')->nullable()->after('phone_number');
-            $table->dateTime('release_at')->nullable()->after('email_verified_at');
+            $table->boolean('is_free_forever')->nullable()->after('is_active');
             $table->softDeletes();
         });
 

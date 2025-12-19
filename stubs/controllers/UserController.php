@@ -74,12 +74,6 @@ class UserController extends Controller
 
             if ($request->boolean('status')) {
                 $user->onlyActive();
-            } else if ($request->status == 'late-cancellation') {
-                $user->onlyLateCancellation();
-            } else if ($request->status == 'no-show') {
-                $user->onlyNoShow();
-            } else if ($request->status == 'blocked') {
-                $user->onlyBlocked();
             }
 
             if ($request->filled('type')) {
@@ -100,7 +94,7 @@ class UserController extends Controller
 
         // Load subscription information for each user
         $users->getCollection()->transform(function ($user) {
-            return $this->loadSubscriptionInfo($user);
+            return $this->loadSubscription($user, []);
         });
 
         return new ResourceCollection($users);
@@ -191,7 +185,7 @@ class UserController extends Controller
         }
 
         // Load subscription information - refresh user with relationships
-        $user = $this->loadSubscriptionInfo($user->fresh(['address', 'notes', 'subscriptions']));
+        $user = $this->loadSubscription($user->fresh(['address', 'notes', 'subscriptions']));
 
         return response()->json([
             'data' => $user,
@@ -209,7 +203,7 @@ class UserController extends Controller
         $this->authorize('view', [$user]);
 
         // Load subscription information
-        $user = $this->loadSubscriptionInfo($user->load(['notes']));
+        $user = $this->loadSubscription($user->load(['notes']));
 
         return response()->json($user, 200);
     }
@@ -267,7 +261,7 @@ class UserController extends Controller
         $user->updateOrCreateAddress($request->input('address'));
 
         // Load subscription information
-        $user = $this->loadSubscriptionInfo($user->fresh(['address', 'notes']));
+        $user = $this->loadSubscription($user->fresh(['address', 'notes']));
 
         return response()->json([
             'data' => $user,
@@ -341,7 +335,7 @@ class UserController extends Controller
         }
 
         return response()->json([
-            'data' => $user->fresh(),
+            'data' => $this->loadSubscription($user->fresh()),
             'message' => __('Due payment has been received.')
         ], 200);
     }
@@ -360,7 +354,7 @@ class UserController extends Controller
 
         // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
         $baseUrl = config('app.frontend_url') ?: config('app.url');
-        $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
+        $resetUrl = rtrim($baseUrl, '/') . '/password/reset?token=' . $token . '&email=' . urlencode($user->email);
 
         // Send notification using common template system
         $user->notify(new \Coderstm\Notifications\UserResetPasswordNotification($user, [
@@ -468,134 +462,51 @@ class UserController extends Controller
 
     /**
      * Load subscription information for the user.
-     * Admin context - uses "User" instead of "You" in messages
+     *
+     * @param  \App\Models\User  $user
+     * @param  array  $extends
+     * @return \App\Models\User
      */
-    protected function loadSubscriptionInfo($user)
+    protected function loadSubscription($user, array $extends = ['usages', 'plan', 'next_plan'])
     {
+        /** @var \Coderstm\Models\Subscription $subscription */
         $subscription = $user->subscription('default');
 
-        if ($user->onGenericTrial()) {
-            $trial_end = $user->trial_ends_at->format('M d, Y');
-            $user['subscription_message'] = __("User is on trial until :date, <strong>but hasn't subscribed to any plan yet</strong>. User needs to subscribe to continue using the application even after the trial ends.", ['date' => $trial_end]);
-            $user['upcomingInvoice'] = false;
-            return $user;
-        } else if ($user->is_free_forever || !$subscription) {
-            $user['subscription_message'] = __('To access exclusive features, please subscribe to a plan. You are not currently subscribed to any plan.');
-            $user['upcomingInvoice'] = false;
-            return $user;
-        }
+        $user['subscription'] = $subscription?->toResponse($extends);
 
-        $upcomingInvoice = $subscription->upcomingInvoice();
-
-        $subscription->load([
-            'nextPlan',
-            'planCanceled',
-        ]);
-
-        if ($subscription->canceled() && $subscription->canceledOnGracePeriod()) {
-            if ($subscription->planCanceled) {
-                $subscription['message'] = __('Subscribed plan has been deactivated. Your subscription will end on :date', [
-                    'date' => $subscription->expires_at->format('d M, Y')
-                ]);
-            } else {
-                $subscription['message'] = __('You have cancelled your subscription. Your subscription will end on :date', [
-                    'date' => $subscription->expires_at->format('d M, Y')
-                ]);
-            }
-        } else if ($subscription->expired() || $subscription->hasIncompletePayment()) {
-            $invoice = $subscription->latestInvoice;
-            $amount = $invoice?->total();
-            $subscription['message'] = __('Your subscription is :status, Please make a payment of :amount to continue enjoying our services.', [
-                'status' => $subscription->status,
-                'amount' => $amount
-            ]);
-            $subscription['invoice'] = [
-                'amount' => $amount,
-                'key' => $invoice?->key
-            ];
-            $subscription['hasDue'] = true;
-        } else if ($upcomingInvoice) {
-            $subscription['upcomingInvoice'] = [
-                'amount' => $upcomingInvoice->total(),
-                'date' => $upcomingInvoice->due_date->format('d M, Y'),
-            ];
-
-            if ($subscription->onTrial()) {
-                $trial_end = $subscription->trial_ends_at->format('M d, Y');
-                $subscription['message'] = __("User is also on trial, until :date. Once it ends, user will be charged for the plan.", ['date' => $trial_end]);
-            } else if ($subscription->hasDowngrade()) {
-                $subscription['message'] = __('New plan :plan with :amount will become effective on :date.', [
-                    'plan' => $subscription->nextPlan?->label,
-                    'amount' => $upcomingInvoice->total(),
-                    'date' => $subscription['upcomingInvoice']['date']
-                ]);
-            } else {
-                $subscription['message'] = __('Next invoice :amount on :date', [
-                    'amount' => $subscription['upcomingInvoice']['amount'],
-                    'date' => $subscription['upcomingInvoice']['date']
-                ]);
-            }
-        }
-
-        $usages = $subscription->usagesToArray();
-        $subscription['usages'] = $usages;
-
-        $subscription->unsetRelation('nextPlan')
-            ->unsetRelation('planCanceled')
-            ->unsetRelation('owner')
-            ->unsetRelation('features');
-
-        $subscription['canceled'] = $subscription->canceled();
-        $subscription['ended'] = $subscription->ended();
-        $subscription['is_valid'] = $subscription->valid() ?? false;
-
-        $user['subscription'] = $subscription;
+        $user->unsetRelation('subscriptions');
 
         return $user;
     }
 
     /**
      * Create subscription for the user during store operation.
+     *
+     * @param  \Coderstm\Models\User  $user
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Coderstm\Models\Subscription
      */
     protected function createSubscription($user, Request $request)
     {
-        $plan = \Coderstm\Models\Subscription\Plan::find($request->plan);
-        $paymentMethod = \Coderstm\Models\PaymentMethod::find($request->payment_method);
-        $provider = $paymentMethod?->provider;
-        $trial_end = $user->trial_ends_at;
-        $trial_days = $plan->trial_days;
+        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
 
-        $subscription = $user->newSubscription('default', $plan->id)
-            ->provider($provider);
+        try {
+            $subscription = $service->createOrUpdate($user, [
+                'plan' => $request->plan,
+                'promotion_code' => $request->promotion_code ?? null,
+                'payment_method' => $request->payment_method ?? null,
+                'trial_days' => $request->trail_days ?? null,
+            ]);
 
-        if ($request->filled('promotion_code')) {
-            $subscription->withCoupon($request->promotion_code);
+            return $subscription;
+        } catch (ValidationException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw ValidationException::withMessages([
+                'subscription' => __('Failed to create subscription: :message', [
+                    'message' => $e->getMessage(),
+                ]),
+            ]);
         }
-
-        if ($trial_end && $trial_end->isFuture()) {
-            $subscription->trialUntil($trial_end);
-        } else if ($trial_days && !$trial_end) {
-            $subscription->trialDays($trial_days);
-        }
-
-        // Save subscription and generate invoice (invoice generation will be skipped if status is trialing)
-        $subscription->saveAndInvoice();
-
-        // Handle coupon redemption if provided
-        if ($request->filled('promotion_code')) {
-            $coupon = \Coderstm\Models\Coupon::findByCode($request->promotion_code);
-            if ($coupon && $coupon->id) {
-                \Coderstm\Models\Redeem::updateOrCreate([
-                    'redeemable_type' => get_class($subscription),
-                    'redeemable_id' => $subscription->id,
-                    'coupon_id' => $coupon->id,
-                ], [
-                    'user_id' => $user->id,
-                    'amount' => $coupon->getAmount($plan->price),
-                ]);
-            }
-        }
-
-        return $subscription;
     }
 }

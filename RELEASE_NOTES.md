@@ -445,13 +445,6 @@ $subscription = Subscription::create([
 ]);
 ```
 
-**New Subscription Methods:**
-
-```php
-$subscription->isProductBased(); // true for shop subscriptions
-$subscription->getCurrentPrice(); // Get effective price with intro pricing
-```
-
 ---
 
 ### 5. **Cart & Checkout System**
@@ -577,6 +570,7 @@ config('coderstm.shop.abandoned_cart_hours');        // 4
     - Added `variant_id` foreign key
     - Renamed `options` → `metadata`
     - Added index on `[variant_id, interval]`
+    - Added `grace_period_days` field for plan-specific grace periods (default: 0 - subscriptions expire immediately without grace period)
 
 3. **Variants:**
 
@@ -677,6 +671,7 @@ php artisan migrate
 -   `2025_07_26_084100_update_payment_methods_table.php`
 -   `2025_07_29_085729_update_plans_table.php`
 -   `2025_07_30_183836_update_discount_lines_table_for_enhanced_coupons.php`
+-   `2025_12_15_000001_add_grace_period_days_to_plans_table.php`
 
 ### Step 3: Update Subscription Code
 
