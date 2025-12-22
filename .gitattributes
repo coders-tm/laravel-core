@@ -10,6 +10,7 @@
 /art export-ignore
 /tests export-ignore
 /workbench export-ignore
+/license-server export-ignore
 .editorconfig export-ignore
 .gitattributes export-ignore
 .gitignore export-ignore

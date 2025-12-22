@@ -12,8 +12,7 @@ return [
     | services the application utilizes. Set this in your ".env" file.
     |
     */
-    'domain' => env('CODERSTM_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
-    'app_domain' => env('APP_DOMAIN', null),
+    'domain' => env('APP_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
     'api_prefix' => env('APP_API_PREFIX', 'api'),
     'admin_prefix' => env('APP_ADMIN_PREFIX', 'admin'),
     'tunnel_domain' => env('TUNNEL_WEB_DOMAIN', null),
