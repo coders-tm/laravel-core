@@ -155,6 +155,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Editor Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This section contains configuration options for the content editor system,
+    | including page registry management and file paths.
+    |
+    */
+
+    'editor' => [
+        // Registry filename for pages/posts (e.g., 'index.json', 'pages.json')
+        'registry_path' => env('EDITOR_REGISTRY_PATH', resource_path('pages/index.json')),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Wallet Configuration
     |--------------------------------------------------------------------------
     |

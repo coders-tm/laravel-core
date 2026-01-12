@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.page', {{ data }})
 
 @section('content')
   {{ content }}
@@ -8,4 +8,10 @@
 <style type="text/css">
   {{ style }}
 </style>
+@endsection
+
+@section('script')
+<script type="text/javascript">
+  {{ script }}
+</script>
 @endsection
