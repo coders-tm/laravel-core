@@ -114,6 +114,7 @@ return [
 
     'license_key' => env('APP_LICENSE_KEY'),
     'app_id' => env('APP_ID', null),
+    'product_id' => env('PRODUCT_ID', null),
 
     /*
     |--------------------------------------------------------------------------
