@@ -165,8 +165,10 @@ return [
     */
 
     'editor' => [
+        // Path to the pages directory
+        'pages_path' => resource_path('views/pages'),
         // Registry filename for pages/posts (e.g., 'index.json', 'pages.json')
-        'registry_path' => env('EDITOR_REGISTRY_PATH', resource_path('pages/index.json')),
+        'registry_path' => resource_path('views/pages/index.json'),
     ],
 
     /*
