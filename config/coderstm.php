@@ -62,6 +62,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Currency Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Base currency is the system currency used for storage and calculations.
+    | Display currency is determined per-request by middleware.
+    |
+    */
+
+    'currency' => [
+        // Supported currencies list (empty array means allow all)
+        'supported' => array_filter(explode(',', env('APP_SUPPORTED_CURRENCIES', ''))),
+
+        // Enable currency auto-detection by user address/IP
+        'auto_detect' => (bool) env('CURRENCY_AUTO_DETECT', true),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Theme Asset Path Resolution
     |--------------------------------------------------------------------------
     |

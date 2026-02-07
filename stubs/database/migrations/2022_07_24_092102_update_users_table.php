@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('note')->nullable()->after('phone_number');
             $table->timestamp('trial_ends_at')->nullable()->after('email_verified_at');
             $table->boolean('is_free_forever')->nullable()->after('is_active');
+            $table->string('currency')->nullable()->after('is_active')->default('USD');
             $table->softDeletes();
         });
 

@@ -5,6 +5,7 @@ providers:
   - Laravel\Cashier\CashierServiceProvider
   - Qirolab\Theme\ThemeServiceProvider
   - Laravel\Sanctum\SanctumServiceProvider
+  - Stevebauman\Location\LocationServiceProvider
   - Vedmant\LaravelShortcodes\LaravelShortcodesServiceProvider
   - Coderstm\Providers\ThemeServiceProvider
   - Coderstm\Providers\CoderstmServiceProvider

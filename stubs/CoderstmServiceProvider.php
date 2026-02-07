@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Coderstm\Notifications\UserResetPasswordNotification;
 
 class CoderstmServiceProvider extends ServiceProvider
 {
@@ -31,6 +32,17 @@ class CoderstmServiceProvider extends ServiceProvider
             }
 
             return $baseUrl . "?token={$token}&email={$user->email}";
+        });
+
+        // Use the core package's UserResetPasswordNotification for custom email templates
+        ResetPassword::toMailUsing(function ($user, string $token) {
+            $notification = new UserResetPasswordNotification($user, [
+                'url' => call_user_func(ResetPassword::$createUrlCallback, $user, $token) ?? null,
+                'token' => $token,
+                'expires' => now()->addMinutes(config('auth.passwords.' . ($user->guard ?? 'users') . '.expire', 60))->format('Y-m-d H:i:s'),
+            ]);
+
+            return $notification->toMail($user);
         });
     }
 }

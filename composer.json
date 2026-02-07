@@ -51,7 +51,6 @@
     "nesbot/carbon": "^3.0",
     "qirolab/laravel-themer": "^2.4",
     "razorpay/razorpay": "^2.9",
-    "simplesoftwareio/simple-qrcode": "^4.2",
     "spatie/laravel-sluggable": "^3.7",
     "srmklive/paypal": "^3.0",
     "stevebauman/location": "^7.2.0",
@@ -61,7 +60,8 @@
     "twilio/sdk": "^7.16",
     "vedmant/laravel-shortcodes": "^1.1",
     "xendit/xendit-php": "^7.0",
-    "yabacon/paystack-php": "^2.2"
+    "yabacon/paystack-php": "^2.2",
+    "yansongda/laravel-pay": "^3.7.0"
   },
   "require-dev": {
     "mockery/mockery": "^1.6",

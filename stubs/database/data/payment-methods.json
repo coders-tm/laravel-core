@@ -560,6 +560,42 @@
     "payment_instructions": "Please transfer the amount to the following bank account:\n\n**Bank Name:** Your Bank Name\n**Account Number:** 1234567890\n**Account Name:** Your Account Name\n\nOnce the transfer is complete, please send us a confirmation email with the transaction details."
   },
   {
+    "name": "Alipay",
+    "provider": "alipay",
+    "link": "https://www.alipay.com/",
+    "logo": "fab fa-alipay",
+    "active": false,
+    "description": "Alipay is a leading digital payment platform, providing safe and convenient payment services to millions of users and merchants worldwide.",
+    "credentials": [
+      {
+        "key": "APP_ID",
+        "value": "",
+        "label": "APP ID",
+        "publish": false
+      },
+      {
+        "key": "ALI_PUBLIC_KEY",
+        "value": "",
+        "label": "Ali Public Key",
+        "publish": false
+      },
+      {
+        "key": "PRIVATE_KEY",
+        "value": "",
+        "label": "Private Key",
+        "publish": false
+      }
+    ],
+    "methods": [
+      {
+        "key": "alipay",
+        "label": "Alipay",
+        "enabled": true,
+        "type": "DIGITAL_WALLET"
+      }
+    ]
+  },
+  {
     "name": "Wallet Balance",
     "provider": "wallet",
     "active": true,

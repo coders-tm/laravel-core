@@ -13,7 +13,8 @@ use Coderstm\Http\Controllers\User\WalletController;
 use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
 
 // Subscription Promo Code Check Route
-Route::post('subscriptions/check-promo-code', [Subscription\SubscriptionController::class, 'checkPromoCode'])->name('subscriptions.check-promo-code');
+Route::post('subscriptions/check-promo-code', [Subscription\SubscriptionController::class, 'checkPromoCode'])
+    ->name('subscriptions.check-promo-code');
 
 // Auth Routes
 Route::group([
@@ -215,6 +216,13 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         });
     });
 
+    // Exchange Rates
+    Route::group(['prefix' => 'exchange-rates', 'as' => 'exchange-rates.'], function () {
+        Route::post('/', [Coderstm\ExchangeRateController::class, 'store'])->name('store');
+        Route::post('/sync', [Coderstm\ExchangeRateController::class, 'sync'])->name('sync');
+        Route::delete('/{id}', [Coderstm\ExchangeRateController::class, 'destroy'])->name('destroy');
+    });
+
     // Subscription
     Route::group([
         'as' => 'subscriptions.',
@@ -365,8 +373,12 @@ Route::post('gocardless/webhook', [Webhook\GoCardlessController::class, 'handleW
 // Payments
 Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {
     Route::get('status/{token}', [Coderstm\PaymentController::class, 'status'])->name('status');
-    Route::post('{provider}/setup-intent', [Coderstm\PaymentController::class, 'setupPaymentIntent'])->name('setup-intent');
-    Route::post('{provider}/confirm', [Coderstm\PaymentController::class, 'confirmPayment'])->name('confirm');
+    Route::post('setup-intent', [Coderstm\PaymentController::class, 'setupPaymentIntent'])->name('setup-intent');
+    Route::post('confirm', [Coderstm\PaymentController::class, 'confirmPayment'])->name('confirm');
 });
 
 Route::get('/themes/{theme}/assets', [Coderstm\ThemeController::class, 'assets'])->name('themes.assets.preview');
+
+// Exchange Rates
+Route::get('/exchange-rates/estimate', [Coderstm\ExchangeRateController::class, 'estimate'])->name('exchange-rates.estimate');
+Route::get('/exchange-rates', [Coderstm\ExchangeRateController::class, 'index'])->name('exchange-rates.index');
