@@ -544,22 +544,6 @@
     ]
   },
   {
-    "name": "Cash",
-    "provider": "manual",
-    "active": true,
-    "logo": "fas fa-money-check-dollar",
-    "description": "Pay in cash at our store",
-    "payment_instructions": "Please visit our store to make the payment in cash. Our address is:\n\n**123 Main Street, City, Country**\n\nStore hours are Monday to Friday, 9 AM to 5 PM."
-  },
-  {
-    "name": "Bank Transfer",
-    "provider": "manual",
-    "active": true,
-    "logo": "fas fa-university",
-    "description": "Pay via bank transfer",
-    "payment_instructions": "Please transfer the amount to the following bank account:\n\n**Bank Name:** Your Bank Name\n**Account Number:** 1234567890\n**Account Name:** Your Account Name\n\nOnce the transfer is complete, please send us a confirmation email with the transaction details."
-  },
-  {
     "name": "Alipay",
     "provider": "alipay",
     "link": "https://www.alipay.com/",
@@ -603,5 +587,13 @@
     "description": "Pay using your wallet balance. Fast, secure, and instant payment from your account balance.",
     "credentials": [],
     "methods": []
+  },
+  {
+    "name": "Bank Transfer",
+    "provider": "manual",
+    "active": true,
+    "logo": "fas fa-university",
+    "description": "Pay via bank transfer",
+    "payment_instructions": "Please transfer the amount to the following bank account:\n\n**Bank Name:** Your Bank Name\n**Account Number:** 1234567890\n**Account Name:** Your Account Name\n\nOnce the transfer is complete, please send us a confirmation email with the transaction details."
   }
 ]

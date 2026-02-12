@@ -29,7 +29,7 @@ class PlanSeeder extends Seeder
 
                 $plan->syncFeatures($features);
             }
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             report($e);
             $runTime = number_format((microtime(true) - $startTime) * 1000);
             with(new TwoColumnDetail($this->command->getOutput()))->render(

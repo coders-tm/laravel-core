@@ -43,7 +43,7 @@
     "jenssegers/agent": "^2.6",
     "kreait/laravel-firebase": "^6.0",
     "laravel-notification-channels/fcm": "^5.0",
-    "laravel/cashier": "^15.0",
+    "laravel/cashier": "^16.0",
     "laravel/sanctum": "^4.0",
     "league/csv": "^9.15",
     "league/iso3166": "^4.3",

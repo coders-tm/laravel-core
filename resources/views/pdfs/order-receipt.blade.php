@@ -16,7 +16,7 @@
             <tr>
                 <td style="font-size: 23px; text-transform: uppercase; width: 70%">
                     <img width="100px" src="{{ $logo ?? config('app.logo', asset('images/logo.png')) }}"
-                        alt="{{ config('app.name') }}">
+                        alt="{{ $app_name ?? config('app.name') }}">
                 </td>
                 <td class="text-right" style="width: 30%">
                     <div>ORDER {{ $id }}</div>
@@ -67,13 +67,13 @@
                             </p>
                         </td>
                         <td class="text-center">
-                            {{ format_amount($item->price, $currency) }}
+                            {{ format_amount($item->price) }}
                         </td>
                         <td class="text-center">
                             {{ $item->quantity }}
                         </td>
                         <td class="text-right">
-                            {{ format_amount($item->total, $currency) }}
+                            {{ format_amount($item->total) }}
                         </td>
                     </tr>
                 @endforeach
@@ -137,7 +137,11 @@
                             <tr>
                                 <td style="padding: 3px 0; font-size: 11px; color: #666;">Amount Paid:</td>
                                 <td style="padding: 3px 0; font-size: 13px; font-weight: bold; color: #2e7d32;">
-                                    {{ $payment['amount'] }}
+                                    @if (!empty($payment['gateway_amount']))
+                                        {{ $payment['gateway_amount'] }}
+                                    @else
+                                        {{ $payment['amount'] }}
+                                    @endif
                                 </td>
                             </tr>
                             <tr>

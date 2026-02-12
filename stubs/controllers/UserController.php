@@ -330,7 +330,7 @@ class UserController extends Controller
         try {
             $subscription = $user->subscription();
             $subscription->pay($request->payment_method);
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             throw $e;
         }
 
@@ -501,7 +501,7 @@ class UserController extends Controller
             return $subscription;
         } catch (ValidationException $e) {
             throw $e;
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             throw ValidationException::withMessages([
                 'subscription' => __('Failed to create subscription: :message', [
                     'message' => $e->getMessage(),

@@ -24,5 +24,12 @@ UPGRADE.md export-ignore
 encode.sh export-ignore
 encoder.php export-ignore
 loader.php export-ignore
+encoder.sh export-ignore
 comments.txt export-ignore
 testbench.yaml export-ignore
+/docs export-ignore
+/.agent export-ignore
+/.cursor export-ignore
+/.vscode export-ignore
+RELEASE_NOTES.md export-ignore
+/docs export-ignore
