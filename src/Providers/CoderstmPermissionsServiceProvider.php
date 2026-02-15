@@ -1,54 +1,37 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Providers;
+
+use Coderstm\Models\Permission;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\ServiceProvider;
+
+class CoderstmPermissionsServiceProvider extends ServiceProvider
+{
+    public function register() {}
+
+    public function boot()
+    {
+        try {
+            $permissions = Cache::rememberForever('all_permissions', function () {
+                return Permission::get()->pluck('scope');
+            });
+            $permissions->map(function ($permission) {
+                Gate::define($permission, function ($user) use ($permission) {
+                    return $user->hasPermission($permission);
+                });
+            });
+            Blade::directive('group', function ($group, $guard = 'users') {
+                return "if(guard({$guard}) && user()->hasGroup({$group})) :";
+            });
+            Blade::directive('endgroup', function ($group) {
+                return 'endif;';
+            });
+        } catch (\Throwable $e) {
+            Log::error('Error booting CoderstmPermissionsServiceProvider: '.$e->getMessage());
+        }
+    }
+}

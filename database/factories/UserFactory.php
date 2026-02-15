@@ -1,67 +1,82 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Address;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\User>
+ */
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     */
+    protected $model = 'Coderstm\\Models\\User';
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        $created_at = fake()->dateTimeBetween('-3 years');
+        $gender = ['male', 'female'][rand(0, 1)];
+
+        return [
+            'first_name' => fake()->firstName($gender),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail,
+            'gender' => $gender,
+            'phone_number' => fake()->e164PhoneNumber(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+            'status' => ['Active', 'Pending'][rand(0, 1)],
+            'created_at' => $created_at,
+        ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email_verified_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the model's status should be deactive.
+     *
+     * @return static
+     */
+    public function deactive()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_active' => false,
+            ];
+        });
+    }
+
+    /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function ($user) {
+            $user->updateOrCreateAddress(Address::factory()->make()->toArray());
+        });
+    }
+}

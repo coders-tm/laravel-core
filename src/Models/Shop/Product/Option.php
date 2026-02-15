@@ -1,70 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cP/tlADp4V94JaIAz/oqHukOOJLqktMrtUeEukDbR3ldKH0p7V7Qx8Yap7K4lsEwfKKzDt/G/
-uBk2GrGNPxFBDqA8ym8UKMxlNkaPIvyv1ChQH6iTOw0gM+AfSXPfpt6I/LPRgqbqe3FtvM7w4heA
-dgpYtELmWBgbe+RL2SHdZ/p9zrcGhxsm9r+UmRZuObE8reyhaSC6J4k0qawJv0gg/1Xl/sFij53b
-gsal0Sm6Urf8GQYOttrZOOQFhm2CJZthm00mv/xW+GHWDTeY4+7ATeY3oDDiJ6GXJnDV45IRtIkk
-OQzsIlV6ERziVKva0S1y0OBlAK/MdfgYf0zgarWxhGLhtc8VGo0pHK+ydCtpJnUYkrpRkTQQz7RC
-3wH5kzR7E7HT4fe5f8EXmxTl3YdvbWi7jDVP32Kg5CBppdKpM+UiTK22OfJwS9bQ+6K+zVnRlzpc
-ROQ1aMUODjGGjLhwN0jrJTVNA3EDi+ZW04pLMwkNXWoGMyq+l5WkXmsrCJVLpYagfej2HQsb9vMl
-xmdIDcuHLILGEK7BtQlX+QQ9OlGpB5bpdEBI9C8kSDaLs8feECTvoFBt8m95Hm0mk0WqCE3MUxhn
-uLeDnvkkQmpfT/90TRtmyX9edoMixiMXNz/KI5l1o9g7zp4PVOcuOMZ0Z66a9LKMY6d+jYBfn73O
-Ejxv3P5KJ+NyJx2phoVikNQnUghocgD1FspbpQTwdyrDSA2xKB5XslBDgRMh9DG4iTMV80wCoPaW
-7tssx9avWiCQtZyv19WhVAx+fXSQcEHde5gIjYuA0xbyZddghjXrUzwXbU1FFU09I9DtqOXlphhv
-7Qq6QTHhSsuQh8bp4/DWcqE1BrqUN2xCu+9kYCe71ErkU5rGkFKVEwuXcXM3u7qSG6eF+mH62jYH
-rwx2Hi5+juM+uFca8USSBUfK8LuxBrk3C6EFudZArpVBZu7tWof53u2zcLZqgvYmfPiKkL43QjXB
-p1jwwG3jTj/HMTSkYmeGriDSY1FuIVq6Ap+SfJNwskCcs1RIqULm5cxFPUoqtUhi3GUG2ObNvgFS
-ounh4pSiROVxt9l07YmI8i5LsMuQZgDAuuZk1LcdaadFvqRfTykFCEHqRZj0JQ8OXv5evYl3X/MU
-AdKLV22B7UjOBoYu0UnEjLOalO63ZXgvQAUT8mTbREMp3/JaR3SOYc53tQitV3/4U6H999/+22EY
-2XjH/4z9h3EkHFe4U1V2e6lfdFtgMGcUAsABkCaDmQ+T6vRYxi+GtQpwkdgAQA6MH8OQHPCtR9a0
-QYTAjVyoGuviQN+0YyyFCK6HB3Avs//WlJcmlrONUw6jWUfES5HBuIvT0t1URPsI0s8WZtt4b5et
-gWuClvZafsKFZWnbEMIag0QjG5pOBB639fMxGfgaXF3oWEaNkoDuCbsWXjENRTkee0hCZHrBDMum
-AcpQa6S5lWDumxZQGQdjBOf9D4zwioigxcFW5xBE6LwKouFfJomeStE2Xvb1qbhGcBMhcda4oaa1
-DhJnmNdijEAa872e4w+B1HXxFiMcYVxu+uyOG4CA4Lk/3oUEexR/6aCEH2DuK3eqYwEb4tW2zomB
-v76QQyV+n2gOC1b6hgRd5bE9Q6Ii9OoxuvZ+ZmhRuTuATzLQRHgbW9eL4I4F4lJEPnSunN2cBmI7
-299xbObn5PUnSfv6GkbvvhM0qMa0o4HvUgewo6wEJLF5Emak/G6wTB/NT9/EnIK3jfvMJ5ImOVDc
-z5guQ43y6ztgiMEIJoH8bBfOMyEAs2PJZ5a14qj+l7xduj8fHvnmMMFSvi0Mnnbsy5fsnQrsQY9h
-VT/0VlXWFM5zIeyZE9YLRWMbP3G2N84BCVc8CrxBBobdya8Fste+ZgVlKA9HdrW9DX+mcwdJ3WTU
-FOv0P72wxr2+l96Di0wuqE25cESBPe43URyNsXOf3+npk4jY2ohlysFyBOjwH40hi6Q5ZHWeuN4q
-CHShSJ8vb2TIUqQZVXuCjEMUyGlkmmD/e80TKfo5ylM/hx3OdmKgVlLLOhF1PKwnz6ZKjYgK6NFo
-zhVoLVysUEPDsyQSYnopVij+FOc+yygc4lYQWEdS5wc10NalrMhAUaoQuvLK9nzP+5SkJkpTmCM2
-QEoU7e10wcEqulMFeBvHJp2wj13O3dqNWjVr9RxidIrrbyldq4J3R09wRv0hmZGqSHnNlmW/7zG2
-jbU4PhbuiN3O1xHoST/J2WmbK4VpphdqYJqSk1v5gLKeDF1bXF2JiKkOfAY8KGR2CpuQZhLExxNk
-8+sDQU18gt3emALxrEx6hZTgSCTQHFBm0g8p51we739a4vnLzPR6sbqZ8JiMvoyaCEkzqpPU21Qn
-pU0zalw4E2DvZjS3vp1/wMaD/r7WE7j0z3MGPHcLNRyo/vDOd9BisC1ZnlJtdO38i291ysYpvt0G
-oHhIV9KfVx96+CqPNEl/HWl/7kfrMktn+TGL1hNa+KT2h8J6gccJFWcLlWszIlQutgcmM2KK4CPk
-WZ7c2mfr7/8LFZMPIEVvRovgJlLrDyMEHfspY9IeXGNMdEMRKKdYCkWOko0Xx4iJxuv8B5Bg+Fap
-Qkr9ucytQlbDCoIpyoWAxKyKGBaxJ9aRfeU1VlT/jfBeNHdwLK8unVhADJYDzBF9gE2ZS8ZzZ6Ng
-CeeC0NRzGRxSEdXVKToNyA6t7pNJbKT9P6k1aF9pbQzYrjmNvT9mHLEKL5Gd2t6h1oLYyd1DB4Gt
-w3baHIZx/QTbeaA/cPdMZHNfRolVSDz8avV92wfPMUNtXbvQ8JVOlzq/zVhFY9Z2QRXrynM2QdP3
-2Iumrihltwzf+EK9vDqK5eiSyQXIHZRK0CKLSUanqgTRse+vQDz9yjfj+8GrElr1pNImGeN9u0BV
-fYi8zTwrMKYvuSrB5kVTvRwNfGh229/omWt1HGOEMUm7IVFZohALgjNatYAKVqC1a0OWfhpD76LA
-cAX3iVcTFj/aKh9EQFhJsudIJPHpmQTOatBz8HDns6x0eZXb4aJwoIC7yrEGrnpDZyF0MmGwrAHn
-gCtuetKxDPA51+p/2BmglLyti0tXcLGEE7kGxmk885i3k2xq1/yd5jn7ltYgIKbECnqdRSO328d5
-Yc7l0IGUNz9YvbHmbUYEUr/DWTEUzGzVdr4jHz02HKr5hBT9WaA3AD9fMW9hEA62SkzBgHau1Lgc
-t0YtZB0N38Qx3SeV3IqxDXx9Iw7c0dPcO21j3Wz1/Dt+vVJxiJDVLyBS4pgA6rwKVNtxQco/K43S
-KjL64O6IMECqqlfujEH0o99Q/o+epnyWyzbUa06O7PaD5JVKdZYrBUTW01/X6p3dWDphgGjh6Zvs
-+GkA/nSfY0UlZyaIzhR4XnZMjf2veR1cX86AM1rB/5y4yIqQd6/xzNXfb2D9sP7XPR9E02sKyVEH
-vYIZZRz50yCoqK+vRKwGTBu8IE372Rm52RR9hX933r5f0XfXEyotYlk2omlsKgHiOCWGcfWi8dsb
-M/j2YLzI6CaR4DkDDN4MDnuEM8ZqUJ6+sY761C+RWjUcKXeU+9XAkOsw9WAoFLhdERveSg3MoqNc
-j+YwoRVKIjESQYD1auVI5K0hT12C6QefKJeVGCsrDkZ34VGUe3dQ5Pi89ba7lfmmB144kFeOVIVR
-73Km1/fwdBeJTeuzDjtgYwqBC1uAc3Q2we/JwzvoKeXT45I3t0Qx+A2TFOpofQpAafzoBUUWW+Q7
-iUbyYlhm6cC5JpaisU7kOXFNkSUndRVZjHlwhyiGanReDt0jOBczhdR/Hq918DLpQYbYVHq7QAwI
-X9Vx4wcJRuKdsnIVl+QKwKeXfqZYSKmkuYNTfWVthrXaN83oMgON0ublDpL6rnPNQWAaEcKwkaxS
-gBNKE2oP+/qjZtznujbvlKBEvvxQVJL0jqBKGcMz47kptGVcPRMUmLt1l5TNg6t1VQ7yFt2kOMov
-ceiU8zom+NDI8DlJhk9LxTVZ9Gfx5paLmXRsh7/6aEbAaPNW0sN8wVkrahXE7h+VDidNI+Briz9T
-yTAlV68CPTa7eEoQmm4Z6d/Iexs7f+ClxVxxWe/gGHM7JLcxEU/rA5rlQl88Z6EHTGd7Vygsz5zl
-quTQ0R/qBTNbNGfK6//HEv6vcqViZRbiCNreQgCtKyz6YAlvHHWiK0km/P+9O7odJOkcYg/Klu/S
-/RGeT4WNeFo2EzPZNHoSQF/2I7uBytGkUUv7M8J05Q2RMNs1GakcAKRP7USo3l6yuSqu9PkxvcZ7
-hRN8SvAB15VxOk8+XZWOMN7hT/AtzRAL4goDZFBh2Hh0wjyu2IHJf8d/EztGyrFaNdU/kXLHp7l/
-JLjTt33O19jG3IAisvP43+DBegpc+88iriEGMmT65/Rlb/Nxkc3APKCTN78+Q1pUdjtTixkFSwmK
-SkCT4gLzi97HmzWIrx+oJRXh1F3zXFSsV+FdiqTcCCWnJy4vw+wLU3WMsmv0hEdy51vj1hXsxAMn
-Cl6byWj0/pra7i8ixVk5xdqN3/xg2C4XKDuIXariZm2mUKpcD38/0L9ziuHL8hazy/GitpwC5eiL
-Jo6aoTCxw+Ttyyy0y+kna5aFQpOLK8Ry+O/ipFI5QWiLKtbElr1oRF1iqDzRu3hK70EYkFHnK6Sc
-Zzl30TCxSxZX1uGUhB7l9na/zPwg5AXhHttbrpe6QbPYllyDZKQ3au6QAfrNClN03Yps+NVVdMvw
-nBnJpdhyeYLZEnLRDmXoklgjpU6aiL/N7QHrZWTPLewW1PPG4YC8PfynWFZ1ACFsSMYahTySmI7F
-bEhV2ATUv/P8PgtR5mU79Y4t2mpiPeCObiLIok2IdTM6eu9DPfgWouM4nj5riBbxTcxOmmBxL7rR
-IGxKZ5MQxNP52mfCJqREy86h0cUpzViW+pI8bVX+RPWUq5EgG8r2P+n7MXjGZW3VH5Gzxljv8cuO
-4aTS3kSdRoeVCu0MY+y8NolPZpUUtQ1TdP1nddw+6WKBugIZEkAPekWw6otM4sxc96tXw1BYvY9s
-uZd0/pql7XTxhVBkJjW=
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Attribute\Value;
+use Coderstm\Models\Shop\Product\Variant\Option as VariantOption;
+use Coderstm\Traits\Logable;
+use Illuminate\Database\Eloquent\Casts\Attribute as CastsAttribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Option extends Model
+{
+    use HasFactory, HasSlug, Logable;
+
+    protected $fillable = ['name', 'slug', 'attribute_id', 'product_id', 'is_custom', 'custom_values'];
+
+    protected $hidden = ['attribue_values', 'custom_values'];
+
+    protected $casts = ['custom_values' => 'json', 'is_custom' => 'boolean'];
+
+    protected $appends = ['values'];
+
+    protected $with = ['attribue_values'];
+
+    public function attribute()
+    {
+        return $this->belongsTo(Attribute::class);
+    }
+
+    public function attribue_values()
+    {
+        return $this->belongsToMany(Value::class, 'option_values');
+    }
+
+    protected function values(): CastsAttribute
+    {
+        return CastsAttribute::make(get: function () {
+            if ($this->is_custom) {
+                return $this->custom_values;
+            } else {
+                return $this->attribue_values;
+            }
+        });
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug')->allowDuplicateSlugs();
+    }
+
+    public function variant_options()
+    {
+        return $this->hasMany(VariantOption::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
+
+    public function updateValue($value)
+    {
+        if (! empty($value)) {
+            if ($this->is_custom) {
+                if (! in_array($value, $this->custom_values)) {
+                    $values = $this->custom_values;
+                    array_push($values, ['name' => $value]);
+                    $this->update(['custom_values' => $values]);
+                }
+            } else {
+                $this->attribue_values()->attach(Value::firstOrCreate(['name' => $value, 'attribute_id' => $this->attribute_id]));
+            }
+        }
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::addGlobalScope('type', function ($builder) {
+            $builder->withMax('attribute as type', 'type');
+        });
+    }
+}

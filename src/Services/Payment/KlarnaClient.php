@@ -1,293 +1,380 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-EiPGJ5B604BhCgss+5A/UeK7Lm==
+<?php
+
+namespace Coderstm\Services\Payment;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Config;
+
+class KlarnaClient
+{
+    protected $client;
+
+    protected $username;
+
+    protected $password;
+
+    protected $baseUrl;
+
+    public function __construct($options = [])
+    {
+        $this->username = $options['username'] ?? Config::get('klarna.api_key');
+        $this->password = $options['password'] ?? Config::get('klarna.api_secret');
+        $testMode = $options['test_mode'] ?? Config::get('klarna.test_mode', false);
+        $this->baseUrl = rtrim($options['base_url'] ?? ($testMode ? 'https://api.playground.klarna.com' : 'https://api.klarna.com'), '/');
+        if (empty($this->username) || empty($this->password)) {
+            throw new \InvalidArgumentException('Klarna API credentials are required.');
+        }
+        $this->client = new Client(['base_uri' => $this->baseUrl, 'auth' => [$this->username, $this->password], 'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json']]);
+    }
+
+    public function createSession(array $sessionData)
+    {
+        try {
+            $response = $this->client->post('/payments/v1/sessions', ['json' => $sessionData]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $msg = $e->getMessage();
+            if ($e->hasResponse()) {
+                $msg .= ' Response: '.$e->getResponse()->getBody()->getContents();
+            }
+            throw new \Exception('Failed to create Klarna session: '.$msg, $e->getCode());
+        }
+    }
+
+    public function updateSession(string $sessionId, array $sessionData)
+    {
+        try {
+            $this->client->post("/payments/v1/sessions/{$sessionId}", ['json' => $sessionData]);
+        } catch (RequestException $e) {
+            $msg = $e->getMessage();
+            if ($e->hasResponse()) {
+                $msg .= ' Response: '.$e->getResponse()->getBody()->getContents();
+            }
+            throw new \Exception('Failed to update Klarna session: '.$msg, $e->getCode());
+        }
+    }
+
+    public function getSession(string $sessionId)
+    {
+        try {
+            $response = $this->client->get("/payments/v1/sessions/{$sessionId}");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $msg = $e->getMessage();
+            if ($e->hasResponse()) {
+                $msg .= ' Response: '.$e->getResponse()->getBody()->getContents();
+            }
+            throw new \Exception('Failed to get Klarna session: '.$msg, $e->getCode());
+        }
+    }
+
+    public function createOrder(string $authorizationToken, array $orderData)
+    {
+        try {
+            $response = $this->client->post("/payments/v1/authorizations/{$authorizationToken}/order", ['json' => $orderData]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $msg = $e->getMessage();
+            if ($e->hasResponse()) {
+                $msg .= ' Response: '.$e->getResponse()->getBody()->getContents();
+            }
+            throw new \Exception('Failed to create Klarna order: '.$msg, $e->getCode());
+        }
+    }
+
+    public function cancelAuthorization(string $authorizationToken)
+    {
+        try {
+            $this->client->delete("/payments/v1/authorizations/{$authorizationToken}");
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to cancel Klarna authorization: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function generateCustomerToken(string $authorizationToken, array $tokenData)
+    {
+        try {
+            $response = $this->client->post("/payments/v1/authorizations/{$authorizationToken}/customer-token", ['json' => $tokenData]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to generate Klarna customer token: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function getOrder(string $orderId)
+    {
+        try {
+            $response = $this->client->get("/ordermanagement/v1/orders/{$orderId}");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to get Klarna order: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function acknowledgeOrder(string $orderId, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/acknowledge", ['headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to acknowledge Klarna order: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function updateAuthorization(string $orderId, array $updateData, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->patch("/ordermanagement/v1/orders/{$orderId}/authorization", ['json' => $updateData, 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to update Klarna order authorization: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function updateCustomerDetails(string $orderId, array $customerData, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->patch("/ordermanagement/v1/orders/{$orderId}/customer-details", ['json' => $customerData, 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to update Klarna customer details: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function extendAuthorizationTime(string $orderId, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/extend-authorization-time", ['headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to extend Klarna authorization time: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function updateMerchantReferences(string $orderId, array $references, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->patch("/ordermanagement/v1/orders/{$orderId}/merchant-references", ['json' => $references, 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to update Klarna merchant references: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function releaseRemainingAuthorization(string $orderId, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/release-remaining-authorization", ['headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to release Klarna remaining authorization: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function addShippingInfo(string $orderId, array $shippingInfo, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/shipping-info", ['json' => $shippingInfo, 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to add Klarna shipping info: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function cancelOrder(string $orderId, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/cancel", ['headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to cancel Klarna order: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function captureOrder(string $orderId, array $captureData, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $response = $this->client->post("/ordermanagement/v1/orders/{$orderId}/captures", ['json' => $captureData, 'headers' => $headers]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to capture Klarna order: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function getCaptures(string $orderId)
+    {
+        try {
+            $response = $this->client->get("/ordermanagement/v1/orders/{$orderId}/captures");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to get Klarna captures: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function getCapture(string $orderId, string $captureId)
+    {
+        try {
+            $response = $this->client->get("/ordermanagement/v1/orders/{$orderId}/captures/{$captureId}");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to get Klarna capture: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function extendDueDate(string $orderId, string $captureId, int $numberOfDays, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->patch("/ordermanagement/v1/orders/{$orderId}/captures/{$captureId}/extend-due-date", ['json' => ['number_of_days' => $numberOfDays], 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to extend Klarna due date: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function getExtendDueDateOptions(string $orderId, string $captureId)
+    {
+        try {
+            $response = $this->client->get("/ordermanagement/v1/orders/{$orderId}/captures/{$captureId}/extend-due-date-options");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to get Klarna extend due date options: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function addCaptureShippingInfo(string $orderId, string $captureId, array $shippingInfo, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/captures/{$captureId}/shipping-info", ['json' => $shippingInfo, 'headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to add Klarna capture shipping info: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function triggerSendOut(string $orderId, string $captureId, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $this->client->post("/ordermanagement/v1/orders/{$orderId}/captures/{$captureId}/trigger-send-out", ['headers' => $headers]);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to trigger Klarna send out: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function refundOrder(string $orderId, array $refundData, ?string $idempotencyKey = null)
+    {
+        try {
+            $headers = [];
+            if ($idempotencyKey) {
+                $headers['Klarna-Idempotency-Key'] = $idempotencyKey;
+            }
+            $response = $this->client->post("/ordermanagement/v1/orders/{$orderId}/refunds", ['json' => $refundData, 'headers' => $headers]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to refund Klarna order: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function getRefund(string $orderId, string $refundId)
+    {
+        try {
+            $response = $this->client->get("/ordermanagement/v1/orders/{$orderId}/refunds/{$refundId}");
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            throw new \Exception('Failed to get Klarna refund: '.$e->getMessage(), $e->getCode());
+        }
+    }
+
+    public function buildSessionData(array $params)
+    {
+        $defaultData = ['acquiring_channel' => 'ECOMMERCE', 'intent' => 'buy'];
+        $required = ['order_amount', 'order_lines', 'purchase_country', 'purchase_currency'];
+        foreach ($required as $field) {
+            if (! isset($params[$field])) {
+                throw new \InvalidArgumentException("Required field '{$field}' is missing.");
+            }
+        }
+
+        return array_merge($defaultData, $params);
+    }
+
+    public function buildOrderData(array $params)
+    {
+        $defaultData = ['auto_capture' => false];
+        $required = ['order_amount', 'order_lines', 'purchase_country', 'purchase_currency'];
+        foreach ($required as $field) {
+            if (! isset($params[$field])) {
+                throw new \InvalidArgumentException("Required field '{$field}' is missing.");
+            }
+        }
+
+        return array_merge($defaultData, $params);
+    }
+
+    public function buildCaptureData(array $params)
+    {
+        if (! isset($params['captured_amount'])) {
+            throw new \InvalidArgumentException("Required field 'captured_amount' is missing.");
+        }
+
+        return $params;
+    }
+
+    public function buildRefundData(array $params)
+    {
+        if (! isset($params['refunded_amount'])) {
+            throw new \InvalidArgumentException("Required field 'refunded_amount' is missing.");
+        }
+
+        return $params;
+    }
+}

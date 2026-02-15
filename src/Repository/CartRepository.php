@@ -1,81 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Repository;
+
+use Coderstm\Models\Address;
+use Coderstm\Models\Shop\Customer;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Shop\Order\Contact;
+use Coderstm\Models\Shop\Order\DiscountLine;
+use Coderstm\Models\Shop\Order\LineItem;
+use Illuminate\Http\Request;
+
+class CartRepository extends BaseRepository
+{
+    public static function fromRequest(Request $request, Order $order): Order
+    {
+        $line_items = collect($request->line_items ?? [])->map(function ($product) {
+            return LineItem::firstOrNew(['id' => $product['id'] ?? null], $product)->fill($product);
+        });
+        $order->created_at = $order->created_at ?? now();
+        $order->fill($request->only(['note', 'collect_tax', 'attributes', 'billing_address', 'shipping_address', 'source']));
+        if (! $request->filled('collect_tax')) {
+            $order->collect_tax = true;
+        }
+        $order->setRelation('line_items', $line_items);
+        if ($request->filled('line_items')) {
+            foreach ($request->line_items as $key => $product) {
+                if (isset($product['discount'])) {
+                    $order->line_items[$key]->setRelation('discount', DiscountLine::firstOrNew(['id' => $product['discount']['id'] ?? null], $product['discount'])->fill($product['discount']));
+                }
+            }
+        }
+        $order->setRelation('discount', $request->filled('discount') ? new DiscountLine($request->discount) : null);
+        if ($request->filled('customer')) {
+            $customer = new Customer($request->customer);
+            if ($request->filled('customer.address')) {
+                $customer->setRelation('address', new Address($request->input('customer.address')));
+            }
+            $order->setRelation('customer', $customer);
+            $order->customer->created_at = $order->customer->created_at ?? now();
+            if ($request->filled('customer.id')) {
+                $order->customer->id = $request->input('customer.id');
+            }
+        } else {
+            $order->setRelation('customer', null);
+        }
+        $order->setRelation('contact', $request->filled('contact') ? new Contact($request->contact) : null);
+        $cartRepository = new static($order->toArray());
+        $order->setRelation('tax_lines', $cartRepository->tax_lines);
+        $order->fill(['sub_total' => $cartRepository->sub_total, 'tax_total' => $cartRepository->tax_total, 'discount_total' => $cartRepository->discount_total, 'grand_total' => $cartRepository->grand_total, 'line_items_quantity' => $cartRepository->line_items_quantity]);
+
+        return $order;
+    }
+}

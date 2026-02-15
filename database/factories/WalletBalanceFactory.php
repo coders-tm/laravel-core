@@ -1,44 +1,49 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\WalletBalance;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class WalletBalanceFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = WalletBalance::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'user_id' => \Coderstm\Models\User::factory(),
+            'balance' => $this->faker->randomFloat(2, 0, 1000),
+        ];
+    }
+
+    /**
+     * Indicate that the wallet has zero balance.
+     */
+    public function empty()
+    {
+        return $this->state(fn (array $attributes) => [
+            'balance' => 0.00,
+        ]);
+    }
+
+    /**
+     * Indicate that the wallet has a specific balance.
+     */
+    public function withBalance(float $balance)
+    {
+        return $this->state(fn (array $attributes) => [
+            'balance' => $balance,
+        ]);
+    }
+}

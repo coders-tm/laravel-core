@@ -1,46 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-HGCRlxVQsfZ99jjuslELv1KaIxQHFaMT
+<?php
+
+namespace Coderstm\Notifications\Shop\Admins;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Notifications\BaseNotification;
+
+class NewOrderNotification extends BaseNotification
+{
+    public $order;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct($order)
+    {
+        $this->order = $order;
+        $template = Template::default('admin:new-order');
+        $rendered = $template->render(['order' => $order->getShortCodes()]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['order_id' => $this->order->id, 'order_number' => $this->order->formated_id, 'customer_name' => $this->order->customer?->name, 'customer_email' => $this->order->customer?->email, 'total' => $this->order->total(), 'status' => $this->order->status];
+    }
+}

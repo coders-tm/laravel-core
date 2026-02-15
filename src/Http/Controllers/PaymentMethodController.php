@@ -1,83 +1,68 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\PaymentMethod;
+use Illuminate\Http\Request;
+
+class PaymentMethodController extends Controller
+{
+    public function index(Request $request)
+    {
+        $paymentMethod = PaymentMethod::query();
+        if ($request->boolean('enabled') ?: false) {
+            $paymentMethod = $paymentMethod->enabled();
+        }
+        if ($request->boolean('disabled') ?: false) {
+            $paymentMethod = $paymentMethod->disabled();
+        }
+        if ($request->boolean('manual') ?: false) {
+            $paymentMethod = $paymentMethod->manual();
+        }
+        $paymentMethod = $paymentMethod->orderBy('order', 'asc')->get();
+
+        return response()->json($paymentMethod, 200);
+    }
+
+    public function store(Request $request)
+    {
+        $rules = ['name' => 'required|string', 'provider' => 'required|string'];
+        $request->validate($rules);
+        $paymentMethod = PaymentMethod::create($request->input());
+
+        return response()->json(['data' => $paymentMethod, 'message' => __('Payment method has been created successfully!')], 200);
+    }
+
+    public function show($paymentMethod)
+    {
+        $paymentMethod = PaymentMethod::findOrFail($paymentMethod);
+
+        return response()->json($paymentMethod, 200);
+    }
+
+    public function update(Request $request, PaymentMethod $paymentMethod)
+    {
+        $rules = ['name' => 'required|string', 'provider' => 'required|string'];
+        $request->validate($rules);
+        if ($paymentMethod->integration_via && ! config("{$paymentMethod->integration_via}.enabled", false)) {
+            return response()->json(['message' => "This payment method is not enabled for integration. Please enable  {$paymentMethod->integration_via} first, then try again."], 422);
+        }
+        $paymentMethod->update($request->input());
+
+        return response()->json(['data' => $paymentMethod->fresh(), 'message' => __('Payment method has been updated successfully!')], 200);
+    }
+
+    public function disable(Request $request, PaymentMethod $paymentMethod)
+    {
+        $paymentMethod->update(['active' => false]);
+
+        return response()->json(['message' => __('Payment method has been disabled.')], 200);
+    }
+
+    public function enable(Request $request, PaymentMethod $paymentMethod)
+    {
+        $paymentMethod->update(['active' => true]);
+
+        return response()->json(['message' => __('Payment method has been enabled.')], 200);
+    }
+}

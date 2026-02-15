@@ -1,32 +1,27 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Events\GoCardless;
+
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class FlowCompleted
+{
+    use Dispatchable, SerializesModels;
+
+    public $flow;
+
+    public $subscription;
+
+    public $mandateId;
+
+    public $customerId;
+
+    public function __construct($subscription, $flow)
+    {
+        $this->flow = $flow;
+        $this->mandateId = $flow->links->mandate;
+        $this->customerId = $flow->links->customer;
+        $this->subscription = $subscription;
+    }
+}

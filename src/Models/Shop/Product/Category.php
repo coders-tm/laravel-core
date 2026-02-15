@@ -1,51 +1,49 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Database\Factories\Shop\Product\CategoryFactory;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\Fileable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Category extends Model
+{
+    use Core, Fileable, HasSlug;
+
+    protected $fillable = ['name', 'slug', 'status', 'description', 'parent_id', 'meta_title', 'meta_keywords', 'meta_description'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(static::class, 'parent_id');
+    }
+
+    public function children()
+    {
+        return $this->hasMany(static::class, 'parent_id');
+    }
+
+    protected function description(): Attribute
+    {
+        return Attribute::make(set: fn ($value) => $value ?? '', get: fn ($value) => $value ?? '');
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    protected static function newFactory()
+    {
+        return CategoryFactory::new();
+    }
+}

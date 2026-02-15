@@ -1,33 +1,24 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-rJgkldohIoJ6iz2zzS8=
+<?php
+
+namespace Coderstm\Contracts;
+
+interface PaymentInterface
+{
+    public function getPaymentMethodId(): int;
+
+    public function getTransactionId(): string;
+
+    public function getAmount(): float;
+
+    public function getCurrency(): string;
+
+    public function getStatus(): string;
+
+    public function getNote(): ?string;
+
+    public function getProcessedAt(): ?\DateTime;
+
+    public function toString(): string;
+
+    public function toArray(): array;
+}

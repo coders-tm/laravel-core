@@ -1,35 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPp74/q1X4op4LkfoQa9SATocqUFkCJ2v2B2u71wZbmsnVo5pEn/ap20zIbhPfOsJ52xNxmqh
-uTM4NYdyJaNs6AoDH7joROylAfwUligf2oYO0YDSIAE0cr6kP0T1iuJodJ/vk1xLAXdQQe6HXglp
-JIVkKgUkLi6uA7vSAVGV2K7Q5KQahbsZ6EN5FeFsar0nm0IFEKivv+vKERUy+FsxK1x2hFI3PEax
-AMNGXRKSsGAOXrlqgFArOdcEDiUpmdDkl4Z2v/xW+GHWDTeY4+7ATeY3o65fDfv7RKCgbbVSDojk
-lC4s/scqBLymY5OhDiyxUFVO/NYEOh/ey/IAA2nNbDfRjOg6xgKT76++wNYgH1LflsnJXTeZxYPA
-G34wrj+d79iPbO5XaHtgKepbTfQN8LLMqrfatYPiS1YLwu0GEPGtJ9oOESinaxnh9b+RooZKSPIH
-gFr7DrhXvJyinfVwa0vZRVAVp77XR6dehd4wnkzpIpieJ0CpbX2h/4rfMQWPzP/tIEhDuDTKq+/o
-iFjaK2u7xeyvXalHvrFIbjNA7EpXSHELG0nIEPQy9xwErSL6cjQMNC43NYztvv49+xSdZ+sN4AoX
-3apJ40hcHEUBKgzHSYMHk51pCJyHyQf5h5maHSiFQXV/tsoq9ysF9q1q3rLVFpYzZkT5NbLfwMG0
-o8UpNGr4KVRUcHJk7FduylRbkA+NKdiff69H9cDWKn1R8pg1TOit/zmblxuJxNEmvA+hHkmuGlI/
-x7wpvzaPPDcvfXETjg4UoBJIr+eeOF3m5HEL1JzBiqPjwyEQONrIVVXE0Tw4AgNTklawyTefmBGH
-qVmDG7QLvotSvFXoie+8BXo1g5VsXXBvGiz/XcVVhifS6mc1U5q9ZuUm3BrM/gsAUBg0x9nZ1CLz
-Jf+ucDIvHQ9a3cAQ+tttxgJtGNdtoT+ru9zkAWyJsKvt4yu/Y4Aa44Sjv2FY7ME0R6gMD90tadxe
-5gv8L/+r4YuX7+Pnv2UIZ2HJ7OScXov2M4Rp2Pr9JxlVP1+cckCsYIdv2mr8x6WYY/voJNutKqDc
-Jk0KgxmUi95QT3DelVYjfIhVLaX3i+C5JRIXVQVeHsz5txHWMK8lZ8ahzlOAYNNqVNM2Xl3Xl2pF
-eDfRwtZLq9VDM3FH7M9+OGH4R7VYH6bSDMdOeMXmS7d0QBrB1fYeRC+IxLA8SySxJL0O6JJpzvR5
-e0gacLYI3m8f8Tw/KflPToAK2AIlP+PK9V+Glto7HruL2HMB7OdtHg7WteFj14z6dDex7D8NNCel
-V8GmOiAYoTQ6ufwX1OKMmsh4HLn/MCbFPhalwSi+44jlmR501F+uDF8QGbChfnA9wa529IQbczVM
-jB6jKdrguc/TgNFPCMYUoIRyxyubYT0XCbPQ0Da24p4lbaLaS9i6al1VNwOxiJe2Z1wZhHGE65+j
-9TUJmWiZS89Yt8c+7eanJpzMjBs2yfl3Z8qwuVm6jRtvjVjrUFnQzM1uycz5GthYQ5sxL5XzG5Z2
-5L23dx/A1XW6XZAEtyc47xqSuAmILJ7mfFKCVYZL5Qd9utKj1W9Hr70tz7W2iAJiPNiv4Ea5pBoF
-JKmzFNeiwXqGoskUZkTYSYdFysISd6ac6e+ydGvcuT2jAp0c6LUiBWEDS5V8FyyQXzrK+T2zkXS4
-cKEuB+lUp0jfQujEd1+v9u2PI5mrsk0ewM2Mb9gPqDTDv9JdxcKe0nBuYAwYvAXBv/qs26GBeHFq
-bBJm/fEjB5dSzvkBp4CXCxNDLgVNRX+WfntV6CgGmV6QYTjOUQt3UWyjAg3Bq72RIEddyTRlkYRy
-YpPqV02o/MenCjG6Uq5Qj9o37Z+IWWgEz44SDnsyOK34OMLvjETleDtwyWW/1HHTB0SpjKtu/SP+
-BO6/cQEDYdsQS3FV3DIT2by6phzPZFvEqt0q3+DvJGSu0q4eukndLlAiL/+ywYjuZ+3vt28FpxjS
-rI1yzfaBvEWNQQCNnBsKMnaO9OgAZD3WXFPJHFcbk7IiauO9zQrlxG6/3pAPCuhNrOqlzK1LkD87
-ZtjK4lCrlOXNte58IiLHZwubnU7mf7YtWbp0O7thLz1gG0lJku++SCoLT8QbzHmbf7Hne8CBao9V
-1TmxoRq6TGV2Auivun3aOE4VrNvCeVEmqwYxWtIA956sPoGCJoMSbzF4MlKqbR7V3PsaHHxzsReE
-Pk/M/r883C51qLLZ0Ab4VXP4oqnPue6t7G7XvMUiYn8QWjl/gKVpbwgHBgp3BUkOFzJ00Rf141t6
-QgG95q+1Sb42QFbZr4HpJDnxI+x8md5OFPf8yZVK+twDCi40Tb68LqpNEGDNZVCfgl/HMS9wR3lo
-uPRKH0YvPdRQXiy6kYhjyXns56/s9sovG3NLf1BIPSeU9efKjAoxk7aMjou=
+<?php
+
+namespace Coderstm\Jobs\Subscription;
+
+use Coderstm\Models\Subscription;
+use Coderstm\Notifications\SubscriptionRenewedNotification;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class SendRenewNotificationJob implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public Subscription $subscription;
+
+    public function __construct(Subscription $subscription)
+    {
+        $this->subscription = $subscription;
+    }
+
+    public function handle(): void
+    {
+        if ($this->subscription->user) {
+            $this->subscription->user->notify(new SubscriptionRenewedNotification($this->subscription));
+        }
+    }
+}

@@ -1,38 +1,24 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications;
+
+use Coderstm\Models\Notification as Template;
+use Illuminate\Bus\Queueable;
+
+class UserResetPasswordNotification extends BaseNotification
+{
+    use Queueable;
+
+    public $user;
+
+    public $reset;
+
+    public function __construct($user, array $reset)
+    {
+        $this->user = $user;
+        $this->reset = $reset;
+        $template = Template::default('common:password-reset-request');
+        $rendered = $template->render(['user' => $this->user->getShortCodes(), 'reset' => ['url' => $this->reset['url'] ?? null, 'token' => $this->reset['token'] ?? null, 'expires' => $this->reset['expires'] ?? null]]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+}

@@ -1,35 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
+trait Core
+{
+    use HasFactory, Logable, SerializeDate, SoftDeletes;
+
+    public function fresh($with = [])
+    {
+        if (! $this->exists) {
+            return;
+        }
+
+        return $this->find($this->id)->load(is_string($with) ? func_get_args() : $with);
+    }
+
+    public function scopeOnlyActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+}

@@ -1,29 +1,14 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPoQSfDwPPHqHP2Wn/K51V1tWVuWPGgUtbPguJ48Uk9SrzBJPhLPFR5VHM/V5W3TU1395qejg
-bdQcUnswBQmUIOR61HkhS34vmkL2qIp+NMj+enadEmL/Wp4hs8CkDY+MNc+sKTMRDUQ2B0Tc9wgq
-U+hvWsR5t+g3gk5Zb50+SO2O3PgyT2d9Bry5hOKn1h73HmX7cGw790YZs1wQJHaGpKuXll9DeJ/q
-Btl2q1/AXMEMA9P2ohEAuRCuPFaIvQRWI30Cv/xW+GHWDTeY4+7ATeY3o4DZBU8gghHM2DK4dYik
-jy5H/1/eB2nevoh3XyU1N0JL6WG8aJWxZ2Ceb8yqiWxbGzP/JRbo/iisnBUhnOsZV6gQO0FpuRdE
-bV1Qxd/1s+BDM2ap5MwYyn9tPvAtbJs2v/grmw7uCrf4SeThIkhh1vnvJxIlP4NYRQRVhQ7aKEn/
-RTnSu+9aMNwUGJTfvzeM2bJgG8fxDN0bDN1WbHudpVUErfs8dyQCLxPtMTXouo2VEzLD742wG8ba
-su6IRX/Zi34PQXNnTROlHKkTTUZrt3CnSeplOKn8i/7L5Ij4/5NHeR73YkogwHrraSo8CbEvZoKU
-b5IfIsyWHyX6MnNqn23DR4qJrWNCaxIzp5Ww0P7L9m8xhbI4ts1k87w4HkVHc0MAkEncG7qRlidk
-Uq790+6YGmax9Y039wjGx7G330+vLSPMIrfsZ2qaWBghIwKaJntfC9he8tR6GU9TPb7oU04+6Igd
-NoaHh0oIPB6jtRaUG0jmQIag5tHdWaLESbJ4IsapttJ+PwfuqtTMXuOmwbqBYLesG6hwhiDsb2q2
-UbetCSbObO3jaT8SIQz8YmlJSs7RyaTk1jrabntiak+BU3ZRr+QZY8BPks6l/mRUbPFtL2IlAPQ5
-Rzh/au5GY35RxbkVMeQZgz2uL9a8TQomwmo15R119P6c1libBdT2NLFtt9fYI3biaJK4wJFVWkSN
-LPWJgyfEq6VUUMcA/sKzI8GauI0z1/1xvcJ1VrHxgQw0eGNki7LNOIlXpq/jro9bXEdWe6z9+zKM
-0clRg3Y8dmtDTzE0qP89s6YzkNg8omeri+fJo4uj45ZpZIBDDYxU109+eSQoMngmDLTi/x7BvdAd
-0EcP03UKLQ5UbEZnwcFOaL3D6kwVBD9Yt8CkIg/N7/hAbf1AJSM+7+E9JY8Eo5/o3Xu5cN99UinP
-G6nDyPEZIB8iJHZBGfnLKaIkuuu9Nf+XudgaJl+tawR4Kw326LRDH1Y2BU1xhEdEFvxjRNi7mIH1
-6tXPZNUuOAVVSSS4WbMl+gTrqqYWLvqxA4/cFzqmQDTdUrSofm27k9S92WrXHy360tn46zAdKwl/
-YWGOxCc8LCDnzkynus9e0IrkjlArWXAVt6c3WLkTDzUHBPpsvGKTKGWwQ+ApJWvTC1i5nebrs0L2
-WkDjhnjZFi9Ecen4rLzWxoYwqewALv/UB/8nKySGeSa1o7vr+uy/2Ch8gkGGj1+hPg2y5k14HY6z
-TciXMkA0oo31XPzlxS/xq0yoqMidWsIJFzSL64g3A7QJiW0RMm2cxq4m8K4jiw0Jpn9g0S8vuLbM
-k9/rKNsbNGsH8o1gyBeuKq66XKjox1vnALl265b+gmKe7x4bB2+p7dvBbtNdRP6W1r4d9OWIktBx
-AVryDYWY2mrtEi6kc9Xw10N98MbbgIdSAYLWScXToS1aSgvoEIOMffHzCiRzJ64Edw5+Ri6ydRmh
-ZCCVXAY/Ld5gjDsC3WWcgOUQn3A1MIRldBTxMsa1iUyQk2udCW6wgVbut5KH8JzLPVpDVioTOgH5
-W9cuq3UV+Bi+iosd6pfV5YAkOOHA1ROioWcez7RcevxozGub4NyCK1hYzHr2aBy6yQOTAxt+9Juq
-BS1+0MaPsSOMm42wp0j4ICH6S+6hlKbNU0==
+<?php
+
+namespace Coderstm\Http\Resources;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class RelatedFileResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return ['id' => $this->id, 'name' => $this->name, 'url' => $this->url, 'ref' => $this->ref];
+    }
+}

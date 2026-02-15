@@ -1,62 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPyYZm1TE8pbO5szLD42WZMNXH+IOSrIqQEupdbNsd98Y9JlJoMFPOw27mnHKFjVV3aXmjuul
-WEFJiwSDSx67myJor2l+L/oy8HVVBGUTWOGksYkgY9GRk10fYtH+ryQXzExV2V5v8VP+Tp/Awj7L
-wHjEGeSO3PPhHtDZpQ6m0+2D+ckPXWPM4STuWpqZGpkFSmVD3+uIYk+NXsMqfmKOk3Mz4whRT/FB
-ELPswFx04BE1pxpUg2VUyZ5KOfHKuL/CwpaSxkV+uFa4O3NQ8XFXodQ8WyWiRNeSCZ2hEP2gNM4h
-RaCxFtzc/j4e28gZ062+KLTH0s5yN/a0RxNkMKc9m9UvyIPDzHy+0fEZRQP/Iajq7lOS1szrlvvK
-rx3pvmCuCXJ8sEynrlM0bCyqYHcR4OV3D8svv043+oOJdi6K5D0SVeW/SQM9sqEHpnn+xGv3ydQl
-TZdoFKD4xsQEJZIgtF4XEAfDdoGbSeTIw7auTZE2xk1TAmq91G96+amV8625HjL5ZrFrZpPNA04T
-SP3SWA6hKmwGLblbZIz5smJquToHowFlBgMSETNrI2bh3XIr94qxoUvzUbv/2xrG6zCWeEEu42az
-gCNo3qbXqpZ0c0LgCVE6nPvGn4tHLuNMBmnSTAhv5HWa+VgZRxer/sFJ3CUlWZZUY1RCdJZRUYXx
-ZA+ubivcT53i1CtM5bNLmg4nHc50JDMADJQzGCc3YNQz6eUJP6d+OkcHsjULA9n/qJN1HFlt9Dt4
-GGZIk+kyeDYKfzvZwc5Ss/XGtzDyE0Kr5tdQwlaTDsvRDs+aBCaSJJXwuMv/fnXkevflTtZLFNK6
-oeOH6a3vcLRbA1MKQh85aEdPFLhB629RVksFzw7/XtIPN9M1Xff+jD/V01/hVVmmc31fRxiZ9owb
-OrtxN6PvzGUfeqgPTdnACnZwFbC2bWG35JaR6WEVN5a8Dvpe49fwWvVaNkdDTS5/sH5sd+S4EhWr
-ORKzuBBMLuWus0+Q9VZD7rFCab3XvYfy1PsnOaqcv1F4YBQrHjlUc01oJsjzAWdRQmwEwDXm91ig
-0HC0k3j+l5Nhn8N/q3yJf4jU5nw1R5pIMfwCUycFApCBoAoazPO7/TgDeX1EPGYkymvObYt+QhFF
-S3cFGkVZFLh+p8tXkn0YcCir6QTgtCJg5tpwoWnqsn34igq8uuzDDa3/z/8+PMGXD0ywMuzJ06GC
-lMcUYPWbgsc+fGoHsMISIE7UM7stFNGWHVKu6wHrL13ZefZybMQ5bKBc4eAnAHkQoRO/+8Bm2pJf
-AqCUKt3QArXLx92V1msWtwBf+sqGRilwITU2kLMp0WY3zQ57XhtrpO9vKVzSZubJW7aB8c8uVvEb
-4YzLXZdsh8kxV6B1LE+uVe9oh34Fyq5dxUK1gtbHzN9BNsH/Glwe022SRzE95AHlAgQZFLFFrq26
-VOxM1Xird8aPdHsxpG9K1BSY4gkWBtE814hXJUyP8AqMU4rFCLsYPBXSJ2V4a1/XC+KSYrnqr6ux
-RtvytqebYrQJVjFGyh94gpaSGsRDC1mT5Iz1mcseue1gQ+RblltI9ZOLq00biWUFL+yR//9lSCHJ
-XPX1zG6zgHSZS/SBEFN2x1JVM4LEQpkcuWJUet6Cj5OcSxuS6I2AEibHN+ItjlU9b6epS1fTIr7d
-UfxFWd4i21zKoCy+alTf7uYTD9lzQ+LFHxbly4r7Z5E/JfcTUW22hNlFQTlZNTw957rT+c8LcvNF
-QVyGfPQHYgyw46mITjx+kMECEoX224eY9jsOgKzJdrKAF+/kGqYQiB5ww6fkSevWa4Dr7aVSSD36
-oL6l5QgDQ1FvQUoGBHdWeiFuFvr+wrqLKyXJOBMCdKLi8+Ddp16tICtNshJlV2Faq7LGP/YDDBNE
-kBMWVk2zzLH9iVzSZFKrNIemL9QmoUmNdRdx3gtI0f7hEP9wpTTKt3uYbBLBv+jbasz3GUMLC9v3
-wi+rH11J0IoZ3VdKzkwus+TP2PCbzUcmDQLIRVAe1l8uo/DAH1OnGDo5mSY1pmqlKdrzcHd/wvuP
-z765P+En22I1zqtruS8GmJHF+pXjSTa8pib1FomEoEClTdurR5hkSTxMD7Lysl2iIVbvP2OfEAKD
-qVsGUKuevzFwWSskIA7tpvsJpZhBdfDe7DrUsHxprKZ9Duf5UcW42XUEBtAAK2IWH77saUVa9Z8+
-lgYX3MnDaOehVDQmv7hEbOZDAEe52MO9w/hbcgjyxZ/7GQVsd50/t0kRPQ4gcHSx3+cZ9hSHohUV
-pbtSDqhypsCXsxksI49uuk1KlNik5do8vtB8kjHRVbTUE/Ryqpj2evknWvRXHK8bvxhCnMXX/1ML
-zMGQsGML6GO3jd3Oalai/y8vr39/UolkDV/ucyeOnA+IX6aqVVDnuhdrwAmzW9tTyqov+luqZ5ox
-+gU8tcmJpDdRUCv2YRbvavYbN0QQ2h2iyifuOV1fhy8k9N6JEIn4L4SdNGDJjDe2BZEtqfkhvUZb
-KiLcp5k9qBxwAmbO8xdpfR0HSBs8VaARB9tH/vCdKNmnaq0/3E7aNlK/ixuMVbssi8PHKZkIp+aO
-rCkaxgzgdE2s028oLXe1hHc90/X9CDTPKnBp3xe2PoL60gz1VTlwjN8ho2rlXP2DosEf5crNduBE
-XFgSnDvNP8IL2uBtvIVvvYavZ9x1UXkbuladCnyrnB5M5l+02fVezJH7PXIJuDBCUFsP62er/slh
-aBi21+LolB1ec737A5JBv0SD9CRYA6A8KzLOTMpk7h+eYuoI1kjOVu2hkolfxVxmDxMPcVVc8d61
-/KynjEIeJVU1m06yX81Y3Wy0D0WvMzUxxm8CVVdU+QrvzeGrlnM2kGF0h8JQOKTmHSDMPaOmE8h/
-WU8HAyRpqDIbrHWQbiS6rsDNyxT+BBiZXYIdCrgvrCykI2elRcuWAxJFDU7VH+8S8dlCz/7knB3q
-Ll4KyPwhl90bb6Yu2v6DQLx7zPgQSX6h0JxT0UZ690/8iIIm2veJOm1dg7uCtpywVp1LSx5i1zlH
-8ZZZWPxqhQ4fw4NH//D3OhtMHUg7Nu+J033/USd5usE37XnD15u/LTSaewfGXGV9lTckTpRreOtr
-doPeBln1wJDRUeZx47eqKaQJRH3PrzfoqddJIscB0rAWqSo9jaFYv++Bc38KR1DORDilCr/wL0CP
-3UK4U3g/pkiC+edngTc3/6BmbBqbKEQXOHIvYZEupob3FKQgJ9lrgpifawp0Rm68mL/73IoQUBGO
-Bd7giYttsi1iV1e9njauoIMFqmPoKHbsE1bS0nHC+MuWr3kbs8HUSiPke+D5E4MsNFYnrSQ4WZyB
-FdZOdf+WEpHIp2JSY5fTx5/x5Ffhq1T/rmz8MkB/nEo8xh9bt0JhtQVLfi+eGeVLBiMrydGh19jv
-yE/8HCuAD7kA/HPEhBG+jjcEUEuJzvcBgLDLThAhRfDuTIYF19c62YjQ86MxVMYmn8AtaJKNNXsi
-SxKcju1I/2n5r5A+qPMf/wQDmj7FRFVHbQhSlMEp8uy8TIQ5/gyHZlTyrOqTQ6bDJiVDJvkl4Gdp
-ld3qg4SCbH4zEQCQ8AFHO4SAL3STDFe454CaDfa5cuuZQPs1qNw7L8Iy16EjSjKqa5c2jAvxgiKN
-7r6QnkpDrqhqa7st4mcT1CIAwUeelH/BTUSpWv6IC04+ztSvdjVULwxqZvHdZBavQbPC8EeuuVNL
-R/2r8oXLcJqWd+rsm1RTNxnVH46AXG8l05/P0+4c/sbYoUSGLMBvfFNIE3TgutOZLYQs9SbB2Sp6
-rUhxWiA6Tc5yiM67e3lkBkzzLOKcJBgANsB65fgM42XMBIft7GOz0cvvRJy82msRFiGOWbiY5hU7
-d/vU4hIP34oX4mmJUMvO9pZdHMUwWPWZiniFw2keYNqGwgYk06CRbCyr01Qknq2Jo4yPuSDM2qYw
-oMS4AB5Xu/E6yfeci3rgZ+8Wg6oNgodeY4hCC4sPmX8HuW1wEMkqlYN45o+6yLDcpzqYGdsxU1RD
-l1UvtPh1xtYwuTEjHaaXrg8nuNISNceAejlJltFvAnWdnDAoGBtpMHAIasWf0lNGD+2mXti9n1Wh
-g6U4y6/vzbZkLAwKWQvNp754cSYsDCJ3wcYpjuYB6j1Umjoi3Es8KTwOZA1uTNbbdYFkXGK3zxln
-yY4TgvZ8joQfrxVuqmSGpOswgkUUEPCbOUzUv3YV42y/iHzyMVJTMS0h+jVhYaXN5GSnwEZqFN4n
-yEnU6z5/1J+enoZtutPlQsNb6IdFXxTaUN5KQQkzGq1FzVjvYSLSdd3ugqPdWQEKuQi0ziGsrqW8
-B4Or1ptKm6N9AHPjgQchQFYaYU9abKPOjsnWCo36f6rJHq3hLbbpcSn0B7G2f345twtctQ15IMcs
-rQTCckMrajHr2Gi2PPTLDOqqsWGRVNzWrPxwOo646YAZoX6MEW==
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Models\Shop\ExchangeRate;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
+class UpdateExchangeRates extends Command
+{
+    protected $signature = 'coderstm:update-exchange-rates {--base= : Base currency code}';
+
+    protected $description = 'Update exchange rates from external API';
+
+    public function handle()
+    {
+        $base = $this->option('base') ?: config('app.currency', 'USD');
+        $this->info("Fetching exchange rates for base: {$base}");
+        $url = "https://open.er-api.com/v6/latest/{$base}";
+        try {
+            $response = Http::get($url);
+            if ($response->failed()) {
+                $this->error('Failed to fetch rates: '.$response->body());
+                Log::error('Exchange Rate Update Failed', ['error' => $response->body()]);
+
+                return Command::FAILURE;
+            }
+            $data = $response->json();
+            $rates = $data['rates'] ?? [];
+            if (empty($rates)) {
+                $this->error('No rates found in response.');
+
+                return Command::FAILURE;
+            }
+            $existingRates = ExchangeRate::all();
+            $count = 0;
+            foreach ($existingRates as $exchangeRate) {
+                $currency = $exchangeRate->currency;
+                if (isset($rates[$currency])) {
+                    $exchangeRate->update(['rate' => (float) $rates[$currency]]);
+                    $count++;
+                }
+            }
+            ExchangeRate::updateOrCreate(['currency' => strtoupper($base)], ['rate' => 1.0]);
+            $this->info("Successfully updated {$count} exchange rates.");
+
+            return Command::SUCCESS;
+        } catch (\Throwable $e) {
+            $this->error('Exception: '.$e->getMessage());
+            Log::error('Exchange Rate Update Exception', ['exception' => $e]);
+
+            return Command::FAILURE;
+        }
+    }
+}

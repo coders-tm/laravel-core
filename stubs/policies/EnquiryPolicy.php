@@ -3,8 +3,8 @@
 namespace App\Policies;
 
 use App\Models\Admin;
-use App\Models\User;
 use App\Models\Enquiry;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class EnquiryPolicy
@@ -29,6 +29,7 @@ class EnquiryPolicy
         if (is_user()) {
             return true;
         }
+
         return $admin->can('tickets:list');
     }
 
@@ -40,6 +41,7 @@ class EnquiryPolicy
         if (is_user()) {
             return $enquiry->email == user()->email;
         }
+
         return $admin->can('tickets:view');
     }
 
@@ -51,6 +53,7 @@ class EnquiryPolicy
         if (is_user()) {
             return true;
         }
+
         return $admin->can('tickets:new');
     }
 
@@ -62,6 +65,7 @@ class EnquiryPolicy
         if (is_user()) {
             return $enquiry->email == user()->email;
         }
+
         return $admin->can('tickets:edit');
     }
 

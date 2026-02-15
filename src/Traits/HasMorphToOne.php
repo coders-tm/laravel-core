@@ -1,52 +1,35 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPxxF1ASB4Fs8qdwHXDBs/GPMZc6zmtnNejS3eWwUjRGajuucnHqFb9mx5+CbmqZD+SNnB5fp
-4QrFxttzI2WCTDj3t/0l4PWhYbk88ERh8D33Rhe8AtnYVJByiaYRXYaulGA2b6RLSpxc9eHoWvzQ
-TwIIiAjIC++IZJuFdnDKsmZLHedZOs32Lvsu6OMDaat06StD+1MS6dd2d456c1ZESBc1+VLkoZVn
-sth3HNaeRwJfLRtvXSrTze2f97qVKujoJoXlxkV+uFa4O3NQ8XFXodQ8WyWYR3iFSLS7M4ntF+0h
-xgrbUzwz9vCQ26PzzrAe1qCHHyKfeHVHUBuVBcwaN4QgM6TZsbk8OIauj+ryvSPN3lR4mEU8QUpA
-j0TfaBRGQDLge6HaquSQk+pNZkNY/TTd1rueQfz5j5uenbW5fHYL4Ip84uvssL/MAlt2Is/euDfr
-yEGvTcT9D30MXjBbXOgQOQD3FwiTNSrpBdCvbCrtxdB6cZs1VhN8eOgQZ0QuExhMeBRgTurdnblo
-ed6Rt2S7sO7NsK3yyhUmE+CNA9n+xH+AjkDYPkcKgN89hCU3vCCSJzuFBw+vZfgj6/8U0DeExL6R
-BoOWX9rUHjVjzdhVYFcqUt7QXJAdKo6XKLnxPLLAZgcZh0yubBDaZN43z0kxpiXilxb/QDcxG7fo
-XiI2yyurT+LJjtgjbxOfHWUOAKREq29i+fSRJSDkpoAT4NANPtWf0Ui3SyGYAP6o3iuNI1NPKk3Y
-fgoSim6Rw6Oieo8dC39KQ4HCatsdDe58ko10gMCXdHWut/X+955+2+oyFWKH7bMQaH+yoGNYdV8P
-iNyKUf8bO/+L2AlIjHoOoq1gJbMmp1gdkDzrSVcDAVfo0W3TXTuBzJzO4mL2DrZlCdJhhRiqs0JP
-YVxv7gQFaD9rFGTyzihZ7NtgGgkhpeXuvu4x89Pn3OcuKN83rE6UiCcsA5oySgj824AVNl+TJTLQ
-V1DIDoJ/v1TXPItAfx0VP8iJqXsVOuKRUQRq2VYgPyoZjFYBwu8UjOlJLeofeu4UwsQIDwbvp9wo
-I1gMqMLmkkGhUvmd49zusuVLfsEXdtrpe2CjOlOeKVqqGKONDi7eoCjG8my/geFCePVSFPqYtr70
-C94VOymuWOmMO2wIUHXro2D6BlH3YrraoCCbrTjrk9ukmA2G15Y362dDVbAoAcrHzf3JzIk3X0Y2
-96sB/Z9/tA/YwVv7br91sUs2Am22bbDwwDltiowvXI4cSZ0A0+8+0c3C0erHEZJhjhw5Rqf645NO
-w5zFgW1pbA0Y/CJI7ODNkqq/JS4Jz7fx2hJ0cDoaxl7h/wtycBC+uRV81lyep8C1q2FKjXnEATxS
-6Ly0+hATv2PqjGg3EjLmx9vJLUgu7ZqU6iPbjaEl/BhCad84S5l3nd/6YCCnzWT57JT07uS9nQXg
-k9V41HsFDODyHIMEYq/Px1ADsgTfXGCB4T+siEKaDVOTQdUeJPHfuSgLXV6Ejo8kK9SThn98n52A
-8VZBNbLAIVerVxLPa3bof7sN0H8F+CHuHXTSwgTxOf8aLIfvQMeHeXs5U5Se8ZCslQLfRAYzz4Hx
-RXoqzo8HGYKiO7Qgxihi93EPoVtCUxd1cAhFO/6o3Ys43XQMPt/O2Pqoq3kn8psid7CskEgKkrFh
-+2D7c6lnHtg0SGf02Xu2lxbuQwSh7N7Rsqo7PZW2Z7pe5Ggtq6Zk4Wbi/CQFYme5BpAnNoguJSgf
-2JSaWp8HBDWIWYOkQ+A5HSRWxi5vwLUO+fo6TaTTnSFs527bFZeV+SM3L0Q0TxOicaDrPKawTcNx
-tzjZ7qR3dZ4QnaehfNyPcX0pZPhd91a7ATvXp7FVrJxs8Ol8l02nvUg2dVd5RDLvxfi0Eec5OLKx
-6Wa79Cl68NMegwE7nIQcOsYeDQ169CTtDoyYb84Rw94XNd4kWd8EF+zGe1aXkten+kUQyoP1FSp3
-bMfpe3zibL1vSxQ1mvSNp/GwpvrTwC4ijE+qlnMjofKCu4s/ozd72c9uJIqIJqd/1+GwdkDddKS7
-+4GBQjHUXvDohldB5CWaIsz2cbpWztSSLEhjUFzygkWUcdnc9Z6swf6kf7i35VcKCx+fxiOonzio
-ROuXo2a5+PQ3LeWxeu+phe14etonxcwa44AuyilEAJ4zs95eg31i55wL+HEOd++ms0VMBtb0s5lh
-f5ASdm3i1Ifa4X6BnvK1aju/wiTNAHONt/vy4w4OX05cLoETpFB6Gu7WG226np5oiQYePCRP8y3d
-wbtbkNNHGrbtMf3anIbUp1tWQAO0tuU+ZYAj55cFUKlhvkIDYG1mfq4PhbbrTOQXnwYmSI75QYd4
-zjjolrw621x6/G6SeSoU3IxPJ4hOC3MwsY9+cMOb3pbFS6txyYlS3Bi3qb+IQF4I/aqSivWSYTWq
-6iGXP8+aMRM1zMsmLY9GkClcy/3UG/bdHhZLu9Q/yHVAoE90JOoUHRHRdVApOSnlz7yuvdLJ9HL1
-i/Ec/h1nErwSb2ejazDPhtp/X/Vsd7kQoV4ecX4eThR0K3zGQQ3CXV4L54L8OEwFVkZ/PnV+1bLB
-TLsdKTqF4Tuce16qyKcMhPc8r5HlFkrNrDW6lNv9OXCaKDbxbHW+B89WM2O5C5o2btdbODxdEOyJ
-sTyiGLLKYWizo5967MZEZxssEC6o7r5f43i4PFXu2o1t3m/uhg4L7bbgSiRkdYG1bHqKKOnJm0ge
-XiFs5DFaXKU0hEjrNwj8/YD6EtqHxb7wrgt8bjWxf1GPjkwHyyEXUmMgumEbvNcNVbFZlKt/v7Gd
-uMebtNiPHCb+yN1kU5Trwys6ePH26QqWghutsyy9S7zlpy2D8r408nTWa3BxbD6UjfGncKfDz3s4
-NMCT+tJ5N7XfbK6wO/4cickFkw/aWUGULZxkR6N3CjQhj3wYNmZVuMitgu8DcCudBh2CQVtAVAIl
-eoUvkxX97tpsIPvprnZHnn+uX3qQtny6fmBaP1yBsottPcV/utEuYatNS5VaV/C5QA5dT394IzxO
-pRLkKuyrXLp0JAScnwmIs3YUW2KtO92p9pyqDptPbjzQGJcLtzLSx+fP3QvzQFVhylqLQOrcljC4
-sijiC5Cr/BgQxYA5KjH5kgG2knojt9+GCH4BQElEosJprFDDP9jO1TyI4P72EH95mah187MKtZwK
-Td1ZOv6frRcPlKCYfz1wfgGX2iovz/58M0q2nK5JZbbFqaDd3lsBvzEB+68vleDxJeBIc7CO46Jt
-rR+Sv9XPw2jjfSxAANTDX9RAeAi/dN/G4cxB+Mnd8Gn1JyoTxI1mg6Tonb/gYH5X22BNGM/NWpyw
-l5ZSamlM+hFuWsNpj6TMubEY1vFXHLljo4KLKLPfrG8zGynI4YQywHXKejJ8sjWhwLbiwVUMpHVM
-hU1exxzNzgrvFZ+1NitGaAnohddlrN9d8y45lv5KfO+XYRnWNOKvy+qqRKVvKHIje11glotkk/MV
-sfRoRolTmKhFi5cjDzQ5CIsUR1TePHyB9KvoTeqPd+h6yWE3wpcyoTDD4dIIaLYBBrWtWb1ImXZW
-poI5cJl+MxW1/eef2EUVg8H2JJbgf4foVAxQtlBL8OSjMhPZIkcRUaC30QZY9aqYHBSURiiC6ErO
-V0koTAWUkZI6fv2dE+UJMW==
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Relations\MorphToOne;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+trait HasMorphToOne
+{
+    public function morphToOne($related, $name, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null, $inverse = false)
+    {
+        $caller = $this->guessBelongsToManyRelation();
+        $instance = $this->newRelatedInstance($related);
+        $foreignPivotKey = $foreignPivotKey ?: $name.'_id';
+        $relatedPivotKey = $relatedPivotKey ?: $instance->getForeignKey();
+        $table = $table ?: Str::plural($name);
+
+        return $this->newMorphToOne($instance->newQuery(), $this, $name, $table, $foreignPivotKey, $relatedPivotKey, $parentKey ?: $this->getKeyName(), $relatedKey ?: $instance->getKeyName(), $caller, $inverse);
+    }
+
+    protected function newMorphToOne(Builder $query, Model $parent, $name, $table, $foreignPivotKey, $relatedPivotKey, $parentKey, $relatedKey, $relationName = null, $inverse = false)
+    {
+        return new MorphToOne($query, $parent, $name, $table, $foreignPivotKey, $relatedPivotKey, $parentKey, $relatedKey, $relationName, $inverse);
+    }
+
+    public function morphedByOne($related, $name, $table = null, $foreignPivotKey = null, $relatedPivotKey = null, $parentKey = null, $relatedKey = null)
+    {
+        $foreignPivotKey = $foreignPivotKey ?: $this->getForeignKey();
+        $relatedPivotKey = $relatedPivotKey ?: $name.'_id';
+
+        return $this->morphToOne($related, $name, $table, $foreignPivotKey, $relatedPivotKey, $parentKey, $relatedKey, true);
+    }
+}

@@ -1,125 +1,119 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Coderstm\Models\Module;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Models\Permission;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Jenssegers\Agent\Agent;
+
+class Helpers
+{
+    public static function location()
+    {
+        try {
+            $ip = request()->ip();
+            $location = request()->ipLocation();
+            $agent = new Agent;
+            $device = $agent->browser().' on '.$agent->platform();
+            $time = now()->format('M d, Y \\a\\t g:i a \\U\\T\\C');
+
+            return collect(['ip' => $ip, 'device' => $device, 'location' => $location ? "{$location->regionName}, {$location->countryCode}" : '', 'time' => $time]);
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+
+    public static function loadConfigFromDatabase(): void
+    {
+        try {
+            $overrideMap = config('coderstm.settings_override', ['config' => ['alias' => 'app', 'email' => ['coderstm.admin_email', 'mail.from.address'], 'name' => ['mail.from.name'], 'currency' => 'cashier.currency', 'timezone' => fn ($value) => date_default_timezone_set($value)]]);
+            $allSettings = settings();
+            foreach ($allSettings as $settingKey => $settingValues) {
+                if (! is_iterable($settingValues)) {
+                    continue;
+                }
+                $mappingRules = $overrideMap[$settingKey] ?? [];
+                $configAlias = $mappingRules['alias'] ?? $settingKey;
+                foreach ($settingValues as $property => $value) {
+                    Config::set("{$configAlias}.{$property}", $value);
+                    if (! isset($mappingRules[$property])) {
+                        continue;
+                    }
+                    $mapping = $mappingRules[$property];
+                    if (is_array($mapping)) {
+                        foreach ($mapping as $configKey) {
+                            Config::set($configKey, $value);
+                        }
+                    } elseif (is_callable($mapping)) {
+                        $mapping($value);
+                    } else {
+                        Config::set($mapping, $value);
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            Log::error("Failed to load config from database: {$e->getMessage()}");
+        }
+    }
+
+    public static function loadPaymentMethodsConfig(): void
+    {
+        try {
+            PaymentMethod::syncConfig();
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+
+    public static function isValidColor($color)
+    {
+        return preg_match('/^#(?:[0-9a-fA-F]{3}){1,2}$/', $color);
+    }
+
+    public static function checkNpmInstallation(): void
+    {
+        $npmFile = base_path('storage/.npm');
+        if (file_exists($npmFile)) {
+            $npmBinPath = config('coderstm.npm_bin');
+            $npmVersionCheck = shell_exec("{$npmBinPath}/npm -v 2>&1");
+            if (! $npmVersionCheck) {
+                throw new \Coderstm\Exceptions\NpmNotFoundException;
+            }
+            $npmTestCheck = shell_exec("{$npmBinPath}/npx mix --version 2>&1");
+            if (strpos($npmTestCheck, 'ERR') !== false) {
+                throw new \Coderstm\Exceptions\NpmNotInstalledException;
+            }
+            file_put_contents($npmFile, '');
+        }
+    }
+
+    public static function singularizeDirectoryName(string $dirName): string
+    {
+        $excludedDirectories = ['js', 'css', 'sass', 'scss', 'img'];
+        if (! in_array($dirName, $excludedDirectories)) {
+            return Str::singular($dirName);
+        }
+
+        return $dirName;
+    }
+
+    public static function updateOrCreateModule($item, bool $remove = false): ?Module
+    {
+        if ($remove) {
+            Module::where('name', $item['name'])->delete();
+
+            return null;
+        }
+        $module = Module::updateOrCreate(['name' => $item['name']], ['icon' => $item['icon'], 'url' => $item['url'], 'show_menu' => isset($item['show_menu']) ? $item['show_menu'] : 1, 'sort_order' => $item['sort_order']]);
+        $module->permissions()->whereNotIn('action', $item['sub_items'])->forceDelete();
+        foreach ($item['sub_items'] as $item) {
+            Permission::updateOrCreate(['scope' => Str::slug($module['name']).':'.Str::slug($item)], ['module_id' => $module['id'], 'action' => $item]);
+        }
+
+        return $module;
+    }
+}

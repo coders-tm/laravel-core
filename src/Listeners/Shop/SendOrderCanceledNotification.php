@@ -1,32 +1,20 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-fXHO
+<?php
+
+namespace Coderstm\Listeners\Shop;
+
+use Coderstm\Events\Shop\OrderCanceled;
+use Coderstm\Notifications\Shop\OrderCanceledNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendOrderCanceledNotification implements ShouldQueue
+{
+    public function __construct() {}
+
+    public function handle(OrderCanceled $event)
+    {
+        $order = $event->order;
+        if ($order->customer) {
+            $order->customer->notify(new OrderCanceledNotification($order));
+        }
+    }
+}

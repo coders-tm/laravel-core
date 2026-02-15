@@ -1,30 +1,18 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-pUgjPDE9e+ITm0wv3sgi8m==
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class Footer extends Shortcode
+{
+    public $attributes = ['class' => ['default' => 'base-header'], 'layout' => ['default' => 'default'], 'desc' => ['default' => 'Fitness and Wellbeing is a journey, lifestyle, work life balance or an interest that improves our lives.']];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $layout = $atts['layout'];
+
+        return $this->view("shortcodes.footers.{$layout}", $atts);
+    }
+}

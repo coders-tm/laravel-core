@@ -1,37 +1,32 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('statuses', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('statusable_type')->nullable();
+            $table->unsignedBigInteger('statusable_id')->nullable();
+
+            $table->string('label');
+
+            $table->index(['statusable_type', 'statusable_id']);
+        });
+
+        $this->setAutoIncrement('statuses');
+    }
+};

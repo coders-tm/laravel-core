@@ -1,29 +1,13 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cP+qae+BH0XZLh90smNkS3aPsOtPRgfmKxwcutndv/Il4DtyWaaNM/0kxLO20LZDnI6p5uXJa
-TR1TyB66E363fG9gIAoBzlpTl2DbpiRVIoBHieW+Lt/zXhFGNQ6/5IEyVtW+gMUwTuWuoIa4rSTV
-C5Yerh7rq1Trc/uL6pI0ry7L7GKviv7n40ZJyx2cGFiWlOe+/cOSxILpKk2/KV6qH7UdMv9b+FNJ
-XNRXXBScHhyZNQnklN8TeQGvOVbytGSkhqz3v/xW+GHWDTeY4+7ATeY3o55kvZE4f7jDzAHOmokk
-vIjj5A7rJYrK9vkpRzkesMkN6NEPDc6nZPHuwagBb02bhuO5Du6GP+isD9cF2XRh5MqwRmByPkBc
-GuVhfWY7b+LhqfWWn2e/kfaCH2ThFt5vCRjxx6l0GgW93233CG7jccLVXGTI4O+zvb10Y4q+j9sh
-Ow7FpPwH6wkW3t+RzQAcgZBhc2VjMIRc9FEyubibUX46YzmSU5FC86cAu4e3jl+Nq3F5XpeGcz0c
-XQ91Tqazhf1q+xLL36Z69sBt+/Bdn7ZelaMiQQnaSANQ8bsQ2ySBI301byUs9lvYKHRCGnTRUyoK
-a5NSTRa6pdu0wctuyGpjCxOJAA/1j699lTzOAuK33Styd4BFRCMav42VXmT+HKMkmMTvw/o7JATz
-Zdg/RQ9fAuVOeccoWSnabBl9ER/qpWCvEljP11jVSB5JOS9UH83h+UlkED92uQufmCZlVcmDRsd+
-smM3ll9vhMpQzu/A1OWBp4O0NxCG9YbwLM+UJUWbq3+myxffnfqwReyYSbdO/+jN+CnQ0AcIqatF
-2K3rp0+fzwSjgqzp4Zuz7Dr6cTEkG4jxLN0dHxcE7oKwvQkfcUf8+fQta3Y2w3tjtxinPBkrQhSS
-vb+gpKpBSe4EjsSmeEA6WZ1yBwo/lBwAt0fzoYwQp58Cgac0iqQ2jPR1yZJGGr+olwtaIUsvSi4K
-MCNmM8TUr2tKHTGVwXFbRx51eNnqWZ5Pw7RIBVUFXAhLo3HoPYjpJe6cAI3+VadrfTJBzJvKI2LW
-zyJf2lvD89cE6pWhI98Cuaq0S/JSeBfjwQL6P0qCMg8FT95hnXP/MJs3BCypzFpSSVCBxMgvpP+H
-++BmAgcGlyAARchnSRq7jcEaC2Nc1lmnEm0bc69icoSWrWagLQcgeCVvmd6X02KwgmM81yExCxCm
-tpV39vSDymODhr3i/EYv23JK9PYRffupM1cgD75Nw6Dkyg9BIiVjgmH8elUpU0W/t89SUuKwB2e5
-TV/QAW7huqiWCGVJK+rfbUukfv7h4yOpQk9Xd9aY2wlZV/IBx52aopfRE89wRH7uKqhbgksgB1kK
-zYc43zdovNi9LpVfouIGvPTrqNRer0Vhe2AsfOwW8K/h4czJ2zF9vBEPcq1/nj55s+Y8za9pqelb
-do6Vba+vTH07QO/eV12SASkUJiGjuF2T/lpjEHxvFnS9auLkumrwDWxCjDfapLoP5mN0XGI4Jv8I
-5/XUqmPyg8SXMrQWYKa4aq+TlV0kRXlqb3eAO53fcN4DcXtphJOEU5tOMKDcHYtD1sCIs7HroDq3
-DYCzYpO3p4zP+vSOqwTKQz7OV/6nC9aKeTik+ugWE/0KTgSvs5BnaRwcMu8i83iOsB50gjnP0EdR
-YnGC7O64AEaDUZM/4LHlPsT9pfxH48pg8n+WkeAP0S2P0eFPOriDuaD72GBcMMdKLMjeAFA1xx5+
-J7eqLA95fmcH5jMWi1SR+cWPKQfpgNzAjRpfHlUEM7h638UhAcDL1ScImi7M1gZ0HnIlor1fq0kB
-S6pkFiys1R94D0tht9VUiQWB4VT/oyatknXFJsCVZoKu/pxyJhLaYO2o1zOdlRNiB/Ay7fm0yC2y
-ER2K8QCnHB6/3ittvhFCZ+J0bHYms02dhc3XJG==
+<?php
+
+namespace Coderstm\Facades;
+
+use Illuminate\Support\Facades\Facade;
+
+class Blog extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return 'blog';
+    }
+}

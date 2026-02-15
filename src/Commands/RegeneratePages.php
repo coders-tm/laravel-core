@@ -1,134 +1,109 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Models\Page;
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+
+class RegeneratePages extends Command
+{
+    protected $signature = 'pages:regenerate {--fresh : Force delete all pages before regeneration}';
+
+    protected $description = 'Regenerate the centralized pages registry file from database';
+
+    public function handle()
+    {
+        $this->info('Seeding pages from JSON...');
+        $pagesPath = config('coderstm.editor.pages_path');
+        if (! File::isDirectory($pagesPath)) {
+            $this->error("Directory not found: {$pagesPath}");
+
+            return Command::FAILURE;
+        }
+        $this->migratePages($pagesPath);
+        $files = glob($pagesPath.'/*.json');
+        if ($this->option('fresh')) {
+            $this->warn('Force deleting all pages...');
+            Page::withTrashed()->forceDelete();
+        }
+        foreach ($files as $file) {
+            $filename = basename($file);
+            if ($filename === 'index.json') {
+                continue;
+            }
+            $page = json_decode(replace_short_code(file_get_contents($file)), true);
+            unset($page['id'], $page['view'], $page['data']);
+            $this->info("Processing {$filename}...");
+            Page::withTrashed()->updateOrCreate(['slug' => $page['slug']], $page);
+        }
+        $this->info('Regenerating page registry...');
+        $registryPath = config('coderstm.editor.registry_path');
+        $registry = [];
+        $pages = Page::where('is_active', true)->get();
+        if ($pages->isEmpty()) {
+            $this->warn('No active pages found in database.');
+            if (File::exists($registryPath)) {
+                File::delete($registryPath);
+                $this->info('Registry file deleted as no pages exist.');
+            }
+
+            return Command::SUCCESS;
+        }
+        foreach ($pages as $page) {
+            $registry[$page->slug] = ['id' => $page->id, 'slug' => $page->slug, 'parent' => $page->parent, 'title' => $page->title, 'meta_title' => $page->meta_title, 'meta_keywords' => $page->meta_keywords, 'meta_description' => $page->meta_description, 'options' => $page->options];
+        }
+        File::ensureDirectoryExists(dirname($registryPath));
+        File::put($registryPath, json_encode($registry, JSON_PRETTY_PRINT));
+        $this->info("Successfully regenerated registry with {$pages->count()} pages.");
+        $this->info("Registry file: {$registryPath}");
+
+        return Command::SUCCESS;
+    }
+
+    protected function migratePages($pagesPath)
+    {
+        $this->info('Starting page migration process...');
+        $pages = Page::all();
+        foreach ($pages as $page) {
+            $this->info("Processing page: {$page->slug} (ID: {$page->id})");
+            $idPath = $pagesPath."/{$page->id}.blade.php";
+            $slugPath = $pagesPath."/{$page->slug}.blade.php";
+            if (file_exists($idPath) && ! file_exists($slugPath)) {
+                rename($idPath, $slugPath);
+                $this->info("Renamed {$page->id}.blade.php to {$page->slug}.blade.php");
+                $content = file_get_contents($slugPath);
+                $metadata = ['title' => $page->title, 'slug' => $page->slug, 'parent' => $page->parent, 'meta_title' => $page->meta_title, 'meta_description' => $page->meta_description, 'meta_keywords' => $page->meta_keywords, 'options' => $page->options ?? []];
+                $metadata = array_filter($metadata, function ($value) {
+                    return ! is_null($value);
+                });
+                $export = var_export($metadata, true);
+                $replacement = "@extends('layouts.page', {$export})";
+                $content = preg_replace("/@extends\\(\\s*['\"]layouts\\.page['\"]\\s*\\)/", $replacement, $content);
+                file_put_contents($slugPath, $content);
+                $this->info("Updated metadata in {$page->slug}.blade.php");
+            } else {
+                $this->info("{$page->slug}.blade.php already migrated, skipping.");
+
+                continue;
+            }
+            if (empty($page->data)) {
+                $this->info("Page (ID: {$page->id}) doesn't have JSON data, skipping.");
+
+                continue;
+            }
+            $page->publishJson();
+            if (app()->isProduction()) {
+                $page->updateQuietly(['data' => null]);
+            }
+            if (in_array($page->template, ['blogs', 'blog'])) {
+                $page->forceDelete();
+                $jsonPath = "{$pagesPath}/{$page->slug}.json";
+                if (file_exists($jsonPath)) {
+                    unlink($jsonPath);
+                }
+            }
+        }
+        $this->info('All pages have been migrated successfully.');
+    }
+}

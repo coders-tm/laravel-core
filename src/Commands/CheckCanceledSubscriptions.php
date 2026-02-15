@@ -1,54 +1,37 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPzaQI0jJ+h0iAgZTA676WWMlHNuFgg0bQBUutdJQju27lkKcA9N2ZjZOHn5GfFrAEs/qYgD0
-+C/jQb04lEZd1h0Rz5cwU7y+d0pqvlX94LNqRDGQdWXglCPjZxoPUuUKOCsSyy62ZTMrptQW+v1S
-grJOo4NCmbAyyVZfSXs2VVfNocNjH8HC9BPoI+M+n80veTU2jFBMfHm61DpGZ+SwZi7ySuA2bLO6
-ar408vh+t7Sfnc/K3R69qj1RUCHFrfgMagzkv/xW+GHWDTeY4+7ATeY3o21q5k/HNmzWd8eJKYik
-Hpj7qiAWtJ7WWTB1UVIDQdyd8Wq7CSsHOS3DTXZzCzDgILrjmpVEQMA6Fhj86Rfoy4J2gIhwhx13
-OaH7sZIErMMikFM3CKJd41sx8PylRrQl7CuPhNpeSLKRU5gJjDTmO4TS9uIDA0PiUM8aWJGSV6T3
-ig18MXjkG8oH7/kP8mVTivwBkAismZvhLuXQ6OTUrMCOqDWYZvnSAFFmz1a3GieAK8bX0ihWZIjd
-yLdS/lwZ8BMd2Kia2T6dI/zM6fQkKQDM5RirDfqHwwOUPSimyzAJJteFteUp8oordXXqYFffGDrc
-64UH9TRezkZH/iBubJRvy16PgSFdjmATvdJpY8gAX9DgI5N/tqmUp8z6N6fsS8L2Nt/87925hdpx
-scKrzJTcERYB+XjXhfyPJ91uXLpQN5IFvT745s8hhLJk2ASO66r7Qy2thJeemKMqyh2UMtsBk2cD
-ja40ocxc57Wi3Yl9NhbInzTD3SKwOOkEKmx6CX3TDmBS3FtZWfRT5mKU1nJ0ETXpns66fLxV+NcM
-ATIqh+OOxis+/owK5uPolyhZRMzARjuLlH49Qq0NZJB3s4wk88zaQ37D+Pi2Ovqje+PWuUTZpJUg
-ihZqLqWHIn76ifacrsdNl+LedYIl9szTwoINiFHIby8V/QF709KWo+6NJyaL6N1XPNoiBC3VIOtt
-XRZrInYqVHinq0yFPjygP3SWEuiBqBGRfWijuGmJ0IdL9i2TB1hZpGm3NpET60NaMkCdrmcg5U1+
-L1QUEKUMyTGfCKjmG1JhQYcmrayBW8luyKpo+BFLGEYG9Y+FeowtLSe40MhpuLq2togdyFx1aLUw
-Tv0Wf6v7a1bTYtx1TPxmjB6O60zFYIxV8CakDkpYTitkdkc0RjeZDOiJvfGtJ6y6KHPFhqA5STAI
-vn1xf1TXs1nTg6/E4+8sDvgQt6qIE8BKvtwvIAUozCP3heyrKhRhrsX9+u9n8UIImjmY/2bhaXg6
-Zz4n8ATUsxs7G/YtS7DxLLX0S7e0irrpK6HQHFho3VF88fFnnSHT/sTj8t+jlzz4KiNIMGl85Uc3
-KeYAf3352fd4r60b2nbxXBqsf3CeGCuHShaJe1ZADvpLn9TkE35WaSZiaMaS5aXe7NuewbyCcyxB
-pHTWBLvDPZU1yumrwdbUqwLfz+JJGoGEhuZdKH65W1bDFdlIxOz1gNjDg5CtKxOLI+LtYcBe1bXx
-14zW/9iF1E0hjHcyg8sUN1cToTG45FyQgNw801GODlF3bgmEME6tXVtE6JjzbKDGc/p6VOk+G8UT
-8qwLvfb2i+0Pa9u09MM4jjgXZDmVJtwIVqcSbF7eS1TsmqSehHEK42Fignz1Rlevj/3RdNwYcQ4U
-KKmf4t3VqsVYhKvhgfapji/P0tusUAOjN8Y6+mOQ7KnrT7i20Rn32LeA/BeWFwx+FluXgyblt0W2
-BKcZTpHhDcQAn9+d8jyhYxJBfNPXJVzPaS5uUN2lSwMvQacP/AR+iUnnYVUX7kvJiBnoRvafRsSY
-e/6Wdv2Ec3kJAHKJDg7RmBZsuDuv5tNWlxKeGooMLu7HRn4S9RAMa/9GXnb0rWblori2boJaUkDl
-uBGmP8VJSVnkXqNfQ+qNBqzfntJi68bTg2AW4pyBdLpf764AfDEaCC9RvemDfw82nkPDxUNEFI4n
-XwxwmTxWWBG/WkYgU3SK2c3rSU0nbPEY4ySJqW+6LEmT8OYAZ0zQzS4BLhlhSQI0hOLtYtCcHgk2
-39ViMWtKmR5D/fq0Qm6rAvtHUVmgJdmAT6m4C+EN5TBjS4wz67AINCMQzy2uLkAfJrEFPm2RS/U1
-6ns3G0x8WnqkQYSzlAxDL+JHeXMqVNccbMmoZGrO8ssUAnphYfJWHgkLNVgUJ+Mid1pQJuitmFRK
-qwG+LbgSEPbJ6Ed8q71pANrOtA2vKCi7otcDXrTBlWOPIUq5ldEFKDEAgUAWJEZkmMINVf42HGxF
-iuCebWLhGq+wvQe03FJ2TYQks6e7kULx+jhsgIvqsuN/xz49/HLabDVeddSgJxshmHkuQSo+pg0E
-CZKU32QzwdfiRybnSm3ljYyX/wSgN5QNILg8HtbAnGJLfC6Z06la57emT8ZmIaocM32Es9S8dhf4
-dshBCaqxcaVZs7EVZYJTjT+a8WrUwpMP0z8w7fAbuVxfAHgQEkXJUy8dVrHVxt67+OaJqb43qoXo
-/n0tfBMMUM9Fg0nYH6Ck7MthVSe/b/9URK40IjlTLKKZV2igzX4VZTqZKWa0Ju8or/JzUq7NOp7M
-jDxh07wgxUfdpSGeC+/36c0I2f7micDlru5Ho32+qpCurBHIlAV5vapSOZfq9IBBR+BBX5QTKmQI
-JsfVFUMUHx9uJ+WPb8mM5b7WMi/cMX3okmqRMIQjIAzwj4G8+YAahegLEEdZPrGjtAX8gBOmK2Ql
-/b8JJPxrtabY6h2RUpOkydfG5Aqa1Dfp48ynsuaWS80frbA9bA9v5mdXmWDNWchYQRDzCSdBV+sU
-UH+JQn3scSL0PQVqKzFJ36+Hgr1vAHWpQhEp784w/Y16hx3lse2RCbQVl0brv+pHgwu3q6Ah3RK7
-V4SQ+b7DbpefEdLwgr6Cvfod01YaJasz4hfhJuWJpJF8IlTNHFU5J89ifg3qgBMu9tlUxPV0WBqz
-26pPFv8hf84kdUGIIXPcWK5hHexezap01DOGKMT4MQt+TPyORBc2whAsrobIRGSOQi5sRqjTm+TZ
-yqKsa5ocVI5QG6hakkJdbXIDi+Eb9589O0hFt4Lw6qzYHx2xcAf+Xgt57GRRjpQTD4c6pYjoT4y+
-MOcwH1RbDrkZVcxB6Vhiq3LKdjbtPl5YP15Pcg6Cicwih263C6hrlQVKKLUdptJDWT2WC+DhcoH+
-hxbbq+2MX3WIv6+00qrfX2kShDbw8zpJzBNpkF4H4kd0v4Ix1yGeUmZaE7x2HZlBL5kz4IjxnLbI
-O0/wqL85C0vli89FCdBmhhEA+NRLNx4JTiZl4NLC30IFsS0s0aslyz75jPYxDtL9BZa2b+GagOGq
-QNdzxDq7QVySh8ojo9J1ra50talLLRRd1g5lI8D+P0bLEJ21HgTqfqIsfdt9RfCvPr2rUV+cxI5N
-Xf8rtaSLzXkX/oZB+n0Pa0n+LPnisd9pGbe2C1QZ8Ul+O+H1I3zVups/mRIbMfML1sJJ5qS2hC6y
-vN+Jwx+A03Gf3Oa7OUpC/RiSCVJ17/knb4IUc338n+SG3eL78gLVEwcKxTwka0U/2D8GdBewEW8l
-r/qlMluTXf601ajtWkXawENpxA9em2LziCGRiWUhKJPUB5MGWH9/BvyxLbEh/xS2EJ64fj9yKqCZ
-tJ184Hddo02qkCqH60VGjHEalZAF18Ubu2qiFUCk34WKZwFmM7/K7SitZYD+HM6lUKOTOeH0ssSV
-hwjxDYmnzIGxnJy1QWlEfyF6Sm1UfGC43vLNOGXIgMQpoeQ9r10NlmTfnoJ2WoCIxP5yyXhecnE4
-UGtPnAwGw0iBV/ZGmF/3MXngU+IxbGl89G==
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Models\Log;
+use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
+use Coderstm\Notifications\SubscriptionCanceledNotification;
+use Illuminate\Console\Command;
+
+class CheckCanceledSubscriptions extends Command
+{
+    protected $signature = 'coderstm:subscriptions-canceled';
+
+    protected $description = 'Check for canceled subscriptions and send notifications';
+
+    public function handle()
+    {
+        $subscriptions = Coderstm::$subscriptionModel::query()->canceled()->where('expires_at', '<=', now())->doesntHaveAction('canceled-notification')->hasUser()->with('user');
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                $subscription->attachAction('canceled-notification');
+                $subscription->update(['status' => SubscriptionStatus::CANCELED]);
+                if ($user = $subscription->user) {
+                    event(new \Coderstm\Events\SubscriptionCancelled($subscription));
+                    $user->notify(new SubscriptionCanceledNotification($subscription));
+                    admin_notify(new AdminsSubscriptionCanceledNotification($subscription));
+                    $subscription->logs()->create(['type' => 'canceled-notification', 'message' => 'Notification for canceled subscriptions has been successfully sent.']);
+                }
+            } catch (\Throwable $e) {
+                $subscription->logs()->create(['type' => 'canceled-notification', 'status' => Log::STATUS_ERROR, 'message' => $e->getMessage()]);
+            }
+        }
+        $this->info('Expired subscriptions checked and notifications sent.');
+    }
+}

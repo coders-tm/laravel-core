@@ -1,62 +1,61 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Coderstm;
+use Coderstm\Database\Factories\WalletTransactionFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+
+class WalletTransaction extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['wallet_balance_id', 'user_id', 'type', 'source', 'amount', 'balance_before', 'balance_after', 'description', 'transactionable_type', 'transactionable_id', 'metadata'];
+
+    protected $casts = ['amount' => 'decimal:2', 'balance_before' => 'decimal:2', 'balance_after' => 'decimal:2', 'metadata' => 'array'];
+
+    protected static function newFactory()
+    {
+        return WalletTransactionFactory::new();
+    }
+
+    public function walletBalance(): BelongsTo
+    {
+        return $this->belongsTo(WalletBalance::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Coderstm::$userModel);
+    }
+
+    public function transactionable(): MorphTo
+    {
+        return $this->morphTo();
+    }
+
+    public function scopeCredits($query)
+    {
+        return $query->where('type', 'credit');
+    }
+
+    public function scopeDebits($query)
+    {
+        return $query->where('type', 'debit');
+    }
+
+    public function scopeBySource($query, string $source)
+    {
+        return $query->where('source', $source);
+    }
+
+    public function getFormattedAmountAttribute(): string
+    {
+        $prefix = $this->type === 'credit' ? '+' : '-';
+
+        return $prefix.format_amount($this->amount, config('app.currency', 'USD'));
+    }
+}

@@ -1,60 +1,40 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Y8iIvy94j2+kdPi=
+<?php
+
+namespace Coderstm\Notifications\Shop\Admins;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Models\Shop\Product\Variant;
+use Coderstm\Notifications\BaseNotification;
+
+class LowStockNotification extends BaseNotification
+{
+    public $variant;
+
+    public $inventory;
+
+    public $threshold;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct(Variant $variant, $inventory = null, int $threshold = 10)
+    {
+        $this->variant = $variant;
+        $this->inventory = $inventory;
+        $this->threshold = $threshold;
+        $template = Template::default('admin:low-stock');
+        $rendered = $template->render(['variant' => $this->variant->getShortCodes(), 'inventory' => $this->inventory ? $this->inventory->getShortCodes() : null, 'threshold' => $this->threshold]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function via($notifiable): array
+    {
+        return ['mail'];
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['variant_id' => $this->variant->id, 'product_name' => $this->variant->product?->title, 'variant_name' => $this->variant->title, 'sku' => $this->variant->sku, 'current_stock' => $this->inventory ? $this->inventory->available : $this->variant->inventories->sum('available'), 'threshold' => $this->threshold, 'location' => $this->inventory ? $this->inventory->location?->name : 'All Locations'];
+    }
+}

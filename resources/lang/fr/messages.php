@@ -7,7 +7,7 @@ return [
     'unauthenticated' => 'Non authentifié.',
     'password' => [
         'changed' => 'Le mot de passe a été modifié avec succès !',
-        'reset' => 'Réinitialisation du mot de passe réussie !'
+        'reset' => 'Réinitialisation du mot de passe réussie !',
     ],
     'invalid_token' => 'Jeton invalide ou le jeton a peut-être expiré !',
     'invalid_user' => 'Utilisateur introuvable !',
@@ -18,7 +18,7 @@ return [
         'success' => 'Vous avez ajouté avec succès un nouveau mode de paiement.',
         'default' => 'Vous avez mis à jour avec succès le mode de paiement par défaut.',
         'destroy' => 'Vous avez supprimé avec succès le mode de paiement.',
-        'authenticate' => 'Nous ne pouvons pas authentifier votre mode de paiement. Veuillez choisir un mode de paiement différent ou réessayer.'
+        'authenticate' => 'Nous ne pouvons pas authentifier votre mode de paiement. Veuillez choisir un mode de paiement différent ou réessayer.',
     ],
     'subscription' => [
         'none' => 'Pour accéder aux fonctionnalités exclusives de la salle de sport, veuillez souscrire à un abonnement. Vous n\'êtes actuellement abonné à aucune formule.',
@@ -98,5 +98,5 @@ return [
         'unarchive' => 'désarchivé',
         'marked' => 'marqué',
         'unmarked' => 'non marqué',
-    ]
+    ],
 ];

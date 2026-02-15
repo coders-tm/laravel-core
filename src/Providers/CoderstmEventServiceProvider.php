@@ -1,36 +1,12 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Providers;
+
+use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+
+class CoderstmEventServiceProvider extends ServiceProvider
+{
+    protected $listen = [\Coderstm\Events\EnquiryCreated::class => [\Coderstm\Listeners\SendEnquiryNotification::class, \Coderstm\Listeners\SendEnquiryConfirmation::class], \Coderstm\Events\EnquiryReplyCreated::class => [\Coderstm\Listeners\SendEnquiryReplyNotification::class], \Coderstm\Events\TaskCreated::class => [\Coderstm\Listeners\SendTaskUsersNotification::class], \Coderstm\Events\UserSubscribed::class => [\Coderstm\Listeners\SendSignupNotification::class], \Illuminate\Notifications\Events\NotificationFailed::class => [\Coderstm\Listeners\DeleteExpiredNotificationTokens::class], \Coderstm\Events\SubscriptionPlanChanged::class => [\Coderstm\Listeners\GoCardless\SubscriptionChangeListener::class], \Coderstm\Events\SubscriptionCancelled::class => [\Coderstm\Listeners\GoCardless\SubscriptionCancelledListener::class], \Coderstm\Events\Shop\OrderPaid::class => [\Coderstm\Listeners\Shop\SendOrderConfirmationNotification::class, \Coderstm\Listeners\Shop\SendAdminNewOrderNotification::class], \Coderstm\Events\Shop\OrderCanceled::class => [\Coderstm\Listeners\Shop\SendOrderCanceledNotification::class, \Coderstm\Listeners\Shop\SendAdminOrderCanceledNotification::class], \Coderstm\Events\Shop\OrderShipped::class => [\Coderstm\Listeners\Shop\SendOrderShippedNotification::class], \Coderstm\Events\Shop\OrderDelivered::class => [\Coderstm\Listeners\Shop\SendOrderDeliveredNotification::class], \Coderstm\Events\Shop\PaymentSuccessful::class => [\Coderstm\Listeners\Shop\SendPaymentSuccessNotification::class], \Coderstm\Events\Shop\PaymentFailed::class => [\Coderstm\Listeners\Shop\SendPaymentFailedNotification::class, \Coderstm\Listeners\Shop\SendAdminPaymentFailedNotification::class], \Coderstm\Events\Shop\OrderRefunded::class => [\Coderstm\Listeners\Shop\SendOrderRefundedNotification::class, \Coderstm\Listeners\Shop\SendAdminRefundNotification::class], \Coderstm\Events\Shop\PartialRefundProcessed::class => [\Coderstm\Listeners\Shop\SendPartialRefundNotification::class, \Coderstm\Listeners\Shop\SendAdminRefundNotification::class], \Coderstm\Events\Checkout\Abandoned::class => [\Coderstm\Listeners\Shop\SendAbandonedCartNotification::class], \Coderstm\Events\Shop\LowStockAlert::class => [\Coderstm\Listeners\Shop\SendLowStockNotification::class], \Coderstm\Events\Shop\OutOfStockAlert::class => [\Coderstm\Listeners\Shop\SendOutOfStockNotification::class]];
+
+    public function boot() {}
+}

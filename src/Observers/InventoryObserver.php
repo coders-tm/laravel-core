@@ -1,42 +1,40 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-iYUzAE4=
+<?php
+
+namespace Coderstm\Observers;
+
+use Coderstm\Events\Shop\LowStockAlert;
+use Coderstm\Events\Shop\OutOfStockAlert;
+use Coderstm\Models\Shop\Product\Inventory;
+
+class InventoryObserver
+{
+    protected $lowStockThreshold = 10;
+
+    public function updated(Inventory $inventory)
+    {
+        if (! $inventory->trackable) {
+            return;
+        }
+        if ($inventory->wasChanged('available')) {
+            $previousStock = $inventory->getOriginal('available');
+            $currentStock = $inventory->available;
+            if ($previousStock > 0 && $currentStock == 0) {
+                event(new OutOfStockAlert($inventory->variant, $inventory));
+            } elseif ($currentStock > 0 && $currentStock <= $this->lowStockThreshold && $previousStock > $this->lowStockThreshold) {
+                event(new LowStockAlert($inventory->variant, $inventory, $this->lowStockThreshold));
+            }
+        }
+    }
+
+    public function created(Inventory $inventory)
+    {
+        if (! $inventory->trackable) {
+            return;
+        }
+        if ($inventory->available == 0) {
+            event(new OutOfStockAlert($inventory->variant, $inventory));
+        } elseif ($inventory->available <= $this->lowStockThreshold) {
+            event(new LowStockAlert($inventory->variant, $inventory, $this->lowStockThreshold));
+        }
+    }
+}

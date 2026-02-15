@@ -1,37 +1,34 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-BccaTnMBkWYhwU6YuYG4f0==
+<?php
+
+namespace Coderstm\Database\Factories\Shop;
+
+use Coderstm\Models\Shop\Location;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class LocationFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Location::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake()->city,
+            'line1' => fake()->streetAddress,
+            'city' => fake()->city,
+            'country' => fake()->country,
+            'country_code' => fake()->countryCode,
+            'state' => fake()->state,
+            'postal_code' => fake()->postcode,
+        ];
+    }
+}

@@ -1,39 +1,32 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-q1yI3U0mHy5Ah3Xdfx0uaoQflxDtRj/+
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class EnquiryFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     */
+    protected $model = 'App\Models\Enquiry';
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake()->name(),
+            'email' => fake()->email(),
+            'phone' => fake()->phoneNumber(),
+            'subject' => fake()->sentence(),
+            'message' => fake()->paragraph(),
+            'status' => ['Pending', 'Replied', 'Staff Replied', 'Resolved'][rand(0, 3)],
+        ];
+    }
+}

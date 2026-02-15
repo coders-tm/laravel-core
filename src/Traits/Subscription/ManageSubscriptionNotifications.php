@@ -1,72 +1,40 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-9h/W7xX1zIF8x2vzoLQ/oJFy90==
+<?php
+
+namespace Coderstm\Traits\Subscription;
+
+use Coderstm\Jobs\Subscription\SendRenewNotificationJob;
+use Coderstm\Models\Notification;
+
+trait ManageSubscriptionNotifications
+{
+    public function getShortCodes(): array
+    {
+        return ['user' => $this->user?->toArray(), 'plan' => ['label' => $this->plan?->label, 'price' => $this->plan?->formatPrice()], 'billing_page' => user_route('/billing'), 'subscription_status' => is_string($this->status) ? $this->status : $this->status->value ?? '', 'billing_cycle' => $this->formatBillingInterval(), 'next_billing_date' => $this->expires_at ? $this->expires_at->format('d M, Y') : '', 'ends_at' => $this->expires_at ? $this->expires_at->format('d M, Y') : '', 'starts_at' => $this->starts_at ? $this->starts_at->format('d M, Y') : '', 'expires_at' => $this->expires_at ? $this->expires_at->format('d M, Y') : '', 'upcoming_invoice' => $this->upcomingInvoice()];
+    }
+
+    public function sendRenewNotification(): void
+    {
+        if (! $this->user) {
+            return;
+        }
+        if ($this->expired()) {
+            SendRenewNotificationJob::dispatch($this)->afterResponse();
+        }
+    }
+
+    public function renderNotification($type, $additionalData = []): ?Notification
+    {
+        $template = Notification::default($type);
+        $data = array_merge($this->getShortCodes(), $additionalData);
+        $rendered = $template->render($data);
+
+        return $template->fill(['subject' => $rendered['subject'], 'content' => $rendered['content']]);
+    }
+
+    public function renderPushNotification($type, $additionalData = [])
+    {
+        $template = $this->renderNotification($type, $additionalData);
+
+        return optional((object) ['subject' => $template->subject, 'content' => html_text($template->content), 'whatsappContent' => html_text("{$template->subject}\n{$template->content}"), 'data' => ['route' => user_route('/billing')]]);
+    }
+}

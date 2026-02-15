@@ -1,206 +1,202 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Database\Factories\Shop\Product\VariantFactory;
+use Coderstm\Models\Shop\LineItem;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Variant\Option;
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Services\Resource;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\Fileable;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+
+class Variant extends Model
+{
+    use Core, Fileable;
+
+    protected $fillable = ['price', 'compare_at_price', 'cost_per_item', 'taxable', 'recurring', 'track_inventory', 'out_of_stock_track_inventory', 'sku', 'origin', 'harmonized_system_code', 'barcode', 'product_id', 'is_default'];
+
+    protected $appends = ['inventories_available', 'title', 'price_formatted', 'in_stock'];
+
+    protected $with = ['options', 'weight', 'thumbnail', 'inventories.location:id,name'];
+
+    protected $casts = ['taxable' => 'boolean', 'recurring' => 'boolean', 'track_inventory' => 'boolean', 'out_of_stock_track_inventory' => 'boolean', 'is_default' => 'boolean'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class)->withOnly(['thumbnail']);
+    }
+
+    public function inventories()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+
+    public function active_inventories()
+    {
+        return $this->hasMany(Inventory::class)->active();
+    }
+
+    public function line_items()
+    {
+        return $this->hasMany(LineItem::class);
+    }
+
+    public function weight()
+    {
+        return $this->morphOne(Weight::class, 'weightable');
+    }
+
+    public function options()
+    {
+        return $this->hasMany(Option::class);
+    }
+
+    public function recurringPlans()
+    {
+        return $this->hasMany(Plan::class, 'variant_id');
+    }
+
+    public function getOptions()
+    {
+        return $this->options->map(function ($option) {
+            return ['id' => $option->id, 'name' => $option->name, 'value' => $option->value];
+        })->toArray();
+    }
+
+    public function getOptionsWithValues()
+    {
+        return $this->options->map(function ($option) {
+            return ['id' => $option->id, 'name' => $option->name, 'value' => $option->value, 'values' => $option->values, 'type' => $option->attribute->type];
+        })->toArray();
+    }
+
+    public function getInventoriesAvailableAttribute()
+    {
+        $location = $this->active_inventories_count;
+        $available = $this->active_inventories_sum_available;
+        if (! $this->track_inventory) {
+            return $location > 1 ? "Stocked at {$location} locations" : "Stocked at {$location} location";
+        }
+
+        return $location > 1 ? "{$available} available at {$location} locations" : "{$available} available at {$location} location";
+    }
+
+    public function getInStockAttribute()
+    {
+        if ($this->track_inventory && $this->out_of_stock_track_inventory) {
+            return $this->active_inventories_sum_available > 0;
+        }
+
+        return true;
+    }
+
+    public function getTitleAttribute()
+    {
+        if ($this->is_default) {
+            return 'Default';
+        }
+
+        return $this->options->map(function ($option) {
+            return $option->value;
+        })->join(' / ');
+    }
+
+    public function getPriceFormattedAttribute()
+    {
+        return format_amount($this->price);
+    }
+
+    public function scopeOnlyTrackInventory($query)
+    {
+        return $query->where('track_inventory', 1);
+    }
+
+    public function scopeStockIn($query)
+    {
+        return $query->where(function ($query) {
+            $query->where('track_inventory', 1)->where('out_of_stock_track_inventory', 1);
+        })->orWhere(function ($query) {
+            $query->where('track_inventory', 1)->where('out_of_stock_track_inventory', 0)->having('active_inventories_sum_available', '>', 0);
+        })->orWhere('track_inventory', 0);
+    }
+
+    public function saveRelated(Resource $resource)
+    {
+        if ($resource->filled('thumbnail.id')) {
+            $this->product->media()->syncWithoutDetaching($resource->input('thumbnail.id'));
+            $this->media()->sync($resource->input('thumbnail.id'));
+        } else {
+            $this->media()->detach();
+        }
+        if ($resource->filled('inventories')) {
+            foreach (collect($resource['inventories']) as $inventory) {
+                $inventory['location_id'] = $inventory['location']['id'];
+                $this->inventories()->updateOrCreate(['location_id' => $inventory['location_id']], $inventory);
+            }
+        }
+        if ($resource->filled('options')) {
+            foreach (collect($resource['options']) as $item) {
+                if ($item['id']) {
+                    $option = Option::find($item['id']);
+                } else {
+                    $productOption = $this->product->options()->firstOrCreate(['name' => $item['name']], $item);
+                    $option = $this->options()->updateOrCreate(['option_id' => $productOption->id], $item);
+                }
+                if ($option->value != $item['value']) {
+                    $option->update(['value' => $item['value']]);
+                    if (isset($option['values'])) {
+                        $values = collect($option['values'])->pluck('name')->toArray();
+                        if (! in_array($item['value'], $values)) {
+                            $option->attribute->updateValue($item['value']);
+                        }
+                    }
+                }
+            }
+        }
+        if ($resource->filled('recurring_plans')) {
+            $planIds = collect($resource['recurring_plans'])->pluck('id')->filter();
+            $this->recurringPlans()->whereNotIn('id', $planIds)->delete();
+            foreach ($resource['recurring_plans'] as $planData) {
+                $this->recurringPlans()->updateOrCreate(['id' => $planData['id'] ?? null], $planData);
+            }
+        }
+
+        return $this;
+    }
+
+    protected static function newFactory()
+    {
+        return VariantFactory::new();
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::deleted(function ($model) {
+            $model->inventories()->each(function ($item) {
+                $item->delete();
+            });
+            $model->options()->each(function ($item) {
+                $item->delete();
+            });
+        });
+        static::deleting(function ($model) {
+            $model->line_items()->update(['is_variant_deleted' => true]);
+        });
+        static::restoring(function ($model) {
+            $model->line_items()->withTrashed()->update(['is_variant_deleted' => false]);
+        });
+        static::addGlobalScope('count', function (Builder $builder) {
+            $builder->withCount(['active_inventories'])->withSum('active_inventories', 'available');
+        });
+    }
+
+    public function getShortCodes(): array
+    {
+        return ['id' => $this->id, 'product_id' => $this->product_id, 'title' => $this->title, 'sku' => $this->sku, 'barcode' => $this->barcode, 'product_name' => $this->product?->title, 'product_url' => app_url("/products/{$this->product_id}"), 'admin_url' => admin_url("/products/{$this->product_id}"), 'price' => format_amount($this->price ?? 0), 'compare_at_price' => format_amount($this->compare_at_price ?? 0), 'cost_per_item' => format_amount($this->cost_per_item ?? 0), 'raw_price' => $this->price ?? 0, 'track_inventory' => (bool) $this->track_inventory, 'available_quantity' => $this->inventories_available ?? 0, 'in_stock' => (bool) $this->in_stock, 'total_inventory' => $this->inventories->sum('available'), 'options' => $this->options->map(fn ($option) => ['name' => $option->name, 'value' => $option->value])->toArray(), 'is_recurring' => (bool) $this->recurring, 'is_taxable' => (bool) $this->taxable, 'is_default' => (bool) $this->is_default, 'origin' => $this->origin, 'harmonized_system_code' => $this->harmonized_system_code];
+    }
+}

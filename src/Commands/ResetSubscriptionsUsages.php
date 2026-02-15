@@ -1,53 +1,34 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Coderstm;
+use Coderstm\Events\ResetFeatureUsages;
+use Coderstm\Models\Log;
+use Illuminate\Console\Command;
+
+class ResetSubscriptionsUsages extends Command
+{
+    protected $signature = 'coderstm:reset-subscriptions-usages';
+
+    protected $description = 'Rest the subscription usages when it is active';
+
+    public function handle()
+    {
+        $subscriptions = Coderstm::$subscriptionModel::query()->active()->whereHas('features', function ($q) {
+            $q->where('reset_at', '<=', now());
+        });
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                event(new ResetFeatureUsages($subscription, $subscription->usagesToArray()));
+                $subscription->resetUsages();
+                $subscription->logs()->create(['type' => 'usages-reset', 'message' => 'Usages has been reset successfully!']);
+                $this->info("Usages of subscription #{$subscription->id} has been reset!");
+            } catch (\Throwable $e) {
+                $message = "Usages of subscription #{$subscription->id} unable to reset! {$e->getMessage()}";
+                $subscription->logs()->create(['type' => 'usages-reset', 'status' => Log::STATUS_ERROR, 'message' => $message]);
+                $this->error($message);
+            }
+        }
+    }
+}

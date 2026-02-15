@@ -1,73 +1,41 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Bn2J
+<?php
+
+namespace Coderstm\Http\Controllers\Auth;
+
+use Coderstm\Http\Controllers\Controller;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Str;
+
+class ForgotPasswordController extends Controller
+{
+    public function request(Request $request, $guard = null)
+    {
+        $request->validate(['email' => "required|email|exists:{$guard},email"]);
+        $status = Password::broker($guard)->sendResetLink($request->only('email'));
+        if ($status === Password::INVALID_USER) {
+            return response()->json(['message' => __('User not found!')], 404);
+        } elseif ($status == Password::RESET_THROTTLED) {
+            return response()->json(['message' => __('Reset password email already sent. Please try again after sometime!')], 429);
+        }
+
+        return response()->json(['status' => $status, 'message' => __('Password reset link sent successfully!')], 200);
+    }
+
+    public function reset(Request $request, $guard = null)
+    {
+        $request->validate(['password' => 'required|min:6|same:password_confirmation', 'password_confirmation' => 'required'], ['password_confirmation.required' => __('Password confirmation is required.')]);
+        $status = Password::broker($guard)->reset($request->only('email', 'password', 'password_confirmation', 'token'), function ($user, $password) {
+            $user->forceFill(['password' => Hash::make($password)])->save();
+            $user->setRememberToken(Str::random(60));
+            event(new PasswordReset($user));
+        });
+        if ($status != Password::PASSWORD_RESET) {
+            return response()->json(['message' => __('Invalid token or token may expired!')], 400);
+        }
+
+        return response()->json(['message' => __('Password reset successfully!')], 200);
+    }
+}

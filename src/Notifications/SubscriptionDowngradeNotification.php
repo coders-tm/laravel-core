@@ -1,47 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications;
+
+class SubscriptionDowngradeNotification extends BaseNotification
+{
+    public $subject;
+
+    public $message;
+
+    public function __construct($subscription)
+    {
+        $additionalData = ['old_plan' => optional($subscription->oldPlan)->label, 'old_plan_details' => ['label' => optional($subscription->oldPlan)->label]];
+        $template = $subscription->renderNotification('user:subscription-downgrade', $additionalData);
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        try {
+            $pushTemplate = $subscription->renderPushNotification('push:subscription-downgrade', $additionalData);
+            $this->pushSubject = $pushTemplate->subject;
+            $this->pushMessage = $pushTemplate->content;
+            $this->pushData = $pushTemplate->data;
+            $this->whatsappContent = $pushTemplate->whatsappContent;
+        } catch (\Throwable $e) {
+        }
+    }
+
+    public function via(object $notifiable): array
+    {
+        return ['mail', FcmChannel::class, TwilioWhatsappChannel::class];
+    }
+}

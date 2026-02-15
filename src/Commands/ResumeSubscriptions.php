@@ -1,48 +1,41 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Coderstm;
+use Illuminate\Console\Command;
+
+class ResumeSubscriptions extends Command
+{
+    protected $signature = 'coderstm:subscriptions-resume';
+
+    protected $description = 'Resume frozen subscriptions that have reached their release date';
+
+    public function handle()
+    {
+        $subscriptionModel = Coderstm::$subscriptionModel;
+        $subscriptions = $subscriptionModel::dueForUnfreeze()->get();
+        if ($subscriptions->isEmpty()) {
+            $this->info('No subscriptions due for resume.');
+
+            return Command::SUCCESS;
+        }
+        $this->info("Found {$subscriptions->count()} subscription(s) to resume...");
+        $resumed = 0;
+        $failed = 0;
+        foreach ($subscriptions as $subscription) {
+            try {
+                $subscription->unfreeze();
+                $resumed++;
+                $this->line("✓ Resumed subscription #{$subscription->id} for user #{$subscription->user_id}");
+            } catch (\Throwable $e) {
+                $failed++;
+                $this->error("✗ Failed to resume subscription #{$subscription->id}: {$e->getMessage()}");
+            }
+        }
+        $this->newLine();
+        $this->info("Completed: {$resumed} resumed, {$failed} failed.");
+
+        return Command::SUCCESS;
+    }
+}

@@ -1,53 +1,42 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-bCoJlMWovwoXGFecNG==
+<?php
+
+namespace Coderstm\Casts;
+
+use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Database\Eloquent\Model;
+
+class PreserveWhitespaceJson implements CastsAttributes
+{
+    public function get(Model $model, string $key, mixed $value, array $attributes): mixed
+    {
+        if (is_null($value)) {
+            return null;
+        }
+        if (is_array($value) || is_object($value)) {
+            return $value;
+        }
+        $decoded = json_decode($value, true, 512, JSON_THROW_ON_ERROR | JSON_BIGINT_AS_STRING);
+
+        return $decoded;
+    }
+
+    public function set(Model $model, string $key, mixed $value, array $attributes): ?string
+    {
+        if (is_null($value)) {
+            return null;
+        }
+        if (is_string($value)) {
+            json_decode($value);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                return $value;
+            }
+        }
+
+        return json_encode($value, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION | JSON_UNESCAPED_SLASHES);
+    }
+
+    public function serialize(Model $model, string $key, mixed $value, array $attributes): mixed
+    {
+        return $value;
+    }
+}

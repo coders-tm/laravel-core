@@ -1,42 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications\Shop;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Notifications\BaseNotification;
+
+class OrderConfirmationNotification extends BaseNotification
+{
+    public $order;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct($order)
+    {
+        $this->order = $order;
+        $template = Template::default('user:order-confirmation');
+        $rendered = $template->render(['order' => $order->getShortCodes()]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['order_id' => $this->order->id, 'order_number' => $this->order->formated_id, 'total' => $this->order->total(), 'status' => $this->order->status];
+    }
+}

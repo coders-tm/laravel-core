@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
+use Coderstm\Models\Notification;
 use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
-use Coderstm\Models\Notification;
 use Illuminate\Support\Facades\File;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class NotificationSeeder extends Seeder
 {
@@ -23,15 +22,13 @@ class NotificationSeeder extends Seeder
 
         foreach ($notifications as $notification) {
             Notification::updateOrCreate([
-                'type' => $notification['type']
+                'type' => $notification['type'],
             ], $notification);
         }
     }
 
     /**
      * Load notification templates from blade files
-     *
-     * @return array
      */
     protected function loadNotificationTemplates(): array
     {
@@ -41,11 +38,11 @@ class NotificationSeeder extends Seeder
         foreach ($folders as $folder) {
             $folderPath = database_path("templates/$folder");
 
-            if (!File::isDirectory($folderPath)) {
+            if (! File::isDirectory($folderPath)) {
                 continue;
             }
 
-            $files = File::glob($folderPath . '/*.blade.php');
+            $files = File::glob($folderPath.'/*.blade.php');
 
             foreach ($files as $file) {
                 $notification = $this->parseBladeTemplate($file, $folder);
@@ -63,24 +60,20 @@ class NotificationSeeder extends Seeder
 
     /**
      * Parse a blade template file and extract metadata from JSON file
-     *
-     * @param string $filePath
-     * @param string $folder
-     * @return array|null
      */
     protected function parseBladeTemplate(string $filePath, string $folder): ?array
     {
         // Get corresponding JSON metadata file
         $jsonFile = str_replace('.blade.php', '.json', $filePath);
 
-        if (!File::exists($jsonFile)) {
+        if (! File::exists($jsonFile)) {
             return null;
         }
 
         // Read metadata from JSON file
         $metadata = json_decode(file_get_contents($jsonFile), true);
 
-        if (!$metadata || !isset($metadata['type'])) {
+        if (! $metadata || ! isset($metadata['type'])) {
             return null;
         }
 

@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Coderstm\Models\Enquiry as Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Enquiry extends Model
 {

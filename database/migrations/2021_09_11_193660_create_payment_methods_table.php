@@ -1,62 +1,48 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-EQ28+TPD1ISzeMiP6PQuYEyhQm==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('payment_methods', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name');
+            $table->string('label')->nullable();
+            $table->string('provider')->default('manual')->index();
+            $table->string('integration_via')->nullable();
+            $table->string('link')->nullable();
+            $table->string('logo')->nullable();
+            $table->text('description')->nullable();
+            $table->{$this->jsonable()}('credentials')->nullable();
+            $table->{$this->jsonable()}('methods')->nullable();
+            $table->{$this->jsonable()}('supported_currencies')->nullable();
+            $table->boolean('active')->default(false)->index();
+            $table->string('capture')->default('manual')->index();
+            $table->string('additional_details')->nullable();
+            $table->string('payment_instructions')->nullable();
+            $table->boolean('test_mode')->default(false);
+            $table->decimal('transaction_fee', 10, 2)->default(0.00);
+            $table->text('webhook')->nullable();
+            $table->{$this->jsonable()}('options')->nullable();
+            $table->integer('order')->default(0);
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('payment_methods');
+    }
+};

@@ -1,32 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-B/warXB+WEWNkbx12Ym9C86YlWwWyq4=
+<?php
+
+namespace Coderstm\Notifications\Admins;
+
+use Coderstm\Notifications\BaseNotification;
+
+class SubscriptionExpiredNotification extends BaseNotification
+{
+    public $user;
+
+    public $subscription;
+
+    public $status;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct($subscription)
+    {
+        $template = $subscription->renderNotification('admin:subscription-expired');
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        parent::__construct($this->subject, $this->message);
+    }
+}

@@ -1,35 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Exceptions;
+
+use Exception;
+
+class PaymentException extends Exception
+{
+    protected array $metadata = [];
+
+    public function __construct(string $message = '', array $metadata = [], int $code = 0, ?\Throwable $previous = null)
+    {
+        parent::__construct($message, $code, $previous);
+        $this->metadata = $metadata;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function context(): array
+    {
+        return array_merge(['message' => $this->getMessage(), 'code' => $this->getCode()], $this->metadata);
+    }
+}

@@ -1,31 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-0ou3nEDGiXRJwogb0M6beBxxamvl
+<?php
+
+namespace Coderstm\Events\Shop;
+
+use Coderstm\Models\Payment;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class PartialRefundProcessed
+{
+    use Dispatchable, SerializesModels;
+
+    public $order;
+
+    public $payment;
+
+    public $amount;
+
+    public $reason;
+
+    public function __construct($order, Payment $payment, float $amount, $reason = null)
+    {
+        $this->order = $order;
+        $this->payment = $payment;
+        $this->amount = $amount;
+        $this->reason = $reason;
+    }
+}

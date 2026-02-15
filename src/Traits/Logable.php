@@ -1,92 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-pAYEKo8c
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Enum\LogType;
+use Coderstm\Models\Log;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Support\Str;
+
+trait Logable
+{
+    public function logs(): MorphMany
+    {
+        return $this->morphMany(Log::class, 'logable');
+    }
+
+    protected static function getLogName($model)
+    {
+        if ($model->logName) {
+            return $model->logName;
+        }
+
+        return Str::of(class_basename(get_class($model)))->snake()->replace('_', ' ')->title();
+    }
+
+    protected static function getLogValue(string $key, $value)
+    {
+        return static::mapLogValue($key, $value);
+    }
+
+    protected static function mapLogValue(string $key, $value)
+    {
+        return is_array($value) ? implode(', ', array_filter($value)) : $value;
+    }
+
+    public function getLoggable()
+    {
+        return array_diff($this->fillable, $this->logIgnore ?? []);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::created(function ($model) {
+            $modelName = static::getLogName($model);
+            $data = ['message' => "{$modelName} has been created."];
+            if (! empty($model->log_options)) {
+                $data['options'] = $model->log_options;
+            }
+            $model->logs()->updateOrCreate(['type' => LogType::CREATED], $data);
+        });
+        static::updated(function ($model) {
+            $modelName = static::getLogName($model);
+            $options = [];
+            foreach ($model->getLoggable() as $key) {
+                if ($model->wasChanged($key)) {
+                    $previous = $model->getOriginal($key);
+                    $current = $model[$key];
+                    $options[$key] = ['_previous' => $previous, 'previous' => static::getLogValue($key, $previous), '_current' => $current, 'current' => static::getLogValue($key, $current)];
+                    $method = 'on'.Str::studly(str_replace('.', '_', $key)).'Updated';
+                    if (method_exists(static::class, $method)) {
+                        static::$method($model, $options[$key]);
+                    }
+                }
+            }
+            if (! empty($options)) {
+                $model->logs()->create(['type' => LogType::UPDATED, 'message' => "{$modelName} has been updated.", 'options' => $options]);
+            }
+        });
+        static::deleted(function ($model) {
+            $modelName = static::getLogName($model);
+            $model->logs()->create(['type' => LogType::DELETED, 'message' => "{$modelName} has been deleted."]);
+        });
+        if (method_exists(static::class, 'forceDeleted')) {
+            static::forceDeleted(function ($model) {
+                $modelName = static::getLogName($model);
+                $model->logs()->create(['type' => LogType::PERMANENTLY_DELETED, 'message' => "{$modelName} has been permanently deleted."]);
+            });
+        }
+        if (method_exists(static::class, 'restored')) {
+            static::restored(function ($model) {
+                $modelName = static::getLogName($model);
+                $model->logs()->create(['type' => LogType::RESTORED, 'message' => "{$modelName} has been restored."]);
+            });
+        }
+    }
+}

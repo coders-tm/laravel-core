@@ -1,72 +1,61 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-SqLChpquGv9Kp/OmWGm5iJv4h6KIAgQfTnvBMm==
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\Module;
+use Coderstm\Models\Permission;
+use Illuminate\Support\Collection;
+
+trait HasPermissionGroup
+{
+    use HasGroup, HasPermission;
+
+    public function getPermissionsViaGroups(): Collection
+    {
+        return $this->loadMissing('groups', 'groups.permissions')->groups->flatMap(function ($group) {
+            return $group->permissions->filter(function ($permission) {
+                return ! is_null($permission->pivot->access);
+            });
+        })->sort()->values();
+    }
+
+    public function getAllPermissions(): Collection
+    {
+        $permissions = $this->permissions;
+        if ($this->groups->count()) {
+            $permissions = $permissions->merge($this->getPermissionsViaGroups());
+        }
+
+        return $permissions->sort()->values();
+    }
+
+    public function getModulesAttribute()
+    {
+        if ($this->is_supper_admin) {
+            $modules = Module::all();
+        } else {
+            $permissions = $this->getAllPermissions()->filter(function ($permission) {
+                return $permission->pivot->access == 1;
+            });
+            $permissionByModule = $permissions->groupBy('module_id');
+            $modules = Module::orderBy('sort_order')->find($permissionByModule->keys());
+        }
+
+        return $modules->makeHidden(['created_at', 'deleted_at', 'updated_at'])->map(function ($item) {
+            return array_merge($item->toArray(), ['label' => __($item['name'])]);
+        });
+    }
+
+    public function getScopes()
+    {
+        if ($this->is_supper_admin) {
+            return Permission::pluck('scope')->toArray();
+        } else {
+            $permissions = $this->getAllPermissions()->filter(function ($permission) {
+                return $permission->pivot->access == 1;
+            });
+
+            return $permissions->pluck('scope')->toArray();
+        }
+    }
+}

@@ -1,32 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Enquiry\Reply;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ReplyFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     */
+    protected $model = Reply::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'message' => fake()->paragraph(),
+            'user_id' => Coderstm::$adminModel::inRandomOrder()->first()->id,
+        ];
+    }
+}

@@ -1,44 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Providers;
+
+use Coderstm\Coderstm;
+use Coderstm\Data\CartData;
+use Coderstm\Facades\Shop;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+
+class ViewComposerServiceProvider extends ServiceProvider
+{
+    public function register() {}
+
+    public function boot()
+    {
+        View::composer('*', function ($view) {
+            $view->with('blog', request()->input('blog'));
+            if (Coderstm::shouldEnableCart()) {
+                try {
+                    $view->with('cart', Shop::cart());
+                } catch (\Throwable $e) {
+                    $view->with('cart', new CartData);
+                    logger()->error('Shop::cart Error: '.$e->getMessage());
+                }
+            } else {
+                $view->with('cart', new CartData);
+            }
+        });
+    }
+}

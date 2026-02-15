@@ -1,41 +1,13 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits\Subscription;
+
+trait ManagesSubscription
+{
+    use ManagesSubscriptionCoupon;
+    use ManagesSubscriptionFreeze;
+    use ManagesSubscriptionPlan;
+    use ManageSubscriptionInvoices;
+    use ManageSubscriptionNotifications;
+    use ManageSubscriptionStatus;
+}

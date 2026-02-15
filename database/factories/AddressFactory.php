@@ -1,34 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-fvq2juNgQea=
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Address;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class AddressFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     */
+    protected $model = Address::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'line1' => fake()->address(),
+            'city' => fake()->city(),
+            'postal_code' => fake()->postcode(),
+            'country' => fake()->country(),
+        ];
+    }
+}

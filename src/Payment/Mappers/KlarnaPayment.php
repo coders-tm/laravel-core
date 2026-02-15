@@ -1,84 +1,69 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hP9s0cW=
+<?php
+
+namespace Coderstm\Payment\Mappers;
+
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use DateTime;
+
+class KlarnaPayment extends AbstractPayment
+{
+    public function __construct($response, PaymentMethod $paymentMethod)
+    {
+        if (is_object($response)) {
+            $response = json_decode(json_encode($response), true);
+        }
+        $this->paymentMethod = $paymentMethod;
+        $this->transactionId = $response['order_id'] ?? $response['session_id'] ?? uniqid('klarna_');
+        $this->amount = ($response['order_amount'] ?? 0) / 100;
+        $this->currency = strtoupper($response['purchase_currency'] ?? config('app.currency', 'USD'));
+        if (isset($response['session_id'])) {
+            $this->status = match ($response['status'] ?? 'incomplete') {
+                'complete' => Payment::STATUS_COMPLETED,
+                'incomplete' => Payment::STATUS_PENDING,
+                'error' => Payment::STATUS_FAILED,
+                default => Payment::STATUS_PENDING,
+            };
+            $this->note = "Klarna Session: {$this->transactionId}";
+        } else {
+            $fraudStatus = $response['fraud_status'] ?? 'AUTHORIZED';
+            $this->status = $fraudStatus === 'REJECTED' ? Payment::STATUS_FAILED : Payment::STATUS_PROCESSING;
+            $this->note = "Klarna Order: {$this->transactionId} - Fraud Status: {$fraudStatus}";
+        }
+        $this->processedAt = new DateTime;
+        $this->metadata = $this->extractMetadata($response);
+    }
+
+    protected function extractMetadata($data): array
+    {
+        if (is_object($data)) {
+            $data = json_decode(json_encode($data), true);
+        }
+        $normalized = ['payment_method_type' => 'klarna'];
+        if (isset($data['payment_method_category'])) {
+            $normalized['klarna_category'] = $data['payment_method_category'];
+        }
+        if (isset($data['billing_address'])) {
+            $address = $data['billing_address'];
+            $normalized['country'] = $address['country'] ?? null;
+        }
+        if (isset($data['customer'])) {
+            $normalized['customer_email'] = $data['customer']['email'] ?? null;
+        }
+        $normalized['payment_method'] = $this->buildDisplayString($normalized);
+
+        return array_filter($normalized);
+    }
+
+    private function buildDisplayString(array $metadata): string
+    {
+        $category = $metadata['klarna_category'] ?? null;
+        if ($category) {
+            $displayNames = ['pay_later' => 'Klarna Pay Later', 'pay_over_time' => 'Klarna Financing', 'pay_now' => 'Klarna Pay Now', 'direct_bank_transfer' => 'Klarna Bank Transfer', 'direct_debit' => 'Klarna Direct Debit'];
+
+            return $displayNames[$category] ?? 'Klarna - '.ucwords(str_replace('_', ' ', $category));
+        }
+
+        return 'Klarna';
+    }
+}

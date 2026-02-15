@@ -1,50 +1,53 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-6RWkCQeYjYLE31EE7l2EjGh3At8=
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\File;
+
+trait Fileable
+{
+    use HasMorphToOne;
+
+    public function media()
+    {
+        return $this->morphToMany(File::class, 'fileable')->orderBy('order', 'asc');
+    }
+
+    public function avatar()
+    {
+        return $this->morphToOne(File::class, 'fileable')->wherePivot('type', 'avatar');
+    }
+
+    public function thumbnail()
+    {
+        return $this->morphToOne(File::class, 'fileable');
+    }
+
+    public function syncMedia(array $media)
+    {
+        $files = collect($media)->pluck('id')->filter()->mapWithKeys(function ($item, $key) {
+            return [$item => ['order' => $key]];
+        });
+        $this->media()->sync($files);
+
+        return $this;
+    }
+
+    public function detachMedia(array $media)
+    {
+        if (isset($media['id']) && File::find($media['id'])) {
+            return $this->media()->detach($media['id']);
+        }
+
+        return false;
+    }
+
+    public function attachMedia(array $media)
+    {
+        if (isset($media['id']) && File::find($media['id'])) {
+            return $this->media()->attach($media['id']);
+        }
+
+        return false;
+    }
+}

@@ -1,60 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-fXBbHiGFzQNNo0bs
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\Permission;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+
+trait HasPermission
+{
+    public function permissions()
+    {
+        return $this->morphToMany(Permission::class, 'permissionable')->withPivot('access');
+    }
+
+    public function syncPermissions(Collection $permissions, bool $detach = true)
+    {
+        $permissions = $permissions->filter(function ($permission) {
+            return ! is_null($permission['access']);
+        })->mapWithKeys(function ($permission) {
+            return [$permission['id'] => ['access' => $permission['access']]];
+        });
+        if ($detach) {
+            $this->permissions()->sync($permissions);
+        } else {
+            $this->permissions()->syncWithoutDetaching($permissions);
+        }
+        Cache::forget("user_permissions_{$this->id}");
+
+        return $this;
+    }
+
+    public function syncPermissionsDetaching(Collection $permissions)
+    {
+        return $this->syncPermissions($permissions, false);
+    }
+
+    public function getAllPermissions(): Collection
+    {
+        return Cache::rememberForever("user_permissions_{$this->id}", function () {
+            return $this->permissions->sort()->values();
+        });
+    }
+
+    public function hasPermission($permission)
+    {
+        return (bool) $this->getAllPermissions()->where('pivot.access', 1)->where('scope', $permission)->count();
+    }
+
+    public function hasAnyPermission(...$permissions)
+    {
+        return (bool) $this->getAllPermissions()->whereIn('scope', $permissions)->count();
+    }
+}

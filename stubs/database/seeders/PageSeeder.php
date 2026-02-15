@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Coderstm\Models\Page;
 use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PageSeeder extends Seeder
 {

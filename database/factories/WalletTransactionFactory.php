@@ -1,65 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\WalletBalance;
+use Coderstm\Models\WalletTransaction;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class WalletTransactionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = WalletTransaction::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $walletBalance = WalletBalance::factory()->create();
+        $amount = $this->faker->randomFloat(2, 1, 500);
+        $type = $this->faker->randomElement(['credit', 'debit']);
+
+        return [
+            'wallet_balance_id' => $walletBalance->id,
+            'user_id' => $walletBalance->user_id,
+            'type' => $type,
+            'source' => $this->faker->randomElement(['refund', 'advance_payment', 'subscription_renewal']),
+            'amount' => $amount,
+            'balance_before' => $walletBalance->balance,
+            'balance_after' => $type === 'credit'
+                ? $walletBalance->balance + $amount
+                : $walletBalance->balance - $amount,
+            'description' => $this->faker->sentence(),
+            'metadata' => [],
+        ];
+    }
+
+    /**
+     * Indicate that this is a credit transaction.
+     */
+    public function credit()
+    {
+        return $this->state(fn (array $attributes) => [
+            'type' => 'credit',
+            'source' => $this->faker->randomElement(['refund', 'advance_payment']),
+        ]);
+    }
+
+    /**
+     * Indicate that this is a debit transaction.
+     */
+    public function debit()
+    {
+        return $this->state(fn (array $attributes) => [
+            'type' => 'debit',
+            'source' => 'subscription_renewal',
+        ]);
+    }
+
+    /**
+     * Indicate that this is a refund transaction.
+     */
+    public function refund()
+    {
+        return $this->state(fn (array $attributes) => [
+            'type' => 'credit',
+            'source' => 'refund',
+        ]);
+    }
+
+    /**
+     * Indicate that this is a subscription renewal transaction.
+     */
+    public function subscriptionRenewal()
+    {
+        return $this->state(fn (array $attributes) => [
+            'type' => 'debit',
+            'source' => 'subscription_renewal',
+        ]);
+    }
+}

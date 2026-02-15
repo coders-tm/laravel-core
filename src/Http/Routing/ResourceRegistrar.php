@@ -1,107 +1,117 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Routing;
+
+use Illuminate\Routing\ResourceRegistrar as BaseResourceRegistrar;
+use Illuminate\Routing\RouteCollection;
+use Illuminate\Support\Str;
+
+class ResourceRegistrar extends BaseResourceRegistrar
+{
+    protected static $verbs = ['create' => 'create', 'edit' => 'edit', 'restore' => 'restore', 'destroy' => 'destroy'];
+
+    protected $resourceDefaults = ['index', 'store', 'destroySelected', 'restoreSelected', 'show', 'update', 'destroy', 'restore'];
+
+    public function register($name, $controller, array $options = [])
+    {
+        if (isset($options['parameters']) && ! isset($this->parameters)) {
+            $this->parameters = $options['parameters'];
+        }
+        if (Str::contains($name, '/')) {
+            $this->prefixedResource($name, $controller, $options);
+
+            return;
+        }
+        $base = $this->getResourceWildcard(last(explode('.', $name)));
+        $defaults = $this->resourceDefaults;
+        $collection = new RouteCollection;
+        foreach ($this->getResourceMethods($defaults, $options) as $m) {
+            $route = $this->{'addResource'.Str::studly($m)}($name, $base, $controller, $options);
+            if (isset($options['bindingFields'])) {
+                $this->setResourceBindingFields($route, $options['bindingFields']);
+            }
+            $collection->add($route);
+        }
+
+        return $collection;
+    }
+
+    protected function addResourceIndex($name, $base, $controller, $options)
+    {
+        $uri = $this->getResourceUri($name);
+        $action = $this->getResourceAction($name, $controller, 'index', $options);
+
+        return $this->router->get($uri, $action);
+    }
+
+    protected function addResourceStore($name, $base, $controller, $options)
+    {
+        $uri = $this->getResourceUri($name);
+        $action = $this->getResourceAction($name, $controller, 'store', $options);
+
+        return $this->router->post($uri, $action);
+    }
+
+    protected function addResourceUpdate($name, $base, $controller, $options)
+    {
+        $name = $this->getShallowName($name, $options);
+        $uri = $this->getResourceUri($name).'/{'.$base.'}';
+        $action = $this->getResourceAction($name, $controller, 'update', $options);
+
+        return $this->router->match(['POST', 'PUT', 'PATCH'], $uri, $action);
+    }
+
+    protected function addResourceDestroy($name, $base, $controller, $options)
+    {
+        $name = $this->getShallowName($name, $options);
+        $uri = $this->getResourceUri($name).'/{'.$base.'}';
+        $action = $this->getResourceAction($name, $controller, 'destroy', $options);
+
+        return $this->router->delete($uri, $action);
+    }
+
+    protected function addResourceDestroySelected($name, $base, $controller, $options)
+    {
+        $uri = $this->getResourceUri($name).'/'.static::$verbs['destroy'];
+        $action = $this->getResourceAction($name, $controller, 'destroySelected', $options);
+
+        return $this->router->delete($uri, $action);
+    }
+
+    protected function addResourceRestore($name, $base, $controller, $options)
+    {
+        $name = $this->getShallowName($name, $options);
+        $uri = $this->getResourceUri($name).'/{'.$base.'}/'.static::$verbs['restore'];
+        $action = $this->getResourceAction($name, $controller, 'restore', $options);
+
+        return $this->router->post($uri, $action);
+    }
+
+    protected function addResourceRestoreSelected($name, $base, $controller, $options)
+    {
+        $uri = $this->getResourceUri($name).'/'.static::$verbs['restore'];
+        $action = $this->getResourceAction($name, $controller, 'restoreSelected', $options);
+
+        return $this->router->post($uri, $action);
+    }
+
+    protected function getResourceAction($resource, $controller, $method, $options)
+    {
+        $name = $this->getResourceRouteName($resource, $method, $options);
+        $action = ['as' => $name, 'uses' => $controller.'@'.$method];
+        if (isset($options['middleware'])) {
+            $action['middleware'] = $options['middleware'];
+        }
+        if (isset($options['excluded_middleware'])) {
+            $action['excluded_middleware'] = $options['excluded_middleware'];
+        }
+        if (isset($options['wheres'])) {
+            $action['where'] = $options['wheres'];
+        }
+        if (isset($options['missing'])) {
+            $action['missing'] = $options['missing'];
+        }
+
+        return $action;
+    }
+}

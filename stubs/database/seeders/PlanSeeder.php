@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Coderstm\Traits\Helpers;
-use Illuminate\Database\Seeder;
 use Coderstm\Models\Subscription\Plan;
+use Coderstm\Traits\Helpers;
 use Illuminate\Console\View\Components\TwoColumnDetail;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class PlanSeeder extends Seeder
 {

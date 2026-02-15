@@ -1,52 +1,24 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+
+class MrrChart extends AbstractChart
+{
+    public function get(): array
+    {
+        $labels = $this->getMonthLabels();
+        $formattedData = [];
+        for ($i = 0; $i < count($labels); $i++) {
+            $date = Carbon::now()->subMonths($this->months - 1 - $i)->endOfMonth();
+            $mrr = DB::table('subscriptions')->join('plans', 'subscriptions.plan_id', '=', 'plans.id')->where('subscriptions.status', 'active')->where('subscriptions.created_at', '<=', $date)->where(function ($q) use ($date) {
+                $q->whereNull('subscriptions.canceled_at')->orWhere('subscriptions.expires_at', '>', $date);
+            })->sum(DB::raw("\n                    CASE plans.interval\n                        WHEN 'day' THEN (plans.price / COALESCE(plans.interval_count, 1)) * 30\n                        WHEN 'week' THEN (plans.price / COALESCE(plans.interval_count, 1)) * 4.345\n                        WHEN 'month' THEN (plans.price / COALESCE(plans.interval_count, 1))\n                        WHEN 'year' THEN (plans.price / COALESCE(plans.interval_count, 1)) / 12\n                        ELSE 0\n                    END * COALESCE(subscriptions.quantity, 1)\n                ")) ?? 0.0;
+            $formattedData[$labels[$i]] = round($mrr, 2);
+        }
+
+        return $formattedData;
+    }
+}

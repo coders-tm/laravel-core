@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Enquiry;
-use Illuminate\Http\Request;
 use Coderstm\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class EnquiryController extends Controller
@@ -47,13 +47,13 @@ class EnquiryController extends Controller
 
         $enquiry = $enquiry->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
             ->paginate($request->rowsPerPage ?: 15);
+
         return new ResourceCollection($enquiry);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request, Enquiry $enquiry)
@@ -67,7 +67,7 @@ class EnquiryController extends Controller
         $request->validate($rules);
 
         $request->merge([
-            'source' => !$request->boolean('admin')
+            'source' => ! $request->boolean('admin'),
         ]);
 
         if ($request->boolean('bulk')) {
@@ -120,13 +120,13 @@ class EnquiryController extends Controller
     {
         $enquiry = Enquiry::findOrFail($request->id);
         $enquiry = $enquiry->markedAsSeen();
+
         return response()->json($enquiry->load(['user', 'replies.user', 'media', 'order', 'admin']), 200);
     }
 
     /**
      * Create reply for the specified resource.
      *
-     * @param  \App\Models\Enquiry  $enquiry
      * @return \Illuminate\Http\Response
      */
     public function reply(Request $request, Enquiry $enquiry)
@@ -156,16 +156,15 @@ class EnquiryController extends Controller
     /**
      * Change archived of specified resource from storage.
      *
-     * @param  \App\Models\Enquiry  $enquiry
      * @return \Illuminate\Http\Response
      */
     public function changeArchived(Request $request, Enquiry $enquiry)
     {
         $enquiry->update([
-            'is_archived' => !$enquiry->is_archived
+            'is_archived' => ! $enquiry->is_archived,
         ]);
 
-        $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
+        $type = ! $enquiry->is_archived ? 'archived' : 'unarchive';
 
         return response()->json([
             'message' => __('Enquiry marked as :type successfully!', ['type' => __($type)]),
@@ -175,16 +174,15 @@ class EnquiryController extends Controller
     /**
      * Change user archived of specified resource from storage.
      *
-     * @param  \App\Models\Enquiry  $enquiry
      * @return \Illuminate\Http\Response
      */
     public function changeUserArchived(Request $request, Enquiry $enquiry)
     {
         $enquiry->update([
-            'user_archived' => !$enquiry->user_archived
+            'user_archived' => ! $enquiry->user_archived,
         ]);
 
-        $type = !$enquiry->is_archived ? 'archived' : 'unarchive';
+        $type = ! $enquiry->is_archived ? 'archived' : 'unarchive';
 
         return response()->json([
             'message' => __('Enquiry marked as :type successfully!', ['type' => __($type)]),

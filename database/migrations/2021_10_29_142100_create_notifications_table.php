@@ -1,41 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-ODOFZouqAJvccFzZUPBDEncYXAIUS0==
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // Standard Laravel database notifications table used by the 'database' channel
+        Schema::dropIfExists('notifications');
+        Schema::create('notifications', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('type')->nullable();
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('notifications');
+    }
+};

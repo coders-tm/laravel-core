@@ -1,33 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-fAm=
+<?php
+
+namespace Coderstm\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Stevebauman\Location\Facades\Location;
+
+class ResolveIpAddress
+{
+    public function handle(Request $request, Closure $next)
+    {
+        $ip = $request->header('CF-Connecting-IP') ?? $request->ip();
+        if ($ip) {
+            try {
+                $location = Cache::remember("location.{$ip}", 86400, function () use ($ip) {
+                    return Location::get($ip);
+                });
+                if ($location) {
+                    $request->attributes->set('ip_location', $location);
+                }
+            } catch (\Throwable $e) {
+            }
+        }
+
+        return $next($request);
+    }
+}

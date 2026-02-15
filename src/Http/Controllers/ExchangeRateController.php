@@ -1,80 +1,52 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Wm4RW56aceLs6dtOXnNnhDFjIDu=
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\Shop\ExchangeRate;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+
+class ExchangeRateController extends Controller
+{
+    public function index()
+    {
+        return ExchangeRate::all();
+    }
+
+    public function store(Request $request)
+    {
+        $existing = ExchangeRate::where('currency', $request->currency)->first();
+        $id = $existing ? $existing->id : $request->id ?? 'NULL';
+        $request->validate(['currency' => ['required', 'string', 'size:3', \Illuminate\Validation\Rule::unique('exchange_rates', 'currency')->ignore($id)], 'rate' => 'required|numeric']);
+        $rate = ExchangeRate::updateOrCreate(['currency' => $request->currency], ['rate' => $request->rate]);
+
+        return response()->json(['data' => $rate, 'message' => __('Exchange rate has been saved successfully!')], 200);
+    }
+
+    public function sync()
+    {
+        Artisan::call('coderstm:update-exchange-rates');
+
+        return response()->json(['data' => ExchangeRate::all(), 'message' => __('Exchange rates has been synced successfully!')]);
+    }
+
+    public function estimate(Request $request)
+    {
+        $request->validate(['amount' => 'required|numeric', 'country' => 'required|string|size:2']);
+        $currency = ExchangeRate::getCurrencyFromCountryCode($request->country);
+        $rate = ExchangeRate::where('currency', $currency)->first();
+        if (! $rate) {
+            return response()->json(['currency' => 'USD', 'amount' => $request->amount, 'formatted' => '$'.number_format($request->amount, 2)]);
+        }
+        $exchangedAmount = $request->amount * $rate->rate;
+
+        return response()->json(['currency' => $currency, 'amount' => $exchangedAmount, 'formatted' => $currency.' '.number_format($exchangedAmount, 2), 'rate' => $rate->rate]);
+    }
+
+    public function destroy($id)
+    {
+        ExchangeRate::findOrFail($id)->delete();
+
+        return response()->json(['message' => __('Exchange rate has been deleted successfully!')]);
+    }
+}

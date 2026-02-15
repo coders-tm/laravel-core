@@ -1,57 +1,43 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications\Shop;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Models\Payment;
+use Coderstm\Notifications\BaseNotification;
+
+class OrderRefundedNotification extends BaseNotification
+{
+    public $order;
+
+    public $payment;
+
+    public $amount;
+
+    public $reason;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct($order, Payment $payment, float $amount, $reason = null)
+    {
+        $this->order = $order;
+        $this->payment = $payment;
+        $this->amount = $amount;
+        $this->reason = $reason;
+        $template = Template::default('user:order-refunded');
+        $rendered = $template->render(['order' => $this->order->getShortCodes(), 'refund' => ['amount' => format_amount($this->amount), 'status' => $this->payment->status, 'payment_method' => $this->payment->gateway_payment_method, 'reason' => $this->reason]]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function via($notifiable): array
+    {
+        return ['mail', 'database'];
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['order_id' => $this->order->id, 'order_number' => $this->order->formated_id, 'refund_amount' => format_amount($this->amount), 'refund_status' => $this->payment->status, 'reason' => $this->reason];
+    }
+}

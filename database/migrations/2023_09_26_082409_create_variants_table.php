@@ -1,91 +1,86 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('variants', function (Blueprint $table) {
+            $table->id();
+
+            $table->double('price', 20, 2)->default(0.00);
+            $table->double('compare_at_price', 20, 2)->default(0.00);
+            $table->double('cost_per_item', 20, 2)->default(0.00);
+            $table->boolean('taxable')->default(true);
+            $table->boolean('track_inventory')->default(true);
+            $table->boolean('out_of_stock_track_inventory')->default(false);
+            $table->string('sku')->nullable();
+            $table->double('weight', 10, 3)->default(0.00);
+            $table->string('weight_unit')->nullable()->default('kg');
+            $table->string('origin')->nullable();
+            $table->string('harmonized_system_code')->nullable();
+            $table->string('barcode')->nullable();
+            $table->boolean('recurring')->nullable()->default(false);
+            $table->boolean('is_default')->nullable()->default(false);
+            $table->unsignedBigInteger('media_id')->nullable();
+
+            $table->unsignedBigInteger('product_id');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
+            $table->foreign('media_id')->references('id')->on('files')->nullOnDelete();
+
+            $table->index(['product_id', 'media_id']);
+        });
+
+        Schema::create('variant_options', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('variant_id');
+            $table->unsignedBigInteger('option_id');
+            $table->integer('position')->default(0);
+            $table->string('value');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('variant_id')->references('id')->on('variants')->cascadeOnDelete();
+            $table->foreign('option_id')->references('id')->on('options')->cascadeOnDelete();
+
+            $table->index(['variant_id', 'option_id']);
+        });
+
+        $this->setAutoIncrement('variants');
+
+        // Add variant_id to plans table
+        // This allows plans to be associated with specific variants
+        Schema::table('plans', function (Blueprint $table) {
+            $table->unsignedBigInteger('variant_id')->nullable()->after('id');
+
+            // Add indexes for performance
+            $table->index(['variant_id', 'interval']);
+            $table->foreign('variant_id')->references('id')->on('variants')->cascadeOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('variants');
+    }
+};

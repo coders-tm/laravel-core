@@ -1,70 +1,48 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-DuCmZGMYnqVpIMlW55yxMNSY0TSaUYQaC/9xrm==
+<?php
+
+namespace Coderstm\Notifications;
+
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Notifications\Events\NotificationFailed;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Kreait\Firebase\Contract\Messaging;
+use Kreait\Firebase\Messaging\MulticastSendReport;
+use Kreait\Firebase\Messaging\SendReport;
+
+class FcmChannel
+{
+    const TOKENS_PER_REQUEST = 500;
+
+    public function __construct(protected Dispatcher $events) {}
+
+    public function send(mixed $notifiable, Notification $notification): ?Collection
+    {
+        if (! file_exists(base_path(config('firebase.projects.app.credentials')))) {
+            return null;
+        }
+        if (! config('alert.push')) {
+            return null;
+        }
+        $tokens = Arr::wrap($notifiable->routeNotificationFor('fcm', $notification));
+        if (empty($tokens)) {
+            return null;
+        }
+        $fcmMessage = $notification->toFcm($notifiable);
+
+        return Collection::make($tokens)->chunk(self::TOKENS_PER_REQUEST)->map(fn ($tokens) => app(Messaging::class)->sendMulticast($fcmMessage, $tokens->all()))->map(fn (MulticastSendReport $report) => $this->checkReportForFailures($notifiable, $notification, $report));
+    }
+
+    protected function checkReportForFailures(mixed $notifiable, Notification $notification, MulticastSendReport $report): MulticastSendReport
+    {
+        Collection::make($report->getItems())->filter(fn (SendReport $report) => $report->isFailure())->each(fn (SendReport $report) => $this->dispatchFailedNotification($notifiable, $notification, $report));
+
+        return $report;
+    }
+
+    protected function dispatchFailedNotification(mixed $notifiable, Notification $notification, SendReport $report): void
+    {
+        $this->events->dispatch(new NotificationFailed($notifiable, $notification, self::class, ['report' => $report]));
+    }
+}

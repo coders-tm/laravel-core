@@ -1,123 +1,65 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-73ftITnmyW0gS6Q+GuWknmIqQTWzT0==
+<?php
+
+namespace Coderstm\Services\Reports\Checkout;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class AbandonedCartDetailReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'total_abandoned' => ['label' => 'Total Abandoned', 'type' => 'number'], 'abandoned_value' => ['label' => 'Abandoned Value', 'type' => 'currency'], 'avg_cart_value' => ['label' => 'Avg Cart Value', 'type' => 'currency'], 'recovery_sent' => ['label' => 'Recovery Email Sent', 'type' => 'number'], 'recovered_after_email' => ['label' => 'Recovered After Email', 'type' => 'number'], 'recovery_rate' => ['label' => 'Recovery Rate', 'type' => 'percentage'], 'abandoned_at_contact' => ['label' => 'Abandoned at Contact', 'type' => 'number'], 'abandoned_at_billing' => ['label' => 'Abandoned at Billing', 'type' => 'number'], 'abandoned_at_payment' => ['label' => 'Abandoned at Payment', 'type' => 'number'], 'avg_time_to_abandon' => ['label' => 'Avg Time to Abandon (hours)', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'abandoned-cart-detail';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Analyze abandoned checkout sessions and recovery metrics';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+        $dateDiffDays = $this->dbDateDiff('abandoned.abandoned_at', 'abandoned.started_at');
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin(DB::raw('checkouts as abandoned'), function ($join) {
+            $join->whereRaw('abandoned.started_at BETWEEN periods.period_start AND periods.period_end')->whereRaw("abandoned.status = 'abandoned'");
+        })->leftJoin(DB::raw('checkouts as recovered'), function ($join) {
+            $join->whereRaw('recovered.started_at BETWEEN periods.period_start AND periods.period_end')->whereNotNull('recovered.recovery_email_sent_at')->whereRaw("recovered.status = 'completed'");
+        })->select(['periods.period_start', 'periods.period_order', DB::raw('COUNT(DISTINCT abandoned.id) as total_abandoned'), DB::raw('COALESCE(SUM(abandoned.grand_total), 0) as abandoned_value'), DB::raw('COALESCE(AVG(abandoned.grand_total), 0) as avg_cart_value'), DB::raw('COUNT(DISTINCT CASE WHEN abandoned.recovery_email_sent_at IS NOT NULL THEN abandoned.id END) as recovery_sent'), DB::raw('COUNT(DISTINCT recovered.id) as recovered_after_email'), DB::raw('COUNT(DISTINCT CASE WHEN abandoned.email IS NOT NULL AND abandoned.billing_address IS NULL THEN abandoned.id END) as abandoned_at_contact'), DB::raw('COUNT(DISTINCT CASE WHEN abandoned.billing_address IS NOT NULL THEN abandoned.id END) as abandoned_at_billing'), DB::raw("COALESCE(AVG(CASE WHEN abandoned.abandoned_at IS NOT NULL THEN ({$dateDiffDays}) * 24 END), 0) as avg_time_to_abandon")])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $recoveryRate = $row->recovery_sent > 0 ? $row->recovered_after_email / $row->recovery_sent * 100 : 0;
+        $abandonedAtPayment = $row->abandoned_at_billing;
+
+        return ['period' => $period, 'total_abandoned' => (int) ($row->total_abandoned ?? 0), 'abandoned_value' => (float) ($row->abandoned_value ?? 0), 'avg_cart_value' => (float) ($row->avg_cart_value ?? 0), 'recovery_sent' => (int) ($row->recovery_sent ?? 0), 'recovered_after_email' => (int) ($row->recovered_after_email ?? 0), 'recovery_rate' => (float) $recoveryRate, 'abandoned_at_contact' => (int) ($row->abandoned_at_contact ?? 0), 'abandoned_at_billing' => (int) ($row->abandoned_at_billing ?? 0), 'abandoned_at_payment' => (int) $abandonedAtPayment, 'avg_time_to_abandon' => $this->formatNumber($row->avg_time_to_abandon ?? 0, 1)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('checkouts')->whereBetween('started_at', [$filters['from'], $filters['to']])->where('status', 'abandoned')->selectRaw('
+                COUNT(*) as total_abandoned,
+                COALESCE(SUM(grand_total), 0) as abandoned_value,
+                COUNT(CASE WHEN recovery_email_sent_at IS NOT NULL THEN 1 END) as recovery_sent
+            ')->first();
+        if (! $stats) {
+            return ['total_abandoned' => 0, 'abandoned_value' => format_amount(0), 'recovery_sent' => 0];
+        }
+
+        return ['total_abandoned' => (int) $stats->total_abandoned, 'abandoned_value' => format_amount($stats->abandoned_value), 'recovery_sent' => (int) $stats->recovery_sent];
+    }
+}

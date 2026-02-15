@@ -1,44 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-NEuANr0cAMVC5w8MzYqJ
+<?php
+
+namespace Coderstm\Notifications\Shop;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Models\Shop\Checkout;
+use Coderstm\Notifications\BaseNotification;
+
+class CheckoutLinkNotification extends BaseNotification
+{
+    public $checkout;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct(Checkout $checkout)
+    {
+        $this->checkout = $checkout;
+        $template = Template::default('user:checkout-link');
+        $rendered = $template->render(['checkout' => $checkout->getShortCodes()]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['checkout_id' => $this->checkout->id, 'checkout_token' => $this->checkout->token, 'total' => format_amount($this->checkout->grand_total), 'item_count' => $this->checkout->getLineItemsCount()];
+    }
+}

@@ -1,62 +1,49 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Illuminate\Support\Str;
+
+class NotificationTemplateRenderer
+{
+    public function render(string $template, array $data = []): string
+    {
+        try {
+            $compiler = app('blade.compiler');
+            $compiler->compileString($template);
+            $template = preg_replace('/\\{\\{\\s+/', '{{', $template);
+            $template = preg_replace('/\\s+\\}\\}/', '}}', $template);
+            $template = replace_short_code($template, $data);
+            $tempFile = 'safe_'.Str::random(40).'.blade.php';
+            $tempPath = storage_path('framework/views/safe-templates/'.$tempFile);
+            if (! is_dir(dirname($tempPath))) {
+                mkdir(dirname($tempPath), 0755, true);
+            }
+            file_put_contents($tempPath, $template);
+            $processor = app(\Coderstm\Services\ShortcodeProcessor::class);
+            $objectData = $processor->toObject($data);
+            $rendered = view()->file($tempPath, $objectData)->render();
+            @unlink($tempPath);
+
+            return $rendered;
+        } catch (\InvalidArgumentException $e) {
+            throw new \InvalidArgumentException('Template contains disallowed directives or functions: '.$e->getMessage());
+        } catch (\Throwable $e) {
+            logger()->error('Template rendering failed', ['error' => $e->getMessage(), 'template' => substr($template, 0, 200)]);
+
+            return replace_short_code($template, $data);
+        }
+    }
+
+    public function validate(string $template): array
+    {
+        try {
+            $compiler = app('blade.compiler');
+            $compiler->compileString($template);
+
+            return ['valid' => true];
+        } catch (\Throwable $e) {
+            return ['valid' => false, 'error' => $e->getMessage()];
+        }
+    }
+}

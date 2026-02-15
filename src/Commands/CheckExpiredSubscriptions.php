@@ -1,51 +1,35 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Log;
+use Coderstm\Notifications\Admins\SubscriptionExpiredNotification as AdminsSubscriptionExpiredNotification;
+use Coderstm\Notifications\SubscriptionExpiredNotification;
+use Illuminate\Console\Command;
+
+class CheckExpiredSubscriptions extends Command
+{
+    protected $signature = 'coderstm:subscriptions-expired';
+
+    protected $description = 'Check for expired subscriptions and send notifications';
+
+    public function handle()
+    {
+        $subscriptions = Coderstm::$subscriptionModel::where('expires_at', '<=', now())->doesntHaveAction('expired-notification')->hasUser()->with(['user']);
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                $subscription->attachAction('expired-notification');
+                if ($user = $subscription->user) {
+                    event(new \Coderstm\Events\SubscriptionExpired($subscription));
+                    $user->notify(new SubscriptionExpiredNotification($subscription));
+                    admin_notify(new AdminsSubscriptionExpiredNotification($subscription));
+                    $subscription->logs()->create(['type' => 'expired-notification', 'message' => 'Notification for expired subscriptions has been successfully sent.']);
+                }
+            } catch (\Throwable $e) {
+                $subscription->logs()->create(['type' => 'expired-notification', 'status' => Log::STATUS_ERROR, 'message' => $e->getMessage()]);
+            }
+        }
+        $this->info('Expired subscriptions checked and notifications sent.');
+    }
+}

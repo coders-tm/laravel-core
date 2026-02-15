@@ -1,38 +1,34 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPumm7fWv6EFVn8QBkx6eaLeksl8NBKUjmDXEyu1C5g06ArJe0JRSQLfT7rYquyJPj1CfcRcM
-/Zd2OCEPbcIuHEoIGDFsVw3NkyrDdhdCQvN2s1VY/1iGaCekDwhMY8zFL2QUo6YcSNDicsbcBuWl
-fmB656TXW5UopsLFt14z4F6M+vHdhEfWZS1K2oNpQP+CyZ++etkhWdwS8i4STnBCkzH1XwlrXk6g
-lXzk/M3Gz0Cpb2Kqupd3ftSflxC3CRFjtLM+wEV+uFa4O3NQ8XFXodQ8WyXWRpvS3/eDePL/r/0h
-hbwlCV+Dw3g0KqJ+5G3wSG35crpPcYNgZTG2FUrouQbOy6U4er8Ij1FnB+dqKI5iPVp1QCCDAHAI
-LbyCLbFd1FP4GEd4OCbEZzGVJ48Gamtv/y79ilVUcwZEs8M1zDVFmkNlu0HDaxPNcb3+N/F5nzLh
-+QvxLnB3EULB9xRFk8qrsQNyqIGzyDdOHlCtQjfnlsI74v6e9TBdDxhs6f1FAty/o3x/AQ2+HjrS
-PKWOEh6lcR714D+ipmUoWOp+7MFzngMgceBUWu9uaw5u2/oQi/yh5+WJouTwtQSPafHzXknjxEI+
-6wx6YD0KGzXwEPtU+QFFRtQ/XzRJ5Y24Db3JW7ZB3zaE3MvQ01VDr4NXteUnK6ME54hni4g3nA8F
-5Ks+B+GO/gA6d3zJ/qMPQkN2kfxVIwFMY12SY8r3P1q4OkHpjwc/qDUhD22nlx/awZ/A3qK7pWH1
-KY8rpSJicHvQ+QIYql9I6jxUKxl2O/FB53K2C19DHQd/G1g6/6N/O+8/AvY4nWR6cFT7k6m1cqQi
-Md8a5c1EK6v7jmgYm0lg1HQFEypFOQ5g+pzirGX26AJO0PzwuOdQHlnwY1lhhYLZ4AsziYZxWlTF
-Fm926aULBzGeNW6Y4cJhZ08diGcD/9rc5LwZtfy2B7Ogoxn7BEfM1O/OaL040KUS3R11QwIb871W
-QLc2k4Y4KWZ/o25PXuh6WBLzYC4x8E+mzttuEVTEIZiIUzw5vndoTeA5kLxxmjsVy5ROps7aiVoT
-g4oYNiSryF4sIboIpIAyrZfq0cgv9KkNuOjuSf9XbUA0mLzFaVztYSp684xd+3kck9y7TZsnRhcA
-99bFUWjCMbKeuUlxOq8chyDhqn/Phd5kPkn8vaLiYFaiatwGuvJXHPiPz17sFu2r2KavfWY8erxi
-kDZpYERDDw7Hp4N58g3dt1C1hYMZrDqf78FkLAMCefnpD1IrVZRBn0L9oSMVe2sXkqQndgTMjZ5U
-gR02C6V8y1H48v74NA7WEXUZLbaU/wm54dPlq+4pwfxkK7yrNtjy7/8GkQJaCFXKdMw0BKQbtLAA
-/NpvQE3Lxe5uo1nb1fiN2rhTFbzzBy3a2zZebowg0eRNTTzgILSl4IXdxOSxNmgdpEicWbJpwI6Y
-rdf68O+/Wf7+uELhALzImATKIxd8BRV9XMwSWuFFLFz1RpLUq6In+NmHPEHSSGMV4H238qnyf/b1
-ONGChuahIWmoljtslVx13Vg/jeWuirJ5HvLWOwSRNV6xgFMYFhSSGSVgGAyKzk7eRmd7arNzLS9x
-zJHNeq50G7ht6aKQFj913JOua33+Jqcs3zNt+YfyVFLgNgdLm5VRBrYMttcwBWL4V8MMGRYdOfdG
-pmX8ZaqmoNZdzf1WnxPVjeGMnyL6kOTvvEjk7zXPwS3d0rYH+zNH1H/oqVc/r4ao+J+OOV5G9I17
-92U+Ouw1evB4EVr5Y4O4IcFMihooXgBNtZ2DnycESrAq1e7UaDszH//c9T3zgltHE8vY8pgA9iEg
-Ky8oeKRZK5EV0rpZLhdBLPqXeNLo5oRHwJ2snQB8B0m9OT9izE8zR4PLa5Pi4HrMRZ6RTgc00Xu4
-6HANOtlDAEXAHtM4OitExFLAZhYV/p9/bX0ez99t4UouPLIyLohMBxA0vq4tIjVxIl9BgnpVC3xb
-Sy444wOe1QYsZ2Tr1g/AfDr9JnF81sxEG5MbriSziuUXupUAYHAGKsBVFXuFWV3h0iYhS029iRoM
-q/A+dknlxxARVPj8EegPmKZKlDO8bRdudwVb9sF0jZzicSLb0vRwnBp5ZF7UfK98wzMG6YQ1I04j
-5tgonb8oaiaJ7Xj3SM2TqpY4+5FYKvOuaw32rlQp3hnt05NF4afN/pJZBieYTXvxeq9s2N0eaqx4
-lgQJ40tIKIjAsHSJX8Y53ed5E5mYbB2psn0OBouubGbp0YlFcBxwAmskD1PwNm9Xmizmp/QsiVGK
-G4tz6nNH4JZ4F/edY6SoWkscxYElh43H6+rgB4w6LJyrl1LFHI/1oGg1dWa+rzVSno0AK2OBCeSl
-WXRFa5xgjK0w3UT9X3gsGKCbE8cwaCn3OYn+rOtKxSEjsrvIISxWCXO4TyoBNdtR0AdouJq/z2e6
-WawyOftb0j6UOtbtxWfk+w4WPo3jizXwCvKZd4ByjsDw2FmbMCmYAB5WPDrk/FIFp1FYtwt1n2Vh
-jFdyDyJ1+Hk79whlqj9Y3bJVe0a2ugSpWWTPW6LIiQGNHh7sqU8/cgyZWvZjI1OXHb/RDFR13beo
-KV7qLcLiDUD/frN5kJ9fZF+d
+<?php
+
+namespace Coderstm\Models\Subscription;
+
+use Coderstm\Database\Factories\FeatureFactory;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Feature extends Model
+{
+    use HasFactory, SerializeDate;
+
+    protected $table = 'features';
+
+    protected $fillable = ['label', 'slug', 'type', 'resetable', 'description'];
+
+    protected $casts = ['resetable' => 'boolean'];
+
+    public function isBoolean(): bool
+    {
+        return $this->type === 'boolean';
+    }
+
+    public static function findBySlug($slug): ?self
+    {
+        return static::where('slug', $slug)->first();
+    }
+
+    protected static function newFactory()
+    {
+        return FeatureFactory::new();
+    }
+}

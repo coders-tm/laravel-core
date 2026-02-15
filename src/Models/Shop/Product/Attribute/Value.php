@@ -1,30 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-O83YKrRnyy87nC0dfs9hWI0=
+<?php
+
+namespace Coderstm\Models\Shop\Product\Attribute;
+
+use Coderstm\Models\Shop\Product\Attribute;
+use Coderstm\Traits\Fileable;
+use Coderstm\Traits\Logable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Value extends Model
+{
+    use Fileable, HasFactory, Logable, SerializeDate;
+
+    protected $table = 'attribute_values';
+
+    protected $casts = ['has_thumbnail' => 'boolean'];
+
+    protected $fillable = ['name', 'has_thumbnail', 'color', 'attribute_id'];
+
+    protected $with = [];
+
+    public function attribute()
+    {
+        return $this->belongsTo(Attribute::class);
+    }
+}

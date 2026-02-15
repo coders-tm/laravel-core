@@ -1,33 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Rules;
+
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
+
+class ArrayOrInstanceOf implements ValidationRule
+{
+    protected string $class;
+
+    public function __construct(string $class)
+    {
+        $this->class = $class;
+    }
+
+    public function validate(string $attribute, mixed $value, Closure $fail): void
+    {
+        if (! is_array($value) && ! $value instanceof $this->class) {
+            $fail("The :attribute must be an array or instance of {$this->class}.");
+        }
+    }
+}

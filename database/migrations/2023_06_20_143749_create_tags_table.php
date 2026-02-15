@@ -1,39 +1,36 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name')->nullable()->index();
+            $table->string('slug')->nullable()->unique()->index();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tags');
+    }
+};

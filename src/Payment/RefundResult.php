@@ -1,60 +1,69 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-z7q=
+<?php
+
+namespace Coderstm\Payment;
+
+use Coderstm\Exceptions\RefundException;
+
+class RefundResult
+{
+    public function __construct(protected bool $success, protected ?string $refundId = null, protected ?float $amount = null, protected ?string $status = null, protected array $metadata = []) {}
+
+    public static function success(string $refundId, float $amount, string $status = 'refunded', array $metadata = []): self
+    {
+        return new self(success: true, refundId: $refundId, amount: $amount, status: $status, metadata: $metadata);
+    }
+
+    public static function failed(string $error, array $metadata = []): never
+    {
+        throw new RefundException($error, $metadata);
+    }
+
+    public static function notSupported(string $reason = 'Refund not supported for this payment method'): never
+    {
+        throw new RefundException($reason, ['error_type' => 'not_supported']);
+    }
+
+    public function isSuccess(): bool
+    {
+        return $this->success;
+    }
+
+    public function getRefundId(): ?string
+    {
+        return $this->refundId;
+    }
+
+    public function getAmount(): ?float
+    {
+        return $this->amount;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function toArray(): array
+    {
+        $result = ['success' => $this->success];
+        if ($this->refundId) {
+            $result['refund_id'] = $this->refundId;
+        }
+        if ($this->amount !== null) {
+            $result['amount'] = $this->amount;
+        }
+        if ($this->status) {
+            $result['status'] = $this->status;
+        }
+        if (! empty($this->metadata)) {
+            $result = array_merge($result, $this->metadata);
+        }
+
+        return $result;
+    }
+}

@@ -1,67 +1,65 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
+class NotificationMail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public function __construct(public string $emailSubject, public string $htmlContent, public object $notifiable, public ?string $fromAddress = null, public ?string $fromName = null)
+    {
+        $this->setRecipients($notifiable);
+    }
+
+    protected function setRecipients(object $notifiable): void
+    {
+        if ($notifiable instanceof \Illuminate\Notifications\AnonymousNotifiable) {
+            $address = $notifiable->routeNotificationFor('mail', null);
+            if (is_array($address)) {
+                foreach ($address as $email => $name) {
+                    if (! empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        $this->to($email, $name);
+                    }
+                }
+            } elseif ($address) {
+                $this->to($address);
+            }
+        } else {
+            $address = $notifiable->email ?? null;
+            if ($address) {
+                $this->to($address);
+            }
+        }
+    }
+
+    public function envelope(): Envelope
+    {
+        $envelope = new Envelope(subject: $this->emailSubject);
+        if ($this->fromAddress) {
+            $envelope->from($this->fromAddress, $this->fromName ?? config('app.name'));
+        }
+
+        return $envelope;
+    }
+
+    public function content(): Content
+    {
+        return new Content(htmlString: $this->buildHtmlEmail());
+    }
+
+    protected function buildHtmlEmail(): string
+    {
+        return view('emails.notification', ['htmlContent' => $this->htmlContent])->render();
+    }
+
+    public function attachments(): array
+    {
+        return [];
+    }
+}

@@ -1,55 +1,59 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Contracts\Editorable;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\HasEditor;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Page extends Model implements Editorable
+{
+    use Core, HasEditor, HasSlug;
+
+    protected $dates = ['created_at', 'updated_at'];
+
+    protected $logIgnore = ['data', 'options'];
+
+    protected $fillable = ['parent', 'title', 'slug', 'meta_title', 'meta_keywords', 'meta_description', 'is_active', 'template', 'options'];
+
+    protected $casts = ['is_active' => 'boolean', 'data' => 'json', 'options' => 'json'];
+
+    protected $appends = ['url'];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('title')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    public static function findBySlug(string $slug): static
+    {
+        return static::where('slug', $slug)->where('is_active', true)->firstOrFail();
+    }
+
+    public static function findByTemplate(string $template): static
+    {
+        return static::where('template', $template)->firstOrFail();
+    }
+
+    public function setTemplate($name)
+    {
+        Page::where('template', $name)->where('id', '<>', $this->id)->update(['template' => null]);
+        $this->update(['template' => $name]);
+
+        return $this;
+    }
+
+    public function getUrlAttribute()
+    {
+        $path = $this->slug;
+        $parent = $this->parent;
+        if ($parent) {
+            $path = $parent.'/'.$path;
+        }
+
+        return url($path);
+    }
+}

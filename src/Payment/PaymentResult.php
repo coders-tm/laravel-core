@@ -1,54 +1,65 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment;
+
+use Coderstm\Contracts\PaymentInterface;
+use Coderstm\Exceptions\PaymentException;
+
+class PaymentResult
+{
+    public function __construct(protected bool $success, protected ?PaymentInterface $paymentData = null, protected ?string $transactionId = null, protected ?string $status = null, protected array $metadata = []) {}
+
+    public static function success(?PaymentInterface $paymentData, string $transactionId, string $status = 'success', array $metadata = []): self
+    {
+        return new self(success: true, paymentData: $paymentData, transactionId: $transactionId, status: $status, metadata: $metadata);
+    }
+
+    public static function failed(string $error, array $metadata = []): never
+    {
+        throw new PaymentException($error, $metadata);
+    }
+
+    public function isSuccess(): bool
+    {
+        return $this->success;
+    }
+
+    public function getPaymentData(): ?PaymentInterface
+    {
+        return $this->paymentData;
+    }
+
+    public function getTransactionId(): ?string
+    {
+        return $this->transactionId;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function toArray(): array
+    {
+        $result = ['success' => $this->success];
+        if ($this->paymentData) {
+            $result['payment_data'] = $this->paymentData;
+        }
+        if ($this->transactionId) {
+            $result['transaction_id'] = $this->transactionId;
+        }
+        if ($this->status) {
+            $result['status'] = $this->status;
+        }
+        if (! empty($this->metadata)) {
+            $result = array_merge($result, $this->metadata);
+        }
+
+        return $result;
+    }
+}

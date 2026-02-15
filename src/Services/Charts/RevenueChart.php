@@ -1,49 +1,22 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Coderstm\Models\Shop\Order;
+use Illuminate\Support\Facades\DB;
+
+class RevenueChart extends AbstractChart
+{
+    public function get(): array
+    {
+        $dateFormat = $this->getDateFormatExpression('created_at');
+        $revenueData = Order::select(DB::raw("{$dateFormat} as label"), DB::raw('SUM(grand_total) as total'))->whereBetween('created_at', [$this->startDate, $this->endDate])->where('payment_status', 'paid')->groupBy('label')->orderBy(DB::raw('MIN(created_at)'), 'ASC')->get()->mapWithKeys(fn ($item) => [$this->formatLabel($item->label) => round($item->total, 2)]);
+        $labels = $this->getMonthLabels();
+        $formattedData = [];
+        foreach ($labels as $label) {
+            $formattedData[$label] = $revenueData[$label] ?? 0;
+        }
+
+        return $formattedData;
+    }
+}

@@ -1,46 +1,16 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Resources;
+
+use Coderstm\Services\Reports\ReportService;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class ReportExportResource extends JsonResource
+{
+    public function toArray($request)
+    {
+        return ['id' => $this->id, 'type' => $this->type, 'type_label' => ReportService::getLabel($this->type), 'category' => ReportService::getCategory($this->type), 'status' => $this->status, 'file_name' => $this->file_name, 'file_path' => $this->file_path, 'file_size' => $this->file_size, 'total_records' => $this->total_records, 'error_message' => $this->error_message, 'filters' => $this->filters, 'started_at' => $this->started_at, 'completed_at' => $this->completed_at, 'created_at' => $this->created_at, 'updated_at' => $this->updated_at, 'admin' => $this->whenLoaded('admin', function () {
+            return ['id' => $this->admin->id, 'name' => $this->admin->name, 'email' => $this->admin->email];
+        })];
+    }
+}

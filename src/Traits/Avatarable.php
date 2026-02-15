@@ -1,34 +1,27 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-HOuvyeDgSILQPAahfrMRi4tP8Dy=
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\File;
+
+trait Avatarable
+{
+    use HasMorphToOne;
+
+    public function avatar()
+    {
+        return $this->morphToOne(File::class, 'fileable')->wherePivot('type', 'avatar');
+    }
+
+    public function attachAvatar(mixed $media)
+    {
+        $mediaId = $media instanceof File ? $media->id : $media;
+
+        return $this->avatar()->sync([$mediaId => ['type' => 'avatar']]);
+    }
+
+    public function detachAvatar()
+    {
+        return $this->avatar()->detach();
+    }
+}

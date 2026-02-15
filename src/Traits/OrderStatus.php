@@ -1,81 +1,143 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-GQUd2a6p
+<?php
+
+namespace Coderstm\Traits;
+
+trait OrderStatus
+{
+    const STATUS_OPEN = 'open';
+
+    const STATUS_DRAFT = 'draft';
+
+    const STATUS_PENDING = 'pending';
+
+    const STATUS_COMPLETED = 'completed';
+
+    const STATUS_CANCELLED = 'cancelled';
+
+    const STATUS_DECLINED = 'declined';
+
+    const STATUS_DISPUTED = 'disputed';
+
+    const STATUS_ARCHIVED = 'archived';
+
+    const STATUS_PENDING_PAYMENT = 'pending_payment';
+
+    const STATUS_PROCESSING = 'processing';
+
+    const STATUS_SHIPPED = 'shipped';
+
+    const STATUS_DELIVERED = 'delivered';
+
+    const STATUS_PAYMENT_PENDING = 'payment_pending';
+
+    const STATUS_PAYMENT_FAILED = 'payment_failed';
+
+    const STATUS_PAYMENT_SUCCESS = 'payment_success';
+
+    const STATUS_PARTIALLY_PAID = 'partially_paid';
+
+    const STATUS_PAID = 'paid';
+
+    const STATUS_UNFULFILLED = 'unfulfilled';
+
+    const STATUS_FULFILLED = 'fulfilled';
+
+    const STATUS_PARTIALLY_FULFILLED = 'partially_fulfilled';
+
+    const STATUS_AWAITING_PICKUP = 'awaiting_pickup';
+
+    const STATUS_FULFILLMENT_CANCELLED = 'fulfillment_cancelled';
+
+    const STATUS_FULFILLMENT_DELIVERED = 'fulfillment_delivered';
+
+    const STATUS_FULFILLMENT_SHIPPED = 'fulfillment_shipped';
+
+    const STATUS_REFUNDED = 'refunded';
+
+    const STATUS_PARTIALLY_REFUNDED = 'partially_refunded';
+
+    const STATUS_RETURN_INPROGRESS = 'return_in_progress';
+
+    const STATUS_RETURNED = 'returned';
+
+    const STATUS_MANUAL_VERIFICATION_REQUIRED = 'manual_verification_required';
+
+    public function markAsOpen()
+    {
+        $this->update(['status' => static::STATUS_PENDING_PAYMENT, 'payment_status' => static::STATUS_PAYMENT_PENDING]);
+
+        return $this;
+    }
+
+    public function markAsPending()
+    {
+        $this->update(['status' => static::STATUS_PROCESSING]);
+
+        return $this;
+    }
+
+    public function markAsCompleted()
+    {
+        $this->update(['status' => static::STATUS_DELIVERED, 'fulfillment_status' => static::STATUS_FULFILLMENT_DELIVERED, 'delivered_at' => now()]);
+
+        return $this;
+    }
+
+    public function markAsCancelled($reason = null)
+    {
+        $this->update(['status' => static::STATUS_CANCELLED, 'fulfillment_status' => static::STATUS_FULFILLMENT_CANCELLED, 'cancelled_at' => now()]);
+        $reasonMessage = $this->getCancellationReason($reason);
+        $this->logs()->create(['type' => 'canceled', 'message' => 'Order has been canceled. Reason: '.$reasonMessage]);
+
+        return $this;
+    }
+
+    protected function getCancellationReason($reason)
+    {
+        if (empty($reason)) {
+            return 'No reason provided';
+        }
+        $constantName = 'Modules\\Shop\\Models\\Order::REASON_'.strtoupper($reason);
+        if (defined($constantName)) {
+            return constant($constantName);
+        }
+
+        return ucfirst(str_replace('_', ' ', strtolower($reason)));
+    }
+
+    public function markAsPartiallyPaid()
+    {
+        $this->update(['payment_status' => static::STATUS_PARTIALLY_PAID]);
+
+        return $this;
+    }
+
+    public function markAsRefunded()
+    {
+        $this->update(['payment_status' => static::STATUS_REFUNDED]);
+
+        return $this;
+    }
+
+    public function markAsPartiallyRefunded()
+    {
+        $this->update(['payment_status' => static::STATUS_PARTIALLY_REFUNDED]);
+
+        return $this;
+    }
+
+    public function syncCurrentStatus()
+    {
+        if ($this->refund_total == $this->paid_total) {
+            $this->markAsRefunded();
+        } elseif ($this->refund_total > 0) {
+            $this->markAsPartiallyRefunded();
+        } else {
+            if (in_array($this->payment_status, [static::STATUS_REFUNDED, static::STATUS_PARTIALLY_REFUNDED])) {
+                $this->update(['payment_status' => static::STATUS_PAID]);
+            }
+        }
+
+        return $this;
+    }
+}

@@ -1,352 +1,332 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-DsVJySh86XquPz7SR1L//f3U+6XR9wPOBzT6
+<?php
+
+namespace Coderstm\Http\Controllers\Subscription;
+
+use Coderstm\Coderstm;
+use Coderstm\Events\SubscriptionPlanChanged;
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Coupon;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Models\Redeem;
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Notifications\SubscriptionCancelNotification;
+use Coderstm\Notifications\SubscriptionDowngradeNotification;
+use Coderstm\Notifications\SubscriptionUpgradeNotification;
+use Coderstm\Services\GatewaySubscriptionFactory;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Validation\ValidationException;
+
+class SubscriptionController extends Controller
+{
+    public function index(Request $request)
+    {
+        $relations = ['plan', 'plan.variant', 'plan.product', 'latestInvoice'];
+        if (is_admin()) {
+            $relations[] = 'user';
+        }
+        $query = Coderstm::$subscriptionModel::with($relations);
+        if (is_user()) {
+            $query->where('user_id', user('id'))->orderBy('type');
+        } elseif ($request->filled('user')) {
+            $query->where('user_id', $request->user);
+        }
+        if ($request->filled('product')) {
+            $query->whereHas('plan', function ($q) use ($request) {
+                $q->where('product_id', $request->product);
+            });
+        }
+        if ($request->query('status')) {
+            if ($request->status === 'inactive') {
+                $query->whereNotIn('status', ['active', 'trialing']);
+            } else {
+                $statuses = array_map('trim', explode(',', $request->get('status')));
+                $query->whereIn('status', $statuses);
+            }
+        }
+        $subscriptions = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?: 15);
+        $subscriptions->getCollection()->transform(function ($subscription) {
+            return (new Subscription)->forceFill($this->transformSubscription($subscription));
+        });
+
+        return new ResourceCollection($subscriptions);
+    }
+
+    public function current(Request $request)
+    {
+        $user = $this->user($request);
+        $subscription = $user->subscription();
+        if ($user->onGenericTrial()) {
+            return response()->json(['on_generic_trial' => true, 'trial_ends_at' => $user->trial_ends_at], 200);
+        } elseif ($user->is_free_forever || ! $subscription) {
+            return response()->json(['is_free_forever' => (bool) $user->is_free_forever], 200);
+        }
+        $data = $subscription->toResponse(['plan', 'usages', 'next_plan']);
+
+        return response()->json($data, 200);
+    }
+
+    public function subscribe(Request $request)
+    {
+        $request->validate(['plan' => 'required|exists:plans,id', 'payment_method' => 'required|exists:payment_methods,id'], ['payment_method.required_unless' => __('Please select a payment method to proceed with the subscription.')]);
+        $user = $this->user($request);
+        $upgrade = $downgrade = false;
+        $paymentMethod = PaymentMethod::find($request->payment_method);
+        $provider = $paymentMethod?->provider;
+        if ($request->filled('subscription')) {
+            $subscription = Subscription::find($request->subscription);
+        } else {
+            $subscription = $user->subscription();
+        }
+        $plan = Plan::find($request->plan);
+        $subscribed = $user->subscribed();
+        $trial_end = $user->trial_ends_at;
+        $trial_days = $plan->trial_days;
+        $coupon = optional(Coupon::findByCode($request->promotion_code));
+        $oldPlan = null;
+        if ($subscribed && $subscription->plan_id == $plan->id) {
+            throw ValidationException::withMessages(['plan' => __('You already subscribed to :plan plan.', ['plan' => $plan->label])]);
+        }
+        try {
+            if ($subscription) {
+                $downgrade = $plan->price < $subscription->plan->price;
+                if ($downgrade) {
+                    $this->downgrade($subscription, ['plan' => $plan->id]);
+                } else {
+                    $oldPlan = $subscription->plan;
+                    $subscription = $subscription->withCoupon($request->promotion_code)->swap($plan->id);
+                    $upgrade = true;
+                }
+            } else {
+                $subscription = $user->newSubscription('default', $plan->id)->withCoupon($request->promotion_code)->setProvider($provider);
+                if ($trial_end && $trial_end->isFuture()) {
+                    $subscription->trialUntil($trial_end);
+                } elseif ($trial_days && ! $trial_end) {
+                    $subscription->trialDays($trial_days);
+                }
+                $subscription->saveAndInvoice();
+            }
+        } catch (\Throwable $e) {
+            throw $e;
+        } finally {
+            if ($coupon->id && $subscription) {
+                Redeem::updateOrCreate(['redeemable_type' => get_class($subscription), 'redeemable_id' => $subscription->id, 'coupon_id' => $coupon->id], ['user_id' => $user->id, 'amount' => $coupon->getAmount($plan->price)]);
+            }
+            if ($upgrade) {
+                $subscription->syncOrResetUsages();
+                $subscription->oldPlan = $oldPlan;
+                $subscription->plan = $plan;
+                event(new \Coderstm\Events\SubscriptionUpgraded($subscription));
+                $user->notify(new SubscriptionUpgradeNotification($subscription));
+            }
+            $gateway = GatewaySubscriptionFactory::make($subscription);
+
+            return response()->json($gateway->setup(), 200);
+        }
+    }
+
+    public function pay(Request $request, $id)
+    {
+        $request->validate(['payment_method' => 'required|exists:payment_methods,id']);
+        $subscription = Coderstm::$subscriptionModel::findOrFail($id);
+        $isOutstanding = $subscription->hasIncompletePayment() || $subscription->onGracePeriod();
+        $subscription->pay($request->payment_method);
+        if ($isOutstanding) {
+            $message = __('Outstanding payment processed. Subscription reactivated.');
+        } else {
+            $message = __('Renewal payment processed successfully.');
+        }
+
+        return response()->json(['data' => $this->transformSubscription($subscription->fresh()), 'message' => $message], 200);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate(['plan' => 'required|integer', 'user' => 'required|integer', 'starts_at' => 'nullable|date', 'expires_at' => 'nullable|date', 'trial_days' => 'nullable|integer|min:0', 'promotion_code' => 'nullable|string', 'force' => 'sometimes|boolean', 'mark_as_paid' => 'sometimes|boolean', 'payment_method' => 'nullable|integer']);
+        try {
+            $user = Coderstm::$userModel::findOrFail($validated['user']);
+        } catch (\Exception) {
+            throw ValidationException::withMessages(['user' => __('The specified user does not exist.')]);
+        }
+        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
+        $subscription = $service->createOrUpdate($user, $validated);
+
+        return response()->json(['message' => __('Subscription has been created successfully.'), 'data' => $this->transformSubscription($subscription)], 201);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate(['plan' => 'required|integer', 'starts_at' => 'nullable|date', 'expires_at' => 'nullable|date', 'trial_days' => 'nullable|integer|min:0', 'promotion_code' => 'nullable|string', 'force' => 'sometimes|boolean', 'mark_as_paid' => 'sometimes|boolean', 'payment_method' => 'nullable|integer']);
+        try {
+            $subscription = Coderstm::$subscriptionModel::findOrFail($id);
+        } catch (\Exception) {
+            throw ValidationException::withMessages(['id' => __('The specified subscription does not exist.')]);
+        }
+        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
+        $subscription = $service->createOrUpdate($subscription->user, $validated, $subscription);
+
+        return response()->json(['message' => __('Subscription has been updated successfully.'), 'data' => $this->transformSubscription($subscription)], 200);
+    }
+
+    public function show(Request $request, $id)
+    {
+        $subscription = $this->resolveSubscription($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        $subscription->load(['plan.product', 'plan.variant']);
+        $data = $this->transformSubscription($subscription);
+
+        return response()->json($data, 200);
+    }
+
+    public function cancel(Request $request, $id)
+    {
+        $subscription = $this->resolveSubscription($id);
+        if (is_user()) {
+            $this->assertUserSubscriptionAccess($subscription);
+            if ($subscription->isContract()) {
+                throw ValidationException::withMessages(['subscription' => __('Contract subscriptions cannot be cancelled until the end of their term. Please contact support for assistance.')]);
+            }
+        }
+        $subscription->cancel();
+        $subscription->cancelOpenInvoices();
+        $user = $subscription->user;
+        event(new \Coderstm\Events\SubscriptionCancel($subscription));
+        if ($user) {
+            $user->notify(new SubscriptionCancelNotification($subscription));
+        }
+
+        return response()->json(['message' => __('Subscription cancelled successfully.'), 'data' => $this->transformSubscription($subscription->fresh())], 200);
+    }
+
+    public function resume(Request $request, $id)
+    {
+        $subscription = $this->resolveSubscription($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        try {
+            $subscription = $subscription->resume();
+            event(new \Coderstm\Events\SubscriptionResume($subscription));
+
+            return response()->json(['message' => __('Subscription resumed successfully.'), 'data' => $this->transformSubscription($subscription->fresh())], 200);
+        } catch (\Throwable $e) {
+            throw ValidationException::withMessages(['subscription' => 'Failed to resume subscription: '.$e->getMessage()]);
+        }
+    }
+
+    public function cancelDowngrade(Request $request, $id)
+    {
+        $subscription = $this->resolveSubscription($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        $subscription->cancelDowngrade();
+
+        return response()->json(['message' => __('Subscription downgrade cancelled successfully.'), 'data' => $this->transformSubscription($subscription->fresh())], 200);
+    }
+
+    public function renew(Request $request, $id)
+    {
+        $subscription = Coderstm::$subscriptionModel::findOrFail($id);
+        if ($subscription->user_id !== user('id')) {
+            throw ValidationException::withMessages(['subscription' => __('Subscription not found or access denied.')]);
+        }
+        if (! $subscription->hasIncompletePayment()) {
+            throw ValidationException::withMessages(['subscription' => __('This subscription does not have any incomplete payments that require renewal.')]);
+        }
+        $latestInvoice = $subscription->latestInvoice;
+        if ($latestInvoice && ! $latestInvoice->is_paid) {
+            return response()->json(['redirect' => true, 'token' => $latestInvoice->key, 'amount' => $latestInvoice->total(), 'redirect_url' => user_route("payment/{$latestInvoice->key}"), 'message' => __('Please complete the pending payment to renew your subscription')], 200);
+        } else {
+            throw ValidationException::withMessages(['subscription' => 'No outstanding invoice found for this subscription.']);
+        }
+    }
+
+    public function invoices(Request $request, $id)
+    {
+        $subscription = $this->resolveSubscription($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        $query = $subscription->invoices();
+        if ($request->filled('status')) {
+            $query->whereStatus($request->status);
+        }
+        $invoices = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?: 15);
+
+        return new ResourceCollection($invoices);
+    }
+
+    public function checkPromoCode(Request $request)
+    {
+        $request->validate(['promotion_code' => 'required|string', 'plan_id' => 'required']);
+        $planId = $request->input('plan_id');
+        $couponCode = $request->input('promotion_code');
+        $coupon = Coupon::where('promotion_code', $couponCode)->first();
+        if (! $coupon) {
+            throw ValidationException::withMessages(['promotion_code' => ['Invalid coupon code']]);
+        }
+        if (! $coupon->isActive()) {
+            throw ValidationException::withMessages(['promotion_code' => ['Coupon is not active']]);
+        }
+        if ($coupon->isExpired()) {
+            throw ValidationException::withMessages(['promotion_code' => ['Coupon has expired']]);
+        }
+        if (! $coupon->canApplyToPlan($planId)) {
+            throw ValidationException::withMessages(['promotion_code' => ['Invalid coupon code']]);
+        }
+        if ($coupon->checkMaxRedemptions()) {
+            throw ValidationException::withMessages(['promotion_code' => [__('Coupon has reached maximum redemptions')]]);
+        }
+
+        return response()->json($coupon->toPublic());
+    }
+
+    protected function downgrade($subscription, array $options = [])
+    {
+        if (! isset($options['plan']) || ! $options['plan']) {
+            throw ValidationException::withMessages(['plan' => __('A valid plan is necessary for downgrading the subscription.')]);
+        }
+        try {
+            $oldPlan = Plan::find($subscription->plan_id);
+            $newPlan = Plan::find($options['plan']);
+            $user = $subscription->user;
+            $subscription->is_downgrade = true;
+            $subscription->next_plan = $options['plan'];
+            $subscription->save();
+            $subscription->oldPlan = $oldPlan;
+            $subscription->plan = $newPlan;
+            event(new SubscriptionPlanChanged($subscription, $oldPlan, $newPlan));
+            if ($user) {
+                $user->notify(new SubscriptionDowngradeNotification($subscription));
+            }
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+
+    protected function resolveSubscription($id)
+    {
+        return Coderstm::$subscriptionModel::findOrFail($id);
+    }
+
+    protected function assertUserSubscriptionAccess($subscription)
+    {
+        if (is_user() && $subscription->user_id != user('id')) {
+            throw ValidationException::withMessages(['subscription' => __('You do not have access to this subscription.')]);
+        }
+    }
+
+    protected function transformSubscription($subscription, array $extends = ['usages', 'plan', 'next_plan']): array
+    {
+        if (is_admin()) {
+            $extends[] = 'user';
+        }
+
+        return $subscription->toResponse($extends);
+    }
+
+    protected function user(Request $request)
+    {
+        if (is_admin()) {
+            return Coderstm::$userModel::find($request->input('user'));
+        }
+
+        return user();
+    }
+}

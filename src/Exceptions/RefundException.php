@@ -1,35 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-l3JuTSS=
+<?php
+
+namespace Coderstm\Exceptions;
+
+use Exception;
+
+class RefundException extends Exception
+{
+    protected array $metadata;
+
+    public function __construct(string $message, array $metadata = [], int $code = 0, ?Exception $previous = null)
+    {
+        $this->metadata = $metadata;
+        parent::__construct($message, $code, $previous);
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function isNotSupported(): bool
+    {
+        return ($this->metadata['error_type'] ?? null) === 'not_supported';
+    }
+}

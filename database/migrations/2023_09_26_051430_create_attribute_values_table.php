@@ -1,45 +1,39 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-LO5EE/xy7uoMx9/hRF8aoQuU3WKf
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('attribute_values', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name')->nullable();
+            $table->boolean('has_thumbnail')->nullable()->default(false);
+            $table->string('color')->nullable();
+
+            $table->unsignedBigInteger('attribute_id')->index();
+            $table->timestamps();
+
+            $table->foreign('attribute_id')->references('id')->on('attributes')->cascadeOnDelete();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('attribute_values');
+    }
+};

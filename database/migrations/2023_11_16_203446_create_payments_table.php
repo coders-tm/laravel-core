@@ -1,61 +1,47 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-BuAkKQaPSAhJtQe+
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('payments', function (Blueprint $table) {
+            $table->id();
+            $table->uuid()->unique()->nullable()->index();
+
+            $table->string('paymentable_type')->nullable();
+            $table->unsignedBigInteger('paymentable_id')->nullable();
+
+            $table->unsignedBigInteger('payment_method_id')->index()->nullable();
+            $table->string('transaction_id')->index()->nullable();
+            $table->double('amount', 20, 2)->default(0.00);
+            $table->double('fees', 10, 2)->nullable();
+            $table->double('net_amount', 10, 2)->nullable();
+            $table->double('refund_amount', 10, 2)->default(0);
+            $table->boolean('capturable')->default(true);
+            $table->string('status')->index()->nullable();
+            $table->timestamp('processed_at')->nullable();
+            $table->text('note')->nullable();
+            $table->json('metadata')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('payment_method_id')->references('id')->on('payment_methods')->cascadeOnDelete();
+
+            $table->index(['paymentable_type', 'paymentable_id']);
+        });
+
+        $this->setAutoIncrement('payments');
+    }
+};

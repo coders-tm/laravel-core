@@ -1,38 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('device_tokens', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->string('token')->nullable();
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        });
+
+        $this->setAutoIncrement('device_tokens');
+    }
+};

@@ -1,30 +1,17 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-dMU9uA7xi9zWKnq=
+<?php
+
+namespace Coderstm\Listeners;
+
+use Coderstm\Events\EnquiryCreated;
+use Coderstm\Notifications\Admins\EnquiryNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendEnquiryNotification implements ShouldQueue
+{
+    public function __construct() {}
+
+    public function handle(EnquiryCreated $event)
+    {
+        admin_notify(new EnquiryNotification($event->enquiry));
+    }
+}

@@ -1,62 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Coderstm\Models\Subscription;
+use Illuminate\Support\Facades\DB;
+
+class SubscriptionChart extends AbstractChart
+{
+    public function get(): array
+    {
+        $dateFormat = $this->getDateFormatExpression('created_at');
+        $canceledDateFormat = $this->getDateFormatExpression('canceled_at');
+        $newSubs = Subscription::select(DB::raw("{$dateFormat} as label"), DB::raw('COUNT(*) as total'))->whereBetween('created_at', [$this->startDate, $this->endDate])->groupBy('label')->orderBy(DB::raw('MIN(created_at)'), 'ASC')->get()->mapWithKeys(fn ($item) => [$this->formatLabel($item->label) => $item->total]);
+        $cancelled = Subscription::select(DB::raw("{$canceledDateFormat} as label"), DB::raw('COUNT(*) as total'))->whereBetween('canceled_at', [$this->startDate, $this->endDate])->groupBy('label')->orderBy(DB::raw('MIN(canceled_at)'), 'ASC')->get()->mapWithKeys(fn ($item) => [$this->formatLabel($item->label) => $item->total]);
+        $labels = $this->getMonthLabels();
+        $formattedData = [];
+        foreach ($labels as $label) {
+            $new = $newSubs[$label] ?? 0;
+            $cancel = $cancelled[$label] ?? 0;
+            $formattedData[$label] = ['new' => $new, 'cancelled' => $cancel, 'net' => $new - $cancel];
+        }
+
+        return $formattedData;
+    }
+}

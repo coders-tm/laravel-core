@@ -1,30 +1,17 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-2BfWSl/600==
+<?php
+
+namespace Coderstm\Listeners;
+
+use Coderstm\Events\UserSubscribed;
+use Coderstm\Notifications\UserSignupNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class SendSignupNotification implements ShouldQueue
+{
+    public function __construct() {}
+
+    public function handle(UserSubscribed $event)
+    {
+        $event->user->notify(new UserSignupNotification($event->user));
+    }
+}

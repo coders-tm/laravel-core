@@ -1,41 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Middleware;
+
+use Closure;
+use Coderstm\Facades\Currency;
+use Illuminate\Http\Request;
+
+class ResolveCurrency
+{
+    public function handle(Request $request, Closure $next)
+    {
+        $user = $request->user();
+        $baseCurrency = config('app.currency', 'USD');
+        if (app()->environment('local')) {
+            Currency::initialize('INR');
+
+            return $next($request);
+        }
+        if ($user && ! empty($user->currency)) {
+            Currency::initialize($user->currency);
+
+            return $next($request);
+        }
+        $address = [];
+        if ($user) {
+            if (! $user->relationLoaded('address')) {
+                $user->load('address');
+            }
+            if ($user->address) {
+                $address = ['country_code' => $user->address->country_code ?? null, 'country' => $user->address->country ?? null];
+            }
+        }
+        $currencyService = Currency::resolve($address);
+        if ($user && $user->address && ! $user->currency) {
+            $resolvedCode = $currencyService->code();
+            if ($resolvedCode !== $baseCurrency) {
+                $user->updateQuietly(['currency' => $resolvedCode]);
+            }
+        }
+
+        return $next($request);
+    }
+}

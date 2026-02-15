@@ -1,81 +1,55 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPmylrY3AkoeNa+T30zPrI8E6ojwT3l/7nzP29N8Zr7U/eR4KO9Abyj5+JnPZuvSAjMLzVoRh
-xN9ST0aMNv9Que21NMf7Eu7XtoKbsDFBLEU0jST3TGGpuQZ3TR22cdNbHO3FLXOtmxP7P3zRyhFu
-Wk4rq9jKD7bmQFaHRD0sJgnKyjC01tg/KUpl6hozELN0exZ6D+xMYuGAaWPtpU3OSr/U9vTzhY1z
-k0IcJbIBvEwHkOGiCQadabxuFg12cOpKFGOJGUV+uFa4O3NQ8XFXodQ8WyW+R3c2ea0eKmdC4mmh
-hkuh0F/tB/mAgUc5hUB2f65bk/wn5mUsiRlzRHWZx6qSi4SPi8a3fX8YkhD+KpbItBTSXNBOv+Qr
-1Ze4bwKONsDudLvHgceqL0s3EbkWK1f4DMm74WA6Qn19Cr7vEUJnyqH4ixrtnWI0xhJvnUwGOmPv
-/bJRJ7NoofM++4gYU6C6cCrlYGXObiWztiRE9thcgne5pu/SGFxGQ7vaAf7L27wbGwcDszSwLPb+
-bJ0oD+mw4gBZg89048TroQ/xM2edN0YiT+jVJMiQCujPB2vD2t2bdBjNYOuQZGKmMyMItE2xnlEq
-1JkB4GduB1uJpO9z80y7WcAy67/0XeFWO/QqJyyhAJi2QRd1+eoOV7015ra9MiGgzHQCnAQKk9bO
-wMUWB45inxsdV6Sv5Zil4eAIcY+UdXJuFfOtWrobCE4hh4jYDS5CQMX0ACsar4Yy0cufAx3g8yxT
-/Al6d+EAofZEgdaYEp/tFGQ0mQRrCKp5D89CUJUb7BLCUoNQhsD2LbulgFSgaxM7xsDgo1d/78jk
-azyeNV0VgvrULbbgzsa+kdUjYjr1MYn7kXticSHWNQiN57qcbb8RJ+HJh6ks3Ln7gg2npmCif9XD
-GAUh3RNW17WRXABlgiG3EoeTByUOaBMmysDPqsy7HopLgtHPgCa4fBzdM57ChO5Pbm4Fn1bk76za
-dNb5h+pXvtFPU4cZzGIDjXUjshI2D8PelL8/vItmnPG69exdmRiiyNRL3dN9x0SkLmSK37V7VTCN
-VkFjblwJJBMT8JC6a7cGHmqM7AtyXsAgOSPwpiqXIDjZRGjuuwkOkoQrPhoDjdPkshYb9uae5aAZ
-hhB4mOjtUVAOeFvC8Bzq43QSfQUaxLpcIV7AOunaH8fqe81E5gKYhbXidiv8Hw7pRWw5mooF9bPh
-wZZNk8bxJrlspY00bZAObJIT+EeTvlpxulGL3xZfDxUf77v7JFPfHEgid4dy3XOOQGMP/Y/fMILf
-OUgUusREyZhwETkJaYWaNNJu7N+JmozptK+lYRthL9YbIFATHB7HyqXs7SzHG/p2JLE2cbjYWfPz
-Rx+kg/KufzitkvVg/gsF+Q2pz56dQG+7EDDOKZ4QAJ/k+8MbPK+ks2BdibyAeM1/cJ0jPhqcWetY
-Ri5M5InyynLzS8at3HKQRmee/a15/IJSMTItNc11pQMFUu1UTzQ2Uz3rFvxj9ErEiR8pG9CAZ+fx
-f/KzukBfhyWq9fiQncxpiu4esAHjHaLq5s/+ysQaPdfiOE+6wbxf4wf1u8ulAbb6i6qFc5P/TNrF
-96CGCO0hSMp1Y21Qc/cyFlVVzxroQ2cTQpSlSxQdRyYOo0VbAApieXo2ZBZbwO7z90JyjMOvDqZY
-ej+eDQ4vEsnptJM+FuMWw800KAa+J+QWaZJVlVZ1sgcf/UFX0qrIxlFp0v1cdUARN93YlKhSQtoN
-ZryCfDGmLwjGUe51yRSnCqNyDCV8w+QZd1tGPuwvZNAwdvQTprLiUY0PW8C+HLOHGKbvHwzLmLQu
-fmovFsAFc9m3VjQCoSBfggvb/1ML0EFyecyvPynaQDdtEi6qwNrWSLOdFnsuEjj9/7ZxLVbxMagx
-HPwIOsZyeEFvvqqnlrlv4Gj0WM7/aOkAZtJu3zdjPEbj7FMG2oniKFqQWvbVlWMusyGviOG3aJMi
-EGabxN9hcd7RKhEUDAnKaat688qWmiMsieXxFOz+WqHvMLfXc1CEUdzn5t0c7YZR3nxGSsp/1Jzt
-nDewc0v5zsFgA0xHHbjRAX/hgF/c6bgIC9RCgEMLbNgtpDW2X0FU6k4HnL5pCqQVT3v2AoirqKgW
-wPiCII5eLgcggGNqk5infRCjfbUAT5jaQFzKbFQ9tfhg7Ol68Y2Wmvl3pIvi1xPsR620z3FXOhDM
-1K/TUF+CRn3D9kMkPyIn0Pim8bzHIKyKN7z/wGRQ47BoEYHRLIIlBz2w/j+AxBnh38OHLUNxFj1z
-d+EWFb45+fVPsroz/yKKukt4HcHdB/kZ1nMhtorVeXiP49RDQakLHwylfZsHPS62ia5nTh/m9EpX
-zfJh+yjJxAVfXUUjAK8MrvrCxPEoWzZZ2VznB2zIvQwE9RH7EFrmQetOwlBiDcBMQp9MUbZXXXbm
-pPjx/BO86OK/KN/JxF4VtWsMmpilADoVAuM6kPluUBSMGIembXNgCrIdTBTpiefqYx9YaY+r9n43
-tmFXOfmSqgJo5ZkeHmgRE/AQ+MD/buLEua72bWmACH8O8z0H/LsewbvDk6ZazoP0J00Bdsz5qauJ
-C7VXlDYK9xHZArHjU0el/s2k7gtyM9HxjuhqOvaYqjugPjE0hAWPoJa2yjJoXyPrXI20ZLYX2m/O
-hWFpwFWQGA5cjLRQwgsVLFv3+5qzZwoZJVFyfMKqf0A9OTrEuUiGYKRK2a9Ur3gIlP4MTg1c/rZI
-VfB0DNzxhAwD1A42+/73vy3zGAa3NhcKwHzTjdhl1k/vZFahCEKtOelBcu1+yVhXVZGad6/PwDxT
-uq2ynXwxwecf8DZ9DSPac4re4i+wf006XsEyXWBAZqjauzYycPFM2I8eJCroorpnRPT82yWfOHaD
-t9cGrHhzKYpGlC6ael/B8WEDxyTEmjiH0NQBumePN8ULRgrmo1tsIxZ49GJAxopKe4+ceAGvqfPq
-DPdSjd6oZVhHGmBT3QKTKSuOtCYGCAA89EMSZrGBvBdvKzFs83K6DxloobDC85d+QRJT0h4XS9oI
-0M0ZGYIlEAGvUH370hTK3WebP7J+sW6Tpmt/0Mfu3tbzJH3PlW6FwauFQskwyhgMI1okx4CrK9GL
-3Cxa+ExMmR+Q/UA6lvV1HUFaZFv+/OQQD3ThYDhPWR3olHZlt0sYRwYPdUYGcUIqEwJLwZ9FrkHH
-zzcUZCOxYx5PZpgpM/lb+TFMtLOq2o+dFl+Fmc1pdejavPAfkcmw6EnqzH1kiFZoli/mkTa478/h
-IQCqfqcSbnRku2rU3/soWN98PZLFAkE9Kk1mWZ+hPDRqe3ucqW/2ZoN0dXtplxsnMgKJ972kcnqc
-GMT+MfQlhjHBv+PSQaH/5x/tjafSZk2FD6QDoW2yZiwUJy1DayAHqJOsSZkToV0n51a69Fr06moh
-OREb6KZYPLoPYb6RJWXKHMzXDcE7/Bp5pyGqgG8s21i/Hm2tZlL+ynCmJmNUj9V530dQ+9f3vRIq
-ARq4g8t3Y3jQ4m4YoLZT7YD3RB1nLaTnTu3dLTXVtzAUGCsyKPnr/a+wY6bWdV57J5INabYx+ZrM
-00zywQWHbkHBvKYqi85goe/01nPIhxQKBMWbsurn4lmvTQ8CZdjeCpISwHg+gz/c3YgHbMw/BLqN
-DfeiIeeH8vUHbs6OrTidtnqSdhooS84YN/H4Kgd8KAk2SgMZKezM3LC6/J2hhYK3DkIaDG8T3UvA
-D+ZeR/Dy+0NR7pHkGB5Uey4svyqSqBCB3plptJr9OZ8R/tmaclWj54tyYQZVo6J8ql4gCa5hxhfo
-9qDW7Hpu31Cf+323gOXbWk7eoSh0hio5J1+7Vgh5+9fLNce68+7VoLm7+urnk7sE2LoS9bq0gVTP
-8qiFRo5I9YiHQGJ1N7tAqN4hmjfIa69cNNxk/JOMrVwhL6XFXfJoQflDv2oRzT8p/QYqgymrKABq
-upPyT1i0NTOeUQlarJP13QXwMvPbz+eY+soUB1uxc6P5Pwjg+iVzldt3iAM+tBYzKS+BgaBFUhkf
-0ulAR5EUti5Q96/LGtSk0b4GopBypLDx763yBYm4D4SLzk6Gi7k5Nj/J+/9bupLsGO/I5Zgo36gL
-BeZeXWZ/jX/SICct78/7hQEP6oEmcmPkQB5CzrFWVWrzAypuc79D6/IrBApri9DdNP1VS3cwue8S
-3Cu1Tr4qcuNnPONCJ1mPUUlR6Ff1SRx7yy16H3UKVya/ZUl1LxZX6tHTquFxxMsh23N3gt9PltdY
-PKtt+sC+ZvMpV+ACMRI/sfS0c8ajC0/9cDR67XXCnF/Z8Mc6UxGVBwyw64vsIQVIbgjBsXGZjGxg
-QBP5RIw4wsDJiPXovvpdQdJ+CV2+58R14d4UY5Uffcvk52vAStVYHMqk5wv/OC3FJwxiQHOV2K0r
-odmSfqebh2fJYQPqBIG9j5iUp/zZNxEAQ4ADdqPR6H2V2P+1XeyfUxm2O2eX/En715BktcHa+ock
-H98w9nYmrMfWICU/6kIa7nyj/qH+fdur71C7FLODaTM80wh3JK+YUv5aG71+YlfwnreRhl9AH/AK
-+ULlJAxZ95ppozI22ObKc/fLPLiSN8x+AK7e3wLm+yt83y9/RhJJdrIbJ0HIMJfyNl6k3p7rn27p
-qPgEoCEdZzYXERgQ9ovpK/xr5BsjZTo9covVYyBylF+C0zwXPrmtZgtBNGMim48jZEoiDpCA7z55
-7CAoJjJxq47rN9h5fmJBvHPLlVnbflLOtu45KjLG6KCeNntJ+Sczy7Wv86T1rhxKMa2j/i7jXCJg
-bdl1eZx1SwXFksboZIOoVuYMLvgHjakt/FFTwkR1XnHosZSMiEBAPcxsLIH7661NZQJ+vAsjsATd
-gTd3urjb8591NujM0DJXHDNKrl9ggezHE47WbSv2ZTcdrkFj0BM0Mfkd64MN93iYkZsHTa/Csfa2
-WYL0rUeUXsPcMLhlCBiSm/4Ot8M6hOUGCCFbVKQgw6RCnv+RA1ftDBr+a/kVgbFQM3iR8ZFyNnwp
-Oi21cgmXykYwFuB8z9B+h7b1CH3tRyGCHboFQ7j3OVX5sc/vzHeowgUdPEFU9ftCPOeO/1EJgKPu
-CJxYnEgdkOE78zSYJgv9LlpZI1jbd3saS0lMd8Crkuqny0hl6slr1W9uX84U2Qrs/8twCqtIqhxL
-gzVNWipfH9VQvrY0NT0HezmrWE3CxM4r77lTk7RHYhPAvGIt3PI7/Q0cFoHG62XpfrGDBXEyJ73C
-9tbLQfejKnAZyKkAU+W/bqwxLWVv5pGg8jx5U8ED2QcExYUo1yYV7GPHxlMikptvWaqoXcd8s6w2
-jb+zR5vGVxHU+LIi78SVpmQv4Ng/A4QLdkxX9xQLKUGBWUOo0nnl/LX5dU5OusrLmKVPodpWD4JL
-Yd6aaEiLrNOT5MyksyNCym1kxAhVwzK5lvfg0kxfe4hBOUmOFYdWe2Z9Ak87gpiK2IouXJgkaFyl
-qw+w3p6l5eO7Gkf39Sn/1l+6hZrrxj3eSc+AfmMncF+rFvcJwBAssgWZ1XSqce+Uc0f7rC96DOZd
-ukCPEoOcl54tbvKZrPh+RLbRz8OusRfYKBItamKO4sjr4hfYK2MIEQ2JyT6oCOAFOz78nOpcqPvR
-Ni58r1a+orgkGaSzoVdzUiXtAv7FEFPr5HRPBgRcuNi+QCnlzj8qw3jU0R2eNtHiGOUJcK7WpYn4
-qgshEiXqcmM6xknQbq4Q9ET2tcY+nkEIbYXiEhfkEjBFV5guwHu4ujGjGJhDkb0MxN6BbSVOq9bW
-Lj9tDEwjlKemCEWxrMOM+pjGzI+DC20svDoBGEHsjba8Qr/ZyG4xUqXf6YSiCKJPJ2BD8FReOcFH
-De7eovQFZxz5vZdn2Fju17GSwdsKeAukihiNTObv9cUP+VmzYCgZeqfiAW==
+<?php
+
+namespace Coderstm\Http\Controllers\Admin;
+
+use Coderstm\Coderstm;
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Http\Resources\WalletTransactionResource;
+use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+
+class WalletController extends Controller
+{
+    public function balance(Request $request, $user)
+    {
+        $userModel = Coderstm::$userModel;
+        $user = $userModel::findOrFail($user);
+        $wallet = $user->getOrCreateWallet();
+
+        return response()->json(['balance' => (float) $wallet->balance, 'formatted_balance' => format_amount($wallet->balance, config('app.currency', 'USD')), 'currency' => strtoupper(config('app.currency', 'USD'))]);
+    }
+
+    public function transactions(Request $request, $user)
+    {
+        $userModel = Coderstm::$userModel;
+        $user = $userModel::findOrFail($user);
+        $transactions = $user->walletTransactions()->with('transactionable')->orderBy('created_at', 'desc')->paginate($request->get('per_page', 15));
+
+        return WalletTransactionResource::collection($transactions);
+    }
+
+    public function credit(Request $request, $user)
+    {
+        $validated = $request->validate(['amount' => 'required|numeric|min:0.01', 'description' => 'nullable|string|max:255']);
+        $userModel = Coderstm::$userModel;
+        $user = $userModel::findOrFail($user);
+        $wallet = $user->getOrCreateWallet();
+        $transaction = $wallet->credit($validated['amount'], $validated['description'] ?? 'Manual credit by admin');
+
+        return response()->json(['message' => 'Wallet credited successfully', 'transaction' => new WalletTransactionResource($transaction), 'balance' => (float) $wallet->fresh()->balance]);
+    }
+
+    public function debit(Request $request, $user)
+    {
+        $validated = $request->validate(['amount' => 'required|numeric|min:0.01', 'description' => 'nullable|string|max:255']);
+        $userModel = Coderstm::$userModel;
+        $user = $userModel::findOrFail($user);
+        $wallet = $user->getOrCreateWallet();
+        if ($wallet->balance < $validated['amount']) {
+            throw ValidationException::withMessages(['amount' => ['Insufficient wallet balance.']]);
+        }
+        $transaction = $wallet->debit($validated['amount'], $validated['description'] ?? 'Manual debit by admin');
+
+        return response()->json(['message' => 'Wallet debited successfully', 'transaction' => new WalletTransactionResource($transaction), 'balance' => (float) $wallet->fresh()->balance]);
+    }
+}

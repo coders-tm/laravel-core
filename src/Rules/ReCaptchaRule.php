@@ -1,41 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-dlhGHxPvlpLNksF4L0FPcB4ljtjP
+<?php
+
+namespace Coderstm\Rules;
+
+use Illuminate\Contracts\Validation\Rule;
+use Illuminate\Support\Facades\Http;
+
+class ReCaptchaRule implements Rule
+{
+    const URL = 'https://www.google.com/recaptcha/api/siteverify';
+
+    const BOT_SCORE = 0.0;
+
+    public function passes($attribute, $value)
+    {
+        $response = Http::asForm()->post(static::URL, ['secret' => config('recaptcha.secret_key'), 'response' => $value, 'remoteip' => request()->ip()])->json();
+
+        return $response['success'] === true && $response['score'] > static::BOT_SCORE ?? false;
+    }
+
+    public function message()
+    {
+        return __('The verification process for reCAPTCHA failed. Please attempt again.');
+    }
+}

@@ -1,64 +1,42 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-LgqYJ4319kx9ev/kNFkIwB46TOBmJhLOJdeO
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Log;
+use Illuminate\Console\Command;
+
+class SubscriptionsRenew extends Command
+{
+    protected $signature = 'coderstm:subscriptions-renew';
+
+    protected $description = 'Renew subscriptions and reset feature usages (credits)';
+
+    public function handle()
+    {
+        $subscriptions = Coderstm::$subscriptionModel::query()->active()->hasUser()->where('expires_at', '<=', now());
+        $renewedCount = 0;
+        $errorCount = 0;
+        foreach ($subscriptions->cursor() as $subscription) {
+            try {
+                $subscription->attachAction('renew');
+                $usagesBeforeRenewal = $subscription->usagesToArray();
+                $subscription->renew();
+                event(new \Coderstm\Events\SubscriptionRenewed($subscription));
+                event(new \Coderstm\Events\ResetFeatureUsages($subscription, $usagesBeforeRenewal));
+                $cycleInfo = $subscription->total_cycles ? "{$subscription->current_cycle}/{$subscription->total_cycles}" : $subscription->current_cycle;
+                $subscription->logs()->create(['type' => 'renew', 'message' => "Subscription renewed successfully! Cycle {$cycleInfo}. Credits reset."]);
+                $this->info("Subscription #{$subscription->id} renewed! ({$cycleInfo}, Credits reset)");
+                $renewedCount++;
+            } catch (\Throwable $e) {
+                $message = "Subscription #{$subscription->id} unable to renew! {$e->getMessage()}";
+                $subscription->logs()->create(['type' => 'renew', 'status' => Log::STATUS_ERROR, 'message' => $message]);
+                $this->error($message);
+                $errorCount++;
+            }
+        }
+        $this->info("\nRenewal complete: {$renewedCount} renewed, {$errorCount} errors");
+
+        return 0;
+    }
+}

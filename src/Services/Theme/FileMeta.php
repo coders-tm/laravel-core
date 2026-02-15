@@ -1,62 +1,85 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-7t/BmedIUcuIXwHIjbaFpf4=
+<?php
+
+namespace Coderstm\Services\Theme;
+
+use Illuminate\Support\Facades\File;
+
+class FileMeta
+{
+    protected $file;
+
+    protected $basepath;
+
+    protected $prefix;
+
+    public function __construct($file, $basepath, $prefix = null)
+    {
+        $this->file = $file;
+        $this->basepath = $basepath;
+        $this->prefix = $prefix;
+    }
+
+    public function toArray()
+    {
+        $fileInfo = ['header' => 'file'];
+        $basepath = str_replace($this->basepath.'/', '', $this->file->getPathname());
+        if ($this->prefix) {
+            $basepath = $this->prefix.'/'.$basepath;
+        }
+        $fileInfo['name'] = basename($this->file->getPathname());
+        $fileInfo['basepath'] = $basepath;
+        $fileInfo['size'] = $this->getSize();
+        $fileInfo['modified_at'] = $this->getModifiedAt();
+        $fileInfo['mimetype'] = $this->getMimeType();
+        $fileInfo['icon'] = $this->getIcon();
+        if ($this->isImage()) {
+            $fileInfo['dimensions'] = $this->getImageDimensions();
+        }
+
+        return $fileInfo;
+    }
+
+    protected function getSize()
+    {
+        return File::size($this->file);
+    }
+
+    protected function getModifiedAt()
+    {
+        return date('Y-m-d H:i:s', File::lastModified($this->file));
+    }
+
+    protected function getMimeType()
+    {
+        return File::mimeType($this->file);
+    }
+
+    protected function getIcon()
+    {
+        $mimeType = $this->getMimeType();
+        $icon = 'fas fa-code';
+        if (str_starts_with($mimeType, 'image/')) {
+            $icon = 'fas fa-image';
+        }
+
+        return $icon;
+    }
+
+    protected function isImage()
+    {
+        $mimeType = $this->getMimeType();
+
+        return str_starts_with($mimeType, 'image/');
+    }
+
+    protected function getImageDimensions()
+    {
+        if ($this->isImage()) {
+            [$width, $height] = getimagesize($this->file);
+
+            return ['width' => $width, 'height' => $height];
+        }
+
+        return null;
+    }
+}

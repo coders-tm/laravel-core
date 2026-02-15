@@ -1,57 +1,67 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Coderstm;
+use Coderstm\Events\LogCreated;
+use Coderstm\Traits\Fileable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
+class Log extends Model
+{
+    use Fileable, HasFactory, SerializeDate;
+
+    const STATUS_ERROR = 'error';
+
+    const STATUS_SUCCESS = 'success';
+
+    const STATUS_WARNING = 'warning';
+
+    protected $dispatchesEvents = ['created' => LogCreated::class];
+
+    protected $fillable = ['type', 'status', 'message', 'options', 'admin_id'];
+
+    protected $hidden = ['logable_type', 'logable_id'];
+
+    protected $appends = ['can_edit'];
+
+    protected $casts = ['options' => 'json'];
+
+    public function logable()
+    {
+        return $this->morphTo();
+    }
+
+    public function admin()
+    {
+        return $this->belongsTo(Coderstm::$adminModel)->withOnly([]);
+    }
+
+    public function reply(): MorphMany
+    {
+        return $this->morphMany(static::class, 'logable');
+    }
+
+    public function getCanEditAttribute()
+    {
+        return $this->created_at->addMinutes(5)->gt(now());
+    }
+
+    public static function error($message, $context = []): void
+    {
+        \Illuminate\Support\Facades\Log::error($message, $context = []);
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::creating(function ($model) {
+            if (empty($model->admin_id) && is_admin()) {
+                $model->admin_id = user()->id ?? null;
+            }
+        });
+    }
+}

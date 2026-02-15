@@ -1,58 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-v7VwRc4D3i6IX0CaDBJTT+mY
+<?php
+
+namespace Coderstm\Services\Reports;
+
+use Coderstm\Models\ReportExport;
+use League\Csv\Writer;
+
+interface ReportInterface
+{
+    public static function getTypes(): array;
+
+    public static function canHandle(string $type): bool;
+
+    public function generate(Writer $csv, ReportExport $reportExport): int;
+
+    public function getDescription(): string;
+
+    public function validate(array $input): array;
+
+    public function headers(): array;
+
+    public function paginate(array $filters, int $perPage = 15, int $page = 1): array;
+
+    public function query(array $filters);
+
+    public function toRow($row): array;
+
+    public function summarize(array $filters): array;
+}

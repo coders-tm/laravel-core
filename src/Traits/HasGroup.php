@@ -1,36 +1,42 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-WbcWl5ajK0xPQQ0t5mqA
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\Group;
+use Illuminate\Support\Collection;
+
+trait HasGroup
+{
+    public function groups()
+    {
+        return $this->morphToMany(Group::class, 'groupable');
+    }
+
+    public function syncGroups(Collection $groups, bool $detach = true)
+    {
+        $groups = $groups->pluck('id');
+        if ($detach) {
+            $this->groups()->sync($groups);
+        } else {
+            $this->groups()->syncWithoutDetaching($groups);
+        }
+
+        return $this;
+    }
+
+    public function syncGroupsDetaching(Collection $groups)
+    {
+        return $this->syncGroups($groups, false);
+    }
+
+    public function hasGroup(...$groups)
+    {
+        foreach ($groups as $group) {
+            if ($this->groups->contains('name', $group)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}

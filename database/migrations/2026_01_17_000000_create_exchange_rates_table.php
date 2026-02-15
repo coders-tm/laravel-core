@@ -1,37 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-LDY/7+Le6GTmjrIv8eVwx9BBwxUxD/G1
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('exchange_rates', function (Blueprint $table) {
+            $table->id();
+            $table->string('currency')->unique();
+            $table->decimal('rate', 10, 4); // Exchange rate relative to base currency
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('exchange_rates');
+    }
+};

@@ -1,185 +1,217 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-zgxXFJb2fJF6yBYYPSj7SG==
+<?php
+
+namespace Coderstm\Http\Controllers\Webhook;
+
+use Coderstm\Coderstm;
+use Coderstm\Events\GoCardless\Mandate;
+use Coderstm\Events\GoCardless\Payment;
+use Coderstm\Events\GoCardless\Subscription as SubscriptionEvent;
+use Coderstm\Events\GoCardless\WebhookHandled;
+use Coderstm\Events\GoCardless\WebhookReceived;
+use Coderstm\Models\Payment as ModelsPayment;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\Response;
+
+class GoCardlessController extends Controller
+{
+    public function handleWebhook(Request $request)
+    {
+        $payload = $request->getContent();
+        $webhookSignature = $request->header('Webhook-Signature');
+        if (! $this->verifyWebhookSignature($payload, $webhookSignature)) {
+            return response('Webhook signature verification failed', 401);
+        }
+        $data = json_decode($payload, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            return response('Invalid payload', 400);
+        }
+        try {
+            $events = $data['events'] ?? [];
+            if (empty($events)) {
+                return $this->missingMethod();
+            }
+            WebhookReceived::dispatch($data);
+            foreach ($events as $event) {
+                $this->processEvent($event);
+            }
+            WebhookHandled::dispatch($data);
+
+            return $this->successMethod();
+        } catch (\Throwable $e) {
+            return response('Webhook processing failed: '.$e->getMessage(), 500);
+        }
+    }
+
+    protected function verifyWebhookSignature($payload, $signature)
+    {
+        if (empty($signature)) {
+            return false;
+        }
+        $webhookSecret = config('gocardless.webhook_secret');
+        if (empty($webhookSecret)) {
+            return false;
+        }
+        $expectedSignature = hash_hmac('sha256', $payload, $webhookSecret);
+
+        return hash_equals($expectedSignature, $signature);
+    }
+
+    protected function processEvent($event)
+    {
+        $resourceType = $event['resource_type'] ?? '';
+        $action = $event['action'] ?? '';
+        if (empty($resourceType) || empty($action)) {
+            return;
+        }
+        $methodName = 'handle'.Str::studly($resourceType).Str::studly($action);
+        if (method_exists($this, $methodName)) {
+            $this->{$methodName}($event);
+        }
+    }
+
+    protected function successMethod($parameters = [])
+    {
+        return new Response('Webhook Handled', 200);
+    }
+
+    protected function missingMethod($parameters = [])
+    {
+        return new Response;
+    }
+
+    protected function findOrder($orderId)
+    {
+        if (! $orderId) {
+            return null;
+        }
+
+        return Order::find($orderId)?->load('orderable') ?? null;
+    }
+
+    protected function findSubscriptionByMandateId($mandateId)
+    {
+        if (! $mandateId) {
+            return null;
+        }
+
+        return Subscription::where('options->gocardless_provider_id', $mandateId)->first();
+    }
+
+    protected function isPaymentAlreadyProcessed(string $paymentId): bool
+    {
+        return ModelsPayment::where('payment_method_id', config('gocardless.id'))->where('transaction_id', $paymentId)->exists();
+    }
+
+    protected function handlePaymentsConfirmed($event)
+    {
+        Payment\PaymentConfirmed::dispatch($event);
+        $paymentId = $event['links']['payment'] ?? null;
+        $orderId = $event['resource_metadata']['order_id'] ?? null;
+        if (! $paymentId) {
+            return;
+        }
+        try {
+            $payment = Coderstm::gocardless()->payments()->get($paymentId);
+            $mandateId = $payment->links->mandate ?? null;
+            if ($order = $this->findOrder($orderId)) {
+                $order->markAsPaid(config('gocardless.id'), ['id' => $payment->id, 'amount' => $payment->amount / 100, 'status' => $payment->status]);
+            } elseif ($mandateId && ($subscription = $this->findSubscriptionByMandateId($mandateId))) {
+                if ($this->isPaymentAlreadyProcessed($payment->id)) {
+                    return;
+                }
+                $paymentData = ['id' => $payment->id, 'amount' => $payment->amount / 100, 'status' => $payment->status, 'note' => 'Payment confirmed via GoCardless'];
+                if ($subscription->hasIncompletePayment()) {
+                    $subscription->pay(config('gocardless.id'), $paymentData);
+                } else {
+                    $subscription->renew();
+                    $subscription = $subscription->refresh(['latestInvoice']);
+                    $subscription->pay(config('gocardless.id'), $paymentData);
+                }
+            }
+        } catch (\Throwable $e) {
+            Log::error('Error processing payment confirmed event', ['error' => $e->getMessage(), 'payment_id' => $paymentId, 'order_id' => $orderId, 'mandate_id' => $mandateId ?? null]);
+        }
+    }
+
+    protected function handlePaymentsFailed($event)
+    {
+        Payment\PaymentFailed::dispatch($event);
+        $paymentId = $event['links']['payment'] ?? null;
+        $orderId = $event['resource_metadata']['order_id'] ?? null;
+        if (! $paymentId) {
+            return;
+        }
+        try {
+            $payment = Coderstm::gocardless()->payments()->get($paymentId);
+            $mandateId = $payment->links->mandate ?? null;
+            $paymentData = ['id' => $payment->id, 'amount' => $payment->amount / 100, 'status' => $payment->status];
+            if ($order = $this->findOrder($orderId)) {
+                $order->markAsPaymentFailed(config('gocardless.id'), $paymentData);
+            } elseif ($mandateId && ($subscription = $this->findSubscriptionByMandateId($mandateId))) {
+                if ($this->isPaymentAlreadyProcessed($payment->id)) {
+                    return;
+                }
+                if ($subscription->hasIncompletePayment()) {
+                    return;
+                }
+                $subscription->renew();
+                $subscription = $subscription->refresh(['latestInvoice']);
+                if ($order = $subscription->latestInvoice) {
+                    $order->markAsPaymentFailed(config('gocardless.id'), ['id' => $payment->id, 'amount' => $payment->amount / 100, 'status' => $payment->status, 'note' => 'Payment failed via GoCardless']);
+                    $subscription->paymentFailed($order);
+                }
+            }
+        } catch (\Throwable $e) {
+            Log::error('Error processing payment failed event', ['error' => $e->getMessage(), 'payment_id' => $paymentId, 'order_id' => $orderId, 'mandate_id' => $mandateId ?? null]);
+        }
+    }
+
+    protected function handleSubscriptionsCreated($event)
+    {
+        SubscriptionEvent\SubscriptionCreated::dispatch($event);
+    }
+
+    protected function handleSubscriptionsCancelled($event)
+    {
+        SubscriptionEvent\SubscriptionCancelled::dispatch($event);
+    }
+
+    protected function handleMandatesActive($event)
+    {
+        Mandate\MandateActive::dispatch($event);
+    }
+
+    protected function handleMandatesFailed($event)
+    {
+        Mandate\MandateFailed::dispatch($event);
+        $mandateId = $event['links']['mandate'] ?? null;
+        if (! $mandateId) {
+            return;
+        }
+        try {
+            $subscription = $this->findSubscriptionByMandateId($mandateId);
+            if (! $subscription) {
+                $mandate = Coderstm::gocardless()->mandates()->get($mandateId);
+                $subscriptionId = $mandate->metadata->subscription_id ?? null;
+                if ($subscriptionId) {
+                    $subscription = Subscription::find($subscriptionId);
+                }
+            }
+            if ($subscription) {
+                $subscription->paymentFailed();
+            }
+        } catch (\Throwable $e) {
+            Log::error('Error processing mandate failed event', ['error' => $e->getMessage(), 'mandate_id' => $mandateId]);
+        }
+    }
+
+    protected function handleMandatesCancelled($event)
+    {
+        Mandate\MandateCancelled::dispatch($event);
+    }
+}

@@ -1,46 +1,43 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPyR87bzcAkEGVtYBV8RW0cAssuyHUrs99SLt+fEwcWMDMMZMc/YZCiMJW1ZfMM8HhegV7pyw
-HIde43SSYtOMV9iDwufiTRalRZ/SpzHvmQ4QSn528Grzm3qErL674/prwO0Jo63MxdK1ZM8eJFri
-EvdU4AKZiHPf8fdUA5febt9WMJ049vX7nw+ISYQc2h++gcZw68fQqABf5msStr1CxVBbyVSVLEiJ
-y6HAV8KdmuZVipZb9amnFzzlLobNNIjfpgxV0IRd/k3v160rsY8JuSfsY8F8tsPA/yN9f4m6WP8+
-AouaM6CWnFUr6RmDbqH4MCnhfddIFNUJNJzTtlue5+6ExjXnEio330u8NUcQ1B8ZQRkEX1/LY+y3
-LSNieWkURQjcGdsK2IaWUywiKHlGjG4sgonCmapCTgjyGduus4VMhDxV6hBXCSBYFMv5ClAITOM5
-gLLiMdGtSvA10k+xdfsMSmFW31QTKI1Uaj9S9RKMANCvWw73bd7hSavHCR2syivNV3AwplEEOOdT
-MY+M85SE1OimLkeLk08mrKAuiUyCHMOE1GP53/aMuaaZCA+EH56XowEy+XewyFe8LL+BppHYZoOw
-ZSTBml0g2KyWM2vtlLXCnBJbUGDOdNEUs2JKxuxEj4bjM6ApvYK62/zZmBRHRPQCY5rsUmYbHlCV
-6vNJ1xActXbladrrwr3GFJ2viVZRmZkJO9l/yHk0i+o9Xy1EKFrnBNgKhK7H3W0Ces4Vq4wGPI3J
-OAjnxUZ1lyJVYr/Tdp4FTDRN6TScOilT/IyGnfA7eagwyNHUo3RkIxo8gDRWR9bMYlbNp1RcVXdl
-kg/39puzsfrsTKd9OH2x48/2GfYnjyXqJwP5+tkEyFhlGkC9+u1skZkLvBVDdpjXKduIEB7gmd1X
-ZaU7YlbXsqSGTM9D2xQqrDqmKJIxMyWKUo1oekBGsSj91Pwsp91dcRE1eA+JE3Plvo9Fp33aUS1r
-XmXWqIH8/Ai3wKLhhNl3XlPJh4h95KQ7FsNI2X+4Mdc+Ndn9NT8T98Pai0oyvJuIXs32EC60Xflm
-32BotswxJlr731egsklidUXNnjfPENZwPoE20IHQ4idLrIW/yfG+rBNK/YDhAhqFUy6IIBZOHHu/
-JoBh0x9P3VptOho6Oe9ohe7ILihlPHsh30d+KHRoFweXgigsf1795rK1GTrVfcH3TF3gab738Q1a
-0J5cP3SULGFkxfSK+eyFYv4oKGPqw2ukg3GsQ6KUEyltU/gP7O7fI7z10V6K0oBZXGgYdKF/VWsN
-gbLHqe2Ms9rO9mdEkLIJXkha8UOZOS6cIrTeSp4w3AtaKftHWr5UnO+I3aanwx656VU6quHYyObC
-s9xWZJim0w38KvySvDoBk2nlX1UPcy8GNldupaHgaye8tRG2Dudi1SsP942qolCMm4bR+1NQZaSH
-GSQ8FVEQcK0f/bY9nORfAXmxgKFEvghLwJQf/Ed/CvyU5XWWgTZucWxpNtoYPRYY84CIl0xfWGbM
-udn7jABKbzXE9dtyL3wm9nd5p9ecVA66H+XROFdJShmRDwq/o3F+UuV/W9FeH4Qxwomh3bcEfybb
-9x1u2sBUmZECeIOr7DWMcmJb+JxBPD09RLyzHkBq0b/I1Hpd9OLTNYVmbohmjN/NKZH7+32wNm95
-7F3r27o9DV2R+922+IPpxE4c3dHy7yDEUGga/eva9rLawCi8XhHKb4Fkf2u/4j3PQB28PRPCpewP
-3LK+dU/lzT5GkH/gDC7zE3GF9i4JoQLsyYdyFX+pV+ujnlXTfoFsaFAo18U1IypPFUFBTHi+s5NI
-77fInlq5u5Ofd7//JXl0mYtgWXM7DexR5bAi2fG+aYgGfte/eYI21vdWmBz0Q8JgJm+oX4btyTQ4
-PH/50H17o9GJrf5VuH6P03HeruRBHFj0Wp5wLsPRKHSBqCnAM91iUb/KwSyAolW/4P7fbinFDvqB
-jHDRZwQKFgnbgDQU2tFJYNyxnjqputnhhgSxAfjtEaIH7ZdvUtMG/fmxezZSqsDMiFA0QzHiLhiL
-rQhtxImcbnMv2wsjTI2T9lb3HsEKN0NEj8UhRGivaF1npFDVJhnqV07LqHKY3Z5f28ZFmefKlmzJ
-qdHWOkkxifjaFvsvaFcKRO0JetidBswwkiIUZ3OZg38GGFvDFkB3MAkAd/OnbFQeEQzVIZUgB9la
-WokMw3krfT906laamLakCy5X5SfQ6JE/T09f7VMxolTGjsAQd8oXagSNDmQdt5aeyyZGJdKxp4Jg
-lPo3CnouMYhaMos095FMpSbikfnFrq8AGYNaDPZ4txte64K2/67ch9Oht6e5lpIBbmxbuwZMc1sv
-VGU6VKq65mkokzUfEk6H+gGuCD4TAUGbqGV1PWwKtXZIU+Z8kCB4jujEpk2Hq7JPi23uh8wtLtnc
-+rgCR4K5jJrI5KETu5PEHy3J0N9GMdOmyEIbfHJTHvKhzzQ76PTEynw09UX+3FP2N426NmYA1t+7
-IAZJHXuL95wVGfqLLa4UuKJJteoj3xIZJScuE9PyhLOCbiA86v/0sUpDwQfcDJVVhiNweqDlk0Ie
-ydbaa6wG5OwYN6hqRYnpCxYu4MZZyeBADceQpRnKf6chAO0b8PAAdlbZS3yU9jqjXsp0ZTCXHXLO
-s/CURfTRtsbl9YxmvYX4A1ND7o2XZHWr0OnkZ23r+/HoFT576OUox5C1iqmuR1bhE0nQ4R9UK/98
-jAGJ5/S3h/UiqKr+aZeMFkOgLxdTxMaIBiTHggg1ga6K0Ch+fwPiXlX4+hwmipRKKUxqhSuOrahY
-AysWbxdo4OHJ6pqdIJAghA8QJvWVFHfZm05NgW0Vqy3L6lsaegVz9PFhnKpIL9dbc6IbWFOPFfSo
-YiFXysfqIga3lPEUIV+EequnSDVhSUIeItbbMugIuddG9zGzixuOCqNsjfIBcObrfnfIm1mJisTP
-4BW6j8Ozbh7cYpk0KvlysP3HysvnQySLn25ahkjsHSDAZgh53mXXscsSl7gPaw+s+IedRM3xqGNo
-VNptUiqtq4KMUIcL9XV7sJCZoEDBu+gpby9z1pVGsTICEvOkOucvsZubY/+rzW0Qs65w9NUvqO2p
-S6csa7YYqJqndBLNLo2aW9tYytor9PzoIfxyDB9qAQzU/2CgQy7AXiXK9dmUT18zdRYEPA/pJf5E
-HAZXdcYCXDG47+nMCmHoAMrvvViJrglXGKFp
+<?php
+
+namespace Coderstm\Models\Shop;
+
+use Coderstm\Database\Factories\Shop\LocationFactory;
+use Coderstm\Observers\Shop\LocationObserver;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Model;
+
+#[ObservedBy([LocationObserver::class])]
+class Location extends Model
+{
+    use Core;
+
+    protected $table = 'shop_locations';
+
+    protected $fillable = ['name', 'line1', 'line2', 'city', 'country', 'country_code', 'state', 'state_code', 'postal_code', 'active'];
+
+    protected $casts = ['active' => 'boolean'];
+
+    protected $appends = ['address_label'];
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    public function getAddressLabelAttribute()
+    {
+        return implode(', ', collect($this->attributes)->filter()->only(['line1', 'line2', 'city', 'country', 'country_code', 'state', 'state_code', 'postal_code'])->toArray());
+    }
+
+    public function scopeOnlyActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    protected static function newFactory()
+    {
+        return LocationFactory::new();
+    }
+}

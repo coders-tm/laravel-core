@@ -1,54 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hfvjtmMXzYOYTG==
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Models\Shop\Order;
+use Coderstm\Traits\Logable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Refund extends Model
+{
+    use Logable, SerializeDate;
+
+    protected $fillable = ['amount', 'reason', 'payment_id', 'order_id', 'to_wallet', 'wallet_transaction_id', 'metadata'];
+
+    protected $casts = ['to_wallet' => 'boolean', 'amount' => 'decimal:2', 'metadata' => 'array'];
+
+    protected static function booted(): void
+    {
+        static::created(function (Refund $refund) {
+            $refund->updateOrderRefundTotal();
+        });
+        static::updated(function (Refund $refund) {
+            if ($refund->wasChanged('amount')) {
+                $refund->updateOrderRefundTotal();
+            }
+        });
+        static::deleted(function (Refund $refund) {
+            $refund->updateOrderRefundTotal();
+        });
+    }
+
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function payment(): BelongsTo
+    {
+        return $this->belongsTo(Payment::class);
+    }
+
+    public function walletTransaction(): BelongsTo
+    {
+        return $this->belongsTo(WalletTransaction::class);
+    }
+
+    public function updateOrderRefundTotal(): void
+    {
+        if ($this->order_id && $this->order) {
+            $refundTotal = $this->order->refunds()->sum('amount');
+            $this->order->updateQuietly(['refund_total' => $refundTotal]);
+        }
+    }
+}

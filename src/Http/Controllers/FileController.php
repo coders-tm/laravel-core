@@ -1,130 +1,130 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\File;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+
+class FileController extends Controller
+{
+    use \Coderstm\Traits\HasResourceActions;
+
+    public function __construct()
+    {
+        $this->useModel(File::class);
+    }
+
+    public function index(Request $request)
+    {
+        $file = File::query();
+        if ($request->filled('filter')) {
+            $file->where('original_file_name', 'like', "%{$request->filter}%");
+        }
+        if ($request->filled('type')) {
+            $file->where('mime_type', 'like', "%{$request->type}%");
+        }
+        if ($request->input('deleted') ? $request->boolean('deleted') : false) {
+            $file->onlyTrashed();
+        }
+        $file = $file->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?? 15);
+
+        return new ResourceCollection($file);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate(['media' => 'required', 'disk' => 'sometimes|string|in:local,public,s3,cloud']);
+        $disk = $request->input('disk', config('filesystems.default'));
+        if ($request->filled('assets')) {
+            $assets = [];
+            foreach ($request->file('media') as $asset) {
+                $file = new File(['disk' => $disk]);
+                $file->setHttpFile($asset);
+                $file->save();
+                $assets[] = $file->url;
+            }
+
+            return response()->json(['data' => $assets], 200);
+        }
+        $file = new File(['disk' => $disk]);
+        $file->setHttpFile($request->file('media'));
+        $file->save();
+
+        return response()->json(new JsonResource($file->fresh()), 200);
+    }
+
+    public function show($file)
+    {
+        $file = File::withTrashed()->findOrFail($file);
+
+        return response()->json(new JsonResource($file), 200);
+    }
+
+    public function update(Request $request, File $file)
+    {
+        $rules = ['media' => 'required'];
+        $this->validate($request, $rules);
+        $file->setHttpFile($request->file('media'));
+        $file->modify();
+
+        return response()->json(new JsonResource($file->fresh()), 200);
+    }
+
+    public function download(Request $request)
+    {
+        try {
+            $file = File::findByHash($request->hash ?? '');
+            if ($request->has('download')) {
+                return Storage::disk($file->disk)->download($file->path, $file->original_file_name);
+            } elseif ($file->disk == 'cloud') {
+                return response()->redirectTo(Storage::disk($file->disk)->url($file->path));
+            }
+
+            return response()->file(Storage::disk($file->disk)->path($file->path));
+        } catch (\Throwable $th) {
+            return abort(404, __('File not found!'));
+        }
+    }
+
+    public function uploadFromSource(Request $request)
+    {
+        $rules = ['source' => 'required|url'];
+        $this->validate($request, $rules);
+        $url = $request->input('source');
+        $_path = parse_url($url)['path'];
+        $paths = explode('/', $_path);
+        $name = $paths[count($paths) - 1];
+        try {
+            $path = 'files/'.md5($url).'.png';
+            $urlParts = parse_url($url);
+            if (! isset($urlParts['scheme']) || ! in_array(strtolower($urlParts['scheme']), ['http', 'https'])) {
+                throw new \Exception('Invalid URL scheme.');
+            }
+            $host = $urlParts['host'];
+            $ips = gethostbynamel($host);
+            if ($ips) {
+                foreach ($ips as $ip) {
+                    if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+                        throw new \Exception('Access to private network address is improper.');
+                    }
+                }
+            }
+            $media = Http::timeout(10)->get($url);
+            Storage::disk('local')->put($path, $media);
+            $filePath = Storage::disk('local')->path($path);
+            $file = new File;
+            $file->setHttpFile(new UploadedFile($filePath, $name));
+            $file->save($request->input());
+            unlink($filePath);
+
+            return response()->json(new JsonResource($file->fresh()), 200);
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+}

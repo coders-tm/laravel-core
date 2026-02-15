@@ -1,117 +1,68 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-fvuDfiCks2e=
+<?php
+
+namespace Coderstm\Services\Reports\Subscriptions;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class FreezeUsageReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'total_freezes' => ['label' => 'Total Freezes', 'type' => 'number'], 'currently_frozen' => ['label' => 'Currently Frozen', 'type' => 'number'], 'avg_freeze_duration' => ['label' => 'Avg Freeze Duration (days)', 'type' => 'number'], 'freezes_released' => ['label' => 'Freezes Released', 'type' => 'number'], 'freeze_rate' => ['label' => 'Freeze Rate', 'type' => 'percentage']];
+
+    public static function getType(): string
+    {
+        return 'freeze-usage';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Monitor subscription freezes and pause/resume patterns';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+        $daysExpression = $this->dbDateDiff('release_subs.release_at', 'release_subs.frozen_at');
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin('subscriptions as freeze_subs', function ($join) {
+            $join->whereNotNull('freeze_subs.frozen_at')->whereRaw('freeze_subs.frozen_at >= periods.period_start')->whereRaw('freeze_subs.frozen_at <= periods.period_end');
+        })->leftJoin('subscriptions as release_subs', function ($join) {
+            $join->whereNotNull('release_subs.release_at')->whereNotNull('release_subs.frozen_at')->whereRaw('release_subs.release_at >= periods.period_start')->whereRaw('release_subs.release_at <= periods.period_end');
+        })->leftJoin('subscriptions as frozen_at_end', function ($join) {
+            $join->whereNotNull('frozen_at_end.frozen_at')->whereRaw('frozen_at_end.frozen_at <= periods.period_end')->where(function ($q) {
+                $q->whereNull('frozen_at_end.release_at')->orWhereRaw('frozen_at_end.release_at > periods.period_end');
+            });
+        })->leftJoin('subscriptions as active_subs', function ($join) {
+            $join->whereRaw('active_subs.created_at <= periods.period_end')->whereRaw("active_subs.status = 'active'");
+        })->select(['periods.period_start', 'periods.period_order', DB::raw('COUNT(DISTINCT freeze_subs.id) as total_freezes'), DB::raw('COUNT(DISTINCT frozen_at_end.id) as currently_frozen'), DB::raw('COUNT(DISTINCT release_subs.id) as freezes_released'), DB::raw('COUNT(DISTINCT active_subs.id) as total_active'), DB::raw("COALESCE(AVG({$daysExpression}), 0) as avg_freeze_duration")])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $totalFreezes = (int) ($row->total_freezes ?? 0);
+        $totalActive = (int) ($row->total_active ?? 0);
+        $freezeRate = $totalActive > 0 ? $totalFreezes / $totalActive * 100 : 0;
+
+        return ['period' => $period, 'total_freezes' => $totalFreezes, 'currently_frozen' => (int) ($row->currently_frozen ?? 0), 'avg_freeze_duration' => (float) ($row->avg_freeze_duration ?? 0), 'freezes_released' => (int) ($row->freezes_released ?? 0), 'freeze_rate' => (float) $freezeRate];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $now = now()->toDateTimeString();
+        $currentlyFrozen = DB::table('subscriptions')->whereNotNull('frozen_at')->where(function ($q) use ($now) {
+            $q->whereNull('release_at')->orWhereRaw('release_at > ?', [$now]);
+        })->count();
+
+        return ['currently_frozen' => (int) $currentlyFrozen];
+    }
+}

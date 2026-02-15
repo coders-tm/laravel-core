@@ -1,38 +1,20 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPxwH95tiUvsIwIUnVb741nWpEbXtM+Iag/4dVGW34q+k3QCpbB6EQKmlqP+i4Cn6diLAcoct
-t2et7peSU6K2ZxmViP3qNW/fI+OtJqLyxOHBJCyzGnAhfhtV+ebgjBAJlpSqNbEei6B0gMRTFjPd
-W060+8MGOsN6MFfa18+aGwq7MzXkhLQFBOINPvfgYFhbzsNBoeMlg4Qk0koR+EMtDdoAgDSZ3Qa4
-GpMBqHdKFlMFF+Q5fdYMUvfqYfUXi3Zf9iAxX+V+uFa4O3NQ8XFXodQ8WyWUQ/XAgwaMwdCS/Cuh
-Bgrb0ZczHXz/5eNx11TAlbo3GgbBOfmFhB6tJxRyvqoCG2sx2vtWQsywIQyD05J7XU3Rs2VVxmMs
-r9IY0bM2nJt5njIoR2QXTwSO0JyJsmhLJuARu+M7B3MxB2K3bnP5vwWa3WR4SfZPUgWcMQs3BTKv
-8I5GPYFZvCIenPPnRndAei4Du6TEN054Ju3qH0dhmZ2yKrAd4ywECj+wa/KDS/ln6HECLDbU6PjQ
-Wynf7GFkTQI8pf7b+bXbcZslFiL4sbzCC3ba0fHHvPOG8nLADOPtQGX7l3fMYudtPJIaKMQEPeb1
-JwY+DCCb2OwWAxITrE3CpB5uCd1JeQRRKLrn2z5U/9zHFkObfccfpd5irBX5Aeh4kcGFnBRKLa+A
-zh5XsF1S7gc9Ju5F+68zYrjXbRwkLJO2JVaSLHRh8TBoeVfDuZ5OjAYH+vAXeVA3LmILrEvAlhmx
-QPDB08l2xnvMQ5WVmtYURXcuD5tt4uPMegoZA4W8uhi8Klzjtk38Gw2epfSdLcIKo7UyhbnHdU5g
-NsBzVfsjkvfqMMu1nBMVaVLHbB5yzYlnTxZFt6JZp8A5yWnOnuZFx0yMsFjVfwYiZDrmusP0h4nz
-RqBYHaia79BMDsUeUN0z2FftJNT+ZeQhSU8wH2fgcGDYhY0v1c/uxP6Y792R5m5UZMwJyqTST+xV
-rRjJ/uNE3vQPpceRpdQ6Z1Md7Na7Xi+wHijqeGim6qsAgVQUkG+tYlveuspMpqafDheMTereReTB
-YN8KtTYhpL4OOV1kkI/vx1OnLq7BiKiR1rrXfuDZ8srr39pd9zaXLRTzEhEY9XaGSlCHhTS4dV1/
-kUdhL2CQZklBSSSf7bQqDon2/WeQTZtmEX1N5EvXKIwmLaEsRq9rGWE8CmS1voJUl3DxqN5Jn5/c
-MkdUDe5NRoMFGDHfAvmNen+PHBtvI+s0azYgPXhtoRVFYX5GhLx8JbvYFXAp69TpmApX40JjJqYr
-6OvQjQejnAHcg0yUpnjxRQQTUjyuCIkTyDIqeJ1ffTTz2U79WkRazYIdEn4PYkCI9ysQKp1ULfuO
-4j9g2Pir36DpfxFIloRcFf0b2SAHTfNNxYnuG+wJ1RqBfxo3NsZcIfvKn66IOJyC9axgoTdrYXIa
-JRtRQYUvButsowrE5/zgLzQlTERnk/WrPLDmCTM5WcUHqYT/FMbn5LsAuA5QKVyuotUC1paRBRIH
-TnE9dwZ4bHDoUUJ2YG1smPI/KAyNXeFdcKW7RJEJwSS37qo8xMINhA1MQoo6HUoiEu/YUP3PfcdL
-VGHJY0XuJeVP3JHKqMubrTigadl+NMHRmDYA4DCtvvf2dznwfjVEWMgz2otMEmfdAPNzqfpWla9t
-3mZ4P/05k0TlgrmcjHprhlmqcPn+GTfHSXYNmNSw6XBqfg0nk1VeIzB/xDyvqGnt/TxFXPK8BMk2
-SSgYQi9dfpQ2/NZIARdIMqH9FjJ0KkBMyzleqPb1uzs3ghrg26Mk/Y7qIquHzu3yuiTsg1x6Oc0R
-39XXIf0povWlawzw+yNR8Oxwii/aUSPKI973VnP7vjdcfZZb6BDUpQY+Ll1A2ZGKeWX5dqC/TH+l
-j2gOyf81/nhJUZhxfS9ddeaP1nkAoXN04GOv9w4IlrxzigLSbDvrs+6ytstyiuVZPGl9TBXNc4y+
-gvtdRDDq8jTf5T0VQn4n0bM/M5Kr34dkjXF6NwsYle9cdFupABQSxYiUvwdpYGP8DKuubKXbIA8F
-T7PUPD0ThL345cQjzTJaT17YhKT4IFkDViwhhBRDzxu2RgfAChN7KRnRgs8wzUoL3D141QOAbdzN
-aNXPHOJMuPgaqq8aJc0q/jfX4JepJbjuWoInaTPn1b03mUB3q3PPcfQuNw32RCLDGjEQJ08aYckO
-myPMygK6QYIThp4ea+cvLqx5gRBXm/MreyaMjAFLPTaud9JR3gQSVgtPY5Agu6fKexOZA7Py0jvK
-cHT2i/pKxRyfvpwo3zaFu9l6mlwl1G6PWy17S/+/NqFxYxItZri6EP/rlUfilEhaeuwU4rhWG4va
-xjgZ4t2JN1I4yJT0un8r5pGNk5fW5zs8HkzIs/Q4tYOPDWdiyiiv5Sh5kEQMyWjxDx98gMbQbVPi
-o03hAf94eb1U5UOn7tb2lhduVidH1zmurbGzjl2jQqlohHznJt87gVPQG3dwvC1tFSLTFzfWQ1Ue
-RUZSWJ2LNaJYjCgSiwreng4DpZAehhIMD86hwGsdcC7TBiP7iyikmrl7K8VR5KjL0COn5nyWHCTF
-hprNNrq=
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class BlogMeta extends Shortcode
+{
+    public $attributes = [];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $options = blog('options', []);
+        $category = blog('category', null);
+        $featured = isset($options['featured']) ? $options['featured'] : false;
+
+        return $this->view('shortcodes.blog-meta', array_merge($atts, ['category' => $category, 'featured' => $featured, 'readtime' => isset($options['read_time']) ? $options['read_time'] : 0, 'datetime' => blog('created_at', now())]));
+    }
+}

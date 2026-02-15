@@ -1,42 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-ppvy
+<?php
+
+namespace Coderstm\Notifications;
+
+class SubscriptionRenewedNotification extends BaseNotification
+{
+    public $subject;
+
+    public $message;
+
+    public function __construct($subscription)
+    {
+        $template = $subscription->renderNotification('user:subscription-renewed');
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        try {
+            $pushTemplate = $subscription->renderPushNotification('push:subscription-renewed');
+            $this->pushSubject = $pushTemplate->subject;
+            $this->pushMessage = $pushTemplate->content;
+            $this->pushData = $pushTemplate->data;
+            $this->whatsappContent = $pushTemplate->whatsappContent;
+        } catch (\Throwable $e) {
+        }
+    }
+
+    public function via(object $notifiable): array
+    {
+        return ['mail', FcmChannel::class, TwilioWhatsappChannel::class];
+    }
+}

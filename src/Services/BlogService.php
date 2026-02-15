@@ -1,204 +1,207 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-cZ9b9NcZ1Qy/sG==
+<?php
+
+namespace Coderstm\Services;
+
+use Coderstm\Models\Blog as BlogModel;
+use Illuminate\Support\Facades\Cache;
+
+class BlogService
+{
+    public function current()
+    {
+        return request()->input('blog');
+    }
+
+    public function get($key, $default = null)
+    {
+        $blog = $this->current();
+
+        return $blog ? $blog->{$key} ?? $default : $default;
+    }
+
+    public function find($id)
+    {
+        return BlogModel::find($id);
+    }
+
+    public function findBySlug($slug)
+    {
+        return Cache::rememberForever("blog_{$slug}", function () use ($slug) {
+            return BlogModel::findBySlug($slug);
+        });
+    }
+
+    public function featured()
+    {
+        return Cache::rememberForever('blog_featured', function () {
+            return BlogModel::where('is_active', true)->where('options->featured', true)->latest()->first();
+        });
+    }
+
+    public function recent($limit = 5)
+    {
+        $cacheKey = "blog_recent_{$limit}";
+
+        return Cache::rememberForever($cacheKey, function () use ($limit) {
+            return BlogModel::where('is_active', true)->latest()->take($limit)->get();
+        });
+    }
+
+    public function related($blog = null, $limit = 3)
+    {
+        $blog = $blog ?? $this->current();
+        if (! $blog) {
+            return collect();
+        }
+        $cacheKey = "blog_related_{$blog->id}_{$limit}";
+
+        return Cache::rememberForever($cacheKey, function () use ($blog, $limit) {
+            $tagIds = $blog->tags->pluck('id')->toArray();
+            $query = BlogModel::where('id', '<>', $blog->id)->where('is_active', true)->where(function ($query) use ($blog, $tagIds) {
+                if (count($tagIds) > 0) {
+                    $query->whereHas('tags', function ($q) use ($tagIds) {
+                        $q->whereIn('id', $tagIds);
+                    });
+                }
+                if ($blog->category) {
+                    $query->orWhere('category', $blog->category);
+                }
+            });
+
+            return $query->latest()->take($limit)->get();
+        });
+    }
+
+    public function byCategory($category, $limit = 5)
+    {
+        $cacheKey = "blog_category_{$category}_{$limit}";
+
+        return Cache::rememberForever($cacheKey, function () use ($category, $limit) {
+            return BlogModel::where('category', $category)->where('is_active', true)->latest()->take($limit)->get();
+        });
+    }
+
+    public function byTag($tag, $limit = 5)
+    {
+        $tagType = is_numeric($tag) ? 'id' : 'label';
+        $cacheKey = "blog_tag_{$tagType}_{$tag}_{$limit}";
+
+        return Cache::rememberForever($cacheKey, function () use ($tag, $limit) {
+            $query = BlogModel::where('is_active', true);
+            if (is_numeric($tag)) {
+                $query->whereHas('tags', function ($q) use ($tag) {
+                    $q->where('id', $tag);
+                });
+            } else {
+                $query->whereHas('tags', function ($q) use ($tag) {
+                    $q->where('label', $tag);
+                });
+            }
+
+            return $query->latest()->take($limit)->get();
+        });
+    }
+
+    public function categories($onlyActive = true)
+    {
+        $cacheKey = 'blog_all_categories'.($onlyActive ? '_active' : '');
+
+        return Cache::rememberForever($cacheKey, function () use ($onlyActive) {
+            $query = BlogModel::select('category')->distinct()->whereNotNull('category');
+            if ($onlyActive) {
+                $query->where('is_active', true);
+            }
+
+            return $query->orderBy('category')->pluck('category');
+        });
+    }
+
+    public function categoriesWithCount($onlyActive = true)
+    {
+        $cacheKey = 'blog_categories_with_count'.($onlyActive ? '_active' : '');
+
+        return Cache::rememberForever($cacheKey, function () use ($onlyActive) {
+            $query = BlogModel::select('category')->selectRaw('COUNT(*) as count')->whereNotNull('category')->groupBy('category');
+            if ($onlyActive) {
+                $query->where('is_active', true);
+            }
+
+            return $query->orderBy('category')->get()->map(function ($item) {
+                return ['category' => $item->category, 'count' => $item->count];
+            });
+        });
+    }
+
+    public function clearCaches()
+    {
+        $this->clearRecentBlogCache();
+        $this->clearCategoryBlogCaches();
+        $this->clearTagBlogCaches();
+        if ($blog = $this->current()) {
+            $this->clearBlogCache($blog);
+        }
+    }
+
+    public function clearBlogCache($blog)
+    {
+        Cache::forget("blog_{$blog->slug}");
+        foreach ([3, 5, 10] as $limit) {
+            Cache::forget("blog_related_{$blog->id}_{$limit}_{$blog->updated_at->timestamp}");
+        }
+        if ($blog->category) {
+            $this->clearCategoryBlogCache($blog->category);
+        }
+        foreach ($blog->tags as $tag) {
+            $this->clearTagBlogCache($tag->id);
+            $this->clearTagBlogCache($tag->label);
+        }
+    }
+
+    public function clearRecentBlogCache()
+    {
+        foreach ([3, 5, 10] as $limit) {
+            Cache::forget("blog_recent_{$limit}");
+        }
+    }
+
+    public function clearCategoryBlogCache($category = null)
+    {
+        if ($category) {
+            foreach ([3, 5, 10] as $limit) {
+                Cache::forget("blog_category_{$category}_{$limit}");
+            }
+        }
+    }
+
+    public function clearCategoryBlogCaches()
+    {
+        $categories = BlogModel::select('category')->distinct()->whereNotNull('category')->pluck('category');
+        foreach ($categories as $category) {
+            $this->clearCategoryBlogCache($category);
+        }
+        Cache::forget('blog_all_categories_active');
+        Cache::forget('blog_all_categories');
+        Cache::forget('blog_categories_with_count_active');
+        Cache::forget('blog_categories_with_count');
+    }
+
+    public function clearTagBlogCache($tag = null)
+    {
+        if ($tag) {
+            $tagType = is_numeric($tag) ? 'id' : 'label';
+            foreach ([3, 5, 10] as $limit) {
+                Cache::forget("blog_tag_{$tagType}_{$tag}_{$limit}");
+            }
+        }
+    }
+
+    public function clearTagBlogCaches()
+    {
+        $keys = Cache::get('cache_keys', []);
+        foreach ($keys as $key) {
+            if (strpos($key, 'blog_tag_') === 0) {
+                Cache::forget($key);
+            }
+        }
+    }
+}

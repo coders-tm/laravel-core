@@ -1,65 +1,37 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-SPwL7GqWrFLq4ywcv3zCXa3IlLvjzIK=
+<?php
+
+namespace Coderstm\Services\Reports\Exports;
+
+use Coderstm\Services\Reports\AbstractReport;
+
+class OrdersExportReport extends AbstractReport
+{
+    protected array $columns = ['id' => ['label' => 'Order ID', 'type' => 'text'], 'customer_email' => ['label' => 'Customer Email', 'type' => 'text'], 'status' => ['label' => 'Status', 'type' => 'text'], 'payment_status' => ['label' => 'Payment Status', 'type' => 'text'], 'fulfillment_status' => ['label' => 'Fulfillment Status', 'type' => 'text'], 'grand_total' => ['label' => 'Grand Total', 'type' => 'currency'], 'sub_total' => ['label' => 'Sub Total', 'type' => 'currency'], 'tax_total' => ['label' => 'Tax Total', 'type' => 'currency'], 'discount_total' => ['label' => 'Discount Total', 'type' => 'currency'], 'shipping_total' => ['label' => 'Shipping Total', 'type' => 'currency'], 'refund_total' => ['label' => 'Refund Total', 'type' => 'currency'], 'paid_total' => ['label' => 'Paid Total', 'type' => 'currency'], 'created_at' => ['label' => 'Created At', 'type' => 'text'], 'completed_at' => ['label' => 'Completed At', 'type' => 'text']];
+
+    public static function getType(): string
+    {
+        return 'orders';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Export order data with detailed information';
+    }
+
+    public function query(array $filters)
+    {
+        return $this->buildOrdersQuery()->orderBy('created_at', 'desc');
+    }
+
+    public function toRow($row): array
+    {
+        return ['id' => (int) $row->id, 'customer_email' => $row->customer_id ?? '', 'status' => $row->status ?? '', 'payment_status' => $row->payment_status ?? '', 'fulfillment_status' => $row->fulfillment_status ?? '', 'grand_total' => (float) ($row->grand_total ?? 0), 'sub_total' => (float) ($row->sub_total ?? 0), 'tax_total' => (float) ($row->tax_total ?? 0), 'discount_total' => (float) ($row->discount_total ?? 0), 'shipping_total' => (float) ($row->shipping_total ?? 0), 'refund_total' => (float) ($row->refund_total ?? 0), 'paid_total' => (float) ($row->paid_total ?? 0), 'created_at' => $row->created_at ?? '', 'completed_at' => $row->completed_at ?? ''];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $query = $this->buildOrdersQuery();
+
+        return ['total_orders' => (int) $query->count()];
+    }
+}

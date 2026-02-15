@@ -1,41 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Jobs\Shop;
+
+use Coderstm\Models\Shop\Location;
+use Coderstm\Models\Shop\Product\Inventory;
+use Coderstm\Models\Shop\Product\Variant;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+
+class UpdateInventoryForLocation implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public Location $location;
+
+    public function __construct(Location $location)
+    {
+        $this->location = $location;
+    }
+
+    public function handle(): void
+    {
+        Variant::chunkById(100, function ($items) {
+            foreach ($items as $item) {
+                Inventory::updateOrCreate(['variant_id' => $item->id, 'location_id' => $this->location->id], ['active' => $this->location->active]);
+            }
+        });
+    }
+}

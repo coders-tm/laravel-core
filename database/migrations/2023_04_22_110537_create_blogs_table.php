@@ -1,60 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-+hTrhm==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('blogs', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('category')->nullable()->index();
+            $table->string('slug')->unique()->index();
+            $table->longText('description');
+            $table->{$this->jsonable()}('options')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->boolean('is_active')->default(true)->index();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        Schema::create('comments', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('userable_type');
+            $table->unsignedBigInteger('userable_id');
+
+            $table->string('commentable_type');
+            $table->unsignedBigInteger('commentable_id');
+
+            $table->longText('message');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['userable_type', 'userable_id']);
+            $table->index(['commentable_type', 'commentable_id']);
+        });
+
+        $this->setAutoIncrement('blogs');
+        $this->setAutoIncrement('comments');
+    }
+};

@@ -1,72 +1,112 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-4TQfrfCmfggp6qM8
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Models\Subscription;
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class SubscriptionFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Subscription::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        $model = Coderstm::$userModel;
+        $startsAt = now();
+        $plan = Coderstm::$planModel::inRandomOrder()->first();
+
+        return [
+            (new $model)->getForeignKey() => ($model)::factory(),
+            'plan_id' => $plan?->id,
+            'type' => 'default',
+            'status' => SubscriptionStatus::ACTIVE,
+            'trial_ends_at' => null,
+            'starts_at' => $startsAt,
+            'expires_at' => $plan ? $this->calculateExpiresAt($plan, $startsAt) : $startsAt->copy()->addMonth(),
+            'billing_interval' => $plan?->interval,
+            'billing_interval_count' => $plan?->interval_count ?? 1,
+        ];
+    }
+
+    /**
+     * Calculate expires_at based on plan interval
+     *
+     * @param  mixed  $plan
+     * @param  \DateTimeInterface  $startsAt
+     * @return \Carbon\Carbon
+     */
+    protected function calculateExpiresAt($plan, $startsAt)
+    {
+        $period = new \Coderstm\Services\Period(
+            $plan->interval->value,
+            $plan->interval_count,
+            $startsAt
+        );
+
+        return $period->getEndDate();
+    }
+
+    /**
+     * Mark the subscription as active.
+     *
+     * @return $this
+     */
+    public function active(): static
+    {
+        return $this->state([
+            'status' => SubscriptionStatus::ACTIVE,
+        ]);
+    }
+
+    /**
+     * Mark the subscription as being within a trial period.
+     *
+     * @return $this
+     */
+    public function trialing(?DateTimeInterface $trialEndsAt = null): static
+    {
+        return $this->state([
+            'status' => SubscriptionStatus::TRIALING,
+            'trial_ends_at' => $trialEndsAt,
+        ]);
+    }
+
+    /**
+     * Mark the subscription as canceled.
+     *
+     * @return $this
+     */
+    public function canceled(): static
+    {
+        return $this->state([
+            'status' => SubscriptionStatus::CANCELED,
+            'expires_at' => now(),
+            'canceled_at' => now(),
+        ]);
+    }
+
+    /**
+     * Mark the subscription as incomplete.
+     *
+     * @return $this
+     */
+    public function incomplete(): static
+    {
+        return $this->state([
+            'status' => SubscriptionStatus::INCOMPLETE,
+        ]);
+    }
+}

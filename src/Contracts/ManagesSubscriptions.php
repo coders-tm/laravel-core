@@ -1,83 +1,66 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPn9+ZGHnw7Kh3BOO9o5xhEGUBMaMdFfDXli0+dE5iEyzozInfKggWfkQBRgivx10YLdXgnR8
-vem0jfeiiIcp2dyLVW5+f0xiGLRNhNilVKK5pezaiBDoiBe961JDHco8oS/YvkQIIn5Ppf6LCB2G
-u+INlm34v16t8bkWFtQJUkBG4pTEp2IObIo11e9QQV49f4ELA2JyA9fReeppgHwgKG5JMandFMEN
-DNr/m/FZInwmZbZ+rJc8SSESv4MO2Q27dazc/jFd/k3v160rsY8JuSfsY8F8r6bb1Z3RRwueQDzO
-A+vAEnwvtiSMo3LD6EeuOUxG0525HN3aev9avhWQjUAUebKMRE1YseLiOY+Brtm0RZVU52oaE3ku
-0FmJrT5W2t4YIyZfSU2zcloQdWSXjRJZY++SgjJj+6PvnjCf9zZR/dv6GP085BYJBKOgh2hU+jCz
-G6GrfB2bz+Eq61QqQnLFm1CAyM4HBX4sAp9wtle4jDISb0C7hSST05CcspcK8Mfc82/aneD3paOa
-G7E81fnONB20wIDE9Kq5YeMDy4+Urcj5EINoHcoHH9bNSoy0E1Vuax/JgoNq9mwAXCfptJJ/9C5g
-PQ95POEMoI3wyjn8Q9larFeD7mc42rhaCpQ7eXFLAxleesUQEFyRuekA1rpK4cEBSUCzimOP/qpd
-Q4Nv2PKnTzrSl2V5xjCPtM/CmUtDI4hNYf3gp2rkQwX2WaxZ+Vi9dsT1aJ2g+lAxjWL2uI1YIefg
-18J1TKPsZ9ZaE59BgKLonfkhGWQMbf1VG8Disgfrai6gP6LR5G4JgUD41cJNVsnreLmSwo8529im
-yRpMoYB8Er8C6vKdPRktCsYwMAZWVbSveXnNorNF/lNLOUuHYqjtjG+qg+FRoz+xg4plfnqcZ10Q
-A8RxySOKCx+yEIu+EESxJ+c2e/ZJ/50aY2x25uZpqNJddfQBZBO+5aa7PulqH70Nx1ApkhivSwOu
-GNFEEHkYTQKh4ryx57BPNBXyQEHq9AFS569E/u2Bu0c1itGTWGC1dpdcU1Pb2wx5FXkZWHIK29jx
-5QCg2SbgYKqMtzoTLK679jH8fvb4T8DSXZO92c8DrHv+/9QW9LQ1KkCFwZK6D+7yYbdMifyiqccm
-930EKXZQmpBRAv3vz9OPtcDyL9heD6b7IBm0UhqAMcDw9QDHOQwfSVrIWzzrWYYEYH1DQVYmmf5T
-d+0pt2i+Kh3ik3W0Sevd3W8v6R2xi9fhZfjxJRBSARR8s0S/vXB7xkf1H0HSMUP1Ex/oCPll51ZE
-qJ+Ye5+/IvoeHvdFfAnuIEP+/6ZNtxUZm5ftS+CV1JiXNMM2HnuvEQz9EH4Zp5noSNiQwdDrAevp
-td2UCq6wtsbE1+pDZ5U+SVpZ2/owAiMHD4FR05CPZPunB50Un2u/WkqqiCN1uDb58ZqbCzPW3QMo
-eB3A4t2/YurAP+RyCY9dUCzc6Nh91l8KUOP/vd82/eU6LaRnyQxtXVzbj/RxqEX3lG1rgPCQEP7I
-5r3EJtM5SdwtbWUnc09T0m6SigOovPD+Sxe7QhaHm8vBQRkSk+iO67d+IneI3gkVc60pQKaxksVr
-TDaxLpsI7Ijpcdge7jj3swcMfPFRuJBL9WSH1+Um17H0oDdSzufNr9Np67K4isJdgdX6VIa2qa5f
-4aeww09lA44qFtLNO1RPIO8dIZIHMR9tYYxhGY/miYR6+Lj8rR/XvIjTOArNuRzbnCI5+9GLYm8i
-b9dpfg0MVmdq88H3oS9xYgfla5mliqjwiOz/klyP5wRp6FoAaEXRsl9K9VEcAyzVh1gEhgTdHKQd
-3ERB8Sy45e/yUumejq1AmzCOuq7elxEpT7fxcBfE8ivdsZ8EhEeWz5R9Dm/MVyC5bSWu28e63lpv
-1xLwZaaLU0gGlQcLH2VA+cONrBY7aFnwafl4QjnA+W4I3aYQ/iSaBWzJqrs8PjiVGO/z1JaXfd/d
-MlA2gk1zbx/IFMyRAbzMduDpLL89ucsNgvy1rWebkKXY6Y7divVjiGR4NgCvsah3xRVDTKn8nNh9
-emGP4kXjvMFudyjGRD3f88aW/3zdNtewFSJwwE3HLx09+fZP7mUu//qMWM9weZbMZNr+BdV4FGIs
-nrx56TXNkVNObGg9g+Eyx+FblJOMI2eUow40YU+Mz3rYQ0rTkKxSKKOpSuz13IjDCab1fn6+URhC
-4cOfClY0sf3YzfarclIdHvgG1bfzWfzGx/HNZKPvQ84Kgeq8ZpqaSRNI6SYmwo+gPG29OJXUiPsd
-eMl6aqYoRVje3huVDxxw2/+8JWgUCUIRY3HpEV8LUfAW9u28fkkBIiqicC33/S+YfgD9j7cFTHv3
-uidgbuT8XwvcfRZVek5P6on7+iBmyK2p5yaNe1N/pQjqt0hYk9N34YsBFSX1Tswmij4YqshJqzb+
-rqp3VlYenCE0x4Y7VNbKXUO9YqOuQARcO4WWD3sGkmd4fZ1/tYwIPG6YTtRzAxXAsfVwHuiZfVVI
-scnE92rDpiakfDZhdOsfi3QGDU65E6p8KSk5Vns4oAPdqsM/rlug5jvIEc7MwCu/pNA5VhWnWgnj
-IhSUlhagqggKjX9s1CaPznTfXDUCoj9kyNkOMAKxC5tw0xQ0BYVr4+d+oLEJzHhOBNZk/Tn3uPdu
-j+XFfa+fcpWnllfSa5ljl7Uvdqdmc8IrIYQlSELp7y+1rd+PZEIwPwR3RYuwWJ+yhjisXiQy3DZC
-TUaTnFjpIhENVnBpfoh7hvC/E8Wmz2Ec3R7VTaIYqK7Ufu7pjJNEegmHNPaRFa0d40COkaGruAnS
-3MvzO87D4oAGjOLCKndpJyEAy/VHUTGr4mxn+gAL1E7iTKPtnu4KkqBoLleazQBBDlNxnih6UXZ+
-UXqY+1OVjHNi70YlyLeKpFH/b45Eq8ndoi40P+EM/Etkys24vaGd1TxtPPFesK2kVjWekc5YbDdK
-JDXk41NaxlqLrulrBFrciRhI49cxf/Lm1v04LIol1cKwKI6frEQ0U+Z/a6a0OxThaKLUf0NPACI6
-kMfeXswUlvMa5XM0yYLGm/4O5Vl3UcOQpVgAC5PKNEXOJXfKPG7knOjU8iZy/DBoBycQJAllTV8V
-T6o6/k3P1XdZqYHKVB7Bk+40+jQ3BA1QP4yJ8h5c2TlNWzgM+kfHuS3L6N0RW+AEsrwJXHUKMvXG
-IKSVN1RQfiGbuA4qrvnr0IL9l+rpjwbxeC0IgC3NK/E45v/QTFseUWzOIU7hGhKtXaqpmrqYD360
-XOYHJbuCEDUyDib3aq5c7ucNFYm8DpteephKRPxiWfS4C/7bekubFkfC1KQl5QdHfEheV1USDsqV
-cNiK+2GaTvvaRZiU+UJmmPbFHsCKX5m1v0OjyS3/mPFuey7idgFPifk2HkGnr16FcP5jQX2Lvgp+
-5azNYyxBVyztaJBKJ1VL25UWYGc5c3fSaIRekEs9FOrsMTqobYqIxiXP8EhtpLZSc+Gr0eFQoBke
-gU3c+JjzcJMbwE1xFccNfcOpgKcYeS2VtIBL2c9AKtTfLFcC8O79/CCq/ggqZMUmdnZC3l2R2vLZ
-j7B8A/+FAmOgmsjFzBZ8BEIm54N71JczpX8dzlZkUn5I9guK865sYgLecBYnxuwf9cStq1nwgfo4
-RB4ujHW2WhaY6Kf0KYIl9m8FQSv7vO6VYb9D2PAbI0a7o9JlRTW9XwV6n4QrXGjGuTclg4bUR0UF
-bo8vAOlYQrKksot9WoGvAA/oGUGeNKE78RShmpefs+EnlfJHYdKk5Kg9BmehUVzoGkHxrVHpSM1t
-6YzvlHOnM7f81pNo76X0PcLlGXKeEoiV7Hbz/Q9hr+nrAXDRdLgCkuQqYlMc+L8EJYWN2EdQCXqw
-FKyVPVBqcq+DZZUdjrU0q7fAKugtfymNZ2dX/pfbAMJW72RAaXQpTkvcTMINVluMc1ebEi9+VHTw
-FKGvijz6ZDXfdFREfY0wW1gHRnaSW8dhAefwOGmFUoEYJx09/N921r5PH20hhcvU+Uje11G8W5lG
-Cb9KAdYXnTUAudNtoAtRce3EJ5ti0T3muj0pdungFPIXoBzjV64aErlEi/3OFTBrU55c8+7BXMiR
-whePQV9A0yMgJYxRc6ODcReZPeQ+VJ5xeG3Y/qkk4uE0iYSpGNtYcTWBrtMXgjOQ7f2crbh6q9DC
-kd5gOJS5ud78Mmv/RsFmU1M88FyecEq3WxiAk4prEEfvOWMN1xwZBKKgX36SNmQSGnDh/PC81lmE
-EPtEzcToAuE6AWgNmmu0MuNwgEA/YW0eTxbUh4uX/0V1MWhsQx29G+gC5dw6e0/0EnPiP2CI6Vo5
-KOXT6FH2EIDmrkICyHCrOxuH7QgwuioZz2v/h02O6GLAGoDGP7qtyqPWj/M07F9RfI2mOYMZh/L1
-fbwHjMX17el2r95LfcIgJW6a3jocjVhlFVpN0RIMY1jE5VS94X04FRLHov4sEC5yxjMoolB5FKB/
-Hivz6m4bQGFA3DIdX3fCXbj9VJ46HywXZh+ZhDf4+ub5f8vZS+fTGfKt95yTYbjXgQ2VRCUEhSUN
-bGHER1XgbeirE6H7OfMGDUvmTV9z8yxeziwK7YxINWK31wNHZxzUvN0Rw2reogO9TzEhueBuGv7p
-h/BPkDYc7ZDKliNQVCfAc4XPcCuxH8lVrnTeGirzUvvxg54TTVpB61CmHrZrgCwzsYSo0ueBUy2T
-P2wGnmuA8S5mYZb63vSUz8Nwamg4JL2UWTZ/ITJDLbqOouD3pdXJb3/nBEI7fL5v7wf/frUsIM15
-igM3QyVQXzpW11kVnwdGUobdpNyARz29xNOhAVzGAE+KLQIwtBftibxTmPjNsUk4dROAnihJ+8Ly
-+gvn3tqGOquVbLtqe90q4umfgMuCIOU/I2IJ01ZVsH1Hu1JNPNUDMquTXBip+FYAEUM92i2RW4Az
-PcrxKYmF0C15XRE39sn6kEikm1pGnaGKEjUz3PT0O9WrP9kaYCwrSLVOY1/KUXf2Gh7Zfbsy27hQ
-tXJHvFSPbqrjwqVdwJlYlWT7dh5xLrcggIGB9TH9+ktLvIvzH8gu7ZKoDon3P4wHHwrVjbLkPVYo
-3Yd/p6/B8wLJLwmqjtOqhfvGpZVxNPd/7EebpixD4ewtIMLL2ZlufKJjDUQn9Ut7IJljAQKAFXHW
-4ZX556ZW8QkH7AQl3/2DZgN5l81WVRzIdx80k7L1SHkxcdzwrzyJ2aG25dJFjS5uz1tzxfMzE4bo
-9s8IKvO5W2YphATKgjDvs9T06e/YscJHYAxBQxslESJE5NtE7HUJATumaIwwfAUhc/w7iVCropIH
-N/Sj4t9B7jGVawIJLtR4xGCuGnaOSW9lamBGtPlM7Iqddf8WHLLYbNo+U2V8B/3jrlRhdW4xbxqg
-P7PhEf2mTWWqCttMANgwHF0/InXamKqvauXA4R7wp0Qq77s6cY5Uw5YUePspMYoYFe+SIlO68bPc
-2JCBOC4ZDxdXC9XCJ0ABWQzGIF3GAB6KN6MHkt7NMCqEpG8KK2k7GViT7OV42Dsvb/XLqqzxmAU2
-PIh4mA9LI+KfiekXb4kWyHe0sbPW7tfarudg4HWgvvgJAmCM2GxBKoltlH4gtEDOVb4+t76iez3S
-RDpHI9tGIElJ3OAX966gZUv1ug7p7AE6e/wVME5zCO5XZFVnIRiHwHgkAgvllNnF2KMaXIepnMPw
-X/DQFteHFrcZ380I59YpzOMRV2R2C6Q9PQj2vr8C5dK98V3MJeiXMsU0nuThBe+MJ8DS9Lhnd/EK
-Hn77VrsEHjbltLJY6Cv0c7q2uyRPzpY1s0DaE8gn5YKHxVVuKQNNZhen/Ys9u/2uPZe1QRlr5uRo
-TB1fH3l7Lep+RNgWMvQtriBEpK5OfOfL7F8QzUI1m6oOqJedd8nsjh5kTPvDSYYRpysI30xCx+h2
-efUcgi6q4GGf8/1EVEfR27Pzmiw5Zu0zGa9zTMYi1AbL2HzUbHxIv8q0lPg0HWPVRnAjv+C3up2J
-Ol5H8pJUHhg6mGYx10kEHdlpdcF9bd0CZ/HXmD5X+oR0i4ocHPBf6czxUElRmigtsZEdfbjZh0==
+<?php
+
+namespace Coderstm\Contracts;
+
+use Carbon\Carbon;
+
+interface ManagesSubscriptions
+{
+    public function valid(): bool;
+
+    public function incomplete(): bool;
+
+    public function expired(): bool;
+
+    public function active(): bool;
+
+    public function recurring(): bool;
+
+    public function canceled(): bool;
+
+    public function onTrial(): bool;
+
+    public function hasDowngrade(): bool;
+
+    public function onGracePeriod(): bool;
+
+    public function hasIncompletePayment(): bool;
+
+    public function swap(int $planId, bool $invoiceNow = true): self;
+
+    public function cancelDowngrade(): self;
+
+    public function renew(): self;
+
+    public function trialDays(int $trialDays): self;
+
+    public function trialUntil($trialUntil): self;
+
+    public function skipTrial(): self;
+
+    public function endTrial(): self;
+
+    public function cancel(): self;
+
+    public function cancelNow(): self;
+
+    public function resume(): self;
+
+    public function withCoupon(?string $coupon): self;
+
+    public function upcomingInvoice(bool $start = false, ?Carbon $dateFrom = null);
+
+    public function pay($paymentMethod, array $options = []): self;
+
+    public function cancelOpenInvoices(): self;
+
+    public function paymentConfirmation($order = null): self;
+
+    public function paymentFailed($order = null): self;
+
+    public function saveAndInvoice(array $options = [], bool $force = false): self;
+
+    public function saveWithoutInvoice(array $options = []): self;
+
+    public function sendRenewNotification(): void;
+}

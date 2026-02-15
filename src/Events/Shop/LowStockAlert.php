@@ -1,29 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cP+bLSQxJlKc2gk7aZSZu3tgoAc1gaWR+YCuRLoi4AF6nnnuM5qw0uzjpMxngarOhj9FJc4DF
-sbrlBssHtgBxJ+Yd5wcsG7FiaQjAUNS/GLs6L9A3mLllkBZYEU2FiMPUluHYDLZzB+1/UMaskaRf
-C7GdMnzwSh3Ar+Jqg5MGmQl/vQCp8xC6prjtR8NIx97ENqMv/+EfFf4NNSnydiXwk5t8dPfREfZ9
-gWyG0AD9nbzsCNTBL0PVktRp6BYbSRy9kuiNusJd/k3v160rsY8JuSfsY8F8SM+QSpZt0ytBMcMX
-AoxaApyJoC5AGLDl3yDzAJsj1ftI2wrLPPysUkkAsop037AMsx/ALwSBfodH4ge03Avf27OZ+FqB
-oYPH0IECjzj7s2YF3L5HsU7hYc7fHTYYrRXwA9zOa7UMcXSQdliJ72u9eMjCxw8xcmXzPzShQ3+4
-t9px8TkqJcZ6jPzCXhL9PUYVix1BLD+GBh+Pka8FVF4wn9yUAqI2JjxK7lCwc5Ymcj+MDYFYzq1k
-2XTpFyzD7sgFnr4qDsJnq4zbLf4z/JHKHAwO0NzhPWUDRCd3P8X8pQ+tqMrni6w7TyS/8RwQqf75
-TnkZvemihHG1YZrQaJ5sJ2BXIqQuuRr92Yk1aXj7PldDoQMRTFyea7BKdL//11Pdz1bV0jDH3MRF
-dgu7U7PYCu5TKFm1ppt9JcbkKCY14NEJIbNJieEnQSfuDgqIUligxw9GJ5ahKZd5Z+6aG/T3TfGc
-aK/DyI43Y8mauogfOw+GQsRS0nlnkXgZrDQru/oXR5HZUxHDLvwGvh4Ep1wBSibIQ7GIKe9SBU16
-JR5vKIATgribwRfDU+YItebb7V7fM3JNrDNvV9bfJ2nb+tsvIzqdXyxQATA6yaUtQi3O4BqgHhKW
-abP5xI6koqdMjnd2D6MsKUvNdrfY8ecVNqim5YeUQoInlyNdEbVydLq+1yeTjyAeOiE6ZX7JhH2U
-G77xVSbQ/iKZ666ZrcdcMPcb2Kv+ctzct6PRnS9sHakeWOC6T2KJkbBxC0If3gu+UaXzxfGOPMUN
-mfARBM//yrB0oiRsf02OPiXObB91mCit+oL5E94ayB4n/Baq+v38S5lA7QrSs1x/DIbgomqEiz0x
-SiPf02KpsOWTXYbJSeRNbLG+oIB8Q63SbKh0GiV5n8o83gtgNpQBy5mt3E4NJ3fMI/Y2VOtIDySc
-b8OuIhOm2YGWmPl0YnJg+RdFn0dzMUiWU0QVpEtzGpyKpwKnuL+ewC2MRMQRTOzYwxx3TtvSjQ3H
-aRlsHZUAxH+333IWuFWQHblHqrs1HGVg1so9FLofz6F6jlV2g+7xY0qu62h/7l5Jn3gzEesh+bW5
-i0BGfDtmCXnIspGcCVFqYXCNU0emi+6YS9OJ+ojUswxYrJ3e3Uq5csnNPnWWEUZOPtyDKjMr3fGL
-sLBtUKo3wGPWwFJ2lsvorNRkC6kfSbo7tbdcwGrT1VJdcC9zDVr3dWHz1gVa6EWf+ZA8LvSOaQy8
-uqvPXD5jAUnKzVorHsTZ6MGFovfT6FXJygr87C3gqex3+Syxh20kpNB0FfsbZmTRu6Fbf3lQ1gR3
-MQEcD5RCYm6X8Z8C5i94UT/0NiI+i41ieax8xbMkQVPF5yvADJbxJV2EBvc2XXS2i+darQSbkjJw
-QEn52mztaWqh5ZKSQDXX1GzZaJknOCkkl8KHSCY1FmY5ELIM1Zh/JhsMRhZTLVaNr4DVowx+6KwY
-KaD4qAP0pumEntQCxFL/R/AChel0+mjcgPSDVNxix5rBsybj6DnwdPp+wpv09SiXOXW4a8+2m2CQ
-zh2NU3yqWMfP7b9ACCDq/8N53Kh3ZbWUK3afshALZFgwOwwbGGN2Mt2lJI0hnOpIK8v6dwNTCqnQ
-LsATptf/ifycQzMRVGHQb6ev0bOHfXbOK5q=
+<?php
+
+namespace Coderstm\Events\Shop;
+
+use Coderstm\Models\Shop\Product\Variant;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class LowStockAlert
+{
+    use Dispatchable, SerializesModels;
+
+    public $variant;
+
+    public $inventory;
+
+    public $threshold;
+
+    public function __construct(Variant $variant, $inventory = null, int $threshold = 10)
+    {
+        $this->variant = $variant;
+        $this->inventory = $inventory;
+        $this->threshold = $threshold;
+    }
+}

@@ -1,48 +1,46 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPt5/cyIUmd/hPyyEv+HgOX722Q+ycNCdyS119Qc82VJccn2GZbDEiKhXr/TM2/V02DpPn5V4
-pAWHK/cQHWN18mzyRiCSENojOLs5rMXoQx9ZKVTrvcWf//BJRJ3KAKdwxWGVufUwjh7itYqYeHAI
-LFqml3OILKACdhp4t2dRgFsj+B0zhFrTdKoZO7IIH45pJi3n0S0Ywfw6/Wf/62dqP1HC2TZN2iwz
-kCEnUdfqYsV9xXcbUR+ue4oYGInu8dEu8B2cuqRd/k3v160rsY8JuSfsY8F8n73t1B4e3H57Cl6C
-AsvIEnKgRew0QeSzZf3NhWppXkl+cJx5dKJOl7mMkC5ITH1Xdn0rwhrH4oHAZfpibJ8+kRM3c8Gu
-Ve5PxGOQy1pKXqBtZMwAgzKXFVFaVmkd9+TsVTLwem0UkAnwnPTmxiiKd2gxH+7w6ZKin/id0EJx
-hVmR8P8+sPmHWmfgHwKbUtycAorQi3aoeLV4s1lTdJ1l0Elc8VMkRRvFkueGyfxROJkfhdDldph3
-sfN9ZmfO8pPEqu4aousNjC90Cuec2v36KC155W44x7Vsxm3ISwfZ6eQXpbZzlfIBq8ISHPJHEEfC
-vyMVg/1r5U3udjSs6XeTzOSegGuaruZ8S9W3ZSU3EJvZ6Roi8wg0JrBS/DG0He0UhAd1vq3ZB41a
-85JUG1Qv05iwqSNGCWJgdMhemPyTLIotsZJBxMMdFgJlo/3Cock5tTC4I9aQzkw/+IGchArRCZSw
-tvqGw9m60JNeZxaXh78f4S9Ab+CSzjCDl8CQxL3lMDcBj3A1A/zofrQiwHOWECeQUy6czOWmxYsf
-JbUFCC4VwHzEWQEdHjZ4i399XobY7f4TXnbaqxUftbS2/qOkqwwq7EPYNwq1M7oknL4CQzcMz70r
-X59cXsojPJJYhECWrcY3KWNH8PlwHHnxmT5TVFLUr15tnYOLynRhGDjsatBF3HPaIX/6h830QkgM
-T2HpbzmBLBgdOPZ7wtaI/+mjtIdjGnyRjpB1N1Eu+H+65mof75mYx6mM4QUOzm+owIZiayU9qRk7
-jlDg3LehBqGPwnRFtQEs+ONyykc2nraKp0zPGx1rXcSRREQp7I9LAxZzH3QCtCRvhi8l/HocciQI
-0snbmHfIIxyoGix8BAi3xJfOvHMTWQvClmdYjuKjKQwwnt0GlKpO4bWbI8+9c6AG+cmKWFwhAYcu
-yZ8gnKPBd/teOnCLIfxL5N+32d58qjnia7rxnkfXwCEWDKK7Ltd0PpMDOybowR5zYrN6ipqg0fPv
-o4tFco40wBRft7z/pZqNp3WunNIb8bYfwUO7CO7pyUZ0K8bogV93hjpIuKp/a4TZyofBIHNidFBE
-HsGPCxTWbPKbRL61zwXqn0+8zcGgXX9XMC4knvd60Zzx1to8gr7SIUUhW7dl9xI+TDwNfNb190r5
-n62nC1RWnkriOwQEcXNtDWSrJoDQQ3TvqX3K9fzhKugWWPdbtocYxJTtuq6cBah4S3HTD0Q8PEtk
-c7OqDMuNBRRv9Bu+aPgmcQD4I5BP4j5dNFMVzNXWEAcu4ZfpeqUr920Sj8R0VDtVNXw424u4NPbS
-xl/gv82c4BwNJNQzSdXmnMhuu4GAye0u6jPcNBQN6/g4YIDk2pKrcwFsKGMoYusfWtZGlTi/NoGs
-ppxeI/4u5PMaUnnPqFc4GX1p9Em2KAhNSD0rmJCuwWNlWd1Rxh0oQI19aD6RNtg/ilbzYWefH4S4
-4R4QCdOARyUYYNzSqc3PT9G786y1169SM+VFbvtJB/nAq1XUA/vg2DZK9aaJSaTRB2XS1/ketOb6
-AkXirxc1FeOjxMIJdGX76M+hqeK+e8e9pTPb40+vMoFBzBzekUGTrsdbzYQ0TAu3/qkicowbk2QV
-U24O0+gNOJH9GyoJ67sUyLsIkZUAo9GOTEEBtqzPQTJ8ULrG7nUD0acw88outYu3r1NVLWFJq0Ou
-8t9J24emSdW44S16Zzfq9mu2ExpSPmIpvAYQ6Ya+/i19j+v+agTqij+kZJjCcum/3/sKpo7GmSqi
-D8TYIMS52f+W2k+zSQJEzHnLx/PXhC93m+Gw0MVMqaceP1pS1Qqs+45LfNwBdteNVZx9OnuB24rZ
-hVfGGtOR69w9W87K2o1nZGYQ64BYjy2b6QUzvfUYEgtU19e4zGryi6OuipAtHIGaQXhwDFx10wEN
-1mVYVARSdbLem3DnEHhklX8gSqzcuB65Np2bBaIpNIlONsCnEKZ281yGITsjjdNH0nbe7SkE9CtU
-STeCKUQzjE5J/M9a4coyvQhlh69b+s7XxvpygRYBmf8CbJdKdMS+hDrrgfj+3M+czz7OjRAkskYE
-7C972H0oTM8wA9vPXkJpjvPSNmwiy0t/XDdWRKIw1IfbjhZz9FRWzwb80hS4J9+y1InL/jaI9kcs
-DY7XVQMcQq4nSKElkFIeCMv7mFDhQBBO7LK4oY0fDfrWC+op8r1tJg6CvxbtAUFVuYfyen6Yw9oD
-pepAxLcEciO3BRElAXZxjkqpamhqqkF00obx8i+dKzMslWtvg3afT0wYdecyEGkI3ex99Hynyq/C
-xXoaK9EugJ+SFhHAb8k5qDac3gCb95hHaC5qtHfBdgr/ZCcGPGLI9lDK6btnxHTv0QIk7mYYw2wv
-r1vS6CyrY+u/ei+T5MxJxZFjjDhGeP/EkotpTnE/poH16IAqfdTbbWATtYNovuXZeCe4GF/I8/2D
-b4kPAN2tojPdmjqfXkQA+SgoSCqYS8eG1qc+Ictind4MMNYM2iA9GjIsMsKV+6HXDnd8WwXku+09
-WhPkf8hZLoexOOWH+yH2xup0WPCivc1q/iC12Zl07HAc7Y+QBpDhZkysKis5/9s4vTlUTyZwa6jk
-e5w60dREC2tcThjzVEHq8Y98Ped/mLVXAblb4jR6VGDOlH1AavdDehTg8QhIQJIRbi/56HPqr8hv
-81DP/xjW4FqwD2Nz/uLjN0mMTJ2W2+TKa9MCyV0dV2ZLpsfQhAIIpVvqWTPv9a+kVkrv06fKonfk
-kLgyscWQy9jUsOgnCjhgqT2FGiX1pV9V78MWfw1LC+K6s36qaEId0wSv5AAyUqFqg/yxUpsVTrEl
-mGf5JjBpBZ3UNDCelp8qAjIBYruwrYPpOYW8jNHKEWgy4FYFZdWA3xfTbtwWQziWEgvN4vuifwd+
-f2JaEBrcPn8xDEuFedRTOssrZD2JGIYWZoR/ggVjNuA7OikIzxALgIUa6H2K3Xla2oidOiJymHjI
-jURNs0UD+95UgMS2oPyHbsk4Gp5mKLHA1RiXs0gBkOTUJ/DffpcMtNAtjpvJA22dM5ZONz52fFYh
-Kk1UbQ2fQQ//8W==
+<?php
+
+namespace Coderstm\Events;
+
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Subscription\Plan;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class SubscriptionPlanChanged
+{
+    use Dispatchable, SerializesModels;
+
+    public $subscription;
+
+    public $oldPlan;
+
+    public $newPlan;
+
+    public function __construct(Subscription $subscription, ?Plan $oldPlan, Plan $newPlan)
+    {
+        $this->subscription = $subscription;
+        $this->oldPlan = $oldPlan;
+        $this->newPlan = $newPlan;
+    }
+
+    public function hasPriceChanged()
+    {
+        return $this->oldPlan && $this->oldPlan->price != $this->newPlan->price;
+    }
+
+    public function hasIntervalChanged()
+    {
+        return $this->oldPlan && ($this->oldPlan->interval != $this->newPlan->interval || $this->oldPlan->interval_count != $this->newPlan->interval_count);
+    }
+
+    public function isDowngrade()
+    {
+        return $this->oldPlan && $this->newPlan->price < $this->oldPlan->price;
+    }
+
+    public function isUpgrade()
+    {
+        return $this->oldPlan && $this->newPlan->price > $this->oldPlan->price;
+    }
+}

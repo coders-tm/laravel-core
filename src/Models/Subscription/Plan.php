@@ -1,176 +1,225 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Uga2fQwp
+<?php
+
+namespace Coderstm\Models\Subscription;
+
+use Carbon\Carbon;
+use Coderstm\Coderstm;
+use Coderstm\Contracts\Currencyable;
+use Coderstm\Database\Factories\PlanFactory;
+use Coderstm\Enum\PlanInterval;
+use Coderstm\Services\Period;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Plan extends Model implements Currencyable
+{
+    use Core, HasSlug, SerializeDate;
+
+    protected $fillable = ['label', 'description', 'is_active', 'default_interval', 'interval', 'interval_count', 'is_contract', 'contract_cycles', 'allow_freeze', 'freeze_fee', 'grace_period_days', 'price', 'trial_days', 'variant_id', 'metadata'];
+
+    protected $appends = ['feature_lines', 'price_formatted', 'interval_label', 'effective_price', 'has_trial_period'];
+
+    protected $casts = ['is_active' => 'boolean', 'is_contract' => 'boolean', 'allow_freeze' => 'boolean', 'interval_count' => 'integer', 'contract_cycles' => 'integer', 'trial_days' => 'integer', 'grace_period_days' => 'integer', 'freeze_fee' => 'decimal:2', 'interval' => PlanInterval::class, 'metadata' => 'json'];
+
+    public function subscriptions(): HasMany
+    {
+        return $this->hasMany(Coderstm::$subscriptionModel)->active();
+    }
+
+    public function variant(): BelongsTo
+    {
+        return $this->belongsTo(\Coderstm\Models\Shop\Product\Variant::class, 'variant_id');
+    }
+
+    public function product()
+    {
+        return $this->hasOneThrough(\Coderstm\Models\Shop\Product::class, \Coderstm\Models\Shop\Product\Variant::class, 'id', 'id', 'variant_id', 'product_id');
+    }
+
+    public function getResetDate(?Carbon $dateFrom): Carbon
+    {
+        $period = new Period($this->interval->value, 1, $dateFrom ?? now());
+
+        return $period->getEndDate();
+    }
+
+    public function getNextBillingDate(?Carbon $dateFrom = null): Carbon
+    {
+        $period = new Period($this->interval->value, $this->interval_count, $dateFrom ?? now());
+
+        return $period->getEndDate();
+    }
+
+    public function getContractEndDate(?Carbon $dateFrom = null): Carbon
+    {
+        $period = new Period($this->interval->value, $this->interval_count, $dateFrom ?? now());
+
+        return $period->getEndDate();
+    }
+
+    public function getTotalBillingCycles(): ?int
+    {
+        if (! $this->is_contract) {
+            return null;
+        }
+
+        return $this->contract_cycles;
+    }
+
+    public function isContract(): bool
+    {
+        return $this->is_contract;
+    }
+
+    protected function featureLines(): Attribute
+    {
+        return Attribute::make(get: fn () => ! empty($this->description) ? explode("\n", $this->description) : []);
+    }
+
+    protected function priceFormatted(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->formatPrice());
+    }
+
+    protected function intervalLabel(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->formatInterval());
+    }
+
+    protected function effectivePrice(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->getEffectivePrice());
+    }
+
+    protected function hasTrialPeriod(): Attribute
+    {
+        return Attribute::make(get: fn () => $this->hasTrial());
+    }
+
+    public function features(): BelongsToMany
+    {
+        return $this->belongsToMany(Feature::class, 'plan_features')->withPivot('value');
+    }
+
+    public function syncFeatures(array $items = [])
+    {
+        $features = collect($items)->mapWithKeys(function ($value, $key) {
+            if ($feature = Feature::findBySlug($key)) {
+                return [$feature->id => ['value' => $value]];
+            }
+
+            return [$key => null];
+        })->filter();
+        $this->features()->sync($features->toArray());
+
+        return $this;
+    }
+
+    public function isFree(): bool
+    {
+        return $this->price <= 0;
+    }
+
+    public function hasTrial(): bool
+    {
+        return $this->trial_days > 0;
+    }
+
+    public function getTrialEndDate(?Carbon $startDate = null): ?Carbon
+    {
+        if (! $this->hasTrial()) {
+            return null;
+        }
+        $start = $startDate ?? now();
+
+        return $start->copy()->addDays($this->trial_days);
+    }
+
+    public function getEffectivePrice(?Carbon $currentDate = null): float
+    {
+        $now = $currentDate ?? now();
+        if ($this->hasTrial()) {
+            $trialEnd = $this->getTrialEndDate();
+            if ($trialEnd && $now->lte($trialEnd)) {
+                return 0;
+            }
+        }
+
+        return $this->price;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->is_active;
+    }
+
+    public function activate(): self
+    {
+        $this->update(['is_active' => true]);
+
+        return $this;
+    }
+
+    public function deactivate(): self
+    {
+        $this->update(['is_active' => false]);
+
+        return $this;
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('label')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    public function formatPrice()
+    {
+        return \Coderstm\Facades\Currency::format($this->price);
+    }
+
+    protected function formatInterval()
+    {
+        $interval = $this->interval->value;
+        if ($this->interval_count > 1) {
+            return "{$this->interval_count} {$interval}s";
+        } else {
+            return "{$interval}";
+        }
+    }
+
+    protected function formatAmount($amount)
+    {
+        return format_amount($amount);
+    }
+
+    public function getFreezeFee(): float
+    {
+        return $this->freeze_fee ?? config('coderstm.subscription.freeze_fee', 0.0);
+    }
+
+    public function allowsFreeze(): bool
+    {
+        if (! $this->allow_freeze) {
+            return false;
+        }
+
+        return config('coderstm.subscription.allow_freeze', true);
+    }
+
+    public function getCurrencyFields(): array
+    {
+        return ['price', 'freeze_fee'];
+    }
+
+    protected static function newFactory()
+    {
+        return PlanFactory::new();
+    }
+}

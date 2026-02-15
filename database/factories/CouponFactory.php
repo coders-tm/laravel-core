@@ -1,126 +1,193 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Coupon;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @template TModel of \Coderstm\Models\Coupon
+ *
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<TModel>
+ */
+class CouponFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<TModel>
+     */
+    protected $model = Coupon::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'name' => $this->faker->words(2, true).' Coupon',
+            'promotion_code' => strtoupper($this->faker->lexify('????').$this->faker->numerify('##')),
+            'type' => $this->faker->randomElement(['product', 'plan']),
+            'discount_type' => $this->faker->randomElement(['percentage', 'fixed', 'override']),
+            'value' => $this->faker->randomFloat(2, 5, 50),
+            'active' => true,
+            'auto_apply' => $this->faker->boolean(30), // 30% chance of auto-apply
+            'max_redemptions' => $this->faker->boolean() ? $this->faker->numberBetween(10, 100) : null,
+            'expires_at' => $this->faker->boolean() ? $this->faker->dateTimeBetween('now', '+1 year') : null,
+            'duration' => $this->faker->randomElement(['forever', 'once', 'repeating']),
+            'duration_in_months' => $this->faker->boolean() ? $this->faker->numberBetween(1, 12) : null,
+        ];
+    }
+
+    public function active()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'active' => true,
+            ];
+        });
+    }
+
+    public function inactive()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'active' => false,
+            ];
+        });
+    }
+
+    public function percentage($value = null)
+    {
+        return $this->state(function (array $attributes) use ($value) {
+            return [
+                'discount_type' => 'percentage',
+                'value' => $value ?? $this->faker->randomFloat(2, 5, 50),
+            ];
+        });
+    }
+
+    public function fixedAmount($value = null)
+    {
+        return $this->state(function (array $attributes) use ($value) {
+            return [
+                'discount_type' => 'fixed',
+                'value' => $value ?? $this->faker->randomFloat(2, 10, 100),
+            ];
+        });
+    }
+
+    public function override($value = null)
+    {
+        return $this->state(function (array $attributes) use ($value) {
+            return [
+                'discount_type' => 'override',
+                'value' => $value ?? $this->faker->randomFloat(2, 5, 25),
+            ];
+        });
+    }
+
+    public function autoApply()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'auto_apply' => true,
+            ];
+        });
+    }
+
+    public function noAutoApply()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'auto_apply' => false,
+            ];
+        });
+    }
+
+    public function withExpiry($date = null)
+    {
+        return $this->state(function (array $attributes) use ($date) {
+            return [
+                'expires_at' => $date ?? $this->faker->dateTimeBetween('now', '+6 months'),
+            ];
+        });
+    }
+
+    public function withoutExpiry()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'expires_at' => null,
+            ];
+        });
+    }
+
+    public function withMaxRedemptions($max = null)
+    {
+        return $this->state(function (array $attributes) use ($max) {
+            return [
+                'max_redemptions' => $max ?? $this->faker->numberBetween(10, 100),
+            ];
+        });
+    }
+
+    public function unlimited()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'max_redemptions' => null,
+            ];
+        });
+    }
+
+    public function forProducts()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'type' => 'product',
+            ];
+        });
+    }
+
+    public function forPlans()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'type' => 'plan',
+            ];
+        });
+    }
+
+    public function forever()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'duration' => 'forever',
+                'duration_in_months' => null,
+            ];
+        });
+    }
+
+    public function once()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'duration' => 'once',
+                'duration_in_months' => null,
+            ];
+        });
+    }
+
+    public function repeating($months = null)
+    {
+        return $this->state(function (array $attributes) use ($months) {
+            return [
+                'duration' => 'repeating',
+                'duration_in_months' => $months ?? $this->faker->numberBetween(1, 12),
+            ];
+        });
+    }
+}

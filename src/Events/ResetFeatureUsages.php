@@ -1,31 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-V8TMzzpBlH5THdI4o1B+3pz9YVdFaAouZfIJSG==
+<?php
+
+namespace Coderstm\Events;
+
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class ResetFeatureUsages
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $features;
+
+    public $subscription;
+
+    public function __construct(mixed $subscription, mixed $features)
+    {
+        $this->subscription = $subscription;
+        $this->features = $features;
+    }
+
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
+}

@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use Coderstm\Models\Tax;
-use League\ISO3166\ISO3166;
 use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use League\ISO3166\ISO3166;
 
 class TaxSeeder extends Seeder
 {

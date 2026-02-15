@@ -1,29 +1,24 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPmh/BUOHRaVR9dTBSp8c7ljtkfZ+oANrrDfDvM+tr1ARO1MCqre1h2lE8TO7tUHwPvEtJlig
-2BiAGsUP3+wb+1FUR955VqxXijfOmUKbrt1KKWUMTgDLVlGY/wL3ifxRywVk5y7dRag5QlwrgREj
-QFls5P6HzEWfchPV1PaNn6tzSmcoxza5vDomPIaQj88LAQLa/2MqfQ4wmJ+ZYvIffUVAmD4E3pT/
-4KXBYasyVBluVFBS3dTkaKqFinO8qkZGSwtECkV+uFa4O3NQ8XFXodQ8WyYJS04tVxQqwELUpPah
-hbklPYUm5FMkQDA9eUrR518LohpuTd8uVWqQWOYNZFswog+l480CevouLDQ6JrNNRJsYewt6LEz9
-x5xjG2mewQdILUQlKnKjplkxmaAAvBcolSRYyTSAHy5bwvFyDBR060Slwi4QqxudLSSVmsVhswgN
-0Yq+jl/oXyUQCY/hF+HkxkV5o53B7QpEKBSt6FRZrrw83dISb4/E3V9G75kAhy1wQP1RFMOWjIO0
-0fEvRSMb5TRwSLP/tAnEzX4o0z8f57gms/Yh628/NZql/d4RbOxvMsDcQEdhHM1hC9k0W8F6MwEq
-ngY+FfZpzsxrMR7vrRh2lsr3HNg1Vi3T7bZrk/LwdCupVkKh/nOU9wl2Rcxv3L6wYkvkuf/Ly65i
-LdB/th5laY0S9lCLZ81uDs9ShS1s+dgT+PpGOOI04d02W4nRj3zeTilFt6uISKPJHhuVu17mtnwA
-bm9PCeShkjGlRwqQ9aETJZYGZ8+MbdIexhbgzUtsLFaKGetSdzcKgsFszS0RAvUEyDxXJ4LO5cTo
-y6scTqKIU7VWjr5lNlxZwBp/Ki4eJ/fSGGT466V21sVOy+m14n88RuTwqT2hn0m17gVpRDAbT4gx
-cbM3XQBKeKUXjufBll1x30K6pU/0OjVyDwphacaDV/8GY6v2dNXBGX/crP1DlUBWAdX52T7kdCbr
-OKvb5BHfVIuOBERC2mHeTlatBMHYnnZJBlfhxUnRfYtXZY14vZuRisqYQMG6dF2w/eG7woDt4qt1
-XYXvz4VKeAktkDHwFhh5/PAZHqf2WPQ005AIRsbiDXz/1Tc2Tu1rUXBNShgHmakMl3iEgE6vDrUw
-PgmDfJVF4MD2f8GqEjk3p3MtmzsSd0nORJYUieNBlFqgZr2sCPcvjZr8GzT2PejT2xXBPfZ3oXMG
-yqndHOk0iNEREWxybgspxlwMsdowhQ9beMaTknclNee30LEDE2TAqaSw7TEnmYNKtXR/yHWMcybG
-CcumAgSDR9JjqIBOMewpMZjL7y0ILKx46WuQBc2xTFILltvDAOIXP9XMmy1kerno+d9JLtcvvlHi
-9l36J0KGM7t66d9IBUqYNFFx3+2yfy/TukI9B9tnnHVQ5nsbT9z2sVoGNrWkOAgFB0vq6J7JoXPb
-CitgtxyMnjnoq6V5ggt8L5WeVwo+sZsHpDCZGLVHnVgpxCkjn9Cr71YNSwgHhZxmMElfVQp7Z2Ia
-/12+GpzqTGuur0DirC3yUpv/BSDaieGL2cQ6CMhK2Lo3oHjItmK3sWMvwplfSne4TD17fves633Q
-yl566IYNoZ0/CVtPmK+Fu5loeghvzhUGVcuz8qIeZhx8Ie3TER1UGS2/fXU+2aZQBOhu1/Xhypfs
-aofSs9H/L+Iv49g89eP9T/tS2CF864Wvyfzm0xdftomuxEi0AiwYpURJOe7ZkD9W3SAVx0xLajdS
-FZaFFRkuYfXf3c3cMH9Ale2TNbbpYKTMTG1vflXIMW+HiXbSl0sUA9VDiYhGkyOcy39qMffqfs6g
-nSXpMbwl/Uj26E6x0AjsBwyzZmT5YLeMEs98lRIXNQNGPhDPFLx3IdwBDXQNRVNjePL5UDTXE3Df
-ww3+jzbY6JdGppx/ht7WP6b6ZFgOIbFRxY+yluXnKvW=
+<?php
+
+namespace Coderstm\Mail;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Content;
+use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Queue\SerializesModels;
+
+class TestEmail extends Mailable
+{
+    use Queueable, SerializesModels;
+
+    public function envelope(): Envelope
+    {
+        return new Envelope(subject: 'Test Email');
+    }
+
+    public function content(): Content
+    {
+        return new Content(markdown: 'emails.test');
+    }
+}

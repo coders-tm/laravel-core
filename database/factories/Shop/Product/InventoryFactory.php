@@ -1,29 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories\Shop\Product;
+
+use Coderstm\Models\Shop\Product\Inventory;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class InventoryFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Inventory::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'available' => rand(-20, 20),
+        ];
+    }
+}

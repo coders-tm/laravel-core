@@ -1,57 +1,68 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-f/vIfb0=
+<?php
+
+namespace Coderstm\Services\Payment;
+
+use Xendit\Configuration;
+use Xendit\Invoice\CreateInvoiceRequest;
+use Xendit\Invoice\InvoiceApi;
+use Xendit\PaymentMethod\PaymentMethodApi;
+use Xendit\PaymentMethod\PaymentMethodParameters;
+use Xendit\PaymentRequest\PaymentRequestApi;
+use Xendit\PaymentRequest\PaymentRequestParameters;
+
+class XenditClient
+{
+    protected $pmApiInstance;
+
+    protected $prApiInstance;
+
+    protected $invoiceApiInstance;
+
+    public function __construct(array $options = [])
+    {
+        $secretKey = $options['secret_key'] ?? config('xendit.secret_key');
+        if (! $secretKey) {
+            throw new \InvalidArgumentException('Xendit secret_key is required.');
+        }
+        Configuration::setXenditKey($secretKey);
+        $this->pmApiInstance = new PaymentMethodApi;
+        $this->prApiInstance = new PaymentRequestApi;
+        $this->invoiceApiInstance = new InvoiceApi;
+    }
+
+    public function createPaymentRequest(array $params)
+    {
+        $paymentRequestParameters = new PaymentRequestParameters($params);
+
+        return $this->prApiInstance->createPaymentRequest(null, null, null, $paymentRequestParameters);
+    }
+
+    public function getPaymentRequest($paymentRequestId)
+    {
+        return $this->prApiInstance->getPaymentRequestByID($paymentRequestId, null);
+    }
+
+    public function createPaymentMethod(array $params)
+    {
+        $paymentMethodParameters = new PaymentMethodParameters($params);
+
+        return $this->pmApiInstance->createPaymentMethod(null, $paymentMethodParameters);
+    }
+
+    public function getPaymentMethod($paymentMethodId)
+    {
+        return $this->pmApiInstance->getPaymentMethodById($paymentMethodId, null);
+    }
+
+    public function createInvoice(array $params)
+    {
+        $invoiceRequest = new CreateInvoiceRequest($params);
+
+        return $this->invoiceApiInstance->createInvoice($invoiceRequest);
+    }
+
+    public function getInvoice($invoiceId)
+    {
+        return $this->invoiceApiInstance->getInvoiceById($invoiceId);
+    }
+}

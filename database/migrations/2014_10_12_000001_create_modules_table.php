@@ -1,40 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hCHeVgxaaExy
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('modules', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name')->nullable();
+            $table->string('icon')->nullable();
+            $table->string('url')->nullable();
+            $table->boolean('show_menu')->default(1);
+            $table->integer('sort_order')->default(0);
+
+            $table->timestamps();
+        });
+
+        $this->setAutoIncrement('modules');
+    }
+};

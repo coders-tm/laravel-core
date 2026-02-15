@@ -1,42 +1,35 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-dO1N0tBnKA7NqVse
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Notification templates table (avoids collision with Laravel's database notifications table)
+        Schema::create('notification_templates', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('label')->nullable();
+            $table->string('subject')->nullable();
+            $table->string('type')->nullable()->index();
+            $table->text('content')->nullable();
+            $table->boolean('is_default')->default(false)->index();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('notification_templates');
+    }
+};

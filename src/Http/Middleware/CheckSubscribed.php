@@ -1,36 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Middleware;
+
+use Closure;
+use Coderstm\Coderstm;
+
+class CheckSubscribed
+{
+    public function handle($request, Closure $next, $subscribed = false)
+    {
+        $user = $this->user();
+        $subscription = $user->subscription();
+        if ($user->subscribed()) {
+            return $next($request);
+        }
+
+        return response()->json(['subscribed' => false, 'message' => __('To access exclusive features, please subscribe to a plan. You are not currently subscribed to any plan.')], 403);
+    }
+
+    private function user()
+    {
+        if (request()->filled('user_id') && is_admin()) {
+            return Coderstm::$userModel::findOrFail(request()->user_id);
+        }
+
+        return user();
+    }
+}

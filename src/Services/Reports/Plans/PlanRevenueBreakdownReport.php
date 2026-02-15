@@ -1,117 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-zcfyqOhmd2ND6pwUrJRBD/82W1O/lWaAbu0=
+<?php
+
+namespace Coderstm\Services\Reports\Plans;
+
+use Coderstm\Models\Shop\Order;
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class PlanRevenueBreakdownReport extends AbstractReport
+{
+    protected array $columns = ['plan_id' => ['label' => 'Plan ID', 'type' => 'number'], 'plan_name' => ['label' => 'Plan Name', 'type' => 'text'], 'price' => ['label' => 'Price', 'type' => 'currency'], 'gross_revenue' => ['label' => 'Gross Revenue', 'type' => 'currency'], 'discounts_applied' => ['label' => 'Discounts Applied', 'type' => 'currency'], 'refunds' => ['label' => 'Refunds', 'type' => 'currency'], 'net_revenue' => ['label' => 'Net Revenue', 'type' => 'currency'], 'avg_revenue_per_sub' => ['label' => 'Avg Revenue/Sub', 'type' => 'currency'], 'growth_rate' => ['label' => 'Growth Rate', 'type' => 'percentage']];
+
+    public static function getType(): string
+    {
+        return 'plan-revenue-breakdown';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Detailed revenue analysis by subscription plan';
+    }
+
+    public function query(array $filters)
+    {
+        return DB::table('plans')->leftJoin('subscriptions', function ($join) use ($filters) {
+            $join->on('subscriptions.plan_id', '=', 'plans.id')->whereBetween('subscriptions.created_at', [$filters['from'], $filters['to']]);
+        })->leftJoin('orders', function ($join) {
+            $join->on('orders.orderable_id', '=', 'subscriptions.id')->where('orders.orderable_type', 'like', '%Subscription');
+        })->select(['plans.id as plan_id', 'plans.label as plan_name', 'plans.price', DB::raw("COALESCE(SUM(CASE WHEN orders.payment_status = '".Order::STATUS_PAID."' THEN orders.grand_total END), 0) as gross_revenue"), DB::raw("COALESCE(SUM(CASE WHEN orders.payment_status = '".Order::STATUS_PAID."' THEN COALESCE(orders.discount_total, 0) END), 0) as discounts_applied"), DB::raw("COALESCE(SUM(CASE WHEN orders.payment_status = '".Order::STATUS_REFUNDED."' THEN orders.grand_total END), 0) as refunds"), DB::raw('COUNT(DISTINCT subscriptions.id) as subscription_count')])->groupBy('plans.id', 'plans.label', 'plans.price')->orderBy('plans.label');
+    }
+
+    public function toRow($row): array
+    {
+        $grossRevenue = (float) ($row->gross_revenue ?? 0);
+        $discountsApplied = (float) ($row->discounts_applied ?? 0);
+        $refunds = (float) ($row->refunds ?? 0);
+        $netRevenue = $grossRevenue - $discountsApplied - $refunds;
+        $subCount = (int) ($row->subscription_count ?? 0);
+        $avgRevenuePerSub = $subCount > 0 ? $netRevenue / $subCount : 0;
+
+        return ['plan_id' => (int) $row->plan_id, 'plan_name' => $row->plan_name ?? '', 'price' => (float) ($row->price ?? 0), 'gross_revenue' => $grossRevenue, 'discounts_applied' => $discountsApplied, 'refunds' => $refunds, 'net_revenue' => (float) $netRevenue, 'avg_revenue_per_sub' => (float) $avgRevenuePerSub, 'growth_rate' => (float) 0];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $summary = DB::table('orders')->whereBetween('created_at', [$filters['from'], $filters['to']])->where('orderable_type', 'like', '%Subscription')->select([DB::raw("COALESCE(SUM(CASE WHEN payment_status = '".Order::STATUS_PAID."' THEN grand_total END), 0) as gross_revenue"), DB::raw("COALESCE(SUM(CASE WHEN payment_status = '".Order::STATUS_PAID."' THEN COALESCE(discount_total, 0) END), 0) as discounts_applied"), DB::raw("COALESCE(SUM(CASE WHEN payment_status = '".Order::STATUS_REFUNDED."' THEN grand_total END), 0) as refunds")])->first();
+        if (! $summary) {
+            return ['total_gross_revenue' => format_amount(0), 'total_discounts' => format_amount(0), 'total_refunds' => format_amount(0), 'total_net_revenue' => format_amount(0)];
+        }
+        $grossRevenue = (float) ($summary->gross_revenue ?? 0);
+        $discountsApplied = (float) ($summary->discounts_applied ?? 0);
+        $refunds = (float) ($summary->refunds ?? 0);
+
+        return ['total_gross_revenue' => format_amount($grossRevenue), 'total_discounts' => format_amount($discountsApplied), 'total_refunds' => format_amount($refunds), 'total_net_revenue' => format_amount($grossRevenue - $discountsApplied - $refunds)];
+    }
+}

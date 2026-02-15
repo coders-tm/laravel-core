@@ -1,35 +1,37 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-kz7t0Pm=
+<?php
+
+namespace Coderstm\Http\Middleware;
+
+use Closure;
+use Coderstm\Facades\Shop;
+use Coderstm\Models\Shop\Checkout;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as BaseResponse;
+
+class CartTokenMiddleware
+{
+    public function handle(Request $request, Closure $next): BaseResponse
+    {
+        try {
+            $cartToken = Shop::token($request);
+            if (! $cartToken) {
+                $cartToken = Checkout::uuid('cart_token');
+            }
+        } catch (\Throwable $e) {
+            $cartToken = null;
+        }
+        $response = $next($request);
+        $this->setCartTokenCookie($response, $cartToken);
+
+        return $response;
+    }
+
+    protected function setCartTokenCookie(BaseResponse $response, ?string $cartToken = null): void
+    {
+        if ($response instanceof JsonResponse || $response instanceof Response) {
+            $response->cookie('cart_token', $cartToken, 60 * 24 * 365, '/', null, false, false);
+        }
+    }
+}

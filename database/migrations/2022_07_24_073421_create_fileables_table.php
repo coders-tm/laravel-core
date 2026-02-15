@@ -1,42 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-ptQC
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('fileables', function (Blueprint $table) {
+            $table->string('fileable_type');
+            $table->unsignedBigInteger('fileable_id');
+            $table->unsignedBigInteger('file_id');
+            $table->string('order')->default(0)->nullable();
+            $table->string('type')->nullable()->index();
+
+            $table->foreign('file_id')->references('id')->on('files')->cascadeOnDelete();
+
+            $table->index(['fileable_type', 'fileable_id']);
+        });
+    }
+};

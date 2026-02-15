@@ -1,54 +1,36 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Cm==
+<?php
+
+namespace Coderstm\Listeners\Shop;
+
+use Coderstm\Coderstm;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Queue\InteractsWithQueue;
+
+abstract class AdminNotificationListener implements ShouldQueue
+{
+    use InteractsWithQueue;
+
+    protected function adminQuery(?string $permission = 'orders'): Builder
+    {
+        $model = Coderstm::$adminModel;
+        $query = $model::query()->where('is_supper_admin', true);
+        if ($permission && method_exists($model, 'permissions')) {
+            $query = $query->whereHas('permissions', function ($q) use ($permission) {
+                $q->where('scope', $permission)->wherePivot('access', 1);
+            });
+        }
+        if (method_exists($model, 'scopeOnlyActive')) {
+            $query = $query->onlyActive();
+        }
+
+        return $query;
+    }
+
+    protected function notifyForEvent(callable $notification, ?string $permission = 'orders'): void
+    {
+        foreach ($this->adminQuery($permission)->cursor() as $admin) {
+            $admin->notify($notification($admin));
+        }
+    }
+}

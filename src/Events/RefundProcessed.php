@@ -1,30 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Events;
+
+use Coderstm\Models\Refund;
+use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
+
+class RefundProcessed
+{
+    use Dispatchable, InteractsWithSockets, SerializesModels;
+
+    public $refund;
+
+    public function __construct(Refund $refund)
+    {
+        $this->refund = $refund;
+    }
+
+    public function broadcastOn()
+    {
+        return new PrivateChannel('channel-name');
+    }
+}

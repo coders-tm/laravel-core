@@ -1,127 +1,76 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Coupons;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class DiscountImpactReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'total_orders' => ['label' => 'Total Orders', 'type' => 'number'], 'orders_with_discount' => ['label' => 'Orders with Discount', 'type' => 'number'], 'discount_rate' => ['label' => 'Discount Rate', 'type' => 'percentage'], 'gross_revenue' => ['label' => 'Gross Revenue', 'type' => 'currency'], 'total_discounts' => ['label' => 'Total Discounts', 'type' => 'currency'], 'net_revenue' => ['label' => 'Net Revenue', 'type' => 'currency'], 'avg_discount_per_order' => ['label' => 'Avg Discount/Order', 'type' => 'currency'], 'discount_percentage_of_revenue' => ['label' => 'Discount % of Revenue', 'type' => 'percentage']];
+
+    public static function getType(): string
+    {
+        return 'discount-impact';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Measure how discounts affect revenue and profitability';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin(DB::raw('orders'), function ($join) {
+            $join->whereRaw('orders.created_at BETWEEN periods.period_start AND periods.period_end');
+        })->leftJoin(DB::raw('discount_lines'), function ($join) {
+            $join->on('discount_lines.discountable_id', '=', 'orders.id')->whereRaw("discount_lines.discountable_type LIKE '%Order%'");
+        })->select(['periods.period_start', 'periods.period_order', DB::raw('COUNT(DISTINCT orders.id) as total_orders'), DB::raw('COUNT(DISTINCT CASE WHEN discount_lines.id IS NOT NULL THEN orders.id END) as orders_with_discount'), DB::raw('COALESCE(SUM(orders.grand_total), 0) + COALESCE(SUM(discount_lines.value), 0) as gross_revenue'), DB::raw('COALESCE(SUM(discount_lines.value), 0) as total_discounts'), DB::raw('COALESCE(SUM(orders.grand_total), 0) as net_revenue')])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $totalOrders = (int) ($row->total_orders ?? 0);
+        $ordersWithDiscount = (int) ($row->orders_with_discount ?? 0);
+        $grossRevenue = (float) ($row->gross_revenue ?? 0);
+        $totalDiscounts = (float) ($row->total_discounts ?? 0);
+        $netRevenue = (float) ($row->net_revenue ?? 0);
+        $discountRate = $totalOrders > 0 ? $ordersWithDiscount / $totalOrders * 100 : 0;
+        $avgDiscountPerOrder = $ordersWithDiscount > 0 ? $totalDiscounts / $ordersWithDiscount : 0;
+        $discountPercentage = $grossRevenue > 0 ? $totalDiscounts / $grossRevenue * 100 : 0;
+
+        return ['period' => $period, 'total_orders' => $totalOrders, 'orders_with_discount' => $ordersWithDiscount, 'discount_rate' => (float) $discountRate, 'gross_revenue' => $grossRevenue, 'total_discounts' => $totalDiscounts, 'net_revenue' => $netRevenue, 'avg_discount_per_order' => (float) $avgDiscountPerOrder, 'discount_percentage_of_revenue' => (float) $discountPercentage];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('orders')->leftJoin(DB::raw('discount_lines'), function ($join) {
+            $join->on('discount_lines.discountable_id', '=', 'orders.id')->where('discount_lines.discountable_type', 'like', '%Order%');
+        })->whereBetween('orders.created_at', [$filters['from'], $filters['to']])->selectRaw('
+                COUNT(DISTINCT orders.id) as total_orders,
+                COUNT(DISTINCT CASE WHEN discount_lines.id IS NOT NULL THEN orders.id END) as orders_with_discount,
+                COALESCE(SUM(orders.grand_total), 0) + COALESCE(SUM(discount_lines.value), 0) as gross_revenue,
+                COALESCE(SUM(discount_lines.value), 0) as total_discounts,
+                COALESCE(SUM(orders.grand_total), 0) as net_revenue
+            ')->first();
+        if (! $stats) {
+            return ['total_orders' => 0, 'orders_with_discount' => 0, 'total_gross_revenue' => format_amount(0), 'total_discounts' => format_amount(0), 'total_net_revenue' => format_amount(0), 'discount_rate' => (float) 0];
+        }
+        $totalOrders = (int) $stats->total_orders;
+        $ordersWithDiscount = (int) $stats->orders_with_discount;
+
+        return ['total_orders' => $totalOrders, 'orders_with_discount' => $ordersWithDiscount, 'total_gross_revenue' => format_amount($stats->gross_revenue), 'total_discounts' => format_amount($stats->total_discounts), 'total_net_revenue' => format_amount($stats->net_revenue), 'discount_rate' => $totalOrders > 0 ? $ordersWithDiscount / $totalOrders * 100 : 0];
+    }
+}

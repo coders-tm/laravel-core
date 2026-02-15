@@ -1,68 +1,67 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-sMeIk+aUIcYnSFdVn/EUl3KSknPEpR4khGTE
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+
+abstract class AbstractChart
+{
+    protected Request $request;
+
+    protected int $months;
+
+    protected string $format;
+
+    protected Carbon $startDate;
+
+    protected Carbon $endDate;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+        $period = $request->input('period', 'month');
+        $this->months = $period === 'year' ? 24 : 12;
+        $this->format = 'M y';
+        $this->startDate = Carbon::now()->subMonths($this->months - 1)->startOfMonth();
+        $this->endDate = Carbon::now()->endOfMonth();
+    }
+
+    protected function getMonthLabels(): array
+    {
+        $labels = [];
+        $diffInMonths = $this->startDate->diffInMonths($this->endDate);
+        for ($i = 0; $i <= $diffInMonths; $i++) {
+            $currentDate = $this->startDate->copy()->addMonths($i);
+            $labels[] = $currentDate->format($this->format);
+        }
+
+        return $labels;
+    }
+
+    protected function getDateFormatExpression(string $column, string $format = '%b %y'): string
+    {
+        $driver = DB::connection()->getDriverName();
+
+        return match ($driver) {
+            'mysql', 'mariadb' => "DATE_FORMAT({$column}, '{$format}')",
+            'pgsql' => "TO_CHAR({$column}, 'Mon YY')",
+            'sqlite' => "strftime('%Y-%m', {$column})",
+            'sqlsrv' => "FORMAT({$column}, 'MMM yy')",
+            default => "DATE_FORMAT({$column}, '{$format}')",
+        };
+    }
+
+    protected function formatLabel(string $label): string
+    {
+        $driver = DB::connection()->getDriverName();
+        if ($driver === 'sqlite' && preg_match('/^\\d{4}-\\d{2}$/', $label)) {
+            return Carbon::parse($label.'-01')->format($this->format);
+        }
+
+        return $label;
+    }
+
+    abstract public function get(): array;
+}

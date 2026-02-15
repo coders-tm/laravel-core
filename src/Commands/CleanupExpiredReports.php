@@ -1,58 +1,47 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Uny6yjH84xcuWQIz
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Models\ReportExport;
+use Illuminate\Console\Command;
+
+class CleanupExpiredReports extends Command
+{
+    protected $signature = 'reports:cleanup-expired
+                            {--days=7 : Delete reports older than this many days}
+                            {--force : Skip confirmation}';
+
+    protected $description = 'Clean up expired report exports';
+
+    public function handle(): int
+    {
+        $days = (int) $this->option('days');
+        $force = $this->option('force');
+        $query = ReportExport::where('expires_at', '<', now())->orWhere('created_at', '<', now()->subDays($days));
+        $count = $query->count();
+        if ($count === 0) {
+            $this->info('No expired reports found.');
+
+            return self::SUCCESS;
+        }
+        if (! $force && ! $this->confirm("Found {$count} expired report(s). Delete them?", true)) {
+            $this->info('Operation cancelled.');
+
+            return self::SUCCESS;
+        }
+        $this->info("Cleaning up {$count} expired report(s)...");
+        $bar = $this->output->createProgressBar($count);
+        $bar->start();
+        $deleted = 0;
+        $query->each(function ($export) use ($bar, &$deleted) {
+            $export->delete();
+            $deleted++;
+            $bar->advance();
+        });
+        $bar->finish();
+        $this->newLine(2);
+        $this->info("Successfully deleted {$deleted} expired report(s).");
+
+        return self::SUCCESS;
+    }
+}

@@ -1,52 +1,39 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPtWr4hfX7kUzV8I7cH91cU7e5Y2O2BNEMesuNe+NVWp7jfl6nrk5nB+JD5BaXxIAlSUhMPO0
-ig7yh4g/i2ykdvQSO2nrz6nApS1ng1ivd5L7L7fUwsUbUlk8h6iS8G4tYg4OK4RHIsDQeN7fhFKD
-vG6UAzIhRJl/ekP1fgBAKFFM+kETlU9FUWL1DiUF9bkuxnz9oK8tEcQchLIc7trSQ2nC0lZoRcEc
-UYMr5WRk6PzFC2Yb4OEtp4aN/t/uCVEgo5u0v/xW+GHWDTeY4+7ATeY3o4fg8Ex542z8H3T/M2lk
-lLT/jjLG2QEq/ao5cj5g9fRH5XbCcQe1bvfsZs08SF2EmY1DKTpM3Qmz+gy5qXdNsB/faYZIziYq
-9r3grpGaB96ZZExW3wf46mIz6azoTXPSo+XR/HAygGzGGT0hi81twcSc02WwG8D1dKj1zEd9CUqz
-vjAdTyo8IldlUFZvOcMa3tgTjWiST3LVh7MCnk1iR1v/P7igCkEVCQIn2lxQTpUAiPQoGVBmTWfr
-8LKKO2uw+OOFy878hnlgdwTEIFPkhL6n1m5ufIHmbhAfvsbRsQf5pXHa/zwnfMNKQxNs/19gUU4v
-tqdG2PvlXBERPMPm3eHQVIfDxexHN+9IvkvnGyLwonpF7YH49ARTydJZtWrIlezSX9HWeq56M1HA
-tI4e0hzJod2P6n/71xX4365brSP1aj62AbZm6C0IapqVvgrJ7SoXflI1Bc/c5b24bdowP0lnbe4U
-NFl/Xmw17m3qU5utNDbqdlGfujKOuld7ctXB0xzcprLROkJ3ttymg3gimqna258WaVrOmK2mLbE2
-kIRmcf8n0bfGwmg6C4AqSxGUlUp21uSJnGzVVOt45MBGfbWI97Kw2lOfPQtzzPiokOEwDn8Dt/pn
-I22eTvivgWcF7ajCyg6t3F+d0VDRSdaPoF+u3/YorLhB/ZlBn2B+W4ZhPpaCaXQIHHF8cClgfEs6
-YTDdEXlv2WAo1i6dpmdYaM6RGJI9fqFVN1W2btX4aMkvYbiKS62U8cHiN7F4dDwCMrYCilSd+dd/
-YWTiZC4nFtAUFnD+wMSW4UBQdBsrG6c8RV+j0SSAyjcQ72Dk9dQ8ZWyEyZuq/nwXqsVgQkYbKXte
-1mZCz4e2aYFYYAL3nmWrXjqqXakrBPZlwhQ+uGdNbOLvgBlf0krrFaeBw0bM+v4itXrL3Q/gHFnt
-nLg7sdWxYWBGwI9Zov6NKstroRUzHWAMmLXBgdQKQHGLXW08FM6jbHbk7kLtofj3onlAHAJdYTge
-SaYj3DOB8N7z4hCOD3E8qKeUfH84D5iVGhmlvLAlC6QqtNne7en+ici9VHDV8z5ujViVerID+POP
-QMW4njQ/TrIrPlU2jPNZID8YqU+MR37fkMe4jYIvaqv0XXDrt57Uvuq6YlQBc8PSSXrq5MXrEwWb
-7hpyLn2/qu3qBtBQoXZIJyLa6aeZnXHiJHZLDFutBHutYQkHUmpOhhusefemkginlmUglvNKYKeX
-LFEca/H/lY+sE1sssV4Yg2+f2zSFdyhOfDtdnKW/np7c4ePkv2xplH6RMmWHUtTKhraSYDe4RZSr
-082u873a4/A0R3ZnSPt/9yUmq12OytK/giXnde49Q2pN9LkY/X3cw2e4q7h6ZDhnb1E0pm5jPeh2
-dA4aiKGhB7ZV93sZYcBhYM7b7dd/usIwQfiuZHdRlaAkX3KzYxIVubsED4R1SivSq2Sk6jxyc3yC
-jhTMgQrSI7pUgswyjFBklh9lWXKM0jHxZ7pCA+NKg4/2D1yeiDPJJEHBtrMJGQ78fIxC7Ho5o3H7
-DfNNwFIvV0chnFH39eaxKKAg5IiHG6hhnuaFfd6jIuoGDLgBrp2WRCpI6z0cxO7o4f8IAq09PW0z
-HdiV4ScFSWDLe74psbdWkJ9RjRyxpodr/XwgtCmRfgyjKLOQS7+ZA1FYrP/D2ee6EPQ7X082LQEP
-1puxAs8lVFz5TiMu/M4W4OXaRv7Rtx3Db/K0mHWM0edXJwSnIBjIoGPWrP3RI8qKFV/VgGjZWAzK
-MMx6WrSMtz7rX/ZTuzKar/xZgXeBpAWZENdhSFzR1rXECS6+EiJxNP5naundkB77iklbeELkSd7y
-UYGaEceUlQ94QO7XytkYgdMLcTnX+4Kv8Wp4z26T0l6J6ltvVXAcC6kazBeLk49EjVvW/4IlTJaH
-tithbULQT6t53xgAnVBztLWfBVi6z1lg2UJN7R0YU6sG0EJzen/1vNd1KsomE0JPonLMN0ZXD06M
-y1VJv+uIyoevhaKkwmOrdGVg8qE1YI5X90Z+UxELc56zbt0c1yC9ZGSPL+4Dcb3XcYXpMUWV1jr8
-9dYzRAIM/ZAwjCJcqIeVIErXtIPVOb7RU5kzFtd7ul5JAcxcFSUJzmXVPXs/8URgc9opLx63flp6
-pyx1iEt5DRzeAk81C9GIPPWBPrw6t4NOI8qVbbklkiUG7YiPzj+PcS/HQcb/hn9OnDb/eedWGfqk
-o3lLGN+JdrPDR289QV+g+JHExxBLKWzZCxgMVEzaE8MazVBSetWjd8llY+WxBDnrv+VM5puJUtRt
-QfQ11ejx7OnVAEhN4XwWXhhXO0uRjRuv1sdOPTF3O5pnaFOqEtYMMLc21LY/pqTHPVlr7Qdfr7gM
-Rkm0q8tTUIztXpyojs34iAIm4b1RyewC+5flLMZ7TQSNv/nsoInpaGZILUv+9KgEWpl5abReWGp/
-O3lhp1tklx8wW4+1jVKEx7CCntfhby7B2TPDyfxQ0mPto9u+RqEz4+RP9KdG5RbPeYdFf7vrKQut
-ZL5AKOhQLPtP1ApqZzF6gsTTnpdLED2rNkHk4CBDcsVV2goLWtUq5sBLtQMQOhkt78bzdTLZxLX/
-l3BZfES/T0tlAayBeEy56fh4WnWEfp55yicaOaAl7RHRrKar7HY/TGX7QmeOE+6wXSXAo1EA5r8a
-JvkIcHEIv9f4ENA2qHLL637HcpU2qh5zB4hNZRKAxy6/64gspGN3k9rMC3sT2X5Jn+PpUTwGXfsx
-dgAyHXiQcz+Wz4wex9h9MmuZfZ5wItU4m/+58/ytrMndGLgtJtJz5gWb5m3P0wS2YI+fUNZeMTHy
-+6jK0s0/bZhhadgPLCBCe34Bm3TegVLx7nIxLFztW+z8nnjj4swvjN2KRGE9tj00LMlCJc+BwoJh
-ZvvB3ioDzu1A1Zv6jkcWf9nFvFygr52t++9uKgdG16IZhCQWb53qGH8CPTrXrYg+VvHZM+cQ4/sC
-a2hp5pj5MXIfYSWhFiwpH802x7Bin9oEUsQeAKc146zLxz/q0xKvxZ30ZyJ3JF51x/r4ShQy8vkK
-+BQ72+yspFi0PkWugiZOfYaOrt+kZzoIKe0aLgfpGmkyslbDzr/SkUadRdxAJKFP0Qe7NcVQPTW7
-tNYgJJWurs7+n6WO/e3qZVaLjnBgTx5V/pyYDtGfbzQiBek2U0c58uajpoAFQZXA/HYn0sCT/wl8
-1OYi1fet1FD+R3WWE6J3Xmj2n+4/ZMYuoRVcTD+b9SNJ9ReHh1S9UllBhZsvNJRrVXZ9SXh6rwtO
-QjYU4EDFifGww/enjfIwszu109HCJpy3SDsSjpZlv3BKtbZoKbhk3dkjLn864/2okaTMvKVPsVLg
-OekdhzxPQxmON9/3LHp4lfFcNktNzZRLaF0XPtVa86oc8WUTwmLzOX/FTmDlcMOM39itg2G0ZZG=
+<?php
+
+namespace Coderstm\Payment\Processors;
+
+use Coderstm\Contracts\PaymentProcessorInterface;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentResult;
+use Illuminate\Http\Request;
+
+class ManualProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
+{
+    private const SUPPORTED_CURRENCIES = [];
+
+    public function getProvider(): string
+    {
+        return PaymentMethod::MANUAL;
+    }
+
+    public function supportedCurrencies(): array
+    {
+        return self::SUPPORTED_CURRENCIES;
+    }
+
+    public function setupPaymentIntent(Request $request, Payable $payable): array
+    {
+        return ['message' => 'Manual payment ready for processing', 'amount' => $payable->getGrandTotal(), 'currency' => strtoupper(config('app.currency', 'USD'))];
+    }
+
+    public function confirmPayment(Request $request, Payable $payable): PaymentResult
+    {
+        $request->validate(['reference_number' => 'required|string', 'payment_notes' => 'nullable|string']);
+        try {
+            return PaymentResult::success(paymentData: null, transactionId: $request->reference_number, status: 'pending_verification', metadata: ['notes' => $request->payment_notes]);
+        } catch (\Throwable $e) {
+            PaymentResult::failed($e->getMessage());
+        }
+    }
+}

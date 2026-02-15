@@ -1,55 +1,50 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Attribute\Value;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Attribute extends Model
+{
+    use Core, HasSlug;
+
+    protected $fillable = ['name', 'type', 'slug'];
+
+    protected $with = [];
+
+    public function values()
+    {
+        return $this->hasMany(Value::class);
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'options');
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    public function setValues(array $items)
+    {
+        $items = collect($items);
+        $this->values()->whereNotIn('id', $items->pluck('id')->filter())->each(function ($item) {
+            $item->delete();
+        });
+        foreach ($items as $item) {
+            $value = $this->values()->updateOrCreate(['id' => isset($item['id']) ? $item['id'] : 'new'], $item);
+            if (isset($item['thumbnail']['id'])) {
+                $value->media()->sync($item['thumbnail']['id']);
+            } else {
+                $value->media()->detach();
+            }
+        }
+    }
+}

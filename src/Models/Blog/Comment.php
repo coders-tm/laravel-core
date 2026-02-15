@@ -1,34 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-T8vVBVlyZApvJEKBfxoYvK17
+<?php
+
+namespace Coderstm\Models\Blog;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Comment extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['message'];
+
+    protected $hidden = ['commentable_type', 'commentable_id', 'userable_type', 'userable_id'];
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
+    public function user()
+    {
+        return $this->morphTo('user', 'userable_type', 'userable_id')->withOnly([]);
+    }
+
+    public function replies()
+    {
+        return $this->morphMany(static::class, 'commentable');
+    }
+}

@@ -1,30 +1,16 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPsoKIvwxVR3HGY3UlVKxRJLrvypqxA6DBTeWJTOYuolJ32dzEsd529ai2yxC4Y1LpyJsh6c/
-z6FEB/wzbn9iMuO1UHuHCwgaLej7QnCiysQGtm4jgL+mdw0wdI0p11rswbNSBbFjTV8YXZ6nf05r
-evmZfiaNQDl3PGECKwW7TthSJ1ufkqsvh/rTYw7KhkDwYhvLQotQcqWnL5MkYuj5RZbVIa3b0Qtd
-ZaBoppPPtHKYaFCsqfekW3JGRaSWV9+Ur37rI+V+uFa4O3NQ8XFXodQ8WyXfQ4yXAPImtgjW0euh
-BaexEhgdRfcVKCq049nZ9fsihKBU9lFJTskXZirGhMkMjC1nXy3VuYOKkPcpsbfNOOCH9+LDVE6T
-h+qwNCkZQaWjNR4GQAak9AApUo8JxvyNPqZKltXn3IfzT+BtJiICZAHOzJlSdgE8XuzEsxNLoPpN
-WmEX+v5zihYRCvR4trfdfCWTanIrxNugqaxuyi6wwd+gs8+/qGU4ajxCfFT069d/ETz6zKN3dueC
-ZAscZVAN6pW6xZBnf4m0hHY66U+QrYX4YfzrZoxSQBncDV4444gWx1wwrgCNBapPA1nmAc203aHl
-d29HxgjMBgjuqIqkVjnM3UoAfTZoHaxBPK3TKQ7jg52I1KfNAzZUfhgrpGPsfO6OuIRBkZ5p2KuS
-gJ2maSrvRVOuZp4cvV/wnD55yKmu5k2NEcWoV33uZxypcGv7OIE6Ges2lGw3QUZO3gNLKq0Pw+ho
-okKoZDeugpzgebLevXor/kYFn6Y8ELut1HI9AghOOHmoriWt28AOu5YCqNsqJ+srnjHii7Ol8Pve
-3RKcm9+CDBSVnmG4VUhxCkTrQW4Y19ug0sYwL2SYk+C7GXnIIVt2VUsw8v/0hkm6BXs0qylgIDhB
-H/0VqYO8ApNd67bKgQvi4Fp2k7Hqt9FIaasRnyhnj91FQXLvemj/d9ovQ66F9EQF2QLA1VHuaD3S
-Bi7oZQoWNepfghLRvK7S+HyeBgz6+jPBntCYl8hhkFoHcSnlhMDDg3I77bS1tQdTRe1IetTCXq/v
-HP+0EDPDVMN8/0roZIFJ0xH7ndqcZ2XKmokp4CJZGKaXprSepyZG5RpXdxSSae++9Y/XA0VVt3e7
-iKWcmonPpK6oWUcBmUsKXmrLnolQqIYmvqA5Hrzq0dUkCMaFFpsfGbjPdZwt4MxlhUWGE+Dt5NUt
-foi16lbzJ/ItTKTsxHlF/D/oKFtBmvej2VWfyPXxt+wuFq6HN3g4r3DvIwPITtKa0Oc/tsaoI+Cw
-iMDU38aMN0i+BX31LhnYGfMiup2/PNwrDwrd9B4QGtSwIwV0G28cQ1o5MIAQ4a8c0MqH+vOLIgFo
-RxenWWpJhQHFSp0Z5Ft5RGj2fxBLRagvvJ82sJFfz27TpkP+g6kqYtSbfHpDq7+FPBiaBfC2I1nJ
-6xWPe26J9AnLYTM13IT1DGYY8s6X0t2o6OMEmN8Z0NUMuG/G6+16yX+GPC7rWKiiGceqeWHxGLLA
-LZLEpIbtS5KhITUlbN5cQkoYY8uZN2WgEQFh1SDBnGcKZlv0dPq2WKvcoaa3LnBJfaXym3wn79M5
-COnW0axoI2uSO/5QiJ814U6Qjn7m5rylYWFsAaDC8MCUlTwmrF3Y5Lc++/6VqFwBYPBTRZl77qB2
-RrxZUEDJJOabLJv1MxUxV5nHsKA63knSNDDfAZ30Ji5aQkN/Hf1j7z9gETi1gyb6ImQvVLbClpxv
-BdujqeKqEvXa1m/KAedo3YFZYL+I2sQGTLYxVHyiNL4l/qHUQRl3Z9B1osMQvFuJDZGl7OuqSwAr
-ZxH1nv+QuOn2/cExQKP2nh1GJlrICkiqzd+KHNl6H/Jh2bXuSGbrG5wewhVnQWCTztzKf+1HMrtC
-EvjH3AxuqWXCbhonV9bACH2IbtChbARs8lgFiN8W/OwXfzOvhdD9Uw7lRz5NVDBYXSfFQQCsvobB
-Y9hylOxAxxMuZi9khWVAYvlb7lCx60x4qlgSlY+lVgIueflLN6W0AOtyKea0A2Ye0d/frG==
+<?php
+
+namespace Coderstm\Contracts;
+
+interface Editorable
+{
+    public function viewPath(): string;
+
+    public function viewName(): string;
+
+    public function publish(array $data): void;
+
+    public function render(array $data = []);
+
+    public static function put(string $path, string $content): void;
+}

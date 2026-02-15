@@ -1,30 +1,18 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class Socials extends Shortcode
+{
+    public $attributes = ['class' => ['default' => 'list-inline'], 'tooltip' => ['default' => false]];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $socials = settings('socials');
+
+        return $this->view('shortcodes.socials', array_merge($atts, ['socials' => $socials]));
+    }
+}

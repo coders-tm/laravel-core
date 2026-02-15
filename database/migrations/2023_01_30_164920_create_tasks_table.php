@@ -1,73 +1,71 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id')->nullable()->index();
+            $table->string('subject')->nullable();
+            $table->text('message')->nullable();
+            $table->string('status')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('user_id')->references('id')->on('admins')->nullOnDelete();
+        });
+
+        $this->setAutoIncrement('tasks');
+
+        Schema::create('task_users', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('task_id');
+
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
+        });
+
+        Schema::create('task_replies', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('task_id');
+            $table->text('message')->nullable();
+            $table->timestamps();
+
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
+        });
+
+        $this->setAutoIncrement('task_replies');
+
+        Schema::create('task_archives', function (Blueprint $table) {
+            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('user_id');
+
+            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('admins')->cascadeOnDelete();
+
+            $table->index(['task_id', 'user_id']);
+        });
+    }
+};

@@ -1,43 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPv0+0Ipm1Ve3ZOcK3+2sp1RtKKo+zmIqCxMuXsdo/QnI0mUL7jTJkYIffZlQ1eR3RGMstKoW
-pI9UVx6JULfCfMVGWGyM+BMpDUtR3d0QBT4os01ZoOFxqQnuWEWkHR7y/UD3pdtQcBcXNJF4jAGg
-ci6Vd3tINnNp/28wL7Nh6HHw+4XEMnKzgR2Aqa7p2uiK1DjUUoz6XCKw/KFwwLUBXuSAs7fX7nK3
-U5hPf9JYn/z5OgR7VziNFNputNCTRDMfk6hwv/xW+GHWDTeY4+7ATeY3oCri0Dz+1xIKO8m4noik
-iD9XTTAxoXcdxSLmEHA9rAVBvk97Y2rST51Y82GDSTJ/VWawOhVhXWofpdKDxMnG17XhpOlKocZ3
-JCiShngugHsMwsFcbV68PtchRWTNNOAt/X9LUVfWGorAUY8kJZyQf9lj6+Y4vcr+lkXm5DzOOxVk
-j+b5rHxopO45Submf0erhbwhZC1+7oCAN0YRkyQlubTprW/57ZAbSh3+QVl9FlRZ87EDfXf6uIfc
-GyJyYrp4x2/MSMA4tA6lx2hPbElNA/qx7vuRYJTMrTnsIzNginkjQ/yMYjhhgQQQVSvRrYWVB2C2
-iEXkRocwy7UhwBxCN58/p+lACqkUrcaR6iEkDo6mKDrcELhHAd6LKf5h6DoMZ76a/pNcgsPaInhz
-xpeM24TPWLX5sPygW5YWNqxWHanKAaoyubOEhGAFzAfbdIK650FcXxDEODLtZx083spP6uEM4ddE
-f3gELlf6WgHljcF3Fr11ML65gZi/5Q1Za57H6uI+VxSE6DbITOqMmNJe/oNO0s0h6WA7nYZiWhRK
-fE7fiP5uU2jz1UUbPTXc0AUyglBq/NjlPfMDtexnpWln5uRBP0O2yHxQcVHKWym9mRIy8QQu2hXI
-tjrO8Dwu/pXrnxtzTqo/DuEQp1uj+zpN4bJck0j2OuVneEsNXuuLXMX3cC5BYmURmYKjSPPAJt7Z
-+NdmYKrrifdm2e5Qcj4hqCI5g7x0Uu7KrbdtUVhQzU54LmLSC2Rru61hE4IG/s/s7UslA2oe+tO5
-wdp15MJ6q+1ZsSoQJCpwoEklEIEGH1Pmd44VG9U7QkapYR56/Pe+z56a7LLJ1qTQDcm0CXojVo2M
-tqCLXyRoTzHkyUenfx/f5pIYW0PIgArPGTMA0LrzxUch//mqc6XujtZfJ99ZlhRQmrVaT2OMKbNR
-s1wjo2JwPwe0SLYWpjyuROlIDRH5NJDHD+zG4qU7aLir/yyVd6R1CpJaKwOds/rigkhBDzYzGGv0
-qicjdwsdEmZkVdWB0tIoteZ62tbd2sKQVHPXKmFnYbypvRGneWdwT+H36pYI++vJKKAJcHAZHxPN
-umgJeOxjs76C6RE8B8Cv6aIcxSGV1kNU0GqZqSHurOsB/SXhg81jgzeqpstpy/LLU4wMyM4tcs9N
-AhZe9Vr5JcKB0vbHZIUlhs2i9sgyPabN+kHd79fwP3USDsXBKEjnwtS6sVirac+Mgo2KgOVGvrIc
-QUo0zO3+4IwpXU16osVzEfYWXixqqB+Q8a+b49rpX8T8PjhLoc8SWNqQprjRzyldM8P3biKVpwfB
-DIthWS0IZSGs7d/LhpxXwXaGQOMC32cXnrdzTEMaqTDc14XjKmIIoB+s//cKlnbWQLvImbDqN8H3
-4eOTVJT7ehRHxoHTXUNNBRWxSo5H6sJ/lEQyBCbLDXuT9CnmZAxaOTOO7iwajTkaUpf1y+jSPGCT
-q7yAFNsFQM0AWHup2p68eCTfD99VwN0Oyw/gB7cgZpTQkz6CcTt5Ieev0LU2VrcwbDGiiZjSrgs4
-gRgJmfBR66vhx4UQfGELr7ROV//+682OJyUlCJVmiO9AFzv3zqyfxlN4r0A6w+p1VaJIURibShjy
-glS0x9S5gFbI8IDA06uWzLuJZgeUbzs78EtW6FK5nKmqGMzpe1H1tDJs93sEl98NPtrDHpsSQOHj
-xaD5dkF4iU8RYGo2Mbk7WE9/hpkvSFaqWqgpxDxPV/CUadXx1DsF/9J/xLZGHZL1ZeCSBFzqXRNY
-hkX7KonwOhVgfIwFhNOpmYSIbMdr7pepbgM/HtumVyiZw4cZY/+76jpAirqLNn9xvReiP93kN/Gl
-cgMoGIZ6lJJVm3OIqV8gjH2wuZ/qGfS7oHlQbG/UFrGlZS+ezW666pfZDdCqD/Gc24Ev98oKcffe
-gbFzy4wGenIq//1mzNX1QXbOsRL6/4TN0x+hdlEvir3NRoSDyyOewI1NrTYT6p7yQZJFNTO+HwnO
-bjbnoVyHLyJ1aRj+GCUu0hrXn1KjqTKftZUIynywaiCFJX6z62t4pAmk7lbz5e+X+/l4971U8jB+
-/9gsfuSrvDTjplFogvka9T7vCRy7Q6P0/w2CLsXiaRt68EOhrj3jOh7vKlbcvQUXi14GrLQHS6AK
-gl20dB3fE00R8chKxwPF4IFFZoANWqh3WOtk9WK/JQSYBda+TpSpBKiNAIlSVytjwiO5OgF/Jpc6
-miaYOIzKip81gCq2JRHwu3tOXxb47ekcrQ8ACkrZp4kgusCHVltwVU2i+XLipSPReLOmtjUZn2xj
-wEHUsW0+n5rAJSfa+4JAHDc/Mfmgbzsq/S+ciELQuFKOFnBfvs0uoaUxAlyTlEZ3STpOLCe6PCQy
-Ae4Krd1atDcBVejfTOfpmwChxjHXtBaJ0Xy3MGojL75YKwMUOqnC/3F2NDi2myE3uLZByKRBs+nr
-Usitoh6DHrCBRRoF1fIWKDvvcHQiZemOBKZMkUD1sGCRV9yeo+jbtTtKQtVuom6mtHZ1oMAYKX59
-oXkOSix1mKEO1I/5iBlgUWhjIYxxNUX/FoEpkLjDhmu2pO8k/dibeEsEMAG4mGaeqgegOJMB6egv
-pxdAHOTVoowc5ukmkWssaXUQDRwQBQW6KV0ToqYzdfdHAHe5eBplJq6sgEsQ0+PlK2sYtBVCLWhn
-YvdR4VBgS94jkxA/wWckmhlCxY/ZMWzD5TPqdqokiWmVt0==
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Coderstm\Facades\Blog;
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class BlogCategories extends Shortcode
+{
+    public $attributes = ['layout' => ['default' => 'list'], 'count' => ['default' => true], 'active' => ['default' => true]];
+
+    protected $casts = ['count' => 'boolean', 'active' => 'boolean'];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $showCount = filter_var($atts['count'], FILTER_VALIDATE_BOOLEAN);
+        $onlyActive = filter_var($atts['active'], FILTER_VALIDATE_BOOLEAN);
+        $categories = $showCount ? Blog::categoriesWithCount($onlyActive) : Blog::categories($onlyActive)->map(function ($category) {
+            return ['category' => $category, 'count' => 0];
+        });
+
+        return $this->view('shortcodes.blog-categories', array_merge($atts, ['categories' => $categories]));
+    }
+}

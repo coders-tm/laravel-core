@@ -1,63 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Jobs;
+
+use Coderstm\Models\ReportExport;
+use Coderstm\Services\Reports\ReportService;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Storage;
+use League\Csv\Writer;
+
+class GenerateReport implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public function __construct(public ReportExport $reportExport) {}
+
+    public function handle(): void
+    {
+        try {
+            $this->reportExport->markAsProcessing();
+            $fileName = $this->generateFileName();
+            $filePath = "reports/{$fileName}";
+            $csv = Writer::createFromFileObject(new \SplTempFileObject);
+            $service = ReportService::resolve($this->reportExport->type);
+            $totalRecords = $service->generate($csv, $this->reportExport);
+            $content = $csv->toString();
+            Storage::put($filePath, $content);
+            $fileSize = strlen($content);
+            $this->reportExport->markAsCompleted($filePath, $fileSize, $totalRecords);
+        } catch (\Throwable $e) {
+            $this->reportExport->markAsFailed($e->getMessage());
+            throw $e;
+        }
+    }
+
+    public static function getSupportedTypes(): array
+    {
+        return ReportService::all();
+    }
+
+    public static function supportsType(string $type): bool
+    {
+        return ReportService::has($type);
+    }
+
+    protected function generateFileName(): string
+    {
+        $timestamp = now()->format('Y-m-d_His');
+
+        return "{$this->reportExport->type}_export_{$timestamp}_{$this->reportExport->id}.csv";
+    }
+}

@@ -1,286 +1,342 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-f0V7g0m=
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Coderstm;
+use Coderstm\Database\Factories\UserFactory;
+use Coderstm\Enum\AppRag;
+use Coderstm\Enum\AppStatus;
+use Coderstm\Exceptions\ImportFailedException;
+use Coderstm\Exceptions\ImportSkippedException;
+use Coderstm\Traits\Billable;
+use Coderstm\Traits\HasBelongsToOne;
+use Coderstm\Traits\HasWallet;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
+use League\ISO3166\ISO3166;
+
+class User extends Admin implements MustVerifyEmail
+{
+    use Billable, HasBelongsToOne, HasWallet;
+
+    protected $guard = 'users';
+
+    protected $fillable = ['email', 'first_name', 'gender', 'is_active', 'last_name', 'note', 'password', 'phone_number', 'rag', 'is_free_forever', 'trial_ends_at', 'source', 'status'];
+
+    protected $hidden = ['password', 'remember_token'];
+
+    protected $casts = ['email_verified_at' => 'datetime', 'last_login_at' => 'datetime', 'trial_ends_at' => 'datetime', 'rag' => AppRag::class, 'status' => AppStatus::class, 'is_active' => 'boolean', 'is_free_forever' => 'boolean'];
+
+    protected $appends = ['name', 'member_since', 'guard'];
+
+    protected $with = ['avatar'];
+
+    public function getNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function routeNotificationForMail($notification): array|string
+    {
+        return [$this->email => $this->name];
+    }
+
+    public function routeNotificationForFcm(): array
+    {
+        return $this->deviceTokens()->pluck('token')->toArray();
+    }
+
+    public function routeNotificationForTwilio()
+    {
+        return $this->phone_number;
+    }
+
+    public function getMemberSinceAttribute()
+    {
+        return $this->created_at?->format('Y');
+    }
+
+    public function notes()
+    {
+        return $this->morphMany(Log::class, 'logable')->whereNotIn('type', ['login'])->orderBy('created_at', 'desc')->withOnly(['admin']);
+    }
+
+    public function lastUpdate()
+    {
+        return $this->morphOne(Log::class, 'logable')->where('type', 'notes')->orderBy('created_at', 'desc');
+    }
+
+    public function updateCancelsAt($dateAt)
+    {
+        return $this->updateExpiresAt($dateAt);
+    }
+
+    public function updateExpiresAt($expiresAt)
+    {
+        if (! $expiresAt) {
+            throw new \InvalidArgumentException('Expires at cannot be empty.');
+        }
+        if ($this->subscription()) {
+            $this->subscription()->update(['expires_at' => $expiresAt]);
+        }
+
+        return $this;
+    }
+
+    public function enquiries(): HasMany
+    {
+        return $this->hasMany(Coderstm::$enquiryModel, 'email', 'email');
+    }
+
+    public function deviceTokens(): HasMany
+    {
+        return $this->hasMany(DeviceToken::class);
+    }
+
+    public function loadUnreadEnquiries()
+    {
+        return $this->loadCount(['enquiries as unread_enquiries' => function (Builder $query) {
+            $query->onlyActive();
+        }]);
+    }
+
+    public function requestAccountDeletion()
+    {
+        return $this->morphOne(Log::class, 'logable')->where('type', 'request-account-deletion')->where('created_at', '>', now()->subDays(7))->whereColumn('created_at', 'updated_at')->orderBy('created_at', 'desc');
+    }
+
+    public function scopeOnlyActive($query): Builder
+    {
+        return $query->where(['status' => AppStatus::ACTIVE]);
+    }
+
+    public function scopeOnlyEnquiry($query): Builder
+    {
+        return $query->where('status', '<>', AppStatus::ACTIVE);
+    }
+
+    public function scopeOnlyMember($query): Builder
+    {
+        return $query->where('status', AppStatus::ACTIVE);
+    }
+
+    public function scopeOnlyCancelled($query): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) {
+            $q->canceled();
+        });
+    }
+
+    public function scopeOnlyMonthlyPlan($query): Builder
+    {
+        return $query->onlyPlan('month');
+    }
+
+    public function scopeOnlyYearlyPlan($query): Builder
+    {
+        return $query->onlyPlan('year');
+    }
+
+    public function scopeOnlyPlan($query, string $type = 'month'): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) use ($type) {
+            $q->active()->whereNull('canceled_at')->whereHas('plan', function ($q) use ($type) {
+                $q->whereInterval($type)->where('price', '<>', 0);
+            });
+        });
+    }
+
+    public function scopeOnlyRolling($query): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) {
+            $q->active()->whereNull('canceled_at');
+        });
+    }
+
+    public function scopeOnlyEnds($query): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) {
+            $q->active()->whereNotNull('canceled_at');
+        });
+    }
+
+    public function scopeOnlyFree($query): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) {
+            $q->active()->whereHas('plan', function ($q) {
+                $q->wherePrice(0);
+            });
+        });
+    }
+
+    public function scopeWhereTyped($query, ?string $type = null): Builder
+    {
+        switch ($type) {
+            case 'rolling':
+                $query->onlyRolling();
+                break;
+            case 'ends':
+            case 'end_date':
+                $query->onlyEnds();
+                break;
+            case 'month':
+            case 'year':
+                $query->onlyPlan($type);
+                break;
+            case 'free':
+                $query->onlyFree();
+                break;
+        }
+
+        return $query;
+    }
+
+    public function scopeSortBy($query, $column = 'CREATED_AT_ASC', $direction = 'asc'): Builder
+    {
+        switch ($column) {
+            case 'last_login':
+                $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ?) '.($direction ?? 'asc'), [$this->getMorphClass(), 'login']);
+                break;
+            case 'last_update':
+                $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ?) '.($direction ?? 'asc'), [$this->getMorphClass(), 'notes']);
+                break;
+            case 'created_by':
+                $query->orderByRaw('CASE
+                        WHEN (SELECT admin_id FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1) IS NOT NULL
+                        THEN (SELECT first_name FROM admins WHERE admins.id = (SELECT admin_id FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1))
+                        ELSE JSON_EXTRACT((SELECT options FROM logs WHERE logs.logable_id = users.id AND logs.logable_type = ? AND logs.type = ? ORDER BY created_at DESC LIMIT 1), "$.ref")
+                    END '.($direction ?? 'asc'), [$this->getMorphClass(), 'created', $this->getMorphClass(), 'created', $this->getMorphClass(), 'created']);
+                break;
+            case 'price':
+                $query->orderByRaw('(
+                    SELECT label
+                    FROM (
+                        SELECT label
+                        FROM plans
+                        WHERE id = (
+                            SELECT plan_id
+                            FROM subscriptions
+                            WHERE user_id = users.id
+                            ORDER BY created_at DESC
+                            LIMIT 1
+                        )
+                        LIMIT 1
+                    ) AS subquery
+                ) '.($direction ?? 'asc'));
+                break;
+            case 'name':
+                $query->orderBy(DB::raw('CONCAT(`first_name`, `last_name`)'), $direction ?? 'asc');
+                break;
+            default:
+                $query->orderBy($column ?: 'created_at', $direction ?? 'asc');
+                break;
+        }
+
+        return $query;
+    }
+
+    public function scopeWithUnreadEnquiries($query): Builder
+    {
+        return $query->withCount(['enquiries as unread_enquiries' => function (Builder $query) {
+            $query->onlyActive();
+        }]);
+    }
+
+    public function scopeWhereDateColumn($query, $date = [], $column = 'created_at'): Builder
+    {
+        return $query->whereHas('subscriptions', function ($q) use ($date, $column) {
+            if (isset($date['year'])) {
+                $q->whereYear($column, $date['year']);
+            }
+            if (isset($date['month'])) {
+                $q->whereMonth($column, $date['month']);
+            }
+            if (isset($date['day'])) {
+                $q->whereDay($column, $date['day']);
+            }
+        });
+    }
+
+    public function toLoginResponse()
+    {
+        return $this->loadUnreadEnquiries()->toArray() + ['subscription' => $this->subscription()?->toResponse(['plan', 'invoice', 'usages'])];
+    }
+
+    public function getShortCodes(): array
+    {
+        return ['id' => $this->id, 'name' => $this->name, 'first_name' => $this->first_name, 'last_name' => $this->last_name, 'email' => $this->email, 'phone_number' => $this->phone_number];
+    }
+
+    public static function getMappedAttributes(): array
+    {
+        return ['First Name' => 'first_name', 'Surname' => 'last_name', 'Gender' => 'gender', 'Email Address' => 'email', 'Phone Number' => 'phone_number', 'Status' => 'status', 'Deactivates At' => 'deactivates_at', 'Password' => 'password', 'Created At' => 'created_at', 'Plan' => 'plan', 'Trial Ends At' => 'trial_ends_at', 'Address Line1' => 'line1', 'Address Line2' => 'line2', 'Country' => 'country', 'State' => 'state', 'State Code' => 'state_code', 'City' => 'city', 'Postcode/Zip' => 'postal_code', 'Note' => 'note'];
+    }
+
+    public static function createFromCsv(array $attributes = [], array $options = [])
+    {
+        $replaceByEmail = isset($options['email_overwrite']) && $options['email_overwrite'];
+        $user = static::where('email', $attributes['email'])->withTrashed()->first();
+        if (! $replaceByEmail && $user) {
+            throw new ImportFailedException;
+        } elseif ($user && ($user->wasRecentlyUpdated || $user->wasRecentlyCreated)) {
+            throw new ImportSkippedException;
+        }
+        if (isset($attributes['password'])) {
+            $attributes['password'] = bcrypt($attributes['password']);
+        }
+        if (isset($attributes['country'])) {
+            try {
+                $country = (new ISO3166)->name($attributes['country']);
+                $attributes['country_code'] = $country['alpha2'];
+            } catch (\Throwable $e) {
+                $attributes['country_code'] = null;
+            }
+        }
+        $user = static::firstOrNew(['email' => $attributes['email']], $attributes);
+        if (isset($attributes['trial_ends_at']) && ! empty($attributes['trial_ends_at'])) {
+            $user->trial_ends_at = $attributes['trial_ends_at'];
+        }
+        if (isset($attributes['created_at']) && ! empty($attributes['created_at'])) {
+            $user->created_at = $attributes['created_at'];
+        }
+        $user->deleted_at = null;
+        $user->save();
+        $user->updateOrCreateAddress($attributes);
+    }
+
+    public function orders()
+    {
+        return $this->hasMany(\Coderstm\Models\Shop\Order::class, 'customer_id');
+    }
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
+    }
+
+    public function addDeviceToken(string $deviceToken)
+    {
+        if (! $deviceToken) {
+            throw new \InvalidArgumentException('Device token cannot be empty.');
+        }
+
+        return $this->deviceTokens()->updateOrCreate(['token' => $deviceToken]);
+    }
+
+    protected static function booted()
+    {
+        static::updated(function ($model) {
+            Coderstm::$enquiryModel::withoutEvents(function () use ($model) {
+                Coderstm::$enquiryModel::where('email', $model->getOriginal('email'))->update(['email' => $model->email]);
+            });
+        });
+        static::addGlobalScope('default', function (Builder $builder) {
+            $builder->withMax('lastLogin as last_login_at', 'created_at');
+            $builder->withCount(['enquiries as unread_enquiries' => function (Builder $query) {
+                $query->onlyActive();
+            }]);
+        });
+    }
+}

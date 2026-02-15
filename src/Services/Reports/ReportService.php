@@ -1,128 +1,155 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Q9zpQsF5FuU6H5MoPLzl9wS11gtxS7CY
+<?php
+
+namespace Coderstm\Services\Reports;
+
+use Coderstm\Services\Reports\Acquisition\NewSignupsReport;
+use Coderstm\Services\Reports\Acquisition\TrialConversionReport;
+use Coderstm\Services\Reports\Checkout\AbandonedCartDetailReport;
+use Coderstm\Services\Reports\Checkout\CheckoutFunnelReport;
+use Coderstm\Services\Reports\Checkout\CheckoutRecoveryReport;
+use Coderstm\Services\Reports\Checkout\PaymentMethodPerformanceReport;
+use Coderstm\Services\Reports\Coupons\CouponPerformanceReport;
+use Coderstm\Services\Reports\Coupons\CouponRedemptionReport;
+use Coderstm\Services\Reports\Coupons\DiscountImpactReport;
+use Coderstm\Services\Reports\Economics\ArpuReport;
+use Coderstm\Services\Reports\Economics\CacLtvReport;
+use Coderstm\Services\Reports\Economics\ClvReport;
+use Coderstm\Services\Reports\Exports\CheckoutsExportReport;
+use Coderstm\Services\Reports\Exports\CustomersExportReport;
+use Coderstm\Services\Reports\Exports\OrdersExportReport;
+use Coderstm\Services\Reports\Exports\PaymentsExportReport;
+use Coderstm\Services\Reports\Exports\SubscriptionsExportReport;
+use Coderstm\Services\Reports\Exports\UsersExportReport;
+use Coderstm\Services\Reports\Orders\FulfillmentAnalysisReport;
+use Coderstm\Services\Reports\Orders\PaymentPerformanceReport;
+use Coderstm\Services\Reports\Orders\RefundAnalysisReport;
+use Coderstm\Services\Reports\Orders\SalesSummaryReport;
+use Coderstm\Services\Reports\Orders\TaxSummaryReport;
+use Coderstm\Services\Reports\Plans\FeatureUtilizationReport;
+use Coderstm\Services\Reports\Plans\PlanComparisonReport;
+use Coderstm\Services\Reports\Plans\PlanRevenueBreakdownReport;
+use Coderstm\Services\Reports\Retention\CustomerChurnReport;
+use Coderstm\Services\Reports\Retention\MemberRetentionReport;
+use Coderstm\Services\Reports\Retention\MrrChurnReport;
+use Coderstm\Services\Reports\Revenue\ActiveSubscriptionsTimeReport;
+use Coderstm\Services\Reports\Revenue\MrrByPlanReport;
+use Coderstm\Services\Reports\Revenue\MrrMovementReport;
+use Coderstm\Services\Reports\Subscriptions\ContractProgressReport;
+use Coderstm\Services\Reports\Subscriptions\FreezeUsageReport;
+use Coderstm\Services\Reports\Subscriptions\RenewalForecastReport;
+use Coderstm\Services\Reports\Subscriptions\SubscriptionLifecycleReport;
+use InvalidArgumentException;
+
+class ReportService
+{
+    protected static array $map = ['mrr-by-plan' => MrrByPlanReport::class, 'active-subscriptions-time' => ActiveSubscriptionsTimeReport::class, 'mrr-movement' => MrrMovementReport::class, 'subscription-lifecycle' => SubscriptionLifecycleReport::class, 'freeze-usage' => FreezeUsageReport::class, 'contract-progress' => ContractProgressReport::class, 'renewal-forecast' => RenewalForecastReport::class, 'customer-churn' => CustomerChurnReport::class, 'mrr-churn' => MrrChurnReport::class, 'member-retention' => MemberRetentionReport::class, 'arpu' => ArpuReport::class, 'clv' => ClvReport::class, 'cac-ltv' => CacLtvReport::class, 'trial-conversion' => TrialConversionReport::class, 'new-signups' => NewSignupsReport::class, 'sales-summary' => SalesSummaryReport::class, 'payment-performance' => PaymentPerformanceReport::class, 'fulfillment-analysis' => FulfillmentAnalysisReport::class, 'refund-analysis' => RefundAnalysisReport::class, 'tax-summary' => TaxSummaryReport::class, 'checkout-funnel' => CheckoutFunnelReport::class, 'abandoned-cart-detail' => AbandonedCartDetailReport::class, 'payment-method-performance' => PaymentMethodPerformanceReport::class, 'checkout-recovery' => CheckoutRecoveryReport::class, 'plan-comparison' => PlanComparisonReport::class, 'plan-revenue-breakdown' => PlanRevenueBreakdownReport::class, 'feature-utilization' => FeatureUtilizationReport::class, 'coupon-performance' => CouponPerformanceReport::class, 'coupon-redemption' => CouponRedemptionReport::class, 'discount-impact' => DiscountImpactReport::class, 'users' => UsersExportReport::class, 'subscriptions' => SubscriptionsExportReport::class, 'orders' => OrdersExportReport::class, 'customers' => CustomersExportReport::class, 'payments' => PaymentsExportReport::class, 'checkouts' => CheckoutsExportReport::class];
+
+    protected static array $grouped = ['revenue' => ['mrr-by-plan', 'active-subscriptions-time', 'mrr-movement'], 'subscriptions' => ['subscription-lifecycle', 'freeze-usage', 'contract-progress', 'renewal-forecast'], 'retention' => ['customer-churn', 'mrr-churn', 'member-retention'], 'economics' => ['arpu', 'clv', 'cac-ltv'], 'acquisition' => ['trial-conversion', 'new-signups'], 'orders' => ['sales-summary', 'payment-performance', 'fulfillment-analysis', 'refund-analysis', 'tax-summary'], 'checkout' => ['checkout-funnel', 'abandoned-cart-detail', 'payment-method-performance', 'checkout-recovery'], 'plans' => ['plan-comparison', 'plan-revenue-breakdown', 'feature-utilization'], 'coupons' => ['coupon-performance', 'coupon-redemption', 'discount-impact'], 'exports' => ['users', 'subscriptions', 'orders', 'customers', 'payments', 'checkouts']];
+
+    protected static array $labels = ['mrr-by-plan' => 'MRR by Plan', 'active-subscriptions-time' => 'Active Subscriptions Over Time', 'mrr-movement' => 'MRR Movement', 'subscription-lifecycle' => 'Subscription Lifecycle Analysis', 'freeze-usage' => 'Membership Freeze Usage', 'contract-progress' => 'Contract Progress & Completion', 'renewal-forecast' => 'Renewal Forecast', 'customer-churn' => 'Customer Churn Rate', 'mrr-churn' => 'MRR Churn Rate', 'member-retention' => 'Member Retention Cohort', 'arpu' => 'Average Revenue Per User (ARPU)', 'clv' => 'Customer Lifetime Value (CLV)', 'cac-ltv' => 'CAC vs LTV', 'trial-conversion' => 'Trial Conversion Rate', 'new-signups' => 'New Signups', 'sales-summary' => 'Sales Summary', 'payment-performance' => 'Payment Performance', 'fulfillment-analysis' => 'Fulfillment Analysis', 'refund-analysis' => 'Refund Analysis', 'tax-summary' => 'Tax Summary', 'checkout-funnel' => 'Checkout Funnel', 'abandoned-cart-detail' => 'Abandoned Cart Details', 'payment-method-performance' => 'Payment Method Performance', 'checkout-recovery' => 'Checkout Recovery', 'plan-comparison' => 'Plan Comparison', 'plan-revenue-breakdown' => 'Plan Revenue Breakdown', 'feature-utilization' => 'Feature Utilization', 'coupon-performance' => 'Coupon Performance', 'coupon-redemption' => 'Coupon Redemption History', 'discount-impact' => 'Discount Impact Analysis', 'users' => 'Users Export', 'subscriptions' => 'Subscriptions Export', 'orders' => 'Orders Export', 'customers' => 'Customers Export', 'payments' => 'Payments Export', 'checkouts' => 'Checkouts Export'];
+
+    protected static array $categoryLabels = ['revenue' => 'Revenue & Subscriptions', 'subscriptions' => 'Subscription Lifecycle', 'retention' => 'Retention & Churn', 'economics' => 'Economics & Unit Metrics', 'acquisition' => 'Acquisition & Conversion', 'orders' => 'Order & Sales', 'checkout' => 'Checkout & Cart', 'plans' => 'Plans', 'coupons' => 'Coupons & Discounts', 'exports' => 'Data Exports'];
+
+    public static function resolve(string $type): ReportInterface
+    {
+        if (! static::has($type)) {
+            throw new InvalidArgumentException("Unknown report type: {$type}");
+        }
+        $serviceClass = static::$map[$type];
+
+        return new $serviceClass;
+    }
+
+    public static function getServiceClass(string $type): ?string
+    {
+        return static::$map[$type] ?? null;
+    }
+
+    public static function has(string $type): bool
+    {
+        return isset(static::$map[$type]);
+    }
+
+    public static function all(): array
+    {
+        return array_keys(static::$map);
+    }
+
+    public static function grouped(): array
+    {
+        return static::$grouped;
+    }
+
+    public static function getCategory(string $type): ?string
+    {
+        foreach (static::grouped() as $category => $types) {
+            if (in_array($type, $types)) {
+                return $category;
+            }
+        }
+
+        return null;
+    }
+
+    public static function forCategory(string $category): array
+    {
+        return static::grouped()[$category] ?? [];
+    }
+
+    public static function register(string $type, string $serviceClass, ?string $label = null, ?string $category = null): void
+    {
+        static::$map[$type] = $serviceClass;
+        if ($label) {
+            static::$labels[$type] = $label;
+        }
+        if ($category) {
+            if (! isset(static::$grouped[$category])) {
+                static::$grouped[$category] = [];
+            }
+            if (! in_array($type, static::$grouped[$category])) {
+                static::$grouped[$category][] = $type;
+            }
+        }
+    }
+
+    public static function registerCategory(string $key, string $label): void
+    {
+        static::$categoryLabels[$key] = $label;
+        if (! isset(static::$grouped[$key])) {
+            static::$grouped[$key] = [];
+        }
+    }
+
+    public static function unregister(string $type): void
+    {
+        unset(static::$map[$type]);
+        unset(static::$labels[$type]);
+        foreach (static::$grouped as $category => $types) {
+            if (($key = array_search($type, $types)) !== false) {
+                unset(static::$grouped[$category][$key]);
+                static::$grouped[$category] = array_values(static::$grouped[$category]);
+            }
+        }
+    }
+
+    public static function getLabel(string $type): string
+    {
+        return static::$labels[$type] ?? ucwords(str_replace(['-', '_'], ' ', $type));
+    }
+
+    public static function allWithLabels(): array
+    {
+        $types = static::all();
+        $result = [];
+        foreach ($types as $type) {
+            $result[$type] = static::getLabel($type);
+        }
+
+        return $result;
+    }
+
+    public static function getCategoryLabels(): array
+    {
+        return static::$categoryLabels;
+    }
+}

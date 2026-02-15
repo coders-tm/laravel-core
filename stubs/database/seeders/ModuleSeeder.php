@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Coderstm\Traits\Helpers;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ModuleSeeder extends Seeder

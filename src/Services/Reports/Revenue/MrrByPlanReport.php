@@ -1,101 +1,53 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Revenue;
+
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class MrrByPlanReport extends AbstractReport
+{
+    protected array $columns = ['plan_name' => ['label' => 'Plan Name', 'type' => 'text'], 'plan_slug' => ['label' => 'Plan Slug', 'type' => 'text'], 'interval' => ['label' => 'Interval', 'type' => 'text'], 'price' => ['label' => 'Price', 'type' => 'currency'], 'monthly_price' => ['label' => 'Monthly Price', 'type' => 'currency'], 'active_subscriptions' => ['label' => 'Active Subscriptions', 'type' => 'number'], 'total_quantity' => ['label' => 'Total Quantity', 'type' => 'number'], 'mrr' => ['label' => 'MRR', 'type' => 'currency'], 'mrr_percentage' => ['label' => 'MRR %', 'type' => 'percentage']];
+
+    public static function getType(): string
+    {
+        return 'mrr-by-plan';
+    }
+
+    public function getDescription(): string
+    {
+        return 'MRR breakdown and distribution across subscription plans';
+    }
+
+    public function query(array $filters)
+    {
+        $now = now()->toDateTimeString();
+        $statsQuery = Plan::query()->select(['plans.id', 'plans.label', 'plans.slug', 'plans.interval', 'plans.interval_count', 'plans.price', 'plans.is_active', 'plans.created_at', 'plans.updated_at', DB::raw("COUNT(DISTINCT CASE\n                    WHEN subscriptions.canceled_at IS NULL\n                    AND (subscriptions.expires_at IS NULL OR subscriptions.expires_at > '{$now}')\n                    THEN subscriptions.id\n                END) as active_subscriptions"), DB::raw("COALESCE(SUM(CASE\n                    WHEN subscriptions.canceled_at IS NULL\n                    AND (subscriptions.expires_at IS NULL OR subscriptions.expires_at > '{$now}')\n                    THEN subscriptions.quantity\n                END), 0) as total_quantity")])->leftJoin('subscriptions', 'plans.id', '=', 'subscriptions.plan_id')->where('plans.is_active', true)->groupBy('plans.id', 'plans.label', 'plans.slug', 'plans.interval', 'plans.interval_count', 'plans.price', 'plans.is_active', 'plans.created_at', 'plans.updated_at');
+        $mrrQuery = DB::table(DB::raw("({$statsQuery->toSql()}) as plan_stats"))->setBindings($statsQuery->getBindings())->select(['plan_stats.*', DB::raw("CASE\n                    WHEN plan_stats.interval = 'year' THEN plan_stats.price / 12\n                    WHEN plan_stats.interval = 'week' THEN plan_stats.price * 4.345\n                    WHEN plan_stats.interval = 'day' THEN plan_stats.price * 30\n                    ELSE plan_stats.price / plan_stats.interval_count\n                END as monthly_price"), DB::raw('CASE
+                    WHEN plan_stats.total_quantity = 0 AND plan_stats.active_subscriptions > 0
+                    THEN plan_stats.active_subscriptions
+                    ELSE plan_stats.total_quantity
+                END as effective_quantity')]);
+
+        return DB::table(DB::raw("({$mrrQuery->toSql()}) as mrr_data"))->mergeBindings($mrrQuery)->select(['mrr_data.*', DB::raw('(mrr_data.monthly_price * mrr_data.effective_quantity) as mrr'), DB::raw('CASE
+                    WHEN SUM(mrr_data.monthly_price * mrr_data.effective_quantity) OVER () > 0
+                    THEN ((mrr_data.monthly_price * mrr_data.effective_quantity) * 100.0
+                          / SUM(mrr_data.monthly_price * mrr_data.effective_quantity) OVER ())
+                    ELSE 0
+                END as mrr_percentage')])->orderBy('mrr_data.price', 'desc');
+    }
+
+    public function toRow($row): array
+    {
+        return ['plan_name' => $row->label ?? '', 'plan_slug' => $row->slug, 'interval' => $row->interval.($row->interval_count > 1 ? " x{$row->interval_count}" : ''), 'price' => (float) ($row->price ?? 0), 'monthly_price' => (float) ($row->monthly_price ?? 0), 'active_subscriptions' => (int) ($row->active_subscriptions ?? 0), 'total_quantity' => (int) ($row->effective_quantity ?? 0), 'mrr' => (float) ($row->mrr ?? 0), 'mrr_percentage' => (float) ($row->mrr_percentage ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $results = $this->query($filters)->get();
+        $totalMrr = $results->sum('mrr');
+
+        return ['total_mrr' => format_amount($totalMrr), 'total_plans' => $results->count()];
+    }
+}

@@ -1,29 +1,19 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPvOuVKev1aPkn8peQKODE7ZgX2IjNnHxDf6uCEoBCwLvD5aWip61kQLGpou/kPxLX8iikYi6
-1oE1a9jJRyYm4zwCk+ZObIyHmvbt+qW5OKUhc6DnSmdn9D40SatQyLuCp9OOwN/Vcgv2dF59QjtC
-QZA6lz6z3JhIM4fABaVCJLblaR0N2NvgzXROF+UNtA5ZM7zRnIss4dpT+vQ0eqiKljQW2aS2ubZG
-wvdtmhKt7byGxwPbvipZTLwwywfgaH00yIC+v/xW+GHWDTeY4+7ATeY3o1Ded/l1nCRS3EKhF2ik
-95WOCfMH/EAd/7iQ8dh8G7A7MKFacGTJ1FMI2Eoi7ZPnkVGAsArWQVF8wCa1p39+WquNl8DmcB9I
-p24k/kl8g+cyINiXEfdWSu0TR1KPXuU6ELoTA1uOkx1JQK5sJadncr1hikozxFqmHkM1M4j2bPHm
-be3pSZcYTwvHaMlqFrtntO0MEpjcedD85cg/U7ZXUQnLrjQ+RyH0B6qqZP7VecRKMJGRQT8PecYk
-goan3x6lhHJnYdBP47JDhMgGCDUw6SRbqKx2IYsCBl3s/mGwaNc0x5Ctz6wTBBz3xyfzb+nOa/3X
-X+6RTyM+WujvOLufp2fPvc1uj6Ihd9BJqM1hLjgR7D1Qz3MyMSxuNRB8u8qDLSQPsmGHqG39GxM4
-fwNlUFRMDnm0IQu6YsklJd29Qbm6/Xdvgfjdcowg1pS3SeBdUI3FtLlarW3FMIk6DLMbKX8pqNGz
-gLPeK5j4h4NkuZUnxlu2YsjcUISeN27v2thAJ9/buyjPbkVz5kqHO4v9dovu2hnOCIGCeSl+/8gA
-SHW4b21Bkg3TnZEb4Mzf36UoklkFh4ao4U5qsjTudzsgIYOjJI0ig3WQa7dnubk4YeOF9psLU3H2
-fXKOzbnSuKC3kmyQMnqWqMYqUZwWpqrcLknfcAlBgui/1+P8HnKfLnRH0aaDi+0RawMDWNkvnXJF
-aCSgbnmjlXGp0DVAhH7NSYmZxo5yoEXY0n3nXI4wcfOYNHpq4gm7cB7eGIFkZDDjbHdU4Nsdi682
-XSD+lWhM+PEGlKYIC/W2XGbeF+jY+HB1hkVIrZFzjqkj7jTOz/uuFfQEhMo9kLAbXf5LumtszXW4
-J4hJhnE3jxJUOvX7YTAyc43VyPWYNBpCjkkl6u26+/PFmcwdtkEefDuD1CkKDk/u4jis6tyfDy4Y
-PCf1nj2WC3VvYCF18yqgsYfVzexQ0vYmjXKpjPZwGvT7UcQh5OUcX9XKXD0uWCQ5QwonQ7/Jw839
-32V6v7WcErL6s14QOwKnu7mh1s3FFPjw5z7OmTtxPk8QKpwCk9F/54WVsP/5lBvSHPnOFiWjcWnc
-yfKlos6tb2gmKf8VBB7VeXg/p9qFh4qdmm9Fqy8IBIFvIdE1P1o7xuJ0uh7tilVCiA4/ijY6u43n
-wBepNhdTVMZ+GSHv7ZAsbfwF3q0cvED4PLzQFjq2K8h/0y2M5/JKFuSp+EIRQysJVhwsRW1Es/N2
-A8eEmeOIqlM1UBz5Kr+46iVh7LMCclOJcAWkCG9jQcFy45MHkzf5MR/xUeLefzzLNQn5PYXnYGm2
-FU12E7bsRYkTq2UTBAU0/qD2wisO/m/rPePRI3Ji7LAV61ybHEUQvYUE0Au7q/+SLsxhQSSgvVfF
-EIrcFnLBpc0IHlpMBepkMsuVm3tDB3Cc9X9MFTRCPUdJfVsNIsFFWJLw9gRwuPjPnewGTtgjo7KJ
-HMl8oXU9mmw+gzkAh2fFLqUVEc1xuCex1GZCXpXINhWZaGj9FndTTTcXwIj1md8me/AKSHeCcaf+
-rW3aY263H8bpQySmiTll/qHYkEWXKmywHnTsuHN+nzTCkzlg1egB7zeL6eioYJz6uBJBZMd7d8KE
-rMbpLwy7LkEp
+<?php
+
+namespace Coderstm\Rules;
+
+use Coderstm\Models\Subscription\Plan;
+use Illuminate\Contracts\Validation\Rule;
+
+class SubscriptionExists implements Rule
+{
+    public function passes($attribute, $value)
+    {
+        return Plan::find($value)->subscriptions()->count() === 0;
+    }
+
+    public function message()
+    {
+        return 'The plan cannot be deleted because it has active subscriptions.';
+    }
+}

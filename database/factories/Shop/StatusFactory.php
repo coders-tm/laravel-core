@@ -1,30 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-n1cZI8q2SMpuXmXewC3GPrAiSeXJv0==
+<?php
+
+namespace Coderstm\Database\Factories\Shop;
+
+use Coderstm\Models\Status;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class StatusFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Status::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'label' => ['Pending', 'Awaiting payment'][rand(0, 1)],
+        ];
+    }
+}

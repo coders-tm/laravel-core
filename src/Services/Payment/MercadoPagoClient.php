@@ -1,39 +1,39 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-N6Xt0Ogz76bV0G==
+<?php
+
+namespace Coderstm\Services\Payment;
+
+use MercadoPago\Client\Payment\PaymentClient;
+use MercadoPago\Client\Preference\PreferenceClient;
+use MercadoPago\MercadoPagoConfig;
+
+class MercadoPagoClient
+{
+    protected $paymentClient;
+
+    protected $preferenceClient;
+
+    public function __construct(array $options = [])
+    {
+        $accessToken = $options['access_token'] ?? config('mercadopago.access_token');
+        if (! $accessToken) {
+            throw new \InvalidArgumentException('MercadoPago access_token is required.');
+        }
+        MercadoPagoConfig::setAccessToken($accessToken);
+        $this->paymentClient = new PaymentClient;
+        $this->preferenceClient = new PreferenceClient;
+    }
+
+    public function createPaymentIntent(array $params)
+    {
+        if (isset($params['items'])) {
+            return $this->preferenceClient->create($params);
+        }
+
+        return $this->paymentClient->create($params);
+    }
+
+    public function confirmPayment($paymentId)
+    {
+        return $this->paymentClient->get($paymentId);
+    }
+}

@@ -1,130 +1,132 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-l7wMOAe=
+<?php
+
+namespace Coderstm\Http\Controllers\Admin;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Services\Charts\ChartService;
+use Coderstm\Services\Metrics\CustomerMetrics;
+use Coderstm\Services\Metrics\KpiMetrics;
+use Coderstm\Services\Metrics\OrderMetrics;
+use Coderstm\Services\Metrics\SubscriptionMetrics;
+use Coderstm\Services\Reports\ReportService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class ReportsController extends Controller
+{
+    public function charts(Request $request): JsonResponse
+    {
+        $request->validate(['type' => 'required|in:revenue,subscriptions,customers,orders,mrr,churn,revenue-breakdown,members-breakdown', 'start_date' => 'nullable|date', 'end_date' => 'nullable|date|after_or_equal:start_date', 'period' => 'nullable|in:day,week,month,year', 'granularity' => 'nullable|in:daily,weekly,monthly,yearly']);
+        $chartService = new ChartService($request);
+        $chartData = match ($request->input('type')) {
+            'revenue' => $chartService->getRevenueChart(),
+            'subscriptions' => $chartService->getSubscriptionChart(),
+            'customers' => $chartService->getCustomerChart(),
+            'orders' => $chartService->getOrderChart(),
+            'mrr' => $chartService->getMrrChart(),
+            'churn' => $chartService->getChurnChart(),
+            'revenue-breakdown' => $chartService->getRevenueBreakdown(),
+            'members-breakdown' => $chartService->getMembersBreakdown(),
+            default => [],
+        };
+
+        return response()->json($chartData);
+    }
+
+    public function types(): JsonResponse
+    {
+        return response()->json(['types' => ReportService::allWithLabels(), 'grouped' => ReportService::grouped()]);
+    }
+
+    public function metrics(Request $request): JsonResponse
+    {
+        $validated = $request->validate(['category' => 'required|in:revenue,retention,economics,customers', 'date_from' => 'nullable|date', 'date_to' => 'nullable|date|after_or_equal:date_from', 'compare' => 'nullable|boolean', 'no_cache' => 'nullable|boolean']);
+        if ($request->filled('date_from') && ! $request->filled('start_date')) {
+            $request->merge(['start_date' => $validated['date_from']]);
+        }
+        if ($request->filled('date_to') && ! $request->filled('end_date')) {
+            $request->merge(['end_date' => $validated['date_to']]);
+        }
+        $metrics = match ($validated['category']) {
+            'revenue' => $this->getRevenueMetrics($request),
+            'retention' => $this->getRetentionMetrics($request),
+            'economics' => $this->getEconomicsMetrics($request),
+            'customers' => $this->getCustomerMetrics($request),
+            default => [],
+        };
+
+        return response()->json($metrics);
+    }
+
+    public function kpis(Request $request): JsonResponse
+    {
+        $request->validate(['start_date' => 'nullable|date', 'end_date' => 'nullable|date|after_or_equal:start_date', 'period' => 'nullable|in:day,week,month,year', 'no_cache' => 'nullable|boolean', 'includes' => 'nullable|string']);
+        $kpiMetrics = new KpiMetrics($request);
+        if ($request->filled('includes')) {
+            $includes = array_map('trim', explode(',', $request->input('includes')));
+
+            return response()->json($kpiMetrics->only($includes));
+        }
+
+        return response()->json($kpiMetrics->get());
+    }
+
+    public function clearCache(Request $request): JsonResponse
+    {
+        (new SubscriptionMetrics($request))->clearCache();
+        (new OrderMetrics($request))->clearCache();
+        (new CustomerMetrics($request))->clearCache();
+        (new KpiMetrics($request))->clearCache();
+
+        return response()->json(['message' => 'Reports cache cleared successfully']);
+    }
+
+    protected function getRevenueMetrics(Request $request): array
+    {
+        $subscriptionMetrics = new SubscriptionMetrics($request);
+        $orderMetrics = new OrderMetrics($request);
+
+        return $this->mergeMetrics($subscriptionMetrics->get(), $orderMetrics->get());
+    }
+
+    protected function getRetentionMetrics(Request $request): array
+    {
+        $subscriptionMetrics = new SubscriptionMetrics($request);
+
+        return $subscriptionMetrics->get();
+    }
+
+    protected function getEconomicsMetrics(Request $request): array
+    {
+        $subscriptionMetrics = new SubscriptionMetrics($request);
+        $customerMetrics = new CustomerMetrics($request);
+
+        return $this->mergeMetrics($subscriptionMetrics->get(), $customerMetrics->get());
+    }
+
+    protected function getCustomerMetrics(Request $request): array
+    {
+        $customerMetrics = new CustomerMetrics($request);
+
+        return $customerMetrics->get();
+    }
+
+    protected function mergeMetrics(array ...$metricSets): array
+    {
+        $merged = [];
+        foreach ($metricSets as $set) {
+            $comparisons = $set['comparisons'] ?? [];
+            $metadata = $set['metadata'] ?? [];
+            unset($set['comparisons'], $set['metadata']);
+            $merged = array_merge($merged, $set);
+            if (! empty($comparisons)) {
+                $merged['comparisons'] = array_merge($merged['comparisons'] ?? [], $comparisons);
+            }
+            if (! empty($metadata)) {
+                $merged['metadata'] = array_merge($merged['metadata'] ?? [], $metadata);
+            }
+        }
+
+        return $merged;
+    }
+}
