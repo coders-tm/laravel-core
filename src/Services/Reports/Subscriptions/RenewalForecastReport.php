@@ -1,93 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-PP4S6/xEF/t7GQhD6X1WW3M+NoBPi4XWiAW=
+<?php
+
+namespace Coderstm\Services\Reports\Subscriptions;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class RenewalForecastReport extends AbstractReport
+{
+    protected array $columns = ['renewal_date' => ['label' => 'Renewal Date', 'type' => 'text'], 'renewals_count' => ['label' => 'Renewals Count', 'type' => 'number'], 'expected_revenue' => ['label' => 'Expected Revenue', 'type' => 'currency'], 'expected_mrr' => ['label' => 'Expected MRR', 'type' => 'currency'], 'at_risk_count' => ['label' => 'At Risk Count', 'type' => 'number'], 'at_risk_revenue' => ['label' => 'At Risk Revenue', 'type' => 'currency']];
+
+    public static function getType(): string
+    {
+        return 'renewal-forecast';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Forecast upcoming renewals and expected revenue';
+    }
+
+    public function query(array $filters)
+    {
+        $now = now()->toDateTimeString();
+        $endDate = $filters['to'] ?? now()->addDays(30)->toDateTimeString();
+        $dateExtract = $this->dbDateFormat('subscriptions.expires_at', 'Y-m-d');
+
+        return DB::table('subscriptions')->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')->whereNotNull('subscriptions.expires_at')->where('subscriptions.expires_at', '>=', $now)->where('subscriptions.expires_at', '<=', $endDate)->whereNull('subscriptions.canceled_at')->select([DB::raw("{$dateExtract} as renewal_date"), DB::raw('COUNT(*) as renewals_count'), DB::raw('COALESCE(SUM(plans.price * COALESCE(subscriptions.quantity, 1)), 0) as expected_revenue'), DB::raw("COALESCE(SUM(\n                    CASE plans.interval\n                        WHEN 'year' THEN plans.price / 12\n                        WHEN 'week' THEN plans.price * 4\n                        WHEN 'day' THEN plans.price * 30\n                        ELSE plans.price\n                    END * COALESCE(subscriptions.quantity, 1)\n                ), 0) as expected_mrr"), DB::raw("COUNT(CASE WHEN subscriptions.status IN ('past_due', 'incomplete') THEN 1 END) as at_risk_count"), DB::raw("COALESCE(SUM(\n                    CASE WHEN subscriptions.status IN ('past_due', 'incomplete')\n                    THEN plans.price * COALESCE(subscriptions.quantity, 1)\n                    ELSE 0 END\n                ), 0) as at_risk_revenue")])->groupBy(DB::raw($dateExtract))->orderBy('renewal_date');
+    }
+
+    public function toRow($row): array
+    {
+        return ['renewal_date' => $row->renewal_date ?? '', 'renewals_count' => (int) ($row->renewals_count ?? 0), 'expected_revenue' => (float) (float) ($row->expected_revenue ?? 0), 'expected_mrr' => (float) (float) ($row->expected_mrr ?? 0), 'at_risk_count' => (int) ($row->at_risk_count ?? 0), 'at_risk_revenue' => (float) (float) ($row->at_risk_revenue ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $now = now()->toDateTimeString();
+        $next30Days = now()->addDays(30)->toDateTimeString();
+        $totalRenewals = DB::table('subscriptions')->whereNotNull('expires_at')->whereRaw('expires_at >= ?', [$now])->whereRaw('expires_at <= ?', [$next30Days])->whereNull('canceled_at')->count();
+
+        return ['total_renewals_next_30_days' => $totalRenewals];
+    }
+}

@@ -1,49 +1,55 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop;
+
+use Coderstm\Models\Shop\Product\Inventory;
+use Coderstm\Models\Shop\Product\Variant;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+
+class LineItem extends Model
+{
+    use Core;
+
+    protected $hidden = ['itemable_type', 'itemable_id'];
+
+    protected $casts = ['is_product_deleted' => 'boolean', 'is_variant_deleted' => 'boolean', 'taxable' => 'boolean', 'is_custom' => 'boolean'];
+
+    protected $with = ['product', 'variant'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id')->withOnly('media');
+    }
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class, 'variant_id')->withOnly(['media', 'options']);
+    }
+
+    public function itemable()
+    {
+        return $this->morphTo();
+    }
+
+    public function getThumbnailAttribute($thumbnail = null)
+    {
+        if (isset($this->variant->thumbnail)) {
+            return $this->variant->thumbnail;
+        } elseif (isset($this->product->thumbnail)) {
+            return $this->product->thumbnail;
+        } else {
+            return $thumbnail;
+        }
+    }
+
+    public function adjustInventory($quantity)
+    {
+        $inventory = Inventory::where(['location_id' => $this->itemable?->location_id, 'variant_id' => $this->variant_id])->first();
+        if ($inventory) {
+            $inventory->setAvailable($quantity);
+        }
+
+        return $inventory;
+    }
+}

@@ -1,99 +1,45 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-mR2Lms/213YV7+xSYwD7Bg95
+<?php
+
+namespace Coderstm\Services\Reports\Plans;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class FeatureUtilizationReport extends AbstractReport
+{
+    protected array $columns = ['plan_id' => ['label' => 'Plan ID', 'type' => 'number'], 'plan_name' => ['label' => 'Plan Name', 'type' => 'text'], 'feature_name' => ['label' => 'Feature', 'type' => 'text'], 'feature_limit' => ['label' => 'Avg Limit', 'type' => 'number'], 'avg_usage' => ['label' => 'Avg Usage', 'type' => 'number'], 'utilization_rate' => ['label' => 'Utilization Rate', 'type' => 'percentage'], 'users_at_limit' => ['label' => 'Users at Limit', 'type' => 'number'], 'users_over_limit' => ['label' => 'Users Over Limit', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'feature-utilization';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Analyze how plan features are being used by subscribers';
+    }
+
+    public function query(array $filters)
+    {
+        return DB::table('subscription_features')->join('subscriptions', 'subscriptions.id', '=', 'subscription_features.subscription_id')->join('plans', 'plans.id', '=', 'subscriptions.plan_id')->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])->whereNull('subscriptions.canceled_at')->select(['plans.id as plan_id', 'plans.label as plan_name', 'subscription_features.slug as feature_slug', 'subscription_features.label as feature_name', DB::raw('COUNT(DISTINCT subscriptions.id) as subscription_count'), DB::raw('AVG(subscription_features.value) as avg_limit'), DB::raw('AVG(subscription_features.used) as avg_usage'), DB::raw('COUNT(DISTINCT CASE WHEN subscription_features.used >= subscription_features.value THEN subscriptions.id END) as users_at_limit'), DB::raw('COUNT(DISTINCT CASE WHEN subscription_features.used > subscription_features.value THEN subscriptions.id END) as users_over_limit')])->groupBy('plans.id', 'plans.label', 'subscription_features.slug', 'subscription_features.label')->orderBy('plans.label')->orderBy('subscription_features.label');
+    }
+
+    public function toRow($row): array
+    {
+        $avgLimit = (float) ($row->avg_limit ?? 0);
+        $avgUsage = (float) ($row->avg_usage ?? 0);
+        $utilizationRate = $avgLimit > 0 ? $avgUsage / $avgLimit * 100 : 0;
+
+        return ['plan_id' => (int) ($row->plan_id ?? 0), 'plan_name' => $row->plan_name ?? '', 'feature_name' => $row->feature_name ?? $row->feature_slug ?? '', 'feature_limit' => (float) $avgLimit, 'avg_usage' => $avgUsage, 'utilization_rate' => (float) $utilizationRate, 'users_at_limit' => (int) ($row->users_at_limit ?? 0), 'users_over_limit' => (int) ($row->users_over_limit ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $summary = DB::table('subscription_features')->join('subscriptions', 'subscriptions.id', '=', 'subscription_features.subscription_id')->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])->whereNull('subscriptions.canceled_at')->select([DB::raw('COUNT(DISTINCT subscriptions.plan_id) as total_plans'), DB::raw('COUNT(DISTINCT subscription_features.slug) as total_features_tracked'), DB::raw('AVG(subscription_features.used) as avg_usage_overall'), DB::raw('AVG(subscription_features.value) as avg_limit_overall')])->first();
+        $avgUsage = (float) ($summary->avg_usage_overall ?? 0);
+        $avgLimit = (float) ($summary->avg_limit_overall ?? 0);
+        $overallUtilization = $avgLimit > 0 ? $avgUsage / $avgLimit * 100 : 0;
+
+        return ['total_plans' => (int) ($summary->total_plans ?? 0), 'total_features_tracked' => (int) ($summary->total_features_tracked ?? 0), 'avg_usage' => $avgUsage, 'avg_limit' => $avgLimit, 'overall_utilization_rate' => (float) $overallUtilization];
+    }
+}

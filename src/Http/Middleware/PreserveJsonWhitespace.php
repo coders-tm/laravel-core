@@ -1,30 +1,27 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-guC4pyx8NBQP7aIHZGEG8bk85r4WY68Xh8Lmv+q=
+<?php
+
+namespace Coderstm\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class PreserveJsonWhitespace
+{
+    public function handle(Request $request, Closure $next)
+    {
+        if ($request->isJson() && $request->has('data')) {
+            $rawContent = $request->getContent();
+            if (! empty($rawContent)) {
+                try {
+                    $rawData = json_decode($rawContent, true, 512, JSON_THROW_ON_ERROR);
+                    if (isset($rawData['data'])) {
+                        $request->merge(['data' => $rawData['data']]);
+                    }
+                } catch (\JsonException $e) {
+                }
+            }
+        }
+
+        return $next($request);
+    }
+}

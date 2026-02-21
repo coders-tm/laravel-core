@@ -1,109 +1,84 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-cP0HlHyCIUMdvk5NdhoP9KEkOeDeF/xKlFGUbYG=
+<?php
+
+namespace Coderstm\Services;
+
+use Illuminate\View\Compilers\BladeCompiler;
+
+class MaskSensitiveConfig extends BladeCompiler
+{
+    protected array $dangerousFunctions = ['exec', 'passthru', 'shell_exec', 'system', 'proc_open', 'popen', 'pcntl_exec', 'file_get_contents', 'file_put_contents', 'fopen', 'fwrite', 'unlink', 'rmdir', 'mkdir', 'rename', 'copy', 'chmod', 'chown', 'eval', 'assert', 'create_function', 'call_user_func', 'call_user_func_array', 'DB::raw', 'DB::statement', 'DB::unprepared', 'ReflectionClass', 'ReflectionFunction', 'ReflectionMethod', 'Cookie::'];
+
+    protected $sensitiveKeys = ['app.key', 'app.cipher', 'auth.passwords.users.provider', 'database.connections.mysql.password', 'database.connections.pgsql.password', 'database.connections.sqlite.password', 'database.connections.sqlsrv.password', 'mail.password', 'mail.username', 'services.mailgun.secret', 'services.postmark.token', 'services.ses.key', 'services.ses.secret', 'services.stripe.key', 'services.stripe.secret', 'services.google.client_id', 'services.google.client_secret', 'services.github.client_id', 'services.github.client_secret', 'services.facebook.client_id', 'services.facebook.client_secret', 'services.twitter.client_id', 'services.twitter.client_secret', 'broadcasting.connections.pusher.key', 'broadcasting.connections.pusher.secret', 'broadcasting.connections.pusher.app_id', 'broadcasting.connections.pusher.options.cluster', 'filesystems.disks.s3.key', 'filesystems.disks.s3.secret', 'queue.connections.sqs.key', 'queue.connections.sqs.secret', 'payments.stripe.secret_key', 'payments.paypal.client_id', 'payments.paypal.client_secret', 'cashier.key', 'cashier.secret', 'cashier.webhook.secret'];
+
+    public function compileString($value)
+    {
+        $this->blockDangerousFunctions($value);
+        $this->blockMutationCalls($value);
+        $value = preg_replace('/<\\?(?:php|=).*?\\?>/s', '', $value);
+        $value = str_replace([chr(60).'?', '?'.chr(62)], '', $value);
+        $compiled = parent::compileString($value);
+        $compiled = preg_replace_callback('/config\\((["]|\')(?:\\s*)?([a-zA-Z0-9._]+)(?:\\s*)?\\1\\)/', function ($matches) {
+            if (in_array($matches[2], $this->sensitiveKeys)) {
+                return "'****'";
+            }
+
+            return "config('{$matches[2]}')";
+        }, $compiled);
+        $compiled = preg_replace_callback('/Config::get\\((["]|\')(?:\\s*)?([a-zA-Z0-9._]+)(?:\\s*)?\\1\\)/', function ($matches) {
+            if (in_array($matches[2], $this->sensitiveKeys)) {
+                return "'****'";
+            }
+
+            return "Config::get('{$matches[2]}')";
+        }, $compiled);
+        $compiled = $this->sanitizeEnvCalls($compiled);
+        $compiled = $this->sanitizeSettingsCalls($compiled);
+        $compiled = $this->stripDangerousFunctionsFromCompiled($compiled);
+
+        return $compiled;
+    }
+
+    protected function blockDangerousFunctions(string $content): void
+    {
+        foreach ($this->dangerousFunctions as $function) {
+            $pattern = '/\\b'.preg_quote($function, '/').'\\s*\\(/i';
+            if (preg_match($pattern, $content)) {
+                throw new \InvalidArgumentException("Function '{$function}' is not allowed for security reasons.");
+            }
+        }
+    }
+
+    protected function stripDangerousFunctionsFromCompiled(string $compiled): string
+    {
+        foreach ($this->dangerousFunctions as $function) {
+            $pattern = '/\\b'.preg_quote($function, '/').'\\s*\\(/i';
+            $compiled = preg_replace($pattern, '/* BLOCKED */(', $compiled);
+        }
+
+        return $compiled;
+    }
+
+    protected function blockMutationCalls(string $content): void
+    {
+        $patterns = ['/\\bconfig\\s*\\(\\s*\\[/i', '/Config::set\\s*\\(/i', '/\\bsettings\\s*\\(\\s*\\[/i', '/(?:->|\\$\\w+->)update\\s*\\(/i', '/(?:\\w+::)update\\s*\\(/i'];
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $content)) {
+                throw new \InvalidArgumentException('Mutation calls (config/settings/update write) are not allowed for security reasons.');
+            }
+        }
+    }
+
+    public function sanitizeEnvCalls($value)
+    {
+        return preg_replace_callback('/env\\((["]|\')(?:\\s*)?([a-zA-Z0-9._]+)(?:\\s*)?\\1\\)/', function () {
+            return "'****'";
+        }, $value);
+    }
+
+    public function sanitizeSettingsCalls($value)
+    {
+        return preg_replace_callback('/settings\\((["]|\')(?:\\s*)?([a-zA-Z0-9._-]+)(?:\\s*)?\\1(?:\\s*,\\s*[^)]*)?\\)/', function () {
+            return "'****'";
+        }, $value);
+    }
+}

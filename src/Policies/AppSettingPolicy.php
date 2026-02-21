@@ -1,30 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
+
+class AppSettingPolicy
+{
+    use HandlesAuthorization;
+
+    public function before(Model $admin, string $ability)
+    {
+        if ($admin->is_supper_admin) {
+            return true;
+        }
+    }
+
+    public function update(Model $admin): bool
+    {
+        return $admin->can('settings:edit');
+    }
+}

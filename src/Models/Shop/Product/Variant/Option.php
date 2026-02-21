@@ -1,49 +1,49 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-wxO72hz41QMeX/oNpeEyq8vdL0==
+<?php
+
+namespace Coderstm\Models\Shop\Product\Variant;
+
+use Coderstm\Models\Shop\Product\Option as ProductOption;
+use Coderstm\Models\Shop\Product\Variant;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+
+class Option extends Model
+{
+    use Core;
+
+    protected $table = 'variant_options';
+
+    protected $fillable = ['variant_id', 'option_id', 'position', 'value'];
+
+    protected $hidden = ['attribute'];
+
+    protected $with = ['attribute'];
+
+    protected $appends = ['values'];
+
+    public function attribute()
+    {
+        return $this->belongsTo(ProductOption::class, 'option_id');
+    }
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class);
+    }
+
+    protected function values(): Attribute
+    {
+        return Attribute::make(get: fn () => optional($this->attribute)->values ?? []);
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::addGlobalScope('count', function (Builder $builder) {
+            $builder->withMax('attribute as name', 'name');
+            $builder->withMax('attribute as option_id', 'id');
+        });
+    }
+}

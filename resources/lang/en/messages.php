@@ -7,7 +7,7 @@ return [
     'unauthenticated' => 'Unauthenticated.',
     'password' => [
         'changed' => 'Password has been changed successfully!',
-        'reset' => 'Password reset successfully!'
+        'reset' => 'Password reset successfully!',
     ],
     'invalid_token' => 'Invalid token or token may expired!',
     'invalid_user' => 'User not found!',
@@ -115,5 +115,5 @@ return [
         'unarchive' => 'unarchive',
         'marked' => 'marked',
         'unmarked' => 'unmarked',
-    ]
+    ],
 ];

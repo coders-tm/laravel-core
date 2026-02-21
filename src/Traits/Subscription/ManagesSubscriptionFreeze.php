@@ -1,109 +1,92 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits\Subscription;
+
+use Carbon\Carbon;
+use Coderstm\Contracts\SubscriptionStatus;
+
+trait ManagesSubscriptionFreeze
+{
+    public function onFreeze(): bool
+    {
+        return ! is_null($this->frozen_at) && $this->status === SubscriptionStatus::PAUSED && (is_null($this->release_at) || $this->release_at->isFuture());
+    }
+
+    public function canFreeze(int $days = 0): bool
+    {
+        if (! $this->plan->allowsFreeze()) {
+            return false;
+        }
+        if ($this->onFreeze()) {
+            return false;
+        }
+        if ($this->canceled() || $this->expired()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function freeze(?Carbon $releaseAt = null, ?string $reason = null, ?float $fee = null): self
+    {
+        $freezeDays = $releaseAt ? now()->diffInDays($releaseAt) : 0;
+        if (! $this->canFreeze($freezeDays)) {
+            throw new \LogicException('Subscription cannot be frozen at this time.');
+        }
+        $freezeFee = $fee ?? $this->plan->getFreezeFee();
+        $this->fill(['status' => SubscriptionStatus::PAUSED, 'frozen_at' => now(), 'release_at' => $releaseAt])->save();
+        if ($freezeFee > 0) {
+            $this->generateFreezeInvoice($freezeFee, $releaseAt);
+        }
+        $logMessage = 'Subscription frozen';
+        if ($reason) {
+            $logMessage .= ": {$reason}";
+        }
+        if ($releaseAt) {
+            $logMessage .= " (until {$releaseAt->format('Y-m-d')})";
+        }
+        $this->logs()->create(['type' => \Coderstm\Enum\LogType::UPDATED, 'message' => $logMessage]);
+
+        return $this;
+    }
+
+    public function unfreeze(): self
+    {
+        if (! $this->onFreeze()) {
+            throw new \LogicException('Subscription is not currently frozen.');
+        }
+        $freezeDuration = $this->frozen_at->diffInDays(now());
+        if ($this->isContract() && $this->total_cycles) {
+            $this->extendContractForFreeze($freezeDuration);
+        }
+        $this->fill(['status' => SubscriptionStatus::ACTIVE, 'frozen_at' => null, 'release_at' => null])->save();
+        $this->logs()->create(['type' => 'unfreeze', 'message' => "Subscription unfrozen after {$freezeDuration} days"]);
+
+        return $this;
+    }
+
+    protected function extendContractForFreeze(int $freezeDays): void
+    {
+        if (! $this->expires_at) {
+            return;
+        }
+        $this->expires_at = $this->expires_at->addDays($freezeDays);
+    }
+
+    protected function generateFreezeInvoice(float $fee, ?Carbon $releaseAt = null)
+    {
+        $period = $releaseAt ? now()->diffInDays($releaseAt).' days' : 'indefinite';
+
+        return $this->invoices()->create(['user_id' => $this->user_id, 'status' => 'open', 'description' => "Subscription freeze fee ({$period})", 'sub_total' => $fee, 'tax' => 0, 'total' => $fee, 'grand_total' => $fee, 'lines' => [['description' => "Freeze Fee - {$this->plan->label}", 'quantity' => 1, 'unit_amount' => $fee, 'amount' => $fee]]]);
+    }
+
+    public function scopeFrozen($query)
+    {
+        return $query->where('status', SubscriptionStatus::PAUSED)->whereNotNull('frozen_at');
+    }
+
+    public function scopeDueForUnfreeze($query)
+    {
+        return $query->frozen()->whereNotNull('release_at')->where('release_at', '<=', now());
+    }
+}

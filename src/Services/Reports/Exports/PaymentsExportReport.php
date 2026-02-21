@@ -1,79 +1,38 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPzA3tnCoHYGaoqnACCfAWY0u5eJuhukMhuIu/ANE+bkTw/aMK1jqiny+aVHazjUmO7jGO78o
-O/SpmJWPDBA0CovMlgKXJIsWpkmTjtbojPghimHhgXNIQsWwrtXMIZTZ2qus6v5zvxSO+1fu49c3
-SXpJU5MNwftwsVzzzGF/QoNp1aBMXCse+rhoyXWstfLVKSd7HN1VmQ0QxVs6c8ZQUJbQY5JZX+h5
-GaDmRgWaFKptUF3QNsCtyTR4bJu6/1zQqBpGv/xW+GHWDTeY4+7ATeY3oDPidJXfK/ZimdRYb2ik
-C9e6/vGcl3DVKVAiLuGuU7au417Z/gsruYw2uzMEh/SCx3VVAoZ0H+wI9SH8ty9dCyPne8gAK6NG
-xfWwK9D5cnxi8n/2b5ISKteg3DacJlKdaYHF+Yszobi9Nx4G7JgDnMX2xoaEPENwokyKz+2AQOCd
-e7ib9yVEUVEMROsZIGykar2jB/QRLOexnVbHR208zrtkq2Eh3dWczvDazNbOxpZG5ud+trkSMKJl
-u7QTtBs97RIXA3TRx1WcWh9i1fruesEGFlfohQbEssxAmNEXCbaekLRKpcBgxXtc/eQse2Ur3qEm
-c1p7VDx8r0GH0Pogegtq480Bi2xZmgWpzpk27YALlKS+wiA+iWO1Skn2fr+Dr27W6YxPTTs4+Ij0
-isV1RYxGdblfV79NPXkbtiYHeJFII8iAIRPs2lJsMVDIiMVOHrI7MsV0g33oQ1kE9gNgbluuov6F
-LFmz4jP/DchwJGycii8K4AVIbPl9tG7RvGYsDN4Ygw5zSXmR1gC+hGTL7zGCXEjiwf1KKV0alpG1
-qRhBHXkZoawx9lNXASKCT09m3AW1hgUQS5u1okMpBkzFTo3DOSwvwDReMxpsEPQq75mshm3v1uQP
-a4oSJsYI1BSJ1CkJ8M2lOE9pMLzZLcnalc6+XMn8tse5YpOgQXEf3/yuPclJVsAxgA/XCtvyrFyj
-HOrl6C6c0sLicH/3atCaSpVuRM8rpB0vsXgK4ULrAGQ0W6cFD7ArXoMbUg06x008PIkWG9CFsbyK
-BwpyBiaq19dbuYwBPyIkLU9QebJI5oOwdErJINSXU6dXnyDzvImDypRQH1zL3dSo5j7PYOFwL9aU
-OJ8/Ids+gQVRgG3x/Q3m31OqxErMjNl2tIXtgk2vyPd47dnVIR+60idRKzVtN3/G/LK68jBGQCjJ
-FS3HGSBq2Tc3cZyYjKlSrswkTFF9+F7AwFh0Itmo1H1bR2VBcVtHZ4wm8TrskOFE3qd9O5YFKUxw
-br5kei2RBhrEPWLgwe7COWos9KwZu9QgzWI88XrlpuP6jL2aSpG/QNRXTiraai/f53BfkOn0ZdUn
-VDkYgJurIc4J/TqgrDtGTQhWq6l81NU8wyd4MEK01a2Z3+Pl6UiUWYh4SAKuA7Qyn8zmDml5KSJ0
-jZ5EOdNpqSqe6TYPACPj7gAG665MWdooK0+em2lRW9/g4vLBh5n16EGGkCika2l45AR/+DviD5Lk
-fkjELoXZCJI3epB4bHPZNgIKVEVCzIdR9f3I3zPVaV7KkzPmi4hLdRSqIxQwHb2nPGB4we6vncMw
-loy8AJtjkO3xdUVV7xdW9QYozjBPkW5mTtdR049H58ZHH3FIi1z8rm7P7oM1OP/B7VoAMWJ8/Tf/
-2E+rluJBhyc5njoGB4R/xL8BnPPjnVMsI8N8BrfStCC2CBZRN/RUZLeXEWCZcUrQx6gglKb1QG5m
-N1U73kM0UbXOd6l/RxFHnWefMMxABs+X99eNCG+vSfv3t1lz6icYyoLHLAbDLA3RAjA0Dif/Cd0i
-M35EaPWoTrzEbMDngW/6Lc9kuNVGOF1gAEHfu0kYYzy7szCGjubLWodKqoxe4baeu8M3Bc+uAeIt
-3k8v1TBebjGpTBbHRxn1PzHdwTCpc/3+VKXWit76BEaDIkvk7mlo/IRqCNKYTo+jyjHjYgnzlniO
-p1lAqoisRTcdh7q1KEpttN2YXgQHY7kH6HLrbvjpfgdJAOfeOL2QLXGT82pwfyTdCn1IvRy6GqZS
-P3riobYKdYHBf3WJrC6JvjzA+fC7FyMwWBvF6olU0O2o5TA9PeLsvogR9CxNBqVqhjh8G8MJ8JPg
-rCxKia15mEzlwJu7Kevd7XWFtg0SKiMyNifAGBpEyAVYxfOCk/Kvtu4OUIueLdFgSEa8WijXbDmL
-/F8CovI2gnJsw+AL7pWoxYzubskyWEY9g6P3AI125pH5daRpCj/tA1PhoKJSoRUJIm9iQvlm+bSu
-x07YI1HkO7rdbGvRPP/KrYXKTqub03coC1WfL0Fhx1iYMf6LUSrsq2IWVh3fuNQMk3tWo4xnP5jd
-WabHyHbgKtfn7Gg8D1dtBgKelAoQQERp5+gmmcT5p0p/sfwgS6BzhKC2fi1savotZC/BVPeTHvOC
-uhZTMXfQLqKK2+TXYzRUJNS1QEysGKHZ56AkSws9FozHm0Cu+6vPRixZjz5mizmZO5R0Ok6jL+i4
-zsY0x1NKC8RcE2bWlOlH8zzIpevEMDFQfN6dM/A2HUq8zBAW63KbTywJeKNZHilHX7DfJdu7c3JV
-3qTcuR6HDnn1/F1vf4IUBHwrBGW3uOTbbCHkkkno1ddnyQdlY24fGdLQJom6gQ4/YAf+vkjJbAkE
-HZBj/QvFmq4wfvGcG+fL3T0uAXEHscdhCT0Exu1o2xySBbL4HxpXpR/wOG/LWu8cxHPG7QfmV5pZ
-1MtbeLs42ozSWj/W1LBJkGCZgvVZ54nfg3kiOaZdTMwdHGpQdT2iFH1ng4JRMgMtZGw4uS/Pazy6
-znTGY0D+YNchzqmqtla9pkYMHLAk0NQt4FOIeL20dEJQuH+B9dkDMhdORHTz4w6W2mdeM9I52RxI
-6X/h+/ZS0ui8mSq48j+SNij1t2LHjcSCXMtX4GGTH/BJWRQqLaAuC1tPhbK8sB8uJeew7KoviWm9
-ETRx3ilpdeD9A6rsGtiNzUalSKnvQYJsSYNk0k5YctVpD+PufxJAydRmf+Gr4XpKt9mroOks2I+P
-Fpgby7AmX+dvXtWopUmPApr3KeoWufHaOV+7QSn74gQvehEgiXQ/pEfhgHHVi5UqKNAPgEjjmSE1
-LfkteGRRyD8OIKn3D0f8npQdGQKgNexRgbWN/Z4vlUnPSPDH+7hhbXrV0LBEaGEdRkdljqmZv5Vb
-7awgLHwryqUii16zshm8fEs3J8T7stnWYJYFocxz9X9IPwwISHaPlUnFqCwQGwU8+8XtTFdBWsgI
-4f0T1O+KV61+UXcMChKq3AeipWpoBsl8hRDDW7CeYB3bshXOb/sZbBECk5/nG7WxMKyYOGE9BRtI
-45hVvMFZTdX+aNmae+R7He6UV3InHYs4FsOW8NqnwzT4ONYpniVdTTpmrkkuwj65J+WjfZ8w/xIR
-6985Dbi3jfsrTxJ+XKJbPCSbEGZHrih7kSYO8N6XVhlJmt4KNjArjJN9Qx8/QKSO8M/unoUaeI+b
-D9fSdpvgBwPyWtdiB9AzRvz2O0Y3vk0wciAeWQjgM3F9IbIF6aIiSvMOMiiJkI6rKOIE/jIx5XTC
-lCp2AzDJmYk5xwWYEeslWMZzg6+j2U9tW1Er5Tg4Y2fwd5VA7Nh7gunSfHtHESuiMKuiXLDJUDsr
-oR0EYH+L7+172AiohjgWqrtx6FlalQNhstcCcJ3AcdMumNchaBtn+ePhZHJTjmkqk7wNMSZkz9pH
-aNkdj4XRSMt9NLJ6/j6XAb3/diircxBoyIcrCPHGS9+k+J+f3Pvm/eqr0GUs8SeEb0F604Qx+gsP
-yyAd8PNEVwAiJn++XH1y3olU4+TOeHnB2Q9AgLTt72nepBkMu0/MB85mKhlFBr9PKL3XnPh74bf9
-tejmjUxeMSKO2pW2fX+MEv9VSOMVNQdvoLi+zCZDZHFrnMjBb7UCv/euYsS6zEhVwmnavbyNGLBy
-rBQ1D/MJiHFY1cB6LQwJuKIWFeFn56RC9qiCxeKb/ExJic6lCed6IaaAYXhyXIEQ+SATAq38cnNF
-Y/HK9Xk3tofMIIHYW+FkFwIkYHdIsmocnQkLcP9nm5hTQGdUehZnRC0FNNugxXMY1/VOimeZW8HN
-7SQim924ze30J0xJzlN+w0kgit74OHzzVAVH8Wh77HZxkRkHWRhbYMXK0Ui4yxDQKmavQBQC7IVv
-lWmEZ7RPJtwZf92+zy+A6zBsz454NjES80dvZI7QPPi751TxaOrjomYcgdCxULXFKw3XqUevwHQR
-Sxul6kgLQ0NzbpKQkZa/7o7+0kyH4szS8MxGfNaETD1qDYvaeX8RwD8SZhg22+QmHv/vPA1nKkXB
-xCsa0S0LPjo/FySg1X6BaMsAk2GFGjE9f+GGjAYTQ5iuhf1TdH0RwDgvUNZTUp/+WwH5we6t5K2A
-dyHK3FFlylqU9w6nmjAuHbWFbysJG4MFKM3+kjtazJSvBM1GPRWwNbmeE36dUtw6KUr5ccLPXkDe
-6NUPRiVzPzbaE5vh2dzuIwLIjiFTJ9df3O8Y1sewJyCkXXHeMEatvFKlDwh2wrRd0NEMnmqZMjo/
-wn3Fvd85vEOOCccpAxrNiBn0U4W1wKA5C9H07Xb7JMkpkBKvXA/aKCjMtu+L9zFHasFVnG2/RZ9Q
-4xrhZjFo5VbtSoxI/ZjObRHMBXEJ/noapp8sRCSrUkfchrmGZcadRfgGZM86JaJ7nwu+O0VIJ7HL
-bI0UC6jTqMW4hijv14TZLH+GFPYd/4jZNX+y9bhHVw7DodJm5PQAOjxipiiO9erCHwsiwR0FLoGf
-mZBJ5RDqKqQLCq/MrLn06f22KFj/WaVJ2ew3vtlI0t4hQLnp5PhahOLSR3TdrSyACHfL7E4/zPkw
-s2mKlLU4Ki1oXjAeze+BIdqU21vFE57H6TDZC2XJAgXVwCSXbHqPdCMGtOcSKPaHI4fXSStMXsUb
-9y2dvJ28ajcPr5bwIwcjJ6JetTwVWKBKkJkBsSAjTyq5cCGMjoo1EXhYdHfFs2GZT1JY4jzWVcBM
-dj/AfF46ROXstFsMJmyXx+2KNZWZCEQ+7GhdtV/as30H5pF69HIZz+m84R6fgiwenhW9GMaQdu+v
-N2YxEY4hSbfbVOSIWzoptpCT8e/xu3loTHJ0Le0bQDtilqlLPsqtaR6x3n1RaAupXM4vGiB6XbmN
-0QcoZzmcxWgd1PhH3yGcVkF1/jxzc25tTDW25tPxOEv9OtdLzZ7MiZfZCHfIs1mou4eAo/tbH9+0
-5ZH9kn3blDzbCofYr1Fx6A2wxvEsWWWLD8Kw+baxLdGgAc74PkEp2fzqsC4WBCBgguPFNWY9X5Va
-n2p0ONG675ucM3j56o7MLR/c5DdDEb1INdgd4JQmN7itJauFxsnSBDaXS5BVQ6yQR4hRqI1hdT1m
-MRCWUyeJlCE7rQWSaxd5819qwz4vpKZGQMbV5gww6IET6Wcm7je1d0QlWCxwmdKW6RgbQ9+nZYiX
-YvjUaJG0ZY+c8oJp9a/cFYGkE+T/rFUUkAOYKwsbicxueTpOnsZY+XnMjYFbf6ZiKIUFtiiCGiE+
-vyQhIlvS3Emg8bby/mux7AYzEATEHW6nXj0uSyQukVfaeJWWxziITiLas9ZhfCkJNFqtwo7v6Hwf
-QvQNTymNRmAPKMWvGoi+/hpun8o900GO+IrBH3hYeqniHfuXrs55Ihqp1+qNo6nFwRY1yOctD1xd
-Y7HqyQNSp2uUBBlzfeBVHI98cooTAW+ANSVLQ8sWq/2BTG==
+<?php
+
+namespace Coderstm\Services\Reports\Exports;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class PaymentsExportReport extends AbstractReport
+{
+    protected array $columns = ['id' => ['label' => 'Payment ID', 'type' => 'text'], 'transaction_id' => ['label' => 'Transaction ID', 'type' => 'text'], 'amount' => ['label' => 'Amount', 'type' => 'currency'], 'currency' => ['label' => 'Currency', 'type' => 'text'], 'fees' => ['label' => 'Fees', 'type' => 'currency'], 'net_amount' => ['label' => 'Net Amount', 'type' => 'currency'], 'refund_amount' => ['label' => 'Refund Amount', 'type' => 'currency'], 'status' => ['label' => 'Status', 'type' => 'text'], 'payment_method' => ['label' => 'Payment Method', 'type' => 'text'], 'paymentable_type' => ['label' => 'Paymentable Type', 'type' => 'text'], 'paymentable_id' => ['label' => 'Paymentable ID', 'type' => 'number'], 'processed_at' => ['label' => 'Processed At', 'type' => 'text'], 'created_at' => ['label' => 'Created At', 'type' => 'text'], 'note' => ['label' => 'Note', 'type' => 'text']];
+
+    public static function getType(): string
+    {
+        return 'payments';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Export payment transaction history';
+    }
+
+    public function query(array $filters)
+    {
+        return DB::table('payments')->leftJoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.id')->select(['payments.id', 'payments.transaction_id', 'payments.amount', 'payments.currency', 'payments.fees', 'payments.net_amount', 'payments.refund_amount', 'payments.status', 'payments.paymentable_type', 'payments.paymentable_id', 'payments.processed_at', 'payments.created_at', 'payments.note', DB::raw('COALESCE(payment_methods.name, payment_methods.provider, "") as payment_method_name')])->orderBy('payments.created_at', 'desc');
+    }
+
+    public function toRow($row): array
+    {
+        return ['id' => (int) $row->id, 'transaction_id' => $row->transaction_id ?? '', 'amount' => (float) ($row->amount ?? 0), 'currency' => $row->currency ?? 'USD', 'fees' => (float) ($row->fees ?? 0), 'net_amount' => (float) ($row->net_amount ?? 0), 'refund_amount' => (float) ($row->refund_amount ?? 0), 'status' => $row->status ?? '', 'payment_method' => $row->payment_method_name ?? '', 'paymentable_type' => $row->paymentable_type ?? '', 'paymentable_id' => $row->paymentable_id ? (int) $row->paymentable_id : null, 'processed_at' => $row->processed_at ?? '', 'created_at' => $row->created_at ?? '', 'note' => $row->note ?? ''];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('payments')->select([DB::raw('COUNT(*) as total_payments')])->first();
+
+        return ['total_payments' => (int) $stats->total_payments];
+    }
+}

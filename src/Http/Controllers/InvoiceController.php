@@ -1,55 +1,43 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Coderstm;
+use Coderstm\Traits\Helpers;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class InvoiceController extends Controller
+{
+    use Helpers;
+
+    public function invoices(Request $request)
+    {
+        $query = $this->user($request)->invoices();
+        if ($request->filled('status')) {
+            $query->whereStatus($request->status);
+        }
+        $invoices = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?: 15);
+
+        return new ResourceCollection($invoices);
+    }
+
+    public function downloadInvoice(Request $request, $invoice)
+    {
+        $invoice = Coderstm::$orderModel::findOrFail($invoice);
+        if (is_user() && $invoice->customer_id !== user('id')) {
+            abort(403, __('You are not authorized to access this invoice.'));
+        }
+
+        return $invoice->load('line_items')->download();
+    }
+
+    protected function user(Request $request)
+    {
+        if (is_admin()) {
+            return Coderstm::$userModel::findOrFail($request->user);
+        }
+
+        return user();
+    }
+}

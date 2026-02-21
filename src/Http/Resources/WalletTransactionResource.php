@@ -1,39 +1,13 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPoQebWr6S6iY7nu3BiNjqKPM1edBe+LTc+K7Ts3+vb+IFjbJwjGX0Jyk2E9h8n+bCfg3uIpg
-CY4noBzwM72R07ZUhvi1iggyCUWPzj6qQ4g8cV6O1rqvSdtLyoxXXu9x4yRO0KiHuTEdSNhiwjb1
-XE3YyROW5vFw73i3AFw76Mj7VI3KWKyF0PQEAvuhCHmukWGI0bkjFpeGnNX+vNoW82YNvhN1mwdz
-BeJd18CEbtkqPwJhliiRHmrIQBLQjDP6EXafRijLv/xW+GHWDTeY4+7ATeY3oELbfF9IN0kSUbgh
-2olkki41/n7gP52BN3hNhxHvORjm1n/Dl8aUb5r8NbGmAEofCLXU7TLScOtI6GxkDyv4XcBxysjN
-J5Q8Izvt7ZEznbBu3gkGwCTPlPZrPjgBSxxcpjA+U/CIfr/mnuFauHVFQvwH03T+2D/iBI3bQohb
-uqDeI/uwU7BX+xBgxkRTDSdKwGskJ+rZH4vXzPs03kOFiMh+4sVPxh4h4oNwKhkCPQWks4bHCFeM
-PdF+hA3jRKQp4xy5JZv5VcmM4gtYrDOYC5zbosvW80ECNKIpQMLH+3vWRFjA2tlv1eGpEQiJYhgn
-4o/boMvEZOw7OJrvf0O3+YfdCJUh0EzwNmLbc5nsujsBNmh/7EdRqN17yLt6aT/VeXVx0ROT5aAU
-SJ9cz3UvOn5JmQGljGaTaNw4RJcIrrZYkjKDASuCYNcyAOD2fXdH37T5NtRhhx1xQgJMl/fwrygp
-dGK+N0DyJsAK0D6iwebTK4bxXfAKJjvu/q175IhP5Pbi5hImfurEZ3UHfAfbsC8eJfxI4OEtnOK6
-5PGQCndai4/Zs7gaTtNZtIiYBhIMyvFWIZCb0dvaxuCP0t2IBjZsZHbrQ6Z17JgrNH+jK+q6vn/U
-9jQ1frBU8NQm6rgVJ4zfBWz8MV9kyZylHPSuCkXZandQEQzdgyhthhrQNoRYNHmqupXDCpy49Uf0
-ti+DEfgR3shkfEtq0Tb5roWOAaWR4zYVGcFa+8ygghhxQFlBnVuKtdYpjJN+36RBZoNVb9kA/ms5
-B/8TMZezNb0bLr56klg07w05LWae7w4IIMxU9Q0/TlGQQG/jcD+1Lpsmw/J3G7MaZMz5fTH0M0k7
-Zomab5nB0DxJGSjPD2NMO1k+k53HnH7/RKLOKJ6Jo7L4QicHjZKpNz5oiowBVuLgTDUayAGip7cr
-vxHLmb1fGYg4vqeaZD/ZoJPuSKXaObV9t7hsQUuTaM2ckdA6xr/ZSog2rpBwztjE5V3/fMEkuJqc
-JuwfEGtkKfGBBDYEKfAj2Jzyv7qr5ciaBCMgYck5orGVMoZUvJyYIcucZTHBoyPYH7NZILjanaA4
-0QQXCU23b4KJ5C+5VLePHnfc5j2wory19JYk+JN1HXeH3x5n/Ak06rdtWY4zXwwNu1zxYk80oYMN
-WiWvjDlf5mr2PlxKiKJctXhX5+wdexnemdftZTpiU+ZsYfWO2++7jmjlG8oGP28AXHlaZTFOEDoU
-Coy2Qq9anoCzzrtC7fScFrXVyORPaYOAMy/63s7V1uPuSKhb9nmUmaDwFPqKIlBsDlU+vmY298i9
-1MHZwqjXjWCGueYO4ZflUj5Wm9ix67YW90bBXwh9wsvCQrWzApvelAUJfrl5PGmwgB26mJ8FkMp0
-t7jwGjsTVOs/n9zseHF/fuUfoHCtbwbZFnyB6AhdzHUhN0dvFkKDmb0BO9Mh9qDYmpAvsllU4CEy
-eIcJLlxBorIHiWyE5+CIt9TykODRgQuVwTzfuaIu30l9j48xbhvsL4U/qXUcILlshwBc1GvSxcbP
-Zb0G6E2XtzfS1l2w2oMw2dRutGt2WOFM3LLr8Afzj2awhWMKk79AQyTD034lqcEhvzEAuBCjSfDo
-qQf3jC7Qt2FZCw3EOP6XXuXlO2+7iBKRfwe5K7Re2bMxjD+budthojpeXhTwXLqaEKj02YImqqxJ
-k+FzHFM/OTdJu3FSVltyM2vl6FeUKrHGxERNaneCBfmumpf4mylz+Bif5+GEvgDNGwUUZuHJgPTR
-+5KQUpiWU/TdhnwV4zzW2NfunYNgjlzD7NfXKpAG9FgkdAHZbnLUPbdLiBgf7Wwwnhtm9DpoFyN3
-Ogjjc9LkIhwBhmFosjBKS2VUD31H4+mC+RuEZDN9UIciyYXiD69KS78AuLrZTiiIZ93L0Is07LWI
-7uEcciN7oC2/0Y1eoBmPX01cjfjk3xac1f6K9X8DSwAY3RA0K4gvYBu12XpmRKGS0nyIhFOEDDEH
-/9KMlbYgYfFANlSM/sUHuiTDwt0+kVy6DlzsY5tLuIbo5qwdipNB8A1SYVwNkb05EfQv/N+GGaCK
-sE+aJ0+4whPMuPseN6ig4DMo+UeOymRsFzMw3cjAca8DxcrxpDyP+burOcurLOpZ5wYHg1CX2v8X
-bzT8FZUbRm/LjigmShjcHcrzlyEO2WKsy1mj/wFnLoz/PwKLirClYjNrtS9CuMdtTkIKvX5B6Dto
-91WB6RHxFz8CIYOGDgMnspfUjTmi9rvHW408MuGScXGSdgzidlhGBGlsOy3yFLECMfaG6wcgh8hp
-T+YaRT6CFyc+m27K0sYE6HqFkHf6O6XSxIeByocEjuKiV6YlM809YGAE+Rs4yZe0svcwArcweSac
-DsoXiH1yeQwPxsD3ZhazOlakFHKj068zxoCuTbUq74PNKFd85BAxROuV
+<?php
+
+namespace Coderstm\Http\Resources;
+
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class WalletTransactionResource extends JsonResource
+{
+    public function toArray($request)
+    {
+        return ['id' => $this->id, 'type' => $this->type, 'source' => $this->source, 'amount' => (float) $this->amount, 'formatted_amount' => $this->formatted_amount, 'balance_before' => (float) $this->balance_before, 'balance_after' => (float) $this->balance_after, 'currency' => strtoupper(config('app.currency', 'USD')), 'description' => $this->description, 'metadata' => $this->metadata, 'transactionable_type' => $this->transactionable_type, 'transactionable_id' => $this->transactionable_id, 'created_at' => $this->created_at, 'updated_at' => $this->updated_at];
+    }
+}

@@ -1,29 +1,14 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cP/ACVDQjQaKQg3ZfzMICWNHF6LBqy7NaohcuWHnnbNFAddQ7ELE2Ggcjsiw1cH2uyJHfB0oM
-X3ih+2kZYm8ZFrzIwOWgb7O6CFuVUwRDWCDVoGYb7GZaJR6RDOhkdTwxgXE4MHSqtq46OOAktsbA
-9nhoP52q7/lx0oDtLmLyvRj9eeIeiP6mLyIab7QpFzBWO1SSbmO0Ovflgbdl9sSGTa7s+IMuTvhr
-lLasrvT4tFIrxScNCnGhquyRlbBvujL5DTd1v/xW+GHWDTeY4+7ATeY3o15hErb2r5RnKniNhokk
-vIivJCbU41MvKMvQuD+MEGOgwD43tOSE80De6SrjK3HNCL4enOkkTooYronL+0WqLivG1SvYshOz
-b4h0TybhPvfd73dKBP3/dEryTR0zLr2PkGwovz4tIEdkF+m5gZVM4RLJtwKwO0Qv6o/MjAT2G1GB
-6a5AGJh8yqGufYjcjCEMSTcbVdSlgDnQgN7NP/Qjjc9dn4lcgdy5OxW/GEZ6g4zFFykyATZNQL8P
-MykqW7z71sH4RizKj3/pS1e5JhqZE3Fr3Gige+Qep/yFe1dSVA92N6pbuBE8p0Vkya5UP+QDG2wG
-j6+F1BjVwdhX6A+7HtmbuJukoN9b3eCCLWFe6RCdBxQTibKSIzi2LkpcTA9VqDvjJ0g2Pk5z2bgi
-XNfYUga0OfMr5U8BWC9C05dXA98OV2v75tFusCbvd3PNVvnzATLKezrfNHmAPvuZmrhDkJgs/DjL
-M2krXVi8jATXbbqfQyInv8x7kJkNx3jUKCKLkdOUi7mMfeQ4ebwftfEOHQmFTvDNM+A73uVQWxmo
-HA4VfuJD05tUduZxKcssftpVuYTAXBUR65QAMo7G7/4GwDyf1XS7CcfiusbI04T3CdMaldER02Yt
-BDkl2gLJyMYf2ydkYgO++POAaLJ4pPOglNHrclhqO4O6wgu6LqA/24abLZFoq4qDiezmSthtfch7
-aqkB469HWbv4B/zJktP3z7jOpT2v1YWtevZsoC3HjBiL1FAA17hKdoX6YBXT5diunrRuYj0a5jzt
-jjbE9EIAVylNc8DdyfOGOFQTlFql28cBddJuHMl3K19sX2NiDe0r039QyXHlZy8t69eoAO59kQri
-L7A34i8nZ8N2Q08aj/2nyT1OfWv2vPbl9R1VjEMTHiAflRfUDu3Hgv3eyTOxU0nvxAnte9x5pImx
-qvUy04VYfwn8WOJq/HKxQvcY9E30Wb3FSz+z6B7jPC58XHWNck5HqR8xW4rUEFXt+gnl3QfE4VE1
-hLD79e1vsu+sZmqqYZc86I2NnvqTtyj8vdIO954CqGF1NxKXtxuViL2Z9I2+AJ6f1cA/9MmeORX6
-xU55ZQa0Lcn83l9rJEkUlXmNseOsNqwenFnbEOFuA0j6hhTXoMIyaLX+/a7FTcCM45iwFVb36mco
-cUwPQSDAhPG3clFj4McU0qdlAqc9Lev0pxjrm+Hi/GP++PSKatF8ClkI/9QcIRVYtEnxiTIg7PRH
-1lc3H9erLJjYAizUBVHRUwmaouJgkBOxL9W/qclsx7J2dzbDiEdrT9MDMCIkGvy61aqtcisUsimK
-6bzpXannT6fI+98N85rF2Lwe3iNHupTD+S0MZqLg8mxLUfDuCb1ElrTSZmytvX1Jlk74fvNjO+ib
-pRk6c3yOl2bLfcnlOYwOYCd/WQIr8BG1Fj3q7/u5XOwy/JxYzZ/HEWHcOd+zEEajO5Ig2W+3Nhxz
-nUpovmW69wJf0YD7BFL78Snt/rP/Nz/80WqNK9a5nApBeRFbMWUjcOwEx58qkVjFn7J2fyRgk1Os
-jTWVIz6pMRqPHBlWuaOBx0gk+Fznhvr8UrsrlAA92DwlFYfdFtU+k/XY9aniMtoqKMQ6txIf5Kkr
-9W==
+<?php
+
+namespace Coderstm\Exceptions;
+
+use Coderstm\Models\Subscription;
+use Exception;
+
+class SubscriptionUpdateFailure extends Exception
+{
+    public static function incompleteSubscription(Subscription $subscription)
+    {
+        return new static("The subscription \"{$subscription->plan_id}\" cannot be updated because its payment is incomplete.");
+    }
+}

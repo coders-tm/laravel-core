@@ -1,35 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-uqf7mJLBeTo/yEjAqPs/2lyKGf8=
+<?php
+
+namespace Coderstm\Services;
+
+use Coderstm\Http\Controllers\WebPageController;
+use Illuminate\Support\Facades\Route;
+
+class PageService
+{
+    public function routes()
+    {
+        if (app()->routesAreCached()) {
+            return;
+        }
+        $registryPath = config('coderstm.editor.registry_path');
+        if (! file_exists($registryPath)) {
+            return;
+        }
+        $pages = json_decode(file_get_contents($registryPath), true) ?: [];
+        foreach ($pages as $page) {
+            $slug = $page['slug'];
+            $parent = $page['parent'] ?? null;
+            $path = $parent ? "{$parent}/{$slug}" : $slug;
+            if ($path) {
+                Route::get($path, [WebPageController::class, 'pages'])->defaults('slug', $page['slug'])->name('pages.'.$slug);
+            }
+        }
+    }
+}

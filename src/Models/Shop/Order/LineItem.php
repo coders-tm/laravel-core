@@ -1,80 +1,77 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPsUU/mckWap4WLjHQerdN6XNcID7bZ0U9w2ulPTMYCOIbez2g3KTclDuRMBoBrtUSKJuZ8wF
-XXAfGl+NJSXmaX77ZeeVvMjjFNOQjzB5ZaHKYp3WIkZnJC4hdAvCrnv5DCtwFccMqbIYmkokS+pP
-EhLrRj2eyXQ1w7xXmbjWmXCBWmrKIspD5xYLacpvNnrqvytT7R4lz98umX31NebHbDoEVj5kUAkM
-w8s/O5HyuxhaoVTZs4jj/M5nIIZsf2K4FGtmv/xW+GHWDTeY4+7ATeY3oDPj5DQ0T9BnG4RKYYlk
-NQyCAtjv7LHV4pwY9Fw0bKH4H9XJNmObN/R7hofQSYn5ET3qz5Tkk3q7hott2XACPZ3JQBiwXKCi
-IcMy0aKmkEvgBP3+BXUq/CUTZQfjtuzktwmtqMyFgFJiGNG5kmNXXGHyiHT5jVPKDi1XOyB81/FP
-T3Dd9/2rkReb+dDUoe+dUdGC9qVN/e+/7SrigSe/BJ370r1o/E0MODWhuL3G7M7KaTbwMgTW0ZZc
-ArpV6RBYv7bzNMbJzLE3q1SGcRTUs3fFKT49ZFeMuL/fllkZa1ifj2q95pBDSBPk4Ah5vhOeaafo
-b9W38QF/Oc834en8hECOmDaY2s5VLvlRaM4hsa/HZG17V0Nly1LBcAuIK7cyOgu01Wo6BaS7cfd0
-G8Pbt9NeyNWeNqgbLiinIOt4WFaMFlGApGFMzjClE56ytj3cL/XeK2SFCqOf4nuP4BZl/P/Fm1J6
-gCx1YR3J4Jy7opX1T+sTRr+pRWMav4uFufPdVk72VJVQQmyDTatJnGq0Knn3A0UvZUGNDP1m1+Dr
-7Ep7L0eMbTCEuUoOM0+URmsNP5RjANSKaMObNWvBW99erp1HSxssy5Y4Uuw2G4xjP3JZwlE+EC4a
-u5WJWse+8JgSQ8ANFMqgbZ5ytcUoPJUUvc+EAWs/dNy/r+UYrS3Aikxm5AHKYE25Z0GFpNGSoOQZ
-MG6NqZX9tMwrQl/gmM/qWWu6XsAaSyWvu1ET9aVPMDjRJBGnjXduyTtybF5xd4tIFPA74bQCt/oi
-XaYXg+Kh8Nxv0IoH2IyZYfv0DF6HO/k/7Psx0sWQJgSDMYWVZNzL7C6w78XUkOVKB7zHThlqFeFf
-Js0h2SwQmRwExGqQ1FlWM4x3yO8wbhkZYlJV0fK6vPwaDbSb2AHya8DdnrrVWFlWGEhDhMKRQB8j
-1AS3+CQwS7SMWOg/y0pjRbcWJno9PynEJitQCj6Sl+bZGErymSfGQv/y5+1mk9bi0aWOdzAe4I2Q
-bCWnr3rnFaLsAj8peuvF9yb5e3kx8c8Z4zt9GaZhoymsZMJRaEbG3vXfjE2Qr6VLqhutLNPhNv3v
-JK4eZyzga0x7zUdSyM312oP1Wp2zYzU9sAQGGhLkZ46wrgaQN87JrE5TaIrmVvF7BjJcZcC+NSCf
-bzex5mrLYymgKOtA9gq+G4+woXaeGWbgrh2cHIFaSEKr1Ht2DF0zqTJdK+v5sdPd9aKNlUG8aaym
-91Bu0jr90l2/4XouGIk/mbPIJshZMOLZeaGqpw8G5LOlkBcVwD5K33P5dbiaxjpEuMtoe8AyyLhs
-+AbQ1TZ8gbsEWKYfnY3LOPiR8P3qY7CfU+od8falsWBLaj3sITh6hYV65I4XGhRUJmc0qxVwS4kU
-AgtWGwjQj8AfBaxpdzIonHZ/EYQtNHXUmEf0xP3n3D4ZmjUgFON9UfwzmjT1urtgXt1m/tMiWH7x
-giLJD08+jz/BCmIbdKBjUTvr6VZDHUxm+08FCBhYZ3FblSJrKjaSnfp0DBeLZfCphluiMUBH3eqD
-1C2niIZq0A36HjijSbi/CnjVVotKBhZMCy1f+d9rdGrtNxiwkuwgxruRphAOOpEacLvI5IDPg2Jf
-0HQhQrhdzANEnALHo/jF4flMxKf7mWB1wsYqjEF5dBttujpSnkquu5Qx7GR2FurhJdYnLh1G7Amw
-lPV34sOZCZHnfT5fvhUBbYsT8Pnm6bPhu8EGsFeOaRySxj+IyzgRvrh6mHZiD8s/jKsvXK5fBnlJ
-VeabB0sAeOrtZCDIjROByk9fcLuu+Kw+Ev/ifEv5314NsBx9RbpoJM10mY0wx5svaYUNXTNnr7eA
-NQWMIIz3rk83RMwAtUijR7DLSgZHcWn516XkaZ5GFJligSc3aE9Tai0h7eoPWCcS945bYlow0EJz
-qvhsktkluAS+wjM7bgz+t5YKes9nnwg3E4cHMkRJ/i1ZwLTfjjRDgXU2B3Oxj82Q/FoxjCxjZUEq
-nks1hjthQwxGK/KTrw2ULqBk5F8amwwtbo8KQBXuHWFhqXaE4q1f5xS0h42Dat1qX0LWFtx9PSs6
-vYPwnCd5vgOiGMqSblic7aUQY6vWT2/n8SMVivT9Qk+vKPwkvTtynLlcE6yWOl+ma8Ig4rQpi9lp
-VNK9u8m50A+gkWRFmmCLdl6zRkIlUkN+I4kjH6tUp+G4byEOjVA0uhJeoMJdX55PjSuMjMVO7jXa
-11iPlavPsxOH9kVa8faYa8ue+sGjQ5aZW7vsYg9oO8VL4hvnqO0o7HDop3Y74fjmpLugTYqXQliX
-V7FlmFSFtRqS40HzdmAxs8znSrO7BESx4PxV9X2a6KPypndfESUOBbWqfv6AswgmYXUambmGRjo6
-wU3y3dwMQeOZCCyYZpJBM8G6zDRz5nMNuC7o7KKNeUp9f69BCawfGNuCl96p4mfSCdOks77/rM17
-bRj6GKXLlC3qIiJDHU7gE+W5yNShLMiDkts/R7daCaDlyxIqQJAcbaS/X66r25LBZyxWkkdj35js
-tVu3wcj6SEOlPxSrSAPrmd/7l0cM8lEEdte1z8+ZiCYix9JGVOrre6yD9PBurRadjU7BxanWM7cV
-WsdtEVUNXPLf1CM7Oudu7PmHcUIHHFXIahQRsPTWldS9uhW39ZVg5CAusYfexhVgRCaKiz4B05wx
-3h+PozDDN/DnCHgZzI6yYE8LT2HTw35OoYsaKr4i5UE3bBUL5fZRoBUdjQNrVURfE7svKXgOJGE+
-jDfODT08Yv9zJuKqLU17oZe+lWONlpsjQhbNLeTGFucuOSDqtnZook1Y/PP26jwP/Hlcmy7Ucllg
-oNyGXS7Joq1DhYunxsh/Rci1I/8Obe24i698NBGAXPceMM9v+OaD6+JJEJKweIW+v/Fa1xU8lWac
-aY1eGFi9njwGtVi4pMRj/zL2O953jW4QNHfNiETVqmwk66hxctpTe8zRTunElefVtoSCa2mJXwCs
-NgIbjbMtWX5e/II951E+tuqz6BIp8BY+0VGMMRJvfBB0oBymV/ClKeeG84L2aSL7yjoR7sAw8e9e
-4v0zUFSTtrQ0w8VkVbWSSSgE5R9oFt1FxEvX4jWaNXShh0Tbeg42eLjbDeek/PHpwzkbMDc/yJLv
-H8WgdlcWTcXF9mi2ZDwn+GTcDfdoRrAsutpakPbzzocYHlP44206punoavaPqG7OIgAgYzHl02wv
-rI7GRS/0ZvxOKwaTcOmrORySv13KY9jjp5urBaDYcMYJUvLFtQkD55xV9ld4Fp+RYJAXBAiIHCVU
-JDN8tVu42cswWkvZg7Crmaj17tMXA5W2mVvXWg6FOkiDEs2W1M1EK0BlTnKaeqBCobXXcl17Fk6L
-DI0fw0NFBzvT23kl2Ug9U8HbK6FQG9y+J47qi35pUv+/fxoCPv2P4jALu3w09rWkeEedtG26aIIs
-3Lgi99hmWj38670uIDqV6pSGlj1Y6mxOwjGbhvCaijObm9NEJMb8R3DyLzADyTINbQJaSj9fC9c3
-VZrogdMv9DmJoBJJniRfeNGusFRTj28FW9qtar7iz47fDSP1nmvt7E5X1qv24Edm9m+nWT1HYHKJ
-jcOur7pg41RsQPAtza6nboliDCN/wb7s81eWnlD3d8/qOBHZFkNEjX0B++2Zc/c+Uc6FWEwUqWGE
-5qTK7O7PXUKVyLrcVVLxrP9xmA0IZLuce/+fHK/qmrQIVgRaazBXXh4LEJU99jSHg9VlxRsaVGTv
-FUFWvbq0IHpUKdsosfwl4HlwmWu8o7r7j2prcN+fy4jssMQgRfscu2hku7/iP+mv4dHZFNLLm8Gd
-ZndKhtZsXNvt/zAzTdWallWwjQ8r+ddOAyVQGpBMpYc+/6vJHFbn4vyx/I5r5UfIx5aC6Wq0xVeW
-kU0ETOPG5GpGn+emhic6OeeqGlnBpdB5TmHomY9QBzsHaT3Dv6SbnE1ihGX6NDKIpsccppSw0Pj7
-G9I3lGtHB3VkEXzrPZQIksO7nG6M/Xk60Q1oiaQr5+uHMCMUUk9T0vQqGPOZ8AGbKNAQYLRT8QkH
-HqJh+tdMFWN0emL9EeXqfC/f9a0WCbyLwq2iEBvMcKMqESdD2KHdtZwqdbjMKrF85Dqez7dHxPV0
-Sbdb0wzOwYAkYjd7IId3Lt0uGihJzTowrozpjCTB/QAfdMKDuwUHmVkFADy3/t9SGylcOKQ9LaCi
-wsLYcqRRzmrI8OindiOAXL0O1++5kFPaQilPePm5rbrrzy1USMI5UvWmLvnjknVIO7Qbmk7nuNJm
-wyAUYuTX4yhRx+RCFc3pcuqLNwl6aCWgnA2FOrt16FrOISFuIBk6r1XFMRWruch9sRWNlXKGw+h/
-QdCOnJN7LJ1Eu648iO5IQmqkzcF4YQvY/m9oFKKPu5FqhgXNdn/iLCv2pqaTATuv13x5OoxGEztH
-MDYkf1vZqw8fMrjYCMd/aFkkOf/9Vd3ja0vOGaVcnMUbqA1O/aHUUaysAfMD+tTVNejuhi+Mc8+2
-gvcQe+Ok4f5ijEBmFSbJtcQUpPW+pZJ48H9ztArMCQkoyO93BaF7mlxu5YaG4MAUnYqCWxKsTLEJ
-TDlA8bBKjtPhu6yQjSkkotfEyjxRPBqHRc/pgLjBp3cCGm665cenlw+yxx8UfPazzQglwiGiJl6R
-/wp1Ylcgeb9FvTaosnNNH048nyodtTV2iU8jc6+RNtPw3fXzBoc6gFpItls3FZLjsaSxTQnmukez
-ZUAwNKE6mdnWYWj+ZnU/fyvpe6jbyYslpzJ3Y/dJSuSZPTz0ioOYOMaOz73KhkwRx+TsfZ27JesR
-8nBoUwsV3LJ0GNgSjlIp0eVv6fBh5csIVXDs2xryXabeGShnGUeXETeY1aOqVqzCHhSUxfMqZw3j
-Ubt2aMhzBVB79F8wl8P4WDpaTXjdHMsVp1SjkDHYE5KPpwdcn+Jkn+QqbKJyUFQsNq7boeQa5M/o
-PjEZf1o7coGpvX/2xmuvfsgTWMUqb/didTnZyUdytMgPn7yxgTByrzOsvt9+DVaXTqjeUwclcMv3
-6DK0A/JeRsoEeIfz7UUHEc6lbGv273ycMD3oHvTRIbKudiXMT2WooQi3H+0M0+8zWQ/Vw9lx1U7T
-KIjUrRo6a0j7axu71TvcAq+731xlVcPr7JT2wH831XksiBasHjuhHtvMXb6YfMosb1VZfVFFxP3E
-GvCbll1hrKiTd4iwCrhmaKFouLTVn+WAobBs8mUqjw0dUYl1gT63Qp7CASFVIGB83HuSKq8eFbmo
-EVq4V62ja+anyvE/1Ulth6+m1GfAhO328xdy6wXCP36PhOm9Uxm6Dehp3tQ5YlENDOcOUW2OhSSg
-4P4z3B9gYaztZeqCvnlovpq2A0j8KSPz1NG70BVDv6AhXcDeJ2p+g0yrmaP2c1UabDaYl57ocR67
-z+NWI5HPDEw4S6Uw7COmkkyKnZcoXkD3eMuxxkQQ4JQGnMHzgh7YdKlkJmwKzSadXAxRQZJlpGY+
-31+FvG==
+<?php
+
+namespace Coderstm\Models\Shop\Order;
+
+use Coderstm\Models\Shop\LineItem as BaseLineItem;
+use Coderstm\Models\Shop\Product\Weight;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+
+class LineItem extends BaseLineItem implements \Coderstm\Contracts\Currencyable
+{
+    public function getCurrencyFields(): array
+    {
+        return ['price', 'total', 'discounted_price'];
+    }
+
+    protected $fillable = ['title', 'product_id', 'variant_title', 'variant_id', 'sku', 'price', 'quantity', 'taxable', 'metadata', 'is_custom', 'is_product_deleted', 'is_variant_deleted'];
+
+    protected $with = ['weight', 'discount', 'product', 'variant'];
+
+    protected $appends = ['thumbnail', 'discounted_price', 'has_discount', 'total'];
+
+    protected $casts = ['metadata' => 'json', 'is_product_deleted' => 'boolean', 'is_variant_deleted' => 'boolean', 'taxable' => 'boolean', 'is_custom' => 'boolean'];
+
+    public function weight()
+    {
+        return $this->morphOne(Weight::class, 'weightable');
+    }
+
+    public function discount()
+    {
+        return $this->morphOne(DiscountLine::class, 'discountable');
+    }
+
+    public function hasDiscount(): bool
+    {
+        return ! is_null($this->discount) ?: false;
+    }
+
+    protected function total(): Attribute
+    {
+        return Attribute::make(get: fn () => round($this->discounted_price * $this->quantity, 2));
+    }
+
+    protected function discountedPrice(): Attribute
+    {
+        return Attribute::make(get: function () {
+            if ($this->hasDiscount()) {
+                return $this->discount->calculateFinalPrice($this->price);
+            }
+
+            return $this->price;
+        });
+    }
+
+    public function getHasDiscountAttribute()
+    {
+        return $this->hasDiscount();
+    }
+
+    protected static function booted()
+    {
+        static::created(function ($model) {
+            $model->adjustInventory(-$model->quantity);
+        });
+        static::deleted(function ($model) {
+            $model->adjustInventory($model->quantity);
+        });
+        static::updated(function ($model) {
+            if ($model->isDirty('quantity')) {
+                $model->adjustInventory($model->getOriginal('quantity') - $model->quantity);
+            }
+        });
+        static::restored(function ($model) {
+            $model->adjustInventory(-$model->quantity);
+        });
+    }
+}

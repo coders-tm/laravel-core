@@ -1,16 +1,16 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as App;
+use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
 use Coderstm\Http\Controllers as Coderstm;
 use Coderstm\Http\Controllers\Auth;
-use Coderstm\Http\Controllers\Subscription;
 use Coderstm\Http\Controllers\Blog;
 use Coderstm\Http\Controllers\Page;
-use Coderstm\Http\Controllers\Webhook;
 use Coderstm\Http\Controllers\Payment;
+use Coderstm\Http\Controllers\Subscription;
 use Coderstm\Http\Controllers\User\WalletController;
-use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
+use Coderstm\Http\Controllers\Webhook;
+use Illuminate\Support\Facades\Route;
 
 // Subscription Promo Code Check Route
 Route::post('subscriptions/check-promo-code', [Subscription\SubscriptionController::class, 'checkPromoCode'])
@@ -49,7 +49,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'as' => 'settings.notifications.',
         'prefix' => 'settings/notifications',
         'middleware' => 'can:update,Coderstm\Models\Notification',
-        'controller' => Coderstm\NotificationController::class
+        'controller' => Coderstm\NotificationController::class,
     ], function () {
         Route::post('{notification}/mark-as-default', 'markAsDefault')->name('mark-as-default');
         Route::post('{notification}/duplicate', 'duplicate')->name('duplicate');
@@ -57,14 +57,14 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     Route::apiResource('settings/notifications', Coderstm\NotificationController::class, [
         'as' => 'settings',
         'middleware' => 'can:update,Coderstm\Models\Notification',
-        'only' => ['index', 'show', 'update', 'destroy']
+        'only' => ['index', 'show', 'update', 'destroy'],
     ]);
 
     // Application Settings
     Route::group([
         'as' => 'application.',
         'prefix' => 'application',
-        'controller' => Coderstm\ApplicationController::class
+        'controller' => Coderstm\ApplicationController::class,
     ], function () {
         Route::get('stats', 'stats')->name('stats');
         Route::get('editor-theme', 'theme')->name('editor-theme');
@@ -81,7 +81,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'prefix' => 'tasks',
         'as' => 'tasks.',
         'controller' => Coderstm\TaskController::class,
-        'middleware' => 'can:update,task'
+        'middleware' => 'can:update,task',
     ], function () {
         Route::post('{task}/reply', 'reply')->name('reply');
         Route::post('{task}/change-archived', 'changeArchived')->name('change-archived');
@@ -292,7 +292,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             'middleware' => [
                 'can:create,Coderstm\Models\Blog',
                 'can:update,Coderstm\Models\Blog',
-            ]
+            ],
         ])->only(['index', 'store']);
 
         Route::group([
@@ -312,7 +312,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     ], function () {
         Route::group([
             'as' => 'templates.',
-            'controller' => Page\TemplateController::class
+            'controller' => Page\TemplateController::class,
         ], function () {
             Route::get('templates', 'index')->name('index');
             Route::post('templates', 'store')->name('store');
@@ -322,7 +322,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
 
         Route::group([
             'as' => 'blocks.',
-            'controller' => Page\BlockController::class
+            'controller' => Page\BlockController::class,
         ], function () {
             Route::get('blocks', 'index')->name('index');
             Route::post('blocks', 'store')->name('store');

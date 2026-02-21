@@ -1,47 +1,24 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Coderstm\Models\Subscription;
+use Illuminate\Support\Carbon;
+
+class ChurnChart extends AbstractChart
+{
+    public function get(): array
+    {
+        $labels = $this->getMonthLabels();
+        $formattedData = [];
+        for ($i = 0; $i < count($labels); $i++) {
+            $date = Carbon::now()->subMonths($this->months - 1 - $i);
+            $activeStart = Subscription::query()->where('status', 'active')->where('created_at', '<', $date->copy()->startOfMonth())->count();
+            $churned = Subscription::query()->whereYear('canceled_at', $date->year)->whereMonth('canceled_at', $date->month)->count();
+            $churnRate = $activeStart > 0 ? $churned / $activeStart * 100 : 0;
+            $formattedData[$labels[$i]] = ['churned' => $churned, 'rate' => round($churnRate, 2)];
+        }
+
+        return $formattedData;
+    }
+}

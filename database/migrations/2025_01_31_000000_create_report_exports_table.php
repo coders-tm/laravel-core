@@ -1,56 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-5M7xmKISJSxkqOWxKBNvP5RWNBfkOO3f
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('report_exports', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('admin_id')->constrained('admins')->onDelete('cascade');
+            $table->string('type'); // 'subscriptions', 'orders', 'customers'
+            $table->string('status')->default('pending'); // pending, processing, completed, failed
+            $table->string('file_name')->nullable();
+            $table->string('file_path')->nullable();
+            $table->unsignedInteger('file_size')->nullable(); // in bytes
+            $table->unsignedInteger('total_records')->nullable();
+            $table->json('filters')->nullable(); // store applied filters
+            $table->json('metadata')->nullable(); // additional data
+            $table->text('error_message')->nullable();
+            $table->timestamp('started_at')->nullable();
+            $table->timestamp('completed_at')->nullable();
+            $table->timestamp('expires_at')->nullable(); // auto-delete old files
+            $table->timestamps();
+
+            $table->index(['admin_id', 'status']);
+            $table->index(['type', 'status']);
+            $table->index('expires_at');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('report_exports');
+    }
+};

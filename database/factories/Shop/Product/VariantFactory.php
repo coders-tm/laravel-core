@@ -1,52 +1,69 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories\Shop\Product;
+
+use Coderstm\Models\Shop\Product\Variant;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class VariantFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Variant::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        $price = rand(100, 300);
+
+        return [
+            'price' => $price,
+            'cost_per_item' => $price - 30,
+            'track_inventory' => rand(0, 1),
+            'out_of_stock_track_inventory' => rand(0, 1),
+        ];
+    }
+
+    public function isDefault()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_default' => true,
+            ];
+        });
+    }
+
+    public function taxable()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'taxable' => true,
+            ];
+        });
+    }
+
+    public function nonTaxable()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'taxable' => false,
+            ];
+        });
+    }
+
+    public function forProduct($productId)
+    {
+        return $this->state(function (array $attributes) use ($productId) {
+            return [
+                'product_id' => $productId,
+            ];
+        });
+    }
+}

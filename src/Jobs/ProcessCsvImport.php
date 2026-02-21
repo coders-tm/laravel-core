@@ -1,67 +1,78 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-rcRoa16hwrgJT/v5XeIq7W5v5mF8FbErMvYHTG==
+<?php
+
+namespace Coderstm\Jobs;
+
+use Coderstm\Exceptions\ImportFailedException;
+use Coderstm\Exceptions\ImportSkippedException;
+use Coderstm\Models\Import;
+use Coderstm\Notifications\ImportCompletedNotification;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\DB;
+use League\Csv\Reader;
+
+class ProcessCsvImport implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public Import $import;
+
+    public string $model;
+
+    public string $filePath;
+
+    public array $options;
+
+    public function __construct(Import $import)
+    {
+        $this->import = $import;
+        $this->model = $import->model;
+        $this->filePath = $import->file->path();
+        $this->options = $import->options;
+    }
+
+    public function handle(): void
+    {
+        $csv = Reader::createFromPath($this->filePath, 'r');
+        $csv->setHeaderOffset(0);
+        $csv->setDelimiter(',');
+        $csvHeaders = array_map('trim', $csv->getHeader());
+        $mappedHeaders = $this->model::getMappedAttributes();
+        $finalHeaders = [];
+        foreach ($csvHeaders as $header) {
+            if (isset($mappedHeaders[$header])) {
+                $finalHeaders[] = $mappedHeaders[$header];
+            } else {
+                $finalHeaders[] = $header;
+            }
+        }
+        $this->import->update(['status' => Import::STATUS_PROCESSING]);
+        DB::beginTransaction();
+        try {
+            foreach ($csv->getRecords($finalHeaders) as $key => $row) {
+                try {
+                    $this->model::createFromCsv($row, $this->options);
+                    $this->import->addLogs('success', $key);
+                } catch (\Throwable $e) {
+                    if ($e instanceof ImportSkippedException) {
+                        $this->import->addLogs('skipped', $key);
+                    } elseif ($e instanceof ImportFailedException) {
+                        $this->import->addLogs('failed', $key);
+                    } else {
+                        throw $e;
+                    }
+                }
+            }
+            DB::commit();
+            $this->import->update(['status' => Import::STATUS_COMPLETED]);
+            admin_notify(new ImportCompletedNotification($this->import));
+        } catch (\Throwable $e) {
+            $this->import->update(['status' => Import::STATUS_FAILED]);
+            DB::rollback();
+            throw $e;
+        }
+    }
+}

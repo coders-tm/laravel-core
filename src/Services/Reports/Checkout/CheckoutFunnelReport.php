@@ -1,107 +1,64 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-nWU5juuiaEu/qdrOdIPLnQrtUS8LdApN+Nj8
+<?php
+
+namespace Coderstm\Services\Reports\Checkout;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class CheckoutFunnelReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'started' => ['label' => 'Checkouts Started', 'type' => 'number'], 'contact_filled' => ['label' => 'Contact Info Filled', 'type' => 'number'], 'billing_added' => ['label' => 'Billing Added', 'type' => 'number'], 'payment_attempted' => ['label' => 'Payment Attempted', 'type' => 'number'], 'payment_succeeded' => ['label' => 'Payment Succeeded', 'type' => 'number'], 'completed' => ['label' => 'Completed', 'type' => 'number'], 'abandoned' => ['label' => 'Abandoned', 'type' => 'number'], 'start_to_complete_rate' => ['label' => 'Start to Complete Rate', 'type' => 'percentage'], 'payment_success_rate' => ['label' => 'Payment Success Rate', 'type' => 'percentage']];
+
+    public static function getType(): string
+    {
+        return 'checkout-funnel';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Visualize checkout completion rates at each funnel stage';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin(DB::raw('checkouts'), function ($join) {
+            $join->whereRaw('checkouts.started_at BETWEEN periods.period_start AND periods.period_end');
+        })->select(['periods.period_start', 'periods.period_order', DB::raw('COUNT(checkouts.id) as started'), DB::raw('COUNT(CASE WHEN checkouts.email IS NOT NULL THEN 1 END) as contact_filled'), DB::raw('COUNT(CASE WHEN checkouts.billing_address IS NOT NULL THEN 1 END) as billing_added'), DB::raw("COUNT(CASE WHEN checkouts.status IN ('pending', 'completed', 'failed') THEN 1 END) as payment_attempted"), DB::raw("COUNT(CASE WHEN checkouts.status = 'completed' THEN 1 END) as payment_succeeded"), DB::raw("COUNT(CASE WHEN checkouts.status = 'completed' AND checkouts.completed_at IS NOT NULL THEN 1 END) as completed"), DB::raw("COUNT(CASE WHEN checkouts.status = 'abandoned' THEN 1 END) as abandoned")])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $started = (int) ($row->started ?? 0);
+        $completed = (int) ($row->completed ?? 0);
+        $paymentAttempted = (int) ($row->payment_attempted ?? 0);
+        $paymentSucceeded = (int) ($row->payment_succeeded ?? 0);
+        $startToCompleteRate = $started > 0 ? $completed / $started * 100 : 0;
+        $paymentSuccessRate = $paymentAttempted > 0 ? $paymentSucceeded / $paymentAttempted * 100 : 0;
+
+        return ['period' => $period, 'started' => $started, 'contact_filled' => (int) ($row->contact_filled ?? 0), 'billing_added' => (int) ($row->billing_added ?? 0), 'payment_attempted' => $paymentAttempted, 'payment_succeeded' => $paymentSucceeded, 'completed' => $completed, 'abandoned' => (int) ($row->abandoned ?? 0), 'start_to_complete_rate' => (float) $startToCompleteRate, 'payment_success_rate' => (float) $paymentSuccessRate];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('checkouts')->whereBetween('started_at', [$filters['from'], $filters['to']])->selectRaw("\n                COUNT(*) as started,\n                COUNT(CASE WHEN status = 'completed' THEN 1 END) as completed\n            ")->first();
+        if (! $stats) {
+            return ['started' => 0, 'completed' => 0, 'conversion_rate' => (float) 0];
+        }
+        $started = (int) $stats->started;
+        $completed = (int) $stats->completed;
+
+        return ['started' => $started, 'completed' => $completed, 'conversion_rate' => $started > 0 ? $completed / $started * 100 : 0];
+    }
+}

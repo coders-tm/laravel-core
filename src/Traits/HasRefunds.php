@@ -1,126 +1,115 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-C14ZBG==
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Exceptions\RefundException;
+use Coderstm\Models\Payment;
+use Illuminate\Support\Facades\DB;
+
+trait HasRefunds
+{
+    public function refund(?string $reason = null, bool $toWallet = false)
+    {
+        if ($toWallet) {
+            return $this->refundToWallet($reason);
+        }
+        $payments = $this->payments()->where('status', Payment::STATUS_COMPLETED)->where(function ($query) {
+            $query->whereNull('refund_amount')->orWhereRaw('amount > COALESCE(refund_amount, 0)');
+        })->orderBy('created_at', 'desc')->get();
+        if ($payments->isEmpty()) {
+            return $this->refundToWallet($reason);
+        }
+        $lastRefund = null;
+        foreach ($payments as $payment) {
+            if ($payment->refundable_amount <= 0) {
+                continue;
+            }
+            try {
+                $isWallet = $payment->paymentMethod?->provider === \Coderstm\Models\PaymentMethod::WALLET;
+                if ($isWallet) {
+                    $lastRefund = $this->refundPaymentToWallet($payment, $reason);
+                } else {
+                    $lastRefund = $this->refundToOriginalPayment($payment, $reason);
+                }
+            } catch (RefundException $e) {
+                if ($e->isNotSupported()) {
+                    $lastRefund = $this->refundPaymentToWallet($payment, $reason);
+                } else {
+                    throw $e;
+                }
+            }
+        }
+
+        return $lastRefund;
+    }
+
+    public function refundToWallet(?string $reason = null)
+    {
+        if (! $this->customer) {
+            throw new \Exception('Cannot refund to wallet: Order has no customer.');
+        }
+        $refundAmount = $this->refundable_amount;
+        if ($refundAmount <= 0) {
+            throw new \Exception('Refund amount must be greater than zero.');
+        }
+
+        return DB::transaction(function () use ($refundAmount, $reason) {
+            $transaction = $this->customer->creditWallet(amount: $refundAmount, source: 'refund', description: "Refund for order {$this->formated_id}".($reason ? ": {$reason}" : ''), transactionable: $this, metadata: ['order_id' => $this->id, 'order_number' => $this->formated_id, 'refund_reason' => $reason]);
+            $refund = $this->refunds()->create(['amount' => $refundAmount, 'reason' => $reason, 'to_wallet' => true, 'wallet_transaction_id' => $transaction->id]);
+            $this->syncCurrentStatus();
+            event(new \Coderstm\Events\RefundProcessed($refund));
+
+            return $refund;
+        });
+    }
+
+    protected function refundPaymentToWallet(Payment $payment, ?string $reason = null)
+    {
+        if (! $this->customer) {
+            throw new \Exception('Cannot refund to wallet: Order has no customer.');
+        }
+        $refundAmount = $payment->refundable_amount;
+        if ($refundAmount <= 0) {
+            throw new \Exception('Payment amount must be greater than zero to refund.');
+        }
+
+        return DB::transaction(function () use ($payment, $refundAmount, $reason) {
+            $transaction = $this->customer->creditWallet(amount: $refundAmount, source: 'refund', description: "Refund for payment #{$payment->transaction_id}".($reason ? ": {$reason}" : ''), transactionable: $this, metadata: ['order_id' => $this->id, 'order_number' => $this->formated_id, 'payment_id' => $payment->id, 'refund_reason' => $reason]);
+            $refund = $this->refunds()->create(['amount' => $refundAmount, 'reason' => $reason, 'payment_id' => $payment->id, 'to_wallet' => true, 'wallet_transaction_id' => $transaction->id]);
+            $payment->processRefund($reason);
+            $this->syncCurrentStatus();
+            event(new \Coderstm\Events\RefundProcessed($refund));
+
+            return $refund;
+        });
+    }
+
+    public function refundToOriginalPayment(Payment $payment, ?string $reason = null)
+    {
+        $refundAmount = $payment->refundable_amount;
+        if ($refundAmount <= 0) {
+            throw new \Exception('Refund amount must be greater than zero.');
+        }
+        if ($refundAmount > $this->refundable_amount) {
+            throw new \Exception('Refund amount exceeds order refundable amount.');
+        }
+        $paymentMethod = $payment->paymentMethod;
+        if (! $paymentMethod) {
+            throw new \Exception('Payment method not found for this payment.');
+        }
+        $processor = \Coderstm\Payment\Processor::make($paymentMethod->provider);
+        $processor->setPaymentMethod($paymentMethod);
+        if (! $processor->supportsRefund()) {
+            throw new \Coderstm\Exceptions\RefundException("Refunds are not supported for the {$paymentMethod->provider} payment method. "."Use 'Refund to Wallet' option to credit the customer's wallet balance.", ['error_type' => 'not_supported']);
+        }
+
+        return DB::transaction(function () use ($processor, $payment, $refundAmount, $reason) {
+            $refundResult = $processor->refund($payment, $refundAmount, $reason);
+            $payment->processRefund($reason);
+            $refund = $this->refunds()->create(['amount' => $refundAmount, 'reason' => $reason, 'payment_id' => $payment->id, 'to_wallet' => false, 'metadata' => $refundResult->toArray()]);
+            $this->syncCurrentStatus();
+
+            return $refund;
+        });
+    }
+}

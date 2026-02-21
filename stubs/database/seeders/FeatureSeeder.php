@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use Coderstm\Models\Subscription\Feature;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class FeatureSeeder extends Seeder
 {
@@ -32,7 +31,7 @@ class FeatureSeeder extends Seeder
                 'type' => 'boolean',
                 'resetable' => false,
                 'description' => '24x7 Dedicated Support.',
-            ]
+            ],
         ];
 
         Feature::whereNotIn('slug', collect($rows)->map(function ($item) {

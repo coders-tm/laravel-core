@@ -1,96 +1,89 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Retention;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class CustomerChurnReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'starting_customers' => ['label' => 'Starting Customers', 'type' => 'number'], 'churned_customers' => ['label' => 'Churned Customers', 'type' => 'number'], 'new_customers' => ['label' => 'New Customers', 'type' => 'number'], 'ending_customers' => ['label' => 'Ending Customers', 'type' => 'number'], 'churn_rate' => ['label' => 'Churn Rate', 'type' => 'percentage'], 'net_customer_change' => ['label' => 'Net Customer Change', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'customer-churn';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Monitor customer churn rates and retention trends';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => count($periodBoundaries)];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->select(['periods.period_start', 'periods.period_order', DB::raw('(
+                    SELECT COUNT(DISTINCT user_id)
+                    FROM subscriptions
+                    WHERE created_at < periods.period_start
+                    AND (canceled_at IS NULL OR canceled_at >= periods.period_start)
+                ) as starting_customers'), DB::raw('(
+                    SELECT COUNT(DISTINCT user_id)
+                    FROM subscriptions
+                    WHERE created_at <= periods.period_end
+                    AND (canceled_at IS NULL OR canceled_at > periods.period_end)
+                ) as ending_customers'), DB::raw('(
+                    SELECT COUNT(DISTINCT new_subs.user_id)
+                    FROM subscriptions as new_subs
+                    WHERE new_subs.created_at BETWEEN periods.period_start AND periods.period_end
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM subscriptions as prior_subs
+                        WHERE prior_subs.user_id = new_subs.user_id
+                        AND prior_subs.created_at < periods.period_start
+                    )
+                ) as new_customers'), DB::raw('(
+                    SELECT COUNT(DISTINCT churned_subs.user_id)
+                    FROM subscriptions as churned_subs
+                    WHERE churned_subs.canceled_at BETWEEN periods.period_start AND periods.period_end
+                    AND NOT EXISTS (
+                        SELECT 1
+                        FROM subscriptions as active_subs
+                        WHERE active_subs.user_id = churned_subs.user_id
+                        AND (active_subs.canceled_at IS NULL OR active_subs.canceled_at > periods.period_end)
+                    )
+                ) as churned_customers')])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $startingCustomers = (int) ($row->starting_customers ?? 0);
+        $churnedCustomers = (int) ($row->churned_customers ?? 0);
+        $newCustomers = (int) ($row->new_customers ?? 0);
+        $endingCustomers = (int) ($row->ending_customers ?? 0);
+        $churnRate = $startingCustomers > 0 ? $churnedCustomers / $startingCustomers * 100 : 0;
+
+        return ['period' => $period, 'starting_customers' => $startingCustomers, 'churned_customers' => $churnedCustomers, 'new_customers' => $newCustomers, 'ending_customers' => $endingCustomers, 'churn_rate' => (float) $churnRate, 'net_customer_change' => $newCustomers - $churnedCustomers];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $now = now()->toDateTimeString();
+        $activeCustomers = DB::table('subscriptions')->whereNull('canceled_at')->where(function ($q) use ($now) {
+            $q->whereNull('expires_at')->orWhereRaw('expires_at > ?', [$now]);
+        })->distinct('user_id')->count('user_id');
+
+        return ['active_customers' => (int) $activeCustomers];
+    }
+}

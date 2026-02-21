@@ -1,33 +1,27 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-4qGDXprRumwhDQJqhvce8ynYUW==
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Coderstm;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Redeem extends Model
+{
+    protected $fillable = ['redeemable_type', 'redeemable_id', 'coupon_id', 'user_id', 'amount'];
+
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coderstm::$couponModel);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function redeemable()
+    {
+        return $this->morphTo();
+    }
+}

@@ -1,77 +1,69 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers\Payment;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Events\GoCardless\FlowCompleted;
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Services\GatewaySubscriptionFactory;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+class GoCardlessController extends Controller
+{
+    public function success(Request $request)
+    {
+        try {
+            $subscription = $this->validateAndGetSubscription($request);
+            if (! $subscription) {
+                Log::warning('GoCardless flow: Subscription not found');
+
+                return $this->redirectWithError('The payment flow was interrupted. Please try again.');
+            }
+            $subscription->provider = PaymentMethod::GOCARDLESS;
+            $flowId = $request->get('redirect_flow_id');
+            if (! $flowId) {
+                Log::warning('GoCardless flow: Missing redirect_flow_id in callback');
+
+                return $this->redirectWithError('The payment flow was interrupted. Please try again.');
+            }
+            $service = GatewaySubscriptionFactory::make($subscription);
+            $flow = $service->completeSetup($flowId);
+            $subscription->status = SubscriptionStatus::PENDING;
+            $subscription->save();
+            event(new FlowCompleted($subscription, $flow));
+
+            return $this->redirectWithSuccess('Your Direct Debit mandate has been set up successfully. The payment will be processed shortly.');
+        } catch (\Throwable $e) {
+            Log::error('GoCardless flow error: '.$e->getMessage(), ['trace' => $e->getTraceAsString(), 'request' => $request->all()]);
+
+            return $this->redirectWithError('We encountered an error setting up your Direct Debit: '.$e->getMessage());
+        }
+    }
+
+    protected function validateAndGetSubscription(Request $request)
+    {
+        $state = $request->query('state');
+        if (! $state) {
+            throw new \Exception('Missing state parameter');
+        }
+        $subscription = Coderstm::$subscriptionModel::find($state);
+        if (! $subscription) {
+            throw new \Exception('Subscription not found');
+        }
+
+        return $subscription;
+    }
+
+    protected function redirectWithSuccess($message)
+    {
+        return redirect(app_url('/billing', ['setup' => 'success', 'message' => $message]));
+    }
+
+    protected function redirectWithError($message = 'An error occurred')
+    {
+        return redirect(app_url('/billing', ['setup' => 'failed', 'message' => $message]));
+    }
+}

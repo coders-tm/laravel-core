@@ -1,44 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Providers;
+
+use Coderstm\Shortcodes as Component;
+use Illuminate\Support\ServiceProvider;
+use Vedmant\LaravelShortcodes\Facades\Shortcodes;
+
+class ShortcodeServiceProvider extends ServiceProvider
+{
+    public function register(): void {}
+
+    public function boot(): void
+    {
+        Shortcodes::add(['plans' => Component\Plans::class, 'contact-form' => Component\ContactForm::class, 'blogs' => Component\Blogs::class, 'header' => Component\Header::class, 'footer' => Component\Footer::class, 'menu' => Component\Menu::class, 'socials' => Component\Socials::class, 'blog' => Component\Blog::class, 'recent-blogs' => Component\RecentBlogs::class, 'blog-tags' => Component\BlogTags::class, 'blog-categories' => Component\BlogCategories::class, 'blog-datetime' => Component\BlogDatetime::class, 'blog-readtime' => Component\BlogReadtime::class, 'blog-meta' => Component\BlogMeta::class, 'related-blogs' => Component\RelatedBlogs::class]);
+        Shortcodes::add('blog-title', function ($atts, $content, $tag, $manager) {
+            return request()->input('blog.title');
+        });
+        Shortcodes::add('page-title', function ($atts, $content, $tag, $manager) {
+            return request()->input('page.title');
+        });
+    }
+}

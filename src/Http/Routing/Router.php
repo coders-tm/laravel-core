@@ -1,51 +1,37 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-QiLOGmGKga+SGZQqlAxK9m==
+<?php
+
+namespace Coderstm\Http\Routing;
+
+use Illuminate\Container\Container;
+use Illuminate\Contracts\Events\Dispatcher;
+use Illuminate\Routing\PendingResourceRegistration;
+use Illuminate\Routing\Router as BaseRouter;
+
+class Router extends BaseRouter
+{
+    public function __construct(Dispatcher $events, ?Container $container = null)
+    {
+        parent::__construct($events, $container);
+    }
+
+    public function apiResource($name, $controller, array $options = [])
+    {
+        $only = ['index', 'show', 'store', 'destroySelected', 'restoreSelected', 'forceDestroy', 'forceDestroySelected', 'update', 'destroy', 'restore'];
+        if (isset($options['except'])) {
+            $only = array_diff($only, (array) $options['except']);
+        }
+
+        return $this->resource($name, $controller, array_merge(['only' => $only], $options));
+    }
+
+    public function resource($name, $controller, array $options = [])
+    {
+        if ($this->container && $this->container->bound(ResourceRegistrar::class)) {
+            $registrar = $this->container->make(ResourceRegistrar::class);
+        } else {
+            $registrar = new ResourceRegistrar($this);
+        }
+
+        return new PendingResourceRegistration($registrar, $name, $controller, $options);
+    }
+}

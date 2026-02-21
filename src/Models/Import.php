@@ -1,63 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class Import extends Model
+{
+    use SerializeDate;
+
+    const STATUS_PENDING = 'Pending';
+
+    const STATUS_PROCESSING = 'Processing';
+
+    const STATUS_COMPLETED = 'Completed';
+
+    const STATUS_FAILED = 'Failed';
+
+    protected $fillable = ['model', 'file_id', 'user_id', 'status', 'options', 'success', 'failed', 'skipped'];
+
+    protected $casts = ['options' => 'array', 'success' => 'array', 'failed' => 'array', 'skipped' => 'array'];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'user_id');
+    }
+
+    public function file(): BelongsTo
+    {
+        return $this->belongsTo(File::class, 'file_id');
+    }
+
+    public function addLogs($type, $line): void
+    {
+        $lines = $this->{$type} ?? [];
+        $this->update([$type => array_merge($lines, [$line])]);
+    }
+
+    public function getShortCodes(): array
+    {
+        return ['import' => ['model' => class_basename($this->model), 'status' => $this->status, 'successed' => count($this->success ?? []), 'failed' => count($this->failed ?? []), 'skipped' => count($this->skipped ?? [])], 'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'System']];
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::creating(function ($model) {
+            $model->status = static::STATUS_PENDING;
+            $model->user_id = optional(user())->id;
+        });
+    }
+}

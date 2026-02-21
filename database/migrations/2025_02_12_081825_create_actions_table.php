@@ -1,38 +1,32 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('actions', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('actionable_type');
+            $table->unsignedBigInteger('actionable_id');
+            $table->string('name')->index();
+
+            $table->index(['actionable_type', 'actionable_id']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('actions');
+    }
+};

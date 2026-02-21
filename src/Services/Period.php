@@ -1,43 +1,52 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Carbon\Carbon;
+
+class Period
+{
+    protected $start;
+
+    protected $end;
+
+    protected $interval;
+
+    protected $period = 1;
+
+    public function __construct($interval = 'month', $count = 1, $start = '')
+    {
+        $this->interval = $interval;
+        if (empty($start)) {
+            $this->start = Carbon::now();
+        } elseif (! $start instanceof Carbon) {
+            $this->start = new Carbon($start);
+        } else {
+            $this->start = $start;
+        }
+        $this->period = (int) $count;
+        $start = clone $this->start;
+        $method = 'add'.ucfirst($this->interval).'s';
+        $this->end = $start->{$method}($this->period);
+    }
+
+    public function getStartDate(): Carbon
+    {
+        return $this->start;
+    }
+
+    public function getEndDate(): Carbon
+    {
+        return $this->end;
+    }
+
+    public function getInterval(): string
+    {
+        return $this->interval;
+    }
+
+    public function getIntervalCount(): int
+    {
+        return $this->period;
+    }
+}

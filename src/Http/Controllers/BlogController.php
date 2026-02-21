@@ -1,107 +1,90 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-6O5cftAWLyfO3QFu/jrsoBSz0KJr
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\Blog;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Gate;
+
+class BlogController extends Controller
+{
+    use \Coderstm\Traits\HasResourceActions;
+
+    public function __construct()
+    {
+        $this->useModel(Blog::class);
+        $this->authorizeResource(Blog::class, 'blog', ['except' => ['show']]);
+    }
+
+    public function index(Request $request)
+    {
+        $blog = Blog::query();
+        if ($request->filled('filter')) {
+            $blog->where('title', 'like', "%{$request->filter}%");
+        }
+        if ($request->boolean('active')) {
+            $blog->onlyActive();
+        }
+        if ($request->boolean('deleted') ?: false) {
+            $blog->onlyTrashed();
+        }
+        $blogs = $blog->orderBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')->paginate(optional($request)->rowsPerPage ?? 15);
+
+        return new ResourceCollection($blogs);
+    }
+
+    public function store(Request $request)
+    {
+        $rules = ['title' => 'required', 'description' => 'required', 'meta_keywords' => 'max:255', 'meta_description' => 'max:255', 'thumbnail' => 'array', 'thumbnail.id' => 'sometimes|required_unless:thumbnail.src,null|integer', 'thumbnail.src' => 'required_if:thumbnail.id,null|string'];
+        $this->validate($request, $rules);
+        $blog = Blog::create($request->input());
+        $this->saveRelated($request, $blog);
+
+        return response()->json(['data' => $blog->fresh(['thumbnail', 'tags', 'comments']), 'message' => __('Blog has been created successfully!')], 200);
+    }
+
+    public function show($blog)
+    {
+        $blog = Blog::withTrashed()->findOrFail($blog);
+        Gate::authorize('view', $blog);
+
+        return response()->json($blog->load('comments.user'), 200);
+    }
+
+    public function update(Request $request, Blog $blog)
+    {
+        $rules = ['title' => 'required', 'description' => 'required', 'meta_keywords' => 'max:255', 'meta_description' => 'max:255', 'thumbnail' => 'array', 'thumbnail.id' => 'sometimes|required_unless:thumbnail.src,null|integer', 'thumbnail.src' => 'required_if:thumbnail.id,null|string'];
+        $request->validate($rules);
+        $blog->update($request->input());
+        $this->saveRelated($request, $blog);
+
+        return response()->json(['data' => $blog->fresh(['thumbnail', 'tags', 'comments']), 'message' => __('Blog has been updated successfully!')], 200);
+    }
+
+    public function changeActive(Request $request, Blog $blog)
+    {
+        $blog->update(['is_active' => ! $blog->is_active]);
+
+        return response()->json(['message' => $blog->is_active ? 'Blog marked as active successfully!' : 'Blog marked as deactivated successfully!'], 200);
+    }
+
+    public function comments(Request $request, Blog $blog)
+    {
+        $rules = ['message' => 'required'];
+        $this->validate($request, $rules);
+        $comment = $blog->createComment($request->input());
+
+        return response()->json(['data' => $comment->load('user'), 'message' => __('Comment has been added successfully!')], 200);
+    }
+
+    protected function saveRelated(Request $request, Blog $blog)
+    {
+        if ($request->filled('thumbnail')) {
+            $blog->thumbnail()->sync([$request->input('thumbnail.id') => ['type' => 'thumbnail']]);
+        }
+        if ($request->filled('tags')) {
+            $blog->setTags($request->input('tags'));
+        }
+    }
+}

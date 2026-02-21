@@ -1,64 +1,83 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment\Mappers;
+
+use Coderstm\Contracts\PaymentInterface;
+use Coderstm\Models\PaymentMethod;
+use DateTime;
+
+abstract class AbstractPayment implements PaymentInterface
+{
+    protected PaymentMethod $paymentMethod;
+
+    protected string $transactionId;
+
+    protected float $amount;
+
+    protected string $currency;
+
+    protected string $status;
+
+    protected ?string $note;
+
+    protected ?DateTime $processedAt;
+
+    protected array $metadata;
+
+    abstract protected function extractMetadata($response): array;
+
+    public function getPaymentMethod(): PaymentMethod
+    {
+        return $this->paymentMethod;
+    }
+
+    public function getPaymentMethodId(): int
+    {
+        return $this->paymentMethod->id;
+    }
+
+    public function getTransactionId(): string
+    {
+        return $this->transactionId;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->amount;
+    }
+
+    public function getCurrency(): string
+    {
+        return $this->currency;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    public function getProcessedAt(): ?DateTime
+    {
+        return $this->processedAt;
+    }
+
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    public function toString(): string
+    {
+        return $this->metadata['payment_method'] ?? 'Unknown';
+    }
+
+    public function toArray(): array
+    {
+        return ['payment_method_id' => $this->getPaymentMethodId(), 'transaction_id' => $this->getTransactionId(), 'status' => $this->getStatus(), 'note' => $this->getNote(), 'processed_at' => $this->getProcessedAt(), 'metadata' => $this->getMetadata() + ['gateway_currency' => $this->getCurrency(), 'gateway_amount' => $this->getAmount()]];
+    }
+}

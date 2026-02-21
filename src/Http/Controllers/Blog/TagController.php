@@ -1,55 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-IsNViVaCi5IlMKNQ50==
+<?php
+
+namespace Coderstm\Http\Controllers\Blog;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Blog\Tag;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class TagController extends Controller
+{
+    public function index(Request $request)
+    {
+        $tag = Tag::query();
+        $tag->when($request->boolean('options'), function ($query) {
+            $query->withOptions();
+        })->when($request->filled('filter'), function ($query) use ($request) {
+            $query->where('label', 'like', "%{$request->filter}%");
+        });
+        $tags = $tag->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?? 15);
+
+        return new ResourceCollection($tags);
+    }
+
+    public function store(Request $request, Tag $tag)
+    {
+        $rules = ['label' => 'required'];
+        $request->validate($rules);
+        $tag = $tag->create($request->input());
+
+        return response()->json(['data' => $tag, 'message' => __('Tag has been created successfully!')], 200);
+    }
+}

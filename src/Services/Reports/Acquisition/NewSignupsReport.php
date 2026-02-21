@@ -1,136 +1,75 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Zcbi2JTpqimjOvLSzfgbAaUwXW==
+<?php
+
+namespace Coderstm\Services\Reports\Acquisition;
+
+use Coderstm\Coderstm;
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class NewSignupsReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'new_users' => ['label' => 'New Users', 'type' => 'number'], 'new_subscriptions' => ['label' => 'New Subscriptions', 'type' => 'number'], 'trial_signups' => ['label' => 'Trial Signups', 'type' => 'number'], 'paid_signups' => ['label' => 'Paid Signups', 'type' => 'number'], 'mrr_added' => ['label' => 'MRR Added', 'type' => 'currency'], 'top_plan' => ['label' => 'Top Plan', 'type' => 'text']];
+
+    public static function getType(): string
+    {
+        return 'new-signups';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Analyze new user acquisition metrics and signup trends';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+        $userTable = (new Coderstm::$userModel)->getTable();
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin($userTable, function ($join) use ($userTable) {
+            $join->whereRaw("{$userTable}.created_at >= periods.period_start")->whereRaw("{$userTable}.created_at <= periods.period_end");
+        })->leftJoin('subscriptions', function ($join) {
+            $join->whereRaw('subscriptions.created_at >= periods.period_start')->whereRaw('subscriptions.created_at <= periods.period_end');
+        })->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')->select(['periods.period_start', 'periods.period_end', 'periods.period_order', DB::raw("COUNT(DISTINCT {$userTable}.id) as new_users"), DB::raw('COUNT(DISTINCT subscriptions.id) as new_subscriptions'), DB::raw('COUNT(DISTINCT CASE WHEN subscriptions.trial_ends_at IS NOT NULL THEN subscriptions.id END) as trial_signups'), DB::raw('COUNT(DISTINCT CASE WHEN subscriptions.trial_ends_at IS NULL THEN subscriptions.id END) as paid_signups'), DB::raw('COALESCE(SUM(DISTINCT CASE WHEN subscriptions.canceled_at IS NULL THEN plans.price ELSE 0 END), 0) as mrr_added')])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+
+        return ['period' => $period, 'new_users' => (int) ($row->new_users ?? 0), 'new_subscriptions' => (int) ($row->new_subscriptions ?? 0), 'trial_signups' => (int) ($row->trial_signups ?? 0), 'paid_signups' => (int) ($row->paid_signups ?? 0), 'mrr_added' => $this->money($row->mrr_added ?? 0), 'top_plan' => $row->top_plan ?? 'N/A'];
+    }
+
+    public function stream(array $filters, callable $consume): void
+    {
+        $query = $this->query($filters);
+        if (isset($filters['limit']) && $filters['limit'] > 0) {
+            $query->limit($filters['limit']);
+        }
+        foreach ($query->cursor() as $row) {
+            $topPlan = DB::table('subscriptions')->join('plans', 'subscriptions.plan_id', '=', 'plans.id')->whereRaw('subscriptions.created_at >= ?', [$row->period_start])->whereRaw('subscriptions.created_at <= ?', [$row->period_end])->select('plans.label', DB::raw('COUNT(*) as count'))->groupBy('plans.id', 'plans.label')->orderByDesc('count')->value('label') ?? 'N/A';
+            $row->top_plan = $topPlan;
+            $consume($this->toRow($row));
+        }
+    }
+
+    public function summarize(array $filters): array
+    {
+        $userModel = Coderstm::$userModel;
+        $summary = DB::table((new $userModel)->getTable())->whereBetween('created_at', [$filters['from'], $filters['to']])->selectRaw('COUNT(*) as total_new_users')->first();
+        $subSummary = DB::table('subscriptions')->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')->whereBetween('subscriptions.created_at', [$filters['from'], $filters['to']])->selectRaw('
+                COUNT(*) as total_new_subscriptions,
+                COALESCE(SUM(CASE WHEN subscriptions.canceled_at IS NULL THEN plans.price END), 0) as total_mrr_added
+            ')->first();
+
+        return ['total_new_users' => (int) ($summary->total_new_users ?? 0), 'total_new_subscriptions' => (int) ($subSummary->total_new_subscriptions ?? 0), 'total_mrr_added' => (float) ($subSummary->total_mrr_added ?? 0)];
+    }
+}

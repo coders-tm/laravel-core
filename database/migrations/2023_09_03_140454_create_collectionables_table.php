@@ -1,43 +1,38 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-crIeN5hCjiRCBGg3m76FDOc2378L2BbmzV3R
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('collectionables', function (Blueprint $table) {
+            $table->string('collectionable_type');
+            $table->unsignedBigInteger('collectionable_id');
+            $table->unsignedBigInteger('collection_id');
+
+            $table->foreign('collection_id')->references('id')->on('collections')->cascadeOnDelete();
+
+            $table->primary(['collectionable_type', 'collectionable_id', 'collection_id']);
+
+            $table->index(['collectionable_type', 'collectionable_id']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('collectionables');
+    }
+};

@@ -1,191 +1,237 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-jqj0Nsi=
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
+
+class AppSetting extends Model
+{
+    use Core;
+
+    protected $fillable = ['key', 'options'];
+
+    protected $casts = ['options' => 'array'];
+
+    protected $logIgnore = ['options'];
+
+    protected static $cacheKey = 'coderstm_app_settings';
+
+    protected static function getOverrideMap(): array
+    {
+        return config('coderstm.settings_override', ['config' => ['alias' => 'app', 'email' => ['coderstm.admin_email', 'mail.from.address'], 'name' => ['mail.from.name'], 'currency' => 'cashier.currency', 'timezone' => fn ($value) => date_default_timezone_set($value)]]);
+    }
+
+    public static function create($key, array $options = [])
+    {
+        $result = static::updateValue($key, $options);
+        static::clearCache();
+
+        return $result;
+    }
+
+    protected static function parseDottedKey(string $key): array
+    {
+        $segments = explode('.', $key);
+        $dbKey = array_shift($segments);
+
+        return ['key' => $dbKey, 'path' => $segments];
+    }
+
+    protected static function setNestedValue(array $array, array $path, $value): array
+    {
+        if (empty($path)) {
+            return is_array($value) ? $value : $array;
+        }
+        $current = &$array;
+        foreach ($path as $segment) {
+            if (! isset($current[$segment]) || ! is_array($current[$segment])) {
+                $current[$segment] = [];
+            }
+            $current = &$current[$segment];
+        }
+        if (is_array($value)) {
+            $current = array_merge($current, $value);
+        } else {
+            $current = $value;
+        }
+
+        return $array;
+    }
+
+    public static function updateOptions($key, array $options = [])
+    {
+        return static::updateValue($key, $options);
+    }
+
+    public static function updateValue($key, array $options = [], bool $replace = false)
+    {
+        $parsed = static::parseDottedKey($key);
+        $dbKey = $parsed['key'];
+        $path = $parsed['path'];
+        $original = $replace ? [] : static::findByKey($dbKey);
+        if (! empty($path)) {
+            $newOptions = static::setNestedValue($original, $path, $options);
+        } else {
+            $newOptions = array_merge($original, $options);
+        }
+        $filteredOptions = static::filterEmptyArrays($newOptions);
+        $model = static::updateOrCreate(['key' => $dbKey], ['options' => $filteredOptions]);
+        if (Cache::has(static::$cacheKey)) {
+            $cachedSettings = Cache::get(static::$cacheKey);
+            $cachedSettings = is_array($cachedSettings) ? $cachedSettings : [];
+            $cachedSettings[$dbKey] = $model->options;
+            Cache::put(static::$cacheKey, $cachedSettings);
+        }
+        static::applyConfigOverrides($dbKey, $model->options);
+
+        return $model->options;
+    }
+
+    protected static function filterEmptyArrays(array $array): array
+    {
+        $result = [];
+        foreach ($array as $key => $value) {
+            if (is_array($value)) {
+                $filtered = static::filterEmptyArrays($value);
+                if (! empty($filtered)) {
+                    $result[$key] = $filtered;
+                }
+            } else {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+
+    protected static function applyConfigOverrides(string $key, array $options): void
+    {
+        try {
+            $overrideMap = static::getOverrideMap();
+            if (! isset($overrideMap[$key])) {
+                return;
+            }
+            $mappingRules = $overrideMap[$key];
+            $configAlias = $mappingRules['alias'] ?? $key;
+            static::applyConfigMapping($configAlias, $options, $mappingRules);
+        } catch (\Throwable $e) {
+            Log::error("Failed to apply config overrides: {$e->getMessage()}");
+        }
+    }
+
+    public static function syncConfig(): void
+    {
+        try {
+            $overrideMap = static::getOverrideMap();
+            $allSettings = self::getSettings();
+            foreach ($allSettings as $settingKey => $settingValues) {
+                if (! is_iterable($settingValues)) {
+                    continue;
+                }
+                $mappingRules = $overrideMap[$settingKey] ?? [];
+                $configAlias = $mappingRules['alias'] ?? $settingKey;
+                static::applyConfigMapping($configAlias, $settingValues, $mappingRules);
+            }
+        } catch (\Throwable $e) {
+            Log::error("Failed to sync application settings to config: {$e->getMessage()}");
+        }
+    }
+
+    protected static function applyConfigMapping(string $configAlias, $values, array $mappingRules): void
+    {
+        foreach ($values as $property => $value) {
+            Config::set("{$configAlias}.{$property}", $value);
+            if (! isset($mappingRules[$property])) {
+                continue;
+            }
+            $mapping = $mappingRules[$property];
+            if (is_array($mapping)) {
+                foreach ($mapping as $configKey) {
+                    Config::set($configKey, $value);
+                }
+            } elseif (is_callable($mapping)) {
+                $mapping($value);
+            } else {
+                Config::set($mapping, $value);
+            }
+        }
+    }
+
+    public static function find(string $key): array
+    {
+        return static::findByKey($key);
+    }
+
+    public static function findByKey(string $key): array
+    {
+        try {
+            $settings = static::getSettings();
+            if (is_array($settings) && isset($settings[$key])) {
+                $value = $settings[$key];
+
+                return is_array($value) ? $value : [];
+            }
+
+            return [];
+        } catch (\Throwable $e) {
+            Log::error("Error in findByKey: {$e->getMessage()}");
+
+            return [];
+        }
+    }
+
+    public static function findByKeyAsCollection(string $key): \Illuminate\Support\Collection
+    {
+        return collect(static::findByKey($key));
+    }
+
+    public static function value(string $key, string $attribute, $default = null)
+    {
+        $options = static::findByKey($key);
+
+        return $options[$attribute] ?? $default;
+    }
+
+    public static function getSettings(): array
+    {
+        $settings = Cache::remember(static::$cacheKey, 5 * 60, function () {
+            return static::all()->keyBy('key')->map(function ($item) {
+                return $item->options;
+            })->toArray();
+        });
+
+        return $settings;
+    }
+
+    public static function get(string $key, $default = null)
+    {
+        $segments = explode('.', $key);
+        $settingKey = array_shift($segments);
+        $options = static::findByKey($settingKey);
+        if (empty($options)) {
+            return $default;
+        }
+        if (empty($segments)) {
+            return empty($options) ? $default : $options;
+        }
+        $value = $options;
+        foreach ($segments as $segment) {
+            if (is_array($value) && array_key_exists($segment, $value)) {
+                $value = $value[$segment];
+            } else {
+                return $default;
+            }
+        }
+
+        return $value;
+    }
+
+    public static function clearCache()
+    {
+        Cache::forget(static::$cacheKey);
+    }
+}

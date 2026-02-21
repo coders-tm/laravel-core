@@ -1,116 +1,125 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Coderstm;
+use Coderstm\Database\Factories\ReportExportFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
+
+class ReportExport extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['admin_id', 'type', 'status', 'file_name', 'file_path', 'file_size', 'total_records', 'filters', 'metadata', 'error_message', 'started_at', 'completed_at', 'expires_at'];
+
+    protected $casts = ['filters' => 'array', 'metadata' => 'array', 'started_at' => 'datetime', 'completed_at' => 'datetime', 'expires_at' => 'datetime'];
+
+    public function admin()
+    {
+        return $this->belongsTo(Coderstm::$adminModel);
+    }
+
+    public function isCompleted(): bool
+    {
+        return $this->status === 'completed';
+    }
+
+    public function isFailed(): bool
+    {
+        return $this->status === 'failed';
+    }
+
+    public function isPending(): bool
+    {
+        return in_array($this->status, ['pending', 'processing']);
+    }
+
+    public function fileExists(): bool
+    {
+        return $this->file_path && Storage::exists($this->file_path);
+    }
+
+    public function getFileUrlAttribute(): ?string
+    {
+        if (! $this->fileExists()) {
+            return null;
+        }
+
+        return Storage::url($this->file_path);
+    }
+
+    public function getFormattedFileSizeAttribute(): string
+    {
+        if (! $this->file_size) {
+            return 'N/A';
+        }
+        $units = ['B', 'KB', 'MB', 'GB'];
+        $size = $this->file_size;
+        $unit = 0;
+        while ($size >= 1024 && $unit < count($units) - 1) {
+            $size /= 1024;
+            $unit++;
+        }
+
+        return round($size, 2).' '.$units[$unit];
+    }
+
+    public function markAsProcessing(): void
+    {
+        $this->update(['status' => 'processing', 'started_at' => now()]);
+    }
+
+    public function markAsCompleted(string $filePath, int $fileSize, int $totalRecords): void
+    {
+        $this->update(['status' => 'completed', 'file_path' => $filePath, 'file_size' => $fileSize, 'total_records' => $totalRecords, 'completed_at' => now(), 'expires_at' => now()->addDays(7)]);
+    }
+
+    public function markAsFailed(string $errorMessage): void
+    {
+        $this->update(['status' => 'failed', 'error_message' => $errorMessage, 'completed_at' => now()]);
+    }
+
+    public function deleteFile(): bool
+    {
+        if ($this->file_path && Storage::exists($this->file_path)) {
+            return Storage::delete($this->file_path);
+        }
+
+        return false;
+    }
+
+    public function scopeForAdmin($query, int $adminId)
+    {
+        return $query->where('admin_id', $adminId);
+    }
+
+    public function scopeOfType($query, string $type)
+    {
+        return $query->where('type', $type);
+    }
+
+    public function scopeWithStatus($query, string $status)
+    {
+        return $query->where('status', $status);
+    }
+
+    public function scopeExpired($query)
+    {
+        return $query->where('expires_at', '<', now())->whereNotNull('expires_at');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($export) {
+            $export->deleteFile();
+        });
+    }
+
+    protected static function newFactory(): ReportExportFactory
+    {
+        return ReportExportFactory::new();
+    }
+}
