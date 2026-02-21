@@ -1,34 +1,22 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-rYXJxVeiPaVKRkN+Ze4loATdeUxvlki=
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('admins_password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
+        });
+    }
+};

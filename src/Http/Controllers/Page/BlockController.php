@@ -1,77 +1,55 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-j7Ueqtu=
+<?php
+
+namespace Coderstm\Http\Controllers\Page;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Services\Theme;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
+class BlockController extends Controller
+{
+    public function index(Request $request)
+    {
+        $files = File::allFiles($this->path());
+        $blocks = [];
+        foreach ($files as $file) {
+            $filename = Str::replaceLast('.blade.php', '', $file->getFilename());
+            $content = File::get($file->getPathname());
+            preg_match('/\\{\\{-- Name:\\s*(.*)\\s*--\\}\\}/i', $content, $matches);
+            $label = $matches[1] ?? Str::title($filename);
+            $viewContent = view("blocks.{$filename}")->withoutShortcodes();
+            $blocks[] = ['id' => $filename, 'label' => trim($label), 'content' => "{$viewContent}", 'attributes' => ['class' => 'fa fa-cube']];
+        }
+
+        return response()->json($blocks, 200);
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate(['id' => 'string|required', 'label' => 'string|required', 'content' => 'string|required']);
+        $label = $request->label;
+        $content = $request->content;
+        $name = Str::slug($label);
+        try {
+            $filePath = $this->path("/{$name}.blade.php");
+            File::ensureDirectoryExists(dirname($filePath));
+            File::put($filePath, "{{-- Name: {$label} --}}\n\n{$content}");
+        } catch (\Throwable $e) {
+            return response()->json(['message' => $e->getMessage()], 500);
+        }
+
+        return response()->json(['data' => $request->input(), 'message' => trans_module('store', 'block')], 200);
+    }
+
+    private function path($path = null): string
+    {
+        $path = 'views/blocks'.$path;
+        if ($theme = Theme::active()) {
+            return Theme::basePath($path, $theme);
+        }
+
+        return resource_path($path);
+    }
+}

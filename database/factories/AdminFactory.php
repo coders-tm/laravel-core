@@ -1,62 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hRf1uz+Lciw+z8qxVHH/GQYBkXBz6D0=
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Address;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
+
+class AdminFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     */
+    protected $model = 'Coderstm\Models\Admin';
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->safeEmail(),
+            'phone_number' => fake()->e164PhoneNumber(),
+            'email_verified_at' => now(),
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'remember_token' => Str::random(10),
+        ];
+    }
+
+    /**
+     * Indicate that the model's email address should be unverified.
+     *
+     * @return static
+     */
+    public function unverified()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'email_verified_at' => null,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the model's status should be deactive.
+     *
+     * @return static
+     */
+    public function deactive()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_active' => false,
+            ];
+        });
+    }
+
+    /**
+     * Indicate that the model's user should be supper admin.
+     *
+     * @return static
+     */
+    public function admin()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_supper_admin' => true,
+            ];
+        });
+    }
+
+    /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function ($user) {
+            $user->updateOrCreateAddress(Address::factory()->make()->toArray());
+        });
+    }
+}

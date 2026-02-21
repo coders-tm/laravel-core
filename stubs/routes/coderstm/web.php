@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use Coderstm\Http\Controllers\Payment;
 use Coderstm\Http\Controllers as Coderstm;
+use Coderstm\Http\Controllers\Payment;
+use Illuminate\Support\Facades\Route;
 
 // Payments
 Route::group(['prefix' => 'payment', 'as' => 'payment.'], function () {

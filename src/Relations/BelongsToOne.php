@@ -1,36 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-dIwlPCPs399RmzfUBwZODQoz
+<?php
+
+namespace Coderstm\Relations;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
+class BelongsToOne extends BelongsToMany
+{
+    public function initRelation(array $models, $relation)
+    {
+        foreach ($models as $model) {
+            $model->setRelation($relation, null);
+        }
+
+        return $models;
+    }
+
+    public function match(array $models, Collection $results, $relation)
+    {
+        $dictionary = $this->buildDictionary($results);
+        foreach ($models as $model) {
+            if (isset($dictionary[$key = $model->getKey()])) {
+                $model->setRelation($relation, reset($dictionary[$key]) ?: null);
+            }
+        }
+
+        return $models;
+    }
+}

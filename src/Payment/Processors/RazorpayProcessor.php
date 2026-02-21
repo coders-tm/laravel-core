@@ -1,113 +1,88 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-MHW97d8K6rLl5iXnjwk4kFu=
+<?php
+
+namespace Coderstm\Payment\Processors;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\PaymentProcessorInterface;
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Mappers\RazorpayPayment;
+use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentResult;
+use Coderstm\Payment\RefundResult;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class RazorpayProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
+{
+    private const SUPPORTED_CURRENCIES = ['INR', 'USD', 'EUR', 'GBP', 'SGD', 'AUD', 'CAD', 'MYR', 'HKD', 'AED', 'CNY', 'JPY', 'CHF', 'SEK', 'NOK', 'DKK', 'PLN', 'RUB', 'ZAR'];
+
+    public function getProvider(): string
+    {
+        return PaymentMethod::RAZORPAY;
+    }
+
+    public function supportedCurrencies(): array
+    {
+        return self::SUPPORTED_CURRENCIES;
+    }
+
+    public function setupPaymentIntent(Request $request, Payable $payable): array
+    {
+        $api = Coderstm::razorpay();
+        $payable->setCurrencies($this->supportedCurrencies());
+        $this->validateCurrency($payable);
+        $order = $api->order->create(['amount' => round($payable->getGatewayAmount() * 100), 'currency' => Str::upper($payable->getCurrency()), 'receipt' => $payable->getReferenceId(), 'notes' => array_merge($payable->getMetadata(), ['customer_email' => $payable->getCustomerEmail(), 'order_amount' => $payable->getGrandTotal(), 'order_currency' => \Coderstm\Models\Shop\ExchangeRate::getBaseCurrency()])]);
+
+        return ['order_id' => $order['id'], 'amount' => $order['amount'], 'currency' => $order['currency']];
+    }
+
+    public function confirmPayment(Request $request, Payable $payable): PaymentResult
+    {
+        $request->validate(['payment_id' => 'required|string', 'order_id' => 'required|string', 'signature' => 'required|string']);
+        try {
+            $api = Coderstm::razorpay();
+            $attributes = ['razorpay_order_id' => $request->order_id, 'razorpay_payment_id' => $request->payment_id, 'razorpay_signature' => $request->signature];
+            $api->utility->verifyPaymentSignature($attributes);
+            $payment_details = $api->payment->fetch($request->payment_id);
+            if ($payment_details['status'] !== 'captured') {
+                return PaymentResult::failed('Payment not captured');
+            }
+            $paymentData = new RazorpayPayment($payment_details, $this->paymentMethod);
+
+            return PaymentResult::success(paymentData: $paymentData, transactionId: $request->payment_id, status: 'success');
+        } catch (\Throwable $e) {
+            return PaymentResult::failed($e->getMessage());
+        }
+    }
+
+    public function supportsRefund(): bool
+    {
+        return true;
+    }
+
+    public function refund(Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult
+    {
+        try {
+            $api = Coderstm::razorpay();
+            $refundParams = [];
+            if ($amount !== null) {
+                $refundParams['amount'] = round($amount * 100);
+            }
+            if ($reason) {
+                $refundParams['notes'] = ['reason' => $reason];
+            }
+            $refund = $api->payment->fetch($payment->transaction_id)->refund($refundParams);
+            if (! $refund || ! isset($refund['id'])) {
+                RefundResult::failed('Razorpay refund failed: No refund ID returned');
+            }
+            $refundedAmount = ($refund['amount'] ?? $amount * 100) / 100;
+
+            return RefundResult::success(refundId: $refund['id'], amount: $refundedAmount, status: $refund['status'] ?? 'processed', metadata: ['razorpay_refund_id' => $refund['id'], 'payment_id' => $payment->transaction_id, 'status' => $refund['status'] ?? 'processed']);
+        } catch (\Razorpay\Api\Errors\Error $e) {
+            RefundResult::failed('Razorpay refund error: '.$e->getMessage());
+        } catch (\Throwable $e) {
+            RefundResult::failed($e->getMessage());
+        }
+    }
+}

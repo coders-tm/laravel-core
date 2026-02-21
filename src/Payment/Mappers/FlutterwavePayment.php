@@ -1,113 +1,99 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-VjdjHOeWQ0HH+Lt0RNa4SBEhBxqkfZ34
+<?php
+
+namespace Coderstm\Payment\Mappers;
+
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use DateTime;
+
+class FlutterwavePayment extends AbstractPayment
+{
+    public function __construct($response, PaymentMethod $paymentMethod)
+    {
+        if (is_object($response)) {
+            $response = json_decode(json_encode($response), true);
+        }
+        $this->paymentMethod = $paymentMethod;
+        $this->transactionId = $response['tx_ref'] ?? $response['id'] ?? uniqid('flw_');
+        $this->amount = $response['amount'] ?? 0;
+        $this->currency = strtoupper($response['currency'] ?? config('app.currency', 'USD'));
+        $this->status = match (strtolower($response['status'] ?? 'pending')) {
+            'successful', 'completed' => Payment::STATUS_COMPLETED,
+            'failed', 'cancelled' => Payment::STATUS_FAILED,
+            'pending' => Payment::STATUS_PROCESSING,
+            default => Payment::STATUS_FAILED,
+        };
+        $this->note = "Flutterwave Transaction: {$this->transactionId} (Status: {$this->status})";
+        if (isset($response['processor_response'])) {
+            $this->note .= " - {$response['processor_response']}";
+        }
+        $this->processedAt = isset($response['created_at']) ? new DateTime($response['created_at']) : new DateTime;
+        $this->metadata = $this->extractMetadata($response);
+    }
+
+    protected function extractMetadata($data): array
+    {
+        if (is_object($data)) {
+            $data = json_decode(json_encode($data), true);
+        }
+        $normalized = [];
+        $paymentType = $data['payment_type'] ?? null;
+        $normalized['payment_method_type'] = $paymentType;
+        if (isset($data['card'])) {
+            $card = $data['card'];
+            $normalized['card_brand'] = ucfirst($card['type'] ?? 'card');
+            $normalized['last_four'] = $card['last_4digits'] ?? null;
+            $normalized['issuer'] = $card['issuer'] ?? null;
+            $normalized['country'] = $card['country'] ?? null;
+        }
+        if ($paymentType === 'mobilemoney' || $paymentType === 'mpesa') {
+            $normalized['wallet_type'] = 'mobile_money';
+            $normalized['mobile_number'] = $data['customer']['phone_number'] ?? null;
+        }
+        if ($paymentType === 'banktransfer') {
+            $normalized['bank_name'] = $data['meta']['originatorname'] ?? null;
+            $normalized['account_number'] = $data['meta']['originatoraccountnumber'] ?? null;
+        }
+        if (isset($data['customer'])) {
+            $normalized['customer_email'] = $data['customer']['email'] ?? null;
+            $normalized['customer_name'] = $data['customer']['name'] ?? null;
+        }
+        $normalized['payment_method'] = $this->buildDisplayString($normalized);
+
+        return array_filter($normalized);
+    }
+
+    private function buildDisplayString(array $metadata): string
+    {
+        $paymentType = $metadata['payment_method_type'] ?? null;
+        if ($paymentType === 'card' && isset($metadata['card_brand']) && isset($metadata['last_four'])) {
+            $display = "{$metadata['card_brand']} •••• {$metadata['last_four']}";
+            if (isset($metadata['issuer'])) {
+                $display .= " ({$metadata['issuer']})";
+            }
+
+            return $display;
+        }
+        if (in_array($paymentType, ['mobilemoney', 'mpesa']) && isset($metadata['mobile_number'])) {
+            return ucfirst($paymentType)." ({$metadata['mobile_number']})";
+        }
+        if ($paymentType === 'banktransfer' && isset($metadata['bank_name'])) {
+            return "Bank Transfer ({$metadata['bank_name']})";
+        }
+        if ($paymentType) {
+            return ucfirst(str_replace('_', ' ', $paymentType));
+        }
+
+        return 'Flutterwave';
+    }
+
+    public function getFlutterwaveReference(): string
+    {
+        return $this->getTransactionId();
+    }
+
+    public function isSuccessful(): bool
+    {
+        return $this->getStatus() === Payment::STATUS_COMPLETED;
+    }
+}

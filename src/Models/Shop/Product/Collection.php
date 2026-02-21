@@ -1,63 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Database\Factories\Shop\Product\CollectionFactory;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Collection\Condition;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\Fileable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Collection extends Model
+{
+    use Core, Fileable, HasSlug;
+
+    protected $fillable = ['name', 'slug', 'type', 'status', 'conditions_type', 'description', 'meta_title', 'meta_keywords', 'meta_description'];
+
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'collectionable');
+    }
+
+    public function conditions()
+    {
+        return $this->hasMany(Condition::class);
+    }
+
+    public function setConditions(array $conditions)
+    {
+        $conditions = collect($conditions);
+        $this->conditions()->whereNotIn('id', $conditions->pluck('id')->filter())->each(function ($item) {
+            $item->delete();
+        });
+        foreach ($conditions as $condition) {
+            $this->conditions()->updateOrCreate(['id' => $condition['id']], $condition);
+        }
+    }
+
+    protected function description(): Attribute
+    {
+        return Attribute::make(set: fn ($value) => $value ?? '', get: fn ($value) => $value ?? '');
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    protected static function newFactory()
+    {
+        return CollectionFactory::new();
+    }
+}

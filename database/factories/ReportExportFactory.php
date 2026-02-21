@@ -1,95 +1,121 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPuDp4ISlwka8DhY41DiK1TqT7TEqDipO09AupHhoQA7+VC6zMaPaiiSktaxsIrjtXdjbXubB
-/WqYTV9A6VtB8LtSriyca9QE98rYzwfVv5iLMpG4GZveOQRLODQnwrE10hwkyAElhblZvXXpy8tD
-LBZ9mo1/HD5yNR++gMbHz87Cy9pNMnQVyY0BzIXURdQtlQAMiTppWXT7BH3auYHReRzJc9n2ve/B
-jxS3KlwX7j/JjKpyPljPc/SSS2LYV81XsCWS7kAMWomHV/ubqjv8p5IyUsTk+tlVZVOx+9Qf6avm
-KTPc1GpGkA3oXiKRzamX2yxhpQgTVUbN7tXPkH0FrSNqjqWLT2OIkGzfOIGcHCiGdS1RS0jelK63
-SnrRgw57GH4lOT82cd2SbRTdKm5vUSRZEQVN05iXKjyi5Nr2n8342SCkx4pcRc0GgW4KFH20uTfO
-ljYDC8Cbrc6/cdeNhtRVRsBXwlaiLM4hGeYge4u0Wp00PKbAgYbjPM61hZ/0PbeT2GKqE9+m2I3o
-V8GKmFFLefJy3cnoxpSEgEM9PsoCwJO6JqUgbcjqIxLyOZqTAxgiSXnDXxoZ7qnWiWVbK40cA73o
-JmvOt7AJv9POAvDz+EVakRpXloc86oHxJjx9+OK67vlHK09OKG3/ghwn/AgiSDJ3P7F3ba3l8X7i
-0QPEgDWEu8O5OY213cuKu00oR94MOwScrODLc2PxLX+fYCtcBF+q73JRgSXX1NAdyojPG6/miBny
-gFTcllszc9mrPwnZwUrJhvy2f3VQ2JOQD8f6Erdkez3f6vGUmxXYOZOoCqxeI4x+4AZbm5GCgv7Q
-tPcOZh6DbVP+fEUyfytPYm3HP5y48zyeqb3M0xlZAGgBys2dRVYocXb3bbRWg7fZe1C4B8BA10N0
-faJfSVmZu3tNvgoiy+9dLRn1kBRUXGsFlD9lfPWI01xEJwOSMY0Z+DudO8QPYFWr2KEHJa7DTInd
-G/V8kNznFI1VQJj0MP3G/Z24SvifCMNqrzwf5qj2mj5+GsGZ4J1jQAU7z0ib2f/eJdl9hyG9rVRp
-3aLeKitOkwp5eKDt4HO1yTPxPZrwXyIUHntjEcr6zH7b1KobuOHfsiSQPK0ccOSm9OJjzFdvONZ+
-VC3ixgiM1RUeE0mtjj2bhEZ39O4S82MGXWyL45x+mx2V5MrX84s8ypNc+OYLHt5p52B0uOSBW2IX
-OuHYdEtqa7FxGm7EsYKcfT/OWiD3RPPGS0FbeW439E2BAASbia+cUmLoMJNL2COoqdmLq0jT8Bcm
-lOBSNCWdcgCN/7YwFrGY/4UBtHbHS8MEp4IU3rLIzlHA8wR7In0VI2pgW9Su4H6h+oV/VRcrCZwL
-xtNCgbZ9otlQmjgQRBvmPSNc5p/7SpFJp5F8ZxZH69al3KRFWqRqtBcfbd8mb2NfztdfW8BWxH8Y
-yAcCcdzCFnEcTIa4XF1rhIkgJmP26ZNebAQc/LMfSnHDv3Mc8NxzgB5YuqNQ5IDE81Ge0UUdFt/l
-280QBvx6hKdQgdKNTDt1o/vyjX922YrBCX4bGPQj46/blkFDWeDXRzRqvTpBOnrXr61yiCWgaGv9
-w2FEIm7awZbKoMvm9StISS5nBxbhvvwcMGhzZa7QDcT2MJDHDRVBSJ6BPA5q38tkmAmDBGePOToM
-6ILgoy5HpJQGV0CbcuLV0qnAo3ux9VzjwO6aEcD2nvESGukHW9E8UmxZqaEwalrVXADP5KCADUhD
-VyLVBN1fKlQ3izwS3WI9rOFhlC7hTlVwWJlixh6wOuHIYSnJPsiRJoHLtCUpdBjRIPM7ZJfe1pdY
-BHCfGdLoy1yeFHJkayzr3OIgN3ztwaD8m1hlClCqIYLdaxlIWUihMWm0/1l/Y0E/+mLNK8IG14+g
-EbCYByzFBt7xLma3iqbPVNYtAISNgs5/DUPvuMnOEtZlz92RcqMz3u9IaZK86ZlxdBEmkQZK6W/X
-n+hZ89y/UWPqbkfSIE2g0r5sVH1mfFLyMjMCnfyl34fh+Qy1NyUYQPhLXZ0v6AhPjeWl/wWZTOeC
-GaT1z+Xx9zF+g/Ujg08iZxrIkKafb8I9nDgdQLJf9Zc8yxSRza/ayqeQ34I1LRozs8WgsU+GUEdc
-iQMzc6euj0VPHz49QyASbPLJl6+K92JlXiGoOJiIMCTEEd5FbrbAlH+katRffzE7z0JYCTIQpn4U
-JVEgAaeRTorJDaOEyuw3SBBjUg6a92aLDpNvuYIjSQ7njJasxzsh7WsDJmvf1APL8eEmq/hEr437
-zksRpl+3TlqhCs4eNige6yKIP9oH+vkmHkdBUTeROwvVyr9gogWQ99XUAiS4mY0EdGuBsYZ1IFA5
-GyU2dqDFK1jAENWOfkoR4P82ObLoTGV/9Pc0DpqMp6cXb6z1syzk1zQiOXPA/J5a/5XvuDcioOR4
-HfkIQtvcBRM0z+lcaqFo2nCAKKQRdOwNU0X+RsifKLFmrIGFNWxYt0AZLeMhciCpfin6QUJB9k4V
-Q/lKaW39f1CQoFOvsRwvX7kIqu+Qmri7Ehza+oeHRD8nu4sD4+esJGc+kgWfkAWUbSdnLN+W83KM
-V920uTZBYr/TBmPzfj2qoZID5oO9mtzv6+PBcfYYL8Rq3F4dskziKkxrAhj5cTx4M0FBqjTtosuW
-scjN4wPSeHs4yBwfj+YBFfyfCySpBGdjYd6+JelVpHooxkGlaXYhPa2llp+vb0U0rgL92//Z84TN
-ovZm1HFZe+njApz4uNoLPmMc6m17CdkwVRUQeoQ/OlfwVRcx/AThGtIagecXK4kU4M/DMaxUP0TH
-JLorMftP6ibBzCeBQBYzVqU5ifjKnG5ExnEoo5sNQfe4GPEAuGHyHxHQ1abdRBVRd6FsT3Hg6kgl
-QWTJeaxqkchei4aT3d3T3MUtHZhO3d/80GOCQ0710OXgNVUlCkxN3IoT2ARKVZu7+CZZTjpSvZKO
-2f8NHmR8p7sylXPXKU++k7UB/OW1d2YHspQ4/gSSjr8tbOVEverPTPU8s927/NhwDt1BSeczPJ+K
-+k42jYIZdivwREKJ49Rz+mvaH9W6MmHViF39NrOEW4/Rloacqiti5kK2ontIPPR/HDulJkiRG0/S
-SiZj2kMhVVE0345gvdsJ1K0lTtmHG8MnAGj0NWKsMI/m5OPtBCmqKjfoRyHvpBUU0Diw2hVfQsMy
-YeLpKA9j8gtVZjr2hAUVtPpOA28MUsuhj74n3CVw9borqUC8gUX5k1b/fozP4sqZhaet0hq0Of8j
-nbBKX4WTIoOmzs62SOnq/7t5JpY5Lo7tlxtSaXA4dsyaJa/OSjGni5sTHR0khAUDLeg48LRGsO9E
-ypycqhCIHJbko9NDRBkaxogcO4Em1mXPgRfnhplSWjZNJ8G3ELa9dPS+DC9VLBUHgTNLgsfyImzk
-CgI48jWf7G8Ov0SP0CtL3CbTDdwuxgdTt11QMwusg4bZVFMMbmtvzYlF82hv2aQX5EQGDOpfRz6q
-Q2DqlSL1PyQtDlth/r2LxC0BR/OqKYz2MNbmp2d2AB9vV9VpsVVPd7kcz81WxxBJBoOMWQsFpaGW
-MCjhrgxlo9TEFujZg6vfuboF8HWH9Esn5b8CFUUjEsQ4UtPlYXcksTQHdTGTztYWRvdXgzfTYSAF
-Om0ltDD/hxvnbtE2+smcjnA5Ys4QwqH+S6GKLEomNl2zXTH8NcspgGTSKIhkWk+eYeZbbUgBVnDb
-O1dhPNtErazUbPBflOBjwQLAgJaOkI0sr0ruDfZecQDQMl/QGX2jV9098XYRSEJASAcidRoVFP5x
-ryN7tSVmOax6G7/FH6OMxvqBXs2diB7BAMdA4OheKIweqXTMGog4qNviB0QfoyJCbbixogd+f7Jh
-cXShey1s9rTdxiiP6cwh1077im4hGJlNH0LtUnO9qo/yJJ4/8fTVVVcvR+J3J8eBGR97LbkASCaI
-vYkEmLHmjj/8Ce5HwLygwnS7C2Dh3H8wVO6dGMq6+P0kgqvpXNwjaEya/K9ggb4i39Pz0KuVRLS9
-EWPuFdDoNeWxMQDpJwg2YEV86TGq/T8N5SX5ql5JpMNVken0WCshKQMbSgduhm4mAskJTYWP3O6+
-FwxU0rOcM0Zu6Vg5a+x7yKCwpGvm30JbOdfsENV3yt08Hv7blTOEwqxG6awUv/ThYbqecy/EdK2L
-hq6wElAZyG5cVjqMinu2glYAbKHXoKQcq3a7nJYop4za1l7G3Cw6ldwcJZBiaAZvDWo8sGxBbYXm
-j2BKTxA4+KzJkurmM+S7sGBOHDvOvk3z64QJt09Kc8LwEPQVv4NlwIiRMquTpa/e2HurFUWYpSOW
-T+JN/p0EQP0ZR6Pvt2CTC+gHHNUjnwZ3sKf94mmAYCjnPHYMp1U/DnfHj8IiDz5vxyjHJp77pHHn
-CM9ua/kPWRYQEO73x6C/RjhmHq+9EFxzKh9eCRqE3tUl/jZ5h7176dTw4eR0xqWjhCxu4SpKVJc6
-ZsCnSbfTEQwz/aIcMgBir/b9yoScTWijzUglPhm7U4d7SnrQBiFQ8ql0VruhaWMUZqcmS+MGN1ct
-E3+7ZAZohiyzU+GgsarhyEE3OyIDmwRX/wtNhEVC8q/6RYPzLhUCNlPWn2/7o/Xafatopov9pfJV
-/9JlcaEZLb8eg7tZNL8ZW6wmeKpk7jiqVjrNlQ7t9yVjIqo6drMxadqIUbbWFNVXUpa42ktkohhS
-Ur5+ru5AVlgoAM4T0lUwQx7r9Yii8YUVzd5Qu3vnKZ9hj8nT5sM16yDMIKKW2C1iFt69o+LJTVgT
-W6ST1zG2W8FNMQXu7YtWQegqAuct61wHBPvd3t5pUUAdNNlFm57gInPAucGgDkcTMemK0kJ8ejg2
-oyAU0GlHm51LNA4k2D7IIyfQRECig88KdzxNC0lRzYDWSFbeOwVd0tly6KZr1cPnd3l4eYh/lkqd
-7aTxRNR8qsXJXEbAlrar8W8qeb0oD5+kofa2q15gj4Lv1YNzjHeU02iRmKcBixCnFSui8D9QwEmP
-pnOuyKpwCgEVc5J9I7L+pcIXfx8b9yiTvHxj/OhNsNghLBc4AsCJE2vwaREBgdWEZ1qijWLZNP2M
-9QSBPmf4cggjstuagsGWzQqF417g5Dhv81H4J6dulBn1eZgB5LeYEr5I8qjVzkPjgv45W4jU+2kH
-LcTodOwJAl/TL2sazqeevXC1qPjuma0S3LWuDGIJfImDP1juD5XSMBWbFWp1onNfniD+jVVYEU6P
-GHXluYKpNMyZQ/IjAgeSEUxf6xAlxn5zJUWNZcTNpfoe4KCkQTFmH5A18s4K3VqJIz30wWs9wrrL
-pygYa0Xdpal1CP5FRKSe//jXGYY55MoRFSmS8WLk3zCxMZF7xp1WMTMXDtvAgwzOY9jZfzED4y8B
-U4YMTB1/RtJaJzTD6kED2+9OmPpytLQ/xenZxPf2BEZZPnsajn1aA+0bYvDdFSb08/waclCsb8HI
-Me+7lSbW1v+E60XiZwL/jmWUwM//GGoI4WxWd9DQcU3fr+BO52jDAuA+bZiFrXP5/RRifItmV9wh
-JMj3Jn3cZTaT9JlaqIpoYy0pvgcR6XrZtEAUTGMSNv0VikD8aW3ZOm5qi62JO4RSJERJGY/z5xDa
-l0i7TlaFGDcVmd4gx5nufVkp/yyBz5g6XnoSXZPkzNkeIUlDQL5M26ghcZw/XQpmhHOD08D6b1FF
-dybN8J3G2zDuPSAl2rNXCHckY/SlheYMU2y6z3FKEOQUN/4HZwz8JHU5+p2dbX0B6YrzqVL28c/K
-gvL+JgvBm9cJGqA7vSI9N5qiR4RxkUOl6K+fVk/mObO8bQw/pOJI/7bNCRtwwCq3KJvgCkwtwx9V
-3XTweq0DHufbAL1zBm559RC1849A023RKnT4i+8KqcRE/MbvJ2zBsnkvzD9JFk+ZNQ/EQUNVtP7K
-BC0LUW5xEow6NGrIrBjeZViBEq+7p5lumobZ79KjVaJBWNNm+QIwWWglM7lJJycrTubCIdLGJsMc
-a5moZ8bxIo4YZ582xvNloRcy+sFi4RJHembDP7hUr2qvSGSoQfYvD9DPP4zxdM0U0fvEcEM2jzc/
-qjqQIB9MhtLme5v2Lb6LNiGskwrGuTx1y9dglmKHToRKPwSVwroSMRgA/0mtj2zTD/qUsfggo7zw
-3RfCrKZByD0t7wZbr1COErDUMCm+uTPIoM3iAOtw7N68hrqhACWs9w4eNpNn/vzXclYuDiK0TRMt
-wYB221EIuiRW6h9IjF/LQGYMX3R7OFO3VpQkKYpFfDlWbVowAtn1cXPJQBAXaGrpKvebIVEFOF7q
-jQMOivAH46p5lnAgMBcMHSbFJwbXcLsyd/tLehF7CuHQU4eIZp3S/mhKRkSda5pxTJsf0GjAUDar
-Nbct4AY0lbhULLAAXsh+BkOzySfZ0qINH6L/hf4GyGiT+Mr7x8G6zy1We2FbW9ETge/LrSrjFv9Y
-K3KJ5epPFlIPKtQ6yICUufco1WiBbCns09JH0CaSnv/tLVfWhijrXu10HWGV+Cb1DV55BETM26kK
-KjvA3xmEcFdjgEsMialAr7LfiXn2K/HxWVHwDsFC34AopGGGrToGYQHxT9CD+oF9a4+qR12pJAyk
-uSdJQlC+QT+YZSsd6Xlvuri7dLEO95SGtKvmnEbgrhi8RhX1tWERhyDdWfI7eTLAipaMwGyP2YJy
-ZD6lAK9KppCtusLJShbggCzudPnojXWfSoI7KWDqf3GUT8l5N6gFcKb6S62lc1mSs50PJnTuCL61
-3PiOP+xL22Xl+zpHndRyQ5lBpG4DHoei0WQ/p+MGmdFtKwgLIKc1mbcLgMfkXzad1taFqyhHQ1QS
-mVrcyaJVIBwFyPxLcw4OgMxh/rfRnldvWKsiSA3gA4fV0aCnDVgtbkuBve7hH2Uk6sbkpRkiMgVx
-Z6T7TLlDrRIHHP3tQ8Qr9IZ5KoTRpbUMzwbaBpiZSimInOCb4zZh71K1fVqtN7dQpQvdcE4A
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\ReportExport;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\ReportExport>
+ */
+class ReportExportFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = ReportExport::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'admin_id' => \Coderstm\Models\Admin::factory(),
+            'type' => fake()->randomElement(['subscriptions', 'orders', 'customers']),
+            'status' => 'pending',
+            'file_name' => null,
+            'file_path' => null,
+            'file_size' => null,
+            'total_records' => null,
+            'filters' => null,
+            'metadata' => null,
+            'error_message' => null,
+            'started_at' => null,
+            'completed_at' => null,
+            'expires_at' => null,
+        ];
+    }
+
+    /**
+     * Indicate that the export is completed.
+     */
+    public function completed(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 'completed',
+            'file_name' => 'export_'.now()->format('Y-m-d_His').'.csv',
+            'file_path' => 'reports/export_'.now()->format('Y-m-d_His').'.csv',
+            'file_size' => fake()->numberBetween(1000, 1000000),
+            'total_records' => fake()->numberBetween(10, 10000),
+            'started_at' => now()->subMinutes(5),
+            'completed_at' => now(),
+            'expires_at' => now()->addDays(7),
+        ]);
+    }
+
+    /**
+     * Indicate that the export is processing.
+     */
+    public function processing(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 'processing',
+            'started_at' => now()->subMinutes(2),
+        ]);
+    }
+
+    /**
+     * Indicate that the export has failed.
+     */
+    public function failed(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 'failed',
+            'error_message' => 'An error occurred during export generation',
+            'started_at' => now()->subMinutes(5),
+            'completed_at' => now(),
+        ]);
+    }
+
+    /**
+     * Indicate that the export is expired.
+     */
+    public function expired(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'status' => 'completed',
+            'file_name' => 'old_export.csv',
+            'file_path' => 'reports/old_export.csv',
+            'file_size' => 5000,
+            'total_records' => 100,
+            'started_at' => now()->subDays(10),
+            'completed_at' => now()->subDays(10),
+            'expires_at' => now()->subDays(3),
+        ]);
+    }
+
+    /**
+     * Indicate the export type.
+     */
+    public function ofType(string $type): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'type' => $type,
+        ]);
+    }
+
+    /**
+     * Add filters to the export.
+     */
+    public function withFilters(array $filters): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'filters' => $filters,
+        ]);
+    }
+}

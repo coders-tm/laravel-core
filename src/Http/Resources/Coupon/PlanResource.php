@@ -1,30 +1,14 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cP/uAFlGqq8BxmRwhr/ePp41Oa5+7RtRjvgouhmkFu6B2tAd1GDhSLLEyj2zXcV+UhjzRwwCe
-OMsXDrlQj9HEGkuqCqqcYc5QDkpwqeNhdwWJ5l47ct2Z+cfWzV5tlKkKtXQ/U9Ta9vYybi66a6Xl
-a+8fLw2iepfEfSLDglbZduLzefSFclR5GY8+15Ezx3a2TuzdJPxHC8yeWqsLiUhlypdIPS9zsDRq
-LMMVJYkqOKHEdBclNBrjXbW6Qw/lwfI293/pv/xW+GHWDTeY4+7ATeY3oDXofniBfUhMjqThX2ik
-jy45DKX2seWOLcb1ZATMrogw8jAU7BcbDNq+zdbyIa2uIvVcfZLxcpQLlGabNqQ8KFvfNsHZzF+P
-XVGJoGVcxKANXIvdGCrBNXrs0WJruxwj6bKcAxRotIl5GwztW3s+XPxmdZOrUH3KATpETL5UAL6n
-aknRKgufwxOmaWPGdenFdnZVRThie+ohCKpe+asgQH1aR8+4udxv50DTthP2qCqKgQWIAnlcxVep
-IHRBmYWpXhEuZUUd0I9OHzKTQOGbGSG7ERfxH+iaOFCPAkWjmMgF3vdNU5Brr9iIyzKjbUsReh3Y
-W3EyD7ViwUY6i/BKHZs7XPHI5rEuiO6SlsjhB69U2x9BjN9d0eWREEAoUV6RT6oRX/pwE8dEnxWf
-IWWvFtu9cmO9Plo4qqBeXq/wOgUUTHXPxBpAmhWi7+vy5GLqrU1uopxn5XfNWcU6WM3tWbfFZaJM
-8hQt96VXMTVfqP1SoBwr/gNSpaBKyCpHwf9LOfVRhFuzT28qns/xXJ8wdOQZemw2WcMuhkEd53d7
-fbzKfGgqDUSp0VxBL9LeHgY6CqW0tozBimdC9XWoycijRlasvRC1fk2/Otr7xXtUI5VYrAPjthTK
-Y6QG87Kx9s/268yYy44CV1K6v7yXOCChhC4vidSCnuumxMuFfNHfLEVRcDyesJrEd+YfoJUCivRy
-z8AqDgrd5w6VTVyGYuX6mzmaLb4FKwoO04JlF+w/ZGXewGIjlqWCtuvAXpsNbvkVmy9EFIgHYGE3
-o0cw+/iaiZ9c8Ryuf1GdgUkPaaIUUy33tRQABn07Nv/Qsbv55Km39FaHqPV00OwJ0JdZaYpKC+gd
-Jufcxc5YdG2qj1OnYFqkGend3tgo4cURzGYxFlAITCzUk3PV9CEPwcnwC1mqiLYe8KwDT2YlSfaH
-noag28u6xXMwrXd9m7TNWmmFFMxRXh6zUEw4RBNB5k9KYCRM+b1h6e7waW7rya3wZAW48+ZOqUNL
-ZkctqisW6fWEjCwBf7XFj6KOLL+QGW/yzhj9jgn7J60aN3dgSRSmdgUsTmf6r2MTyb7quztcO760
-BdhAVAyIsI7gtCFWbmjNH0l914nPgz3USDjgTelU7h+C+nV3MI4Y5h94LYIZlXeviyzmkYejh4v8
-Z1dKkISD+t/1+1ZuHo0lmrj28vI/JI15bLCEQ7IXxeDspVBVEIbHca5PXjZRFaAx79CaIcEFyL/N
-L2jgtZe6vfwVECUlJft1egskGL1j9Rot26SHaEDHO5/x8OMi52hr3sUZf95rGHOr7Yd+P9HYzqwr
-dz8BlKuX+kr49X5tnHB+quUwgfkOviWbYjSTzgiKN4ZqkhY03fHygAv9+BQ2okj0smKatKMFbBLu
-7M04bsqkpJPFaHAty63rwa0ndDAU2uvKk/yT5euQXruMB1yNauJq46MGc8dwCttaej7cck/QHmB6
-ALkH6+ecaKRE9A5Xf396rvBQWMFgHAt6oIgDZgkPhbL0zm90Bv9dale6oVr6xlgPq6fqlyAFDOMe
-jK7X861AMxLr2rMK8QxG67cRjkSYhuG15zFU4BxGR+Y9LmA0npK4YgciyT5Rco9BkLwG6TEegbW5
-zyZYb7di2dMrj0jxGRuS3IESi45QmN8RTawjx9ham/umljdZuO5kN8cLQ6Mu434WXHvl0UT7KIb0
-+h3jlBxYVbr3M2kBkwSa0sQRjSJsfJ56/QH4s6km3ogoue2uhW==
+<?php
+
+namespace Coderstm\Http\Resources\Coupon;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class PlanResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return ['id' => $this->id, 'label' => $this->product ? $this->product->title.' - '.$this->label : $this->label];
+    }
+}

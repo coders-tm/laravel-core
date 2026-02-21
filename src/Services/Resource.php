@@ -1,65 +1,79 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-NnDUqmloR0YT0QwBPa04vZIfsQYzKE6b
+<?php
+
+namespace Coderstm\Services;
+
+use ArrayAccess;
+use Coderstm\Traits\WithInput;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
+use Symfony\Component\HttpFoundation\InputBag;
+
+class Resource implements Arrayable, ArrayAccess
+{
+    use WithInput;
+
+    public $attributes;
+
+    public function __construct(array $attributes = [])
+    {
+        $this->attributes = new InputBag($attributes);
+    }
+
+    public function merge(array $input)
+    {
+        $this->getInputSource()->add($input);
+
+        return $this;
+    }
+
+    public function replace(array $input)
+    {
+        $this->getInputSource()->replace($input);
+
+        return $this;
+    }
+
+    protected function getInputSource()
+    {
+        return $this->attributes;
+    }
+
+    public function toArray()
+    {
+        return $this->all();
+    }
+
+    #[\ReturnTypeWillChange]
+    public function offsetExists($offset)
+    {
+        return Arr::has($this->all(), $offset);
+    }
+
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
+    {
+        return $this->__get($offset);
+    }
+
+    #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value)
+    {
+        $this->getInputSource()->set($offset, $value);
+    }
+
+    #[\ReturnTypeWillChange]
+    public function offsetUnset($offset)
+    {
+        $this->getInputSource()->remove($offset);
+    }
+
+    public function __isset($key)
+    {
+        return ! is_null($this->__get($key));
+    }
+
+    public function __get($key)
+    {
+        return Arr::get($this->all(), $key);
+    }
+}

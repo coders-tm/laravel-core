@@ -33,7 +33,6 @@ return [
     'app_url' => env('APP_URL', 'http://localhost'),
     'admin_url' => env('APP_ADMIN_URL', 'http://localhost/admin'),
 
-
     /*
     |--------------------------------------------------------------------------
     | Settings to Config Override Mapping
@@ -56,7 +55,7 @@ return [
             ],
             'name' => ['mail.from.name'],
             'currency' => 'cashier.currency',
-            'timezone' => fn($value) => date_default_timezone_set($value),
+            'timezone' => fn ($value) => date_default_timezone_set($value),
         ],
     ],
 

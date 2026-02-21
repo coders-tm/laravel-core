@@ -1,109 +1,122 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-PSfPW5PiBKAI3u5McOoZWqTq2m==
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Exceptions\Plan\FeatureNotFoundException;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+trait HasFeature
+{
+    public function features(): HasMany
+    {
+        return $this->hasMany(\Coderstm\Models\Subscription\SubscriptionFeature::class);
+    }
+
+    public function usagesToArray()
+    {
+        return $this->features->toArray();
+    }
+
+    public function canUseFeature(string $featureSlug): bool
+    {
+        if (! $this->valid()) {
+            logger()->info("Subscription is not valid for using feature {$featureSlug}");
+
+            return false;
+        }
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+        if (! $subscriptionFeature) {
+            throw new FeatureNotFoundException;
+        }
+
+        return $subscriptionFeature->canUse();
+    }
+
+    public function getFeatureUsage(string $featureSlug): int
+    {
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+
+        return $subscriptionFeature ? $subscriptionFeature->used : 0;
+    }
+
+    public function getFeatureRemainings(string $featureSlug): int
+    {
+        if (! $this->valid()) {
+            return 0;
+        }
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+
+        return $subscriptionFeature ? $subscriptionFeature->remaining : 0;
+    }
+
+    public function getFeatureValue(string $featureSlug)
+    {
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+
+        return $subscriptionFeature ? $subscriptionFeature->value : null;
+    }
+
+    public function recordFeatureUsage(string $featureSlug, int $uses = 1, bool $incremental = true)
+    {
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+        if (! $subscriptionFeature) {
+            throw new FeatureNotFoundException;
+        }
+        if ($subscriptionFeature->isBoolean()) {
+            return false;
+        }
+        if (is_null($subscriptionFeature->reset_at) && $subscriptionFeature->resetable) {
+            $subscriptionFeature->reset_at = $this->expires_at;
+        } elseif ($subscriptionFeature->expired()) {
+            $subscriptionFeature->reset_at = $this->expires_at;
+            $subscriptionFeature->used = 0;
+        }
+
+        return $subscriptionFeature->recordUsage($uses, $incremental);
+    }
+
+    public function syncFeaturesFromPlan(): void
+    {
+        if (! $this->plan) {
+            return;
+        }
+        $this->plan->load('features');
+        $planFeatures = $this->plan->features;
+        $planFeatureSlugs = $planFeatures->pluck('slug')->toArray();
+        $this->features()->whereNotIn('slug', $planFeatureSlugs)->delete();
+        foreach ($planFeatures as $planFeature) {
+            $this->features()->updateOrCreate(['slug' => $planFeature->slug], ['label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'reset_at' => $this->expires_at, 'used' => 0]);
+        }
+    }
+
+    public function syncOrResetUsages(): void
+    {
+        $this->features()->where('resetable', 1)->each(function ($subscriptionFeature) {
+            if ($subscriptionFeature->expired()) {
+                $subscriptionFeature->used = 0;
+                $subscriptionFeature->reset_at = $this->expires_at;
+            }
+            $subscriptionFeature->save();
+        });
+    }
+
+    public function resetUsagesForRenewal(): void
+    {
+        $this->features()->where('resetable', 1)->update(['used' => 0, 'reset_at' => $this->expires_at]);
+    }
+
+    public function resetUsages(): void
+    {
+        $this->features()->update(['used' => 0, 'reset_at' => $this->expires_at]);
+    }
+
+    public function reduceFeatureUsage(string $featureSlug, int $uses = 1)
+    {
+        $subscriptionFeature = $this->features()->where('slug', $featureSlug)->first();
+        if (is_null($subscriptionFeature)) {
+            return null;
+        }
+
+        return $subscriptionFeature->reduceUsage($uses);
+    }
+}

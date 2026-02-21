@@ -1,74 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-ih2OM2rs
+<?php
+
+namespace Coderstm\Models\Shop;
+
+use Illuminate\Database\Eloquent\Model;
+
+class ExchangeRate extends Model
+{
+    protected $fillable = ['currency', 'rate'];
+
+    protected $casts = ['rate' => 'decimal:4'];
+
+    public static function getBaseCurrency(): string
+    {
+        return strtoupper(config('app.currency', 'USD'));
+    }
+
+    public static function rateFor(string $currency): float
+    {
+        $currency = strtoupper($currency);
+        if ($currency === self::getBaseCurrency()) {
+            return 1.0;
+        }
+        $rate = static::where('currency', $currency)->value('rate');
+        if (is_null($rate)) {
+            throw new \RuntimeException("Missing exchange rate for currency: {$currency}");
+        }
+
+        return (float) $rate;
+    }
+
+    public static function getRate(string $currency): float
+    {
+        return self::rateFor($currency);
+    }
+
+    public static function convertAmount(float $amount, string $fromCurrency, string $toCurrency): float
+    {
+        $fromCurrency = strtoupper($fromCurrency);
+        $toCurrency = strtoupper($toCurrency);
+        $baseCurrency = self::getBaseCurrency();
+        if ($fromCurrency === $toCurrency) {
+            return $amount;
+        }
+        if ($fromCurrency !== $baseCurrency) {
+            $fromRate = self::rateFor($fromCurrency);
+            if ($fromRate > 0) {
+                $amount = $amount / $fromRate;
+            }
+        }
+        if ($toCurrency !== $baseCurrency) {
+            $toRate = self::rateFor($toCurrency);
+            if ($toRate > 0) {
+                $amount = $amount * $toRate;
+            }
+        }
+
+        return $amount;
+    }
+
+    public static function getCurrencyFromCountryCode(string $countryCode): string
+    {
+        $countryCode = strtoupper($countryCode);
+        try {
+            $data = (new \League\ISO3166\ISO3166)->alpha2($countryCode);
+            if (! empty($data['currency'][0])) {
+                return strtoupper($data['currency'][0]);
+            }
+        } catch (\Throwable $e) {
+        }
+
+        return self::getBaseCurrency();
+    }
+
+    public static function getCurrencyFromCountry(string $country): string
+    {
+        try {
+            $data = (new \League\ISO3166\ISO3166)->name($country);
+            if (! empty($data['currency'][0])) {
+                return strtoupper($data['currency'][0]);
+            }
+        } catch (\Throwable $e) {
+        }
+
+        return self::getBaseCurrency();
+    }
+}

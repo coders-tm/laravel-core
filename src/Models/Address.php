@@ -1,42 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-7j/gSwRUU2VWRnpTrDY4KrADCYXtidhADTy=
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Database\Factories\AddressFactory;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+
+class Address extends Model
+{
+    use Core;
+
+    protected $fillable = ['first_name', 'last_name', 'company', 'phone_number', 'line1', 'line2', 'city', 'state', 'state_code', 'postal_code', 'country', 'country_code', 'default', 'ref'];
+
+    protected $casts = ['default' => 'boolean'];
+
+    protected $hidden = ['addressable_type', 'addressable_id'];
+
+    public function addressable()
+    {
+        return $this->morphTo();
+    }
+
+    public function getLabelAttribute()
+    {
+        return implode(', ', collect($this->attributes)->filter()->only(['line1', 'line2', 'city', 'state', 'country', 'postal_code'])->toArray());
+    }
+
+    protected static function newFactory()
+    {
+        return AddressFactory::new();
+    }
+}

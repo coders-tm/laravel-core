@@ -1,36 +1,35 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Subscription;
+
+use Carbon\Carbon;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Usage extends Model
+{
+    use HasFactory, SerializeDate;
+
+    public $timestamps = false;
+
+    protected $table = 'subscription_usages';
+
+    protected $fillable = ['slug', 'used', 'subscription_id', 'reset_at'];
+
+    protected $casts = ['reset_at' => 'datetime'];
+
+    public function scopeByFeatureSlug($query, string $featureSlug)
+    {
+        return $query->whereSlug($featureSlug);
+    }
+
+    public function expired(): bool
+    {
+        if (is_null($this->reset_at)) {
+            return false;
+        }
+
+        return Carbon::now()->gte($this->reset_at);
+    }
+}

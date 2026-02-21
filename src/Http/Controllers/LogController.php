@@ -1,61 +1,45 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPrjd9fE4oPgaKTIpi6UC1n7yJVTJ/Y/HXhUuNZZyNr1NIX0Ldoul56hPlQ3Yj7QRu9xsZ9zu
-X/J4k2POcNgo6Cn3mlKoVduvsfwD78ImTYtLli75TziUDRfAQGkZk6lynHqm1hD9OCBDTVsXe4IA
-bnX4MN2/vFXMkBQiTD9kX2V0NVYqXhJH7pq7D1cJoWvr32cUOKN6agZR1lN5nqNqteYXwe7GLOaP
-JKPb+Dcw+NX/Pi2Bt9369h9YG0CKTq684c22v/xW+GHWDTeY4+7ATeY3oEHj+plN9XsXJBEvEYik
-yEnH/upaEYboI2JC0txHsRaNBHlrYpZRZycZ+dBa9NH92zccqOEuCdTgRjGvRr0VjThTJ+DT6lw0
-ltBUrcKME1gGhUotc/Rp53CZudYpX+EBa0/E2iS8VU2Z8aLlNoCw9vrWD0k7ykZT3XvnWcHSd9yT
-q4eJ08QlniQHomTkrbkbjD8tpBswi8a5kqowlnVlpM1gHCNtlj3ommXRa/MGxPaNRAmqM1t8FhR8
-x6Xa06SPHHBqEr0VkT43f1EzeMFcpI2g7mh9kf+tIxx9YzTQR9xPkilCbPk6QoozSPRFu6xOSO8n
-eLodSAGfTXTgJTYqrKfOgIzdNtRPRIyaUJBdUa9NGdp/vsDfJjj2GuZA4kt1PBFQyvtcoWoCMjuv
-bLAX0ukr0BehzsLcNQ9FONZzFr7xjqeTH34c8zl6jAK1TwKko0aNBDgOq6rfgaiN/Pl6T7ylXttm
-QAif0nNkLmUeSFYZ1FsDT/seNtoX4fB2C3tQbNP4SYnXipgaCaQuG+q4oronJ7SI5Iq3whqbDYgc
-btEyujn1OwwuEI8uv39ImvevKWktMOoZDEmWVKERGgDB4yyUlFSdqbF50kyeLQZjXFVuPRJvWDsG
-A+i16zWJjbvRv7Zj2pEnWO/R04QQs4he6qst31TcTLzfCCMishar91u4DrMwA58cjikg1SEcrRV8
-OHzhQFz1kP6xq3qnnMpq9R2mpyREFYoOuzB2OAyUQY6raOx9a87TMo2f2DAuKZQcQQSazEx6POBc
-uJYEkfwBmB58YFsi8CQlla+l7xi9vvzaKGG7bW+HAG2Vt+WkSdBtPnN0vw0po6+YrMZ6yfvl64F8
-zQF5YLyXZ0MMFHdLJRTNO4sbnJs0m7HFUrkj3Y6waLvvbfeTYQIEnoL8TYqOYhJRGiQKLYnLVYwx
-8UN83aODNDVHdNgQziy6qu+Y1eI4q2ANC9tI3cyLoenfvbVGQX0lUzc9W/PrWjfDD7VzdfeMd0Ro
-o8P8Z8sKLfns1RKGtj5wnYkb77f3TWvvwWtrFttcyvmP/sHye6I6xA61Dy4v8cdU5B+OKt3icHkh
-El6Q+vX3vq0VFWdgkDHT+O2lPT45MTApMq1PFTFOefHMHdzHl900gQBvDPV9vspBCQdJqluGLF4o
-8rFI9j0GQ/EnOT9//LkvKB2PKc3vAquKkk/KPUIOL8WN9zet02KkNclF0EuAbFD4SWM2Ch1rbbiU
-AoKLQKG6Nq/AcGd2iU3KoK4XmpcXerxSqlwWCx+zi8GUpXX0WKe3zvLadsgTKoHWn8OFk/HqQyRq
-l7tgAdmwKQ7C6xZqH3MAmfk421sL3qN3L8UEOi2i+RpXDi3dfzocPCCKaw/YDWzWc75e9/J9qIVd
-eaLErGt/oqyOi+pUUMOxHRSKsrLPHpfJwiHsoPkLuGuLBrxm3IIeQc5pbcr8BJ2gcYy0GErnYmZ8
-CbCLknxS4vNS9RvkqRSWvfVJJoZ5TOPeaCzzUwGdyx51sOtwQVYXeCwiDoo/GSIqfvc5PipN7B15
-LujVcnktcA3Xaw9yAl4iaK+pWGxcoZ7YwaEsdfmObdNnufS3u7YdfS5wGyCiXDeGfVTpkGpdLcoz
-NkdfaDSOR+e9H82cXUOPsgeAk0lR0EfM4MfbhIfQ5hEm20Mk7IuwcWa5NSQYIgJWAUQJnxg7V/Fx
-2NAeUYwQxKaXV+QMMNFooEis5PtjQrBeb75lYhik1e5UCFyIM2e8FruBmPGxZ1dpxweZhQGYkxjA
-IIq2uUt6HHg3eVFNMa1/rxZ7hhU6J4IRd3GlO1hnXzskd7Ng0yF8tUoIR7BQNm6fTZg4npsJ65MW
-BI3dG725ywts6Z5vkSykGbgDHTpszBo7XxcvQR4z5HqTUOlGHi19ZMwMCsoURrGUkFZMEVewoIEC
-x6h+DUEq/GVZmxggelIB9+HqKG/rNgu+h00AA1HmyN+TVDlY6ahfTJzh6AqiwjevfFSHfwDEb577
-LE8weFSgpW4z21KBuLxJK5+mjNEphf+/48rhKkhf6qwn76L8KazmPR9RiBJOcg6hgUgiIpFx5nW3
-xpv+ociH/+Rd9yk/ns9ZgB2JpqiRY6R+D+VRB8XjoGY6ov9pC0oNY1PfIGfatSrnfh+eglh6HLvG
-b6nbZxoxaCk+AjTVgqiQgWJ+wkz0sJ5Mx2b2y3T8ha0wmd4Y75Dob0TKCY8JRJyXDz1b1Z4Kq2Y3
-ixbuR9U0ujdDWopjJdR5sf5cmgGV5eWT619X/REnQcm9BASf+k64fTGruvB2eExYGMIuWFOWoTFQ
-s2bf9SO1N1kx1w9gBufp2Moeky8ptwa8hvmgwkeovvBatD9aR7rasP2siM3IdiEf3iu+/1YpNWo8
-QftjejSW2HzHJcb9mGDn5rZmfsvqKs9Lbd3CtcEAN31VodN/p2dLJIaQINbtQmuLpZl6yZ0mK0Zg
-4O6frFnM1chFT/V9uCbZ7xkkDVf6baA7i6SCYs46/Gbu9wootqAIvXHFfGJlYwluOOHruGWnLjm5
-fzr/nx2WgbKLRqnt9XE1kGj1ZaeOKVQwKGWvUTHlUvjaCZeHJdB76gAAuQV/2jOG3iUt7HOYEuch
-3V8dU9rxlCpsrbcdQMnIGkRVXRjNzwOMf9rjDqlYTdzZYrdurOIs1YsO3k2Bt6CaONiiHG7vyoSW
-xtI8kuoWW3lsxTJEKPA+zf+3urSE0pBCjiTR71iox48YTR5/F+s5VLxCv8iK7aRinltCImRRAcBr
-Pb/0f9ogPHXTMEG+jWQ0KhElpcJJ2/IDJt0iqhTZnSM5f1hcGKT8vSVnZqvlPQRZ9dPrs4ZJdNTt
-mMmGZJuEUXBCQBbir+lwNp23izbey2Sgu9OVmIs1UrTiWSyhaaA/tvPQmUnvL3RFFSsfdyMaBVSt
-xbPSYgBYpD+O7fTls1AoI9pqvGYOXy9daYniL+mCn2nx33f8S3hB3/Eeq8c8N8lFsYj8hiHqK7K5
-pv5lBV6OGuvIbJJXEhg0HYleQvgttm+aOzY3XjXgUl0vHpYYwFE2dnHa02OWGMKkTtkBMyfuYRyW
-y8bIxiTV7lyskTga/tKKah6m4xqp8Cxv1YGEGtVFjsFkUtFP3UKH/++X3bRud3Pf2bYv7kgKReTU
-6X9IaYjpBL0Aj/UdWvbkRXbnBZUEM9S9rv2kJklVkoU9nj5waam8tVZQT2Tnm+Oa97WvSRIMtbOD
-okhNOXGb8vdS6y6CvPfogkAPOztf2vPL2M05nawsZ96B3w11YyFxcQucPOYS/pzXOrshVsBK1kIH
-yVpOE25YvewM0GL8HQAPp4EJLN9lzsfe+bK45f14b1oYvEgAkRb5saEiJR+yJKqoZEQdS/3J/5MS
-FhQMRJYZWUePv4QCesqoNsxe6UPbOtivXv5izj0PiwthUAnpRaqj7SEVGFu2Dhs8gGE35HDm0Uaj
-mRRgrsp52JlMHsF/LI3H1kAl7HTUOOvbycyiaKzlvMILLL8QNB/fowMUj845eCU2KE1+lHihiQsI
-Nc0u0/1oud69mCP8J153sMknUXPaenMFGHWBGVZl3k6pqAT9gocZ3v7E1mOFLltVPMHWmfDXyYQ6
-Z1zNQS9EeUeZMfVBlAied7ck14UkaQ1sN3Baeh0AOAedZtwCpIgGssGpSlAqrIngJYtdBvlWpzdD
-Mtw+DGWfibPNgIBhSuW7b+HG28AHwjmFBH6fqSxtIzyMwDkCpThoGI1wxvQLPnY0NFZX+lSzjPwN
-8MeKUaTrowUlb0qRS9CJEGa/rfSI7f/yBW+lxqm9LydWIOBpJysiDaUI/JiAEY0rhKD54cDvXvCp
-vUHACjvSHfUnsVnNjRV+EH3dj5QIchykN7BVR+2C2dFfx+v+2ugiBgEHkNP4Qx3qkHb1BFc3/vOJ
-Ve7OtAMcGosPJu3CVM2unx169CXk8q1Jcc0To8giNKxa6yfZpjASKN/2Sz3qwf9F7Rbw6il0RiPD
-LKBzHct1w/teWxCOaoE2iVQ3kKXPlF5Tmh+Rt8oedcwm8I0bbx7EO0GC/dXl5dPGiSJQY/rVSQEp
-LapyyG5IFhgti/4iAtWmUqUUgqiN6qn347HYO3quOUBBWbZVto8IYn/lBhwpTGIRvW==
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\Log;
+use Illuminate\Http\Request;
+
+class LogController extends Controller
+{
+    public function show(Log $log)
+    {
+        return response()->json($log->load(['user', 'media']), 200);
+    }
+
+    public function update(Request $request, Log $log)
+    {
+        $rules = ['message' => 'required'];
+        $this->validate($request, $rules);
+        $log->update($request->input());
+        if ($request->has('media')) {
+            $log->setMedia($request->input('media'));
+        }
+
+        return response()->json(['data' => $log, 'message' => __('Log has been updated successfully!')], 200);
+    }
+
+    public function destroy(Log $log)
+    {
+        $log->delete();
+
+        return response()->json(['message' => __('Log has been deleted successfully!')], 200);
+    }
+
+    public function reply(Request $request, Log $log)
+    {
+        $rules = ['message' => 'required'];
+        $this->validate($request, $rules);
+        $log = $log->reply()->create($request->input());
+        if ($request->has('media')) {
+            $log->setMedia($request->input('media'));
+        }
+
+        return response()->json(['data' => $log->load('admin'), 'message' => __('Log reply has been created successfully!')], 200);
+    }
+}

@@ -1,44 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-om==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('weights', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('weightable_type')->nullable();
+            $table->unsignedBigInteger('weightable_id')->nullable();
+
+            $table->string('unit')->default('kg');
+            $table->decimal('value', 10, 3)->default(0.00);
+
+            $table->index(['weightable_type', 'weightable_id']);
+        });
+
+        // set auto increment to 10000
+        $this->setAutoIncrement('weights');
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('weights');
+    }
+};

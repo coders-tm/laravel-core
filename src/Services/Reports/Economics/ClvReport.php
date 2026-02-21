@@ -1,107 +1,56 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Economics;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class ClvReport extends AbstractReport
+{
+    protected array $columns = ['user_id' => ['label' => 'User ID', 'type' => 'number'], 'user_email' => ['label' => 'Email', 'type' => 'text'], 'first_order' => ['label' => 'First Order', 'type' => 'text'], 'months_active' => ['label' => 'Months Active', 'type' => 'number'], 'total_revenue' => ['label' => 'Total Revenue', 'type' => 'currency'], 'avg_monthly_revenue' => ['label' => 'Avg Monthly Revenue', 'type' => 'currency'], 'estimated_clv' => ['label' => 'Estimated CLV', 'type' => 'currency'], 'order_count' => ['label' => 'Total Orders', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'clv';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Calculate customer lifetime value and revenue projections';
+    }
+
+    public function query(array $filters)
+    {
+        $userTable = (new Coderstm::$userModel)->getTable();
+        $now = now()->toDateTimeString();
+        $monthsDiffExpression = $this->dbDateDiffMonths("'{$now}'", 'MIN(orders.created_at)');
+
+        return DB::table($userTable)->join('orders', 'orders.customer_id', '=', "{$userTable}.id")->where('orders.payment_status', Order::STATUS_PAID)->whereBetween('orders.created_at', [$filters['from'], $filters['to']])->select(["{$userTable}.id as user_id", "{$userTable}.email as user_email", DB::raw('MIN(orders.created_at) as first_order_date'), DB::raw("{$monthsDiffExpression} as months_active"), DB::raw('COALESCE(SUM(orders.grand_total), 0) as total_revenue'), DB::raw('COUNT(orders.id) as order_count')])->groupBy("{$userTable}.id", "{$userTable}.email")->orderBy("{$userTable}.id");
+    }
+
+    public function toRow($row): array
+    {
+        $monthsActive = max(1, (int) ($row->months_active ?? 1));
+        $totalRevenue = (float) ($row->total_revenue ?? 0);
+        $avgMonthlyRevenue = $totalRevenue / $monthsActive;
+        $expectedLifetimeMonths = 24;
+        $estimatedClv = $avgMonthlyRevenue * $expectedLifetimeMonths;
+
+        return ['user_id' => (int) ($row->user_id ?? 0), 'user_email' => $row->user_email ?? '', 'first_order' => $row->first_order_date ?? '', 'months_active' => $monthsActive, 'total_revenue' => $totalRevenue, 'avg_monthly_revenue' => (float) $avgMonthlyRevenue, 'estimated_clv' => (float) $estimatedClv, 'order_count' => (int) ($row->order_count ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $now = now()->toDateTimeString();
+        $oneMonthAgo = now()->subMonth()->toDateTimeString();
+        $totalCustomers = DB::table('orders')->where('payment_status', Order::STATUS_PAID)->whereBetween('created_at', [$filters['from'], $filters['to']])->distinct('customer_id')->count('customer_id');
+        $lastMonthRevenue = DB::table('orders')->where('payment_status', Order::STATUS_PAID)->whereRaw('created_at >= ?', [$oneMonthAgo])->whereRaw('created_at <= ?', [$now])->sum('grand_total');
+        $avgMonthlyPerCustomer = $totalCustomers > 0 ? $lastMonthRevenue / $totalCustomers : 0;
+        $totalProjectedClv = $avgMonthlyPerCustomer * $totalCustomers * 24;
+        $averageClv = $avgMonthlyPerCustomer * 24;
+
+        return ['total_customers' => (int) $totalCustomers, 'average_clv' => format_amount($averageClv), 'total_projected_clv' => format_amount($totalProjectedClv)];
+    }
+}

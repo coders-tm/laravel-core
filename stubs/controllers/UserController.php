@@ -3,23 +3,22 @@
 namespace App\Http\Controllers;
 
 use Coderstm\Coderstm;
-use League\Csv\Reader;
+use Coderstm\Enum\AppStatus;
+use Coderstm\Jobs\ProcessCsvImport;
 use Coderstm\Models\File;
 use Coderstm\Models\Import;
-use Coderstm\Enum\AppStatus;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\DB;
-use Coderstm\Jobs\ProcessCsvImport;
-use App\Http\Controllers\Controller;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Coderstm\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use League\Csv\Reader;
 
 class UserController extends Controller
 {
-    use \Coderstm\Traits\Helpers;
     use \Coderstm\Traits\HasResourceActions;
+    use \Coderstm\Traits\Helpers;
 
     /**
      * Create the controller instance.
@@ -28,7 +27,7 @@ class UserController extends Controller
     {
         $this->useModel(Coderstm::$userModel);
         $this->authorizeResource(Coderstm::$userModel, 'user', [
-            'except' => ['show', 'update', 'destroy', 'restore']
+            'except' => ['show', 'update', 'destroy', 'restore'],
         ]);
     }
 
@@ -47,7 +46,7 @@ class UserController extends Controller
             $user->whereDateColumn([
                 'month' => $request->month,
                 'year' => $request->year,
-                'day' => $request->day
+                'day' => $request->day,
             ], $column);
         }
 
@@ -65,9 +64,9 @@ class UserController extends Controller
             if ($request->filled('status')) {
                 $user->where('status', $request->input('status'));
             }
-        } else if ($request->boolean('option')) {
+        } elseif ($request->boolean('option')) {
             $user->whereIn('status', [AppStatus::ACTIVE, AppStatus::PENDING]);
-        } else if ($isCancelled) {
+        } elseif ($isCancelled) {
             $user->onlyCancelled();
         } else {
             $user->onlyMember();
@@ -106,7 +105,7 @@ class UserController extends Controller
     public function options(Request $request)
     {
         $request->merge([
-            'option' => true
+            'option' => true,
         ]);
 
         return $this->index($request);
@@ -174,8 +173,8 @@ class UserController extends Controller
         if ($request->filled('avatar')) {
             $user->avatar()->sync([
                 $request->input('avatar.id') => [
-                    'type' => 'avatar'
-                ]
+                    'type' => 'avatar',
+                ],
             ]);
         }
 
@@ -242,8 +241,8 @@ class UserController extends Controller
         if ($request->filled('avatar')) {
             $user->avatar()->sync([
                 $request->input('avatar.id') => [
-                    'type' => 'avatar'
-                ]
+                    'type' => 'avatar',
+                ],
             ]);
         }
 
@@ -279,10 +278,10 @@ class UserController extends Controller
         $this->authorize('update', [$user]);
 
         $user->update([
-            'is_active' => !$user->is_active
+            'is_active' => ! $user->is_active,
         ]);
 
-        $type = !$user->is_active ? 'archived' : 'unarchive';
+        $type = ! $user->is_active ? 'archived' : 'unarchive';
 
         return response()->json([
             'message' => __('User account marked as :type successfully!', ['type' => __($type)]),
@@ -336,7 +335,7 @@ class UserController extends Controller
 
         return response()->json([
             'data' => $this->loadSubscription($user->fresh()),
-            'message' => __('Due payment has been received.')
+            'message' => __('Due payment has been received.'),
         ], 200);
     }
 
@@ -354,7 +353,7 @@ class UserController extends Controller
 
         // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
         $baseUrl = config('app.frontend_url') ?: config('app.url');
-        $resetUrl = rtrim($baseUrl, '/') . '/password/reset?token=' . $token . '&email=' . urlencode($user->email);
+        $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
 
         // Send notification using common template system
         $user->notify(new \Coderstm\Notifications\UserResetPasswordNotification($user, [
@@ -364,39 +363,39 @@ class UserController extends Controller
         ]));
 
         return response()->json([
-            'message' => __('Password reset email has been sent.')
+            'message' => __('Password reset email has been sent.'),
         ], 200);
     }
 
     public function import(Request $request)
     {
         $request->validate([
-            'file' => "required|exists:files,id"
+            'file' => 'required|exists:files,id',
         ]);
 
         $file = File::findOrFail($request->file);
         $path = $file->path(); // file path of csv
 
         $expectedHeaders = [
-            "First Name" => true,
-            "Surname" => true,
-            "Gender" => true,
-            "Email Address" => true,
-            "Phone Number" => false,
-            "Status" => true,
-            "Deactivates At" => false,
-            "Password" => true,
-            "Created At" => true,
-            "Plan" => true,
-            "Trial Ends At" => true,
-            "Address Line1" => true,
-            "Address Line2" => false,
-            "Country" => true,
-            "State" => true,
-            "State Code" => true,
-            "City" => true,
-            "Postcode/Zip" => false,
-            "Note" => false,
+            'First Name' => true,
+            'Surname' => true,
+            'Gender' => true,
+            'Email Address' => true,
+            'Phone Number' => false,
+            'Status' => true,
+            'Deactivates At' => false,
+            'Password' => true,
+            'Created At' => true,
+            'Plan' => true,
+            'Trial Ends At' => true,
+            'Address Line1' => true,
+            'Address Line2' => false,
+            'Country' => true,
+            'State' => true,
+            'State Code' => true,
+            'City' => true,
+            'Postcode/Zip' => false,
+            'Note' => false,
         ];
 
         // Read CSV headers
@@ -420,7 +419,7 @@ class UserController extends Controller
 
         // Validate unwanted fields
         $unwantedFields = array_diff($csvHeaders, array_keys($expectedHeaders));
-        if (!empty($unwantedFields)) {
+        if (! empty($unwantedFields)) {
             throw ValidationException::withMessages([
                 'unwanted' => [__('Unwanted CSV headers: :headers', ['headers' => implode(', ', $unwantedFields)])],
             ]);
@@ -429,7 +428,7 @@ class UserController extends Controller
         // Validate required headers
         $requiredHeaders = array_keys(array_filter($expectedHeaders));
         $missingHeaders = array_diff($requiredHeaders, $csvHeaders);
-        if (!empty($missingHeaders)) {
+        if (! empty($missingHeaders)) {
             throw ValidationException::withMessages([
                 'required' => [__('Missing a required header: :headers', ['headers' => implode(', ', $missingHeaders)])],
             ]);
@@ -456,7 +455,7 @@ class UserController extends Controller
 
         // Return response indicating the import process has started
         return response()->json([
-            'message' => __('This could take some time to complete. You can close this dialog box while we upload your file. We will email you once the import finishes.')
+            'message' => __('This could take some time to complete. You can close this dialog box while we upload your file. We will email you once the import finishes.'),
         ], 200);
     }
 
@@ -464,7 +463,6 @@ class UserController extends Controller
      * Load subscription information for the user.
      *
      * @param  \App\Models\User  $user
-     * @param  array  $extends
      * @return \App\Models\User
      */
     protected function loadSubscription($user, array $extends = ['usages', 'plan', 'next_plan'])
@@ -483,7 +481,6 @@ class UserController extends Controller
      * Create subscription for the user during store operation.
      *
      * @param  \Coderstm\Models\User  $user
-     * @param  \Illuminate\Http\Request  $request
      * @return \Coderstm\Models\Subscription
      */
     protected function createSubscription($user, Request $request)

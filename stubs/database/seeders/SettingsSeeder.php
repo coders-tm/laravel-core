@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use Coderstm\Traits\Helpers;
 use Coderstm\Models\AppSetting;
+use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SettingsSeeder extends Seeder
 {
@@ -22,7 +21,7 @@ class SettingsSeeder extends Seeder
 
         foreach ($items as $item) {
             AppSetting::updateOrInsert([
-                'key' => $item['key']
+                'key' => $item['key'],
             ], $item);
         }
     }

@@ -1,29 +1,16 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPvz+6DetnE0TpigD+G9V3sDTA6CHNw7G0RguYjwEvz3Tqxv+Qg5DIW6+BJ/iP2nUGijQfbqX
-QiJWgKgDq2eWJLqfunSwKirtpY1aLbnvAGyc0z1P2buxDejBEJAtJOnezbNC8mte4t5sNB81jPFE
-WW9mhz/8Ik/i9uODmFOdyZqrrI6dJ8WeZK7B0ZkJ3Trgho97W+ducqCIEZlFGVqgeZ2fj05CIjv+
-3DJKI/FubjWAjLB0Uu6rI1HROUfRWtGVZThev/xW+GHWDTeY4+7ATeY3oAnaatfixLekm2i/gYlk
-xUmx/u70pBdZpnWpwNuMG+wzzxUNK0wqY1pSVP2+mMcC5XTHGuGzv9tNuKTjkkHEOqWANrYv+0EG
-YQAS+xxeQ+aOnQNqqWL8VzBkxLAjULXkWu39C1hY6tYDpF+Kl1kBfvSWRqulwNPcRqstjhs5Hq85
-sXVJcVDDkNzwKGTE5nW5oaNDooYibJInLahhKBeTU6cd6hDjal5zSSUTVKb8a+rUoW5TAAwrhAlf
-Qsf1OiQxBRvlbPT+fVcRr6+yoIIrVUBxf++CVKL1EqyiT9PJfPCgV7VRBrPaaMFAgqO+og598HBB
-9Cz80fO7ei7lV0cNfCitfuWxP9vJznC032DQwhM1MdN/bpcR62gTGHRMlntRsHMx6QYY9E7ofIvA
-fn0GGd/gu1lIdfzTjxDEVg8x+t9SPUcf0geZSVpSgK5XvfPhjHJegRDVf8uEvbhqm6o1YuO0skgJ
-4j2COp6FK9qOxBesL67rHWsRzfPapDcuRmOzAN6ykJ2+8xHJI/D5ulTFKMXfat/YTDcaZnczyYMK
-AoAcoep5gP3WMIEtt4gczjzW2++2UElnlgeBY/+Z44punpNFHAHlRF5wPXqa3juP3GESBOHzzduf
-LaDh371U7V0pwxXqJ4amsnOh7JeH/Nt9bTvELKNY5byxwb7t+gtsWjj1bSujAFBTqIWE5RoUheD6
-Qy3hM/yXbC9db/30gDHetu/m5+A2CjWBw8hEKgkkBViwLSbTBEE3eUf2uNtjqljdZdUZefyhw4xX
-gZ+xLt8Osku8yPwDe1BfnqrLmeaCNqgqs8S9KPA+T3a00HytBuU8P/risSwZBIObRtjODp+CxHQP
-1k/AyuM2HxVbTQBhJTAiDUyqrnYeh9VRXpTsD523E9GwK7rk0xhv2AxUEJGxYsh+4Y724CJErQ1Q
-JUF50HcMc1S4A/iYkdMLVxqJ4y5hWuLrVPMVITNfNR98adwsIZLyeDu4i9SaqPVsWWJD1Oqp4Cc8
-N4kS+z/39z3LTYvUTg9tsDVwzlOEWkamCDJBtFoHhXvt8QbY2xLwcXhPnyyRIzfmvKf83gr9wTwo
-NvOVK/fNE+mtv9UA2r/LahTTpb9h1nZ9y5nxZL6wjxhq7sC2IiN/hauaFljXnsI6wAZpE7JxZi0i
-Y9g6CHAMTPvOC0+VOLPifUi6nbQ1CurIR/IwjKOJpl9ou029rdP9i9QCN8YkRrBeoD2isOj52mRn
-3UtcPxwBY0WVzw5eI2hfggsso+/pvaiTkBo1WKAxsXFpJ8zecwIqa8XK7JKsWO1lOWC4R+cWIzaP
-Lk4TDUlX+LZPT7gFVXB5zEZ5QE7mJRj3AKAK+XbagxWSRnvEYZCF1Pq72Y3L8RMpeN9HLw7Ap8Hx
-y6W1Hy3VwoENuVsylrcvyMpoFYQTc/zg2Gw5uzC+Bs+wiWNhQzbFBa2NQfsGjfbC9xUeQXi63z5j
-6TXM1V+EEPs+VfazmlWY1H00exBKe5yUtks6OfyXPEeilt0dWDzFhW4S5L+py0lcSZs/2ROjZzOL
-v3kf2rdo+9dcT611AVxX21JaqG94eM2m5733CO7oHoprIYp9D8/Kqhi5cA4P4pCrPH05ErVGgMuF
-gjh4v0tO0BfCOjJN
+<?php
+
+namespace Coderstm\Http\Resources\Coupon;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class PlanCollection extends ResourceCollection
+{
+    public $collects = PlanResource::class;
+
+    public function toArray(Request $request): array
+    {
+        return parent::toArray($request);
+    }
+}

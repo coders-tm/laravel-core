@@ -1,43 +1,49 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Coderstm;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
+
+trait TaskUser
+{
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(Coderstm::$adminModel, 'user_id');
+    }
+
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(Coderstm::$adminModel, 'task_users', 'task_id', 'user_id')->withOnly([]);
+    }
+
+    public function syncUsers(Collection $users, bool $detach = true)
+    {
+        $users = $users->pluck('id');
+        if ($detach) {
+            $this->users()->sync($users);
+        } else {
+            $this->users()->syncWithoutDetaching($users);
+        }
+
+        return $this;
+    }
+
+    public function syncUsersDetaching(Collection $users)
+    {
+        return $this->syncUsers($users, false);
+    }
+
+    public function hasUser(...$users)
+    {
+        foreach ($users as $user) {
+            if ($this->users->contains('id', $user)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+}

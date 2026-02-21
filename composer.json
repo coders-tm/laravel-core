@@ -28,6 +28,7 @@
     "barryvdh/laravel-dompdf": "^3.1",
     "creativeorange/gravatar": "^1.0",
     "doctrine/dbal": "^3.4",
+    "firebase/php-jwt": "^7.0",
     "flutterwavedev/flutterwave-v3": "^1.1",
     "gocardless/gocardless-pro": "^6.6",
     "illuminate/console": "^12.0",
@@ -41,8 +42,9 @@
     "illuminate/support": "^12.0",
     "illuminate/view": "^12.0",
     "jenssegers/agent": "^2.6",
-    "kreait/laravel-firebase": "^6.0",
-    "laravel-notification-channels/fcm": "^5.0",
+    "kreait/firebase-php": "^8.0",
+    "kreait/laravel-firebase": "^7.0",
+    "laravel-notification-channels/fcm": "^6.0",
     "laravel/cashier": "^16.0",
     "laravel/sanctum": "^4.0",
     "league/csv": "^9.15",
@@ -64,6 +66,7 @@
     "yansongda/laravel-pay": "^3.7.0"
   },
   "require-dev": {
+    "laravel/pint": "^1.27",
     "mockery/mockery": "^1.6",
     "nunomaduro/collision": "^8.1",
     "orchestra/testbench": "^10.6",

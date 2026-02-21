@@ -1,92 +1,78 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-try4Qm==
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Models\Notification;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+
+class NotificationController extends Controller
+{
+    public function index(Request $request)
+    {
+        $notification = Notification::query();
+        if ($request->has('filter') && ! empty($request->filter)) {
+            $notification->where('label', 'like', "%{$request->filter}%");
+            $notification->orWhere('type', 'like', "%{$request->filter}%");
+        }
+        if ($request->input('deleted') ? $request->boolean('deleted') : false) {
+            $notification->onlyTrashed();
+        }
+        $notification = $notification->orderBy(optional($request)->sortBy ?? 'created_at', optional($request)->direction ?? 'desc')->paginate(optional($request)->rowsPerPage ?? 15);
+
+        return new ResourceCollection($notification);
+    }
+
+    public function store(Request $request)
+    {
+        $rules = ['label' => 'required|string|max:255', 'type' => 'required|string|max:100', 'content' => 'required|string', 'subject' => 'nullable|string|max:255', 'is_default' => 'nullable|boolean'];
+        $data = $request->validate($rules);
+        $notification = Notification::create($data);
+        if ($request->boolean('is_default')) {
+            $notification->markAsDefault();
+        }
+
+        return response()->json(['data' => $notification, 'message' => __('Notification has been created successfully!')], 200);
+    }
+
+    public function show(Notification $notification)
+    {
+        return response()->json($notification, 200);
+    }
+
+    public function update(Request $request, Notification $notification)
+    {
+        $rules = ['label' => 'sometimes|required|string|max:255', 'type' => 'sometimes|required|string|max:100', 'content' => 'sometimes|required|string', 'subject' => 'sometimes|nullable|string|max:255', 'is_default' => 'sometimes|nullable|boolean'];
+        $data = $request->validate($rules);
+        $notification->update($data);
+        if ($request->boolean('is_default')) {
+            $notification = $notification->markAsDefault();
+        }
+
+        return response()->json(['data' => $notification, 'message' => __('Notification has been updated successfully!')], 200);
+    }
+
+    public function destroy(Notification $notification)
+    {
+        if ($notification->is_default) {
+            abort(422, 'Default notification can\'t be deleted');
+        }
+        $notification->forceDelete();
+
+        return response()->json(['message' => __('Notification has been deleted successfully!')], 200);
+    }
+
+    public function markAsDefault(Request $request, Notification $notification)
+    {
+        $notification->markAsDefault();
+
+        return response()->json(['data' => $notification, 'message' => __('Template marked as default successfully!')], 200);
+    }
+
+    public function duplicate(Request $request, Notification $notification)
+    {
+        $notification = $notification->duplicate();
+
+        return response()->json(['data' => $notification, 'message' => __('Template has been duplicated successfully!')], 200);
+    }
+}

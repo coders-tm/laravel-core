@@ -1,41 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPqkvXzFLW7pae0uIy4yRaeW50IExhpYtgz8Y1AZ/ENuZFq6FBBV68jDODAS607YWVg9t+sw8
-2ocquh8vG+a3rE9RwJ5uYcg0i+OVQdreXirHpPyxyEVMOCW/N+TxOXyF34VmwYXLy6i+I/5PZ2M+
-P61zz3ejkLzAe6Nxne1mdWvAZbd/iazhreXpZEQBZUH0Co5eURXLKAidrIbonEZ83HPwVaeL1cSF
-cDgdvJ9Ggah+PbDonzwl+4RDyeF8ehLO+agUsErtv/xW+GHWDTeY4+7ATeY3o9Pi69sWlAUOPK+8
-3YkkrOugrNzraQ/pvzV/vosKavKqmMy+mBq2+g2N+DcoBtVBBdVaeAVmBh40uCTQq5OQA2d3uGj2
-LcWIq908deflM7K9kYvgfLrfaK/IOhBly8P+v0AIJi9H4InBMOCcKJw/in5ZxIC0nP8I0dDbYNG0
-8Xxt6Pcy4zmXt0qIJU3edB/EHjgQsjgBdmEgBKZ6tGIs531jMjaZKQFCzMsLh09e4RMXpIWu1C1o
-lm/2LWDODWElaiarNwurQ13RD1+vwtQKB3QF7Smr9Zuti5tqmSCdVEv/nQPtDlA0yOhH9oahAfab
-AWSQHktcket3sewbnOnewxlRjVi1dVeYEoNWS/O40tBIHD7xkmJ0kF31rgXzwbV6tA1gVkFH7O9+
-ibA4VG7I4n55lhirwzlMu/cRumNYBD7JfNCC66Kb3b8H1k3462a5jg02tnYSNKwZngWmWCIqr2Eo
-dhQuY1rY8vaxozR0/We5Zj9wofZ2KzFNlkXmzNxNNEMtIUss6V6MmogZ3MadUrbOLObcR5NqalaA
-MuRrR5zsrSQ1w+0gQQWCijYEBn2fRhmN++eTs9y4n7ZyunDZAJEPVkhHJQRBjUa+/K+tTIE6bOnt
-JTGrX3bR3M49FYbsPfYPsrrBTowR42Gm7MuPXHAh6UPBj03IscctXgwsjHQIxszUh2APM8T1n4jY
-pAkeKqTpMS1WjX1t6r/74v7CFLUz23sCPlySbehhUxiWIQLPpxRKiVXVFvJYAA9s52UX8qiVj9dk
-Z0TkGK++QlPw+Atq1aTEDU4OaqMOgiKtLStK7pIgabqQhEulrVYFbyWUSiMvRfgNUKnA3+A6XIfY
-98C3254DAMAghbWtvAaQxpSd7yLzMSMozPQCCaxRD2e1bSLQaVWM1w1zYuGriNY1atr7RKlOfKM/
-MYiBFREz0TDGbmFI+sjynL8IqvHax9x/jKE4ENdTu7BMoNVFUOBzTOGKI8K6mKOYyxL+6GfYoDuv
-edPup96wESqWsjQfDONFDRDVIGNv81BVEmFRHD6mWSetgPN3Pl3gEwTWX03BCF41paS9TgeYulci
-wP6QA2AgcJ+e/QvObwmZcGMOaM4zonLH+mHNJgLud0rtiQ0IBZwG3arsxG7yiiT/xEsWgnjQAX1z
-fBYHDFZyfDNd8yzyAH/uY6pJc9UPncbeqB/GwW8r3G0befmRqrG0UVVE0Z+JlIRdom4U8lm5f2mS
-soq4vfz83wvHB2wcBXM+d44miFmmPW85euT9AUKirb7/B4Dj7ZaY/8eehUFgpl54omVg0wRAKy+6
-+/t+Osm8EJQt5JT/ZHxITLt50SI5lLdh0O3eWQDI75ji8KEhOvpESAm+1v2F0fkHrRBM8F/x36TY
-gbQIONmJ8gt23vjH3vVMsI1/GzVfpNsR13SHxqu1EoAxNXCft8pUNBedHfwNC7ZcHXtRran0irLt
-KOqBHtydP57P4PclYb3/GNanrBwIFKbLA/FYptEmPL80GOsy6xqYrh5phBxeWFljnSSMBmfYlpa3
-15to3plFFnzl8ABiWrqCBfbiqhA1pBKxgxs1pgPakkWUz7j1hNWnuAllQa8fsmSElXi0ngxq5d8f
-MWRQep8NMmvIQ4tA9IXgxGsKuz+ndxG64fMKz7+89mUtBQ2bfI3UJSju8FZQkbpXhf8H2tfMrN8V
-uYmcovp32+JWL36wOpumYt7C4rbdqQD3zplnnsi4KtEYdSruyGPNJW7qwNqDEV3Q2xQO6qW26s28
-2HW3gmNYIHxl/JFkMFGKksgXoaDSqw+wg02+sJ2vC7qG2jC5nKQ9s1+f+btPITdiX1fdLVkqJwvv
-N79GVE3LMFOztR8lVd3PQVYv1TsEjLGjzgaIVb1H0PpkLXFexVqEYqes/nd44Ulv4h9Cc7HtDniK
-cwRAEfL8MYBii/xw4wHRE7rQoEk4N8zmTpwC//wZNjjTHQpcEAp6EUum4eBfw6Wv1FHGZndv6vcw
-/5IvyHkdzWTwNGWbDa5OZLWF0gfNJOcmDG/I9Ymcea5yGAr4q8ZHfPyg2pQrCRjCwJtj90MDLrjN
-BMZAAEpgMv9b4b2Euy4vNCM08uAK7dBw5MIT6/ykvzKozRlAu+AHRJrYTjbxhytnwhM3Xl/a5ZYe
-qdpeIUlh/lTEbkQrlYiAK/eniy4NFLAW7XQhZmhkzmAusflaNPzTJ3NFzqlCQ/6VQbaCuT0qHNO8
-tj3pwM33qxwM8rU4max9wo6wJpEjfeLtOT9Yeqs24tEFsmuLXEPa6p23ZanxJfY2ztrpFsQRmHgj
-tx/f8Yw1LVSdqhM88x8QHsJFCaXi3WPbpmhAVF/NWgDntB47Zk8j5cOeKvhDRsnYdCwVA1zYo886
-vPV91UwY/vch490PW9dGZYqnnU29DYSLA0apuRjLOGp1L7rdX5TYkz5c4HNn1qMEj137MPt911Iv
-bAQVgKYKZ9qjL7AwSMXCT6bWo3ybt4lMcgjYSyxmqieuOrxjYCZ9DRP5g2fEau6g2xlPEmMC9OW6
-hA1WcqE0
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Coderstm\Models\Subscription\Plan;
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class Plans extends Shortcode
+{
+    public $attributes = ['class' => ['default' => 'plans'], 'layout' => ['default' => 'default']];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $plans = Plan::onlyActive()->get();
+        $plans = \Coderstm\Facades\Currency::transform($plans);
+        $plans = collect($plans)->map(function ($item) {
+            return array_merge($item, ['cur_symbol' => currency_symbol(\Coderstm\Facades\Currency::code())]);
+        });
+
+        return $this->view('shortcodes.plans', array_merge($atts, ['content' => $content, 'plans' => $plans]));
+    }
+}

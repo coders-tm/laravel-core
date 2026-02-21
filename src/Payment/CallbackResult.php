@@ -1,41 +1,46 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-rEvtrHBFB+3OqKZ1aU/W/qS+vxEDxRGTeN9a
+<?php
+
+namespace Coderstm\Payment;
+
+use Coderstm\Exceptions\PaymentException;
+use Coderstm\Models\Payment;
+
+class CallbackResult
+{
+    public function __construct(public string $message, public ?Payment $payment = null) {}
+
+    public static function success(string $message = 'Operation completed successfully', ?Payment $payment = null): self
+    {
+        return new self(message: $message, payment: $payment);
+    }
+
+    public static function failed(string $message, array $metadata = []): never
+    {
+        throw new PaymentException($message, $metadata);
+    }
+
+    public function getMessage(): string
+    {
+        return $this->message;
+    }
+
+    public function getPayment(): ?Payment
+    {
+        return $this->payment;
+    }
+
+    public function getPaymentData(): ?Payment
+    {
+        return $this->payment;
+    }
+
+    public function getMessageType(): string
+    {
+        return 'success';
+    }
+
+    public function toArray(): array
+    {
+        return ['success' => true, 'message' => $this->message, 'payment' => $this->payment];
+    }
+}

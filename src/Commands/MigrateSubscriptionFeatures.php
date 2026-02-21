@@ -1,143 +1,163 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-XBXp0Lqh
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Subscription\SubscriptionFeature;
+use Coderstm\Models\Subscription\Usage;
+use Illuminate\Console\Command;
+
+class MigrateSubscriptionFeatures extends Command
+{
+    protected $signature = 'subscription:migrate-features
+                            {--force : Force migration even if subscription features already exist}
+                            {--billing-only : Only migrate billing intervals, skip features}';
+
+    protected $description = 'Migrate subscription features and billing intervals from plans to subscriptions';
+
+    public function handle()
+    {
+        $force = $this->option('force');
+        $billingOnly = $this->option('billing-only');
+        if ($billingOnly) {
+            $this->info('🚀 Starting billing intervals migration...');
+        } else {
+            $this->info('🚀 Starting subscription features and billing intervals migration...');
+        }
+        $this->newLine();
+        if (! $billingOnly && ! $force && SubscriptionFeature::count() > 0) {
+            $this->warn('⚠️  Some subscription features already exist. Use --force to override or migrate remaining subscriptions.');
+        }
+        $subscriptions = Subscription::with(['plan.features'])->get();
+        if ($subscriptions->isEmpty()) {
+            $this->warn('⚠️  No subscriptions found to migrate.');
+
+            return 0;
+        }
+        $this->info("📊 Found {$subscriptions->count()} subscriptions to migrate");
+        $this->newLine();
+        $progressBar = $this->output->createProgressBar($subscriptions->count());
+        $progressBar->start();
+        $migratedCount = 0;
+        $skippedCount = 0;
+        $alreadyMigratedCount = 0;
+        $errorCount = 0;
+        $billingIntervalUpdatedCount = 0;
+        foreach ($subscriptions as $subscription) {
+            try {
+                if (! $billingOnly) {
+                    $result = $this->migrateSubscriptionFeatures($subscription);
+                    if ($result === 'migrated') {
+                        $migratedCount++;
+                    } elseif ($result === 'already_migrated') {
+                        $alreadyMigratedCount++;
+                    } else {
+                        $skippedCount++;
+                    }
+                }
+                if ($this->migrateBillingIntervals($subscription)) {
+                    $billingIntervalUpdatedCount++;
+                }
+            } catch (\Throwable $e) {
+                $errorCount++;
+                $this->error("❌ Error migrating subscription {$subscription->id}: ".$e->getMessage());
+            }
+            $progressBar->advance();
+        }
+        $progressBar->finish();
+        $this->newLine(2);
+        $this->info('📈 Migration Summary:');
+        $summaryData = [];
+        if (! $billingOnly) {
+            $summaryData[] = ['✅ Features Migrated', $migratedCount];
+            $summaryData[] = ['🔄 Already Migrated', $alreadyMigratedCount];
+            $summaryData[] = ['⏭️  Skipped', $skippedCount];
+        }
+        $summaryData[] = ['📅 Billing Intervals Updated', $billingIntervalUpdatedCount];
+        if ($errorCount > 0) {
+            $summaryData[] = ['❌ Errors', $errorCount];
+        }
+        $this->table(['Status', 'Count'], $summaryData);
+        $this->info('🎉 Migration completed successfully!');
+
+        return 0;
+    }
+
+    protected function migrateSubscriptionFeatures(Subscription $subscription): string
+    {
+        if (! $subscription->plan) {
+            $this->warn("⚠️  Subscription {$subscription->id} has no plan, skipping...");
+
+            return 'skipped';
+        }
+        $force = $this->option('force');
+        if (! $force && SubscriptionFeature::where('subscription_id', $subscription->id)->exists()) {
+            $this->warn("⚠️  Subscription {$subscription->id} already has features migrated, skipping...");
+
+            return 'already_migrated';
+        }
+        $planFeatures = $subscription->plan->features;
+        if ($planFeatures->isEmpty()) {
+            $this->warn("⚠️  Subscription {$subscription->id} has no plan features, skipping...");
+
+            return 'skipped';
+        }
+        $subscriptionFeatures = [];
+        foreach ($planFeatures as $planFeature) {
+            $usage = Usage::where('subscription_id', $subscription->id)->where('slug', $planFeature->slug)->first();
+            $used = $usage ? $usage->used : 0;
+            $resetAt = $usage ? $usage->reset_at : null;
+            $subscriptionFeatureData = ['subscription_id' => $subscription->id, 'slug' => $planFeature->slug, 'label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'used' => $used, 'reset_at' => $resetAt];
+            SubscriptionFeature::updateOrCreate(['subscription_id' => $subscription->id, 'slug' => $planFeature->slug], $subscriptionFeatureData);
+            $subscriptionFeatures[] = $subscriptionFeatureData;
+        }
+        $this->line('✅ Migrated '.count($subscriptionFeatures)." features for subscription {$subscription->id}");
+
+        return 'migrated';
+    }
+
+    protected function migrateBillingIntervals(Subscription $subscription): bool
+    {
+        if (! $subscription->plan) {
+            return false;
+        }
+        $updated = false;
+        if (is_null($subscription->billing_interval)) {
+            $plan = $subscription->plan;
+            $subscription->billing_interval = $plan->interval->value;
+            $subscription->billing_interval_count = $plan->interval_count;
+            $updated = true;
+            if ($plan->is_contract && is_null($subscription->total_cycles)) {
+                $subscription->total_cycles = $plan->contract_cycles;
+                $updated = true;
+            }
+            if ($updated) {
+                $subscription->save();
+            }
+        }
+
+        return $updated;
+    }
+
+    protected function getMonthsForInterval(string $interval, int $count): float
+    {
+        $monthsMap = ['day' => 1 / 30, 'week' => 1 / 4, 'month' => 1, 'year' => 12];
+
+        return ($monthsMap[$interval] ?? 1) * $count;
+    }
+
+    public function cleanupOldUsageData()
+    {
+        $this->info('🧹 Cleaning up old usage data...');
+        $usageCount = Usage::count();
+        if ($usageCount > 0) {
+            $this->warn("Found {$usageCount} old usage records. These can be safely deleted after migration.");
+            if ($this->confirm('Do you want to delete old usage records?')) {
+                Usage::truncate();
+                $this->info('✅ Old usage records deleted.');
+            }
+        } else {
+            $this->info('✅ No old usage records found.');
+        }
+    }
+}

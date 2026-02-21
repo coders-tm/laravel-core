@@ -1,40 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPmS+TLy61KwHtudWV83SQU4u0kp8+6Ppfu+ug83UhrH0EjucL+5kUyrpsQSa7GKNrBavGPRe
-P0RQxLGVVCXJ6Mkup3ewcDL7JQTW8tQ0kT7ZcbZSBuNBFHe/0Q9OKGUff4uZat2aBH6/HvOrXFai
-cMy1aDgvcyQjwRAEKYo6bKFTPHqiYGS6SSqsyK49WhK9Y0L5xMjsISFAjPBOqakiBQYj8QEeskNq
-DDHvMVauLt1RrRnqQf/Nd853s5uKGOgqLK1f7kAMWomHV/ubqjv8p5IyUzjcgUBBJdwzeWEixawm
-KDO+/+s9v4I4ONwPTcaPy/AevHomWGaxX9IeFiKBav+9KsDO2Y+JrKlGlBAIzLnUOjS3C8ccKelF
-1Is11eb0wxYIQe0qvyeVgJHILKzfmur9JffYhz22ylwXs/cPhm25428mWRv/GFYC2XVlpCHp/BOW
-/Cn1Q1gaCDfZh1p1eoEJgKoMkQZooovNqzzuN+2yKPXW+PkXIE15i07giqUwVlkNfiCPCrScueX5
-WFt9ZoiTQEgnKP10K1Py1GtZenAMoYEwXH1d4/muQ4vz2/os0Zdx4wMVZl4tPcsGjC3TxYJ0UWh4
-IOLQn3h8K4JbvpE7EHj28eyCrK2XdMk8iz6f6JkR7n7/m4Jos2goOXwmYxG4/vFDywaCwupz45+6
-Ewaa3AlEG8vubBxSBab8TAttogzF2/dunJZriof44r+3rvT4/z+qDcmTRvcS1ds6tvWTZsmGl00/
-Nvv2Cc5hCfUyNq9mhv//qNaVZvFESjCdsLw9AybsPLCPYByqeyePdeu03TB9n8zYngHHAcKCYHla
-EF7yimHU7ux6t0KbPv7oWicbzPE+9PSTcRRMEXUND2i+UHsb+qVPt4iCCL9esWqLnxm2nw3Vs2tZ
-nj6yXpzTQtwVgGYXR8T8CzJspdvf1djY9yWcMBm8ShiHnsKpn2neH6y047xKRD41/m20jR8dp1nf
-B/a9SFytafDC0cePnFmRaR70evm+zeZ/rUZMxG91wPr+r7ABuIE3R6KNaUWJgTRLrYCKHPsvcFg2
-un5BUttWAM0agK9IYsHXW3a25dFiCC/GtC9B88OGB2VZ33zVde4ew+bnN2wPGNxCW5EZobnOw+3g
-W+hwCHF+TMbDLV7qvD5w1a6XB0Tj9GIr16LdqKNgvIJHnRPymJETqtzR9oC3BXw7hbX3CULBFwTW
-izSCcVwMDXk3u0YUhqAPvmLwlf2XRb8/xzsK3eXKKmDIo6umuMfi5TwidDRQ9St+EMi/4aN/V6Lb
-wvBI/Q9Kf+gio0NWtmZDFXS79+rX+fhMNUNb5+fgxmisDiJMniKX2GCYr4nREgzCPhuw9JF+5yBR
-L/QjBn6jwl8hUakPSzymAEKuR2rogxvtgRpq8cUSovOXb25DO2VUsger8rfFmJXS/ZMC/QqTEF4S
-Ga5Tp5IVGYw9n6Dl61NSuiKdIdvSZ7rlAkC1itQpZfuHm9YQvtd3LOUWUNq2fKJvEc9lKp2KUW2l
-rw2cZDlVfd7s6txaj0qwnSEnA8qD8MQMRHl5xJJg1gDi/SsT+di4AWpxUywkOTbQMuysW6aULz5O
-tka3HcQC2KIkkzizhBph1gE19Mqs8jADsUg7A+lGo2u/T6Ic67ptp7S+0vGUTTtCKREj1Z4CgHx5
-JWD/4PKp0Pu2Z0TyOMfRSSEMft3CdUahgRcmtThOySKkT8kbISHwxQtc26aaCGVCXBo1Mgw7onKG
-WE/pTHkYyEMGAMPWd83V23EcxACLQh7gqA9VHoO3L8luJ4PnHlU7QB1Nyg90Plu8MrG8J5oSQq6T
-d2teAl6L59h0ms5Jcp4LHlajrQ2KzcFZbFncsgLthITdfXgYQLSw+6xCZk71W1Riyh6w9cJ8MNfc
-F/roHpsVtWk8SETno/uobzgGpwxEGO+rGKCbGzWNEfo8/MQ90uizx2/FoYh56lKd9D3q9M1cLeB8
-UMPJJIZ6D+49vhLrFhoQolzvpPLwFYLobUwhbyHI6yYPWt9bAZ5hl7IvI5b5CxsEHrzksPcUdplu
-Gx4XZk/QiCAoIIpfadTayhun5NCJt6QBlErLx20X8kVOrUAnED+Ktv983gh1Qpu7So18Bq9P+wcE
-cHbEH0grEIMy42j6xuGD4Hfq30+6RoBIM5CvnQj23DPRG5OW+C86b8sXGAww40n8w3JOGt/33GLw
-MKGERRwGO66hWYeF1s4ZZh9NT2g1J6/De88m58C9nx4FrPk2Z21cThc/387/5m3BwlOcC3XEt69J
-QMFzuYfmqCzeanOhgFicTje/L/IQ/2KTwgeStilwyV8Yqd5860JjUCPnRNop8VOj/qsiywEMTm2J
-V1yIK22qX/LAxld6JQ5G0vbmQf7AC//vSwzD+FR/kbnEXDGahprPEmz5zDOmYk4V+VU8qQmObgKl
-CY3QC72PGpPw1hTSFks6YiHXHnrpOuSCVuVI63UtDqWMCYojznqgUgdrSOHv/P5CbYhg4ghK9Pbb
-nC+OXN80Z9ym0yuct9+clDPNKOWeYxOzxrEEe8rvUGXi/5s6MRw80PzvKoo335o50VmwkoP7ZfAD
-44OQJIT4qGEHUnF08l8Nv1+OCUbdVQOF90SkSefoH56MxdEyfm/se1tVQjzlSJ2lUT1bt+TuETbq
-t8tOwwUOaRdJewRjboXR4/gwyFBdD4y4Zy1gJIEHNG8DgmQkJOPvYGi7JiSXkrIyMEHe4CjasUAP
-AnAalPCgi2OmSlUXUOVp80==
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Subscription\SubscriptionFeature;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class SubscriptionFeatureFactory extends Factory
+{
+    protected $model = SubscriptionFeature::class;
+
+    public function definition()
+    {
+        return [
+            'subscription_id' => Subscription::factory(),
+            'slug' => $this->faker->unique()->slug,
+            'label' => $this->faker->word,
+            'type' => $this->faker->randomElement(['integer', 'boolean']),
+            'resetable' => $this->faker->boolean,
+            'value' => $this->faker->numberBetween(0, 100),
+            'used' => $this->faker->numberBetween(0, 50),
+            'reset_at' => $this->faker->optional()->dateTimeBetween('now', '+1 year'),
+        ];
+    }
+}

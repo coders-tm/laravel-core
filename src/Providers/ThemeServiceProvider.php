@@ -1,40 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Providers;
+
+use Coderstm\Http\Middleware\RequestThemeMiddleware;
+use Coderstm\Services\MaskSensitiveConfig;
+use Coderstm\Services\Mix;
+use Coderstm\Services\Theme;
+use Illuminate\Support\ServiceProvider;
+
+class ThemeServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        $this->app->singleton(Mix::class);
+        $this->app->singleton('blade.compiler', function ($app) {
+            return new MaskSensitiveConfig($app['files'], $app['config']['view.compiled']);
+        });
+    }
+
+    public function boot(): void
+    {
+        if ($theme = settings('theme.active')) {
+            Theme::set($theme);
+        }
+        $kernel = $this->app->make('Illuminate\\Contracts\\Http\\Kernel');
+        $kernel->pushMiddleware(RequestThemeMiddleware::class);
+    }
+}

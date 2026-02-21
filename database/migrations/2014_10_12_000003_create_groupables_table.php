@@ -1,40 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-feqH6G==
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('groupables', function (Blueprint $table) {
+            $table->string('groupable_type');
+            $table->unsignedBigInteger('groupable_id');
+            $table->unsignedBigInteger('group_id');
+
+            $table->foreign('group_id')->references('id')->on('groups')->cascadeOnDelete();
+
+            $table->primary(['groupable_type', 'groupable_id', 'group_id']);
+
+            $table->index(['groupable_type', 'groupable_id']);
+        });
+    }
+};

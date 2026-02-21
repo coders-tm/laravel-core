@@ -1,37 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('app_settings', function (Blueprint $table) {
+            $table->id();
+            $table->string('key')->unique()->index();
+            $table->{$this->jsonable()}('options')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('app_settings');
+    }
+};

@@ -1,29 +1,17 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPqjOC0v6feWX7+obBIC9DPwKZWYY1nOa6vkuXiOUHC/Z5n1ZXuJ6sR8EvKWdCG5ee/cgrceu
-Plz1TwVlzKD7xkxmr3AAzHVdjEWKCuarKH8GpAwm5gNbVMgvL/QIYGs82vteaSjNh12wRnTr7Lig
-Vdy32eDSoHL9TJ+qctcsYmTBh49TW1IsiKIIjit+UKYhoQir4DuCCSA2kyioevUI2U//xtvtDxtz
-XKZ+Zqt/W8zc/KEG8kp7zXsFAARIfaBafjqQv/xW+GHWDTeY4+7ATeY3o8LezdDNiT0htgX7noik
-iD8llH4HEQ7wwIxlcyO7pLeD98Wai9TtmGow3oRd3od0z//ais0MACpYdkX1MV3jHmv1h136DBRM
-ekVlk476nnY40vaoiXrHtDeewbQyx7G3cLxi5wRJNqUk0Rlv6s9lSv1ftaw/4Grg1QDtCDua7/DT
-2eT0UFQ/8UBJIq1DBpuFy/HKDjNrwl6OxQJWHaypSPAMYug/l4g/RKiAiCSP6zJxcF2ZyuN7GBLB
-YcCWBu3+Jvdi9aCIjAYoz6uSe0uure/X044sDn7buhP3ZwA9g79tPmm02KlN01m7kQBpuR0eQOe1
-CjmE03HQ8AxE5I3sc/zb+Rd3FZSCgY3LOAjoGwS6eMC6A50wVhr745BrKexvZTjegDP+jko+WYTP
-075zSjctfujAysXgW3dFuYWx+GVacy6rAojm/ja0+T3fnLT+Gf1fUnsGcHaBmPGBcrpBging80TN
-HtvqvZQda8LRVxgKdfjhQQPpGSiA62U2Wl9b54rWexw/pW2AZmAUKPuJYdSlelKEjdhPx+JlK4XQ
-Z81LB/i/PPlAp4ak07yrr0Ok+1sAlYhpJRDkmQDs+jMTLzDUkGMcd2iq3JsZ9Y3TKotHlWAHeajw
-IqwbtdEW+12AjmJUUT+yCMz2HH+ztgPujzv20v3RTYSRwOhE2eHIhZLwed1DRrvnrYoG/wLpIGEw
-PeJ2iDyAi5yKP58QHnaoaxJrACpKcUN9ejjRXBX7aVAbemBewyJsXseAamT48i8k9fFkxd0zB6aL
-x97P14mXeG2rn6pVItbnxtfKSBQ0rzUjXzaVwhvXJ8WQiJYZNDuHiziew3dq6hjdGLqkrueZxBcr
-5ZBAbOhXNAkSCF8g2/Bvtlpqs2ZAI2uRQ9iH2LQ3pefp+qZ2GvQZbF8gGgNenXHCRtHZMnMKfn6t
-W47EAMfrD2dQjGXg/3PcpCGKJOeaTr5nPhPwtCx3hjVScfKjvPpphB/Uu4jsd/BCbNlgMb0418UL
-14DFUF69u8iH/4NbGZPQXcvbfmtiGckB2KPgb4bg1YEVMYoTfcPigbiK1cFnSj1MIn9c2I26fO36
-RgBl/0fCA1dA7SkSC5gWX8HeGM+BAxkHLqektWAPNoIthiGWtpu+ydBRLIzN422dEM2WJzDTWh97
-ARDijvmQf/sx29Ot14Z3QU0vW9DlfBINaaP1tRkrj/xwhj2TrFUwGr+WejKJL5Z4/BPTlpt3NfM1
-+GOhQ7ZTm4u2EAPit55jo4roBdTue9Cx205D/Oc48G9gspvG8k1ONQUJSnmlUZJ0gblM6crzFI2+
-jUg1SRJbEuwclhX+bmCuEyyxLXCdIngaxpU5EntooK/uz4ixy/3HWNu5wofhmOsug8v1Ah8lzSBO
-s6uW0ma8bzFJvc9wUsJfKZGFnxwZ57+5AMoIhDoICAFR4qDkyKJNNjez/TYjBuK4eRy8VLW3/Sh4
-MPm27JvOy+itwGjP7XyfT96SSZxGQghn9r1Aez/814WQPQdF4ngkfkurqHIOix5R2zBKDu9bWl6h
-1G1URwZRb9KcfLn+VAocE6OlZdeFb2JVkyxruVIyCcFyKWWh28lmasqpr1p6s8ce8CakZrTAS9G1
-/wgncapeoG==
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class ContactForm extends Shortcode
+{
+    public $attributes = ['id' => ['default' => 'contact-from'], 'class' => ['default' => 'contact-from']];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+
+        return $this->view('shortcodes.contact-form', array_merge($atts, ['content' => $content]));
+    }
+}

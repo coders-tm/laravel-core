@@ -1,47 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications\Shop\Admins;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Notifications\BaseNotification;
+
+class OrderCanceledNotification extends BaseNotification
+{
+    public $order;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct($order)
+    {
+        $this->order = $order;
+        $template = Template::default('admin:order-canceled');
+        $rendered = $template->render(['order' => $order->getShortCodes()]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+
+    public function toArray($notifiable): array
+    {
+        return ['order_id' => $this->order->id, 'order_number' => $this->order->formated_id, 'customer_name' => $this->order->customer?->name, 'customer_email' => $this->order->customer?->email, 'total' => $this->order->total(), 'canceled_at' => $this->order->cancelled_at?->toDateTimeString()];
+    }
+}

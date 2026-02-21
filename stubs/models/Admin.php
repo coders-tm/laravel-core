@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Coderstm\Models\Admin as Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Admin extends Model
 {

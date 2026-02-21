@@ -1,40 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Kreait\Firebase\Messaging;
+use Kreait\Firebase\Messaging\CloudMessage;
+
+class SendPushNotification implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $deviceTokens;
+
+    public function __construct(protected $user, protected array $notification, protected array $data = [])
+    {
+        $this->deviceTokens = $user->deviceTokens()->pluck('token')->toArray();
+    }
+
+    public function handle(): void
+    {
+        $message = CloudMessage::fromArray(['notification' => $this->notification, 'topic' => 'global', 'data' => $this->data]);
+        app(Messaging::class)->sendMulticast($message, $this->deviceTokens);
+    }
+}

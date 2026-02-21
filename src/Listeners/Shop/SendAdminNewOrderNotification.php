@@ -1,32 +1,14 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Listeners\Shop;
+
+use Coderstm\Events\Shop\OrderPaid;
+use Coderstm\Notifications\Shop\Admins\NewOrderNotification;
+
+class SendAdminNewOrderNotification extends AdminNotificationListener
+{
+    public function handle(OrderPaid $event): void
+    {
+        $this->notifyForEvent(fn ($admin) => new NewOrderNotification($event->order));
+    }
+}

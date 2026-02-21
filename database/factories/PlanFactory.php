@@ -1,81 +1,92 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-qDc20RN26Rsa
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Subscription\Feature;
+use Coderstm\Models\Subscription\Plan;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class PlanFactory extends Factory
+{
+    protected $model = Plan::class;
+
+    public function definition()
+    {
+        $interval = $this->faker->randomElement(['week', 'month', 'year']);
+
+        return [
+            'label' => $this->faker->word,
+            'description' => $this->faker->sentence,
+            'is_active' => $this->faker->boolean,
+            'default_interval' => $interval,
+            'interval' => $interval,
+            'interval_count' => $this->faker->numberBetween(1, 12),
+            'is_contract' => false, // Default to non-contract
+            'contract_cycles' => null, // Null = unlimited for non-contract plans
+            'allow_freeze' => true, // Default to allowing freeze
+            'freeze_fee' => null, // Null = use global config
+            'grace_period_days' => 0, // Default: no grace period (expires immediately)
+            'price' => $this->faker->randomFloat(2, 10, 1000),
+            'trial_days' => $this->faker->numberBetween(0, 30),
+        ];
+    }
+
+    /**
+     * Indicate that the plan is a contract plan with a specific number of cycles.
+     */
+    public function contract(int $contractCycles = 12): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_contract' => true,
+            'contract_cycles' => $contractCycles,
+        ]);
+    }
+
+    /**
+     * Indicate that the plan allows freezing with custom fee.
+     */
+    public function allowingFreeze(?float $fee = null): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'allow_freeze' => true,
+            'freeze_fee' => $fee,
+        ]);
+    }
+
+    /**
+     * Indicate that the plan does not allow freezing.
+     */
+    public function disallowingFreeze(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'allow_freeze' => false,
+            'freeze_fee' => null,
+        ]);
+    }
+
+    /**
+     * Set custom grace period days.
+     */
+    public function withGracePeriod(int $days): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'grace_period_days' => $days,
+        ]);
+    }
+
+    /**
+     * Configure the model factory.
+     */
+    public function configure(): static
+    {
+        return $this->afterCreating(function ($plan) {
+            $features = [];
+
+            foreach (Feature::all() as $key => $item) {
+                $features[$item->slug] = $item->isBoolean() ? rand(0, 1) : rand(0, 20);
+            }
+
+            $plan->syncFeatures($features);
+        });
+    }
+}

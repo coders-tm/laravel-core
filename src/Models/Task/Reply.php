@@ -1,44 +1,45 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Task;
+
+use Coderstm\Enum\AppStatus;
+use Coderstm\Models\Admin;
+use Coderstm\Models\Task;
+use Coderstm\Traits\Fileable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Reply extends Model
+{
+    use Fileable, HasFactory, SerializeDate;
+
+    protected $table = 'task_replies';
+
+    protected $fillable = ['message', 'task_id', 'user_id'];
+
+    protected $with = ['media'];
+
+    public function task()
+    {
+        return $this->belongsTo(Task::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(Admin::class, 'user_id')->withOnly([]);
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::creating(function ($model) {
+            if (empty($model->user_id)) {
+                $model->user_id = user()->id ?? null;
+            }
+        });
+        static::created(function ($model) {
+            $model->task->update(['status' => AppStatus::ONGOING]);
+        });
+    }
+}

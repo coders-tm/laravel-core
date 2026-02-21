@@ -1,43 +1,33 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-aYo0h9U2sJt6f3+lT58Ek7G1ahQCqLQY
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Models\Subscription;
+use Illuminate\Console\Command;
+
+class CheckGracePeriodSubscriptions extends Command
+{
+    protected $signature = 'coderstm:subscriptions-grace-check';
+
+    protected $description = 'Check for grace period subscriptions and mark them as expired if grace period has ended';
+
+    public function handle(): int
+    {
+        $this->info('Checking for subscriptions with expired grace periods...');
+        $count = 0;
+        $subscriptions = Subscription::query()->onGracePeriod()->where('ends_at', '<', now());
+        foreach ($subscriptions->cursor() as $subscription) {
+            $subscription->update(['status' => SubscriptionStatus::EXPIRED]);
+            $count++;
+        }
+        if ($count === 0) {
+            $this->info('No subscriptions found with expired grace periods.');
+
+            return Command::SUCCESS;
+        }
+        $this->info("Marked {$count} subscription(s) as expired after grace period ended.");
+
+        return Command::SUCCESS;
+    }
+}

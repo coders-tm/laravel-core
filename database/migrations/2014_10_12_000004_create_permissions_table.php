@@ -1,41 +1,35 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPq5Yx4iDoTHioDLvQ4RECoEFlCN89yGmwkOf3H7UXZFmLXHOVjGSA5CCKLRSTarzPo6w/kXF
-1j3Pykh71q3kXagARZc5ZhTVmXgCeyWl4CgyCjZixGvzNvwsCceF4XlUgltWf1zFpKKTdqjmo3WA
-yKXR3gMdG/1AycVyLjJn/cdX6ygCeyRcXELb+nxO4yyONtysuFROqpJBQneRoBREKneJbaob/ZEt
-Gs7J9ilwNlmYQyFsuI4g6/RN/7AAjhRBxFDId1xYbeCi4N/+9TBUICnKl7iRRn+1Fe9IALgNyhnE
-y5NMT1LJC2/kMyfxnf/lcdDULfH0WyMVlBIKAYrq7BPPG5U3YLnjEmIg24hjG4NoME9T2GL9fUBk
-HUs3upA19xwcPEXgSDfnHz5165C7kCCqRHuNxWx6zY9E+ZZu039ZSI7Ah4iY7gfa86Vvp9ba9T8z
-EX1/8eGdcnjFFLIhyzFxq04Zl2RvQ88arOAeiBR1zxEDB25qfqdIyQxrnD8zXxLvwIXqozawh7Vh
-LmMedzzynmIAnsbKb6b2P2Xa66i8gMuRsj7mIIq7RzBmaouH4f+lX13VNyDJTuAaaurHxpMdQp3r
-3QL4EEj8+5ysOyPzcKUM4QCrVGqI5cqdPtRS48g8TEAcxSA5lPWAqhqaCsQ1xRzUeqmoW3eWxncf
-Ox1HiP4fLhqOEZztbV5PRKkLqVYpDfUfCBFipC70z56nUUN0ELctNTtUZItshpaJjcbg6pG5fcgh
-WEqHtloN9jBr9d6XtHgRwQbt9nkOxS3jh7tpon4aCbiIt4TSJzwkLcR8UjfDlFNJkWA5j2HaS81n
-Ai2e2xP75oZtVCNUPOlTAbIASR4FGWBmw0KbalM8IVwVM1kF6elSKX6DQhrsbcNxgmJ5PGZ+xRYk
-hD32GzUtPqIxgawrOOVmBjmvnomjwee+M1+MovolKKGn5RiKfyr98kcxbOcbYzVAQs14E3V+6MpC
-cEOi3C5tvxiLm2J3+WDIAtvd/xblQd96ZFxegDh/FfHD1U9uJvCUla30Z/UZCoZtdBjhHTXcn/sp
-smV64SzQzRlTaNMdHkQVO7w1KJWw2WlQrMPgRMHEdVlec4VmzLFmYm4sedyt2Ia3xEZlbyg+iHJM
-hYJEtP8KGPxy508zm9Jt9fHM15w0r9g+9InwhfIvQo0TRQVAX7jZs4rkcaTXByMLYyW9hM/2qMc3
-nuFI8KSTv9QXPnHVP1gYH4oYTEEGlGlaskCSQ+PqrQ6lsfbrzpaQtIHpqFDGxXggRMP4vtiS1Snj
-yk94WWELYNJzq/pFNiiryqAEhr/RbPkYqGeUiwafpPeeyZ3xmpdl83bljBlXXX+hEoQNNlywOVfE
-2cC8unggbaYoSTEUlPyNW9oTQoyEt7kiWKOLIHvPVAx4lSaRC52oEtWDdtI/achFn39TTw3CgNhX
-cgd4FdxaxgYWjxNVbXj5s4WHiVSJPltzRGYMajlbI6XDvQZS5CCNu1bwGNMxPtc8ik7gedeIhROM
-rCkrLXBwtT2175bhTACB6oArKZwlrI7vRXVotsPronn9Su5bmwuXmSXX/ojxS7CHGzpQ5n8fjFO1
-8WVjMdTnRiCVuLpwZQxcgIdWQ5+L1I0UXO2yjxrgHRWUgEMqNzE9BPnAOBQkXT4fpWrr/Hxb3Wsc
-R9o3NiEQ6/M/7lqqA1wPsPvhzNWC1z0k/vrVWHLAFvgBCBHDc7MHhvRENKTaMPDR3CZh6FxY388n
-Q0cXIxO+iHjpoXAVa8mkYP8qC1z7PcPjmcAOzv/FQrNNtUS/F+DoNIgFhk562gjVBMCvEJCsUjDb
-CxJ+zX0JJ4Su++swMg0qkyovuBcCFhHrsbGn49rF5zPtJ2dTTr5xQrIkXwXQ2CcoyQwtOQuJXeZy
-pPdxINVo59Fxe5nU8zx6GV4BmQocYxZcQmy8G6vpwCvQfUox1onUJGpaDufF3oQr+yag4v34cdny
-irFuyHEURPjiTzjCg3W3+/vVqMpmsBor1JUhqnCd95fU0OGwEXR80qjPZxuwrD2xK+AW2dV/k+5I
-oqzNlY89sZaxSjVuS4uEoiLm9TR64M07IH3u/zjK8keABzMxiXcSz//1saCZsCPHqD2bDSSo0YBH
-gxZUZ0uKhAjclM6QSetykHSliOwf5SbbOMXFVyDneHV1SJq5vcm8hmoR/k1etSiahFw12FDzSFA2
-C0ZTyBe3SZrAIcnrRLJGAAVD+1Ps+j/U+7b+CIEnGK845HMwoS9IgkRqU5wtXvhQSZYdb/mn3Gra
-N54e1DcqBhftnXbEaBwwUGaC4/v3APt3p09c4Ujm3B5vvqwHQuBcqy4/lqUZCOLKjbSa3GH4PFQN
-n88E3VajSd/NONFJnOlRaS0Cl6fKsihQQ4hjzdgIPRSN6Wou8RGui50Hhl5fvgjBb8Qfs3yvqpOp
-lvlraBA189eV7opB7/tm2lC/eEZ4Z1fJLE7Mz+Co+GXZB32JzNgxcbifl8X/CRHZZdhBqla/fHQN
-kXDB1vyr7vZUfUAzrEZQWX/qlOZXbWIjO2cK6aAe0w62DIzmgb0HrCG9Ax3oM4OPPBSZzvx1Axrd
-9CiJeI7I9yNgcYan66a9+jmfJrYNVNPiK55HPPavp+xx/JLCFHQ/cjY9eE0MUdNKtRIxRYtej8P6
-iTucWDZ971kq5jAGfbFQ1vX7Ifu8X0HSIBdt66GBx8orL5ThSoiLOmTXn2D0l0DwFPOPEQCJZg5U
-MxF6SJBA7pPsC/2eBl10yPpitJxa/09xhNSSs0caJtOhMuUmK8OaLymDAZHf0x6bEPMZw01USVoU
-On5i5mDqXV5XqDx6RIsFoaK7tZ26yPV2GyrCiL0qgjAaUQsu8xr4aG==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('module_id')->index();
+
+            $table->string('action');
+            $table->string('scope')->unique();
+            $table->text('description')->nullable();
+
+            $table->timestamps();
+
+            $table->foreign('module_id')->references('id')->on('modules')->cascadeOnDelete();
+        });
+
+        $this->setAutoIncrement('permissions');
+    }
+};

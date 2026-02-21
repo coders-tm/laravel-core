@@ -1,51 +1,59 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-PZVhJ6apT7VpKP+Bhx/EaIm=
+<?php
+
+namespace Coderstm\Database\Factories;
+
+use Coderstm\Models\Notification;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\Notification>
+ */
+class NotificationFactory extends Factory
+{
+    protected $model = Notification::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
+    {
+        return [
+            'type' => $this->faker->randomElement(['order_invoice', 'user_welcome', 'order_shipped']),
+            'subject' => $this->faker->sentence,
+            'content' => $this->faker->paragraph,
+            'is_default' => false,
+        ];
+    }
+
+    /**
+     * Indicate that the notification is the default for its type.
+     */
+    public function default(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_default' => true,
+        ]);
+    }
+
+    /**
+     * Create a notification with safe Blade template
+     */
+    public function withSafeTemplate(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'content' => 'Hello @if(true) {{ $name }} @endif',
+        ]);
+    }
+
+    /**
+     * Create a notification with dangerous template (for testing security)
+     */
+    public function withDangerousTemplate(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'content' => '@php echo "hacked"; @endphp',
+        ]);
+    }
+}

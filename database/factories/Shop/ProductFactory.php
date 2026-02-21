@@ -1,37 +1,34 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories\Shop;
+
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Category;
+use Coderstm\Models\Shop\Product\Vendor;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class ProductFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Product::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'title' => fake()->sentence,
+            'description' => fake()->paragraph,
+            'has_variant' => rand(0, 1),
+            'category' => Category::inRandomOrder()->first()?->toArray(),
+            'vendor' => Vendor::inRandomOrder()->first()?->toArray(),
+        ];
+    }
+}

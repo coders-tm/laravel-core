@@ -1,130 +1,178 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-f0YCiFnp/Pe+jQsBd1xvczMqNw2Ra0==
+<?php
+
+namespace Coderstm\Traits;
+
+use Illuminate\Support\Arr;
+use stdClass;
+use Symfony\Component\VarDumper\VarDumper;
+
+trait WithInput
+{
+    public function exists($key)
+    {
+        return $this->has($key);
+    }
+
+    public function has($key)
+    {
+        $keys = is_array($key) ? $key : func_get_args();
+        $input = $this->all();
+        foreach ($keys as $value) {
+            if (! Arr::has($input, $value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function hasAny($keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+        $input = $this->all();
+
+        return Arr::hasAny($input, $keys);
+    }
+
+    public function whenHas($key, callable $callback, ?callable $default = null)
+    {
+        if ($this->has($key)) {
+            return $callback(data_get($this->all(), $key)) ?: $this;
+        }
+        if ($default) {
+            return $default();
+        }
+
+        return $this;
+    }
+
+    public function filled($key)
+    {
+        $keys = is_array($key) ? $key : func_get_args();
+        foreach ($keys as $value) {
+            if ($this->isEmptyString($value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function isNotFilled($key)
+    {
+        $keys = is_array($key) ? $key : func_get_args();
+        foreach ($keys as $value) {
+            if (! $this->isEmptyString($value)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function anyFilled($keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+        foreach ($keys as $key) {
+            if ($this->filled($key)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function whenFilled($key, callable $callback, ?callable $default = null)
+    {
+        if ($this->filled($key)) {
+            return $callback(data_get($this->all(), $key)) ?: $this;
+        }
+        if ($default) {
+            return $default();
+        }
+
+        return $this;
+    }
+
+    public function missing($key)
+    {
+        $keys = is_array($key) ? $key : func_get_args();
+
+        return ! $this->has($keys);
+    }
+
+    protected function isEmptyString($key)
+    {
+        $value = $this->input($key);
+
+        return ! is_bool($value) && ! is_array($value) && trim((string) $value) === '';
+    }
+
+    public function keys()
+    {
+        return array_merge(array_keys($this->input()), $this->files->keys());
+    }
+
+    public function all($keys = null)
+    {
+        $input = $this->input();
+        if (! $keys) {
+            return $input;
+        }
+        $results = [];
+        foreach (is_array($keys) ? $keys : func_get_args() as $key) {
+            Arr::set($results, $key, Arr::get($input, $key));
+        }
+
+        return $results;
+    }
+
+    public function input($key = null, $default = null)
+    {
+        return data_get($this->getInputSource()->all() + $this->attributes->all(), $key, $default);
+    }
+
+    public function boolean($key = null, $default = false)
+    {
+        return filter_var($this->input($key, $default), FILTER_VALIDATE_BOOLEAN);
+    }
+
+    public function only($keys)
+    {
+        $results = [];
+        $input = $this->all();
+        $placeholder = new stdClass;
+        foreach (is_array($keys) ? $keys : func_get_args() as $key) {
+            $value = data_get($input, $key, $placeholder);
+            if ($value !== $placeholder) {
+                Arr::set($results, $key, $value);
+            }
+        }
+
+        return $results;
+    }
+
+    public function except($keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+        $results = $this->all();
+        Arr::forget($results, $keys);
+
+        return $results;
+    }
+
+    public function dd(...$keys)
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+        call_user_func_array([$this, 'dump'], $keys);
+        exit(1);
+    }
+
+    public function dump($keys = [])
+    {
+        $keys = is_array($keys) ? $keys : func_get_args();
+        VarDumper::dump(count($keys) > 0 ? $this->only($keys) : $this->all());
+
+        return $this;
+    }
+}
