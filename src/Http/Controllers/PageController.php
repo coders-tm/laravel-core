@@ -1,102 +1,82 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Http\Resources\PageResource;
+use Coderstm\Models\Page;
+use Illuminate\Http\Request;
+
+class PageController extends Controller
+{
+    use \Coderstm\Traits\HasResourceActions;
+
+    public function __construct()
+    {
+        $this->useModel(Page::class);
+    }
+
+    public function index(Request $request)
+    {
+        $page = Page::query()->select(['id', 'title', 'slug', 'parent', 'meta_title', 'meta_keywords', 'meta_description', 'is_active', 'created_at', 'updated_at']);
+        if ($request->filled('filter')) {
+            $page->where(function ($query) use ($request) {
+                $query->where('title', 'like', "%{$request->filter}%");
+            });
+        }
+        if ($request->boolean('option')) {
+            $page->select('id', 'title');
+        }
+        if ($request->boolean('active')) {
+            $page->onlyActive();
+        }
+        if ($request->boolean('deleted')) {
+            $page->onlyTrashed();
+        }
+        $page = $page->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?? 15);
+
+        return PageResource::collection($page);
+    }
+
+    public function store(Request $request)
+    {
+        $rules = ['title' => 'required|string|max:255', 'slug' => 'nullable|string|max:255', 'data' => 'nullable|array', 'html' => 'nullable|array', 'html.body' => 'nullable|string', 'html.css' => 'nullable|string', 'meta_title' => 'nullable|string|max:255', 'meta_keywords' => 'nullable|string|max:255', 'meta_description' => 'nullable|string|max:255', 'template' => 'nullable|string|max:100', 'is_active' => 'nullable|boolean', 'publish' => 'nullable|boolean'];
+        $request->validate($rules);
+        $page = Page::create($request->only(['title', 'slug', 'html', 'meta_title', 'meta_keywords', 'meta_description', 'template', 'is_active']));
+        $page->publishJson($request->data ?? []);
+        if ($request->filled('template')) {
+            $page->setTemplate($request->template);
+        }
+
+        return response()->json(['data' => $page, 'message' => trans_module('store', 'page')], 200);
+    }
+
+    public function show($page)
+    {
+        $page = Page::withTrashed()->findOrFail($page);
+
+        return response()->json($page, 200);
+    }
+
+    public function update(Request $request, Page $page)
+    {
+        $rules = ['title' => 'sometimes|required|string|max:255', 'slug' => 'sometimes|nullable|string|max:255', 'data' => 'sometimes|nullable|array', 'html' => 'sometimes|nullable|array', 'html.body' => 'sometimes|nullable|string', 'html.css' => 'sometimes|nullable|string', 'meta_title' => 'sometimes|nullable|string|max:255', 'meta_keywords' => 'sometimes|nullable|string|max:255', 'meta_description' => 'sometimes|nullable|string|max:255', 'template' => 'sometimes|nullable|string|max:100', 'is_active' => 'sometimes|nullable|boolean', 'publish' => 'sometimes|nullable|boolean'];
+        $request->validate($rules);
+        $page->update($request->only(['title', 'slug', 'html', 'meta_title', 'meta_keywords', 'meta_description', 'template', 'is_active']));
+        $page->publishJson($request->data ?? []);
+        if ($request->filled('template')) {
+            $page->setTemplate($request->template);
+        }
+        if ($request->boolean('publish')) {
+            $page->publish($request->html);
+        }
+
+        return response()->json(['data' => $page->fresh(), 'message' => trans_module('updated', 'page')], 200);
+    }
+
+    public function changeActive(Request $request, Page $page)
+    {
+        $page->update(['is_active' => ! $page->is_active]);
+
+        return response()->json(['message' => $page->is_active ? 'Page marked as active successfully!' : 'Page marked as deactivated successfully!'], 200);
+    }
+}

@@ -1,53 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-9ixPP2wX9G0Ob2HeHh9h6nplgi+lqmV730==
+<?php
+
+use Coderstm\Models\Subscription;
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('subscription_features', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Subscription::class)->constrained()->cascadeOnDelete();
+            $table->string('slug')->index();
+            $table->string('label');
+            $table->enum('type', ['integer', 'boolean'])->default('integer');
+            $table->boolean('resetable')->default(false);
+            $table->integer('value')->default(0);
+            $table->unsignedInteger('used')->default(0);
+            $table->dateTime('reset_at')->nullable();
+            $table->timestamps();
+
+            $table->unique(['subscription_id', 'slug']);
+            $table->index(['subscription_id', 'slug']);
+        });
+
+        $this->setAutoIncrement('subscription_features');
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('subscription_features');
+    }
+};

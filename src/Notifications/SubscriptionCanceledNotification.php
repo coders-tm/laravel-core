@@ -1,42 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications;
+
+class SubscriptionCanceledNotification extends BaseNotification
+{
+    public $subject;
+
+    public $message;
+
+    public function __construct($subscription)
+    {
+        $template = $subscription->renderNotification('user:subscription-canceled');
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        try {
+            $pushTemplate = $subscription->renderPushNotification('push:subscription-canceled');
+            $this->pushSubject = $pushTemplate->subject;
+            $this->pushMessage = $pushTemplate->content;
+            $this->pushData = $pushTemplate->data;
+            $this->whatsappContent = $pushTemplate->whatsappContent;
+        } catch (\Throwable $e) {
+        }
+    }
+
+    public function via(object $notifiable): array
+    {
+        return ['mail', FcmChannel::class, TwilioWhatsappChannel::class];
+    }
+}

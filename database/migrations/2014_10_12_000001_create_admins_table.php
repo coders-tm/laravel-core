@@ -1,52 +1,40 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Pv2mRUPPGW==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('admins', function (Blueprint $table) {
+            $table->id();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('email')->unique();
+            $table->string('phone_number')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->string('status')->nullable();
+            $table->boolean('is_active')->nullable()->default(true);
+            $table->boolean('is_supper_admin')->nullable()->default(false);
+            $table->string('remember_token', 100)->nullable();
+            $table->string('rfid')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('admins');
+    }
+};

@@ -1,81 +1,73 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-ch0b0odI
+<?php
+
+namespace Coderstm\Services\Gateways;
+
+use Coderstm\Contracts\SubscriptionGateway;
+use Coderstm\Models\PaymentMethod;
+
+class CommonSubscriptionGateway implements SubscriptionGateway
+{
+    protected $subscription;
+
+    protected $plan;
+
+    protected $user;
+
+    protected $order;
+
+    protected $upcomingInvoice;
+
+    protected $options;
+
+    protected $gateway = 'manual';
+
+    public function __construct($subscription)
+    {
+        $this->gateway = $subscription->provider ?? 'manual';
+        $this->subscription = $subscription;
+        $this->plan = $subscription->plan;
+        $this->user = $subscription->user;
+        $this->order = $subscription->latestInvoice;
+        $this->upcomingInvoice = $subscription->upcomingInvoice();
+        $this->options = $subscription->options ?? [];
+    }
+
+    public function setup(mixed $options = null): array
+    {
+        $payment = false;
+        $redirectUrl = null;
+        if ($this->payable()) {
+            $payment = true;
+            $redirectUrl = $this->getRedirectUrl();
+        }
+
+        return array_filter(['data' => $this->subscription?->toResponse(['usages', 'next_plan', 'plan']), 'redirect_url' => $redirectUrl ?? null, 'message' => trans_choice('messages.subscription.success', $payment ? 1 : 0, ['plan' => $this->plan->label])]);
+    }
+
+    protected function payable()
+    {
+        return $this->order?->has_due && ! in_array($this->gateway, [PaymentMethod::MANUAL, PaymentMethod::GOCARDLESS]);
+    }
+
+    protected function getRedirectUrl()
+    {
+        return user_route('/payment/'.$this->order->key, ['redirect' => user_route('/billing')]);
+    }
+
+    public function getProviderId()
+    {
+        return data_get($this->options, $this->gateway.'_provider_id');
+    }
+
+    public function completeSetup($setupId) {}
+
+    public function create(array $options = []) {}
+
+    public function update(array $params = []) {}
+
+    public function updatePlan(bool $hasIntervalChanged, bool $hasPriceChanged) {}
+
+    public function cancel(array $metadata = []) {}
+
+    public function charge($description, array $metadata = []) {}
+}

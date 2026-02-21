@@ -1,75 +1,52 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-g/kBsZCWDD0eVihcht6tnbyWv0==
+<?php
+
+namespace Coderstm\Http\Controllers\Payment;
+
+use Coderstm\Coderstm;
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Traits\Paymentable;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class PaypalController extends Controller
+{
+    use Paymentable;
+
+    public function token(Request $request)
+    {
+        $request->validate(['key' => 'required|string']);
+        $order = Order::findByKey($request->key)->load('customer');
+        $response = Coderstm::paypal()->createOrder(['intent' => 'CAPTURE', 'purchase_units' => [['reference_id' => $order->id, 'amount' => ['currency_code' => Str::upper($order->currency), 'value' => (string) round($order->grand_total, 2)]]]]);
+        if (isset($response['id']) && $response['id'] != null) {
+            return response()->json(['order' => $order->toPublic(), 'orderID' => $response['id'], 'successUrl' => route('payment.paypal.success', ['key' => $order->key, 'redirect' => $request->redirect ?? app_url('/billing')])], 200);
+        } else {
+            return response()->json(['response' => $response, 'error' => $response['error']['message'] ?? 'Something went wrong.'], 500);
+        }
+    }
+
+    private function verifyPayment(Request $request): Order
+    {
+        $request->validate(['key' => 'required|string', 'orderID' => 'required|string', 'paymentID' => 'required|string']);
+        $orderID = $request->orderID;
+        $paymentID = $request->paymentID;
+        $order = Order::findByKey($request->key)->load('orderable');
+        $orderable = $order->orderable;
+        try {
+            $payment = Coderstm::paypal()->capturePaymentOrder($orderID);
+            if (isset($payment['status']) && $payment['status'] == 'COMPLETED') {
+                $order->markAsPaid(config('paypal.id'), ['id' => $paymentID, 'amount' => $order->due_amount, 'status' => $payment['status']]);
+            } else {
+            }
+
+            return $order;
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+
+    public function webhook(Request $request)
+    {
+        return response()->json([], 200);
+    }
+}

@@ -1,110 +1,108 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-c5WaPF5f9DtBRANdjWarTMG=
+<?php
+
+namespace Coderstm\Models\Enquiry;
+
+use Coderstm\Coderstm;
+use Coderstm\Database\Factories\ReplyFactory;
+use Coderstm\Enum\AppStatus;
+use Coderstm\Events\EnquiryReplyCreated;
+use Coderstm\Models\Notification;
+use Coderstm\Traits\Fileable;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+
+class Reply extends Model
+{
+    use Fileable, HasFactory, SerializeDate;
+
+    protected $dispatchesEvents = ['created' => EnquiryReplyCreated::class];
+
+    protected $fillable = ['message', 'enquiry_id', 'user_type', 'user_id', 'seen', 'staff_only'];
+
+    protected $with = ['media'];
+
+    protected $casts = ['seen' => 'boolean'];
+
+    protected $appends = ['created_time'];
+
+    public function getCreatedTimeAttribute()
+    {
+        return $this->created_at->format('H:i');
+    }
+
+    public function enquiry()
+    {
+        return $this->belongsTo(Coderstm::$enquiryModel);
+    }
+
+    public function user()
+    {
+        return $this->morphTo()->withOnly([]);
+    }
+
+    public function scopeUnseen($query)
+    {
+        return $query->where('seen', 0);
+    }
+
+    public function byAdmin(): bool
+    {
+        return str_contains($this->user_type, 'Admin');
+    }
+
+    public function renderNotification($type = null): Notification
+    {
+        $default = $this->byAdmin() ? 'user:enquiry-reply-notification' : 'admin:enquiry-reply-notification';
+        $template = Notification::default($type ?? $default);
+        $rendered = $template->render(['user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'], 'enquiry' => $this->enquiry->getShortCodes(), 'reply' => $this->getShortCodes()]);
+
+        return $template->fill(['subject' => $rendered['subject'], 'content' => $rendered['content']]);
+    }
+
+    public function renderPushNotification($type = null)
+    {
+        $template = $this->renderNotification($type ?? 'push:enquiry-reply-notification');
+
+        return optional((object) ['subject' => $template->subject, 'content' => html_text($template->content), 'whatsappContent' => html_text("{$template->subject}\n{$template->content}"), 'data' => ['route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"), 'enquiry_id' => (string) $this->enquiry_id]]);
+    }
+
+    public function getShortCodes(): array
+    {
+        return ['message' => $this->message, 'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'], 'attachments' => $this->media->map(function ($file) {
+            return ['name' => $file->name, 'url' => $file->url];
+        })->toArray()];
+    }
+
+    protected static function newFactory()
+    {
+        return ReplyFactory::new();
+    }
+
+    protected static function booted()
+    {
+        parent::booted();
+        static::creating(function ($model) {
+            if ($model->byAdmin()) {
+                $model->seen = true;
+            }
+        });
+        static::created(function ($model) {
+            if ($model->staff_only) {
+                return false;
+            }
+            if ($model->byAdmin()) {
+                $model->enquiry->update(['status' => AppStatus::STAFF_REPLIED, 'user_archived' => 0]);
+            } else {
+                $model->enquiry->update(['status' => AppStatus::REPLIED, 'is_archived' => 0]);
+            }
+        });
+        static::addGlobalScope('default', function (Builder $builder) {
+            if (Auth::guard('users')->hasUser()) {
+                $builder->where('staff_only', 0);
+            }
+        });
+    }
+}

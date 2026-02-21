@@ -1,60 +1,58 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Database\Factories\NotificationFactory;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+
+class Notification extends Model
+{
+    use Core;
+
+    protected $table = 'notification_templates';
+
+    protected $fillable = ['label', 'subject', 'type', 'content', 'is_default'];
+
+    protected $casts = ['is_default' => 'boolean'];
+
+    protected static function newFactory()
+    {
+        return NotificationFactory::new();
+    }
+
+    public function markAsDefault()
+    {
+        $this->update(['is_default' => 1]);
+        static::where('type', $this->type)->where('id', '<>', $this->id)->update(['is_default' => 0]);
+
+        return $this;
+    }
+
+    public static function default($type = null): static
+    {
+        return static::where('type', $type)->orderBy('is_default')->firstOrFail();
+    }
+
+    public function duplicate()
+    {
+        $template = $this->replicate(['is_default']);
+        $template->save();
+
+        return $template->fresh();
+    }
+
+    public function render(array $data = []): array
+    {
+        $renderer = app(\Coderstm\Services\NotificationTemplateRenderer::class);
+
+        return ['subject' => $renderer->render($this->subject, $data), 'content' => $renderer->render($this->content, $data)];
+    }
+
+    public function validate(): array
+    {
+        $renderer = app(\Coderstm\Services\NotificationTemplateRenderer::class);
+
+        return ['subject' => $renderer->validate($this->subject), 'content' => $renderer->validate($this->content)];
+    }
+}

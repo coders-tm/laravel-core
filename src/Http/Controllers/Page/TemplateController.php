@@ -1,79 +1,62 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers\Page;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\File;
+use Coderstm\Models\Page\Template;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+
+class TemplateController extends Controller
+{
+    use \Coderstm\Traits\HasResourceActions;
+
+    public function __construct()
+    {
+        $this->useModel(Template::class);
+    }
+
+    public function index(Request $request)
+    {
+        $template = Template::query();
+        if ($request->filled('filter')) {
+            $template->where('name', 'like', "%{$request->filter}%");
+        }
+        $template = $template->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc');
+        if ($request->isNotFilled('rowsPerPage')) {
+            return $template->get();
+        }
+
+        return new ResourceCollection($template->paginate($request->rowsPerPage ?? 15));
+    }
+
+    public function store(Request $request)
+    {
+        $rules = ['name' => 'required|max:255', 'data' => 'array|required', 'thumbnail' => 'string|nullable'];
+        $request->validate($rules);
+        if ($request->filled('thumbnail') && strpos($request->thumbnail, 'data:image') === 0) {
+            $filename = uniqid('thumbnail_').'.png';
+            $imageData = substr($request->thumbnail, strpos($request->thumbnail, ',') + 1);
+            Storage::disk('local')->put($filename, base64_decode($imageData));
+            $filePath = Storage::disk('local')->path($filename);
+            $file = new File;
+            $file->setHttpFile(new UploadedFile($filePath, $filename));
+            $file->save($request->input());
+            unlink($filePath);
+            $request->merge(['thumbnail' => $file->url]);
+        }
+        $template = Template::create($request->input());
+
+        return response()->json(['data' => $template, 'message' => trans_module('store', 'template')], 200);
+    }
+
+    public function show($template)
+    {
+        $template = Template::findOrFail($template);
+
+        return response()->json($template, 200);
+    }
+}

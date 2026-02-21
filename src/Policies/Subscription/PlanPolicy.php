@@ -1,52 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Policies\Subscription;
+
+use Coderstm\Models\Subscription\Plan;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
+
+class PlanPolicy
+{
+    use HandlesAuthorization;
+
+    public function before(Model $admin, string $ability)
+    {
+        if ($admin->is_supper_admin) {
+            return true;
+        }
+    }
+
+    public function viewAny(Model $admin): bool
+    {
+        return $admin->can('plans:list');
+    }
+
+    public function view(Model $admin, Plan $plan): bool
+    {
+        return $admin->can('plans:view');
+    }
+
+    public function create(Model $admin): bool
+    {
+        return $admin->can('plans:new');
+    }
+
+    public function update(Model $admin, Plan $plan): bool
+    {
+        return $admin->can('plans:edit') && ($plan->user_id == $admin->id || $plan->hasUser($admin->id));
+    }
+
+    public function delete(Model $admin): bool
+    {
+        return $admin->can('plans:delete');
+    }
+
+    public function restore(Model $admin): bool
+    {
+        return $admin->can('plans:restore');
+    }
+
+    public function forceDelete(Model $admin): bool
+    {
+        return $admin->can('plans:forceDelete');
+    }
+}

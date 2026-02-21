@@ -1,30 +1,18 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Nx3P
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class BlogDatetime extends Shortcode
+{
+    public $attributes = ['format' => ['default' => 'Y-m-d H:i:s']];
+
+    public function render($content)
+    {
+        $atts = $this->atts();
+        $dateTime = blog('created_at', now());
+
+        return $dateTime->format($atts['format']);
+    }
+}

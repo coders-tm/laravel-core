@@ -1,29 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPyfphuJrsnEhWCSwf+5t7TBSX2KgLck1YB2u8aNcczIG5wWw66CisSF3RLV2AGwVRINdXRQj
-ZtzisLTAskylsZWtTXSDpf+9000NLr0tt0DIsP9YjW53Dr7Ho1lASxzo9UABzX1yGyEVJSclsAfB
-Urj2JltWBxjOBKoi+NJp6kvb+qzd7PUtIBs6RRvxnvKUhFFfZFcO3G+CBH1NDAf4xAXJmO0Yt7ah
-7jmMmh9ODnw59IbN8ktTXmUkDoBLZZ2QaX+/7kAMWomHV/ubqjv8p5IyUzbcUUxn9d+49Wt+I4vm
-KTOf/xfot4976ajGLKk7JZZDbmmKZnCzmP3Zxbo+8A965+VF+YO66jO0HKOBZ89SWvHBblK9TqfP
-c37gi2nkKVMSV4mEWOtg3T+56KU/ntZ31Q6aLjBovy6+YDEDzf0pcGFX5vpl/tojHgEtyVZsBnwC
-2jBJlF28M/43+ySekzTgxh3pQMizD6l9T+LJE6aYTddkz2FZ+rkBgti+3On6rLSg8SAEeVBaFKzm
-Cy5pe15VvABjtgE83KzKtxCCqvZY98jDFK/NuAKfiEkFcr4qW9a0GpMJq7Pc3vnzE7ZuYdYuKEhM
-yKLu3xvMeh/qPmQ32aW4jW+RrarFsA1c5xOhcaMJX5aYt09/RraJRwR7jsaCHKCuSu/b4JlEBfAS
-inLBnvr+ApJIIPbGOtAn804ebcjwt7JwaLCGVPHvPTmvQL4JOYaZmAHrepcvbuGJ5icxOwt7FqBy
-Ybu13iT6WF2E+fVbpyZXDV9Rll5fh3k18R6AGVdrnw6gv2ZBqY/4wy4InU4wIQDUq9bbpJhWXX55
-xT3jm6qFANdVqWFvmB23I3jftSR7aGr07Do8nVytdjsb89awiYIb+xWDymLtWPosPI+LG/t6EOsX
-+nGsydoezQP4NfMFfwbzTvOi4DFT0z4F0AAry/T0JzDpXWARG4HUOngb9ycTkJSru8pdiKa1qbhm
-RTuL6Lf1nPNsC/z2H23tP//uHZCgTvflTP1+AdejKlqKelnsgt9l/mIjHaienpzOJ/OUsaN2XZQ/
-baZDktUplcHi/rSlObGw4yB7iHBi+nMIKhr+CD+4A/oUJQdp2sYSr+nh+H1TevBUJFC9LWlhSbUO
-4AbDA4Jkc2ZKu9ybBv8gqak/2RJY1Y4iooUK9eyDrDnOAM6ETFzdbN1PPGs08ZgXMVpO5Hrlq+r4
-DMyU5lMITdZEJB/JEUkoccDflPpJb2yJIz+gsZXkLwtmn/OdU26gIvQb9r0FZqCmP4DY6qAimQFV
-kRD6f+DMDZAFC2wBDD0QU0q6z4uRhBKKEteM9f+0mMlFAdDBOAjb/tEnOuB0EmeXgMsKVLkDZY94
-HkKRKaggZ89QHHwTq0W1R1rrfDMP2uINLYF55Nz9VAc1or+VhiR7tdc4ghIGO+nWoTxXtHUsLPS7
-szjTXBrQAWhuPSJcVhZyEttuQrYptnZGxyczDAahj9ixf2QNZ52wJ8jXj7Lujn67Vm7BMIfBiMD1
-bB5Vw+T5RBh2KbIL5SMnsFxHe4xFAK5CkI2uM3I+XzG21xcsT/FQsAJp5DTR7oBh+tOOut61pqOJ
-DSRXw5SOpM5RBZ5UecbYDkmMYg+dfIEVQdf9/FyprF/qk3tQmdz4DgPjI1sOW9HhbCYO5/mX4dp1
-nX5km8eVha2ur1a+oTmTAYob1JFguv/d9z/n6IZKEslYWOwN6ufv+cGizQ+hW5uEsIIPgR7xgHcz
-Y38PQM7SwNFU22HdMIBK6qMPyHnfv7eowhymi3AWo7P5oH8LTo+eqzZmNclcBwQhqn2jvzUtH6RH
-uZL5n/gQOznsf4pmuCBQ2xH6VrriVKr7bFYpwr/gpPfoxcwy4B2sPw19jHgvIZPPTGD+J92iFi/X
-dwjlLLPfpDrPrdUIhojXcX8=
+<?php
+
+namespace Coderstm\Database\Factories\Shop\Product;
+
+use Coderstm\Models\Shop\Product\Vendor;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class VendorFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Vendor::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'name' => fake()->company,
+        ];
+    }
+}

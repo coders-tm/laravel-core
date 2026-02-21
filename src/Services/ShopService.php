@@ -1,117 +1,119 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Coderstm\Data\CartData;
+use Coderstm\Models\Shop\Checkout;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Repository\CheckoutRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+
+class ShopService
+{
+    public function checkout(): Checkout
+    {
+        try {
+            return Checkout::getOrCreate();
+        } catch (\Throwable $e) {
+            Log::error('ShopService::checkout Error: '.$e->getMessage());
+
+            return new Checkout;
+        }
+    }
+
+    public function cart(): CartData
+    {
+        $checkout = $this->checkout();
+        $checkoutRepository = CheckoutRepository::fromCheckout($checkout);
+
+        return new CartData(['count' => $checkout->line_items->sum('quantity'), 'uniqueItemCount' => $checkout->line_items->count(), 'items' => $checkoutRepository->getCartItems(), 'subtotal' => (float) ($checkout->sub_total ?? 0), 'formattedSubtotal' => format_amount($checkout->sub_total ?? 0), 'isEmpty' => $checkout->line_items->isEmpty()]);
+    }
+
+    public function token(?Request $request = null): ?string
+    {
+        $request = $request ?: request();
+        $token = $request->header('X-Cart-Token') ?? $request->cookie('cart_token');
+
+        return $token;
+    }
+
+    public function addToCart(array $data): Checkout
+    {
+        $cart = $this->checkout();
+        $product = Product::findOrFail($data['product']);
+        $variant = null;
+        if (isset($data['variant'])) {
+            if ($product->default_variant && $product->default_variant->id == $data['variant']) {
+                $variant = $product->default_variant;
+            } else {
+                $variant = $product->variants()->where('id', $data['variant'])->first();
+            }
+        } else {
+            $variant = $product->default_variant;
+        }
+        if (! $variant) {
+            if ($product->variants()->count() > 0) {
+                throw new \Exception('Please select a variant');
+            }
+            throw new \Exception('Product unavailable');
+        }
+        $price = $variant->price;
+        $quantity = $data['quantity'] ?? 1;
+        $existing = $cart->line_items()->where('product_id', $product->id)->where('variant_id', $variant->id)->first();
+        if ($existing) {
+            $existing->increment('quantity', $quantity);
+        } else {
+            $cart->line_items()->create(['product_id' => $product->id, 'variant_id' => $variant->id, 'quantity' => $quantity, 'title' => $product->title, 'slug' => $product->slug, 'price' => $variant->price, 'taxable' => true, 'has_variant' => $product->has_variant, 'variant_title' => $variant->title, 'sku' => $variant->sku, 'options' => $variant->getOptions()]);
+        }
+
+        return $this->refreshCartTotals($cart);
+    }
+
+    public function updateCartItem(int|string $lineItemId, int $quantity): Checkout
+    {
+        $cart = $this->checkout();
+        $lineItem = $cart->line_items()->where('id', $lineItemId)->first();
+        if (! $lineItem) {
+            throw new \Exception('Item not found in cart');
+        }
+        if ($quantity > 0) {
+            $lineItem->update(['quantity' => $quantity]);
+        } else {
+            $lineItem->forceDelete();
+        }
+
+        return $this->refreshCartTotals($cart);
+    }
+
+    public function removeCartItem(int|string $lineItemId): Checkout
+    {
+        $cart = $this->checkout();
+        $lineItem = $cart->line_items()->where('id', $lineItemId)->first();
+        if ($lineItem) {
+            $lineItem->forceDelete();
+        }
+
+        return $this->refreshCartTotals($cart);
+    }
+
+    public function clearCart(): Checkout
+    {
+        $cart = $this->checkout();
+        $cart->line_items()->forceDelete();
+        $cart->discount()->forceDelete();
+        $cart->tax_lines()->forceDelete();
+        $cart->update(['coupon_code' => null]);
+
+        return $this->refreshCartTotals($cart);
+    }
+
+    protected function refreshCartTotals(Checkout $cart): Checkout
+    {
+        $cart->refresh();
+        $repository = CheckoutRepository::fromCheckout($cart);
+        $repository->calculate();
+
+        return $cart;
+    }
+}

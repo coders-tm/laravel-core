@@ -1,55 +1,48 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-EMZ9NSPOySAkh3H7Nm==
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->id();
+
+            $table->nullableMorphs('addressable');
+
+            $table->string('name')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('company')->nullable();
+            $table->string('line1')->nullable();
+            $table->string('line2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('state_code')->nullable();
+
+            $table->string('postal_code')->nullable()->index();
+            $table->string('country')->nullable();
+            $table->string('country_code')->nullable()->index();
+
+            $table->string('phone_number')->nullable();
+            $table->boolean('default')->default(false)->index();
+
+            $table->string('ref')->nullable()->index();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('addresses');
+    }
+};

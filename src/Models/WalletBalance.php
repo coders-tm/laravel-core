@@ -1,89 +1,70 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-U0RHfePrEqMaBdXNRw0eMuK6BrKHrr+YjjmNRsW=
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Database\Factories\WalletBalanceFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Facades\DB;
+
+class WalletBalance extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['user_id', 'balance'];
+
+    protected $casts = ['balance' => 'decimal:2'];
+
+    protected static function newFactory()
+    {
+        return WalletBalanceFactory::new();
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(config('coderstm.models.user'));
+    }
+
+    public function transactions(): HasMany
+    {
+        return $this->hasMany(WalletTransaction::class);
+    }
+
+    public function credit(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
+    {
+        return DB::transaction(function () use ($amount, $source, $description, $transactionable, $metadata) {
+            $balanceBefore = $this->balance;
+            $this->increment('balance', $amount);
+            $balanceAfter = $this->fresh()->balance;
+
+            return $this->transactions()->create(['user_id' => $this->user_id, 'type' => 'credit', 'source' => $source, 'amount' => $amount, 'balance_before' => $balanceBefore, 'balance_after' => $balanceAfter, 'description' => $description, 'transactionable_type' => $transactionable ? get_class($transactionable) : null, 'transactionable_id' => $transactionable?->id, 'metadata' => $metadata]);
+        });
+    }
+
+    public function debit(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
+    {
+        if ($amount > $this->balance) {
+            throw new \Exception('Insufficient wallet balance. Available: '.format_amount($this->balance).', Required: '.format_amount($amount));
+        }
+
+        return DB::transaction(function () use ($amount, $source, $description, $transactionable, $metadata) {
+            $balanceBefore = $this->balance;
+            $this->decrement('balance', $amount);
+            $balanceAfter = $this->fresh()->balance;
+
+            return $this->transactions()->create(['user_id' => $this->user_id, 'type' => 'debit', 'source' => $source, 'amount' => $amount, 'balance_before' => $balanceBefore, 'balance_after' => $balanceAfter, 'description' => $description, 'transactionable_type' => $transactionable ? get_class($transactionable) : null, 'transactionable_id' => $transactionable?->id, 'metadata' => $metadata]);
+        });
+    }
+
+    public function hasSufficientBalance(float $amount): bool
+    {
+        return $this->balance >= $amount;
+    }
+
+    public function getFormattedBalanceAttribute(): string
+    {
+        return format_amount($this->balance, config('app.currency', 'USD'));
+    }
+}

@@ -1,45 +1,53 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
+
+class GroupPolicy
+{
+    use HandlesAuthorization;
+
+    public function before(Model $admin, string $ability)
+    {
+        if ($admin->is_supper_admin) {
+            return true;
+        }
+    }
+
+    public function viewAny(Model $admin): bool
+    {
+        return $admin->can('groups:list');
+    }
+
+    public function view(Model $admin): bool
+    {
+        return $admin->can('groups:view');
+    }
+
+    public function create(Model $admin): bool
+    {
+        return $admin->can('groups:new');
+    }
+
+    public function update(Model $admin): bool
+    {
+        return $admin->can('groups:edit');
+    }
+
+    public function delete(Model $admin): bool
+    {
+        return $admin->can('groups:delete');
+    }
+
+    public function restore(Model $admin): bool
+    {
+        return $admin->can('groups:restore');
+    }
+
+    public function forceDelete(Model $admin): bool
+    {
+        return $admin->can('groups:forceDelete');
+    }
+}

@@ -1,46 +1,53 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-dpWTi0PdTn6NOo+pZ7kBVptfuEPb8mkrPJsCR0==
+<?php
+
+namespace Coderstm\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
+
+class BlogPolicy
+{
+    use HandlesAuthorization;
+
+    public function before(Model $admin, string $ability)
+    {
+        if ($admin->is_supper_admin) {
+            return true;
+        }
+    }
+
+    public function viewAny(Model $admin): bool
+    {
+        return $admin->can('blogs:list');
+    }
+
+    public function view(Model $admin): bool
+    {
+        return $admin->can('blogs:view');
+    }
+
+    public function create(Model $admin): bool
+    {
+        return $admin->can('blogs:new');
+    }
+
+    public function update(Model $admin): bool
+    {
+        return $admin->can('blogs:edit');
+    }
+
+    public function delete(Model $admin): bool
+    {
+        return $admin->can('blogs:delete');
+    }
+
+    public function restore(Model $admin): bool
+    {
+        return $admin->can('blogs:restore');
+    }
+
+    public function forceDelete(Model $admin): bool
+    {
+        return $admin->can('blogs:forceDelete');
+    }
+}

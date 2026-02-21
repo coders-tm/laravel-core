@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Traits\Helpers;
 use Illuminate\Database\Seeder;
-use Coderstm\Models\PaymentMethod;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class PaymentMethodSeeder extends Seeder
 {
@@ -30,7 +29,7 @@ class PaymentMethodSeeder extends Seeder
             $credentials = $this->mapCredentialsFromEnv($paymentMethod['provider'], $credentials);
 
             PaymentMethod::firstOrCreate([
-                'provider' => $paymentMethod['provider']
+                'provider' => $paymentMethod['provider'],
             ], array_merge($paymentMethod, [
                 'credentials' => $credentials,
             ]));
@@ -39,10 +38,6 @@ class PaymentMethodSeeder extends Seeder
 
     /**
      * Map credentials from environment variables for the given provider.
-     *
-     * @param string $provider
-     * @param array $credentials
-     * @return array
      */
     protected function mapCredentialsFromEnv(string $provider, array $credentials): array
     {
@@ -79,9 +74,6 @@ class PaymentMethodSeeder extends Seeder
 
     /**
      * Get environment variable mapping for the given provider.
-     *
-     * @param string $provider
-     * @return array
      */
     protected function getEnvMapForProvider(string $provider): array
     {

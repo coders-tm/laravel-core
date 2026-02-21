@@ -1,44 +1,36 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-RbbiX3R4H7pxskkDlsFu0UG=
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Skip if features table already exists
+        if (Schema::hasTable('features')) {
+            return;
+        }
+
+        Schema::create('features', function (Blueprint $table) {
+            $table->id();
+            $table->string('label');
+            $table->string('slug')->unique()->index();
+            $table->enum('type', ['integer', 'boolean'])->nullable()->default('integer');
+            $table->boolean('resetable')->nullable()->default(false);
+            $table->mediumText('description')->nullable();
+            $table->timestamps();
+        });
+
+        $this->setAutoIncrement('features');
+    }
+};

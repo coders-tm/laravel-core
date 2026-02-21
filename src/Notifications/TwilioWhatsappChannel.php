@@ -1,33 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPsKB4EauqEZEnRw5oWovuAVbSANCKtKg9V8rLxK3hgqEApzr7GcPmrtvvw5CL7aqoHZQ7KUV
-DUiUMt+6y3aWGUxbUIkXbOlP4Dm8iJSbwFAmWXnRYOBtbqTihN3OBdcCqwfWMTp2ycg+pn3kHIAg
-wZDamCvagmVMCJ37h9X54CdcAHmhXrd2JvqWZeTEBtPRxaQfrLdj5r24YA4eSOq9iQ56pgu8kIqu
-blnC/4mRKY7nwH8Rp4Bt/+zmKwfdIcPahKQlyEV+uFa4O3NQ8XFXodQ8WyZyQc/TdOdKK45pT8ih
-hhjNBnspTwf3uiN5IWM3IZBFf6fDE6i3zq1X4yNqsx6z08z872xvEpRFaNHIxpWOPgWr7J71Jpbl
-q1qnvWyu7bRbeufXanIniafAtJjUde6YyCPod0DYJ3ZP9C3on7Z8urXqLE8/aeaOaqhuZ3rbHmo0
-68rhgPGjiSwb+eXUlKAC3W0SWRRDCxo/RCQGDUh1FbAEyG2wAh6Dh8n4a3MXSSdCgPc2RWrbY5RP
-Nncy44Xg0sR5i6eGziaO6g1IGlzauewHfscDwuv0Br6Q52hd6u2BBj07fRgzNbZoFncBtG5TJmW0
-T+33YE+EYZ4RB799HpPei7G3V4gA58XL2yfpN6ZaQZq+8KJZLNIcJiOK/zMrWyyD9Jiic/2zQHKR
-NMwvtOFADIzNshnK6OiB7qjnuNJgJoXuZ62SK70lM0JfWdCVKCUpdrXwH6l1IhKz0dohF+cJeMiZ
-MyrLYrP9yDI1I7+n9HDLYwcMC+5xWtHklB6oyBp5Ye7x3PdLPhYfOFgoEdqUBknVjV1TFhtZda/e
-DIiIVK5QvdoMpgUyQnn+rCZp4MlrxioO3fra5tOWUj9Vg7FuwbMAUOorIKwohUzcKVrhQR9K9skk
-3Zv2OtF6ZTJVfi4EcPUzVbSJdc0p3XHRJpGksnJ+P5hHkm4auzhzFlorQApANaShaEtzx9fBFpKl
-5eAfOPIsC+lWMssmR1il6DBJudbryIWPtS0UDuzlsWCZJGP3AoQWc9Fli4UZ/uoADfHWP/jkEBrn
-b5giWR+RHm3Fyhb8mHY4oew9GFWcYBKzrys2/OfZfT5H9cH9u1ogHIBzAEpOgZAu1hsGrfSgYeT/
-ZeTf0l/yBwIjqV+oQHbwszLrzbxd3VcFAHltxqh2mZbA6C2rhwCPtkCX/3fID4FRL6OlwMXQdMSp
-uuRUAnsWahX9RtB4AQRQ/TOZi/3kM3jk0aklcLJHtm6PUZ9Ni+XA6E8SHVAJxoNbdDiS6NsSERlZ
-KhsqUQ591NK3cg6ng7aFVVM8xhujqfrSEmh7YC6LuSWKYAuSWYyfvjR7VOXuJF/fu98l0S0EftNu
-H0/QQLJ16JYsXN6afzLRw6rFr7a2rSnNZsGIQ21JPXrjoPgPb9rZcGvfQ6PM1hKvH90FmsMVNBLC
-lis3mjtYg+SpUrsaWaM/LHXzNdFTRQuvwB/zKe64fHJGabAb4e+DGJb8q2OpgNLRkdJm3lerqmQK
-cZz1x2/xIlpnh3lSq521L2mZ8bC8rRg/HvwFIt+odWPIb6JjSjxL3VpDT2FpS3lb29+Ye0Hu1LuB
-cMOhReh1/qFMBm+Q0TKCmIyowikHMxpAmiOdhBPiXzIPhl+Bz8AGfLIwKwu3Fg1ZAbCWjQPzxstT
-C8sJbgx19/vXDhNLuGVlpKCYHhhUCtWBG8bT4wgWoumMCB31cGWxr/CrqHiO9mlLEinf0qzoNKaR
-PpQBA2QaqiuZe+HGOW+4UvXYUbfbU1VNkIJv25HtQXI2boYu4JthrsH0PUKnE10fEuJTXnxTflo2
-ZBqOvHBlUZq5LYpZpp/tDhMlXOwaXSs/uCxqRXEj8W3cm8GRNvRZX4Y59whx+5/ivgFHif2cqbN1
-I3eCQoBFMBHDeVIJP6uoHhRIiU2Kr5V+ozsqm7tkbH/mdcHpzyI0a3tjlsnyQBBfgSGj9G++fLZ1
-pZ0SOGg1TxQ1SPORoDUdo73o+JdqiYLSClP2azGqHb75DD0EjIOEk1hx0+ZRWrD+T1jzMk6036HF
-vlk/+x5R2D0aXNksr1KUL74CWtk720r0gO865c0fxcTxM2QwSBRgpum3qlCUThxFEyAZTKQ6tA/A
-JG6fd7H9rmsMbNVdGd7bikDsG64GhZ9peg47hQy/bUzZIba1M6KD86aABhSgo1XKmDpMpDsPfLud
-6RLdf7ARVGC9aLdFljgjcUXOlrpAzIK=
+<?php
+
+namespace Coderstm\Notifications;
+
+use Twilio\Rest\Client;
+
+class TwilioWhatsappChannel
+{
+    public function send(object $notifiable, BaseNotification $notification): void
+    {
+        if (! config('alert.whatsapp')) {
+            return;
+        }
+        $to = $notifiable->routeNotificationFor('twilio', $notification);
+        $from = config('alert.from');
+        if (! $to) {
+            return;
+        }
+        $message = $notification->toTwilio($notifiable);
+        $twilio = new Client(config('alert.sid'), config('alert.token'));
+        $twilio->messages->create("whatsapp:{$to}", ['from' => "whatsapp:{$from}", 'body' => html_text($message)]);
+    }
+}

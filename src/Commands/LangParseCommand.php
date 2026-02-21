@@ -1,63 +1,66 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-aOqvG14NOuS4lkfyce4orhrHzjlNdxk7FpJv
+<?php
+
+namespace Coderstm\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
+
+class LangParseCommand extends Command
+{
+    protected $signature = 'lang:parse';
+
+    protected $description = 'Parse PHP files and update language files with new translation keys';
+
+    protected $langDirPath;
+
+    protected $phpDirectories;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->langDirPath = resource_path('lang');
+        $this->phpDirectories = [app_path('**/*.php'), resource_path('views/**/*.php')];
+    }
+
+    public function handle()
+    {
+        foreach ($this->phpDirectories as $pattern) {
+            $this->parseFiles($pattern);
+        }
+    }
+
+    protected function findTranslationKeys($content)
+    {
+        preg_match_all("/__\\('([^']+)'\\)/", $content, $matches);
+
+        return array_unique($matches[1]);
+    }
+
+    protected function updateLangFiles($keys)
+    {
+        $langFiles = File::glob($this->langDirPath.'/*.json');
+        foreach ($langFiles as $langFile) {
+            $langData = json_decode(File::get($langFile), true);
+            $updated = false;
+            foreach ($keys as $key) {
+                if (! isset($langData[$key])) {
+                    $langData[$key] = $key;
+                    $updated = true;
+                }
+            }
+            if ($updated) {
+                File::put($langFile, json_encode($langData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+            }
+        }
+    }
+
+    protected function parseFiles($pattern)
+    {
+        $files = File::glob($pattern);
+        foreach ($files as $file) {
+            $content = File::get($file);
+            $keys = $this->findTranslationKeys($content);
+            $this->updateLangFiles($keys);
+        }
+    }
+}

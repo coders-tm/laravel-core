@@ -1,29 +1,23 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPm+F83E2Lfa4Mpkr4B+4Tf68ys4NeqbP1+Ecqs+Uo05pNevk6X/zgpiXogwMYr6FBdC2/grX
-TyOsz7XA1BBUkxpL60+sttGwhHDCPw+wQIZo12bJ7kptJ+JIW7yMMHEZFrQ0bXeDV8kSrl0O3Es/
-ObaMWPLgE/Mj7VA65m4Z5VWNBYwZ1RlTMismsuebsmEEOnhCNRbTac5+Y1lZdhet6jzpBfssRg8Y
-iwEN2dfW3IFUXmnayh52AHEYaged2hP3veaHVUV+uFa4O3NQ8XFXodQ8WyY8OgyW6vEnTVebssmh
-RZbK8ly0nEevsp67OhH+UnzOXwAK09OmQXUn7X7mzTjKrBaujxD89VCeVQhMf351xtyVUbOZDLnk
-sqIQgiLIbfVvWF949YGC/xvbDR+qK8Qee5r+yXTF3rpXpNZfF/+c2ONwnjaVJShjTzDYLfJeklFN
-E+u/52Csr3HQEqOZ7WUGTHeMMbTRjciju789zIuMhWBjtfs72i9sM6coG9X0wUs4uDZBzxSpP7sE
-sPwmUnwkkgCd/yytnyKkc711L2CrynEU+U3hXEGNknFRKfXa4X3/WgTpz9ETa6mfoI0nbDVIv0Si
-os0gQdjKANaQ8lfl4j9l3Kmivt2LM2dZtP8Lh7xqj05OTlMTtvQOLxRw4JW0WYEpngT2z2UkgCg0
-aEPXg/VQJEpyizFNOWRYv87k/kjB6gWfHkuEifPSDrLCSNbADKJ2CIssvm0XiFBq2KWGVD47FYhO
-QKVyHXTt3gEyJH1/wO271iICoSm7MCmsIClJz1uAfubcqaCgZ7QObJOmCT0XkyP3JsEgl1GQ88Sm
-TnCRzqa/VEcLjvmcCbvU8z0mlm+vDs+d4OHSJnrap1CqbfjLLvuHcQSZDAru5ghWYi2cvqJ70vGs
-a4ZQY5702Dw7v2b40Wg9MfgvsFr1ToBIXGpPau8VrzI0FtIGd32xMcxJnHh95cQIrjyet7yNV/P8
-QtXB/40ZZOo4QGGcW1+7aMZF2wgXtf/GJ3rGBrk7NH8vs5pFdF1vwJvnvGSGEvsry8A4ArPdd0JX
-1RP+wWd2C2ONbLUcaAyamikMJZNZ4/7NZxTkS8Nc9ZYYZL1vQlsoOlNrEGki5gEDn5D6TNK4RPcv
-APTfhdlyVb+c1qDX7y9ou0/85ZBQSgJGbfapQNYvoD6B7Cy48FBYc0D4U9R3I3uBXUhqtSygUX1f
-8xoHjGKOGYHi4mSD8BBh+YOL4fbZAhw9nMuLnqm68x7LVvmtk47bUkQ+rUAscKfs+hE8O8W0E342
-QayeltwERWfjD5KkgZEJcX2XhEzWy2wH2XRguex+W4lNfqNGqvB3SWvSevGHDyKB1Rt9jHL6BdMr
-q7FeNDaGd+U3bcVE6PbckWUuLCfWvNz7p2qSwz1S29mLh+sE8B9twOsUQauSKDFIw1YZDu/xKO9x
-7KkUCb45mcQyNetlhb9BdxHWYQ3y7Dt1GRoWzRAyIjuhZYJJ4C4JzWUW+Wrt8X0AefzSBY1ET6ae
-3UQUEdBq+Pj3IA4Ex2sLDf87yC1AvwU8kPOKF+/eSttRxLus/btajC7y8spuOKnyNN3/D0uAEef7
-6ZaAQuquvdLMpPE5L4L1CJwCMLdTT2ATNXMuHkSUlv246MWet321xgBd+AjGpmqlIjCGPjipMsbL
-XMzK6VbFI9cIdyjmxXsD5vivqhXvmZ5Zb0wLXCyLCLwXd7xmX6y/fQt6hh5H86rWHgboFwERylYI
-Pb8hb3sGYRjoOEJEuX+MiwU7Ym1JbCTyCsSdz6IYsGm85Bi90AYXSErCewQ2kAKnbZS841sdOS67
-YKW7F/UsbdIIssabcHBL+w6dQHNO82wXEd+iruKYfbgGljhF2nI0468UotDXSRz9Ncmu6Qe/IU5X
-pIAl3qEdZG==
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Coderstm\Services\Metrics\OrderMetrics;
+use Illuminate\Http\Request;
+
+class RevenueBreakdownChart
+{
+    protected Request $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function get(): array
+    {
+        $orderMetrics = new OrderMetrics($this->request);
+
+        return ['Subscription' => round($orderMetrics->getSubscriptionRevenue(), 2), 'Product' => round($orderMetrics->getNonSubscriptionRevenue(), 2)];
+    }
+}

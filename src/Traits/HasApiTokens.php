@@ -1,34 +1,20 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits;
+
+use DateTimeInterface;
+use Laravel\Sanctum\HasApiTokens as SanctumHasApiTokens;
+use Laravel\Sanctum\NewAccessToken;
+
+trait HasApiTokens
+{
+    use SanctumHasApiTokens;
+
+    public function createToken(string $name, array $abilities = ['*'], ?DateTimeInterface $expiresAt = null)
+    {
+        $plainTextToken = $this->generateTokenString();
+        $token = $this->tokens()->create(['name' => $name, 'token' => hash('sha256', $plainTextToken), 'abilities' => $abilities, 'expires_at' => $expiresAt]);
+
+        return new NewAccessToken($token, $plainTextToken);
+    }
+}

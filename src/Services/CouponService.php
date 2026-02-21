@@ -1,403 +1,537 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Gm==
+<?php
+
+namespace Coderstm\Services;
+
+use Coderstm\Models\Coupon;
+use Coderstm\Models\Shop\Order\DiscountLine;
+use Coderstm\Models\Subscription\Plan;
+
+class CouponService
+{
+    protected array $planCache = [];
+
+    protected array $couponCache = [];
+
+    protected array $couponRelationsCache = [];
+
+    protected function getAutoApplicableCouponsWithRelations(string $couponType): \Illuminate\Database\Eloquent\Collection
+    {
+        $cacheKey = 'auto_'.$couponType;
+        if (! isset($this->couponRelationsCache[$cacheKey])) {
+            $this->couponRelationsCache[$cacheKey] = Coupon::autoApplicable()->where('type', $couponType)->with(['plans', 'products'])->get();
+        }
+
+        return $this->couponRelationsCache[$cacheKey];
+    }
+
+    protected function getCouponsWithRelations(string $couponType): \Illuminate\Database\Eloquent\Collection
+    {
+        if (! isset($this->couponRelationsCache[$couponType])) {
+            $this->couponRelationsCache[$couponType] = Coupon::onlyActive()->where('type', $couponType)->with(['plans', 'products'])->get();
+        }
+
+        return $this->couponRelationsCache[$couponType];
+    }
+
+    protected function cachePlans(array $planIds): void
+    {
+        $uncachedPlanIds = array_diff($planIds, array_keys($this->planCache));
+        if (! empty($uncachedPlanIds)) {
+            $plans = Plan::whereIn('id', $uncachedPlanIds)->get();
+            foreach ($plans as $plan) {
+                $this->planCache[$plan->id] = $plan;
+            }
+        }
+    }
+
+    protected function getCachedPlan(int $planId): ?Plan
+    {
+        return $this->planCache[$planId] ?? null;
+    }
+
+    protected function preloadPlansForLineItems(array $lineItems): void
+    {
+        $planIds = collect($lineItems)->pluck('plan_id')->filter()->unique()->toArray();
+        if (! empty($planIds)) {
+            $this->cachePlans($planIds);
+        }
+    }
+
+    public function findSpecificAutoApplicableCouponForLineItem($planId, $productId, $basePrice, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getAutoApplicableCouponsWithRelations($couponType);
+        $specificCoupons = $coupons->filter(function ($coupon) use ($planId, $productId, $isSubscription) {
+            if ($isSubscription && $planId) {
+                return $coupon->plans->contains('id', $planId);
+            } elseif (! $isSubscription && $productId) {
+                return $coupon->products->contains('id', $productId);
+            }
+
+            return false;
+        });
+
+        return $this->findBestCouponFromCollection($specificCoupons, $basePrice, $isSubscription, $planId, $productId);
+    }
+
+    public function findSpecificCouponForLineItem($planId, $productId, $basePrice, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getCouponsWithRelations($couponType);
+        $specificCoupons = $coupons->filter(function ($coupon) use ($planId, $productId, $isSubscription) {
+            if ($isSubscription && $planId) {
+                return $coupon->plans->contains('id', $planId);
+            } elseif (! $isSubscription && $productId) {
+                return $coupon->products->contains('id', $productId);
+            }
+
+            return false;
+        });
+
+        return $this->findBestCouponFromCollection($specificCoupons, $basePrice, $isSubscription, $planId, $productId);
+    }
+
+    public function findGeneralAutoApplicableCouponForLineItem($basePrice, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getAutoApplicableCouponsWithRelations($couponType);
+        $generalCoupons = $coupons->filter(function ($coupon) {
+            return $coupon->plans->isEmpty() && $coupon->products->isEmpty();
+        });
+
+        return $this->findBestCouponFromCollection($generalCoupons, $basePrice);
+    }
+
+    public function findGeneralCouponForLineItem($basePrice, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getCouponsWithRelations($couponType);
+        $generalCoupons = $coupons->filter(function ($coupon) {
+            return $coupon->plans->isEmpty() && $coupon->products->isEmpty();
+        });
+
+        return $this->findBestCouponFromCollection($generalCoupons, $basePrice);
+    }
+
+    public function findBestCouponForLineItem($planId, $productId, $basePrice, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getCouponsWithRelations($couponType);
+        $applicableCoupons = $coupons->filter(function ($coupon) use ($planId, $productId, $isSubscription) {
+            if ($isSubscription && $planId) {
+                return $coupon->plans->contains('id', $planId) || $coupon->plans->isEmpty() && $coupon->products->isEmpty();
+            } elseif (! $isSubscription && $productId) {
+                return $coupon->products->contains('id', $productId) || $coupon->plans->isEmpty() && $coupon->products->isEmpty();
+            }
+
+            return $coupon->plans->isEmpty() && $coupon->products->isEmpty();
+        });
+
+        return $this->findBestCouponFromCollection($applicableCoupons, $basePrice, $isSubscription, $planId, $productId);
+    }
+
+    public function findBestAutoApplicableCartLevelCoupon(array $lineItems, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getAutoApplicableCouponsWithRelations($couponType);
+        $applicableCoupons = $coupons->filter(function ($coupon) use ($lineItems, $isSubscription) {
+            foreach ($lineItems as $item) {
+                $planId = $item['plan_id'] ?? null;
+                $productId = $item['product_id'] ?? null;
+                if (! $this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+        $subtotal = collect($lineItems)->sum(function ($item) {
+            return $item['price'] * $item['quantity'];
+        });
+
+        return $this->findBestCouponFromCollection($applicableCoupons, $subtotal);
+    }
+
+    public function findBestCartLevelCoupon(array $lineItems, bool $isSubscription): ?Coupon
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $coupons = $this->getCouponsWithRelations($couponType);
+        $applicableCoupons = $coupons->filter(function ($coupon) use ($lineItems, $isSubscription) {
+            foreach ($lineItems as $item) {
+                $planId = $item['plan_id'] ?? null;
+                $productId = $item['product_id'] ?? null;
+                if (! $this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+        $subtotal = collect($lineItems)->sum(function ($item) {
+            return $item['price'] * $item['quantity'];
+        });
+
+        return $this->findBestCouponFromCollection($applicableCoupons, $subtotal);
+    }
+
+    protected function canApplyToItemCached(Coupon $coupon, bool $isSubscription, $planId = null, $productId = null): bool
+    {
+        $expectedCouponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        if ($coupon->type !== $expectedCouponType) {
+            return false;
+        }
+        if ($isSubscription && $planId) {
+            if ($coupon->plans->isEmpty()) {
+                return true;
+            }
+
+            return $coupon->plans->contains('id', $planId);
+        } elseif (! $isSubscription && $productId) {
+            if ($coupon->products->isEmpty()) {
+                return true;
+            }
+
+            return $coupon->products->contains('id', $productId);
+        }
+
+        return false;
+    }
+
+    public function canApplyToItem(Coupon $coupon, bool $isSubscription, $planId = null, $productId = null): bool
+    {
+        $expectedCouponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        if ($coupon->type !== $expectedCouponType) {
+            return false;
+        }
+        if ($isSubscription && $planId) {
+            return $coupon->canApplyToPlan($planId);
+        } elseif (! $isSubscription && $productId) {
+            return $coupon->canApplyToProduct($productId);
+        }
+
+        return false;
+    }
+
+    public function canApplyCartLevelCoupon(array $lineItems, bool $isSubscription, Coupon $coupon): bool
+    {
+        foreach ($lineItems as $item) {
+            $planId = $item['plan_id'] ?? null;
+            $productId = $item['product_id'] ?? null;
+            if (! $this->canApplyToItem($coupon, $isSubscription, $planId, $productId)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function getCartLevelDiscountData(string $couponCode, array $lineItems, bool $isSubscription, bool $autoApplied = false): array
+    {
+        $coupon = Coupon::where('promotion_code', $couponCode)->with(['plans', 'products'])->first();
+        if (! $coupon) {
+            throw new \InvalidArgumentException('Invalid coupon code');
+        }
+        $expectedCouponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        if ($coupon->type !== $expectedCouponType) {
+            throw new \InvalidArgumentException('Coupon type does not match checkout type');
+        }
+        if (! $this->canApplyToAnyItem($lineItems, $isSubscription, $coupon)) {
+            throw new \InvalidArgumentException('Coupon cannot be applied to items in cart');
+        }
+
+        return ['discount_data' => $this->createDiscountArray($coupon, $autoApplied), 'coupon_code' => $coupon->promotion_code];
+    }
+
+    public function getBestAutoCouponData(array $lineItems, bool $isSubscription): array
+    {
+        if (empty($lineItems)) {
+            return ['discount' => null, 'line_items' => $lineItems];
+        }
+        if ($this->hasTrialPlans($lineItems)) {
+            return ['discount' => null, 'line_items' => $lineItems];
+        }
+        $specificLineItemCoupons = [];
+        $hasSpecificCoupons = false;
+        foreach ($lineItems as $index => $item) {
+            $specificCoupon = $this->findSpecificAutoApplicableCouponForLineItem($item['plan_id'] ?? null, $item['product_id'] ?? null, $item['price'], $isSubscription);
+            if ($specificCoupon) {
+                $specificLineItemCoupons[$index] = $specificCoupon;
+                $hasSpecificCoupons = true;
+            }
+        }
+        if ($hasSpecificCoupons) {
+            $updatedLineItems = $this->applyMixedLineItemCoupons($lineItems, $specificLineItemCoupons, $isSubscription);
+
+            return ['discount' => null, 'line_items' => $updatedLineItems];
+        }
+        $bestCartCoupon = $this->findBestAutoApplicableCartLevelCoupon($lineItems, $isSubscription);
+        $cartLevelDiscount = 0;
+        if ($bestCartCoupon) {
+            $subtotal = collect($lineItems)->sum(function ($item) {
+                return $item['price'] * $item['quantity'];
+            });
+            $cartLevelDiscount = $bestCartCoupon->getAmount($subtotal);
+        }
+        $generalLineItemCoupons = [];
+        $generalDiscountTotal = 0;
+        foreach ($lineItems as $index => $item) {
+            $generalCoupon = $this->findGeneralAutoApplicableCouponForLineItem($item['price'], $isSubscription);
+            if ($generalCoupon) {
+                $discount = $generalCoupon->getAmount($item['price']) * $item['quantity'];
+                $generalDiscountTotal += $discount;
+                $generalLineItemCoupons[$index] = $generalCoupon;
+            }
+        }
+        if ($cartLevelDiscount >= $generalDiscountTotal && $bestCartCoupon) {
+            $discountData = $this->createDiscountArray($bestCartCoupon, true);
+            $cleanLineItems = $this->removeAllLineItemDiscounts($lineItems);
+
+            return ['discount' => $discountData, 'line_items' => $cleanLineItems];
+        } elseif (! empty($generalLineItemCoupons)) {
+            $updatedLineItems = $this->applySpecificLineItemCoupons($lineItems, $generalLineItemCoupons);
+
+            return ['discount' => null, 'line_items' => $updatedLineItems];
+        }
+
+        return ['discount' => null, 'line_items' => $lineItems];
+    }
+
+    public function applyCouponData(array $lineItems, bool $isSubscription, string $couponCode): array
+    {
+        $coupon = Coupon::where('promotion_code', $couponCode)->with(['plans', 'products'])->first();
+        if (! $coupon) {
+            throw new \InvalidArgumentException('Invalid coupon code');
+        }
+        if ($this->hasTrialPlans($lineItems)) {
+            throw new \InvalidArgumentException('Coupons cannot be applied when trial discounts are active');
+        }
+        $applicableLineItems = [];
+        $isSpecificCoupon = $coupon->products->isNotEmpty() || $coupon->plans->isNotEmpty();
+        if ($isSpecificCoupon) {
+            foreach ($lineItems as $index => $item) {
+                $planId = $item['plan_id'] ?? null;
+                $productId = $item['product_id'] ?? null;
+                if ($this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                    $applicableLineItems[$index] = $item;
+                }
+            }
+            if (! empty($applicableLineItems)) {
+                $updatedLineItems = $this->applyLineItemSpecificCoupon($lineItems, $coupon, $applicableLineItems);
+
+                return ['application_level' => 'line_item', 'discount' => null, 'line_items' => $updatedLineItems];
+            } else {
+                throw new \InvalidArgumentException('Coupon cannot be applied to items in cart');
+            }
+        } else {
+            if ($this->canApplyCartLevelCoupon($lineItems, $isSubscription, $coupon)) {
+                $discountData = $this->createDiscountArray($coupon, false);
+                $cleanLineItems = $this->removeAllLineItemDiscounts($lineItems);
+
+                return ['application_level' => 'cart', 'discount' => $discountData, 'line_items' => $cleanLineItems];
+            } else {
+                throw new \InvalidArgumentException('Coupon cannot be applied to items in cart');
+            }
+        }
+    }
+
+    protected function applyLineItemSpecificCoupon(array $lineItems, Coupon $coupon, array $applicableLineItems): array
+    {
+        foreach ($lineItems as $index => &$item) {
+            $item['discount'] = null;
+        }
+        foreach ($applicableLineItems as $index => $applicableItem) {
+            if (isset($lineItems[$index])) {
+                $lineItems[$index]['discount'] = $this->createDiscountArray($coupon, true);
+            }
+        }
+
+        return $lineItems;
+    }
+
+    protected function applySpecificLineItemCoupons(array $lineItems, array $lineItemCoupons): array
+    {
+        foreach ($lineItems as $index => &$item) {
+            if (isset($lineItemCoupons[$index])) {
+                $coupon = $lineItemCoupons[$index];
+                $item['discount'] = $this->createDiscountArray($coupon, true);
+            } else {
+                $item['discount'] = null;
+            }
+        }
+
+        return $lineItems;
+    }
+
+    protected function applyMixedLineItemCoupons(array $lineItems, array $specificCoupons, bool $isSubscription): array
+    {
+        foreach ($lineItems as $index => &$item) {
+            $coupon = null;
+            if (isset($specificCoupons[$index])) {
+                $coupon = $specificCoupons[$index];
+            } else {
+                $coupon = $this->findGeneralCouponForLineItem($item['price'], $isSubscription);
+            }
+            if ($coupon) {
+                $item['discount'] = $this->createDiscountArray($coupon, true);
+            } else {
+                $item['discount'] = null;
+            }
+        }
+
+        return $lineItems;
+    }
+
+    protected function removeAllLineItemDiscounts(array $lineItems): array
+    {
+        foreach ($lineItems as &$item) {
+            $item['discount'] = null;
+        }
+
+        return $lineItems;
+    }
+
+    protected function findBestCouponFromCollection($coupons, $basePrice, ?bool $isSubscription = null, $planId = null, $productId = null): ?Coupon
+    {
+        $bestCoupon = null;
+        $bestDiscountAmount = 0;
+        foreach ($coupons as $coupon) {
+            $canApply = true;
+            if ($isSubscription !== null && ($planId || $productId)) {
+                if ($coupon->relationLoaded('plans') && $coupon->relationLoaded('products')) {
+                    $canApply = $this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId);
+                } else {
+                    $canApply = $this->canApplyToItem($coupon, $isSubscription, $planId, $productId);
+                }
+            }
+            if ($canApply) {
+                $discountAmount = $coupon->getAmount($basePrice);
+                if ($discountAmount > $bestDiscountAmount) {
+                    $bestDiscountAmount = $discountAmount;
+                    $bestCoupon = $coupon;
+                }
+            }
+        }
+
+        return $bestCoupon;
+    }
+
+    public function hasTrialPlans(array $lineItems): bool
+    {
+        $this->preloadPlansForLineItems($lineItems);
+        foreach ($lineItems as $item) {
+            if (isset($item['plan_id'])) {
+                $plan = $this->getCachedPlan($item['plan_id']);
+                if ($plan && $plan->hasTrial()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    protected function canApplyToAnyItem(array $lineItems, bool $isSubscription, Coupon $coupon): bool
+    {
+        foreach ($lineItems as $item) {
+            $planId = $item['plan_id'] ?? null;
+            $productId = $item['product_id'] ?? null;
+            if ($this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function canApplyCoupon(array $lineItems, bool $isSubscription, string $couponCode): bool
+    {
+        try {
+            $coupon = Coupon::where('promotion_code', $couponCode)->with(['plans', 'products'])->first();
+            if (! $coupon) {
+                return false;
+            }
+            if ($this->hasTrialPlans($lineItems)) {
+                return false;
+            }
+            $expectedCouponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+            if ($coupon->type !== $expectedCouponType) {
+                return false;
+            }
+            $isSpecificCoupon = $coupon->products->isNotEmpty() || $coupon->plans->isNotEmpty();
+            if ($isSpecificCoupon) {
+                foreach ($lineItems as $item) {
+                    $planId = $item['plan_id'] ?? null;
+                    $productId = $item['product_id'] ?? null;
+                    if ($this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                        return true;
+                    }
+                }
+
+                return false;
+            } else {
+                return $this->canApplyCartLevelCoupon($lineItems, $isSubscription, $coupon);
+            }
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
+
+    public function getApplicableCoupons(array $lineItems, bool $isSubscription): array
+    {
+        $couponType = $isSubscription ? Coupon::TYPE_PLAN : Coupon::TYPE_PRODUCT;
+        $allCoupons = $this->getCouponsWithRelations($couponType);
+        $applicableCoupons = $allCoupons->filter(function ($coupon) use ($lineItems, $isSubscription) {
+            return $this->canApplyCoupon($lineItems, $isSubscription, $coupon->promotion_code);
+        });
+
+        return $applicableCoupons->map(function ($coupon) {
+            return ['id' => $coupon->id, 'name' => $coupon->name, 'promotion_code' => $coupon->promotion_code, 'discount_type' => $coupon->discount_type, 'value' => $coupon->value, 'description' => $coupon->name];
+        })->toArray();
+    }
+
+    public function calculatePotentialDiscount(array $lineItems, bool $isSubscription, string $couponCode): array
+    {
+        try {
+            $coupon = Coupon::where('promotion_code', $couponCode)->with(['plans', 'products'])->first();
+            if (! $coupon || ! $this->canApplyCoupon($lineItems, $isSubscription, $couponCode)) {
+                return ['can_apply' => false, 'discount_amount' => 0, 'message' => 'Coupon cannot be applied'];
+            }
+            if ($this->hasTrialPlans($lineItems)) {
+                return ['can_apply' => false, 'discount_amount' => 0, 'message' => 'Coupons cannot be applied when free trial discounts are active'];
+            }
+            $totalDiscount = 0;
+            $isSpecificCoupon = $coupon->products->isNotEmpty() || $coupon->plans->isNotEmpty();
+            if ($isSpecificCoupon) {
+                foreach ($lineItems as $item) {
+                    $planId = $item['plan_id'] ?? null;
+                    $productId = $item['product_id'] ?? null;
+                    if ($this->canApplyToItemCached($coupon, $isSubscription, $planId, $productId)) {
+                        $itemPrice = $item['price'] * $item['quantity'];
+                        $totalDiscount += $coupon->getAmount($itemPrice);
+                    }
+                }
+            } else {
+                $subtotal = collect($lineItems)->sum(function ($item) {
+                    return $item['price'] * $item['quantity'];
+                });
+                $totalDiscount = $coupon->getAmount($subtotal);
+            }
+
+            return ['can_apply' => true, 'discount_amount' => $totalDiscount, 'discount_type' => $coupon->discount_type, 'application_level' => $isSpecificCoupon ? 'line_item' : 'cart', 'message' => 'Coupon will save '.number_format($totalDiscount, 2)];
+        } catch (\Throwable $e) {
+            return ['can_apply' => false, 'discount_amount' => 0, 'message' => 'Error calculating discount'];
+        }
+    }
+
+    protected function createDiscountArray(Coupon $coupon, bool $autoApplied): array
+    {
+        $discountType = match ($coupon->discount_type) {
+            'percentage' => DiscountLine::TYPE_PERCENTAGE,
+            'fixed' => DiscountLine::TYPE_FIXED_AMOUNT,
+            'override' => DiscountLine::TYPE_PRICE_OVERRIDE,
+            default => DiscountLine::TYPE_PERCENTAGE,
+        };
+
+        return ['type' => $discountType, 'value' => $coupon->value, 'description' => $coupon->name, 'coupon_id' => $coupon->id, 'coupon_code' => $coupon->promotion_code, 'auto_applied' => $autoApplied];
+    }
+}

@@ -1,162 +1,151 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-lSyoD6i=
+<?php
+
+namespace Coderstm\Services\Metrics;
+
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
+abstract class MetricsCalculator
+{
+    protected Request $request;
+
+    protected string $cachePrefix = 'metrics';
+
+    protected int $cacheTTL = 3600;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    protected function getCacheKey(string $metric): string
+    {
+        $filters = $this->request->only(['start_date', 'end_date', 'period']);
+        $key = "{$this->cachePrefix}:{$metric}:".md5(json_encode($filters));
+
+        return $key;
+    }
+
+    protected function remember(string $metric, callable $callback)
+    {
+        if ($this->request->boolean('no_cache')) {
+            return $callback();
+        }
+
+        return Cache::remember($this->getCacheKey($metric), $this->cacheTTL, $callback);
+    }
+
+    protected function getDateRange(): array
+    {
+        $start = $this->request->input('start_date', now()->subMonth()->startOfDay());
+        $end = $this->request->input('end_date', now()->endOfDay());
+        if (! $start instanceof Carbon) {
+            $start = Carbon::parse($start);
+        }
+        if (! $end instanceof Carbon) {
+            $end = Carbon::parse($end);
+        }
+
+        return ['start' => (clone $start)->startOfDay(), 'end' => (clone $end)->endOfDay()];
+    }
+
+    protected function getPeriod(): string
+    {
+        return $this->request->input('period', 'month');
+    }
+
+    public function clearCache(): void
+    {
+        Cache::tags([$this->cachePrefix])->flush();
+    }
+
+    protected function formatCurrency(float $amount, ?string $currency = null): string
+    {
+        $currency = $currency ?? config('app.currency', 'USD');
+
+        return number_format($amount, 2).' '.strtoupper($currency);
+    }
+
+    public function getMetadata(): array
+    {
+        return ['filters' => ['start_date', 'end_date', 'period', 'no_cache', 'compare'], 'supports_compare' => $this->supportsComparison()];
+    }
+
+    abstract public function get(): array;
+
+    protected function getComparisonPeriods(): array
+    {
+        $current = $this->getDateRange();
+        $diffDays = $current['start']->diffInDays($current['end']);
+        $previousEnd = (clone $current['start'])->subDay()->endOfDay();
+        $previousStart = (clone $previousEnd)->subDays(max($diffDays, 0))->startOfDay();
+
+        return ['current' => $current, 'previous' => ['start' => $previousStart, 'end' => $previousEnd]];
+    }
+
+    protected function supportsComparison(): bool
+    {
+        return true;
+    }
+
+    protected function shouldCompare(): bool
+    {
+        return $this->supportsComparison() && $this->request->boolean('compare');
+    }
+
+    protected function computeForRange(callable $calculator, Carbon $start, Carbon $end)
+    {
+        return $calculator($start, $end);
+    }
+
+    protected function formatComparison($current, $previous, string $type = 'number', array $additional = []): array
+    {
+        $delta = $current - $previous;
+
+        return array_merge(['current' => $this->formatValue($current, $type), 'previous' => $this->formatValue($previous, $type), 'delta' => $this->formatValue($delta, $type), 'delta_percent' => $previous == 0 ? null : round($delta / $previous * 100, 2), 'trend' => $delta > 0 ? 'up' : ($delta < 0 ? 'down' : 'flat')], $additional);
+    }
+
+    protected function formatValue($value, string $type)
+    {
+        return match ($type) {
+            'currency' => $this->formatCurrency((float) $value),
+            'percentage' => round((float) $value, 2),
+            'number' => is_float($value) ? round($value, 2) : (int) $value,
+            default => $value,
+        };
+    }
+
+    protected function withComparisons(array $payload, array $comparisons): array
+    {
+        if (! $this->shouldCompare() || empty($comparisons)) {
+            return $payload;
+        }
+        $periods = $this->getComparisonPeriods();
+        $payload['comparisons'] = [];
+        foreach ($comparisons as $key => $definition) {
+            $calculator = $definition['calculator'];
+            $type = $definition['type'] ?? 'number';
+            $additional = $definition['additional'] ?? [];
+            $description = $definition['description'] ?? null;
+            $current = $this->computeForRange($calculator, $periods['current']['start'], $periods['current']['end']);
+            $previous = $this->computeForRange($calculator, $periods['previous']['start'], $periods['previous']['end']);
+            $comparisonData = $this->formatComparison($current, $previous, $type, is_callable($additional) ? $additional($periods) : $additional);
+            if ($description) {
+                $comparisonData['description'] = $description;
+            }
+            $payload['comparisons'][$key] = $comparisonData;
+        }
+        if (! isset($payload['metadata'])) {
+            $payload['metadata'] = $this->getMetadata();
+        }
+        $payload['metadata']['comparison_periods'] = $this->formatComparisonPeriods($periods);
+
+        return $payload;
+    }
+
+    protected function formatComparisonPeriods(array $periods): array
+    {
+        return ['current' => ['start' => $periods['current']['start']->toIso8601String(), 'end' => $periods['current']['end']->toIso8601String()], 'previous' => ['start' => $periods['previous']['start']->toIso8601String(), 'end' => $periods['previous']['end']->toIso8601String()]];
+    }
+}

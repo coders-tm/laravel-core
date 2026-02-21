@@ -1,105 +1,126 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\File;
+use Qirolab\Theme\Theme as Base;
+
+class Theme extends Base
+{
+    public static function config(?string $theme = null): ?array
+    {
+        try {
+            $theme = $theme ?? self::active();
+            if ($theme) {
+                $configPath = self::finder()->getThemePath($theme, 'config.json');
+                if (File::exists($configPath)) {
+                    return json_decode(file_get_contents($configPath), true);
+                }
+            }
+
+            return null;
+        } catch (\Throwable $e) {
+            return null;
+        }
+    }
+
+    public static function set(string $theme, ?string $parentTheme = null): void
+    {
+        $config = self::config($theme);
+        if (! $parentTheme && isset($config['parent'])) {
+            $parentTheme = $config['parent'];
+        }
+        self::finder()->setActiveTheme($theme, $parentTheme);
+        self::loadTranslations($theme);
+        Config::set('coderstm.editor.pages_path', self::path('views/pages', $theme));
+    }
+
+    protected static function loadTranslations(string $theme): void
+    {
+        $langPath = self::path('lang', $theme);
+        if ($langPath && File::exists($langPath)) {
+            $translator = App::make('translator');
+            $translator->addPath($langPath);
+        }
+    }
+
+    public static function path(?string $path = null, ?string $theme = null): ?string
+    {
+        $theme = $theme ?? self::active();
+        $themePath = self::getThemeFilePath($theme, $path);
+        if ($themePath) {
+            return $themePath;
+        }
+        $config = self::config($theme);
+        if (isset($config['parent'])) {
+            return self::getThemeFilePath($config['parent'], $path);
+        }
+
+        return null;
+    }
+
+    public static function basePath(?string $path = null, ?string $theme = null): ?string
+    {
+        return self::finder()->getThemePath($theme ?? self::active(), $path);
+    }
+
+    public static function publicPath(?string $path = null, ?string $theme = null): ?string
+    {
+        return self::basePath("public/{$path}", $theme);
+    }
+
+    protected static function getThemeFilePath(string $theme, ?string $path = null): ?string
+    {
+        $themePath = self::finder()->getThemePath($theme, $path);
+
+        return File::exists($themePath) ? $themePath : null;
+    }
+
+    public static function mixPath($theme = null)
+    {
+        $theme = $theme ?? self::active();
+        $publicPath = Theme::basePath('.public', $theme);
+        if (is_file($publicPath)) {
+            $path = rtrim(file_get_contents($publicPath));
+            if (! str_starts_with($path, '/')) {
+                $path = "/{$path}";
+            }
+
+            return $path;
+        }
+
+        return "/themes/{$theme}";
+    }
+
+    public static function assetsPath(string $themeName, ?string $path = null)
+    {
+        $mixPath = Theme::mixPath($themeName);
+        if (! $path) {
+            return public_path($mixPath);
+        }
+        if (str_starts_with($path, '/')) {
+            $path = ltrim($path, '/');
+        }
+
+        return public_path("{$mixPath}/{$path}");
+    }
+
+    public static function url(string $asset, bool $absolute = true): ?string
+    {
+        $theme = self::active();
+        $mixPath = self::mixPath($theme);
+        if (! str_starts_with($asset, '/')) {
+            $asset = "/{$asset}";
+        }
+        $path = $mixPath.$asset;
+
+        return $absolute ? $path : url($path);
+    }
+
+    public static function useThemePublic(): bool
+    {
+        return config('coderstm.theme_public') === true;
+    }
+}

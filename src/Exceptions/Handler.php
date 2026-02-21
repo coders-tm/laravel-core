@@ -1,38 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-P5kU+ywvAr0LfW==
+<?php
+
+namespace Coderstm\Exceptions;
+
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Throwable;
+
+class Handler extends ExceptionHandler
+{
+    protected $dontReport = [];
+
+    protected $dontFlash = ['password', 'password_confirmation'];
+
+    public function register() {}
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof AuthorizationException) {
+            $e = new AuthorizationException(__('You do not have permission to access. Please contact your administrator to request access.'), $e->getCode());
+        }
+
+        return parent::render($request, $e);
+    }
+}

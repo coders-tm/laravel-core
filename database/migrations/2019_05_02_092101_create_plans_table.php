@@ -1,74 +1,57 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Models\Subscription\Feature;
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Skip if plans table already exists
+        if (Schema::hasTable('plans')) {
+            return;
+        }
+
+        Schema::create('plans', function (Blueprint $table) {
+            $table->id();
+            $table->string('label')->nullable();
+            $table->string('slug')->unique()->index();
+            $table->longText('description')->nullable();
+            $table->boolean('is_active')->default(true)->index();
+            $table->string('default_interval')->default('month');
+            $table->string('interval')->default('month')->index();
+            $table->unsignedInteger('interval_count')->default(1);
+            $table->boolean('is_contract')->default(false)->comment('Whether this is a contract plan requiring multiple billing cycles');
+            $table->unsignedInteger('contract_cycles')->nullable()->comment('Total number of billing cycles required for contract (null = unlimited)');
+            $table->boolean('allow_freeze')->default(true)->comment('Whether this plan allows membership freeze');
+            $table->decimal('freeze_fee', 10, 2)->nullable()->comment('Fee charged per billing cycle during freeze (null = use global config)');
+            $table->unsignedInteger('grace_period_days')->default(0)->comment('Number of grace period days before subscription expires after non-payment (0 = expires immediately)');
+            $table->double('price', 12, 2)->default(0.00);
+            $table->unsignedInteger('trial_days')->nullable()->default(0);
+            $table->{$this->jsonable()}('metadata')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('plans');
+
+        Schema::create('plan_features', function (Blueprint $table) {
+            $table->foreignIdFor(Plan::class);
+            $table->foreignIdFor(Feature::class);
+            $table->integer('value')->default(0);
+
+            $table->index(['plan_id', 'feature_id']);
+        });
+    }
+};

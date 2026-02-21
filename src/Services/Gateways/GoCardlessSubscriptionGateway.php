@@ -1,274 +1,258 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Gateways;
+
+use Coderstm\Coderstm;
+use Illuminate\Support\Facades\Log;
+
+class GoCardlessSubscriptionGateway extends CommonSubscriptionGateway
+{
+    protected $provider;
+
+    public function __construct($subscription)
+    {
+        parent::__construct($subscription);
+        $this->gateway = 'gocardless';
+        $this->provider = Coderstm::gocardless();
+    }
+
+    public function getProviderId()
+    {
+        return data_get($this->options, $this->gateway.'_provider_id');
+    }
+
+    public function setup(mixed $options = null): array
+    {
+        try {
+            if ($this->getProviderId()) {
+                $this->updatePlan(false, true);
+
+                return parent::setup();
+            }
+            $description = 'Direct Debit for '.$this->plan->label;
+            $redirectUrl = route('payment.gocardless.success', ['state' => $this->subscription->id]);
+            $redirectFlow = $this->provider->redirectFlows()->create(['params' => ['description' => $description, 'session_token' => (string) $this->subscription->id, 'success_redirect_url' => $redirectUrl, 'prefilled_customer' => $this->getCustomerDetails(), 'scheme' => $this->getScheme(), 'metadata' => ['subscription_id' => (string) $this->subscription->id]]]);
+
+            return ['data' => $this->subscription?->toResponse(['usages', 'next_plan', 'plan']), 'flow_id' => $redirectFlow->id, 'redirect_url' => $redirectFlow->redirect_url, 'message' => __('You will be redirected to set up Direct Debit payments with GoCardless')];
+        } catch (\Throwable $e) {
+            throw $e;
+        }
+    }
+
+    public function completeSetup($flowId)
+    {
+        try {
+            $redirectFlow = $this->provider->redirectFlows()->get($flowId);
+            $flow = $this->provider->redirectFlows()->complete($flowId, ['params' => ['session_token' => $redirectFlow->session_token]]);
+            $mandateId = $flow->links->mandate;
+            $customerId = $flow->links->customer;
+            $options = $this->options ?? [];
+            $options[$this->gateway.'_provider_id'] = $mandateId;
+            $options[$this->gateway.'_flow_id'] = $flow->id;
+            $options[$this->gateway.'_customer_id'] = $customerId;
+            $this->options = $options;
+            $this->subscription->options = $options;
+            $this->subscription->save();
+            $this->create();
+            $this->charge('Initial payment for '.$this->plan->label);
+            $this->updateCustomerMetadata($customerId);
+
+            return $flow;
+        } catch (\Throwable $e) {
+            Log::error('GoCardless flow completion error', ['flow_id' => $flowId, 'subscription_id' => $this->subscription->id, 'error' => $e->getMessage()]);
+            throw $e;
+        }
+    }
+
+    public function create(array $options = [])
+    {
+        try {
+            $this->assertProviderId();
+            $mandateId = $this->getProviderId();
+            $upcomingInvoice = $this->upcomingInvoice;
+            $plan = $this->plan;
+            $dayOfMonth = $this->subscription->expires_at?->format('j') ?? -1;
+            $subscriptionData = ['params' => ['amount' => $upcomingInvoice->rawAmount(), 'currency' => $this->preferredCurrency($upcomingInvoice->currency), 'interval_unit' => $this->mapIntervalToGoCardless($plan->interval->value), 'interval' => $plan->interval_count, 'day_of_month' => $dayOfMonth > 28 ? -1 : $dayOfMonth, 'links' => ['mandate' => $mandateId], 'metadata' => ['subscription_id' => (string) $this->subscription->id, 'source' => config('app.name')]]];
+            if (! empty($options)) {
+                $subscriptionData['params'] = array_merge($subscriptionData['params'], $options);
+            }
+
+            return $this->provider->subscriptions()->create($subscriptionData);
+        } catch (\Throwable $e) {
+            Log::error('Failed to create GoCardless subscription', ['error' => $e->getMessage(), 'subscription_id' => $this->subscription->id, 'mandate_id' => $this->getProviderId()]);
+            throw $e;
+        }
+    }
+
+    public function update(array $params = [])
+    {
+        try {
+            $activeSubscriptions = $this->getActiveSubscriptions();
+            $subscriptionId = null;
+            if (empty($activeSubscriptions->records)) {
+                return null;
+            }
+            $subscriptionId = $activeSubscriptions->records[0]->id;
+
+            return $this->provider->subscriptions()->update($subscriptionId, ['params' => $params]);
+        } catch (\Throwable $e) {
+            Log::error('Failed to update GoCardless subscription', ['error' => $e->getMessage(), 'gocardless_subscription_id' => $subscriptionId, 'subscription_id' => $this->subscription->id]);
+            throw $e;
+        }
+    }
+
+    public function updatePlan(bool $intervalChanged, bool $priceChanged)
+    {
+        try {
+            $activeSubscriptions = $this->getActiveSubscriptions();
+            if ($intervalChanged) {
+                $this->cancel(['reason' => 'Customer changed subscription plan']);
+
+                return $this->create();
+            } elseif ($priceChanged) {
+                if (! empty($activeSubscriptions->records)) {
+                    return $this->update(['amount' => $this->subscription->upcomingInvoice()->rawAmount()]);
+                } else {
+                    return $this->create();
+                }
+            }
+
+            return null;
+        } catch (\Throwable $e) {
+            Log::error('Failed to update GoCardless subscription plan', ['error' => $e->getMessage(), 'subscription_id' => $this->subscription->id, 'mandate_id' => $this->getProviderId()]);
+            throw $e;
+        }
+    }
+
+    protected function cancelSubscription($subscriptionId, array $metadata = [])
+    {
+        try {
+            $params = [];
+            if (! empty($metadata)) {
+                $params['metadata'] = $metadata;
+            } else {
+                $params['metadata'] = ['reason' => 'Customer canceled subscription'];
+            }
+
+            return $this->provider->subscriptions()->cancel($subscriptionId, ['params' => $params]);
+        } catch (\Throwable $e) {
+            Log::error('Failed to cancel GoCardless subscription', ['error' => $e->getMessage(), 'gocardless_subscription_id' => $subscriptionId, 'subscription_id' => $this->subscription->id]);
+            throw $e;
+        }
+    }
+
+    protected function getActiveSubscriptions()
+    {
+        try {
+            $mandateId = $this->getProviderId();
+            if (empty($mandateId)) {
+                return (object) ['records' => []];
+            }
+
+            return $this->provider->subscriptions()->list(['params' => ['mandate' => $mandateId, 'status' => 'active,pending_customer_approval']]);
+        } catch (\Throwable $e) {
+            Log::error('Failed to get active GoCardless subscriptions', ['error' => $e->getMessage(), 'subscription_id' => $this->subscription->id, 'mandate_id' => $this->getProviderId()]);
+            throw $e;
+        }
+    }
+
+    public function cancel(array $metadata = [])
+    {
+        try {
+            $activeSubscriptions = $this->getActiveSubscriptions();
+            if (empty($activeSubscriptions->records)) {
+                return false;
+            }
+            foreach ($activeSubscriptions->records as $activeSubscription) {
+                $this->cancelSubscription($activeSubscription->id, $metadata);
+            }
+
+            return true;
+        } catch (\Throwable $e) {
+            Log::error('Failed to cancel active GoCardless subscriptions', ['error' => $e->getMessage(), 'subscription_id' => $this->subscription->id, 'mandate_id' => $this->getProviderId()]);
+            throw $e;
+        }
+    }
+
+    public function charge($description = null, array $metadata = [])
+    {
+        $this->assertProviderId();
+        $order = $this->order;
+        $mandateId = $this->getProviderId();
+        $amount = $order->rawAmount();
+        if ($amount < 100) {
+            return null;
+        }
+        try {
+            $description = $description ?? 'Payment for '.$this->plan->label;
+            $paymentMetadata = array_merge(['order_id' => (string) $this->order->id, 'source' => config('app.name')], $metadata);
+            $payment = $this->provider->payments()->create(['params' => ['amount' => $amount, 'currency' => $this->preferredCurrency($order->currency), 'description' => $description, 'metadata' => $paymentMetadata, 'links' => ['mandate' => $mandateId]]]);
+            $order->markAsPaymentPending(config('gocardless.id'), ['id' => $payment->id, 'status' => $payment->status]);
+
+            return $payment;
+        } catch (\Throwable $e) {
+            Log::error('Failed to create GoCardless payment', ['error' => $e->getMessage(), 'subscription_id' => $this->subscription->id, 'mandate_id' => $mandateId]);
+            throw $e;
+        }
+    }
+
+    protected function mapIntervalToGoCardless($interval)
+    {
+        $map = ['week' => 'weekly', 'month' => 'monthly', 'year' => 'yearly'];
+        $normalizedInterval = strtolower(rtrim($interval, 's'));
+        if ($normalizedInterval === 'day') {
+            throw new \Exception('GoCardless does not support daily recurring payments. Please select a weekly or longer interval.');
+        }
+
+        return $map[$normalizedInterval] ?? 'monthly';
+    }
+
+    protected function preferredCurrency($currency = null)
+    {
+        $currency = strtoupper($currency ?? config('app.currency', 'gbp'));
+        $supportedCurrencies = ['AUD', 'CAD', 'DKK', 'EUR', 'GBP', 'NZD', 'SEK', 'USD'];
+        if (! in_array($currency, $supportedCurrencies)) {
+            Log::warning("Currency {$currency} not supported by GoCardless, defaulting to GBP");
+
+            return 'GBP';
+        }
+
+        return $currency;
+    }
+
+    protected function getCustomerDetails()
+    {
+        $user = $this->subscription->user;
+        $address = $user->address?->toArray() ?? [];
+
+        return array_filter(['email' => $user->email, 'phone_number' => preg_replace('/[^\\d+]/', '', $user->phone_number), 'given_name' => $user->first_name, 'family_name' => $user->last_name, 'address_line1' => $address['line1'] ?? '', 'city' => $address['city'] ?? '', 'postal_code' => $address['postal_code'] ?? '', 'country_code' => $address['country_code'] ?? config('app.country_code')]);
+    }
+
+    protected function getScheme()
+    {
+        $country = config('app.country_code');
+        $schemes = config('gocardless.schemes', []);
+
+        return $schemes[$country] ?? 'bacs';
+    }
+
+    protected function updateCustomerMetadata($customerId)
+    {
+        try {
+            if (empty($customerId)) {
+                throw new \Exception('No customer ID available for updating metadata');
+            }
+            $this->provider->customers()->update($customerId, ['params' => ['metadata' => ['user_id' => (string) $this->subscription->user_id, 'source' => config('app.name')]]]);
+        } catch (\Throwable $e) {
+            Log::warning('Failed to update customer metadata: '.$e->getMessage(), ['customer_id' => $customerId, 'subscription_id' => $this->subscription->id]);
+        }
+    }
+
+    protected function assertProviderId()
+    {
+        $mandateId = $this->getProviderId();
+        if (empty($mandateId)) {
+            throw new \Exception('No mandate ID available for subscription '.$this->subscription->id);
+        }
+    }
+}

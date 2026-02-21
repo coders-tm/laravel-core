@@ -1,40 +1,32 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications;
+
+use Coderstm\Models\Enquiry;
+
+class EnquiryConfirmation extends BaseNotification
+{
+    public $subject;
+
+    public $message;
+
+    public function __construct(Enquiry $enquiry)
+    {
+        $template = $enquiry->renderNotification();
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        try {
+            $pushTemplate = $enquiry->renderPushNotification();
+            $this->pushSubject = $pushTemplate->subject;
+            $this->pushMessage = $pushTemplate->content;
+            $this->pushData = $pushTemplate->data;
+            $this->whatsappContent = $pushTemplate->whatsappContent;
+        } catch (\Throwable $e) {
+        }
+    }
+
+    public function via(object $notifiable): array
+    {
+        return ['mail', FcmChannel::class, TwilioWhatsappChannel::class];
+    }
+}

@@ -1,123 +1,95 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Database\Factories\Shop\Product\InventoryFactory;
+use Coderstm\Models\Shop\Location;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
+
+class Inventory extends Model
+{
+    use Core;
+
+    protected $fillable = ['available', 'active', 'tracking', 'incoming', 'variant_id', 'location_id'];
+
+    protected $casts = ['active' => 'boolean', 'tracking' => 'boolean'];
+
+    protected $with = [];
+
+    protected $appends = ['trackable'];
+
+    public function variant()
+    {
+        return $this->belongsTo(Variant::class);
+    }
+
+    public function product()
+    {
+        return $this->hasOneThrough(Product::class, Variant::class);
+    }
+
+    public function location()
+    {
+        return $this->belongsTo(Location::class, 'location_id');
+    }
+
+    public function getTrackableAttribute()
+    {
+        return $this->active && $this->tracking;
+    }
+
+    public function scopeSortBy($query, $order_by = 'TITLE_ASC', $order_type = 'asc')
+    {
+        switch ($order_by) {
+            case 'BEST_SELLING':
+                break;
+            case 'TITLE_DESC':
+                $query->select('inventories.*')->leftJoin('variants', 'inventories.variant_id', '=', 'variants.id')->leftJoin('products', 'variants.product_id', '=', 'products.id')->addSelect(DB::raw('products.title AS product_title'))->groupBy('inventories.id')->orderBy('product_title', 'desc');
+                break;
+            case 'AVAILABLE_ASC':
+                $query->orderBy('available', 'asc');
+                break;
+            case 'AVAILABLE_DESC':
+                $query->orderBy('available', 'desc');
+                break;
+            case 'SKU_ASC':
+                $query->select('inventories.*')->leftJoin('variants', 'inventories.variant_id', '=', 'variants.id')->addSelect(DB::raw('variants.sku AS variants_sku'))->groupBy('inventories.id')->orderBy('variants_sku', 'asc');
+                break;
+            case 'SKU_DESC':
+                $query->select('inventories.*')->leftJoin('variants', 'inventories.variant_id', '=', 'variants.id')->addSelect(DB::raw('variants.sku AS variants_sku'))->groupBy('inventories.id')->orderBy('variants_sku', 'desc');
+                break;
+            case 'TITLE_ASC':
+            default:
+                $query->select('inventories.*')->leftJoin('variants', 'inventories.variant_id', '=', 'variants.id')->leftJoin('products', 'variants.product_id', '=', 'products.id')->addSelect(DB::raw('products.title AS product_title'))->groupBy('inventories.id')->orderBy('product_title', 'asc');
+                break;
+        }
+
+        return $query;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('active', 1);
+    }
+
+    public function setAvailable($available = 0, $type = 'adjust')
+    {
+        $previousAvailable = $this->available;
+        $newAvailable = $type == 'adjust' ? $previousAvailable + $available : $available;
+        $this->available = $newAvailable;
+        $this->save();
+    }
+
+    protected static function newFactory()
+    {
+        return InventoryFactory::new();
+    }
+
+    public function getShortCodes(): array
+    {
+        return ['id' => $this->id, 'variant_id' => $this->variant_id, 'location_id' => $this->location_id, 'available' => $this->available ?? 0, 'incoming' => $this->incoming ?? 0, 'location_name' => $this->location?->name, 'location' => $this->location ? ['id' => $this->location->id, 'name' => $this->location->name, 'address' => $this->location->address] : null, 'variant' => $this->variant ? ['id' => $this->variant->id, 'title' => $this->variant->title, 'sku' => $this->variant->sku, 'price' => format_amount($this->variant->price ?? 0)] : null, 'product_name' => $this->variant?->product?->title, 'product_url' => $this->variant ? admin_url("/products/{$this->variant->product_id}") : null, 'is_active' => (bool) $this->active, 'is_tracking' => (bool) $this->tracking, 'is_trackable' => $this->trackable, 'is_low_stock' => $this->available <= 10, 'is_out_of_stock' => $this->available <= 0, 'status' => $this->available > 10 ? 'In Stock' : ($this->available > 0 ? 'Low Stock' : 'Out of Stock')];
+    }
+}

@@ -1,48 +1,39 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Services\Helpers;
+use Illuminate\Console\Command;
+
+class BuildTheme extends Command
+{
+    protected $signature = 'coderstm:theme-build {name} {--path} {--theme-public}';
+
+    protected $description = 'Build a theme using npm run theme:build --name={theme-name}';
+
+    public function handle()
+    {
+        Helpers::checkNpmInstallation();
+        $themeName = $this->argument('name');
+        $themePath = $this->option('path');
+        $themePublic = $this->option('theme-public') ? 'true' : 'false';
+        chdir(base_path());
+        $npmBinPath = config('coderstm.npm_bin');
+        $npmBuildCommand = "{$npmBinPath}/npm run theme:build --name={$themeName} --path={$themePath} --theme-public={$themePublic}";
+        $output = null;
+        $resultCode = null;
+        exec($npmBuildCommand, $output, $resultCode);
+        if (app()->environment('local')) {
+            foreach ($output as $line) {
+                $this->line($line);
+            }
+        }
+        if ($resultCode === 0) {
+            $this->info("Theme '{$themeName}' built successfully with public flag: {$themePublic}!");
+        } else {
+            $this->error("Failed to build the theme '{$themeName}'. Please check the npm output.");
+        }
+
+        return $resultCode;
+    }
+}

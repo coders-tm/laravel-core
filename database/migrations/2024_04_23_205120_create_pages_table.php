@@ -1,59 +1,51 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-wBciP+53ljbJticMtbsR3gsbhX7d
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('pages', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('slug')->unique()->index();
+            $table->string('template')->nullable()->index();
+            $table->string('parent')->nullable()->index();
+            $table->{$this->jsonable()}('data')->nullable();
+            $table->{$this->jsonable()}('options')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->boolean('is_active')->nullable()->default(true);
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('pages');
+
+        Schema::create('page_templates', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->{$this->jsonable()}('data')->nullable();
+            $table->text('thumbnail')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('pages');
+    }
+};

@@ -1,115 +1,65 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Orders;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class FulfillmentAnalysisReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'total_orders' => ['label' => 'Total Orders', 'type' => 'number'], 'pending_fulfillment' => ['label' => 'Pending Fulfillment', 'type' => 'number'], 'processing' => ['label' => 'Processing', 'type' => 'number'], 'shipped' => ['label' => 'Shipped', 'type' => 'number'], 'delivered' => ['label' => 'Delivered', 'type' => 'number'], 'cancelled' => ['label' => 'Cancelled', 'type' => 'number'], 'fulfillment_rate' => ['label' => 'Fulfillment Rate', 'type' => 'percentage'], 'avg_fulfillment_time' => ['label' => 'Avg Fulfillment Time (hours)', 'type' => 'number'], 'avg_delivery_time' => ['label' => 'Avg Delivery Time (days)', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'fulfillment-analysis';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Monitor order fulfillment and delivery performance';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+        $fulfillmentHours = $this->dbDateDiff('orders.shipped_at', 'orders.created_at');
+        $deliveryDays = $this->dbDateDiff('orders.delivered_at', 'orders.shipped_at');
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->leftJoin(DB::raw('orders'), function ($join) {
+            $join->whereRaw('orders.created_at BETWEEN periods.period_start AND periods.period_end');
+        })->select(['periods.period_start', 'periods.period_order', DB::raw('COUNT(orders.id) as total_orders'), DB::raw("COUNT(CASE WHEN orders.fulfillment_status = 'pending' OR orders.fulfillment_status IS NULL THEN 1 END) as pending_fulfillment"), DB::raw("COUNT(CASE WHEN orders.fulfillment_status = 'processing' THEN 1 END) as processing"), DB::raw("COUNT(CASE WHEN orders.fulfillment_status = 'shipped' THEN 1 END) as shipped"), DB::raw("COUNT(CASE WHEN orders.fulfillment_status = 'delivered' THEN 1 END) as delivered"), DB::raw("COUNT(CASE WHEN orders.fulfillment_status = 'cancelled' OR orders.status = 'cancelled' OR orders.status = 'canceled' THEN 1 END) as cancelled"), DB::raw("COALESCE(AVG(CASE WHEN orders.shipped_at IS NOT NULL THEN ({$fulfillmentHours}) * 24 END), 0) as avg_fulfillment_time"), DB::raw("COALESCE(AVG(CASE WHEN orders.delivered_at IS NOT NULL AND orders.shipped_at IS NOT NULL THEN {$deliveryDays} END), 0) as avg_delivery_time")])->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $totalOrders = (int) ($row->total_orders ?? 0);
+        $shipped = (int) ($row->shipped ?? 0);
+        $delivered = (int) ($row->delivered ?? 0);
+        $fulfillmentRate = $totalOrders > 0 ? ($shipped + $delivered) / $totalOrders * 100 : 0;
+
+        return ['period' => $period, 'total_orders' => $totalOrders, 'pending_fulfillment' => (int) ($row->pending_fulfillment ?? 0), 'processing' => (int) ($row->processing ?? 0), 'shipped' => $shipped, 'delivered' => $delivered, 'cancelled' => (int) ($row->cancelled ?? 0), 'fulfillment_rate' => (float) $fulfillmentRate, 'avg_fulfillment_time' => (float) ($row->avg_fulfillment_time ?? 0), 'avg_delivery_time' => (float) ($row->avg_delivery_time ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('orders')->whereBetween('created_at', [$filters['from'], $filters['to']])->selectRaw("\n                COUNT(*) as total_orders,\n                COUNT(CASE WHEN fulfillment_status = 'delivered' THEN 1 END) as delivered,\n                COUNT(CASE WHEN fulfillment_status = 'shipped' THEN 1 END) as shipped\n            ")->first();
+        if (! $stats) {
+            return ['total_orders' => 0, 'delivered' => 0, 'shipped' => 0, 'fulfillment_rate' => (float) 0];
+        }
+        $totalOrders = (int) $stats->total_orders;
+        $delivered = (int) $stats->delivered;
+        $shipped = (int) $stats->shipped;
+
+        return ['total_orders' => $totalOrders, 'delivered' => $delivered, 'shipped' => $shipped, 'fulfillment_rate' => $totalOrders > 0 ? ($shipped + $delivered) / $totalOrders * 100 : 0];
+    }
+}

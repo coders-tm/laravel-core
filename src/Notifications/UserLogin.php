@@ -1,39 +1,25 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications;
+
+use Coderstm\Models\Log;
+use Coderstm\Models\Notification as Template;
+use Illuminate\Bus\Queueable;
+
+class UserLogin extends BaseNotification
+{
+    use Queueable;
+
+    public $log;
+
+    public $user;
+
+    public function __construct(Log $log)
+    {
+        $this->log = $log;
+        $this->user = $log->logable;
+        $template = Template::default('common:user-login');
+        $rendered = $template->render(['user' => $this->user->getShortCodes(), 'log' => ['time' => $this->log->options['time'] ?? null, 'device' => $this->log->options['device'] ?? null, 'location' => $this->log->options['location'] ?? null, 'ip' => $this->log->options['ip'] ?? null]]);
+        parent::__construct($rendered['subject'], $rendered['content']);
+    }
+}
