@@ -1,62 +1,75 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Database\Factories\Shop;
+
+use Coderstm\Models\Shop\Checkout;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class CheckoutFactory extends Factory
+{
+    protected $model = Checkout::class;
+
+    public function definition()
+    {
+        return [
+            'token' => $this->faker->uuid(),
+            'email' => $this->faker->email(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'phone_number' => $this->faker->phoneNumber(),
+            'sub_total' => 0,
+            'tax_total' => 0,
+            'discount_total' => 0,
+            'grand_total' => 0,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+    }
+
+    public function withUser($user = null)
+    {
+        return $this->state([
+            'user_id' => $user ? $user->id : \App\Models\User::factory()->create()->id,
+        ]);
+    }
+
+    public function withEmail($email = null)
+    {
+        return $this->state([
+            'email' => $email ?? $this->faker->email(),
+        ]);
+    }
+
+    public function withTotals($subTotal = 1000, $taxTotal = 100, $discountTotal = 0)
+    {
+        $grandTotal = $subTotal + $taxTotal - $discountTotal;
+
+        return $this->state([
+            'sub_total' => $subTotal,
+            'tax_total' => $taxTotal,
+            'discount_total' => $discountTotal,
+            'grand_total' => $grandTotal,
+        ]);
+    }
+
+    public function subscription()
+    {
+        return $this->state([
+            'type' => 'subscription',
+        ]);
+    }
+
+    public function standard()
+    {
+        return $this->state([
+            'type' => 'standard',
+        ]);
+    }
+
+    public function withCoupon($couponCode = null)
+    {
+        return $this->state([
+            'coupon_code' => $couponCode ?? 'TEST10',
+        ]);
+    }
+}

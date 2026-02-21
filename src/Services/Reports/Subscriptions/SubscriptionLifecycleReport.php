@@ -1,93 +1,86 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services\Reports\Subscriptions;
+
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class SubscriptionLifecycleReport extends AbstractReport
+{
+    protected array $columns = ['period' => ['label' => 'Period', 'type' => 'text'], 'new_subscriptions' => ['label' => 'New Subscriptions', 'type' => 'number'], 'active_subscriptions' => ['label' => 'Active Subscriptions', 'type' => 'number'], 'trial_subscriptions' => ['label' => 'Trial Subscriptions', 'type' => 'number'], 'canceled_subscriptions' => ['label' => 'Canceled Subscriptions', 'type' => 'number'], 'expired_subscriptions' => ['label' => 'Expired Subscriptions', 'type' => 'number'], 'frozen_subscriptions' => ['label' => 'Frozen Subscriptions', 'type' => 'number'], 'grace_period' => ['label' => 'On Grace Period', 'type' => 'number'], 'reactivations' => ['label' => 'Reactivations', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'subscription-lifecycle';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Monitor subscription states and lifecycle transitions';
+    }
+
+    public function query(array $filters)
+    {
+        $periods = $this->getDatePeriods();
+        $periodBoundaries = [];
+        foreach ($periods as $index => $periodStart) {
+            $periodEnd = $this->getPeriodEnd($periodStart);
+            $periodBoundaries[] = ['start' => $periodStart->toDateTimeString(), 'end' => $periodEnd->toDateTimeString(), 'order' => $index];
+        }
+        $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
+        if ($periodQuery === null) {
+            return $this->emptyQuery();
+        }
+
+        return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->select(['periods.period_start', 'periods.period_order', DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE created_at BETWEEN periods.period_start AND periods.period_end
+                ) as new_subscriptions'), DB::raw("(\n                    SELECT COUNT(*)\n                    FROM subscriptions\n                    WHERE created_at <= periods.period_end\n                    AND status = 'active'\n                    AND canceled_at IS NULL\n                    AND (expires_at IS NULL OR expires_at > periods.period_end)\n                ) as active_subscriptions"), DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE created_at <= periods.period_end
+                    AND trial_ends_at IS NOT NULL
+                    AND trial_ends_at > periods.period_end
+                ) as trial_subscriptions'), DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE canceled_at IS NOT NULL
+                    AND canceled_at BETWEEN periods.period_start AND periods.period_end
+                ) as canceled_subscriptions'), DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE expires_at IS NOT NULL
+                    AND expires_at BETWEEN periods.period_start AND periods.period_end
+                    AND canceled_at IS NOT NULL
+                ) as expired_subscriptions'), DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE created_at <= periods.period_end
+                    AND frozen_at IS NOT NULL
+                    AND (release_at IS NULL OR release_at > periods.period_end)
+                ) as frozen_subscriptions'), DB::raw('(
+                    SELECT COUNT(*)
+                    FROM subscriptions
+                    WHERE created_at <= periods.period_end
+                    AND canceled_at IS NOT NULL
+                    AND expires_at IS NOT NULL
+                    AND expires_at > periods.period_end
+                ) as grace_period'), DB::raw('0 as reactivations')])->orderBy('periods.period_order');
+    }
+
+    public function toRow($row): array
+    {
+        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+
+        return ['period' => $period, 'new_subscriptions' => (int) ($row->new_subscriptions ?? 0), 'active_subscriptions' => (int) ($row->active_subscriptions ?? 0), 'trial_subscriptions' => (int) ($row->trial_subscriptions ?? 0), 'canceled_subscriptions' => (int) ($row->canceled_subscriptions ?? 0), 'expired_subscriptions' => (int) ($row->expired_subscriptions ?? 0), 'frozen_subscriptions' => (int) ($row->frozen_subscriptions ?? 0), 'grace_period' => (int) ($row->grace_period ?? 0), 'reactivations' => (int) ($row->reactivations ?? 0)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $now = now()->toDateTimeString();
+        $stats = DB::table('subscriptions')->selectRaw("\n                COUNT(CASE WHEN status = 'active' AND canceled_at IS NULL THEN 1 END) as total_active,\n                COUNT(CASE WHEN canceled_at IS NOT NULL THEN 1 END) as total_canceled\n            ")->first();
+
+        return ['total_active' => (int) ($stats->total_active ?? 0), 'total_canceled' => (int) ($stats->total_canceled ?? 0)];
+    }
+}

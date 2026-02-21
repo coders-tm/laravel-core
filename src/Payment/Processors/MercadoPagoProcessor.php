@@ -1,88 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment\Processors;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\PaymentProcessorInterface;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Mappers\MercadoPagoPayment;
+use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentResult;
+use Illuminate\Http\Request;
+
+class MercadoPagoProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
+{
+    private const SUPPORTED_CURRENCIES = ['ARS', 'BRL', 'CLP', 'COP', 'MXN', 'PEN', 'UYU'];
+
+    public function getProvider(): string
+    {
+        return PaymentMethod::MERCADOPAGO;
+    }
+
+    public function supportedCurrencies(): array
+    {
+        return self::SUPPORTED_CURRENCIES;
+    }
+
+    public function setupPaymentIntent(Request $request, Payable $payable): array
+    {
+        $mercadopago = Coderstm::mercadopago();
+        $payable->setCurrencies($this->supportedCurrencies());
+        $this->validateCurrency($payable);
+        $billingAddress = $payable->getBillingAddress();
+        $preference = $mercadopago->createPaymentIntent(['items' => [['title' => "Order #{$payable->getReferenceId()}", 'description' => "Payment for order {$payable->getReferenceId()}", 'quantity' => 1, 'unit_price' => $payable->getGatewayAmount(), 'currency_id' => $payable->getCurrency()]], 'payer' => ['email' => $payable->getCustomerEmail(), 'name' => $payable->getCustomerFirstName(), 'surname' => $payable->getCustomerLastName(), 'phone' => ['number' => $payable->getCustomerPhone() ?? ''], 'address' => ['street_name' => $billingAddress['line1'] ?? '', 'street_number' => '', 'zip_code' => $billingAddress['postal_code'] ?? '']], 'back_urls' => ['success' => $this->getSuccessUrl(), 'failure' => $this->getCancelUrl(), 'pending' => $this->getSuccessUrl()], 'auto_return' => 'approved', 'external_reference' => $payable->getReferenceId(), 'notification_url' => $this->getWebhookUrl(), 'statement_descriptor' => config('app.name', 'Purchase')]);
+
+        return ['preference_id' => $preference->id, 'init_point' => $preference->init_point, 'sandbox_init_point' => $preference->sandbox_init_point, 'amount' => $payable->getGatewayAmount(), 'currency' => $payable->getCurrency()];
+    }
+
+    public function confirmPayment(Request $request, Payable $payable): PaymentResult
+    {
+        $request->validate(['payment_id' => 'required|string']);
+        try {
+            $mercadopago = Coderstm::mercadopago();
+            $payment = $mercadopago->confirmPayment($request->payment_id);
+            if ($payment->status !== 'approved') {
+                PaymentResult::failed("Payment not approved. Status: {$payment->status}");
+            }
+            $paymentData = new MercadoPagoPayment($payment, $this->paymentMethod);
+
+            return PaymentResult::success(paymentData: $paymentData, transactionId: (string) $payment->id, status: 'success');
+        } catch (\Throwable $e) {
+            PaymentResult::failed($e->getMessage());
+        }
+    }
+}

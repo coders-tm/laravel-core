@@ -1,168 +1,139 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-BH6nOQqU2WIZCMP7r7H+MZYnofHOSm==
+<?php
+
+namespace Coderstm\Http\Controllers\Auth;
+
+use Coderstm\Coderstm;
+use Coderstm\Enum\AppStatus;
+use Coderstm\Events\UserSubscribed;
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Models\Log;
+use Coderstm\Notifications\UserLogin;
+use Coderstm\Services\Helpers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+
+class AuthController extends Controller
+{
+    public function login(Request $request, $guard = 'users')
+    {
+        $request->validate(['email' => "required|email|exists:{$guard},email", 'password' => 'required', 'device_id' => 'required_if:token,true|string'], ['email.required' => __('An email address is required.'), 'email.exists' => __('Your email address doens\'t exists.')]);
+        $token = $request->boolean('token', false);
+        if (Auth::guard($guard)->attempt($request->only(['email', 'password']), $request->boolean('remember'))) {
+            $user = $request->user($guard);
+            if (! $user->is_active) {
+                throw ValidationException::withMessages(['email' => [__('Your account has been disabled and cannot access this application. Please contact with admin.')]]);
+            }
+            try {
+                $loginLog = $user->logs()->create(['type' => 'login', 'options' => Helpers::location()]);
+                $user->notify(new UserLogin($loginLog));
+            } catch (\Throwable $e) {
+                $user->logs()->create(['type' => 'login-alert', 'status' => Log::STATUS_ERROR, 'message' => $e->getMessage()]);
+            }
+            if (! $token) {
+                return response()->json($user->toLoginResponse(), 200);
+            } else {
+                Auth::guard($guard)->logout();
+            }
+            $user->tokens()->where('name', $request->device_id)->delete();
+            $token = $user->createToken($request->device_id, [$guard]);
+
+            return response()->json(['user' => $user->toLoginResponse(), 'token' => $token->plainTextToken], 200);
+        } else {
+            throw ValidationException::withMessages(['password' => [__('Your password doesn\'t match with our records.')]]);
+        }
+    }
+
+    public function signup(Request $request, $guard = 'users')
+    {
+        $rules = ['email' => 'required|email|unique:users', 'first_name' => 'required', 'last_name' => 'required', 'phone_number' => 'required', 'line1' => 'required', 'city' => 'required', 'postal_code' => 'required', 'country' => 'required', 'password' => 'required|min:6|confirmed', 'device_id' => 'required_if:token,true|string'];
+        $this->validate($request, $rules);
+        $token = $request->boolean('token', false);
+        $request->merge(['password' => Hash::make($request->password), 'status' => AppStatus::PENDING->value]);
+        $user = Coderstm::$userModel::create($request->only(['email', 'first_name', 'last_name', 'company_name', 'email', 'phone_number', 'password', 'status']));
+        $user->updateOrCreateAddress($request->input());
+        event(new UserSubscribed($user));
+        if (! $token) {
+            Auth::guard($guard)->login($user);
+
+            return response()->json($user->toLoginResponse(), 200);
+        }
+        $token = $user->createToken($request->device_id, [$guard]);
+
+        return response()->json(['user' => $user, 'token' => $token->plainTextToken], 200);
+    }
+
+    public function logout(Request $request, $guard = 'users')
+    {
+        try {
+            $request->user()?->currentAccessToken()?->delete();
+        } catch (\Throwable $th) {
+            report($th);
+        }
+        Auth::guard($guard)->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return response()->json(['message' => __('You have been successfully logged out!')], 200);
+    }
+
+    public function me($guard = 'users')
+    {
+        $user = request()->user($guard);
+        if (! $user) {
+            $user = request()->user('sanctum');
+        }
+        $user = $user->loadMissing(['address']);
+        $user = $user->toLoginResponse();
+
+        return response()->json($user, 200);
+    }
+
+    public function update(Request $request, $guard = 'users')
+    {
+        $user = user();
+        $rules = ['first_name' => 'required', 'last_name' => 'required', 'address.line1' => 'required', 'address.city' => 'required', 'address.postal_code' => 'required', 'address.country' => 'required', 'email' => "email|unique:{$guard},email,{$user->id}"];
+        $this->validate($request, $rules);
+        $user->update($request->only(['first_name', 'last_name', 'email', 'phone_number']));
+        $user->updateOrCreateAddress($request->input('address'));
+        if ($request->filled('avatar')) {
+            $user->avatar()->sync([$request->input('avatar.id') => ['type' => 'avatar']]);
+        }
+
+        return $this->me($guard);
+    }
+
+    public function password(Request $request, $guard = 'users')
+    {
+        $rules = ['old_password' => 'required', 'password' => 'min:6|confirmed'];
+        $this->validate($request, $rules);
+        $user = user();
+        if (Hash::check($request->old_password, $user->password)) {
+            $user->update(['password' => bcrypt($request->password)]);
+        } else {
+            throw ValidationException::withMessages(['old_password' => [__('Old password doesn\'t match!')]]);
+        }
+
+        return response()->json(['message' => __('Password has been changed successfully!')], 200);
+    }
+
+    public function requestAccountDeletion(Request $request, $guard = 'users')
+    {
+        $user = user();
+        $user->logs()->create(['type' => 'request-account-deletion', 'message' => __('User requested deletion of their account.')]);
+
+        return $this->me($guard);
+    }
+
+    public function addDeviceToken(Request $request)
+    {
+        $this->validate($request, ['device_token' => 'required|string']);
+        try {
+            user()->addDeviceToken($request->device_token);
+        } catch (\Throwable $e) {
+        }
+
+        return response()->json(['message' => __('Device token added successfully.')], 200);
+    }
+}

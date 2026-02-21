@@ -1,68 +1,57 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-C1nC9/LmSrEAX/bz0R6hhyiv
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Models\Shop\Order;
+use Illuminate\Console\Command;
+
+class MigrateOrderCommand extends Command
+{
+    protected $signature = 'coderstm:migrate-orders
+                            {--chunk=100 : Number of orders to process at once}';
+
+    protected $description = 'Migrate existing orders to populate paid_total and refund_total columns';
+
+    public function handle(): int
+    {
+        $this->info('Starting order totals migration...');
+        $chunkSize = (int) $this->option('chunk');
+        $totalOrders = Order::withTrashed()->count();
+        if ($totalOrders === 0) {
+            $this->info('No orders found to migrate.');
+
+            return Command::SUCCESS;
+        }
+        $this->info("Found {$totalOrders} orders to migrate.");
+        $bar = $this->output->createProgressBar($totalOrders);
+        $bar->start();
+        $updated = 0;
+        $errors = 0;
+        Order::withTrashed()->withSum('payments as calculated_paid_total', 'amount')->withSum('refunds as calculated_refund_total', 'amount')->chunk($chunkSize, function ($orders) use (&$updated, &$errors, $bar) {
+            foreach ($orders as $order) {
+                try {
+                    $paidTotal = $order->calculated_paid_total ?? 0;
+                    $refundTotal = $order->calculated_refund_total ?? 0;
+                    if ($order->paid_total != $paidTotal || $order->refund_total != $refundTotal) {
+                        $order->updateQuietly(['paid_total' => $paidTotal, 'refund_total' => $refundTotal]);
+                        $updated++;
+                    }
+                } catch (\Throwable $e) {
+                    $errors++;
+                    $this->error("\nError updating order {$order->id}: ".$e->getMessage());
+                }
+                $bar->advance();
+            }
+        });
+        $bar->finish();
+        $this->newLine(2);
+        $this->info("Successfully updated {$updated} orders.");
+        if ($errors > 0) {
+            $this->warn("Encountered {$errors} errors during migration.");
+        }
+        $this->newLine();
+        $this->info('Order totals migration completed!');
+
+        return Command::SUCCESS;
+    }
+}

@@ -1,97 +1,84 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hANv+NM8
+<?php
+
+namespace Coderstm\Services;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Validation\ValidationException;
+
+class ApplicationState
+{
+    protected function isInitialized()
+    {
+        $flagFile = base_path('storage/.installed');
+
+        return file_exists($flagFile);
+    }
+
+    public function handle(Request $request, Closure $next)
+    {
+        if (app()->environment('testing') || app()->runningUnitTests()) {
+            return $next($request);
+        }
+        if (! $this->isInitialized()) {
+            return $next($request);
+        }
+        if ($request->is('*license/manage') || $request->is('*license/update') || $request->is('*install*')) {
+            return $next($request);
+        }
+        $loader = app(ConfigLoader::class);
+        if (! $loader->isValid()) {
+            return $this->handleInvalidState();
+        }
+        $request->attributes->set('system.ready', true);
+
+        return $next($request);
+    }
+
+    private function handleInvalidState()
+    {
+        if (request()->expectsJson()) {
+            return response()->json(['error' => 'State Error', 'message' => 'Application state invalid'], 403);
+        }
+        try {
+            return redirect()->route('license-manage');
+        } catch (\Throwable $e) {
+            return response()->view('coderstm::license-required', [], 403);
+        }
+    }
+
+    public function manage()
+    {
+        return view('coderstm::license');
+    }
+
+    public function update()
+    {
+        $request = request();
+        $request->validate(['email' => 'required|email|exists:admins,email', 'password' => 'required', 'license' => 'required'], ['email.required' => __('An email address is required.'), 'email.exists' => __('Your email address doens\'t exists.')]);
+        if (\Illuminate\Support\Facades\Auth::guard('admins')->attempt($request->only(['email', 'password']))) {
+            $user = $request->user('admins');
+            \Illuminate\Support\Facades\Auth::guard('admins')->logout();
+            if (! $user->is_active()) {
+                throw ValidationException::withMessages(['email' => [__('Your account has been disabled.')]]);
+            }
+            Config::set('coderstm.license_key', $request->license);
+            $envPath = base_path('.env');
+            if (file_exists($envPath)) {
+                $envContent = file_get_contents($envPath);
+                $envContent = preg_replace('/^APP_LICENSE_KEY=.*/m', 'APP_LICENSE_KEY='.$request->license, $envContent);
+                file_put_contents($envPath, $envContent);
+            }
+            $loader = app(ConfigLoader::class);
+            $loader->reload();
+            if ($loader->isValid()) {
+                return redirect(admin_url('auth/login'));
+            } else {
+                throw ValidationException::withMessages(['license' => [__('The license key provided is not valid.')]]);
+            }
+        } else {
+            throw ValidationException::withMessages(['password' => [__('Your password doesn\'t match with our records.')]]);
+        }
+    }
+}

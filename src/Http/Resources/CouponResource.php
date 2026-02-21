@@ -1,46 +1,16 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Resources;
+
+use Coderstm\Http\Resources\Coupon\PlanResource;
+use Coderstm\Http\Resources\Coupon\ProductResource;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
+
+class CouponResource extends JsonResource
+{
+    public function toArray(Request $request): array
+    {
+        return ['id' => $this->id, 'type' => $this->type, 'name' => $this->name, 'promotion_code' => $this->promotion_code, 'duration' => $this->duration, 'duration_in_months' => $this->duration_in_months, 'discount_type' => $this->discount_type, 'max_redemptions' => $this->max_redemptions, 'value' => $this->value, 'active' => $this->active, 'auto_apply' => $this->auto_apply, 'expires_at' => $this->expires_at, 'created_at' => $this->created_at, 'updated_at' => $this->updated_at, 'has_max_redemptions' => $this->whenAppended('has_max_redemptions'), 'specific_plans' => $this->whenAppended('specific_plans'), 'specific_products' => $this->whenAppended('specific_products'), 'has_expires_at' => $this->whenAppended('has_expires_at'), 'plans' => PlanResource::collection($this->whenLoaded('plans')), 'products' => ProductResource::collection($this->whenLoaded('products')), 'logs' => $this->whenLoaded('logs')];
+    }
+}

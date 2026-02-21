@@ -1,70 +1,55 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-1dqTLNojPzg7PG==
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('identifier')->nullable()->unique()->index();
+            $table->string('title')->nullable()->index();
+            $table->longText('description')->nullable();
+            $table->string('slug')->nullable()->unique()->index();
+            $table->unsignedBigInteger('category_id')->nullable()->index();
+            $table->unsignedBigInteger('vendor_id')->nullable()->index();
+            $table->boolean('has_variant')->default(false)->index();
+            $table->string('status')->default('Active')->index();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('category_id')->references('id')->on('categories')->nullOnDelete();
+            $table->foreign('vendor_id')->references('id')->on('vendors')->nullOnDelete();
+        });
+
+        Schema::create('coupon_products', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('coupon_id')->constrained()->onDelete('cascade');
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+            $table->unique(['coupon_id', 'product_id']);
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('products');
+    }
+};

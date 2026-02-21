@@ -1,93 +1,117 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPzNH2uOOT/2fvHkUfM0IJr3P7QXmZl1vtuouAkzMwJunJqZk/TrLGIfQYX/HWzFkZcjjNs04
-oShoT22v4x5f0CCZ0WGji5lYRH6FigVqsOjwGtUycWkEUHn4n9ao+9nZesBVx5iIzur4So78kqCr
-4s5hpEgi3wTd7jBRulr3UnwuZgnmJQ9Dpf4EWYPx1Zi6sG7rPOAPC4mi3xrRXXAJK4vopsX0/sLD
-jCrqd+FuJjFnRzr5eef5MaLzWPpW7+d+rl3ov/xW+GHWDTeY4+7ATeY3o7fhpqu4t+HCizse+Ijk
-Nwyb8LumKLeQZRfjpaKwAuXuKwaWe+uYO0YUDpAd5F331ubfk8MFOzrxtaUPy75cwJdIBZNjRJ7T
-ovc3rHleJn/fjvUx2daP6Q7pZ5nm8ojMfuN2iI4ezK+BuwO5KzWVEOPpQ99UkIyORJXBcca6DcJ8
-BKKr6ba9vH+oIObHKGV4KxJJx4DpCnJ0CBJ8OEeonx060AEydLQboYrLs0Vw46ogzNhIRn3VrmkK
-tkd7eOn2XWyjabM6HKg/CpqNWsIOdlVW+6d1HFEgLQkUgQUpaacFxAUc6QoY/EJRiNnoHYbi3gKj
-H3QziUjOWWZRccTpiIqg+cVx8eYqM1lCj1hjig8ChXIxas//DvjYXcZOUqRptdPb52A6U9jjvjtQ
-RSbBYI087C06tq1CVRRiS2ppEwkCAeCJKbJJrZui36P80jHYHdlOOZhicm+/emAaxpgBo4I394Bq
-EvEL/upGi3Q+vWGxa/yBXXOh3tl4QjE+x7xd0/3y04vvz5MwVw4CMnoucoOYx9ErOOSwazex8INU
-EzIbh4QSaFwpRe8b4TroJbne+rnJTvCij3GWU5tbeOf0VyuA3QEVrACfPZAIzsRDh942gLxSW2/d
-leV74IHcs0W9E9QvkFNKWGOaMzw/klFxZkJuvEEdBPAConD89uNauEmfAS84pWYFubVp+sWR/89u
-RrRwDxE2Ol/F49Hjd8ThIUn+BHqJLuYdf0qsm0MMnNxLu/QnQv0cAyzo1nCkmAPdToSIAzbF+GGY
-tMpnUbWjMlO3UU5SMuOGk40R5rB8jnTCsFFRUAIT6GaCKfGMNO6FAwowy2I5IMaPvCQ53Nq4JsXd
-94wnuL0AzcGPp5FPzcharp6GPNFpM1T69l0Wl0l8wuFAPxqkQ7Bs913lXu5gQKJuzWx7zMs3SGel
-f8F6HK3WU06zVJL7gVkMEF2HR8uJtMYSF/Z8iMuXKzdTnQJIiuN9uckHs9fr/kSKwAdrZDCMdEW4
-igFijg496+c0rxcjwdik+eQ7NEgMyKfFQz3nEM6wHvBPcZS8SkGAkDvSmRnXgnNFFrhC/lXnu1PQ
-zuqmxLKIFIUVl5tiTA1624RPcWqzwbBKzAM8aW5ZNGlSGRY4fXTRYfJalEAimYaaDi69KbgkA69K
-MGQ1MFaC4CZe+zvfHEyOZ5QnqoZGjIIYUI0QMG8I6MwsvlVTMOW9C8pgbhw+nxI8P+x5Hq/WzuQs
-TFKUSTSlkc9xfNOLZBTHQ8BIsyPMwgIBuDzEOF7zaBqh/pf3rNH+mUzY9xxoBIScTD+JdznY6GPB
-ttl3nxhVIy5iH7hoV0xRhqJUhNhdbQf2FGT62h3wGzmZuwQNjue9ry2a7TawVrX0hS/5ffYl4D1d
-nFA/5P2iCbftJ5xN+bDf97eFTuekDYB5uX/ebyuBLyhyq7Z1nVyWRE+2ZOKUJ9md568bsSNG/lYn
-EtxwAlzpOyzPsyVT9iTUt19ewYs7AITvapIi30qW0MF64PkzJiYpmLtH5hj+vixySYirXXqPd1nE
-iyEUPx7CEWgSvtpHW6OKZomFPwXK18QC5+emUh1iuIK3ZhnVfWIp1ZaapSN+i4sFlILtc698bGyh
-E15W5Qmo+WjVKd6Dx+l9R8OjexulXU4ipnt4L9Q26x1SUDszZvZ4qfnZ64n74F6fpKVkhobsqEgU
-Lt8dxv9Y2QiSDHxSvfDhypLge8RwtoYILuj3ck+XKsvyerDGrv5guI1tPvdlgNU1rn4CmbjSxL6S
-UlfAz+qVClfhYFQnGG9Dp8tyrrmkt8nK+RnADLKD2j3bTVcDgtbAGlTUPMKScrEH33J8kh3bIg3c
-0D9xP6ogXAj0RdO38B8CqD6b8Gn6jezuG1kXNDqrQLM+rA1Llitafu19/A1L080qao/DGrj2qJ2A
-07rj3cLTnNetjN2GoWow9bstaZxzJsNWWiM7zKfbij8kHHHQ8bjLJMKl08KHN0ZL3hnxzeWSWUj0
-9GGX1ZzyXJaR2CnY1XAZuaSCBgxYRzhC4kzaBEI/N5Mm+ebGw5CWh3LAtmqwcoCLHbeoIidMdLjN
-t6YdYw50a52XQegMjexf5j02EktTzmtYrfVDrpCQvjrmds/88s6GWtOWMZdKDcbNfvw9bmBT2eBj
-UG49feLyzAaI4/y93nDDdiyBgEc27rp4BqBhkBoEANaszudX3SMY7e9CJDU5143QKZ2tgKyOjwA4
-ZnZ5QzIZLiDkHLcsqulDUF5gXjVXqEnn4GCxLDDV+UIImDFC93aRMeh9iFNbAQR6XAkUjpYMpAU8
-Ltuai16k8NJcO7UI3CQN6ONL5gUQq6lZovGUC2NDZxGHRawW9YWK2K3/+E4s8DbJNAqFPubQsTLn
-M9gevfP7GZeH4MX4gvpfE6htrB7V9rsoxQ5RNS55Vsx0+Ymu1z3LdCPC3ybo3kDiTJrjD1wrCiUu
-5Or41I22nRerjJO0MUJIgFlJUdb8MHdJxv31JYaf5svNEd9wT48/1PHiGa5mEufSWmRZVfE5QY9l
-Op9CxacDOiuwB0H2Q4HHbo85wpyTTsxaJQMeq/BTGfmQxW+BVDzE9axv3+2zG9qnSf6ak4M1wzo3
-XRHM43UWwkks6rZ4aCaVl2ADI7RgKS24Xi3l731bgYKm8Q/RdkLRJcAu5dFBaD6cT0SkXYmmJcHZ
-HlBXrruq1U7r3JLVrYBqeAp+HlRPkTom7IutuGi1g6Ikh4e86vPs9ugWZJHO1cpZj+RMOy4QGGv1
-dVW4qMNYLW4zl6QIodokG3SokweSOFosGc8HzlyNEOhX3mBrDuToZmWYX3jZaizYnTmqnY968ahE
-pIFRO/KMuCVQNsW2/TUHSUPascymqOImnezd/+VnFOz57Fs0IwYWIqnVEdbEetXAh8NSolV+69LL
-HDK3vszHkXZuJO8u0XzKAnUTM6rdrz91SnApK2qOlwC3WpYn45bZgr2Qg41JWlXGP2GnNNgQDnlq
-Z1T8aUQQ1jrSg1aZYSLYQ+6//nsVHA2bA2HvAKTtTneFESKwhAID6aANxOnUC63JSpY5PUINPM/M
-bvEe7xsObltfoA9xQs93WWpyuuxRl0645Y2Zl48s3ubXNIYGj14NfdYqf7mG7bbz7VO3GOa8Sf/z
-RSGY6ueA0XlrYgHJiguslnsVvWXv3zb/zp65dclujGgo+OcQRnjRSe+gT248xlEgay7sN8JfMigb
-we1fce5JOl/uW6u7Ch8ntwnc6GqG38duZPqGewZQTwv6ppKA3l411hFvLVxejWaFHQGJk3rbSTiG
-yzwJn+zEnIB2DcFwBwiuuf1kkRD5U1jO5SptJHUpKJ77ZI22r44oHlUZUtmMKC0VALNLLIC+IowL
-hay38XEz6UF2l21wa0AqWe/x9NgJAar99ZNBICrxqhjTa0Ms/+KeZUKwjaKXUUIsfnQLFK8QgLEX
-1GkiM0pDke8iRHArN+DcuS9zEEkYATUqM1N+S9nzRECXma/exTYYA1N/xlfjsHUQrPCVw+RKWknz
-JI46dxrQ9vTWWyL8UN2qwzLqtiaE+jDGxlPyH3MQwcB/JelkGcYL8u3fqYaP74NijrOAephA5C/L
-a0MsMNGEeOKO9w6Oj7sU/AR44ah7Urj2oCWJhRAn4pNy8XGZwkz3KOaQttvNpTV0zB3Hm5UyqtHt
-0qbQrswuUvvK46MpQtxK0BjQNxoRNm6jbmZb4bN+v1nrVaXAdxHiI9AD88Y8wsMn6v8UR9cWu9LB
-ptnOzYbIMJ5CfTq7z31MZCY90lJkRLNqMSND4pWGw1sn/H+Mbhx3Hwc+cnsmsRlQlkFhcatdMatu
-5kY22VxXETP5xm/iFVzqSVrXAtrJLpN4cMNr9twiDt3IZqSgO8wShZ8ANE089iNj/HjTsBQIwOL0
-hfQBszS9ov7RV0W0geCJQde9VLuPvRGdNWluXgJ47cSYOEHKehGdidv8PY0ClwS2sJbPi4fsaAXR
-9DPu+BnTkjY7KXx3+xAJto4i+G0pD59XhLJiyXl+d/NNVRhWxJFVKuVLv9oXBl0GhMA96zIWMwO+
-sQl674w8/NPxCP+EymanfPsRCKFmZqWMRzYF7CSaid+k5GnNLAoy56+waQ/OZOzRoewyKjUGyjyF
-vL5n935/lP98k+ahhFE0MRu94/bDZGubznMjyCO2uoIMTCqROzVu9n1dk9u+/B7lVS/YdWy++Wcd
-QN5gW8tTLp2LEl3hi5PI/9GZQZS2VVPtoQFUIR4o89jXSOMnwo7b841UfExA59G/RUdMJEba5k49
-ruUbPa0TTk2YDYJATA5JWcAFyM9TSO8pstu3aRG2UQ9RDp06nOkBoJQINUHihpauteLou4IORBkg
-jlUGpAwAbHt1NNNhdW4FjcjMJVKfZOYbo7Du6VLHxRvPWDRiBDEbIqS0bzmLpPMfAQ9xovJX7/+7
-tGj6+OR1L0YeRGmP+kNbUXlmS7GxEnViiQ+PxGWcIr+VgIKYWRO4CqjNVoIkbzqITchG5INIsSCC
-blsACQDnxdMjJT2UnNeFIKx/AuGNZWwKclcCLJH7IOz0LLq61TFxH5RDzUEhbB/QO3HIgh9NlQya
-udj1r2nq2pFJi25XoY3H9nd/pQ4PtT1v6SCZyi6t72BndxZefzt3gtYjsBUIu7AhHe9jh/k8DpDy
-8XzAGYsIvczq3CFIIY4tndkgekXfOIcKBII2rbQi2dwsqq+Ai/75EethWUJh/nNZhRIA+EelU4U3
-wXT+1bDZ92spgcR1p+I16ou3rNWeUpJ4TwPkMq5f92yE5ziI0605u0BsYqCs/qkLuQ2mDOmDZuCW
-ui++GCcYyGCi0EaHt03i+pxRgrV5TC/ncCJUSyOj1P0HaDXi96UOrCeAwqjMNMGePDfZN5ct8ir4
-/cAQmubc5NW1xotbE1gLRD+UN4sbrPFZOZXJ4EhvhJjNrdGZLRoI4d5l8UzXpzzt3x/Ik1QqrS8b
-Pn/3+gXBQLfCy4JMYoTQACdmoodrquemVfs7mjhTCF9+dQmKcZU8QoJu6iwrWC5pM2jg3JfOmZDZ
-FezBpVlipozwj1OOOT09zbvs1YWpHRr6UFeBMGT2mNzr47TE4jUgw0Ct0WS9FSwp5liGBHzYPBob
-HSsZP8MLOEuCb2hnPngDbIlWghbrlAgUjp4coRv1pwYDtzKTL9i0NXjzDt7j7E8sQtItf9BEBFbz
-LoOYl5rTgBbhJowPv6qMxnkl8GKAXwZa52E0kQA0Pd2LyFQ3MtbrbRrNrFqPZF1CNTDWSJkX3NuG
-utQ8djb8lm2JA3IGPPp9rLAvuOo32FXSzcghC2jEcPfFjZ2eD9pLuTTPj+fSj3qfhO6t6rFP+S7r
-1v/oOcMA6kSTgHprq3T9fO/XzYHy0haaDQe8VOXQRKdgDXCJvtKdw+KUzefXM7STs4SWaN6jVchp
-R63/dfCThKvZOIljbSXFM3cYbeBM+zo8Xb+ja+OiB41vgN+e1aqrhVTt2A6BB5btWdWMLaEqlxa/
-8rTVLSkqXuorXP3UfJYb9ComfqmD7TCCDWmjsli7JU8+ufmpr/039lcKBkcyEbzC0KbmxMACZPgq
-Ci/Qt4gdR3b+Ns4MjnPhJ/7d0W2bvGqJKuR/MvPzhYLGYUyRQM1opSLT1ovSr4aRbc0w7oySBxU/
-QNPS2Tp2nhr9H5YlQ7D3w6Jzn995cJ2t+hFvGh+/zUqDTYYnaxMPO477xRIWPkKNQE0xxniRYqa+
-doljshUQH4puDwi+CAaFwq2HgZHf+yc25KnoCJsliC4NzHyoVCMgXTfXKIpVTmJKfTmFD5AappIL
-QD/cWtdxZrrv38t9pvXMGGqurmpu4vIOUI1+WAnvub4SqBXMtWi+eQ7aIJdvi0obsImv2sZ/rB68
-5FTkKCi7b5Bq+9ySisMY4h1dA1sta7knb+R1RF/9vwKKXvxcfDFnuRwTGBlMj39Z5JAD1Bq2w1pX
-WdTIjXMBMcHx4mrGhrmeHtVRKOlsASHDXBCnMyoiuPFnNyOqmB5CaPps4b6/JKFoZemgL0LqsC+3
-ytnYJ0jRPrNj57NdU+/z2X21iwXqo4cicLRNztfV9BD0BgWq0RuqvlNH3sMAcw4LUHNaq0g7vc0p
-W4prHBAFdEX03U1Oh2USfSZOyus97bWoE1sAA+m/0cOjUxfcuHzCV47nw4gBxLMTfFx7K2IYmoSh
-0yf6XIUc1i75ERfVy55XSwjDGtpRecd0QD11QnrwNWq4i3gYU/6v3RVgMhT64PyKD9Sv5PB0OTKa
-Id501cXm2ZhnfdBGAaxR/NjLRAdBRpNhc+yGTOhfbWxZMrNI8gc5KQ4waNYuAmm3fHV01DsY1Mve
-BPC3UWh25fxUIZCjCauBe/ztX0eTG8hfyLDhfSJrwz5ePc6o3o1nVE3VH5lMHDdFk/wVCZLtmtUP
-WF2pyDDKilGENCsb9wh4Y6zL3kD4yiuu6VV6LwMT6Z8+WlxR58E/gBR32TZ6qKDI1Ersm4MyPjB5
-5EgN4QkYIWztywKZU9NjHRJPM+rBVDsozyMwOjQ5dvpF/XjdZSIukdeP40==
+<?php
+
+namespace Coderstm\Models\Shop\Order;
+
+use Coderstm\Coderstm;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class DiscountLine extends Model implements \Coderstm\Contracts\Currencyable
+{
+    public function getCurrencyFields(): array
+    {
+        if ($this->isPercentage()) {
+            return [];
+        }
+
+        return ['value'];
+    }
+
+    use HasFactory;
+
+    public $timestamps = false;
+
+    const TYPE_PERCENTAGE = 'percentage';
+
+    const TYPE_FIXED_AMOUNT = 'fixed_amount';
+
+    const TYPE_PRICE_OVERRIDE = 'price_override';
+
+    protected $fillable = ['type', 'value', 'description', 'coupon_id', 'coupon_code'];
+
+    protected $casts = ['value' => 'decimal:2', 'coupon_id' => 'integer'];
+
+    protected $hidden = ['discountable_type', 'discountable_id'];
+
+    public function isFixedAmount(): bool
+    {
+        return $this->type === self::TYPE_FIXED_AMOUNT;
+    }
+
+    public function isPercentage(): bool
+    {
+        return $this->type === self::TYPE_PERCENTAGE;
+    }
+
+    public function isPriceOverride(): bool
+    {
+        return $this->type === self::TYPE_PRICE_OVERRIDE;
+    }
+
+    public function calculateDiscountAmount(float $basePrice): float
+    {
+        return match ($this->type) {
+            self::TYPE_PERCENTAGE => round($basePrice * ($this->value / 100), 2),
+            self::TYPE_FIXED_AMOUNT => min($this->value, $basePrice),
+            self::TYPE_PRICE_OVERRIDE => max(0, $basePrice - $this->value),
+            default => 0,
+        };
+    }
+
+    public function calculateFinalPrice(float $basePrice): float
+    {
+        return match ($this->type) {
+            self::TYPE_PERCENTAGE => $basePrice - $this->calculateDiscountAmount($basePrice),
+            self::TYPE_FIXED_AMOUNT => max(0, $basePrice - $this->value),
+            self::TYPE_PRICE_OVERRIDE => $this->value,
+            default => $basePrice,
+        };
+    }
+
+    public function getTypeLabel(): string
+    {
+        return match ($this->type) {
+            self::TYPE_PERCENTAGE => 'Percentage',
+            self::TYPE_FIXED_AMOUNT => 'Fixed Amount',
+            self::TYPE_PRICE_OVERRIDE => 'Price Override',
+            default => 'Unknown',
+        };
+    }
+
+    public function getFormattedValue(): string
+    {
+        return match ($this->type) {
+            self::TYPE_PERCENTAGE => $this->value.'%',
+            self::TYPE_FIXED_AMOUNT => '$'.number_format($this->value, 2),
+            self::TYPE_PRICE_OVERRIDE => '$'.number_format($this->value, 2),
+            default => (string) $this->value,
+        };
+    }
+
+    public function discountable()
+    {
+        return $this->morphTo();
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coderstm::$couponModel);
+    }
+
+    public static function fromCoupon($coupon, float $basePrice = 0): self
+    {
+        $discountLine = new self;
+        $discountLine->type = match ($coupon->discount_type) {
+            'percentage' => self::TYPE_PERCENTAGE,
+            'fixed' => self::TYPE_FIXED_AMOUNT,
+            'override' => self::TYPE_PRICE_OVERRIDE,
+            default => self::TYPE_PERCENTAGE,
+        };
+        $discountLine->value = $coupon->value;
+        $discountLine->description = $coupon->name;
+        $discountLine->coupon_id = $coupon->id;
+        $discountLine->coupon_code = $coupon->promotion_code;
+
+        return $discountLine;
+    }
+}

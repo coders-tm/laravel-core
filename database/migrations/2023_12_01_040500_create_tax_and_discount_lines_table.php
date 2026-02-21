@@ -1,64 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tax_lines', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('taxable_type')->nullable();
+            $table->unsignedBigInteger('taxable_id')->nullable();
+
+            $table->string('label');
+            $table->enum('type', ['normal', 'harmonized', 'compounded'])->default('normal');
+            $table->double('rate', 5, 2)->default(0);
+            $table->double('amount', 10, 2)->default(0);
+
+            $table->index(['taxable_type', 'taxable_id']);
+        });
+
+        $this->setAutoIncrement('tax_lines');
+
+        Schema::create('discount_lines', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('discountable_type')->nullable();
+            $table->unsignedBigInteger('discountable_id')->nullable();
+
+            $table->enum('type', ['percentage', 'fixed_amount', 'price_override'])->default('fixed_amount');
+            $table->double('value', 20, 2)->default(0.00);
+            $table->string('description')->nullable();
+            $table->unsignedBigInteger('coupon_id')->nullable();
+            $table->string('coupon_code')->nullable();
+
+            $table->index(['discountable_type', 'discountable_id']);
+            $table->foreign('coupon_id')->references('id')->on('coupons')->nullOnDelete();
+            $table->index(['coupon_id', 'coupon_code']);
+        });
+
+        $this->setAutoIncrement('discount_lines');
+    }
+};

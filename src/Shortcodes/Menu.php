@@ -1,64 +1,61 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPvPTZ5143NLd4P4PSxTWMFrrTZL06ABkukg9HlGS1YAzLVfxfXUG7Mbhjgns1IiMVj0ZaoX6
-IIbQBieda8LuBBmERxpVgrvhkIo21Fv0YFXFA81tjkm7Ij9Fu2pJfv3JGe9Hh9Ugud5C6qkSyMzD
-ISkUyRJ0ismXLrUA3FqhpHv2qWivu8vYUvmudeD1D04l6RkaRi/ru9QzchL2UtVq6Lh9pL6QBkWM
-HFfgwOiJMcqRtsL9CkLKLFLiTlsz0jhAmooBlkV+uFa4O3NQ8XFXodQ8WyWiP/Af/loWFR7CpySh
-Bh3I4lyFoHY1yVfv2W3+InO1vpW6C8jtR7DLx3N0TlooPe0d4FZI1gWD2IBy9ZTxPgppRkTpy6g2
-G2blavkL3doy9AemllI4/mhBgtV1fGU+rYjIT1isHeKpYhNJi6l0z+PVwu7R5Dv1VCX/eBhYp26z
-pKpN6IdlzQ2D44gF5Sj32mVyOPOlXccu+5e4MSNjXbzQusV3Va/DUNPtxRX/2Of7M13m1zA8RtLU
-+qNKAx9vTkBUc1TUxDV+l9lwHlCrsKRC6O39gzESBwygqbJIqi7elAmSOGM4YVDn3kUqNYivMHMF
-rIAsRdGwh8BDQhF8gH2aDLFsrE286Xva5XRyuGs+qsq6/+8Flj/ZI3asHgEFToGG80kaR4uJ/vTi
-KqQYc6suYgyqL9yqBcj7S28CeojnpswTMnlqWjJBUnmqZ7wP1c6xfCw3DvDOgE8de5sD5KOTof8w
-AOVtVahC9T1RDJsI86OsI7Lz4oC7wugtQmNev82BD8ruggBP5Quu+IkNRoKiYmIhrIDD1hMGbVwP
-e4+HhjYEVaqSb3gOWLE65Yk4YSL5Z31Df7Sv6ajcIFHG1SMGX+JH+7g4myh+e5f9IQ0DwoYZ8Ee3
-TR4qULVWM9ETsSZv11+RD5wXcPoV02+Vsa9zHnxc9YRLfv/TzQYal4phl6/6neDJUU/eTFp/Ibhb
-jPGE6YL3sQmpoc1lxI4mU7kjvp4S7qBw8Bq/cvmrRmZ7fwTSHr5wjhv+d28F/89WAozLXxNxcZUX
-NCrwguqeyH97vG//+LNgdeNwQhlPTvgQswknJYC4D3TtffZ106+B7Vo7Ezz6HoGU6V7hbITYukQI
-94YXmgHS7ZKqGhpKtZMW7ercxJ6hqfL1qrR8CESH2eeRXR7k5Xc5A0qBrORRZ7NWnhvpubVMOKQJ
-5fNxv9gcrUaDQprST/ezl/VS5vgZ16s54BMTtvRwNLRND/DkFkCIsyg+t9XxHns5XV2TKhJt7ayQ
-Fs4VNgXwwFS3PrNceS5NwXvy7GOgsD1XOi0hU9Q0dUmhJqrePVzYjG3Da3hzmK7NvJwg7y06d6S7
-xcdqfIgpGuB7EUu5Viqf27f1n/q8oXLuEr0oxR2M7Gr/+Q+3YRursGpxORFySp5XOO8RvvR9fzFd
-dPk+VF6tqsTIHfqQ76Ri0fwzxhD/AEmabqrmMb2ZlNhRpd/ukHdFZY4/8T5tP0tAZMCWR5wunMpM
-+vjzOdsQasXFlxA0o76CbarHoGVmKj1UfUbe0AXKVZu+qq5k7AqID5EvzedGBHsaeN+lvUMj7Kgg
-+pYw/7cFnYsF2Vny28Ar1y1LtZVeNR5n7qsHI/ohhydwYXdsxjic/3LPGTvaSycvmrmUUC8Z9d2p
-2YfrxqYz49aH6gcIqa7p23CnomaRDryq11NDbzkHnSiwA5NEaR0j7ApYYj7lI/8AD70Jb2ua2yL6
-G3TcrzUQ1nMqvk2DRGF7nvIVWRQiN0UP2pA5Nq5vnuXIvMO8D0Y6h4cNuWm/k4N+dZPqdB/DD4FG
-xuCmzsX4M3fS4NWijTT/LRb3l8B+N3duNL2AOa7FVSMOZGG6kg6q6wBJCwM8vTxUt6dkeytan1Y5
-8aqfX5pZls84PrWmyMQEQEv5klqNoMr5CxNGCUIQY+9keRVZw/iuL0CvZFCh1WKwolzFhMzKmUt9
-bf1NkdD6ndrYsLRPcHfxbJxDcTMhuM0jE9Vauq6TCGsT55gcdj7MAvcd0nN/ufqvYFrDeir5yal9
-Odac018Zx47z1p82Dh2LGh8ZYeXorVb6fTVzzLX9z48ncB2mm7QYA/2DD5YAoJbmMHVqa0d1+W0L
-FwJE42qCPmMbzVz8Hg52b+0uGyn23LTPn4mNja23jryh/HTl3f36gqXIli4a5ytcbeQuIXR5jC6w
-2igQM7xbJfwcEeljInUcdgSFeDTXilMM4RiTPpH4ILnb/4GgNOIUmNFETPj3EzGpG9y9EiENGITJ
-O8Ee5g8Qo2p/sC+06LFyoac5mQOBcnfzVnCZOfNZy6wzFwXilIlDuJwRi2pVo+81rl36kXwiaQSB
-eKDDG2oRFOlCOzL/Omn/8//4nuj2PZtd0o68sADosDm1oDjVXkPySkm6PYBlMDCnxqgLyL9aIsU+
-uqTeaMB3tktbFZ6EaZP3E5WB7xkkO+JDChSzu+Y/ksOhjm3ZHHEcfraHxLutBHDHLQe0hZdetmwG
-NPucbJYRHTfKeYxBLrd41er1Dn4MzCykXaL06+1ef2PJrBzoSpwISSWa+3t3RmiLTfGIAoaeAUHN
-fBlTmqnZOZwALnKIeTH5qZU3V/xdz2GGaNxq9vK/IBhmHXtsjCLLCXBl91AUIPTR8HJ5929X584X
-cU1pWyauawueSfJt9CK652jvlkkpOxI/XiahfsTu/Ruh7ZfG0MJZYYzvmlDpHg2YN12yi7/RSe4O
-BhLq2pj78UlJ+c7e7lQ6wicARuLW95Hz5czy5SRxoWYjMONP/fauveZYfLRWhfQ0N0C6JNo4f2wN
-DHUJVJTmGRmdKjZAICkaQnkoas+SM3WQQpLgAgwNGQYk7qSog75fwEBIowdDCOwMMomzAa9LzuqZ
-CrTOYOVQSntCmtPJSQoO5NlyxsKpn7Qb4bHq1qavJg5CID1mWrytTBf8sP1B/oAi7G5TCFYz8bAC
-kGd6FfVnBaTdFhn7GX5XNeRBIHTZ2Ob95iR0RYYaKzSC4cbjg3DYh6TQ5P1/gsWTgatQySTEfXj8
-Nl3q9mxW49VCaiiHxTWvQOntOuhnS47ncqlaFPdoy/No0PyK8SzJ1hh2JQMBVTY/0C4nFiljqCH+
-xrSKreBLIAYF+mjujPY41uNvH26I28yR7OTuveV/fjagzbwRpAuud3tI6g/b7RJW+hEKnvkE8+xD
-0oq9C4LeDrel7KLw7z4vOh7eNZSOZ7LIaTGJq8JqKZCnZM9PZE6CNyGiIWRC6TxsmuykWOr+FWZv
-pH5h1xgozZjCa1uHkOLtjP9nQgDq0i3f93SUq+oiCjmi31L3Jtcnd6brfk/+zjIs+nHgoRBh9xAy
-f9IQZeXGIfspfFSuyZz2sN12ZTwoux49Vo/sOnvnhRV86mMpV85BTmtm97ARGr7m21k8i31T6tWR
-m2Wu3KOBVv2h2wAG/7Nb0kTYqhtDeT/PKtTF/zKAoBbbxbuBwQOwGUJkcT4VeQXHbrAje2JuQa19
-Q6hge4EgiKTYovAHWlx+7mKVYliwkmAd2wge6xUo7mqQUcJpnZtwUHtMaJ1PZTzFmlqIxst+YdNW
-sf+F/v2RzXs6+loiobbzLhERtjbShiQAOPgxQUmqmzbxGdwzUhGT5k15E8/j6I1Cz1Q7X2HuldtP
-zGSD/oXUY+VrqdNqIquhfljbd32Dan6g+BIyxILC7CjSP4uczwvnYPg7sDmzBmjbITPMfsql4v2Q
-ch85ESxX0nYydt5id1Uhy5Ao95G9RpMN+Od1tnyP/xVQjKdzwumR0hgYB8xe/7+nCvvaQlkcQcdB
-XKb9pCXNQv3Se5gdg563YIpwuvaEwam05fTMkP0b7J3lfbip2djlg/I1Ay9n9GSmdTF6anGNr94f
-GkfFuj0GmaS1R/zMeqbY+Ym+daJYlr7/TEYVsqozoUZ9wcCWLPUYrj/wA56wkgC5i2PJUbwivCkm
-CCRam8JtmEVqbXJ1QNp+fTdV3feoHoLVO0osJOVG4R/IzDH79/67mjmoCML3s8S6XDyPZ7UJrCKz
-7xqOJL3Cn0rBmzoG+6xD0O1qSETTrZZNz9gkMwYL0Hpixv/KrpKZHnwiaDT9LBzqGIm1S86ubOzR
-l4OHupIh24721kvqWDUUNNf7awY6rt9t9LOjwbYU8OmYMjrSxG4pq0kmpurGheHtoLxzv5ZihRXc
-IoA44F9UJmQuc4JaHqLuruDQbUb+q6bXPPBlNVqvIXz1g6f+BfI2gplvusQZr+GMmlfrB7p6IwuC
-nmA+HP+2qN7V6WlUzb1th+XoA+HtRcAzpzOFJgkIUsqdbIuS0pStkCzH9f7afeMEtMlv4cm+hpKD
-qF01EDFuQf3bKbkldSUeZUqrJSQeWOzJXVkqULE90kRqGdkBqZ1n0iRuTcnkp9nw2ItpyfTVX+lu
-CdeEavWQTSU0XBO75w4P1FOB/qWxZ4EJ1smCql7BON1euelqiKiK6q+Q/y9NqVxZd1aGX9l2JUy5
-OQ/8CvaXT2KdBgW6N+vGwRaSkG+afptdYwKCHs6UOf8zAVEBJ9p9bi3JKB+ZFkHfZXUCVknNbOfy
-Ci5h2xkfgNSxEPi=
+<?php
+
+namespace Coderstm\Shortcodes;
+
+use Vedmant\LaravelShortcodes\Shortcode;
+
+class Menu extends Shortcode
+{
+    public $attributes = ['class' => ['default' => 'menu'], 'id' => ['default' => 'menu-1']];
+
+    public function render($content)
+    {
+        $items = [];
+        $atts = $this->atts();
+        $menus = settings('menus');
+        $id = $atts['id'];
+        if (isset($menus[$id]) && $menus[$id]) {
+            $items = $menus[$id];
+        }
+
+        return $this->view('shortcodes.menu', array_merge($atts, ['items' => $this->mapAndFilterData($items)]));
+    }
+
+    private function mapAndFilterData($data)
+    {
+        return array_map(function ($item) {
+            $activePattern = [];
+            $href = $item['href'];
+            if ($href !== '/' && strpos($href, '/') === 0) {
+                $href = substr($href, 1);
+            }
+            if ($this->isValidHref($href)) {
+                $activePattern[] = $href;
+            }
+            if (! empty($item['items'])) {
+                $item['items'] = $this->mapAndFilterData($item['items']);
+                foreach ($item['items'] as $subItem) {
+                    $subHref = $subItem['href'];
+                    if ($subHref !== '/' && strpos($subHref, '/') === 0) {
+                        $subHref = substr($subHref, 1);
+                    }
+                    if ($this->isValidHref($subHref)) {
+                        $activePattern[] = $subHref;
+                    }
+                }
+            }
+
+            return array_merge($item, ['active' => $this->isActive(...$activePattern)]);
+        }, $data);
+    }
+
+    private function isValidHref($href)
+    {
+        return strpos($href, 'http') !== 0 && $href !== '#';
+    }
+
+    private function isActive(...$routes)
+    {
+        return request()->is(...$routes) ? 'active' : '';
+    }
+}

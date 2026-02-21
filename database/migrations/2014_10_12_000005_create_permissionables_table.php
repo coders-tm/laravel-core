@@ -1,40 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('permissionables', function (Blueprint $table) {
+            $table->string('permissionable_type');
+            $table->unsignedBigInteger('permissionable_id');
+
+            $table->unsignedBigInteger('permission_id');
+
+            $table->boolean('access')->default(false);
+
+            $table->foreign('permission_id')->references('id')->on('permissions')->cascadeOnDelete();
+
+            $table->unique(['permissionable_type', 'permissionable_id', 'permission_id'], 'permissionable_unique');
+        });
+    }
+};

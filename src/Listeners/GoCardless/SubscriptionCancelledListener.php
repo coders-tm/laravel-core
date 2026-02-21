@@ -1,40 +1,27 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-jY/z4fT6ma18/9YoAuoelG==
+<?php
+
+namespace Coderstm\Listeners\GoCardless;
+
+use Coderstm\Events\SubscriptionCancelled;
+use Coderstm\Services\GatewaySubscriptionFactory;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
+
+class SubscriptionCancelledListener implements ShouldQueue
+{
+    public function __construct() {}
+
+    public function handle(SubscriptionCancelled $event)
+    {
+        $subscription = $event->subscription;
+        if ($subscription->provider !== 'gocardless') {
+            return;
+        }
+        try {
+            $gateway = GatewaySubscriptionFactory::make($subscription);
+            $gateway->cancel(['reason' => 'Customer canceled subscription']);
+        } catch (\Throwable $e) {
+            Log::error('Failed to cancel GoCardless subscription', ['error' => $e->getMessage(), 'subscription_id' => $subscription->id]);
+        }
+    }
+}

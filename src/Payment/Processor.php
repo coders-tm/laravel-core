@@ -1,68 +1,81 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment;
+
+use Coderstm\Contracts\PaymentProcessorInterface;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Processors\AlipayProcessor;
+use Coderstm\Payment\Processors\FlutterwaveProcessor;
+use Coderstm\Payment\Processors\KlarnaProcessor;
+use Coderstm\Payment\Processors\ManualProcessor;
+use Coderstm\Payment\Processors\MercadoPagoProcessor;
+use Coderstm\Payment\Processors\PaypalProcessor;
+use Coderstm\Payment\Processors\PaystackProcessor;
+use Coderstm\Payment\Processors\RazorpayProcessor;
+use Coderstm\Payment\Processors\StripeProcessor;
+use Coderstm\Payment\Processors\WalletProcessor;
+use Coderstm\Payment\Processors\XenditProcessor;
+use Illuminate\Http\Request;
+
+class Processor
+{
+    public static function make(string $provider): PaymentProcessorInterface
+    {
+        return match ($provider) {
+            'stripe' => new StripeProcessor,
+            'razorpay' => new RazorpayProcessor,
+            'paypal' => new PaypalProcessor,
+            'klarna' => new KlarnaProcessor,
+            'manual' => new ManualProcessor,
+            'wallet' => new WalletProcessor,
+            'mercadopago' => new MercadoPagoProcessor,
+            'xendit' => new XenditProcessor,
+            'paystack' => new PaystackProcessor,
+            'flutterwave' => new FlutterwaveProcessor,
+            'alipay' => new AlipayProcessor,
+            default => throw new \InvalidArgumentException("Unsupported payment provider: {$provider}"),
+        };
+    }
+
+    public static function getSupportedProviders(): array
+    {
+        return ['stripe', 'razorpay', 'paypal', 'klarna', 'manual', 'wallet', 'mercadopago', 'xendit', 'paystack', 'flutterwave', 'alipay'];
+    }
+
+    public static function isSupported(string $provider): bool
+    {
+        return in_array($provider, self::getSupportedProviders());
+    }
+
+    public static function handleSuccessCallback(string $provider, Request $request): CallbackResult
+    {
+        if (! self::isSupported($provider)) {
+            return CallbackResult::failed(message: 'Unsupported payment provider');
+        }
+        try {
+            $paymentMethod = PaymentMethod::byProvider($provider);
+            $processor = self::make($provider);
+            $processor->setPaymentMethod($paymentMethod);
+
+            return $processor->handleSuccessCallback($request);
+        } catch (\Throwable $e) {
+            return CallbackResult::failed(message: 'Error processing payment callback: '.$e->getMessage());
+        }
+    }
+
+    public static function handleCancelCallback(string $provider, Request $request): CallbackResult
+    {
+        if (! self::isSupported($provider)) {
+            return CallbackResult::failed(message: 'Unsupported payment provider');
+        }
+        try {
+            $paymentMethod = PaymentMethod::byProvider($provider);
+            $processor = self::make($provider);
+            $processor->setPaymentMethod($paymentMethod);
+
+            return $processor->handleCancelCallback($request);
+        } catch (\Throwable $e) {
+            return CallbackResult::failed(message: 'Error processing payment cancellation: '.$e->getMessage());
+        }
+    }
+}

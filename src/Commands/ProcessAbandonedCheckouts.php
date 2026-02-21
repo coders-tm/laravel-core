@@ -1,46 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Commands;
+
+use Coderstm\Events\Checkout\Abandoned;
+use Coderstm\Models\Shop\Checkout;
+use Illuminate\Console\Command;
+
+class ProcessAbandonedCheckouts extends Command
+{
+    protected $signature = 'shop:process-abandoned-checkouts {--hours=2}';
+
+    protected $description = 'Process abandoned checkouts and send reminders.';
+
+    public function handle()
+    {
+        $hours = (int) $this->option('hours') ?? config('coderstm.shop.abandoned_cart_hours', 2);
+        $cutoff = now()->subHours($hours);
+        $carts = Checkout::whereNull('abandoned_at')->where('started_at', '<=', $cutoff)->with('user')->whereHas('user', function ($q) {
+            $q->whereNotNull('email');
+        });
+        $count = 0;
+        foreach ($carts->cursor() as $cart) {
+            $cart->abandoned_at = now();
+            $cart->save();
+            $count++;
+            Abandoned::dispatch($cart);
+        }
+        $this->info('Abandoned carts processed: '.$count);
+    }
+}

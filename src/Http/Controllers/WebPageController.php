@@ -1,68 +1,63 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPywmSiXY4KVWUttdwqbj8hq1c7vp/u6AQPEugqPJi8YNjiUUqUKhWYOW/tLMR0p3vhQFIR/G
-ZPyZGWF/1/7MK1W5+9ifbiGf7iBaMxHCHi4/dzZ+MHl6n1FtE6pYvxMftmZrmE3zUgUffIbbN0n+
-7gG3xoacy0XJJNwnl8JbE/1uI7enXUxPLU58YSiccb+kr9sYZpq/QaL2cjPyovoevgsYGXYH9GHL
-+MDDXrkvw8j/2A9dFwoSkmx8Td/Z5VK/mF3Nv/xW+GHWDTeY4+7ATeY3o7Xl1hfmpM9XZ7wM2Ikk
-xkma7ho2EmtZrmDCGrGQu4s6rMYHM/p/tZ+BClJxgWGl9OGAFTyYwPLOlOLkIU9bSFPo16VJbAn2
-vJVW5IFhUlId9783t7cOdsZwat0trwb1h5+iALgp++XLoVLGTgh/hT9W85vnVezFu5IL2lDuxL91
-6cqF/bVAgaT0WwzMQm34DLq6suuVQZN9RDq2cOjJah/zmFnmgoLfu4AzCwIu/pGKV+44gDFA4N/V
-sucINazsVZMQkuX4yiw4EkDw3v1FaTfV48X+gLeeYT/MngFM/bE9dhporABUCCxBTmItorNoiISZ
-CfUI9BVHv/RdxMAW9i9d5jUaGqPH1y+kHOAfku69q4MpdLm/xhaVZncWLojQl8nCe4EEbsdT2Aaj
-qVRAnJSr+ohtwgHWN0SE3V+CBpEipO881S8I5jBK0p1CnXUC7/+8uXE3WtG44+bmxsT8sANlJBII
-gslJkYCGhzZS/Fllr7MnlqBNQHTo6U9UZ2cHVYDGbP/8DEYkj/YCfBVInrsDWbSkn7OK7Ibn6I+E
-64Bk258O/BA20tWhyZLcaLnd6iveK1MXOKB4JuWRnpU4glwso2FMItgQ7DwXgAxiTdaErGgAG5wX
-dxFHvogW68gdACxTPkOgaK7nb+3py9AvGqrB4Wh5d3+XQM2dEUw+FmonwAUHqzkVMHyGCEiwraIX
-iVJCg+ls4z6fvJx/GMA2swYD6VBQqRghhxkDASB/wB2KxGLCyQ4eARN+YiAqsDpAb3fM/yWT1R/B
-Zmg/R5E/k2tbdpXuBCwxxWWHELu6K1K34dG1tT1fKcVyS2WF7eQJFXnVoARLCd60jhsBW8uMfS4V
-eCB6NK70JggKqLBUJNnwMasqsPA44IzRlOygD2pgFmgX5xmzbKuc3sUgFlrt5tjRhPB2yxugcQmW
-0VrCsph2XFkfOjwJhMToXLxUfRpd63c73+1fCmI22AUrnPd5Q8QNjFobAC2ehiq/jn+d8AQvE46h
-GswAsV5R6ujnAsJ81qvL4BQ726+UsN5Zh3TmfXOY/mgbq/sSkvriLWQ+6iu6qA+MrI3QyCjY3wno
-vvCsPKNK5IgsFk7PkfGO32SQJmJSjFYVsbFYoQcUm4fdFHA2GEcWfe6/uhTMSL2VUuceR7D/bMUw
-Z7LRmrg/EhGoIdAADnFYsJToLTAAOej2L4hzrrPjXq6bfpF0+mTKKS/di6W/VNTR97qRo2CJO6uL
-aDGBDEi6kM3A7Rk/OCy8cbZOJxGZDeFVV9HRApC3X3PrJ1ZvagZ5WRa8ZArq1cBjx9rBBA83ZCZF
-Ktp9SfHsfKE/9or0NljFhsJBBqctgpUmWtAWoSsY1ayfAjAOkGVIQaE09sGTYnveJi4d84M/yeLe
-9dP1uYR8K0r4jaJEKlbeDXf9rXK6ldDf0XUbxr4VK4Z8qjgElcQ+OryI1fj0opVZdHB94P57Uqbu
-wsnexZAdzug7DgoMTpZGgyIx0u0SLiOEPuAjfxAtXMD4mYD+qHSGqvlAXP5zmQfzL5CrI5p+16tA
-jI6eIpGNb1HVFV6xv9ENLf/gY8lksEsKDYfdCqS8ed87vJqgmIK4mdMcXuKR85hxdnYQtnFB5ph9
-Qy736mErA+wUvWuG/S0omkjzVFeM2bIrOw5N3VzBi2QS9mumUsorgqchKV2GRlnCcBTdNEdwMj4D
-Ptr5h4Y9Fc4e8j+vLcfd2h5EmTS6E2m5cJSGlmZ2Q2nrubcUf4xtL0b3kO8hiQqoTamnEUbCTVyE
-Mf49PgFxlIG4NCC68O1pCLy/Ik9YiMevoOVOr/sTtETVmqVxYCECxNEb0OmNNuxzzpbPBkri9Fql
-/iRTzJW8EfC6NGzlCCZQqOlz8wnQJf4FkoNyiKuHwKk6rww5x3/DmzGPenBodtOBTxMVTfUIrowP
-TOAjIvOlutUjI93QtB/4WtRyRxBfie3x6ozd4xGKyg9ajETyyJs5wNx2E2Lwj7BGKf9SL2cr+xi0
-YgQkqV/Db6bCrZAu5Ji92UawttjWFX9EGryDYdPxluAIE5nvJlV3t7avK6I7Be156YdXz1NBgtob
-6VjZSD5y1YVq8vcVdJqq8Z+7DwpKHBfYnagKSl+4nhzhPnQMawF7ThE4kpsUGnOJSB71JxJLFlaD
-k1s+C2JlTo5mzkmH0PkDpl2xZIbv1DLifY0JNSpJuJuszCAannlkOUrqyZwub47j8eHzlqaDYmVt
-fv9giSTniF9AkKXmvML61jVj6vJ2oiV1tyfMkxB0khQxBnaxBdlg4q+BY8A/iTASt/cdQ7CMlSOT
-KKV/EsHcCnWFysNnop/GfXTUGcbVKaD55j8TbI0KXsTZjJAWutALdBC2jbSRt5yC7F/+U7ldKVr6
-ghl6Va0V6kFl/O6+UVOCDzNUD3ijkbuaXwKG/njFHLXtDHVOUu+E3G5qvVN2dGdLRJ7XtkDy3/Pz
-/zYxQCNIs4N2p4rPNrEqvnF6g3Chp69AcHdi9FLrktVsXC12K915PpAwco8LE6eBMq+lgvOctOJy
-86zRMpEz8eeYDONu0gMes9SI8HQz99fq8O6S1R+mTnGVXwLv1iltGkvm76bRoMQF/YaAVnl6d/qx
-YBKV4cJ57yqG7odzEcYz22G8cTqd3zRbJ6FSQLvB8wpypw+qAEg/2I8OEoz5zU4mz+0Y2xfUHa2K
-pZH0NVcOKGa4riLqM6QV2l2Wr6MW2zhlBzpLe8NZfBoV1y7MWMkUTnl5iCPDMMId18HHhuB6gIdE
-3M6D5HbVylkmQ0wVss/0eGJmG1pv62IxW7TNdsF+OeEuChXJUPK0Dgo8ZjWzFJCHU/p9arrFraNv
-Lkl+JJMr3qYoJLO2Cft4oH1G2FwxaL1BXaqKKDgli6oIve15aLj7OnzEWrgsX9ccRhQGgEcqsr4F
-Ye02jO2chEJ+x72nA1UV9hWQe92M4/DOj2TYetnFpiihblFiLfBBAdojTa7hFYMUnpX39z/ESw5Q
-PvDrOIwQYTe47m9PgRpCnJqikXJffb84mGZciHARNXSF+aMyhYVitWGbxdfRwF8n+qlbKMWEkrLd
-Ex4BJXd15hLrEdFOekKztRjDpb6G2DDOWcSzeWlQyipgXsFxpYNTFIg3oVJfV15QbaEz6orT9U63
-rMduVHiu49S7kns4tv69oGNJQwUISd9iskzyC2liuE7N8CBWf7L48sbwWAlf+UUfuXoEfeLfrmte
-wQ9suxT7793Cft/0M2/+Sj8tn9RRlpfxi/q7mz1DRN2+3fJoA05h2aSk2NPKuEjBBfmplk8aNicH
-4mDNjivK9Yu3RTDGFLfUOqXseLYXfVweanV21AoQyREM1j5rrygOUiPopueVNC91LK3N+YqA9J1L
-19epkRaK/MYqyh5m5Sj/KmvxPEuxAZh6HeMTL0wmylfJZqqZpeLtDNLejVGg1fp8uWGIihZKTL+d
-QaAoKRMX53JXQPByEM+iThh4H8Jgmh69gsW60frWDhHd7AJh7ZJ8hQcmBGXdmMREy0WzSvb5ou6I
-wsw5BYRrOawMnF1BpUP8aAKUqHLTSU1MKR+kuFe9up1BzIkLCVl3kbjGNyOiAuSK91dMOfGmPSfy
-Hc4uV0a86jLPa4fFGbNQkDVeD3JuxnCm1c7CpuLjvypQaWmT7oRZ2HOT79/5ZAzpg/d7u6Nc1Z4+
-Ed3184GqwHO+FgauW3Y/e/NYxG7PAExqDViUx9ojEYOvWtCHy+nIeY3zfG3uqm2Cu36NZPfJX4X2
-vMkNl9eTgYmEmvjJ29fsIZDMpB+ZjUIkklYD9Z4/rosWda26VuBuRY8wybb7u4yUWSM+msDdlAg8
-4nWGjctWdMiOSRap/t59gWRvDaRyGS6Ip9kAXHiI35uwOBAVx9Co8GmFc4AtB4p1T+cp2885TvLI
-cLPF3ozjEcxz+9vTOoOwotwzClwS74+CeUJ5kUlP26BNaxVcCirMcjVNv65jZeov2iCDxIEpI77R
-GrwwWPkpaRmc0UW4Ps5My2W5MY231Msi5ldaiKfq9t2xKtrBCudyB6XBowJrkuI9Jre9ug7xDXMx
-5DqVIRVrswSGIRPdDxd2ypLg2cDUDGnIPiN3TG9tHU7o1qqzSoN6OShSxsh2KRjF3QNvwGM7y5+M
-e/0nvi5FR+cgprLzZyttuIOQFitMJp67UI7sPJ8YRqahwP/lvpYQ2fEpElx9kw7ZDbl8UyRxknJU
-WxldwOAHQnWhQesJpYJLeAhmZol9kxqRMrX/f4ei5zA5gt7f5h77dCRPXRPt3gWghIV53Bu/PRBn
-NOvysxwT9rtJqs9trWq7TW5mIvBEvQLxc6N6iUgfN5TF/y5UFa1z24mEe+9XzYb5vpijSto56BVi
-EIqNKNhDEN3qe1JJGKaWxr716ZtzldY/GmuFq7dWHzveIdTjoGTja4m9Jq6c6jREE3HVn4pG3Fu0
-LQKBvU3uRXOCrFi8w5xK4tUg/lX4EcHmMrL972xUjkiWIWAqOuRs9wzJZmYyMlIxOXFohMhvYvRt
-Wgm672yqy6hs33UUgH0PkkPf2yamDb+GqpHzGgBdyxIltIF3n99q493bDq7ENIR2FGyvMqnodxlf
-bX309nqsADudxHc/iNmPCzELVkcIdWLrZSe7XWrmtiVV5vGeHb7shnbtSCdWeFsTsJl2bAz2lcCN
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Blog;
+use Coderstm\Rules\ReCaptchaRule;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+
+class WebPageController extends Controller
+{
+    public function index(Request $request)
+    {
+        if ($view = settings('reading.homepage.view')) {
+            return view("pages.{$view}", $request->input());
+        }
+
+        return view('pages.home', $request->input());
+    }
+
+    public function blogs(Request $request)
+    {
+        try {
+            return view('pages.blogs', $request->input());
+        } catch (\Throwable $e) {
+            return abort(404);
+        }
+    }
+
+    public function blog(Request $request, $slug)
+    {
+        $blog = Cache::rememberForever("blog_{$slug}", function () use ($slug) {
+            return Blog::findBySlug($slug);
+        });
+        $request->merge(['blog' => $blog]);
+        try {
+            return view('pages.blog', $blog);
+        } catch (\Throwable $e) {
+            return abort(404);
+        }
+    }
+
+    public function pages(Request $request, $slug)
+    {
+        if (! preg_match('/^[a-z0-9\\-_]+$/i', $slug)) {
+            abort(404);
+        }
+        try {
+            return view("pages.{$slug}", $request->input());
+        } catch (\Throwable $th) {
+            abort(404);
+        }
+    }
+
+    public function contact(Request $request)
+    {
+        $request->validate(['email' => 'required|email', 'name' => 'required', 'phone' => 'required', 'message' => 'required', 'recaptcha_token' => ['required', new ReCaptchaRule]]);
+        Coderstm::$enquiryModel::create($request->only(['email', 'name', 'phone', 'message']));
+
+        return redirect()->back()->with('success', 'Your enquiry has been submitted successfully.');
+    }
+}

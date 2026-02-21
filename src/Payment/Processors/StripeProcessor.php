@@ -1,140 +1,87 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment\Processors;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\PaymentProcessorInterface;
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Mappers\StripePayment;
+use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentResult;
+use Coderstm\Payment\RefundResult;
+use Illuminate\Http\Request;
+
+class StripeProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
+{
+    private const SUPPORTED_CURRENCIES = ['USD', 'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN', 'BAM', 'BBD', 'BDT', 'BGN', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 'BSD', 'BWP', 'BYN', 'BZD', 'CAD', 'CDF', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CVE', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD', 'EGP', 'ETB', 'EUR', 'FJD', 'FKP', 'GBP', 'GEL', 'GIP', 'GMD', 'GNF', 'GTQ', 'GYD', 'HKD', 'HNL', 'HTG', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JMD', 'JPY', 'KES', 'KGS', 'KHR', 'KMF', 'KRW', 'KYD', 'KZT', 'LAK', 'LBP', 'LKR', 'LRD', 'LSL', 'MAD', 'MDL', 'MGA', 'MKD', 'MMK', 'MNT', 'MOP', 'MRO', 'MUR', 'MVR', 'MWK', 'MXN', 'MYR', 'MZN', 'NAD', 'NGN', 'NIO', 'NOK', 'NPR', 'NZD', 'PAB', 'PEN', 'PGK', 'PHP', 'PKR', 'PLN', 'PYG', 'QAR', 'RON', 'RSD', 'RUB', 'RWF', 'SAR', 'SBD', 'SCR', 'SEK', 'SGD', 'SHP', 'SLL', 'SOS', 'SRD', 'STD', 'SZL', 'THB', 'TJS', 'TOP', 'TRY', 'TTD', 'TWD', 'TZS', 'UAH', 'UGX', 'UYU', 'UZS', 'VND', 'VUV', 'WST', 'XAF', 'XCD', 'XOF', 'XPF', 'YER', 'ZAR', 'ZMW'];
+
+    public function getProvider(): string
+    {
+        return PaymentMethod::STRIPE;
+    }
+
+    public function supportedCurrencies(): array
+    {
+        return self::SUPPORTED_CURRENCIES;
+    }
+
+    public function setupPaymentIntent(Request $request, Payable $payable): array
+    {
+        $payable->setCurrencies($this->supportedCurrencies());
+        $this->validateCurrency($payable);
+        $stripe = Coderstm::stripe();
+        $intent = $stripe->paymentIntents->create(['amount' => round($payable->getGatewayAmount() * 100), 'currency' => $payable->getCurrency(), 'metadata' => $payable->getMetadata(), 'description' => $payable->getDescription(), 'receipt_email' => $payable->getCustomerEmail(), 'automatic_payment_methods' => ['enabled' => true]]);
+
+        return ['client_secret' => $intent->client_secret, 'payment_intent_id' => $intent->id, 'amount' => $intent->amount, 'currency' => $intent->currency];
+    }
+
+    public function confirmPayment(Request $request, Payable $payable): PaymentResult
+    {
+        $request->validate(['payment_intent_id' => 'required|string']);
+        try {
+            $stripe = Coderstm::stripe();
+            $intent = $stripe->paymentIntents->retrieve($request->payment_intent_id, ['expand' => ['payment_method', 'latest_charge']]);
+            if (! in_array($intent->status, ['succeeded', 'requires_capture'])) {
+                return PaymentResult::failed("Payment not completed. Status: {$intent->status}".($intent->status === 'requires_action' ? ' (requires additional action)' : ''));
+            }
+            $paymentData = new StripePayment($intent, $this->paymentMethod);
+
+            return PaymentResult::success(paymentData: $paymentData, transactionId: $intent->id, status: 'success');
+        } catch (\Throwable $e) {
+            return PaymentResult::failed($e->getMessage());
+        }
+    }
+
+    public function supportsRefund(): bool
+    {
+        return true;
+    }
+
+    public function refund(Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult
+    {
+        try {
+            $stripe = Coderstm::stripe();
+            $refundParams = ['payment_intent' => $payment->transaction_id];
+            if ($reason) {
+                $stripeReason = match (true) {
+                    str_contains(strtolower($reason), 'duplicate') => 'duplicate',
+                    str_contains(strtolower($reason), 'fraud') => 'fraudulent',
+                    default => 'requested_by_customer',
+                };
+                $refundParams['reason'] = $stripeReason;
+                $refundParams['metadata'] = ['original_reason' => $reason];
+            }
+            $refund = $stripe->refunds->create($refundParams);
+            if ($refund->status !== 'succeeded' && $refund->status !== 'pending') {
+                RefundResult::failed("Stripe refund failed with status: {$refund->status}");
+            }
+
+            return RefundResult::success(refundId: $refund->id, amount: $refund->amount / 100, status: $refund->status, metadata: ['stripe_refund_id' => $refund->id, 'payment_intent' => $refund->payment_intent, 'charge' => $refund->charge, 'reason' => $refund->reason]);
+        } catch (\Stripe\Exception\ApiErrorException $e) {
+            RefundResult::failed('Stripe refund error: '.$e->getMessage());
+        } catch (\Throwable $e) {
+            RefundResult::failed('Stripe error: '.$e->getMessage());
+        }
+    }
+}

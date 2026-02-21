@@ -1,59 +1,64 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits\Subscription;
+
+use Coderstm\Coderstm;
+use Coderstm\Models\Shop\Order\DiscountLine;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+trait ManagesSubscriptionCoupon
+{
+    public function coupon(): BelongsTo
+    {
+        return $this->belongsTo(Coderstm::$couponModel);
+    }
+
+    public function withCoupon($coupon): self
+    {
+        $couponModel = Coderstm::$couponModel;
+        if ($coupon = $couponModel::findByCode($coupon)) {
+            $this->coupon()->associate($coupon);
+        }
+
+        return $this;
+    }
+
+    public function canApplyCoupon($coupon = null)
+    {
+        $coupon = $coupon ?? $this->coupon;
+        $foreignKey = $this->getUserForeignKey();
+        $userId = $this->{$foreignKey};
+        if ($coupon && $coupon->canApplyToPlan($this->plan)) {
+            if ($coupon->duration->value === 'once') {
+                if ($coupon->redeems()->where($foreignKey, $userId)->exists()) {
+                    return null;
+                }
+            }
+            if ($coupon->duration->value === 'repeating') {
+                if ($coupon->redeems()->where($foreignKey, $userId)->count() >= $coupon->duration_in_months) {
+                    return null;
+                }
+            }
+
+            return $coupon;
+        }
+
+        return null;
+    }
+
+    protected function discount()
+    {
+        if ($coupon = $this->canApplyCoupon()) {
+            $discountType = match ($coupon->discount_type) {
+                'percentage' => DiscountLine::TYPE_PERCENTAGE,
+                'fixed' => DiscountLine::TYPE_FIXED_AMOUNT,
+                'override' => DiscountLine::TYPE_PRICE_OVERRIDE,
+                default => DiscountLine::TYPE_PERCENTAGE,
+            };
+
+            return ['type' => $discountType, 'value' => $coupon->value, 'description' => $coupon->name, 'coupon_id' => $coupon->id, 'coupon_code' => $coupon->promotion_code, 'auto_applied' => false];
+        }
+
+        return null;
+    }
+}

@@ -1,50 +1,45 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Vm==
+<?php
+
+namespace Coderstm\Relations;
+
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Concerns\SupportsDefaultModels;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
+
+class MorphToOne extends MorphToMany
+{
+    use SupportsDefaultModels;
+
+    public function getResults()
+    {
+        return $this->first() ?: $this->getDefaultFor($this->getRelated());
+    }
+
+    public function initRelation(array $models, $relation)
+    {
+        foreach ($models as $model) {
+            $model->setRelation($relation, $this->getDefaultFor($model));
+        }
+
+        return $models;
+    }
+
+    public function match(array $models, Collection $results, $relation)
+    {
+        $dictionary = $this->buildDictionary($results);
+        foreach ($models as $model) {
+            if (isset($dictionary[$key = $model->{$this->parentKey}])) {
+                $value = $dictionary[$key];
+                $model->setRelation($relation, reset($value));
+            }
+        }
+
+        return $models;
+    }
+
+    public function newRelatedInstanceFor(Model $parent)
+    {
+        return $this->related->newInstance();
+    }
+}

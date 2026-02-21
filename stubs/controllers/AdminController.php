@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Module;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Password;
 use Coderstm\Notifications\NewAdminNotification;
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 
 class AdminController extends Controller
 {
@@ -22,7 +21,7 @@ class AdminController extends Controller
     {
         $this->useModel(Coderstm::$adminModel);
         $this->authorizeResource(Coderstm::$adminModel, 'admin', [
-            'except' => ['show', 'update', 'destroy', 'restore']
+            'except' => ['show', 'update', 'destroy', 'restore'],
         ]);
     }
 
@@ -33,12 +32,12 @@ class AdminController extends Controller
     {
         $admin = Coderstm::$adminModel::with('lastLogin', 'groups');
 
-        if ($request->has('filter') && !empty($request->filter)) {
+        if ($request->has('filter') && ! empty($request->filter)) {
             $admin->where(DB::raw("CONCAT(first_name,' ',last_name)"), 'like', "%{$request->filter}%");
             $admin->orWhere('email', 'like', "%{$request->filter}%");
         }
 
-        if ($request->has('group') && !empty($request->group)) {
+        if ($request->has('group') && ! empty($request->group)) {
             $admin->whereHas('groups', function ($query) use ($request) {
                 $query->where('id', $request->group);
             });
@@ -58,6 +57,7 @@ class AdminController extends Controller
 
         $admin = $admin->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
             ->paginate($request->rowsPerPage ?? 15);
+
         return new ResourceCollection($admin);
     }
 
@@ -67,7 +67,7 @@ class AdminController extends Controller
     public function options(Request $request)
     {
         $request->merge([
-            'option' => true
+            'option' => true,
         ]);
 
         return $this->index($request);
@@ -121,6 +121,7 @@ class AdminController extends Controller
             'groups',
             'lastLogin',
         ]);
+
         return response()->json($this->toArray($admin), 200);
     }
 
@@ -137,7 +138,7 @@ class AdminController extends Controller
         $rules = [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'email|unique:admins,email,' . $admin->id,
+            'email' => 'email|unique:admins,email,'.$admin->id,
             'password' => 'min:6|confirmed',
         ];
 
@@ -173,6 +174,7 @@ class AdminController extends Controller
     {
         $modules = Module::with('permissions')->get()->map(function ($item) {
             $item->label = __($item->name);
+
             return $item;
         });
 
@@ -212,7 +214,7 @@ class AdminController extends Controller
         }
 
         $admin->update([
-            'is_supper_admin' => !$admin->is_supper_admin
+            'is_supper_admin' => ! $admin->is_supper_admin,
         ]);
 
         $type = $admin->is_supper_admin ? 'marked' : 'unmarked';
@@ -238,10 +240,10 @@ class AdminController extends Controller
         }
 
         $admin->update([
-            'is_active' => !$admin->is_active
+            'is_active' => ! $admin->is_active,
         ]);
 
-        $type = !$admin->is_active ? 'active' : 'deactive';
+        $type = ! $admin->is_active ? 'active' : 'deactive';
 
         return response()->json([
             'message' => __('Staff account marked as :type successfully!', ['type' => __($type)]),

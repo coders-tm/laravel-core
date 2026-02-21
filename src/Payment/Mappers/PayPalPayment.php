@@ -1,119 +1,97 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Payment\Mappers;
+
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use DateTime;
+
+class PayPalPayment extends AbstractPayment
+{
+    public function __construct($response, PaymentMethod $paymentMethod)
+    {
+        if (is_array($response)) {
+            $response = json_decode(json_encode($response));
+        }
+        $this->paymentMethod = $paymentMethod;
+        if (isset($response->purchase_units[0]->payments->captures[0]->id)) {
+            $this->transactionId = $response->purchase_units[0]->payments->captures[0]->id;
+        } else {
+            $this->transactionId = $response->id ?? uniqid('pp_');
+        }
+        if (isset($response->purchase_units[0]->payments->captures[0]->amount)) {
+            $amount = $response->purchase_units[0]->payments->captures[0]->amount;
+            $this->amount = $amount->value;
+            $this->currency = $amount->currency_code;
+        } elseif (isset($response->purchase_units[0]->amount)) {
+            $amount = $response->purchase_units[0]->amount;
+            $this->amount = $amount->value;
+            $this->currency = $amount->currency_code;
+        } else {
+            $this->amount = 0;
+            $this->currency = config('app.currency', 'USD');
+        }
+        $this->status = match (strtoupper($response->status ?? 'CREATED')) {
+            'COMPLETED', 'APPROVED' => Payment::STATUS_COMPLETED,
+            'VOIDED', 'CANCELLED' => Payment::STATUS_CANCELLED,
+            'CREATED', 'SAVED', 'PAYER_ACTION_REQUIRED' => Payment::STATUS_PROCESSING,
+            default => Payment::STATUS_FAILED,
+        };
+        $this->note = "PayPal Order: {$response->id} (Status: {$this->status})";
+        $this->processedAt = isset($response->create_time) ? new DateTime($response->create_time) : new DateTime;
+        $this->metadata = $this->extractMetadata($response);
+    }
+
+    protected function extractMetadata($response): array
+    {
+        if (is_array($response)) {
+            $response = json_decode(json_encode($response));
+        }
+        $normalized = ['payment_method_type' => 'wallet', 'wallet_type' => 'paypal', 'paypal_order_id' => $response->id ?? null];
+        if (isset($response->payer)) {
+            $payer = $response->payer;
+            $normalized['payer_email'] = $payer->email_address ?? null;
+            if (isset($payer->name)) {
+                $normalized['payer_name'] = trim(($payer->name->given_name ?? '').' '.($payer->name->surname ?? ''));
+            }
+        }
+        if (isset($response->payment_source)) {
+            $paymentSource = $response->payment_source;
+            if (isset($paymentSource->paypal)) {
+                $normalized['payer_email'] = $paymentSource->paypal->email_address ?? $normalized['payer_email'] ?? null;
+            }
+            if (isset($paymentSource->card)) {
+                $card = $paymentSource->card;
+                $normalized['payment_method_type'] = 'card';
+                $brand = $card->brand ?? 'card';
+                $normalized['card_brand'] = ucfirst(strtolower($brand));
+                $normalized['last_four'] = substr($card->last_digits ?? '', -4);
+            } elseif (isset($paymentSource->venmo)) {
+                $normalized['payment_method_type'] = 'wallet';
+                $normalized['wallet_type'] = 'venmo';
+                $normalized['venmo_username'] = $paymentSource->venmo->user_name ?? null;
+            }
+        }
+        if (isset($response->purchase_units[0]->payments->captures[0]->seller_receivable_breakdown->paypal_fee->value)) {
+            $normalized['transaction_fee'] = $response->purchase_units[0]->payments->captures[0]->seller_receivable_breakdown->paypal_fee->value;
+        }
+        $normalized['payment_method'] = $this->buildDisplayString($normalized);
+
+        return array_filter($normalized);
+    }
+
+    private function buildDisplayString(array $metadata): string
+    {
+        if (isset($metadata['payment_method_type']) && $metadata['payment_method_type'] === 'card' && isset($metadata['card_brand']) && isset($metadata['last_four'])) {
+            return "{$metadata['card_brand']} •••• {$metadata['last_four']} (via PayPal)";
+        }
+        if (isset($metadata['wallet_type']) && $metadata['wallet_type'] === 'venmo') {
+            return 'Venmo'.(isset($metadata['venmo_username']) ? " (@{$metadata['venmo_username']})" : '');
+        }
+        if (isset($metadata['payer_email'])) {
+            return "PayPal ({$metadata['payer_email']})";
+        }
+
+        return 'PayPal';
+    }
+}

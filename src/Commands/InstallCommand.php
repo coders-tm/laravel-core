@@ -1,111 +1,113 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-vI5ox5E9duuTia4kUVQSioGA9mG0ZgUdlfQIpfu=
+<?php
+
+namespace Coderstm\Commands;
+
+use Illuminate\Console\Command;
+use Illuminate\Support\Str;
+
+class InstallCommand extends Command
+{
+    protected $signature = 'coderstm:install';
+
+    protected $description = 'Install all of the Coderstm resources and configure the package';
+
+    public function handle()
+    {
+        $this->comment('Publishing Coderstm Service Provider...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-provider']);
+        $this->comment('Publishing Coderstm Configuration...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-config']);
+        $this->comment('Publishing Coderstm Routes...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-routes']);
+        $this->comment('Publishing Coderstm Views...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-views']);
+        $this->comment('Publishing Coderstm Controllers...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-controllers']);
+        $this->comment('Publishing Coderstm Models...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-models']);
+        $this->comment('Publishing Coderstm Policies...');
+        $this->callSilent('vendor:publish', ['--tag' => 'coderstm-policies']);
+        $this->registerProviders();
+        $this->comment('Configuring cookie encryption for Laravel 12...');
+        $this->configureCookieEncryption();
+        $this->info('Coderstm scaffolding installed successfully.');
+        $this->line('');
+        $this->info('✓ Providers registered in bootstrap/providers.php');
+        $this->info('✓ Cookie encryption configured for Laravel 12');
+        $this->info('✓ Cart tokens excluded from encryption automatically');
+        $this->info('✓ Cart functionality configured and ready to use');
+    }
+
+    protected function registerProviders()
+    {
+        $namespace = Str::replaceLast('\\', '', $this->laravel->getNamespace());
+        $providersPath = base_path('bootstrap/providers.php');
+        if (! file_exists($providersPath)) {
+            $this->warn('bootstrap/providers.php not found. Please manually register the providers.');
+
+            return;
+        }
+        $providersContent = file_get_contents($providersPath);
+        $serviceProvider = "{$namespace}\\Providers\\CoderstmServiceProvider::class";
+        if (Str::contains($providersContent, $serviceProvider)) {
+            $this->info('Coderstm provider already registered in bootstrap/providers.php');
+
+            return;
+        }
+        $providers = (include $providersPath);
+        if (! is_array($providers)) {
+            $providers = [];
+        }
+        if (! in_array($serviceProvider, $providers)) {
+            $providers[] = $serviceProvider;
+        }
+        $newContent = "<?php\n\nreturn [\n";
+        foreach ($providers as $provider) {
+            $newContent .= "    {$provider},\n";
+        }
+        $newContent .= "];\n";
+        file_put_contents($providersPath, $newContent);
+        $this->updateProviderNamespace($namespace, 'CoderstmServiceProvider');
+        $this->info('Coderstm provider registered in bootstrap/providers.php');
+    }
+
+    protected function updateProviderNamespace($namespace, $providerName)
+    {
+        $providerPath = app_path("Providers/{$providerName}.php");
+        if (file_exists($providerPath)) {
+            $content = file_get_contents($providerPath);
+            $updatedContent = str_replace('namespace App\\Providers;', "namespace {$namespace}\\Providers;", $content);
+            file_put_contents($providerPath, $updatedContent);
+        }
+    }
+
+    protected function configureCookieEncryption()
+    {
+        $bootstrapPath = base_path('bootstrap/app.php');
+        if (! file_exists($bootstrapPath)) {
+            $this->warn('bootstrap/app.php not found. Please manually configure cookie encryption.');
+
+            return;
+        }
+        $bootstrapContent = file_get_contents($bootstrapPath);
+        if (strpos($bootstrapContent, "'cart_token'") !== false) {
+            $this->info('cart_token already excluded from cookie encryption.');
+
+            return;
+        }
+        $pattern = '/(->withMiddleware\\(function \\(Middleware \\$middleware\\): void \\{[^}]*\\})/s';
+        if (preg_match($pattern, $bootstrapContent, $matches)) {
+            $middlewareSection = $matches[1];
+            if (strpos($middlewareSection, 'encryptCookies') !== false) {
+                $newMiddlewareSection = preg_replace('/encryptCookies\\(except:\\s*\\[([^\\]]*)\\]/', "encryptCookies(except: [\n            'cart_token',\n            \$1", $middlewareSection);
+            } else {
+                $newMiddlewareSection = str_replace('->withMiddleware(function (Middleware $middleware): void {', "->withMiddleware(function (Middleware \$middleware): void {\n            \$middleware->encryptCookies(except: [\n                'cart_token',\n            ]);", $middlewareSection);
+            }
+            $bootstrapContent = str_replace($middlewareSection, $newMiddlewareSection, $bootstrapContent);
+            file_put_contents($bootstrapPath, $bootstrapContent);
+            $this->info('Cookie encryption configured to exclude cart_token.');
+        } else {
+            $this->warn('Could not find middleware configuration section in bootstrap/app.php. Please manually add the encryptCookies configuration.');
+        }
+    }
+}

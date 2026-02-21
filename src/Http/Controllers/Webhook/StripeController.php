@@ -1,59 +1,53 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-hw9bcp82ur8ZBEwln9Qg2W==
+<?php
+
+namespace Coderstm\Http\Controllers\Webhook;
+
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
+use Laravel\Cashier\Events\WebhookHandled;
+use Laravel\Cashier\Events\WebhookReceived;
+use Laravel\Cashier\Http\Middleware\VerifyWebhookSignature;
+use Stripe\Stripe;
+use Symfony\Component\HttpFoundation\Response;
+
+class StripeController extends Controller
+{
+    public function __construct()
+    {
+        if (config('cashier.webhook.secret')) {
+            $this->middleware(VerifyWebhookSignature::class);
+        }
+    }
+
+    public function handleWebhook(Request $request)
+    {
+        $payload = json_decode($request->getContent(), true);
+        $method = 'handle'.Str::studly(str_replace('.', '_', $payload['type']));
+        WebhookReceived::dispatch($payload);
+        if (method_exists($this, $method)) {
+            $this->setMaxNetworkRetries();
+            $response = $this->{$method}($payload);
+            WebhookHandled::dispatch($payload);
+
+            return $response;
+        }
+
+        return $this->missingMethod($payload);
+    }
+
+    protected function successMethod($parameters = [])
+    {
+        return new Response('Webhook Handled', 200);
+    }
+
+    protected function missingMethod($parameters = [])
+    {
+        return new Response;
+    }
+
+    protected function setMaxNetworkRetries($retries = 3)
+    {
+        Stripe::setMaxNetworkRetries($retries);
+    }
+}

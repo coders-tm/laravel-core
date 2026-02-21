@@ -1,54 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
+
+class Mix
+{
+    public function __invoke($path, $themeName)
+    {
+        static $manifests = [];
+        if (! str_starts_with($path, '/')) {
+            $path = "/{$path}";
+        }
+        if (is_file(self::assetsPath('hot', $themeName))) {
+            $url = rtrim(file_get_contents(self::assetsPath('hot', $themeName)));
+            $customUrl = app('config')->get('app.mix_hot_proxy_url');
+            if (! empty($customUrl)) {
+                return new HtmlString("{$customUrl}{$path}");
+            }
+            if (Str::startsWith($url, ['http://', 'https://'])) {
+                return new HtmlString(Str::after($url, ':').$path);
+            }
+
+            return new HtmlString("//localhost:8080{$path}");
+        }
+        $manifestPath = static::assetsPath('mix-manifest.json', $themeName);
+        if (! isset($manifests[$manifestPath]) && is_file($manifestPath)) {
+            $manifests[$manifestPath] = json_decode(file_get_contents($manifestPath), true);
+        }
+        $manifest = $manifests[$manifestPath] ?? [];
+        $themeFile = Theme::url($manifest[$path] ?? $path);
+
+        return new HtmlString($themeFile);
+    }
+
+    private static function assetsPath(string $path, string $themeName)
+    {
+        $mixPath = Theme::mixPath($themeName);
+
+        return public_path("{$mixPath}/{$path}");
+    }
+}

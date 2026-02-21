@@ -1,45 +1,55 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-HR+cPtQ8/YN/8Mh32eOuQmPAzPaRv1/c4crViz4U4lDnyw7Zg/EE48jBnHIPVnjGkExllM7tEstE
-A5OmePdwpF5Oh5CQQGEVJyMjJgcfHKZubFBBsRzdkm9GFecoKA7VE0wrcQ93mloiTnIjBPTBSGgf
-n+24Ka9fGVzH7yLSohBUVMXRNfgVwzGrq2PG0b/5mF76fSpwGCjzBVAkN1VBHyeFkQkyNEl4Vh3N
-RdenQT3V8ov21mSptbQdeq3lVxE6tCcz8yjISkV+uFa4O3NQ8XFXodQ8WyYhRqU5RQt+M2kHLAah
-RZbK8/zLKJEMgoxEP1CCs+rrnJ14TuZVKVZNz0tf8+vbzY7ERAut7HjUzCdYc1WbfSCuyIHc4Rws
-Jcjqj/8vJyiRKlkM9a57/J1XSUNeOgk8Fpi7R1cTo3WnV++SJLO177y4Xj18bjoCuSHarIlYIQFd
-ZfwZlGaD/TZhnCHkIlfChVEBVwVXNZZmqVB4h3B1inR4ft+Ns3/7X9QwWFagfEP+gHjzV+B/Vfv6
-zTQSoMWgjhUlYJkzk0YK6IcWNrsAxvmM93Oln0/IdbmS1lljfjMf3hvfBnD5fgIPKTmQAu1fc5xX
-Tei7xPh2p7OaUGSB1Qfk+imgwJyi39hfo0oaY6o/E6DJ//KFNMJ/vmUt338ZmK3+X96LKYhJ1zD7
-+32C2T9qqi3RKHCQENRBI0Cql9xebDH8+H/D9yAXyi80CifsyfGcstB1wkI6vktoQ4OKR9iIRsfP
-awu3rhvdWbRwVYIcgINaEWr/RIzcluROHUoj6w3Psnc39gvvuTebAUrpdfSXv3LHrLNRsVD7wRYI
-D6QE7FxzNacgqyW9evm3mXUDCKuaxFb9iCyzx9JsVji38V5x5mvDVL77t2/H5+awkyUPsbsqAuL+
-3o8xujY6REllsPWiXHJqT8U4ZqV+CnU67pV2Ksl9/WYD3/iwiwV/4TUJR1NA6zbeBHjaiVXfZjba
-863wZHh/lRTjDTDZ7q+WblEaSOYmhLEirbpGmgxjWUYe678EHsf81uwog1F9lin+cHH0ySWG0AzZ
-mkExuaEA9IjR9UCv9D3G2mliuxFvsnTwpr8G8OGWbzw5YIURIfuCh3tBqvcrnA26DqfQycJth/7f
-yK5CKf2VvDq3AN6a++Bn9v/2/DsuAXHQCPXItyomKsDhnaJq3vFQgC0q2IbHYPEMqSZ89geDRrTU
-QmsLKI2a8pSpqA2swLc32wDg1fDzVyzzpZUHkEV6R7erbgcpCQU/bUGnXL4If1ocpF7At1Ambcg1
-RwPGo5LJ0xEZf0c0zMxeewS2KljeMBRlosz2KArO9IBHHwmeVRrlz1iNxLxugqFOAScj98k1X0Ls
-GUZYkQmdP+uko7oP+5Wj5R0qPWnZoFxmI+yV8lPzfuQ0JMcRx7VUaucm5T7yRzD622VS52nnEPNa
-rOzDsBJhTSvrKPcESrEVPD1ui9yjnhg5kQQuOPFosyPXhLg/hIiGCUob4cM543yGfhTwbZ4rse4A
-YILirMZlAne7uHTyNGHuHb4zOLY19203ICBlZGTEleALzmhUXyycKfX8QbqjISRKcLAEj7eLB8nh
-EGTmGEbLXElvU5/cnf9ynxFrBQHBxym5zDY9HWubFp9j05Myu/0nyb8QRK8R8WUjlVBDHBQ1zE5j
-dNsyPFV/X/T3/upsipdCy96KAWO6qqkCpSSbLcqtH0uOfd+woJzqU8jAjTcu2CIwIc4p672xzFEC
-oSnF9wpDi8qa/uwA7YC9vw35dSJLD3CCUOrNdnetu0rJ6LBFZ2zUdiA+QCkUMzXqSlZxia0OGWUz
-CkSpDtKuNhxHQphrBP6hs6/Sw/L4/NLnaF8ivTdh2dfGr/6OjV+v1wLygvHIWyhfyKhE6i22HZ3J
-fVQpLkii0oZtqXLESoW3rI2pFj+WxXpXfi7CeRnLjncX3OLb4O8fZIILC0b+TCLdCquTpus+/xsG
-b6vPBEtMu2MvWI9+qUJDBR31a9GXED8F8IjX73HnhFQ2mO/eWmN/W06wtu02vAMipXS9EVrNvJcV
-nqJOJUZ8n4q1UzpcmAOeTRVkUKlXtZi59CDI3AAhxX3KZaEYnnEeBxaGSYllxxni85fJl35VJf5t
-X7ij5th+WlwvXXlL+noUkbWU4hZISXmSH1LOPymS2ME8XMoxol+khYlsQIZPo4Bb2x4wEIuLDMr1
-nOPhNYkRRt/ntbS4O+pGpXLbGDrwbz2edaEHlvxq942mlQ4gIYLcq9JgZcMmWdxlaY4XLaZjZ50k
-+recIFnsE5z010dJZzQzay0uWAvCk3qSlpIfbEND6SQ1Z/BrkViSu/5H1DGrpOiTwc9dlFKb5J1h
-6WOMWpE/y1HUUB6nKVZMhN04WAE/R+/tEk2PHUam7TVctWdd8Rw4E2It/VhP1J2AIMg7Waro5H/t
-QkuHeWYwwECX8AeA1l3k31wwrle5e07AmmO0Xf8E7y2A89ZMebpqAN6bh0Z0mYQsGBDYIZIhDrhX
-TkUMFOWn7U4In/2gAdueQqz8IR7fk7/HFzFSX6P7n6mSLXpRWOmJQ3SeKm+n5J49xeBp94UBZP5X
-sc2SX9fCW9JlGMlAmzmg59UOpZLDSqDLlEfqfiT1hVC94jEWLB8jTPpgT9GRCkIB85f/NIAST/Bi
-4Ib5q4S0OcPhUKSJ9P0i7ix/v4faGeuDhhzBc5dmSPXDTq/nJgRkzv1t//5Mq074CqwLb7JK7lcL
-PlGPnMyCtRqthpsqM++FAhxYQp3DQTseGweoL3L/DfMe4t2mMKxEKG0/znkcUGpaBWgGPfBbgv/C
-t8byxb+NdMInsRJ8L54EEkgCSVfMPzu5U0Dvxlc2f+4XQADdAd7CpJYhfCPnYVVsVKwBJxKU/HvF
-zFUISHH+E5pigzYiXZ0YEpKgRc45eN0ZHh/dc11Kngji74pK5Cb0yX4gho2f5I/1iQ+AkFjWdD8D
-jomcCZudU53slJPfp1zwT4s/qh/5UbAra4aDt2WFIqqo7KkC6mLtTJS8bxlzOpXW64b23y8aN46k
-ZM74AGDYKTOcMdsKBYf0h77PNCeLHlZPjSm2VGSkbz2tQKaIT61uUiXjLwyFGXLjVe0B1Xziphq7
-eN9PqY/+ISGjLwfyRlwnhD4AZaimkRW6B1qV
+<?php
+
+namespace Coderstm\Services\Charts;
+
+use Illuminate\Http\Request;
+
+class ChartService
+{
+    protected Request $request;
+
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+    }
+
+    public function getRevenueChart(): array
+    {
+        return (new RevenueChart($this->request))->get();
+    }
+
+    public function getSubscriptionChart(): array
+    {
+        return (new SubscriptionChart($this->request))->get();
+    }
+
+    public function getCustomerChart(): array
+    {
+        return (new CustomerChart($this->request))->get();
+    }
+
+    public function getOrderChart(): array
+    {
+        return (new OrderChart($this->request))->get();
+    }
+
+    public function getMrrChart(): array
+    {
+        return (new MrrChart($this->request))->get();
+    }
+
+    public function getChurnChart(): array
+    {
+        return (new ChurnChart($this->request))->get();
+    }
+
+    public function getRevenueBreakdown(): array
+    {
+        return (new RevenueBreakdownChart($this->request))->get();
+    }
+
+    public function getMembersBreakdown(): array
+    {
+        return (new MembersBreakdownChart($this->request))->get();
+    }
+}

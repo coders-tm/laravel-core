@@ -1,63 +1,76 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Data;
+
+use ArrayAccess;
+use JsonSerializable;
+
+class CartData implements ArrayAccess, JsonSerializable
+{
+    public int $count = 0;
+
+    public int $uniqueItemCount = 0;
+
+    public mixed $items = [];
+
+    public float $subtotal = 0.0;
+
+    public string $formattedSubtotal = '$0.00';
+
+    public bool $isEmpty = true;
+
+    public string $currency = 'USD';
+
+    public string $currencySymbol = '$';
+
+    public function __construct(array $data = [])
+    {
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key)) {
+                if ($key == 'items') {
+                    $value = fluent_data($value);
+                }
+                $this->{$key} = $value;
+            }
+        }
+    }
+
+    public function toArray(): array
+    {
+        return ['count' => $this->count, 'uniqueItemCount' => $this->uniqueItemCount, 'items' => $this->items, 'subtotal' => $this->subtotal, 'formattedSubtotal' => $this->formattedSubtotal, 'isEmpty' => $this->isEmpty, 'currency' => $this->currency, 'currencySymbol' => $this->currencySymbol];
+    }
+
+    public function jsonSerialize(): array
+    {
+        return $this->toArray();
+    }
+
+    public function offsetExists($offset): bool
+    {
+        return property_exists($this, $offset);
+    }
+
+    public function offsetGet($offset): mixed
+    {
+        return $this->{$offset} ?? null;
+    }
+
+    public function offsetSet($offset, $value): void
+    {
+        if (property_exists($this, $offset)) {
+            $this->{$offset} = $value;
+        }
+    }
+
+    public function offsetUnset($offset): void {}
+
+    public function __get($name)
+    {
+        return $this->{$name} ?? null;
+    }
+
+    public function __isset($name): bool
+    {
+        return property_exists($this, $name);
+    }
+}

@@ -1,41 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-3HaXkLk+HQ/mlkb1
+<?php
+
+namespace Coderstm\Notifications\Admins;
+
+use Coderstm\Models\Notification as Template;
+use Coderstm\Models\User;
+use Coderstm\Notifications\BaseNotification;
+
+class HoldMemberNotification extends BaseNotification
+{
+    public $user;
+
+    public $status;
+
+    public $subject;
+
+    public $message;
+
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+        $template = Template::default('admin:hold-release');
+        $data = ['user' => ['name' => $this->user->name, 'id' => $this->user->id, 'first_name' => $this->user->first_name, 'last_name' => $this->user->last_name, 'email' => $this->user->email, 'phone_number' => $this->user->phone_number]];
+        $rendered = $template->render($data);
+        $this->subject = $rendered['subject'];
+        $this->message = $rendered['content'];
+        parent::__construct($this->subject, $this->message);
+    }
+}

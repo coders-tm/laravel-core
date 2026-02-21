@@ -1,47 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Http\Controllers\User;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Http\Resources\WalletTransactionResource;
+use Illuminate\Http\Request;
+
+class WalletController extends Controller
+{
+    public function balance(Request $request)
+    {
+        $user = $request->user();
+        $wallet = $user->getOrCreateWallet();
+
+        return response()->json(['balance' => (float) $wallet->balance, 'formatted_balance' => format_amount($wallet->balance, config('app.currency', 'USD')), 'currency' => strtoupper(config('app.currency', 'USD'))]);
+    }
+
+    public function transactions(Request $request)
+    {
+        $user = $request->user();
+        $transactions = $user->walletTransactions()->with('transactionable')->orderBy('created_at', 'desc')->paginate($request->get('per_page', 15));
+
+        return WalletTransactionResource::collection($transactions);
+    }
+}

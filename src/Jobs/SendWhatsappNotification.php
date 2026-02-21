@@ -1,41 +1,28 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-tCpZZHOhQ+Gp0Oww6C1WLW==
+<?php
+
+namespace Coderstm\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Twilio\Rest\Client;
+
+class SendWhatsappNotification implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $phoneNumber;
+
+    public function __construct(protected $user, protected string $message)
+    {
+        $this->phoneNumber = $user->phone_number;
+    }
+
+    public function handle(): void
+    {
+        $twilio = new Client(config('alert.sid'), config('alert.token'));
+        $twilio->messages->create("whatsapp:{$this->phoneNumber}", ['from' => 'whatsapp:'.config('alert.from'), 'body' => html_text($this->message)]);
+    }
+}

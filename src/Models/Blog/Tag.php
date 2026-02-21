@@ -1,44 +1,40 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Blog;
+
+use Coderstm\Models\Blog;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Tag extends Model
+{
+    use HasFactory, HasSlug;
+
+    protected $table = 'blogs_tags';
+
+    protected $fillable = ['label', 'slug'];
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('label')->saveSlugsTo('slug')->preventOverwrite();
+    }
+
+    protected function label(): Attribute
+    {
+        return Attribute::make(set: fn ($value) => Str::lower($value));
+    }
+
+    public function blogs()
+    {
+        return $this->morphedByMany(Blog::class, 'blogs_taggable');
+    }
+
+    public function scopeWithOptions($query)
+    {
+        return $query->select('id', 'label', 'slug');
+    }
+}

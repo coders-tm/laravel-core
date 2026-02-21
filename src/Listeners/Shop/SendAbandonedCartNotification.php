@@ -1,37 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Listeners\Shop;
+
+use Coderstm\Events\Checkout\Abandoned;
+use Coderstm\Notifications\Shop\AbandonedCartNotification;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Notification as NotificationFacade;
+
+class SendAbandonedCartNotification implements ShouldQueue
+{
+    public function handle(Abandoned $event)
+    {
+        $cart = $event->cart;
+        if ($cart->recovery_email_sent_at) {
+            return;
+        }
+        $customer = $cart->customer;
+        $email = $cart->email ?: $customer?->email;
+        if (! $email) {
+            return;
+        }
+        if ($customer) {
+            $customer->notify(new AbandonedCartNotification($cart));
+        } else {
+            NotificationFacade::route('mail', $email)->notify(new AbandonedCartNotification($cart));
+        }
+        $cart->update(['recovery_email_sent_at' => now()]);
+    }
+}

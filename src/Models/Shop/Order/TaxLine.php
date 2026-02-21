@@ -1,33 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Models\Shop\Order;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class TaxLine extends Model implements \Coderstm\Contracts\Currencyable
+{
+    public function getCurrencyFields(): array
+    {
+        return ['amount'];
+    }
+
+    use HasFactory;
+
+    public $timestamps = false;
+
+    protected $fillable = ['label', 'rate', 'amount', 'type'];
+
+    const TYPE_NORMAL = 'normal';
+
+    const TYPE_COMPOUND = 'compound';
+
+    protected $hidden = ['taxable_type', 'taxable_id'];
+
+    public function taxable()
+    {
+        return $this->morphTo();
+    }
+}

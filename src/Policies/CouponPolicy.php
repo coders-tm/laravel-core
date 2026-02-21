@@ -1,48 +1,54 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-bLPB9RpZYMeBRrCvS7HleTw6Vga=
+<?php
+
+namespace Coderstm\Policies;
+
+use Coderstm\Models\Coupon;
+use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model;
+
+class CouponPolicy
+{
+    use HandlesAuthorization;
+
+    public function before(Model $admin, string $ability)
+    {
+        if ($admin->is_supper_admin) {
+            return true;
+        }
+    }
+
+    public function viewAny(Model $admin): bool
+    {
+        return $admin->can('coupons:list');
+    }
+
+    public function view(Model $admin, Coupon $coupon): bool
+    {
+        return $admin->can('coupons:view');
+    }
+
+    public function create(Model $admin): bool
+    {
+        return $admin->can('coupons:new');
+    }
+
+    public function update(Model $admin, Coupon $coupon): bool
+    {
+        return $admin->can('coupons:edit');
+    }
+
+    public function delete(Model $admin): bool
+    {
+        return $admin->can('coupons:delete');
+    }
+
+    public function restore(Model $admin): bool
+    {
+        return $admin->can('coupons:restore');
+    }
+
+    public function forceDelete(Model $admin): bool
+    {
+        return $admin->can('coupons:forceDelete');
+    }
+}

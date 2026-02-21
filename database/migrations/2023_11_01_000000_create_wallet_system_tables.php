@@ -1,61 +1,61 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-jI5xeN9tDaKvQleTGR1N/CQ6
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        // Prevent duplicate table creation
+        if (Schema::hasTable('wallet_balances')) {
+            return;
+        }
+
+        // Wallet balances table
+        Schema::create('wallet_balances', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->decimal('balance', 10, 2)->default(0.00);
+            $table->timestamps();
+
+            $table->unique('user_id');
+        });
+
+        // Wallet transactions table
+        Schema::create('wallet_transactions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('wallet_balance_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('type'); // credit, debit
+            $table->string('source'); // refund, advance_payment, subscription_renewal
+            $table->decimal('amount', 10, 2);
+            $table->decimal('balance_before', 10, 2);
+            $table->decimal('balance_after', 10, 2);
+            $table->text('description')->nullable();
+            $table->json('metadata')->nullable();
+
+            // Polymorphic relation to source (Order, Subscription, Payment, etc.)
+            $table->nullableMorphs('transactionable', 'wallet_txn_morph_index');
+
+            $table->timestamps();
+
+            $table->index(['user_id', 'created_at']);
+            $table->index('type');
+            $table->index('source');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('wallet_transactions');
+        Schema::dropIfExists('wallet_balances');
+    }
+};

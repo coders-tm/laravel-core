@@ -1,47 +1,44 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\Action;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
+trait Actionable
+{
+    public function actions(): MorphMany
+    {
+        return $this->morphMany(Action::class, 'actionable');
+    }
+
+    public function attachAction(string $name): Action
+    {
+        return $this->actions()->firstOrCreate(compact('name'));
+    }
+
+    public function detachAction(string $name): void
+    {
+        $this->actions()->where('name', $name)->delete();
+    }
+
+    public function hasAction(string $name): bool
+    {
+        return $this->actions()->where('name', $name)->exists();
+    }
+
+    public function scopeHasAction($query, string $name): void
+    {
+        $query->whereHas('actions', fn ($query) => $query->where('name', $name));
+    }
+
+    public function scopeDoesntHaveAction($query, string $name): void
+    {
+        $query->whereDoesntHave('actions', fn ($query) => $query->where('name', $name));
+    }
+
+    public function detachActions(): void
+    {
+        $this->actions()->delete();
+    }
+}

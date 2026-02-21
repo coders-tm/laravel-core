@@ -1,32 +1,20 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Notifications\Admins;
+
+use Coderstm\Notifications\BaseNotification;
+
+class SubscriptionCanceledNotification extends BaseNotification
+{
+    public $subject;
+
+    public $message;
+
+    public function __construct($subscription)
+    {
+        $template = $subscription->renderNotification('admin:subscription-cancel');
+        $this->subject = $template->subject;
+        $this->message = $template->content;
+        parent::__construct($this->subject, $this->message);
+    }
+}

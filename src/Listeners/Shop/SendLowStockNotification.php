@@ -1,34 +1,14 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-MtIwXhxaEQKnYQOsO02kXFMb8G==
+<?php
+
+namespace Coderstm\Listeners\Shop;
+
+use Coderstm\Events\Shop\LowStockAlert;
+use Coderstm\Notifications\Shop\Admins\LowStockNotification;
+
+class SendLowStockNotification extends AdminNotificationListener
+{
+    public function handle(LowStockAlert $event): void
+    {
+        $this->notifyForEvent(fn ($admin) => new LowStockNotification($event->variant, $event->inventory, $event->threshold));
+    }
+}

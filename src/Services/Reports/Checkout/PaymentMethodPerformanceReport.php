@@ -1,102 +1,43 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-jYYHzSrMQ8KxMPGe5ZVhgDLJaEQn35Whwm==
+<?php
+
+namespace Coderstm\Services\Reports\Checkout;
+
+use Coderstm\Models\Payment;
+use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Support\Facades\DB;
+
+class PaymentMethodPerformanceReport extends AbstractReport
+{
+    protected array $columns = ['payment_provider' => ['label' => 'Payment Provider', 'type' => 'text'], 'total_attempts' => ['label' => 'Total Attempts', 'type' => 'number'], 'successful' => ['label' => 'Successful', 'type' => 'number'], 'failed' => ['label' => 'Failed', 'type' => 'number'], 'success_rate' => ['label' => 'Success Rate', 'type' => 'percentage'], 'total_amount' => ['label' => 'Total Amount', 'type' => 'currency'], 'avg_amount' => ['label' => 'Avg Amount', 'type' => 'currency'], 'avg_processing_time' => ['label' => 'Avg Processing Time (sec)', 'type' => 'number']];
+
+    public static function getType(): string
+    {
+        return 'payment-method-performance';
+    }
+
+    public function getDescription(): string
+    {
+        return 'Compare payment method success rates and performance metrics';
+    }
+
+    public function query(array $filters)
+    {
+        $dateDiffDays = $this->dbDateDiff('payments.processed_at', 'payments.created_at');
+
+        return DB::table('payments')->join('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.id')->whereBetween('payments.created_at', [$filters['from'], $filters['to']])->select(['payment_methods.provider as payment_provider', DB::raw('COUNT(*) as total_attempts'), DB::raw("SUM(CASE WHEN payments.status = '".Payment::STATUS_COMPLETED."' THEN 1 ELSE 0 END) as successful"), DB::raw("SUM(CASE WHEN payments.status = '".Payment::STATUS_FAILED."' THEN 1 ELSE 0 END) as failed"), DB::raw("COALESCE(SUM(CASE WHEN payments.status = '".Payment::STATUS_COMPLETED."' THEN payments.amount ELSE 0 END), 0) as total_amount"), DB::raw("COALESCE(AVG(CASE WHEN payments.status = '".Payment::STATUS_COMPLETED."' THEN payments.amount ELSE NULL END), 0) as avg_amount"), DB::raw("COALESCE(AVG(CASE WHEN payments.processed_at IS NOT NULL THEN ({$dateDiffDays}) * 86400 END), 0) as avg_processing_time")])->groupBy('payment_methods.provider')->orderBy('payment_methods.provider');
+    }
+
+    public function toRow($row): array
+    {
+        $successRate = $row->total_attempts > 0 ? $row->successful / $row->total_attempts * 100 : 0;
+
+        return ['payment_provider' => ucfirst($row->payment_provider ?? ''), 'total_attempts' => (int) ($row->total_attempts ?? 0), 'successful' => (int) ($row->successful ?? 0), 'failed' => (int) ($row->failed ?? 0), 'success_rate' => (float) $successRate, 'total_amount' => (float) ($row->total_amount ?? 0), 'avg_amount' => (float) ($row->avg_amount ?? 0), 'avg_processing_time' => $this->formatNumber($row->avg_processing_time ?? 0, 1)];
+    }
+
+    public function summarize(array $filters): array
+    {
+        $stats = DB::table('payments')->join('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.id')->whereBetween('payments.created_at', [$filters['from'], $filters['to']])->select([DB::raw('COUNT(*) as total_attempts'), DB::raw("SUM(CASE WHEN status = '".Payment::STATUS_COMPLETED."' THEN 1 ELSE 0 END) as successful"), DB::raw("COALESCE(SUM(CASE WHEN status = '".Payment::STATUS_COMPLETED."' THEN amount ELSE 0 END), 0) as total_amount")])->first();
+
+        return ['total_attempts' => (int) $stats->total_attempts, 'successful' => (int) $stats->successful, 'total_amount' => (float) $stats->total_amount, 'overall_success_rate' => (float) ($stats->total_attempts > 0 ? $stats->successful / $stats->total_attempts * 100 : 0)];
+    }
+}

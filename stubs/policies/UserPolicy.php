@@ -35,6 +35,7 @@ class UserPolicy
         if (is_user()) {
             return $user->id == user()->id;
         }
+
         return $admin->can('members:view');
     }
 

@@ -1,57 +1,57 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Traits;
+
+use Coderstm\Models\WalletBalance;
+use Coderstm\Models\WalletTransaction;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
+trait HasWallet
+{
+    public function walletBalance(): HasOne
+    {
+        return $this->hasOne(WalletBalance::class, 'user_id');
+    }
+
+    public function walletTransactions(): HasMany
+    {
+        return $this->hasMany(WalletTransaction::class, 'user_id');
+    }
+
+    public function getOrCreateWallet(): WalletBalance
+    {
+        return $this->walletBalance()->firstOrCreate(['user_id' => $this->id], ['balance' => 0.0]);
+    }
+
+    public function getWalletBalance(): float
+    {
+        return (float) $this->getOrCreateWallet()->balance;
+    }
+
+    public function creditWallet(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
+    {
+        $wallet = $this->getOrCreateWallet();
+
+        return $wallet->credit($amount, $source, $description, $transactionable, $metadata);
+    }
+
+    public function debitWallet(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
+    {
+        $wallet = $this->getOrCreateWallet();
+
+        return $wallet->debit($amount, $source, $description, $transactionable, $metadata);
+    }
+
+    public function hasWalletBalance(float $amount): bool
+    {
+        return $this->getWalletBalance() >= $amount;
+    }
+
+    public function getFormattedWalletBalanceAttribute(): string
+    {
+        $wallet = $this->getOrCreateWallet();
+
+        return format_amount($wallet->balance, config('app.currency', 'USD'));
+    }
+}

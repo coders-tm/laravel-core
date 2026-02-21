@@ -1,225 +1,167 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-z+rCn775WXlSshOElDXF7VP/YRYfiHaGJfe=
+<?php
+
+namespace Coderstm\Http\Controllers\Admin;
+
+use Coderstm\Http\Controllers\Controller;
+use Coderstm\Http\Resources\ReportExportResource;
+use Coderstm\Jobs\GenerateReport;
+use Coderstm\Models\ReportExport;
+use Coderstm\Services\Reports\ReportService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+class ReportExportsController extends Controller
+{
+    public function index(Request $request)
+    {
+        $validated = $request->validate(['type' => 'nullable|string|in:'.implode(',', ReportService::all()), 'status' => 'nullable|string|in:pending,processing,completed,failed', 'category' => 'nullable|string|in:'.implode(',', array_keys(ReportService::grouped()))]);
+        $query = ReportExport::forAdmin($request->user()->id)->with('admin')->latest();
+        if (! empty($validated['type'])) {
+            $query->ofType($validated['type']);
+        }
+        if (! empty($validated['status'])) {
+            $query->withStatus($validated['status']);
+        }
+        if (! empty($validated['category'])) {
+            $categoryTypes = ReportService::forCategory($validated['category']);
+            $query->whereIn('type', $categoryTypes);
+        }
+        $exports = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?? 15);
+
+        return ReportExportResource::collection($exports);
+    }
+
+    public function store(Request $request): JsonResponse
+    {
+        $typeValidation = $request->validate(['type' => 'required|string|in:'.implode(',', ReportService::all()), 'category' => 'nullable|string|in:'.implode(',', array_keys(ReportService::grouped()))]);
+        $type = $typeValidation['type'];
+        try {
+            $report = ReportService::resolve($type);
+            $filters = $request->input('filters', []);
+            $filters = $report->validate($filters);
+            $validated = $request->validate(['category' => 'nullable|string|in:'.implode(',', array_keys(ReportService::grouped())), 'fields' => 'nullable|array', 'fields.*' => 'string']);
+            $category = $validated['category'] ?? ReportService::getCategory($type);
+            $format = 'csv';
+            $fields = $validated['fields'] ?? [];
+            $extension = 'csv';
+            $reportExport = ReportExport::create(['admin_id' => user('id'), 'type' => $type, 'status' => 'pending', 'filters' => array_merge($filters, ['category' => $category, 'fields' => $fields, 'format' => $format]), 'file_name' => sprintf('%s-report-%s.%s', $type, now()->format('Y-m-d-His'), $extension)]);
+            GenerateReport::dispatch($reportExport);
+
+            return response()->json(['message' => 'Report generation started. You will be able to download it shortly.', 'report_export' => $reportExport], 202);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Unable to create report export', 'error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function show(ReportExport $reportExport): JsonResponse
+    {
+        $this->authorize('view', $reportExport);
+
+        return response()->json(new ReportExportResource($reportExport->load('admin')));
+    }
+
+    public function download(ReportExport $reportExport): JsonResponse
+    {
+        $this->authorize('view', $reportExport);
+        if (! $reportExport->isCompleted()) {
+            return response()->json(['message' => 'Report is not ready for download yet.', 'status' => $reportExport->status], 400);
+        }
+        if (! $reportExport->fileExists()) {
+            return response()->json(['message' => 'Report file not found. It may have expired.'], 404);
+        }
+        $downloadUrl = Storage::temporaryUrl($reportExport->file_path, now()->addMinutes(5));
+
+        return response()->json(['message' => 'Download link generated successfully.', 'url' => $downloadUrl, 'name' => $reportExport->file_name, 'expires_at' => now()->addMinutes(5)->toIso8601String()], 200);
+    }
+
+    public function destroy(ReportExport $reportExport): JsonResponse
+    {
+        $this->authorize('delete', $reportExport);
+        $reportExport->delete();
+
+        return response()->json(['message' => 'Report export deleted successfully.']);
+    }
+
+    public function destroyMultiple(Request $request): JsonResponse
+    {
+        $validated = $request->validate(['ids' => 'required|array', 'ids.*' => 'integer|exists:report_exports,id']);
+        $count = ReportExport::forAdmin(user('id'))->whereIn('id', $validated['ids'])->get()->each(function ($export) {
+            $export->delete();
+        })->count();
+
+        return response()->json(['message' => "{$count} report export(s) deleted successfully."]);
+    }
+
+    public function data(Request $request): JsonResponse
+    {
+        $typeValidation = $request->validate(['type' => 'required|string|in:'.implode(',', ReportService::all())]);
+        $type = $typeValidation['type'];
+        try {
+            $report = ReportService::resolve($type);
+            $filters = $request->input('filters', []);
+            $filters = $report->validate($filters);
+            $perPage = $request->input('rowsPerPage', 15);
+            $page = $request->input('page', 1);
+            $result = $report->paginate($filters, $perPage, $page);
+
+            return response()->json($result);
+        } catch (\Throwable $e) {
+            report($e);
+
+            return response()->json(['message' => 'Unable to generate report data', 'error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function available(): JsonResponse
+    {
+        $grouped = ReportService::grouped();
+        $result = [];
+        foreach ($grouped as $category => $types) {
+            $result[$category] = array_map(function ($type) {
+                return ['value' => $type, 'label' => ReportService::getLabel($type)];
+            }, $types);
+        }
+
+        return response()->json(['reports' => $result, 'categories' => ReportService::getCategoryLabels()]);
+    }
+
+    public function metadata(Request $request): JsonResponse
+    {
+        $validated = $request->validate(['type' => 'required|string|in:'.implode(',', ReportService::all())]);
+        $type = $validated['type'];
+        try {
+            $report = ReportService::resolve($type);
+            $headers = $report->headers();
+            $description = $report->getDescription();
+            $fields = array_map(function ($key, $label) {
+                return ['value' => $key, 'label' => $label];
+            }, array_keys($headers), array_values($headers));
+
+            return response()->json(['type' => $type, 'label' => ReportService::getLabel($type), 'description' => $description, 'fields' => array_values($fields), 'category' => ReportService::getCategory($type)]);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Unable to retrieve report metadata', 'error' => $e->getMessage()], 400);
+        }
+    }
+
+    public function cleanup(): JsonResponse
+    {
+        $count = ReportExport::expired()->get()->each(function ($export) {
+            $export->delete();
+        })->count();
+
+        return response()->json(['message' => "{$count} expired report(s) cleaned up successfully."]);
+    }
+
+    public function retry(ReportExport $reportExport): JsonResponse
+    {
+        $this->authorize('view', $reportExport);
+        if (! $reportExport->isFailed()) {
+            return response()->json(['message' => 'Only failed reports can be retried.'], 400);
+        }
+        $reportExport->update(['status' => 'pending', 'error_message' => null, 'started_at' => null, 'completed_at' => null]);
+        GenerateReport::dispatch($reportExport);
+
+        return response()->json(['message' => 'Report generation restarted.', 'report_export' => $reportExport->fresh()]);
+    }
+}

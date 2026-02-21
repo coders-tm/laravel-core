@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Coderstm\Models\Group;
 use Coderstm\Models\Permission;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class GroupSeeder extends Seeder
 {

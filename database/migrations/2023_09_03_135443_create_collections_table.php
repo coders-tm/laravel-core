@@ -1,49 +1,43 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('collections', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name')->nullable()->index();
+            $table->string('slug')->nullable()->unique()->index();
+            $table->string('type')->nullable();
+            $table->string('status')->default('Active')->index();
+            $table->string('conditions_type')->nullable();
+            $table->text('description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->text('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('collections');
+    }
+};

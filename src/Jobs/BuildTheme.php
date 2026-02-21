@@ -1,36 +1,30 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Jobs;
+
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Artisan;
+
+class BuildTheme implements ShouldQueue
+{
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    protected $themeName;
+
+    protected $themePublic;
+
+    public function __construct($themeName, $themePublic = false)
+    {
+        $this->themeName = $themeName;
+        $this->themePublic = $themePublic;
+    }
+
+    public function handle()
+    {
+        Artisan::call('coderstm:theme-build', ['name' => $this->themeName, '--theme-public' => $this->themePublic, '--path' => str_replace(base_path('/'), '', config('theme.base_path'))]);
+    }
+}

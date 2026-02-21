@@ -1,33 +1,29 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-WjqBFX7L+B6Xpr6A
+<?php
+
+namespace Coderstm\Database\Factories\Shop\Product;
+
+use Coderstm\Models\Shop\Product\Weight;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class WeightFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Weight::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'unit' => ['kg', 'g', 'oz'][rand(0, 2)],
+            'value' => rand(2, 5) / 2,
+        ];
+    }
+}

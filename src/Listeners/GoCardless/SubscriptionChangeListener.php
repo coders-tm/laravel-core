@@ -1,41 +1,31 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Listeners\GoCardless;
+
+use Coderstm\Events\SubscriptionPlanChanged;
+use Coderstm\Services\GatewaySubscriptionFactory;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
+
+class SubscriptionChangeListener implements ShouldQueue
+{
+    public function __construct() {}
+
+    public function handle(SubscriptionPlanChanged $event)
+    {
+        $subscription = $event->subscription;
+        if ($subscription->provider !== 'gocardless') {
+            return;
+        }
+        try {
+            $service = GatewaySubscriptionFactory::make($subscription);
+            $mandateId = $service->getProviderId();
+            if (empty($mandateId)) {
+                return;
+            }
+            $service->updatePlan($event->hasIntervalChanged(), $event->hasPriceChanged());
+        } catch (\Throwable $e) {
+            Log::error('Failed to update GoCardless subscription', ['error' => $e->getMessage(), 'subscription_id' => $subscription->id]);
+        }
+    }
+}

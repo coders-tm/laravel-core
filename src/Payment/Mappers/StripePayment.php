@@ -1,153 +1,156 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Tm==
+<?php
+
+namespace Coderstm\Payment\Mappers;
+
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use DateTime;
+
+class StripePayment extends AbstractPayment
+{
+    public function __construct($response, PaymentMethod $paymentMethod)
+    {
+        $this->paymentMethod = $paymentMethod;
+        $this->transactionId = $response->id;
+        $this->amount = $response->amount / 100;
+        $this->currency = strtoupper($response->currency ?? config('app.currency', 'USD'));
+        $this->status = match ($response->status) {
+            'succeeded', 'requires_capture' => Payment::STATUS_COMPLETED,
+            'canceled' => Payment::STATUS_CANCELLED,
+            'processing', 'requires_action', 'requires_confirmation', 'requires_payment_method' => Payment::STATUS_PROCESSING,
+            default => Payment::STATUS_FAILED,
+        };
+        $this->note = "Stripe Payment Intent: {$this->transactionId} (Status: {$this->status})";
+        if (isset($response->last_payment_error)) {
+            $this->note .= " - Error: {$response->last_payment_error->message}";
+        }
+        if (isset($response->next_action->type)) {
+            $this->note .= " - Next action: {$response->next_action->type}";
+        }
+        $this->processedAt = isset($response->created) ? new DateTime("@{$response->created}") : new DateTime;
+        $this->metadata = $this->extractMetadata($response);
+    }
+
+    protected function extractMetadata($response): array
+    {
+        $normalized = [];
+        $paymentMethodDetails = null;
+        $paymentMethodObject = null;
+        if (isset($response->payment_method) && is_object($response->payment_method)) {
+            $paymentMethodObject = $response->payment_method;
+        }
+        if (isset($response->charges->data[0]->payment_method_details)) {
+            $paymentMethodDetails = $response->charges->data[0]->payment_method_details;
+        } elseif (isset($response->payment_method_details)) {
+            $paymentMethodDetails = $response->payment_method_details;
+        }
+        if (! $paymentMethodDetails && isset($response->latest_charge) && is_object($response->latest_charge)) {
+            if (isset($response->latest_charge->payment_method_details)) {
+                $paymentMethodDetails = $response->latest_charge->payment_method_details;
+            }
+        }
+        if ($paymentMethodObject && ! $paymentMethodDetails) {
+            $type = $paymentMethodObject->type ?? 'unknown';
+            $normalized['payment_method_type'] = $type;
+            if ($type === 'card' && isset($paymentMethodObject->card)) {
+                $card = $paymentMethodObject->card;
+                $normalized['card_brand'] = ucfirst($card->brand ?? 'card');
+                $normalized['last_four'] = $card->last4 ?? null;
+                $normalized['exp_month'] = $card->exp_month ?? null;
+                $normalized['exp_year'] = $card->exp_year ?? null;
+                $normalized['card_funding'] = $card->funding ?? null;
+                $normalized['country'] = $card->country ?? null;
+                if (isset($card->wallet)) {
+                    $walletType = $card->wallet->type ?? 'unknown';
+                    $normalized['wallet_type'] = $walletType;
+                }
+            }
+            if ($type === 'us_bank_account' && isset($paymentMethodObject->us_bank_account)) {
+                $bank = $paymentMethodObject->us_bank_account;
+                $normalized['bank_name'] = $bank->bank_name ?? null;
+                $normalized['last_four'] = $bank->last4 ?? null;
+                $normalized['account_type'] = $bank->account_type ?? null;
+            }
+            if ($type === 'sepa_debit' && isset($paymentMethodObject->sepa_debit)) {
+                $sepa = $paymentMethodObject->sepa_debit;
+                $normalized['bank_name'] = $sepa->bank_code ?? null;
+                $normalized['last_four'] = $sepa->last4 ?? null;
+                $normalized['country'] = $sepa->country ?? null;
+            }
+        }
+        if (! $paymentMethodDetails && empty($normalized)) {
+            $normalized['payment_method'] = 'Stripe';
+
+            return $normalized;
+        }
+        if ($paymentMethodDetails && empty($normalized)) {
+            $type = $paymentMethodDetails->type ?? 'unknown';
+            $normalized['payment_method_type'] = $type;
+            if ($type === 'card' && isset($paymentMethodDetails->card)) {
+                $card = $paymentMethodDetails->card;
+                $normalized['card_brand'] = ucfirst($card->brand ?? 'card');
+                $normalized['last_four'] = $card->last4 ?? null;
+                $normalized['exp_month'] = $card->exp_month ?? null;
+                $normalized['exp_year'] = $card->exp_year ?? null;
+                $normalized['card_funding'] = $card->funding ?? null;
+                $normalized['country'] = $card->country ?? null;
+                if (isset($card->wallet)) {
+                    $walletType = $card->wallet->type ?? 'unknown';
+                    $normalized['wallet_type'] = $walletType;
+                }
+            }
+            if ($type === 'us_bank_account' && isset($paymentMethodDetails->us_bank_account)) {
+                $bank = $paymentMethodDetails->us_bank_account;
+                $normalized['bank_name'] = $bank->bank_name ?? null;
+                $normalized['last_four'] = $bank->last4 ?? null;
+                $normalized['account_type'] = $bank->account_type ?? null;
+            }
+            if ($type === 'sepa_debit' && isset($paymentMethodDetails->sepa_debit)) {
+                $sepa = $paymentMethodDetails->sepa_debit;
+                $normalized['bank_name'] = $sepa->bank_code ?? null;
+                $normalized['last_four'] = $sepa->last4 ?? null;
+                $normalized['country'] = $sepa->country ?? null;
+            }
+        }
+        if (isset($response->charges->data[0]->receipt_url)) {
+            $normalized['receipt_url'] = $response->charges->data[0]->receipt_url;
+        } elseif (isset($response->latest_charge) && is_object($response->latest_charge) && isset($response->latest_charge->receipt_url)) {
+            $normalized['receipt_url'] = $response->latest_charge->receipt_url;
+        }
+        $normalized['payment_method'] = $this->buildDisplayString($normalized);
+
+        return array_filter($normalized);
+    }
+
+    private function buildDisplayString(array $metadata): string
+    {
+        if (isset($metadata['wallet_type'], $metadata['card_brand'], $metadata['last_four'])) {
+            $walletName = ucwords(str_replace('_', ' ', $metadata['wallet_type']));
+
+            return "{$walletName} ({$metadata['card_brand']} •••• {$metadata['last_four']})";
+        }
+        if (isset($metadata['card_brand'], $metadata['last_four'])) {
+            return "{$metadata['card_brand']} •••• {$metadata['last_four']}";
+        }
+        if (isset($metadata['bank_name'], $metadata['last_four'])) {
+            return "{$metadata['bank_name']} •••• {$metadata['last_four']}";
+        }
+        if (isset($metadata['payment_method_type']) && $metadata['payment_method_type'] === 'sepa_debit' && isset($metadata['last_four'])) {
+            return "SEPA Direct Debit •••• {$metadata['last_four']}";
+        }
+        if (isset($metadata['payment_method_type']) && $metadata['payment_method_type'] === 'klarna') {
+            return 'Klarna';
+        }
+        if (isset($metadata['payment_method_type']) && $metadata['payment_method_type'] === 'afterpay_clearpay') {
+            return 'Afterpay / Clearpay';
+        }
+        if (isset($metadata['payment_method_type']) && $metadata['payment_method_type'] === 'alipay') {
+            return 'Alipay';
+        }
+        if (! empty($metadata['payment_method_type'])) {
+            return ucfirst(str_replace('_', ' ', $metadata['payment_method_type']));
+        }
+
+        return 'Stripe';
+    }
+}

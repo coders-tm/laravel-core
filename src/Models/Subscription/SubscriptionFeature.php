@@ -1,72 +1,86 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-c+/PKJqfkMzupmIjs1VaBzYqsWzT2m==
+<?php
+
+namespace Coderstm\Models\Subscription;
+
+use Carbon\Carbon;
+use Coderstm\Traits\SerializeDate;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
+class SubscriptionFeature extends Model
+{
+    use HasFactory, SerializeDate;
+
+    protected $table = 'subscription_features';
+
+    protected $fillable = ['subscription_id', 'slug', 'label', 'type', 'resetable', 'value', 'used', 'reset_at'];
+
+    protected $casts = ['resetable' => 'boolean', 'reset_at' => 'datetime'];
+
+    protected $appends = ['remaining'];
+
+    public function subscription(): BelongsTo
+    {
+        return $this->belongsTo(\Coderstm\Models\Subscription::class);
+    }
+
+    public function isBoolean(): bool
+    {
+        return $this->type === 'boolean';
+    }
+
+    public function expired(): bool
+    {
+        if (is_null($this->reset_at)) {
+            return false;
+        }
+
+        return Carbon::now()->gte($this->reset_at);
+    }
+
+    public function getRemainingAttribute(): int
+    {
+        return $this->value - $this->used;
+    }
+
+    public function canUse(): bool
+    {
+        if ($this->isBoolean()) {
+            return $this->value === 1;
+        }
+        if ($this->value === -1) {
+            return true;
+        }
+
+        return $this->remaining > 0;
+    }
+
+    public function recordUsage(int $uses = 1, bool $incremental = true): self
+    {
+        if ($this->isBoolean()) {
+            return $this;
+        }
+        $this->used = $incremental ? $this->used + $uses : $uses;
+        $this->save();
+
+        return $this;
+    }
+
+    public function reduceUsage(int $uses = 1): self
+    {
+        $this->used = max($this->used - $uses, 0);
+        $this->save();
+
+        return $this;
+    }
+
+    public function resetUsage(): self
+    {
+        $this->used = 0;
+        $this->reset_at = $this->subscription->plan->getResetDate(now());
+        $this->save();
+
+        return $this;
+    }
+}

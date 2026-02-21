@@ -1,52 +1,34 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-Tz5iogkqmTDRiW==
+<?php
+
+namespace Coderstm\Contracts;
+
+use Coderstm\Payment\CallbackResult;
+use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentResult;
+use Coderstm\Payment\RefundResult;
+use Illuminate\Http\Request;
+
+interface PaymentProcessorInterface
+{
+    public function setupPaymentIntent(Request $request, Payable $payable): array;
+
+    public function confirmPayment(Request $request, Payable $payable): PaymentResult;
+
+    public function handleSuccessCallback(Request $request): CallbackResult;
+
+    public function handleCancelCallback(Request $request): CallbackResult;
+
+    public function getProvider(): string;
+
+    public function supportedCurrencies(): array;
+
+    public function validateCurrency(Payable $payable): void;
+
+    public function setPaymentMethod(\Coderstm\Models\PaymentMethod $paymentMethod): PaymentProcessorInterface;
+
+    public function getPaymentMethod(): ?\Coderstm\Models\PaymentMethod;
+
+    public function refund(\Coderstm\Models\Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult;
+
+    public function supportsRefund(): bool;
+}

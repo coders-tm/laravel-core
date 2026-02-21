@@ -1,67 +1,88 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
+<?php
+
+namespace Coderstm\Services;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class BackgroundWorker
+{
+    private static $lastSync = null;
+
+    private static $syncInterval = 300;
+
+    public function handle(Request $request, Closure $next)
+    {
+        if (! $this->isInitialized()) {
+            return $next($request);
+        }
+        if ($request->is('*license/manage') || $request->is('*license/update') || $request->is('*install*')) {
+            return $next($request);
+        }
+        if ($this->shouldSync()) {
+            if (! $this->performSync()) {
+                return $this->handleSyncError($request);
+            }
+        }
+
+        return $next($request);
+    }
+
+    protected function isInitialized()
+    {
+        $flag = base_path('storage/.installed');
+
+        return file_exists($flag);
+    }
+
+    private function shouldSync(): bool
+    {
+        if (static::$lastSync === null) {
+            static::$lastSync = time();
+
+            return true;
+        }
+
+        return time() - static::$lastSync >= static::$syncInterval;
+    }
+
+    private function performSync(): bool
+    {
+        static::$lastSync = time();
+        try {
+            $loader = app(ConfigLoader::class);
+            if (! $loader->isValid()) {
+                return false;
+            }
+
+            return $this->checkIntegrity();
+        } catch (\Throwable $e) {
+            logger()->error('Background worker sync failed: '.$e->getMessage());
+
+            return false;
+        }
+    }
+
+    private function checkIntegrity(): bool
+    {
+        $keys = ['coderstm.domain', 'coderstm.license_key', 'coderstm.app_id'];
+        foreach ($keys as $key) {
+            if (empty(config($key))) {
+                logger()->error("Config anomaly detected: {$key}");
+
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private function handleSyncError(Request $request)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Sync Error', 'message' => 'Background sync failed'], 403);
+        }
+
+        return redirect()->route('license-manage');
+    }
+}

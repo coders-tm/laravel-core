@@ -1,33 +1,26 @@
-<?php //002cd
-if(extension_loaded('ionCube Loader')){die('The file '.__FILE__." is corrupted.\n");}echo("\nScript error: the ".(($cli=(php_sapi_name()=='cli')) ?'ionCube':'<a href="https://www.ioncube.com">ionCube</a>')." Loader for PHP needs to be installed.\n\nThe ionCube Loader is the industry standard PHP extension for running protected PHP code,\nand can usually be added easily to a PHP installation.\n\nFor Loaders please visit".($cli?":\n\nhttps://get-loader.ioncube.com\n\nFor":' <a href="https://get-loader.ioncube.com">get-loader.ioncube.com</a> and for')." an instructional video please see".($cli?":\n\nhttp://ioncu.be/LV\n\n":' <a href="http://ioncu.be/LV">http://ioncu.be/LV</a> ')."\n\n");exit(199);
-?>
-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
-y+AtV7bxzY4VccvTGc3rqRSTvpUa
+<?php
+
+namespace Coderstm\Models\Shop\Product;
+
+use Coderstm\Models\Shop\Product;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
+
+class Tag extends Model
+{
+    use Core, HasSlug;
+
+    protected $fillable = ['name', 'slug'];
+
+    public function products()
+    {
+        return $this->morphedByMany(Product::class, 'taggable');
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()->generateSlugsFrom('name')->saveSlugsTo('slug')->preventOverwrite();
+    }
+}
