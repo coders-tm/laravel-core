@@ -93,8 +93,33 @@ trait ManageSubscriptionInvoices
         if ($product) {
             $title = "{$product} - {$title}";
         }
+        $lineItems = [['title' => $title, 'product_id' => $plan->product?->id, 'variant_id' => $plan->variant_id, 'metadata' => ['description' => "{$fromDate} - {$toDate}", 'plan_id' => $plan->id], 'price' => $plan->price, 'total' => $plan->price, 'quantity' => 1, 'options' => ['title' => $title], 'discount' => $this->discount()]];
+        if ($this->shouldChargeSetupFee($plan)) {
+            $setupFee = $this->getSetupFee($plan);
+            if ($setupFee > 0) {
+                $lineItems[] = ['title' => __('Admission Fee'), 'price' => $setupFee, 'total' => $setupFee, 'quantity' => 1, 'metadata' => ['type' => 'setup_fee']];
+            }
+        }
 
-        return [['title' => $title, 'product_id' => $plan->product?->id, 'variant_id' => $plan->variant_id, 'metadata' => ['description' => "{$fromDate} - {$toDate}", 'plan_id' => $plan->id], 'price' => $plan->price, 'total' => $plan->price, 'quantity' => 1, 'options' => ['title' => $title], 'discount' => $this->discount()]];
+        return $lineItems;
+    }
+
+    protected function shouldChargeSetupFee($plan): bool
+    {
+        if ($plan->setup_fee === 0.0) {
+            return false;
+        }
+        $hasOtherSubscriptions = \Coderstm\Models\Subscription::where('user_id', $this->user_id)->where('id', '!=', $this->id)->exists();
+        if ($hasOtherSubscriptions) {
+            return false;
+        }
+
+        return $this->invoices()->count() === 0;
+    }
+
+    protected function getSetupFee($plan): float
+    {
+        return $plan->setup_fee ?? config('coderstm.subscription.setup_fee', 0.0);
     }
 
     public function generateInvoice($start = false, $force = false)

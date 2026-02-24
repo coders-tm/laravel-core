@@ -53,7 +53,7 @@ class Admin extends Authenticatable
         return $this->morphOne(Log::class, 'logable')->whereType('created');
     }
 
-    public function is_active()
+    public function isActive()
     {
         return $this->is_active;
     }

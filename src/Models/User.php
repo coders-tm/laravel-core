@@ -8,18 +8,25 @@ use Coderstm\Enum\AppRag;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Exceptions\ImportFailedException;
 use Coderstm\Exceptions\ImportSkippedException;
+use Coderstm\Traits\Addressable;
 use Coderstm\Traits\Billable;
-use Coderstm\Traits\HasBelongsToOne;
+use Coderstm\Traits\Core;
+use Coderstm\Traits\Fileable;
+use Coderstm\Traits\HasApiTokens;
 use Coderstm\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
 use League\ISO3166\ISO3166;
 
-class User extends Admin implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use Billable, HasBelongsToOne, HasWallet;
+    use Addressable, Core, Fileable, HasApiTokens, Notifiable;
+    use Billable, HasWallet;
 
     protected $guard = 'users';
 
@@ -100,6 +107,21 @@ class User extends Admin implements MustVerifyEmail
         return $this->loadCount(['enquiries as unread_enquiries' => function (Builder $query) {
             $query->onlyActive();
         }]);
+    }
+
+    public function lastLogin(): MorphOne
+    {
+        return $this->morphOne(Log::class, 'logable')->where('type', 'login')->orderBy('created_at', 'desc');
+    }
+
+    public function createdBy(): MorphOne
+    {
+        return $this->morphOne(Log::class, 'logable')->whereType('created');
+    }
+
+    public function isActive()
+    {
+        return $this->is_active;
     }
 
     public function requestAccountDeletion()
@@ -237,6 +259,11 @@ class User extends Admin implements MustVerifyEmail
         return $query;
     }
 
+    public function scopeWhereName($query, $filter)
+    {
+        return $query->where(DB::raw('CONCAT(`first_name`,`last_name`)'), 'like', "%{$filter}%");
+    }
+
     public function scopeWithUnreadEnquiries($query): Builder
     {
         return $query->withCount(['enquiries as unread_enquiries' => function (Builder $query) {
@@ -309,6 +336,11 @@ class User extends Admin implements MustVerifyEmail
     public function orders()
     {
         return $this->hasMany(\Coderstm\Models\Shop\Order::class, 'customer_id');
+    }
+
+    public function getGuardAttribute()
+    {
+        return $this->guard;
     }
 
     protected static function newFactory()

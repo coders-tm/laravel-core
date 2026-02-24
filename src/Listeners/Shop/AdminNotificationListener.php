@@ -17,7 +17,7 @@ abstract class AdminNotificationListener implements ShouldQueue
         $query = $model::query()->where('is_supper_admin', true);
         if ($permission && method_exists($model, 'permissions')) {
             $query = $query->whereHas('permissions', function ($q) use ($permission) {
-                $q->where('scope', $permission)->wherePivot('access', 1);
+                $q->where('scope', 'like', "{$permission}%")->where('permissionables.access', 1);
             });
         }
         if (method_exists($model, 'scopeOnlyActive')) {

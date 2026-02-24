@@ -153,6 +153,9 @@ return [
         // Freeze configuration
         'freeze_fee' => (float) env('SUBSCRIPTION_FREEZE_FEE', 0.00), // Fee charged per freeze period
         'allow_freeze' => (bool) env('SUBSCRIPTION_ALLOW_FREEZE', true), // Enable/disable freeze functionality
+
+        // Setup fee configuration
+        'setup_fee' => (float) env('SUBSCRIPTION_SETUP_FEE', 0.00), // One-time admission fee
     ],
 
     /*

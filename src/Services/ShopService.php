@@ -110,10 +110,9 @@ class ShopService
 
     protected function refreshCartTotals(Checkout $cart): Checkout
     {
-        $cart->refresh();
         $repository = CheckoutRepository::fromCheckout($cart);
         $repository->calculate();
 
-        return $cart;
+        return $repository->checkout;
     }
 }

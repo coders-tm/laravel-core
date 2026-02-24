@@ -117,6 +117,7 @@ class SubscriptionCreationService
         try {
             $subscription->pay($paymentMethod->id);
         } catch (\Throwable $e) {
+            report($e);
             throw ValidationException::withMessages(['payment' => __('Failed to process payment: :message', ['message' => $e->getMessage()])]);
         }
     }

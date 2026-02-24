@@ -22,11 +22,11 @@ class Plan extends Model implements Currencyable
 {
     use Core, HasSlug, SerializeDate;
 
-    protected $fillable = ['label', 'description', 'is_active', 'default_interval', 'interval', 'interval_count', 'is_contract', 'contract_cycles', 'allow_freeze', 'freeze_fee', 'grace_period_days', 'price', 'trial_days', 'variant_id', 'metadata'];
+    protected $fillable = ['label', 'description', 'is_active', 'default_interval', 'interval', 'interval_count', 'is_contract', 'contract_cycles', 'allow_freeze', 'freeze_fee', 'grace_period_days', 'price', 'trial_days', 'setup_fee', 'variant_id', 'metadata'];
 
     protected $appends = ['feature_lines', 'price_formatted', 'interval_label', 'effective_price', 'has_trial_period'];
 
-    protected $casts = ['is_active' => 'boolean', 'is_contract' => 'boolean', 'allow_freeze' => 'boolean', 'interval_count' => 'integer', 'contract_cycles' => 'integer', 'trial_days' => 'integer', 'grace_period_days' => 'integer', 'freeze_fee' => 'decimal:2', 'interval' => PlanInterval::class, 'metadata' => 'json'];
+    protected $casts = ['is_active' => 'boolean', 'is_contract' => 'boolean', 'allow_freeze' => 'boolean', 'interval_count' => 'integer', 'contract_cycles' => 'integer', 'trial_days' => 'integer', 'grace_period_days' => 'integer', 'freeze_fee' => 'decimal:2', 'setup_fee' => 'double', 'interval' => PlanInterval::class, 'metadata' => 'json'];
 
     public function subscriptions(): HasMany
     {
@@ -215,7 +215,12 @@ class Plan extends Model implements Currencyable
 
     public function getCurrencyFields(): array
     {
-        return ['price', 'freeze_fee'];
+        return ['price', 'freeze_fee', 'setup_fee'];
+    }
+
+    protected function setupFee(): Attribute
+    {
+        return Attribute::make(get: fn ($value) => $value ?? config('coderstm.subscription.setup_fee', 0.0));
     }
 
     protected static function newFactory()

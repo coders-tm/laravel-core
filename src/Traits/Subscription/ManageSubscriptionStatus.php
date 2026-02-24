@@ -195,7 +195,7 @@ trait ManageSubscriptionStatus
             $amount = $invoice?->total();
             $status['invoice'] = ['amount' => $amount, 'key' => $invoice?->key];
         } elseif ($upcomingInvoice) {
-            $status['invoice'] = ['amount' => $upcomingInvoice->total(), 'date' => $upcomingInvoice->due_date->format('d M, Y')];
+            $status['invoice'] = ['amount' => $upcomingInvoice->total(), 'date' => $this->expires_at->format('d M, Y')];
         }
         if (in_array('plan', $extends)) {
             $status['plan'] = $this->plan;
