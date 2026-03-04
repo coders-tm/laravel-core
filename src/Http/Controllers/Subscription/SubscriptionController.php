@@ -188,7 +188,11 @@ class SubscriptionController extends Controller
                 throw ValidationException::withMessages(['subscription' => __('Contract subscriptions cannot be cancelled until the end of their term. Please contact support for assistance.')]);
             }
         }
-        $subscription->cancel();
+        if ($request->input('immediately', false)) {
+            $subscription->cancelNow();
+        } else {
+            $subscription->cancel();
+        }
         $subscription->cancelOpenInvoices();
         $user = $subscription->user;
         event(new \Coderstm\Events\SubscriptionCancel($subscription));
@@ -237,6 +241,32 @@ class SubscriptionController extends Controller
         } else {
             throw ValidationException::withMessages(['subscription' => 'No outstanding invoice found for this subscription.']);
         }
+    }
+
+    public function freeze(Request $request, $id)
+    {
+        $request->validate(['release_at' => 'required|date|after:today', 'reason' => 'nullable|string|max:500']);
+        $subscription = \Coderstm\Models\Subscription::findOrFail($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        if (! $subscription->canFreeze()) {
+            return response()->json(['message' => __('This subscription cannot be frozen.')], 422);
+        }
+        $freezeFee = $subscription->plan->freeze_fee ?? 0;
+        $subscription->freeze(\Carbon\Carbon::parse($request->release_at), $request->reason, $freezeFee);
+
+        return response()->json(['data' => $this->transformSubscription($subscription->fresh()), 'message' => __('Subscription has been frozen successfully!')], 200);
+    }
+
+    public function unfreeze(Request $request, $id)
+    {
+        $subscription = \Coderstm\Models\Subscription::findOrFail($id);
+        $this->assertUserSubscriptionAccess($subscription);
+        if (! $subscription->onFreeze()) {
+            return response()->json(['message' => __('This subscription is not frozen.')], 422);
+        }
+        $subscription->unfreeze();
+
+        return response()->json(['data' => $this->transformSubscription($subscription->fresh()), 'message' => __('Subscription has been unfrozen successfully!')], 200);
     }
 
     public function invoices(Request $request, $id)

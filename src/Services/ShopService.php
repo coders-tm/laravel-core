@@ -11,10 +11,31 @@ use Illuminate\Support\Facades\Log;
 
 class ShopService
 {
-    public function checkout(): Checkout
+    public function checkout(): ?Checkout
     {
         try {
-            return Checkout::getOrCreate();
+            $cartToken = $this->token();
+            if ($cartToken) {
+                $checkout = Checkout::where('cart_token', $cartToken)->whereIn('status', ['draft', 'pending'])->first();
+                if ($checkout) {
+                    return $checkout;
+                }
+            }
+            $userId = null;
+            if (function_exists('auth')) {
+                try {
+                    $userId = auth('sanctum')->check() ? auth('sanctum')->id() : null;
+                } catch (\Throwable $e) {
+                }
+            }
+            if ($userId) {
+                $checkout = Checkout::where('user_id', $userId)->whereIn('status', ['draft', 'pending'])->latest()->first();
+                if ($checkout) {
+                    return $checkout;
+                }
+            }
+
+            return null;
         } catch (\Throwable $e) {
             Log::error('ShopService::checkout Error: '.$e->getMessage());
 
@@ -25,6 +46,9 @@ class ShopService
     public function cart(): CartData
     {
         $checkout = $this->checkout();
+        if (! $checkout) {
+            return new CartData(['count' => 0, 'uniqueItemCount' => 0, 'items' => [], 'subtotal' => 0.0, 'formattedSubtotal' => format_amount(0), 'isEmpty' => true]);
+        }
         $checkoutRepository = CheckoutRepository::fromCheckout($checkout);
 
         return new CartData(['count' => $checkout->line_items->sum('quantity'), 'uniqueItemCount' => $checkout->line_items->count(), 'items' => $checkoutRepository->getCartItems(), 'subtotal' => (float) ($checkout->sub_total ?? 0), 'formattedSubtotal' => format_amount($checkout->sub_total ?? 0), 'isEmpty' => $checkout->line_items->isEmpty()]);
@@ -40,7 +64,7 @@ class ShopService
 
     public function addToCart(array $data): Checkout
     {
-        $cart = $this->checkout();
+        $cart = $this->checkout() ?? Checkout::getOrCreate();
         $product = Product::findOrFail($data['product']);
         $variant = null;
         if (isset($data['variant'])) {
@@ -73,6 +97,9 @@ class ShopService
     public function updateCartItem(int|string $lineItemId, int $quantity): Checkout
     {
         $cart = $this->checkout();
+        if (! $cart) {
+            throw new \Exception('Cart not found');
+        }
         $lineItem = $cart->line_items()->where('id', $lineItemId)->first();
         if (! $lineItem) {
             throw new \Exception('Item not found in cart');
@@ -89,6 +116,9 @@ class ShopService
     public function removeCartItem(int|string $lineItemId): Checkout
     {
         $cart = $this->checkout();
+        if (! $cart) {
+            throw new \Exception('Cart not found');
+        }
         $lineItem = $cart->line_items()->where('id', $lineItemId)->first();
         if ($lineItem) {
             $lineItem->forceDelete();
@@ -100,6 +130,9 @@ class ShopService
     public function clearCart(): Checkout
     {
         $cart = $this->checkout();
+        if (! $cart) {
+            throw new \Exception('Cart not found');
+        }
         $cart->line_items()->forceDelete();
         $cart->discount()->forceDelete();
         $cart->tax_lines()->forceDelete();

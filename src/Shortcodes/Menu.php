@@ -6,7 +6,7 @@ use Vedmant\LaravelShortcodes\Shortcode;
 
 class Menu extends Shortcode
 {
-    public $attributes = ['class' => ['default' => 'menu'], 'id' => ['default' => 'menu-1']];
+    public $attributes = ['class' => ['default' => 'menu'], 'item-class' => ['default' => 'menu-item'], 'id' => ['default' => 'menu-1']];
 
     public function render($content)
     {

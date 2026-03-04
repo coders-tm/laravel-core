@@ -600,7 +600,21 @@ if (! function_exists('theme')) {
      */
     function theme($path, $themeName = null)
     {
-        return app(Mix::class)(...func_get_args());
+        return app(\Coderstm\Services\Mix::class)(...func_get_args());
+    }
+}
+
+if (! function_exists('theme_vite')) {
+    /**
+     * Get the HTML tags for a theme's Vite assets.
+     *
+     * @param  array|string  $entrypoints
+     * @param  string|null  $themeName
+     * @return \Illuminate\Support\HtmlString
+     */
+    function theme_vite($entrypoints, $themeName = null)
+    {
+        return app(\Coderstm\Services\Vite::class)(...func_get_args());
     }
 }
 

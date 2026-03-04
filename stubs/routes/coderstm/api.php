@@ -231,6 +231,8 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('/', [Subscription\SubscriptionController::class, 'store'])->name('store');
         Route::post('/{subscription}', [Subscription\SubscriptionController::class, 'update'])->name('update');
         Route::post('/{subscription}/pay', [Subscription\SubscriptionController::class, 'pay'])->name('pay');
+        Route::post('/{subscription}/freeze', [Subscription\SubscriptionController::class, 'freeze'])->name('freeze');
+        Route::post('/{subscription}/unfreeze', [Subscription\SubscriptionController::class, 'unfreeze'])->name('unfreeze');
     });
 
     // Users

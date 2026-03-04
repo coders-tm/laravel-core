@@ -107,9 +107,9 @@ class Theme extends Base
         return public_path("{$mixPath}/{$path}");
     }
 
-    public static function url(string $asset, bool $absolute = true): ?string
+    public static function url(string $asset, bool $absolute = true, ?string $theme = null): ?string
     {
-        $theme = self::active();
+        $theme = $theme ?? self::active();
         $mixPath = self::mixPath($theme);
         if (! str_starts_with($asset, '/')) {
             $asset = "/{$asset}";

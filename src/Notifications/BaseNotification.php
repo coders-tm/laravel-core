@@ -57,7 +57,7 @@ class BaseNotification extends Notification
 
     public function toFcm($notifiable): CloudMessage
     {
-        return CloudMessage::fromArray(['notification' => array_filter(['title' => $this->pushSubject, 'body' => $this->pushMessage, 'image' => $this->pushImage]), 'topic' => 'global', 'data' => array_filter($this->pushData)]);
+        return CloudMessage::fromArray(['notification' => array_filter(['title' => $this->pushSubject, 'body' => $this->pushMessage, 'image' => $this->pushImage]), 'topic' => 'global', 'data' => array_map(fn ($v) => (string) $v, array_filter($this->pushData))]);
     }
 
     public function toTwilio($notifiable)

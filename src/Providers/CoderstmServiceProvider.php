@@ -115,7 +115,7 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function registerCommands()
     {
-        $this->commands([Commands\InstallCommand::class, Commands\CheckCanceledSubscriptions::class, Commands\CheckExpiredSubscriptions::class, Commands\BuildTheme::class, Commands\SubscriptionsRenew::class, Commands\ResetSubscriptionsUsages::class, Commands\ResumeSubscriptions::class, Commands\MigrateSubscriptionFeatures::class, Commands\MigrateOrderCommand::class, Commands\LangParseCommand::class, Commands\ProcessAbandonedCheckouts::class, Commands\RegeneratePages::class, Commands\UpdateExchangeRates::class, Commands\MakePagesJson::class, Commands\UpdateExchangeRates::class]);
+        $this->commands([Commands\InstallCommand::class, Commands\CheckCanceledSubscriptions::class, Commands\CheckExpiredSubscriptions::class, Commands\ThemeLink::class, Commands\SubscriptionsRenew::class, Commands\ResetSubscriptionsUsages::class, Commands\ResumeSubscriptions::class, Commands\MigrateSubscriptionFeatures::class, Commands\MigrateOrderCommand::class, Commands\LangParseCommand::class, Commands\ProcessAbandonedCheckouts::class, Commands\RegeneratePages::class, Commands\UpdateExchangeRates::class, Commands\MakePagesJson::class, Commands\UpdateExchangeRates::class]);
     }
 
     protected function defineManagementRoutes()
