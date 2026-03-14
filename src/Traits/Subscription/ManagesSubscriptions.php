@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Services\Period;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
 trait ManagesSubscriptions
@@ -15,7 +16,7 @@ trait ManagesSubscriptions
         if (empty($plan)) {
             throw new InvalidArgumentException('Please provide a plan when new subscription.');
         }
-        if ($plan instanceof \Illuminate\Support\Collection) {
+        if ($plan instanceof Collection) {
             $plan = $plan->first();
         }
         if (! $plan instanceof Coderstm::$planModel && ! is_object($plan)) {

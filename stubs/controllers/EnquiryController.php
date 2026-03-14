@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Enquiry;
 use Coderstm\Http\Controllers\Controller;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 
 class EnquiryController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {
@@ -20,7 +22,7 @@ class EnquiryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index(Request $request)
     {
@@ -54,7 +56,7 @@ class EnquiryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request, Enquiry $enquiry)
     {
@@ -113,8 +115,8 @@ class EnquiryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Enquiry  $enquiry
-     * @return \Illuminate\Http\Response
+     * @param  Enquiry  $enquiry
+     * @return Response
      */
     public function show(Request $request)
     {
@@ -127,7 +129,7 @@ class EnquiryController extends Controller
     /**
      * Create reply for the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function reply(Request $request, Enquiry $enquiry)
     {
@@ -156,7 +158,7 @@ class EnquiryController extends Controller
     /**
      * Change archived of specified resource from storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function changeArchived(Request $request, Enquiry $enquiry)
     {
@@ -174,7 +176,7 @@ class EnquiryController extends Controller
     /**
      * Change user archived of specified resource from storage.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function changeUserArchived(Request $request, Enquiry $enquiry)
     {

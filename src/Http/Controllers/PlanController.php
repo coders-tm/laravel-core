@@ -3,15 +3,17 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Coderstm;
+use Coderstm\Facades\Currency;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Gate;
 
 class PlanController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {
@@ -111,7 +113,7 @@ class PlanController extends Controller
             $plans->orWhere('id', $request->plan_id);
         }
         $plans = $plans->get();
-        $plans = \Coderstm\Facades\Currency::transform($plans);
+        $plans = Currency::transform($plans);
 
         return response()->json($plans, 200);
     }

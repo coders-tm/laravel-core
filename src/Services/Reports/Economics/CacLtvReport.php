@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Economics;
 
+use Carbon\Carbon;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,7 @@ class CacLtvReport extends AbstractReport
     {
         $newCustomers = (int) ($row->new_customers ?? 0);
         $totalRevenue = (float) ($row->total_revenue ?? 0);
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start)) ?? '';
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start)) ?? '';
         $marketingSpend = (float) config('coderstm.reports.marketing_spend', 0);
         $cac = $newCustomers > 0 ? $marketingSpend / $newCustomers : 0;
         $avgRevenuePerCustomer = $newCustomers > 0 ? $totalRevenue / $newCustomers : 0;

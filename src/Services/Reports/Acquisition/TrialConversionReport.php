@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Acquisition;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -45,7 +46,7 @@ class TrialConversionReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $trialsStarted = (int) ($row->trials_started ?? 0);
         $trialsConverted = (int) ($row->trials_converted ?? 0);
         $conversionRate = $trialsStarted > 0 ? $trialsConverted / $trialsStarted * 100 : 0;

@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services;
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
 class NotificationTemplateRenderer
@@ -9,7 +10,7 @@ class NotificationTemplateRenderer
     public function render(string $template, array $data = []): string
     {
         try {
-            $compiler = app('blade.compiler');
+            $compiler = new MaskSensitiveConfig(app(Filesystem::class), storage_path('framework/views'));
             $compiler->compileString($template);
             $template = preg_replace('/\\{\\{\\s+/', '{{', $template);
             $template = preg_replace('/\\s+\\}\\}/', '}}', $template);
@@ -20,7 +21,7 @@ class NotificationTemplateRenderer
                 mkdir(dirname($tempPath), 0755, true);
             }
             file_put_contents($tempPath, $template);
-            $processor = app(\Coderstm\Services\ShortcodeProcessor::class);
+            $processor = app(ShortcodeProcessor::class);
             $objectData = $processor->toObject($data);
             $rendered = view()->file($tempPath, $objectData)->render();
             @unlink($tempPath);
@@ -38,7 +39,7 @@ class NotificationTemplateRenderer
     public function validate(string $template): array
     {
         try {
-            $compiler = app('blade.compiler');
+            $compiler = new MaskSensitiveConfig(app(Filesystem::class), storage_path('framework/views'));
             $compiler->compileString($template);
 
             return ['valid' => true];

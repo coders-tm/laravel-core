@@ -2,7 +2,7 @@
 
 namespace Coderstm\Models\Subscription;
 
-use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,29 +14,20 @@ class SubscriptionFeature extends Model
 
     protected $table = 'subscription_features';
 
-    protected $fillable = ['subscription_id', 'slug', 'label', 'type', 'resetable', 'value', 'used', 'reset_at'];
+    protected $fillable = ['subscription_id', 'slug', 'label', 'type', 'resetable', 'value', 'used'];
 
-    protected $casts = ['resetable' => 'boolean', 'reset_at' => 'datetime'];
+    protected $casts = ['resetable' => 'boolean'];
 
     protected $appends = ['remaining'];
 
     public function subscription(): BelongsTo
     {
-        return $this->belongsTo(\Coderstm\Models\Subscription::class);
+        return $this->belongsTo(Subscription::class);
     }
 
     public function isBoolean(): bool
     {
         return $this->type === 'boolean';
-    }
-
-    public function expired(): bool
-    {
-        if (is_null($this->reset_at)) {
-            return false;
-        }
-
-        return Carbon::now()->gte($this->reset_at);
     }
 
     public function getRemainingAttribute(): int
@@ -78,7 +69,6 @@ class SubscriptionFeature extends Model
     public function resetUsage(): self
     {
         $this->used = 0;
-        $this->reset_at = $this->subscription->plan->getResetDate(now());
         $this->save();
 
         return $this;

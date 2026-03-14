@@ -2,9 +2,11 @@
 
 namespace Coderstm\Database\Factories;
 
+use Carbon\Carbon;
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Subscription;
+use Coderstm\Services\Period;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -45,12 +47,12 @@ class SubscriptionFactory extends Factory
      * Calculate expires_at based on plan interval
      *
      * @param  mixed  $plan
-     * @param  \DateTimeInterface  $startsAt
-     * @return \Carbon\Carbon
+     * @param  DateTimeInterface  $startsAt
+     * @return Carbon
      */
     protected function calculateExpiresAt($plan, $startsAt)
     {
-        $period = new \Coderstm\Services\Period(
+        $period = new Period(
             $plan->interval->value,
             $plan->interval_count,
             $startsAt

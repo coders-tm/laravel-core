@@ -9,13 +9,14 @@ use Coderstm\Http\Resources\CouponResource;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\Shop\Product;
 use Coderstm\Models\Subscription\Plan;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Gate;
 
 class CouponController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {

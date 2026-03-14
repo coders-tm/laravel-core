@@ -2,8 +2,12 @@
 
 namespace Coderstm\Http\Controllers\Subscription;
 
+use Carbon\Carbon;
 use Coderstm\Coderstm;
+use Coderstm\Events\SubscriptionCancel;
 use Coderstm\Events\SubscriptionPlanChanged;
+use Coderstm\Events\SubscriptionResume;
+use Coderstm\Events\SubscriptionUpgraded;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\PaymentMethod;
@@ -13,6 +17,7 @@ use Coderstm\Models\Subscription\Plan;
 use Coderstm\Notifications\SubscriptionCancelNotification;
 use Coderstm\Notifications\SubscriptionDowngradeNotification;
 use Coderstm\Notifications\SubscriptionUpgradeNotification;
+use Coderstm\Services\Admin\SubscriptionCreationService;
 use Coderstm\Services\GatewaySubscriptionFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -117,7 +122,7 @@ class SubscriptionController extends Controller
                 $subscription->syncOrResetUsages();
                 $subscription->oldPlan = $oldPlan;
                 $subscription->plan = $plan;
-                event(new \Coderstm\Events\SubscriptionUpgraded($subscription));
+                event(new SubscriptionUpgraded($subscription));
                 $user->notify(new SubscriptionUpgradeNotification($subscription));
             }
             $gateway = GatewaySubscriptionFactory::make($subscription);
@@ -149,7 +154,7 @@ class SubscriptionController extends Controller
         } catch (\Exception) {
             throw ValidationException::withMessages(['user' => __('The specified user does not exist.')]);
         }
-        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
+        $service = app(SubscriptionCreationService::class);
         $subscription = $service->createOrUpdate($user, $validated);
 
         return response()->json(['message' => __('Subscription has been created successfully.'), 'data' => $this->transformSubscription($subscription)], 201);
@@ -163,7 +168,7 @@ class SubscriptionController extends Controller
         } catch (\Exception) {
             throw ValidationException::withMessages(['id' => __('The specified subscription does not exist.')]);
         }
-        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
+        $service = app(SubscriptionCreationService::class);
         $subscription = $service->createOrUpdate($subscription->user, $validated, $subscription);
 
         return response()->json(['message' => __('Subscription has been updated successfully.'), 'data' => $this->transformSubscription($subscription)], 200);
@@ -195,7 +200,7 @@ class SubscriptionController extends Controller
         }
         $subscription->cancelOpenInvoices();
         $user = $subscription->user;
-        event(new \Coderstm\Events\SubscriptionCancel($subscription));
+        event(new SubscriptionCancel($subscription));
         if ($user) {
             $user->notify(new SubscriptionCancelNotification($subscription));
         }
@@ -209,7 +214,7 @@ class SubscriptionController extends Controller
         $this->assertUserSubscriptionAccess($subscription);
         try {
             $subscription = $subscription->resume();
-            event(new \Coderstm\Events\SubscriptionResume($subscription));
+            event(new SubscriptionResume($subscription));
 
             return response()->json(['message' => __('Subscription resumed successfully.'), 'data' => $this->transformSubscription($subscription->fresh())], 200);
         } catch (\Throwable $e) {
@@ -246,20 +251,20 @@ class SubscriptionController extends Controller
     public function freeze(Request $request, $id)
     {
         $request->validate(['release_at' => 'required|date|after:today', 'reason' => 'nullable|string|max:500']);
-        $subscription = \Coderstm\Models\Subscription::findOrFail($id);
+        $subscription = Subscription::findOrFail($id);
         $this->assertUserSubscriptionAccess($subscription);
         if (! $subscription->canFreeze()) {
             return response()->json(['message' => __('This subscription cannot be frozen.')], 422);
         }
         $freezeFee = $subscription->plan->freeze_fee ?? 0;
-        $subscription->freeze(\Carbon\Carbon::parse($request->release_at), $request->reason, $freezeFee);
+        $subscription->freeze(Carbon::parse($request->release_at), $request->reason, $freezeFee);
 
         return response()->json(['data' => $this->transformSubscription($subscription->fresh()), 'message' => __('Subscription has been frozen successfully!')], 200);
     }
 
     public function unfreeze(Request $request, $id)
     {
-        $subscription = \Coderstm\Models\Subscription::findOrFail($id);
+        $subscription = Subscription::findOrFail($id);
         $this->assertUserSubscriptionAccess($subscription);
         if (! $subscription->onFreeze()) {
             return response()->json(['message' => __('This subscription is not frozen.')], 422);

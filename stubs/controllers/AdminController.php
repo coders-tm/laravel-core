@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Coderstm\Coderstm;
 use Coderstm\Models\Module;
 use Coderstm\Notifications\NewAdminNotification;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Password;
 
 class AdminController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     /**
      * Create the controller instance.

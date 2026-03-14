@@ -3,6 +3,7 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\File;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {

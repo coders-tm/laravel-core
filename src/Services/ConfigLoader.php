@@ -3,7 +3,10 @@
 namespace Coderstm\Services;
 
 use Coderstm\Contracts\ConfigurationInterface;
+use Coderstm\Exceptions\IntegrityException;
 use Exception;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -40,7 +43,7 @@ class ConfigLoader implements ConfigurationInterface
     public function ensureValid(): void
     {
         if (! $this->isValid()) {
-            throw new \Coderstm\Exceptions\IntegrityException('Valid configuration required');
+            throw new IntegrityException('Valid configuration required');
         }
     }
 
@@ -250,6 +253,6 @@ class ConfigLoader implements ConfigurationInterface
 
     private function isNetworkIssue(Exception $e): bool
     {
-        return $e instanceof \Illuminate\Http\Client\ConnectionException || $e instanceof \Illuminate\Http\Client\RequestException;
+        return $e instanceof ConnectionException || $e instanceof RequestException;
     }
 }

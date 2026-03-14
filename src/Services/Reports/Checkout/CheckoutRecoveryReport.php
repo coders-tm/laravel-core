@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Checkout;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,7 @@ class CheckoutRecoveryReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $recoveryRate = $row->recovery_emails_sent > 0 ? $row->recovered_checkouts / $row->recovery_emails_sent * 100 : 0;
 
         return ['period' => $period, 'abandoned_checkouts' => (int) ($row->abandoned_checkouts ?? 0), 'recovery_emails_sent' => (int) ($row->recovery_emails_sent ?? 0), 'recovered_checkouts' => (int) ($row->recovered_checkouts ?? 0), 'recovery_rate' => (float) $recoveryRate, 'recovered_revenue' => (float) ($row->recovered_revenue ?? 0), 'lost_revenue' => (float) ($row->lost_revenue ?? 0), 'avg_time_to_recover' => $this->formatNumber($row->avg_time_to_recover ?? 0, 1)];

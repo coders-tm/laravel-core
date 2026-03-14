@@ -1,9 +1,12 @@
 <?php
 
 use Coderstm\Models\AppSetting;
+use Coderstm\Models\Blog;
 use Coderstm\Models\Tax;
 use Coderstm\Services\AdminNotification;
-use Coderstm\Services\Mix;
+use Coderstm\Services\ShortcodeProcessor;
+use Coderstm\Support\FluentData;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Optional;
 use Illuminate\Support\Str;
@@ -182,7 +185,7 @@ if (! function_exists('app_settings')) {
      * Get the specified setting value.
      *
      * @param  string  $key
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      *
      * @deprecated Use settings() helper function instead. This function will be removed in a future release.
      */
@@ -200,12 +203,12 @@ if (! function_exists('settings')) {
      *
      * @param  string|array|null  $key
      * @param  mixed  $default
-     * @return mixed|\Coderstm\Models\AppSetting
+     * @return mixed|AppSetting
      */
     function settings($key = null, $default = null)
     {
         if (is_null($key)) {
-            return \Coderstm\Models\AppSetting::getSettings();
+            return AppSetting::getSettings();
         }
 
         if (is_array($key)) {
@@ -214,18 +217,18 @@ if (! function_exists('settings')) {
                 $settingKey = array_shift($segments);
 
                 if (empty($segments)) {
-                    \Coderstm\Models\AppSetting::updateValue($settingKey, $value);
+                    AppSetting::updateValue($settingKey, $value);
                 } else {
-                    $options = \Coderstm\Models\AppSetting::findByKey($settingKey); // Already returns array
+                    $options = AppSetting::findByKey($settingKey); // Already returns array
                     array_set($options, implode('.', $segments), $value);
-                    \Coderstm\Models\AppSetting::updateValue($settingKey, $options);
+                    AppSetting::updateValue($settingKey, $options);
                 }
             }
 
             return true;
         }
 
-        return \Coderstm\Models\AppSetting::get($key, $default);
+        return AppSetting::get($key, $default);
     }
 }
 
@@ -378,7 +381,7 @@ if (! function_exists('app_lang')) {
             $locale = settings('config.lang', 'en-US');
 
             return get_lang_code($locale);
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return 'en';
         }
     }
@@ -412,7 +415,7 @@ if (! function_exists('replace_short_code')) {
      */
     function replace_short_code($message = '', $date = [])
     {
-        $processor = app(\Coderstm\Services\ShortcodeProcessor::class);
+        $processor = app(ShortcodeProcessor::class);
         $replacements = $processor->process($date);
 
         foreach ($replacements as $key => $value) {
@@ -455,7 +458,7 @@ if (! function_exists('get_country_code')) {
             $country = (new ISO3166)->name($country);
 
             return $country['alpha2'];
-        } catch (\Throwable $e) {
+        } catch (Throwable $e) {
             return '*';
         }
     }
@@ -588,43 +591,13 @@ if (! function_exists('html_text')) {
     }
 }
 
-if (! function_exists('theme')) {
-    /**
-     * Get the path to a versioned theme's Mix file.
-     *
-     * @param  string  $path
-     * @param  string  $themeName
-     * @return \Illuminate\Support\HtmlString|string
-     *
-     * @throws \Exception
-     */
-    function theme($path, $themeName = null)
-    {
-        return app(\Coderstm\Services\Mix::class)(...func_get_args());
-    }
-}
-
-if (! function_exists('theme_vite')) {
-    /**
-     * Get the HTML tags for a theme's Vite assets.
-     *
-     * @param  array|string  $entrypoints
-     * @param  string|null  $themeName
-     * @return \Illuminate\Support\HtmlString
-     */
-    function theme_vite($entrypoints, $themeName = null)
-    {
-        return app(\Coderstm\Services\Vite::class)(...func_get_args());
-    }
-}
-
 if (! function_exists('blog')) {
     /**
      * Get the current blog from the request.
      *
      * @param  string|null  $key
      * @param  mixed  $default
-     * @return mixed|\Coderstm\Models\Blog
+     * @return mixed|Blog
      */
     function blog($key = null, $default = null)
     {
@@ -640,8 +613,8 @@ if (! function_exists('fluent_data')) {
     /**
      * Recursively any data to FluentData object
      */
-    function fluent_data(mixed $data): \Coderstm\Support\FluentData
+    function fluent_data(mixed $data): FluentData
     {
-        return new \Coderstm\Support\FluentData($data);
+        return new FluentData($data);
     }
 }

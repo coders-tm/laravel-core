@@ -2,6 +2,8 @@
 
 namespace Coderstm\Services;
 
+use Coderstm\Exceptions\NpmNotFoundException;
+use Coderstm\Exceptions\NpmNotInstalledException;
 use Coderstm\Models\Module;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Permission;
@@ -81,11 +83,11 @@ class Helpers
             $npmBinPath = config('coderstm.npm_bin');
             $npmVersionCheck = shell_exec("{$npmBinPath}/npm -v 2>&1");
             if (! $npmVersionCheck) {
-                throw new \Coderstm\Exceptions\NpmNotFoundException;
+                throw new NpmNotFoundException;
             }
             $npmTestCheck = shell_exec("{$npmBinPath}/npx mix --version 2>&1");
             if (strpos($npmTestCheck, 'ERR') !== false) {
-                throw new \Coderstm\Exceptions\NpmNotInstalledException;
+                throw new NpmNotInstalledException;
             }
             file_put_contents($npmFile, '');
         }

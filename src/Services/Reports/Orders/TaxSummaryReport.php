@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Orders;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -39,7 +40,7 @@ class TaxSummaryReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $taxableAmount = (float) ($row->taxable_amount ?? 0);
         $taxTotal = (float) ($row->tax_total ?? 0);
         $avgTaxRate = $taxableAmount > 0 ? $taxTotal / $taxableAmount * 100 : 0;

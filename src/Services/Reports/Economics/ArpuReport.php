@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Economics;
 
+use Carbon\Carbon;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
@@ -47,7 +48,7 @@ class ArpuReport extends AbstractReport
         $totalRevenue = (float) ($row->total_revenue ?? 0);
         $activeUsers = (int) ($row->active_users ?? 0);
         $arpu = $activeUsers > 0 ? $totalRevenue / $activeUsers : 0;
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start)) ?? '';
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start)) ?? '';
 
         return ['period' => $period, 'total_revenue' => $totalRevenue, 'active_users' => $activeUsers, 'arpu' => (float) $arpu];
     }

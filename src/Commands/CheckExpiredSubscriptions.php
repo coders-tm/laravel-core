@@ -3,6 +3,7 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
+use Coderstm\Events\SubscriptionExpired;
 use Coderstm\Models\Log;
 use Coderstm\Notifications\Admins\SubscriptionExpiredNotification as AdminsSubscriptionExpiredNotification;
 use Coderstm\Notifications\SubscriptionExpiredNotification;
@@ -21,7 +22,7 @@ class CheckExpiredSubscriptions extends Command
             try {
                 $subscription->attachAction('expired-notification');
                 if ($user = $subscription->user) {
-                    event(new \Coderstm\Events\SubscriptionExpired($subscription));
+                    event(new SubscriptionExpired($subscription));
                     $user->notify(new SubscriptionExpiredNotification($subscription));
                     admin_notify(new AdminsSubscriptionExpiredNotification($subscription));
                     $subscription->logs()->create(['type' => 'expired-notification', 'message' => 'Notification for expired subscriptions has been successfully sent.']);

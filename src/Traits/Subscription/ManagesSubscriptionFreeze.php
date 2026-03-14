@@ -4,6 +4,7 @@ namespace Coderstm\Traits\Subscription;
 
 use Carbon\Carbon;
 use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Enum\LogType;
 
 trait ManagesSubscriptionFreeze
 {
@@ -45,7 +46,7 @@ trait ManagesSubscriptionFreeze
         if ($releaseAt) {
             $logMessage .= " (until {$releaseAt->format('Y-m-d')})";
         }
-        $this->logs()->create(['type' => \Coderstm\Enum\LogType::UPDATED, 'message' => $logMessage]);
+        $this->logs()->create(['type' => LogType::UPDATED, 'message' => $logMessage]);
 
         return $this;
     }

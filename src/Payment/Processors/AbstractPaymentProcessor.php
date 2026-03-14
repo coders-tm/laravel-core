@@ -4,10 +4,12 @@ namespace Coderstm\Payment\Processors;
 
 use Coderstm\Contracts\PaymentProcessorInterface;
 use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Payment\CallbackResult;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\RefundResult;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 abstract class AbstractPaymentProcessor implements PaymentProcessorInterface
 {
@@ -55,14 +57,14 @@ abstract class AbstractPaymentProcessor implements PaymentProcessorInterface
         return app_url("/api/{$this->getProvider()}/webhook");
     }
 
-    public function setPaymentMethod(\Coderstm\Models\PaymentMethod $paymentMethod): \Coderstm\Contracts\PaymentProcessorInterface
+    public function setPaymentMethod(PaymentMethod $paymentMethod): PaymentProcessorInterface
     {
         $this->paymentMethod = $paymentMethod;
 
         return $this;
     }
 
-    public function getPaymentMethod(): ?\Coderstm\Models\PaymentMethod
+    public function getPaymentMethod(): ?PaymentMethod
     {
         return $this->paymentMethod;
     }
@@ -90,7 +92,7 @@ abstract class AbstractPaymentProcessor implements PaymentProcessorInterface
             return;
         }
         if (! in_array(strtoupper($currency), $supportedCurrencies)) {
-            throw \Illuminate\Validation\ValidationException::withMessages(['currency' => "The currency {$currency} is not supported by {$this->getProvider()}."]);
+            throw ValidationException::withMessages(['currency' => "The currency {$currency} is not supported by {$this->getProvider()}."]);
         }
     }
 }

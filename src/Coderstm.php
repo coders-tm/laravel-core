@@ -2,9 +2,19 @@
 
 namespace Coderstm;
 
+use Coderstm\Services\Payment\KlarnaClient;
+use Coderstm\Services\Payment\MercadoPagoClient;
+use Coderstm\Services\Payment\XenditClient;
 use DateTimeInterface;
+use Flutterwave\Config\PackageConfig;
+use Flutterwave\Flutterwave;
+use GoCardlessPro\Client;
 use Illuminate\Support\Facades\Config;
 use Laravel\Cashier\Cashier;
+use Razorpay\Api\Api;
+use Srmklive\PayPal\Services\PayPal;
+use Yabacon\Paystack;
+use Yansongda\Pay\Pay;
 
 class Coderstm
 {
@@ -31,6 +41,8 @@ class Coderstm
     public static $registersRoutes = true;
 
     public static $enablesCart = true;
+
+    public static $usesMaskSensitive = false;
 
     public static $appShortCodes = [];
 
@@ -62,6 +74,18 @@ class Coderstm
         static::$registersRoutes = false;
 
         return new static;
+    }
+
+    public static function useMaskSensitive()
+    {
+        static::$usesMaskSensitive = true;
+
+        return new static;
+    }
+
+    public static function shouldUseMaskSensitive()
+    {
+        return static::$usesMaskSensitive;
     }
 
     public static function withoutCart()
@@ -135,7 +159,7 @@ class Coderstm
         $accessToken = $options['access_token'] ?? config('gocardless.access_token');
         $clientOptions = array_merge(['environment' => $environment, 'access_token' => $accessToken], $options);
 
-        return static::$gocardlessClient = new \GoCardlessPro\Client($clientOptions);
+        return static::$gocardlessClient = new Client($clientOptions);
     }
 
     public static function paypal(array $options = [])
@@ -144,7 +168,7 @@ class Coderstm
             return static::$paypalClient;
         }
         $options = array_merge(config('paypal'), $options);
-        $provider = new \Srmklive\PayPal\Services\PayPal;
+        $provider = new PayPal;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
 
@@ -159,7 +183,7 @@ class Coderstm
         $keyId = $options['key_id'] ?? config('razorpay.key_id');
         $keySecret = $options['key_secret'] ?? config('razorpay.key_secret');
 
-        return static::$razorpayClient = new \Razorpay\Api\Api($keyId, $keySecret);
+        return static::$razorpayClient = new Api($keyId, $keySecret);
     }
 
     protected static $stripeClient;
@@ -181,7 +205,7 @@ class Coderstm
             return static::$klarnaClient;
         }
 
-        return static::$klarnaClient = new \Coderstm\Services\Payment\KlarnaClient($options);
+        return static::$klarnaClient = new KlarnaClient($options);
     }
 
     protected static $mercadopagoClient;
@@ -192,7 +216,7 @@ class Coderstm
             return static::$mercadopagoClient;
         }
 
-        return static::$mercadopagoClient = new \Coderstm\Services\Payment\MercadoPagoClient($options);
+        return static::$mercadopagoClient = new MercadoPagoClient($options);
     }
 
     protected static $paystackClient;
@@ -204,7 +228,7 @@ class Coderstm
         }
         $secretKey = $options['secret_key'] ?? config('paystack.secret_key');
         if ($secretKey) {
-            return static::$paystackClient = new \Yabacon\Paystack($secretKey);
+            return static::$paystackClient = new Paystack($secretKey);
         }
 
         return null;
@@ -218,7 +242,7 @@ class Coderstm
             return static::$xenditClient;
         }
 
-        return static::$xenditClient = new \Coderstm\Services\Payment\XenditClient($options);
+        return static::$xenditClient = new XenditClient($options);
     }
 
     protected static $flutterwaveClient;
@@ -245,13 +269,13 @@ class Coderstm
             if (! defined('FLW_ENV')) {
                 define('FLW_ENV', $environment);
             }
-            $config = \Flutterwave\Config\PackageConfig::setUp($secretKey, $publicKey, $encryptionKey, $environment);
+            $config = PackageConfig::setUp($secretKey, $publicKey, $encryptionKey, $environment);
             if (! defined('FLW_LOGS_PATH')) {
                 define('FLW_LOGS_PATH', storage_path('logs'));
             }
-            \Flutterwave\Flutterwave::bootstrap($config);
+            Flutterwave::bootstrap($config);
 
-            return static::$flutterwaveClient = new \Flutterwave\Flutterwave;
+            return static::$flutterwaveClient = new Flutterwave;
         }
 
         return static::$flutterwaveClient = null;
@@ -288,9 +312,9 @@ class Coderstm
         }
         $config = config('alipay');
         if ($config && ! empty($config['app_id'])) {
-            \Yansongda\Pay\Pay::config(['alipay' => ['default' => ['app_id' => $config['app_id'], 'ali_public_key' => $config['ali_public_key'], 'private_key' => $config['private_key'], 'notify_url' => $config['webhook_url'], 'mode' => $config['mode'] === 'sandbox' ? \Yansongda\Pay\Pay::MODE_SANDBOX : \Yansongda\Pay\Pay::MODE_NORMAL]], 'logger' => ['enable' => true, 'file' => storage_path('logs/alipay.log'), 'level' => 'debug', 'type' => 'daily', 'max_file' => 30]]);
+            Pay::config(['alipay' => ['default' => ['app_id' => $config['app_id'], 'ali_public_key' => $config['ali_public_key'], 'private_key' => $config['private_key'], 'notify_url' => $config['webhook_url'], 'mode' => $config['mode'] === 'sandbox' ? Pay::MODE_SANDBOX : Pay::MODE_NORMAL]], 'logger' => ['enable' => true, 'file' => storage_path('logs/alipay.log'), 'level' => 'debug', 'type' => 'daily', 'max_file' => 30]]);
 
-            return static::$alipayClient = \Yansongda\Pay\Pay::alipay();
+            return static::$alipayClient = Pay::alipay();
         }
 
         return static::$alipayClient = null;

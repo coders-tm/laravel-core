@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Checkout;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -39,7 +40,7 @@ class CheckoutFunnelReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $started = (int) ($row->started ?? 0);
         $completed = (int) ($row->completed ?? 0);
         $paymentAttempted = (int) ($row->payment_attempted ?? 0);

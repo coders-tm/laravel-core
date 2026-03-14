@@ -2,6 +2,7 @@
 
 namespace Coderstm\Database\Factories\Shop;
 
+use App\Models\User;
 use Coderstm\Models\Shop\Checkout;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -29,7 +30,7 @@ class CheckoutFactory extends Factory
     public function withUser($user = null)
     {
         return $this->state([
-            'user_id' => $user ? $user->id : \App\Models\User::factory()->create()->id,
+            'user_id' => $user ? $user->id : User::factory()->create()->id,
         ]);
     }
 

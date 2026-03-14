@@ -5,6 +5,7 @@ namespace Coderstm\Http\Controllers;
 use Coderstm\Models\Shop\ExchangeRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Validation\Rule;
 
 class ExchangeRateController extends Controller
 {
@@ -17,7 +18,7 @@ class ExchangeRateController extends Controller
     {
         $existing = ExchangeRate::where('currency', $request->currency)->first();
         $id = $existing ? $existing->id : $request->id ?? 'NULL';
-        $request->validate(['currency' => ['required', 'string', 'size:3', \Illuminate\Validation\Rule::unique('exchange_rates', 'currency')->ignore($id)], 'rate' => 'required|numeric']);
+        $request->validate(['currency' => ['required', 'string', 'size:3', Rule::unique('exchange_rates', 'currency')->ignore($id)], 'rate' => 'required|numeric']);
         $rate = ExchangeRate::updateOrCreate(['currency' => $request->currency], ['rate' => $request->rate]);
 
         return response()->json(['data' => $rate, 'message' => __('Exchange rate has been saved successfully!')], 200);

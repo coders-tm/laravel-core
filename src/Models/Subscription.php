@@ -6,6 +6,8 @@ use Coderstm\Coderstm;
 use Coderstm\Contracts\ManagesSubscriptions;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Database\Factories\SubscriptionFactory;
+use Coderstm\Events\SubscriptionCreated;
+use Coderstm\Events\SubscriptionUpdated;
 use Coderstm\Traits;
 use Coderstm\Traits\HasFeature;
 use Coderstm\Traits\Logable;
@@ -26,7 +28,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     protected $with = ['features'];
 
-    protected $dispatchesEvents = ['created' => \Coderstm\Events\SubscriptionCreated::class, 'updated' => \Coderstm\Events\SubscriptionUpdated::class];
+    protected $dispatchesEvents = ['created' => SubscriptionCreated::class, 'updated' => SubscriptionUpdated::class];
 
     protected $casts = ['is_downgrade' => 'boolean', 'trial_ends_at' => 'datetime', 'expires_at' => 'datetime', 'ends_at' => 'datetime', 'starts_at' => 'datetime', 'canceled_at' => 'datetime', 'frozen_at' => 'datetime', 'release_at' => 'datetime', 'metadata' => 'json', 'billing_interval_count' => 'integer', 'total_cycles' => 'integer', 'current_cycle' => 'integer'];
 

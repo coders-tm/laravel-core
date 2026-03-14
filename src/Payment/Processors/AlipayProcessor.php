@@ -6,6 +6,7 @@ use Coderstm\Coderstm;
 use Coderstm\Contracts\PaymentProcessorInterface;
 use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\CallbackResult;
 use Coderstm\Payment\Mappers\AlipayPayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
@@ -81,29 +82,29 @@ class AlipayProcessor extends AbstractPaymentProcessor implements PaymentProcess
         }
     }
 
-    public function handleSuccessCallback(Request $request): \Coderstm\Payment\CallbackResult
+    public function handleSuccessCallback(Request $request): CallbackResult
     {
         try {
             $stateId = $request->query('state');
             if (! $stateId) {
-                return \Coderstm\Payment\CallbackResult::failed('Invalid payment session.');
+                return CallbackResult::failed('Invalid payment session.');
             }
             $payment = Payment::where('uuid', $stateId)->first();
             if (! $payment) {
-                return \Coderstm\Payment\CallbackResult::failed('Payment not found.');
+                return CallbackResult::failed('Payment not found.');
             }
             $alipay = Coderstm::alipay();
             $response = $alipay->verify();
             $paymentData = new AlipayPayment($response, $this->paymentMethod);
             $payment->update($paymentData->toArray());
 
-            return \Coderstm\Payment\CallbackResult::success(message: 'Alipay payment was successful.', payment: $payment->fresh());
+            return CallbackResult::success(message: 'Alipay payment was successful.', payment: $payment->fresh());
         } catch (\Throwable $e) {
-            return \Coderstm\Payment\CallbackResult::failed('Payment verification failed: '.$e->getMessage());
+            return CallbackResult::failed('Payment verification failed: '.$e->getMessage());
         }
     }
 
-    public function handleCancelCallback(Request $request): \Coderstm\Payment\CallbackResult
+    public function handleCancelCallback(Request $request): CallbackResult
     {
         $payment = null;
         try {
@@ -117,6 +118,6 @@ class AlipayProcessor extends AbstractPaymentProcessor implements PaymentProcess
         } catch (\Throwable $e) {
         }
 
-        return \Coderstm\Payment\CallbackResult::success(message: 'Alipay payment was cancelled.', payment: $payment);
+        return CallbackResult::success(message: 'Alipay payment was cancelled.', payment: $payment);
     }
 }

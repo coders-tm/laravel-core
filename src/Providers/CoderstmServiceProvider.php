@@ -4,13 +4,23 @@ namespace Coderstm\Providers;
 
 use Coderstm\Coderstm;
 use Coderstm\Commands;
+use Coderstm\Contracts\ConfigurationInterface;
 use Coderstm\Http\Middleware;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
+use Coderstm\Models\Shop\Product\Inventory;
+use Coderstm\Observers\InventoryObserver;
+use Coderstm\Services\AdminNotification;
 use Coderstm\Services\ApplicationState;
+use Coderstm\Services\BlogService;
+use Coderstm\Services\ConfigLoader;
 use Coderstm\Services\Currency;
+use Coderstm\Services\MaskSensitiveConfig;
+use Coderstm\Services\ResponseOptimizer;
+use Coderstm\Services\ShopService;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Routing\ResourceRegistrar;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -23,18 +33,25 @@ class CoderstmServiceProvider extends ServiceProvider
         $this->app->scoped('currency', function () {
             return new Currency;
         });
-        $this->app->bind(\Illuminate\Routing\ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
-        $this->app->singleton(\Coderstm\Services\AdminNotification::class);
-        $this->app->singleton(\Coderstm\Contracts\ConfigurationInterface::class, \Coderstm\Services\ConfigLoader::class);
-        $this->app->alias(\Coderstm\Contracts\ConfigurationInterface::class, 'core.config');
+        $this->app->bind(ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
+        $this->app->singleton(AdminNotification::class);
+        $this->app->singleton(ConfigurationInterface::class, ConfigLoader::class);
+        $this->app->alias(ConfigurationInterface::class, 'core.config');
         $this->app->singleton('blog', function ($app) {
-            return new \Coderstm\Services\BlogService;
+            return new BlogService;
         });
-        $this->app->singleton('page-service', function ($app) {
-            return new \Coderstm\Services\PageService;
+        $this->app->singleton(ShopService::class);
+        $this->app->alias(ShopService::class, 'shop');
+        $this->app->singleton(MaskSensitiveConfig::class, function ($app) {
+            return new MaskSensitiveConfig($app['files'], $app['config']['view.compiled'], $app['config']->get('view.relative_hash', false) ? $app->basePath() : '', $app['config']->get('view.cache', true), $app['config']->get('view.compiled_extension', 'php'));
         });
-        $this->app->singleton(\Coderstm\Services\ShopService::class);
-        $this->app->alias(\Coderstm\Services\ShopService::class, 'shop');
+        $this->app->extend('blade.compiler', function ($compiler, $app) {
+            if (! Coderstm::shouldUseMaskSensitive()) {
+                return $compiler;
+            }
+
+            return $app->make(MaskSensitiveConfig::class);
+        });
         $this->app->register(ViewComposerServiceProvider::class);
     }
 
@@ -104,7 +121,6 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function registerRouteMiddleware()
     {
-        Route::aliasMiddleware('theme', Middleware\ThemeMiddleware::class);
         Route::aliasMiddleware('guard', Middleware\GuardMiddleware::class);
         Route::aliasMiddleware('subscribed', Middleware\CheckSubscribed::class);
         Route::aliasMiddleware('preserve.json.whitespace', Middleware\PreserveJsonWhitespace::class);
@@ -115,7 +131,7 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function registerCommands()
     {
-        $this->commands([Commands\InstallCommand::class, Commands\CheckCanceledSubscriptions::class, Commands\CheckExpiredSubscriptions::class, Commands\ThemeLink::class, Commands\SubscriptionsRenew::class, Commands\ResetSubscriptionsUsages::class, Commands\ResumeSubscriptions::class, Commands\MigrateSubscriptionFeatures::class, Commands\MigrateOrderCommand::class, Commands\LangParseCommand::class, Commands\ProcessAbandonedCheckouts::class, Commands\RegeneratePages::class, Commands\UpdateExchangeRates::class, Commands\MakePagesJson::class, Commands\UpdateExchangeRates::class]);
+        $this->commands([Commands\InstallCommand::class, Commands\CheckCanceledSubscriptions::class, Commands\CheckGracePeriodSubscriptions::class, Commands\CheckExpiredSubscriptions::class, Commands\SubscriptionsRenew::class, Commands\ResetSubscriptionsUsages::class, Commands\ResumeSubscriptions::class, Commands\MigrateSubscriptionFeatures::class, Commands\MigrateOrderCommand::class, Commands\LangParseCommand::class, Commands\ProcessAbandonedCheckouts::class, Commands\UpdateExchangeRates::class]);
     }
 
     protected function defineManagementRoutes()
@@ -145,7 +161,7 @@ class CoderstmServiceProvider extends ServiceProvider
         if ($this->isManagementRoute()) {
             return;
         }
-        $loader = $this->app->make(\Coderstm\Contracts\ConfigurationInterface::class);
+        $loader = $this->app->make(ConfigurationInterface::class);
         if (! $loader->isValid()) {
             logger()->error('Core initialization failed.');
             $this->haltApplication();
@@ -159,7 +175,7 @@ class CoderstmServiceProvider extends ServiceProvider
         $kernel = $this->app->make('Illuminate\\Contracts\\Http\\Kernel');
         $kernel->pushMiddleware(ApplicationState::class);
         $kernel->pushMiddleware(Middleware\CartTokenMiddleware::class);
-        $kernel->pushMiddleware(\Coderstm\Services\ResponseOptimizer::class);
+        $kernel->pushMiddleware(ResponseOptimizer::class);
         $kernel->pushMiddleware(Middleware\ResolveIpAddress::class);
     }
 
@@ -219,6 +235,6 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function registerObservers()
     {
-        \Coderstm\Models\Shop\Product\Inventory::observe(\Coderstm\Observers\InventoryObserver::class);
+        Inventory::observe(InventoryObserver::class);
     }
 }

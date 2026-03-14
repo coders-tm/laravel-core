@@ -3,13 +3,14 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\Blog;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Gate;
 
 class BlogController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {

@@ -2,8 +2,11 @@
 
 namespace Coderstm\Traits;
 
+use Coderstm\Events\RefundProcessed;
 use Coderstm\Exceptions\RefundException;
 use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Processor;
 use Illuminate\Support\Facades\DB;
 
 trait HasRefunds
@@ -25,7 +28,7 @@ trait HasRefunds
                 continue;
             }
             try {
-                $isWallet = $payment->paymentMethod?->provider === \Coderstm\Models\PaymentMethod::WALLET;
+                $isWallet = $payment->paymentMethod?->provider === PaymentMethod::WALLET;
                 if ($isWallet) {
                     $lastRefund = $this->refundPaymentToWallet($payment, $reason);
                 } else {
@@ -57,7 +60,7 @@ trait HasRefunds
             $transaction = $this->customer->creditWallet(amount: $refundAmount, source: 'refund', description: "Refund for order {$this->formated_id}".($reason ? ": {$reason}" : ''), transactionable: $this, metadata: ['order_id' => $this->id, 'order_number' => $this->formated_id, 'refund_reason' => $reason]);
             $refund = $this->refunds()->create(['amount' => $refundAmount, 'reason' => $reason, 'to_wallet' => true, 'wallet_transaction_id' => $transaction->id]);
             $this->syncCurrentStatus();
-            event(new \Coderstm\Events\RefundProcessed($refund));
+            event(new RefundProcessed($refund));
 
             return $refund;
         });
@@ -78,7 +81,7 @@ trait HasRefunds
             $refund = $this->refunds()->create(['amount' => $refundAmount, 'reason' => $reason, 'payment_id' => $payment->id, 'to_wallet' => true, 'wallet_transaction_id' => $transaction->id]);
             $payment->processRefund($reason);
             $this->syncCurrentStatus();
-            event(new \Coderstm\Events\RefundProcessed($refund));
+            event(new RefundProcessed($refund));
 
             return $refund;
         });
@@ -97,10 +100,10 @@ trait HasRefunds
         if (! $paymentMethod) {
             throw new \Exception('Payment method not found for this payment.');
         }
-        $processor = \Coderstm\Payment\Processor::make($paymentMethod->provider);
+        $processor = Processor::make($paymentMethod->provider);
         $processor->setPaymentMethod($paymentMethod);
         if (! $processor->supportsRefund()) {
-            throw new \Coderstm\Exceptions\RefundException("Refunds are not supported for the {$paymentMethod->provider} payment method. "."Use 'Refund to Wallet' option to credit the customer's wallet balance.", ['error_type' => 'not_supported']);
+            throw new RefundException("Refunds are not supported for the {$paymentMethod->provider} payment method. "."Use 'Refund to Wallet' option to credit the customer's wallet balance.", ['error_type' => 'not_supported']);
         }
 
         return DB::transaction(function () use ($processor, $payment, $refundAmount, $reason) {

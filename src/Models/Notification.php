@@ -3,6 +3,7 @@
 namespace Coderstm\Models;
 
 use Coderstm\Database\Factories\NotificationFactory;
+use Coderstm\Services\NotificationTemplateRenderer;
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Model;
 
@@ -44,14 +45,14 @@ class Notification extends Model
 
     public function render(array $data = []): array
     {
-        $renderer = app(\Coderstm\Services\NotificationTemplateRenderer::class);
+        $renderer = app(NotificationTemplateRenderer::class);
 
         return ['subject' => $renderer->render($this->subject, $data), 'content' => $renderer->render($this->content, $data)];
     }
 
     public function validate(): array
     {
-        $renderer = app(\Coderstm\Services\NotificationTemplateRenderer::class);
+        $renderer = app(NotificationTemplateRenderer::class);
 
         return ['subject' => $renderer->validate($this->subject), 'content' => $renderer->validate($this->content)];
     }

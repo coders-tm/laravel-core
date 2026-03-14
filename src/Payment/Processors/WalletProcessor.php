@@ -5,6 +5,8 @@ namespace Coderstm\Payment\Processors;
 use Coderstm\Contracts\PaymentProcessorInterface;
 use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
 use Coderstm\Payment\RefundResult;
@@ -70,8 +72,8 @@ class WalletProcessor extends AbstractPaymentProcessor implements PaymentProcess
         $modelClass = class_basename($source);
 
         return match (true) {
-            $source instanceof \Coderstm\Models\Subscription => "Subscription payment - {$source->plan->label}",
-            $source instanceof \Coderstm\Models\Shop\Order => "Order payment - Order #{$source->formated_id}",
+            $source instanceof Subscription => "Subscription payment - {$source->plan->label}",
+            $source instanceof Order => "Order payment - Order #{$source->formated_id}",
             default => "{$modelClass} payment - ID #{$source->id}",
         };
     }

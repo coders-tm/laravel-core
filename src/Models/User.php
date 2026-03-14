@@ -8,6 +8,7 @@ use Coderstm\Enum\AppRag;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Exceptions\ImportFailedException;
 use Coderstm\Exceptions\ImportSkippedException;
+use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Addressable;
 use Coderstm\Traits\Billable;
 use Coderstm\Traits\Core;
@@ -335,7 +336,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function orders()
     {
-        return $this->hasMany(\Coderstm\Models\Shop\Order::class, 'customer_id');
+        return $this->hasMany(Order::class, 'customer_id');
     }
 
     public function getGuardAttribute()

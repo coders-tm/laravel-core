@@ -4,13 +4,14 @@ namespace Coderstm\Database\Factories;
 
 use Coderstm\Models\Task;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 class TaskFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     * @var class-string<Model|TModel>
      */
     protected $model = Task::class;
 

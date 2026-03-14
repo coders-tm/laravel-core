@@ -2,11 +2,12 @@
 
 namespace Coderstm\Database\Factories;
 
+use Coderstm\Models\Admin;
 use Coderstm\Models\ReportExport;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\ReportExport>
+ * @extends Factory<ReportExport>
  */
 class ReportExportFactory extends Factory
 {
@@ -25,7 +26,7 @@ class ReportExportFactory extends Factory
     public function definition(): array
     {
         return [
-            'admin_id' => \Coderstm\Models\Admin::factory(),
+            'admin_id' => Admin::factory(),
             'type' => fake()->randomElement(['subscriptions', 'orders', 'customers']),
             'status' => 'pending',
             'file_name' => null,

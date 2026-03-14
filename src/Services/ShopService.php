@@ -90,6 +90,7 @@ class ShopService
         } else {
             $cart->line_items()->create(['product_id' => $product->id, 'variant_id' => $variant->id, 'quantity' => $quantity, 'title' => $product->title, 'slug' => $product->slug, 'price' => $variant->price, 'taxable' => true, 'has_variant' => $product->has_variant, 'variant_title' => $variant->title, 'sku' => $variant->sku, 'options' => $variant->getOptions()]);
         }
+        $cart->load('line_items');
 
         return $this->refreshCartTotals($cart);
     }
@@ -109,6 +110,7 @@ class ShopService
         } else {
             $lineItem->forceDelete();
         }
+        $cart->load('line_items');
 
         return $this->refreshCartTotals($cart);
     }
@@ -123,6 +125,7 @@ class ShopService
         if ($lineItem) {
             $lineItem->forceDelete();
         }
+        $cart->load('line_items');
 
         return $this->refreshCartTotals($cart);
     }
@@ -137,6 +140,7 @@ class ShopService
         $cart->discount()->forceDelete();
         $cart->tax_lines()->forceDelete();
         $cart->update(['coupon_code' => null]);
+        $cart->load(['line_items', 'discount', 'tax_lines']);
 
         return $this->refreshCartTotals($cart);
     }

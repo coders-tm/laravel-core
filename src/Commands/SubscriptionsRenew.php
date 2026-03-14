@@ -3,6 +3,8 @@
 namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
+use Coderstm\Events\ResetFeatureUsages;
+use Coderstm\Events\SubscriptionRenewed;
 use Coderstm\Models\Log;
 use Illuminate\Console\Command;
 
@@ -22,8 +24,8 @@ class SubscriptionsRenew extends Command
                 $subscription->attachAction('renew');
                 $usagesBeforeRenewal = $subscription->usagesToArray();
                 $subscription->renew();
-                event(new \Coderstm\Events\SubscriptionRenewed($subscription));
-                event(new \Coderstm\Events\ResetFeatureUsages($subscription, $usagesBeforeRenewal));
+                event(new SubscriptionRenewed($subscription));
+                event(new ResetFeatureUsages($subscription, $usagesBeforeRenewal));
                 $cycleInfo = $subscription->total_cycles ? "{$subscription->current_cycle}/{$subscription->total_cycles}" : $subscription->current_cycle;
                 $subscription->logs()->create(['type' => 'renew', 'message' => "Subscription renewed successfully! Cycle {$cycleInfo}. Credits reset."]);
                 $this->info("Subscription #{$subscription->id} renewed! ({$cycleInfo}, Credits reset)");

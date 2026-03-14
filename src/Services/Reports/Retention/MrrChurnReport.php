@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Retention;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -50,7 +51,7 @@ class MrrChurnReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $startingMrr = (float) ($row->starting_mrr ?? 0);
         $churnedMrr = (float) ($row->churned_mrr ?? 0);
         $newMrr = (float) ($row->new_mrr ?? 0);

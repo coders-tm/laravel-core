@@ -2,7 +2,9 @@
 
 namespace Coderstm\Services\Reports\Retention;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
+use Illuminate\Database\Query\Expression;
 use Illuminate\Support\Facades\DB;
 
 class MemberRetentionReport extends AbstractReport
@@ -26,8 +28,8 @@ class MemberRetentionReport extends AbstractReport
         $periods = $this->getDatePeriods();
         $periodBoundaries = [];
         foreach ($periods as $periodStart) {
-            $cohortStart = \Carbon\Carbon::instance($periodStart)->startOfMonth();
-            $cohortEnd = \Carbon\Carbon::instance($periodStart)->endOfMonth();
+            $cohortStart = Carbon::instance($periodStart)->startOfMonth();
+            $cohortEnd = Carbon::instance($periodStart)->endOfMonth();
             $periodBoundaries[] = ['start' => $cohortStart->toDateTimeString(), 'end' => $cohortEnd->toDateTimeString(), 'order' => count($periodBoundaries)];
         }
         $periodQuery = $this->buildPeriodBoundariesQuery($periodBoundaries);
@@ -58,7 +60,7 @@ class MemberRetentionReport extends AbstractReport
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))->mergeBindings($periodQuery)->select($selects)->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')->orderBy('periods.period_order');
     }
 
-    protected function buildRetentionCalculation(int $months, string $checkDate, string $now): \Illuminate\Database\Query\Expression
+    protected function buildRetentionCalculation(int $months, string $checkDate, string $now): Expression
     {
         $checkDateEscaped = str_replace("'", "''", $checkDate);
         $nowEscaped = str_replace("'", "''", $now);
@@ -74,7 +76,7 @@ class MemberRetentionReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $cohort = \Carbon\Carbon::parse($row->period_start)->format('Y-m');
+        $cohort = Carbon::parse($row->period_start)->format('Y-m');
 
         return ['cohort' => $cohort, 'initial_count' => (int) ($row->initial_count ?? 0), 'month_1' => (float) ($row->month_1 ?? 0), 'month_2' => (float) ($row->month_2 ?? 0), 'month_3' => (float) ($row->month_3 ?? 0), 'month_6' => (float) ($row->month_6 ?? 0), 'month_12' => (float) ($row->month_12 ?? 0)];
     }

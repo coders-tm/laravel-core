@@ -3,6 +3,8 @@
 namespace Coderstm\Models;
 
 use Coderstm\Coderstm;
+use Coderstm\Database\Factories\PaymentFactory;
+use Coderstm\Events\Shop\OrderRefunded;
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -23,7 +25,7 @@ class Payment extends Model
 
     protected static function newFactory()
     {
-        return \Coderstm\Database\Factories\PaymentFactory::new();
+        return PaymentFactory::new();
     }
 
     const STATUS_PENDING = 'pending';
@@ -131,7 +133,7 @@ class Payment extends Model
         $updated = $this->update(['status' => $status, 'refund_amount' => $refundAmount, 'refunded_at' => now()]);
         if ($updated && $this->paymentable_type === Coderstm::$orderModel) {
             $order = $this->paymentable;
-            event(new \Coderstm\Events\Shop\OrderRefunded($order, $this, $refundAmount, $reason));
+            event(new OrderRefunded($order, $this, $refundAmount, $reason));
         }
 
         return $updated;

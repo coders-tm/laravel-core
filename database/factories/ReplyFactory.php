@@ -5,13 +5,14 @@ namespace Coderstm\Database\Factories;
 use Coderstm\Coderstm;
 use Coderstm\Models\Enquiry\Reply;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 class ReplyFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     * @var class-string<Model|TModel>
      */
     protected $model = Reply::class;
 

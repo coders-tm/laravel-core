@@ -2,7 +2,9 @@
 
 namespace Coderstm\Services;
 
+use Coderstm\Contracts\Currencyable;
 use Coderstm\Models\Shop\ExchangeRate;
+use Illuminate\Support\Collection;
 
 class Currency
 {
@@ -53,8 +55,8 @@ class Currency
 
     public function transform($data)
     {
-        if (is_iterable($data) && ! $data instanceof \Coderstm\Contracts\Currencyable) {
-            $isCollection = $data instanceof \Illuminate\Support\Collection;
+        if (is_iterable($data) && ! $data instanceof Currencyable) {
+            $isCollection = $data instanceof Collection;
             $transformed = [];
             foreach ($data as $key => $item) {
                 $transformed[$key] = $this->transformSingle($item);
@@ -68,7 +70,7 @@ class Currency
 
     protected function transformSingle($item): array
     {
-        if ($item instanceof \Coderstm\Contracts\Currencyable) {
+        if ($item instanceof Currencyable) {
             return $this->toArray($item, $item->getCurrencyFields());
         }
         $array = is_array($item) ? $item : (method_exists($item, 'toArray') ? $item->toArray() : (array) $item);
@@ -92,7 +94,7 @@ class Currency
             return $this->set($baseCode, 1.0);
         }
         try {
-            $rate = \Coderstm\Models\Shop\ExchangeRate::rateFor($code);
+            $rate = ExchangeRate::rateFor($code);
 
             return $this->set($code, $rate);
         } catch (\Throwable $e) {

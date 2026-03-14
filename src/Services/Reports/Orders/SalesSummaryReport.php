@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Orders;
 
+use Carbon\Carbon;
 use Coderstm\Models\Payment;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
@@ -48,7 +49,7 @@ class SalesSummaryReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $totalOrders = (int) ($row->total_orders ?? 0);
         $gmv = (float) ($row->gmv ?? 0);
         $discountTotal = (float) ($row->discount_total ?? 0);

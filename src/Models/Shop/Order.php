@@ -3,10 +3,19 @@
 namespace Coderstm\Models\Shop;
 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Coderstm\Contracts\Currencyable;
 use Coderstm\Contracts\PaymentInterface;
 use Coderstm\Database\Factories\Shop\OrderFactory;
+use Coderstm\Events\Shop\OrderCanceled;
+use Coderstm\Events\Shop\OrderDelivered;
+use Coderstm\Events\Shop\OrderPaid;
+use Coderstm\Events\Shop\OrderShipped;
+use Coderstm\Events\Shop\PaymentFailed;
+use Coderstm\Events\Shop\PaymentSuccessful;
+use Coderstm\Facades\Currency;
 use Coderstm\Models\Address;
 use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Refund;
 use Coderstm\Models\Shop\Order\Contact;
 use Coderstm\Models\Shop\Order\Customer;
@@ -25,7 +34,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
-class Order extends Model implements \Coderstm\Contracts\Currencyable
+class Order extends Model implements Currencyable
 {
     use Core, HasRefunds, OrderStatus;
 
@@ -294,15 +303,15 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
         if ($orderable && method_exists($orderable, 'paymentConfirmation')) {
             $orderable->paymentConfirmation($order);
         }
-        event(new \Coderstm\Events\Shop\OrderPaid($order));
-        event(new \Coderstm\Events\Shop\PaymentSuccessful($order, $payment));
+        event(new OrderPaid($order));
+        event(new PaymentSuccessful($order, $payment));
 
         return $order;
     }
 
     public function markAsPaidUsingWallet(array $transaction = [])
     {
-        return $this->markAsPaid(\Coderstm\Models\PaymentMethod::walletId(), $transaction);
+        return $this->markAsPaid(PaymentMethod::walletId(), $transaction);
     }
 
     public function markAsPaymentPending($payment = null, array $transaction = [])
@@ -324,7 +333,7 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
             $orderable->paymentFailed($order);
         }
         $reason = $transaction['note'] ?? $transaction['error'] ?? null;
-        event(new \Coderstm\Events\Shop\PaymentFailed($order, $payment, $reason));
+        event(new PaymentFailed($order, $payment, $reason));
 
         return $order;
     }
@@ -517,7 +526,7 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
     {
         $updated = $this->update(['status' => self::STATUS_SHIPPED, 'fulfillment_status' => self::STATUS_FULFILLMENT_SHIPPED, 'shipped_at' => now(), 'tracking_number' => $trackingNumber, 'tracking_company' => $trackingCompany]);
         if ($updated) {
-            event(new \Coderstm\Events\Shop\OrderShipped($this->fresh()));
+            event(new OrderShipped($this->fresh()));
         }
 
         return $updated;
@@ -527,7 +536,7 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
     {
         $updated = $this->update(['status' => self::STATUS_DELIVERED, 'fulfillment_status' => self::STATUS_FULFILLMENT_DELIVERED, 'delivered_at' => now()]);
         if ($updated) {
-            event(new \Coderstm\Events\Shop\OrderDelivered($this->fresh()));
+            event(new OrderDelivered($this->fresh()));
         }
 
         return $updated;
@@ -537,7 +546,7 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
     {
         $updated = $this->update(['status' => self::STATUS_CANCELLED, 'fulfillment_status' => self::STATUS_FULFILLMENT_CANCELLED, 'cancelled_at' => now(), 'cancel_reason' => $reason]);
         if ($updated) {
-            event(new \Coderstm\Events\Shop\OrderCanceled($this->fresh()));
+            event(new OrderCanceled($this->fresh()));
         }
 
         return $updated;
@@ -684,15 +693,15 @@ class Order extends Model implements \Coderstm\Contracts\Currencyable
 
     public function transformForPayment(): array
     {
-        $orderData = \Coderstm\Facades\Currency::transform($this);
+        $orderData = Currency::transform($this);
         if ($this->relationLoaded('line_items')) {
-            $orderData['line_items'] = \Coderstm\Facades\Currency::transform($this->line_items);
+            $orderData['line_items'] = Currency::transform($this->line_items);
         }
         if ($this->relationLoaded('tax_lines')) {
-            $orderData['tax_lines'] = \Coderstm\Facades\Currency::transform($this->tax_lines);
+            $orderData['tax_lines'] = Currency::transform($this->tax_lines);
         }
         if ($this->relationLoaded('discount') && $this->discount) {
-            $orderData['discount'] = \Coderstm\Facades\Currency::transform($this->discount);
+            $orderData['discount'] = Currency::transform($this->discount);
         }
 
         return $orderData;

@@ -6,12 +6,14 @@ use Coderstm\Coderstm;
 use Coderstm\Contracts\PaymentProcessorInterface;
 use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
+use Coderstm\Models\Shop\ExchangeRate;
 use Coderstm\Payment\Mappers\RazorpayPayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
 use Coderstm\Payment\RefundResult;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Razorpay\Api\Errors\Error;
 
 class RazorpayProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
 {
@@ -32,7 +34,7 @@ class RazorpayProcessor extends AbstractPaymentProcessor implements PaymentProce
         $api = Coderstm::razorpay();
         $payable->setCurrencies($this->supportedCurrencies());
         $this->validateCurrency($payable);
-        $order = $api->order->create(['amount' => round($payable->getGatewayAmount() * 100), 'currency' => Str::upper($payable->getCurrency()), 'receipt' => $payable->getReferenceId(), 'notes' => array_merge($payable->getMetadata(), ['customer_email' => $payable->getCustomerEmail(), 'order_amount' => $payable->getGrandTotal(), 'order_currency' => \Coderstm\Models\Shop\ExchangeRate::getBaseCurrency()])]);
+        $order = $api->order->create(['amount' => round($payable->getGatewayAmount() * 100), 'currency' => Str::upper($payable->getCurrency()), 'receipt' => $payable->getReferenceId(), 'notes' => array_merge($payable->getMetadata(), ['customer_email' => $payable->getCustomerEmail(), 'order_amount' => $payable->getGrandTotal(), 'order_currency' => ExchangeRate::getBaseCurrency()])]);
 
         return ['order_id' => $order['id'], 'amount' => $order['amount'], 'currency' => $order['currency']];
     }
@@ -79,7 +81,7 @@ class RazorpayProcessor extends AbstractPaymentProcessor implements PaymentProce
             $refundedAmount = ($refund['amount'] ?? $amount * 100) / 100;
 
             return RefundResult::success(refundId: $refund['id'], amount: $refundedAmount, status: $refund['status'] ?? 'processed', metadata: ['razorpay_refund_id' => $refund['id'], 'payment_id' => $payment->transaction_id, 'status' => $refund['status'] ?? 'processed']);
-        } catch (\Razorpay\Api\Errors\Error $e) {
+        } catch (Error $e) {
             RefundResult::failed('Razorpay refund error: '.$e->getMessage());
         } catch (\Throwable $e) {
             RefundResult::failed($e->getMessage());

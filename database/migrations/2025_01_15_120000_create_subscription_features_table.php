@@ -24,7 +24,6 @@ return new class extends Migration
             $table->boolean('resetable')->default(false);
             $table->integer('value')->default(0);
             $table->unsignedInteger('used')->default(0);
-            $table->dateTime('reset_at')->nullable();
             $table->timestamps();
 
             $table->unique(['subscription_id', 'slug']);

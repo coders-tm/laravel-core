@@ -70,14 +70,14 @@ class MaskSensitiveConfig extends BladeCompiler
 
     public function sanitizeEnvCalls($value)
     {
-        return preg_replace_callback('/env\\((["]|\')(?:\\s*)?([a-zA-Z0-9._]+)(?:\\s*)?\\1\\)/', function () {
+        return preg_replace_callback('/(?<!->|::|\\?->)\\benv\\((["]|\')(?:\\s*)?([a-zA-Z0-9._]+)(?:\\s*)?\\1\\)/', function () {
             return "'****'";
         }, $value);
     }
 
     public function sanitizeSettingsCalls($value)
     {
-        return preg_replace_callback('/settings\\((["]|\')(?:\\s*)?([a-zA-Z0-9._-]+)(?:\\s*)?\\1(?:\\s*,\\s*[^)]*)?\\)/', function () {
+        return preg_replace_callback('/(?<!->|::|\\?->)\\bsettings\\((["]|\')(?:\\s*)?([a-zA-Z0-9._-]+)(?:\\s*)?\\1(?:\\s*,\\s*[^)]*)?\\)/', function () {
             return "'****'";
         }, $value);
     }

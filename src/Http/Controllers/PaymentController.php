@@ -4,6 +4,7 @@ namespace Coderstm\Http\Controllers;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\PaymentMethod;
+use Coderstm\Payment\Payable;
 use Coderstm\Payment\Processor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -34,7 +35,7 @@ class PaymentController extends Controller
             }
             $processor = Processor::make($provider);
             $processor->setPaymentMethod($paymentMethod);
-            $payable = \Coderstm\Payment\Payable::fromOrder($order);
+            $payable = Payable::fromOrder($order);
             $paymentIntent = $processor->setupPaymentIntent($request, $payable);
 
             return response()->json($paymentIntent);
@@ -58,7 +59,7 @@ class PaymentController extends Controller
             }
             $processor = Processor::make($provider);
             $processor->setPaymentMethod($paymentMethod);
-            $payable = \Coderstm\Payment\Payable::fromOrder($order);
+            $payable = Payable::fromOrder($order);
             $result = $processor->confirmPayment($request, $payable);
             if ($paymentData = $result->getPaymentData()) {
                 $order->markAsPaid($paymentData, ['amount' => $order->grand_total]);

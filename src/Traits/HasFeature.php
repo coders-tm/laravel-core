@@ -3,13 +3,14 @@
 namespace Coderstm\Traits;
 
 use Coderstm\Exceptions\Plan\FeatureNotFoundException;
+use Coderstm\Models\Subscription\SubscriptionFeature;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 trait HasFeature
 {
     public function features(): HasMany
     {
-        return $this->hasMany(\Coderstm\Models\Subscription\SubscriptionFeature::class);
+        return $this->hasMany(SubscriptionFeature::class);
     }
 
     public function usagesToArray()
@@ -65,10 +66,7 @@ trait HasFeature
         if ($subscriptionFeature->isBoolean()) {
             return false;
         }
-        if (is_null($subscriptionFeature->reset_at) && $subscriptionFeature->resetable) {
-            $subscriptionFeature->reset_at = $this->expires_at;
-        } elseif ($subscriptionFeature->expired()) {
-            $subscriptionFeature->reset_at = $this->expires_at;
+        if ($subscriptionFeature->resetable) {
             $subscriptionFeature->used = 0;
         }
 
@@ -85,16 +83,15 @@ trait HasFeature
         $planFeatureSlugs = $planFeatures->pluck('slug')->toArray();
         $this->features()->whereNotIn('slug', $planFeatureSlugs)->delete();
         foreach ($planFeatures as $planFeature) {
-            $this->features()->updateOrCreate(['slug' => $planFeature->slug], ['label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'reset_at' => $this->expires_at, 'used' => 0]);
+            $this->features()->updateOrCreate(['slug' => $planFeature->slug], ['label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'used' => 0]);
         }
     }
 
     public function syncOrResetUsages(): void
     {
         $this->features()->where('resetable', 1)->each(function ($subscriptionFeature) {
-            if ($subscriptionFeature->expired()) {
+            if ($subscriptionFeature->resetable) {
                 $subscriptionFeature->used = 0;
-                $subscriptionFeature->reset_at = $this->expires_at;
             }
             $subscriptionFeature->save();
         });
@@ -102,12 +99,13 @@ trait HasFeature
 
     public function resetUsagesForRenewal(): void
     {
-        $this->features()->where('resetable', 1)->update(['used' => 0, 'reset_at' => $this->expires_at]);
+        $this->features()->where('resetable', 1)->update(['used' => 0]);
+        $this->unsetRelation('features');
     }
 
     public function resetUsages(): void
     {
-        $this->features()->update(['used' => 0, 'reset_at' => $this->expires_at]);
+        $this->features()->update(['used' => 0]);
     }
 
     public function reduceFeatureUsage(string $featureSlug, int $uses = 1)

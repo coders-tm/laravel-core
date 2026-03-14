@@ -7,18 +7,24 @@ use Coderstm\Enum\AppStatus;
 use Coderstm\Jobs\ProcessCsvImport;
 use Coderstm\Models\File;
 use Coderstm\Models\Import;
+use Coderstm\Models\Subscription;
 use Coderstm\Models\User;
+use Coderstm\Notifications\UserResetPasswordNotification;
+use Coderstm\Services\Admin\SubscriptionCreationService;
+use Coderstm\Traits\HasResourceActions;
+use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
 use League\Csv\Reader;
 
 class UserController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
-    use \Coderstm\Traits\Helpers;
+    use HasResourceActions;
+    use Helpers;
 
     /**
      * Create the controller instance.
@@ -349,14 +355,14 @@ class UserController extends Controller
         $this->authorize('update', [$user]);
 
         // Create password reset token
-        $token = \Illuminate\Support\Facades\Password::createToken($user);
+        $token = Password::createToken($user);
 
         // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
         $baseUrl = config('app.frontend_url') ?: config('app.url');
         $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
 
         // Send notification using common template system
-        $user->notify(new \Coderstm\Notifications\UserResetPasswordNotification($user, [
+        $user->notify(new UserResetPasswordNotification($user, [
             'token' => $token,
             'url' => $resetUrl,
             'expires' => config('auth.passwords.users.expire', 60),
@@ -467,7 +473,7 @@ class UserController extends Controller
      */
     protected function loadSubscription($user, array $extends = ['usages', 'plan', 'next_plan'])
     {
-        /** @var \Coderstm\Models\Subscription $subscription */
+        /** @var Subscription $subscription */
         $subscription = $user->subscription('default');
 
         $user['subscription'] = $subscription?->toResponse($extends);
@@ -480,12 +486,12 @@ class UserController extends Controller
     /**
      * Create subscription for the user during store operation.
      *
-     * @param  \Coderstm\Models\User  $user
-     * @return \Coderstm\Models\Subscription
+     * @param  User  $user
+     * @return Subscription
      */
     protected function createSubscription($user, Request $request)
     {
-        $service = app(\Coderstm\Services\Admin\SubscriptionCreationService::class);
+        $service = app(SubscriptionCreationService::class);
 
         try {
             $subscription = $service->createOrUpdate($user, [

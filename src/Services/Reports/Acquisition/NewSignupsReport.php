@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Acquisition;
 
+use Carbon\Carbon;
 use Coderstm\Coderstm;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +44,7 @@ class NewSignupsReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
 
         return ['period' => $period, 'new_users' => (int) ($row->new_users ?? 0), 'new_subscriptions' => (int) ($row->new_subscriptions ?? 0), 'trial_signups' => (int) ($row->trial_signups ?? 0), 'paid_signups' => (int) ($row->paid_signups ?? 0), 'mrr_added' => $this->money($row->mrr_added ?? 0), 'top_plan' => $row->top_plan ?? 'N/A'];
     }

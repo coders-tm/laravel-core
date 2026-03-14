@@ -3,18 +3,20 @@
 namespace Coderstm\Database\Factories;
 
 use Coderstm\Models\Address;
+use Coderstm\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\User>
+ * @extends Factory<User>
  */
 class UserFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     * @var class-string<Model|TModel>
      */
     protected $model = 'Coderstm\\Models\\User';
 

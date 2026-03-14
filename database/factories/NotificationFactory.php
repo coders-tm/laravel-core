@@ -6,7 +6,7 @@ use Coderstm\Models\Notification;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Coderstm\Models\Notification>
+ * @extends Factory<Notification>
  */
 class NotificationFactory extends Factory
 {

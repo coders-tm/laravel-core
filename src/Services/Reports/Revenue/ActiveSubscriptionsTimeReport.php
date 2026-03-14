@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Revenue;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -58,7 +59,7 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $netChange = ($row->new_subscriptions ?? 0) - ($row->canceled_subscriptions ?? 0);
 
         return ['period' => $period, 'active_subscriptions' => (int) ($row->active_subscriptions ?? 0), 'new_subscriptions' => (int) ($row->new_subscriptions ?? 0), 'canceled_subscriptions' => (int) ($row->canceled_subscriptions ?? 0), 'net_change' => $netChange, 'growth_rate' => (float) ($row->growth_rate ?? 0)];

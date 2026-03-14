@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Subscriptions;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -48,7 +49,7 @@ class FreezeUsageReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $totalFreezes = (int) ($row->total_freezes ?? 0);
         $totalActive = (int) ($row->total_active ?? 0);
         $freezeRate = $totalActive > 0 ? $totalFreezes / $totalActive * 100 : 0;

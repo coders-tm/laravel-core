@@ -26,6 +26,7 @@
     "php": "^8.2",
     "ext-json": "*",
     "barryvdh/laravel-dompdf": "^3.1",
+    "coderstm/laravel-page-builder": "^1.0",
     "creativeorange/gravatar": "^1.0",
     "doctrine/dbal": "^3.4",
     "firebase/php-jwt": "^7.0",
@@ -101,7 +102,6 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Coderstm\\Providers\\ThemeServiceProvider",
         "Coderstm\\Providers\\CoderstmServiceProvider",
         "Coderstm\\Providers\\CoderstmPermissionsServiceProvider",
         "Coderstm\\Providers\\CoderstmEventServiceProvider",

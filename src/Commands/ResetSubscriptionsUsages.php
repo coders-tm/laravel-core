@@ -15,9 +15,7 @@ class ResetSubscriptionsUsages extends Command
 
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::query()->active()->whereHas('features', function ($q) {
-            $q->where('reset_at', '<=', now());
-        });
+        $subscriptions = Coderstm::$subscriptionModel::query()->active()->where('expires_at', '<=', now());
         foreach ($subscriptions->cursor() as $subscription) {
             try {
                 event(new ResetFeatureUsages($subscription, $subscription->usagesToArray()));

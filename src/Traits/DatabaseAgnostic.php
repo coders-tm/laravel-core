@@ -2,6 +2,7 @@
 
 namespace Coderstm\Traits;
 
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
 trait DatabaseAgnostic
@@ -190,7 +191,7 @@ trait DatabaseAgnostic
         };
     }
 
-    protected function buildPeriodBoundariesQuery(array $periodBoundaries): ?\Illuminate\Database\Query\Builder
+    protected function buildPeriodBoundariesQuery(array $periodBoundaries): ?Builder
     {
         if (empty($periodBoundaries)) {
             return null;
@@ -211,7 +212,7 @@ trait DatabaseAgnostic
         return $periodQuery;
     }
 
-    protected function emptyQuery(): \Illuminate\Database\Query\Builder
+    protected function emptyQuery(): Builder
     {
         return DB::table(DB::raw('(SELECT 1) as dummy'))->whereRaw('1 = 0');
     }

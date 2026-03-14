@@ -3,6 +3,7 @@
 namespace Coderstm\Models\Shop;
 
 use Illuminate\Database\Eloquent\Model;
+use League\ISO3166\ISO3166;
 
 class ExchangeRate extends Model
 {
@@ -62,7 +63,7 @@ class ExchangeRate extends Model
     {
         $countryCode = strtoupper($countryCode);
         try {
-            $data = (new \League\ISO3166\ISO3166)->alpha2($countryCode);
+            $data = (new ISO3166)->alpha2($countryCode);
             if (! empty($data['currency'][0])) {
                 return strtoupper($data['currency'][0]);
             }
@@ -75,7 +76,7 @@ class ExchangeRate extends Model
     public static function getCurrencyFromCountry(string $country): string
     {
         try {
-            $data = (new \League\ISO3166\ISO3166)->name($country);
+            $data = (new ISO3166)->name($country);
             if (! empty($data['currency'][0])) {
                 return strtoupper($data['currency'][0]);
             }

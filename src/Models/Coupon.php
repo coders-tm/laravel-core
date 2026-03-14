@@ -2,6 +2,7 @@
 
 namespace Coderstm\Models;
 
+use Coderstm\Database\Factories\CouponFactory;
 use Coderstm\Enum\CouponDuration;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Traits\Core;
@@ -209,6 +210,6 @@ class Coupon extends Model
 
     public static function newFactory()
     {
-        return \Coderstm\Database\Factories\CouponFactory::new();
+        return CouponFactory::new();
     }
 }

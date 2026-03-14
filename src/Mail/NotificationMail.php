@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Queue\SerializesModels;
 
 class NotificationMail extends Mailable
@@ -19,7 +20,7 @@ class NotificationMail extends Mailable
 
     protected function setRecipients(object $notifiable): void
     {
-        if ($notifiable instanceof \Illuminate\Notifications\AnonymousNotifiable) {
+        if ($notifiable instanceof AnonymousNotifiable) {
             $address = $notifiable->routeNotificationFor('mail', null);
             if (is_array($address)) {
                 foreach ($address as $email => $name) {

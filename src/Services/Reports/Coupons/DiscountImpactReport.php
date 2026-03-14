@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Coupons;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -41,7 +42,7 @@ class DiscountImpactReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $totalOrders = (int) ($row->total_orders ?? 0);
         $ordersWithDiscount = (int) ($row->orders_with_discount ?? 0);
         $grossRevenue = (float) ($row->gross_revenue ?? 0);

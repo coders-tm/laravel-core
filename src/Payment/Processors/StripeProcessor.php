@@ -11,6 +11,7 @@ use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
 use Coderstm\Payment\RefundResult;
 use Illuminate\Http\Request;
+use Stripe\Exception\ApiErrorException;
 
 class StripeProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
 {
@@ -78,7 +79,7 @@ class StripeProcessor extends AbstractPaymentProcessor implements PaymentProcess
             }
 
             return RefundResult::success(refundId: $refund->id, amount: $refund->amount / 100, status: $refund->status, metadata: ['stripe_refund_id' => $refund->id, 'payment_intent' => $refund->payment_intent, 'charge' => $refund->charge, 'reason' => $refund->reason]);
-        } catch (\Stripe\Exception\ApiErrorException $e) {
+        } catch (ApiErrorException $e) {
             RefundResult::failed('Stripe refund error: '.$e->getMessage());
         } catch (\Throwable $e) {
             RefundResult::failed('Stripe error: '.$e->getMessage());

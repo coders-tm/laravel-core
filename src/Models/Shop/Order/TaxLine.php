@@ -2,10 +2,11 @@
 
 namespace Coderstm\Models\Shop\Order;
 
+use Coderstm\Contracts\Currencyable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TaxLine extends Model implements \Coderstm\Contracts\Currencyable
+class TaxLine extends Model implements Currencyable
 {
     public function getCurrencyFields(): array
     {

@@ -5,6 +5,7 @@ namespace Coderstm\Services;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\Shop\Order\DiscountLine;
 use Coderstm\Models\Subscription\Plan;
+use Illuminate\Database\Eloquent\Collection;
 
 class CouponService
 {
@@ -14,7 +15,7 @@ class CouponService
 
     protected array $couponRelationsCache = [];
 
-    protected function getAutoApplicableCouponsWithRelations(string $couponType): \Illuminate\Database\Eloquent\Collection
+    protected function getAutoApplicableCouponsWithRelations(string $couponType): Collection
     {
         $cacheKey = 'auto_'.$couponType;
         if (! isset($this->couponRelationsCache[$cacheKey])) {
@@ -24,7 +25,7 @@ class CouponService
         return $this->couponRelationsCache[$cacheKey];
     }
 
-    protected function getCouponsWithRelations(string $couponType): \Illuminate\Database\Eloquent\Collection
+    protected function getCouponsWithRelations(string $couponType): Collection
     {
         if (! isset($this->couponRelationsCache[$couponType])) {
             $this->couponRelationsCache[$couponType] = Coupon::onlyActive()->where('type', $couponType)->with(['plans', 'products'])->get();

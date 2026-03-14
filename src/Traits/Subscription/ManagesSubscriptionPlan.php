@@ -7,7 +7,9 @@ use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Events\SubscriptionExpired;
 use Coderstm\Events\SubscriptionPlanChanged;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Notifications\SubscriptionExpiredNotification;
+use Coderstm\Services\Period;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait ManagesSubscriptionPlan
@@ -125,17 +127,15 @@ trait ManagesSubscriptionPlan
             $this->current_cycle = 0;
             $this->next_plan = null;
             $this->is_downgrade = false;
-        } else {
-            $this->resetUsagesForRenewal();
         }
         $this->current_cycle = ($this->current_cycle ?? 0) + 1;
         $renewalInterval = $this->getBillingInterval();
         $renewalIntervalCount = $this->getBillingIntervalCount();
         $startDate = $this->expires_at ?? Carbon::now();
-        $period = new \Coderstm\Services\Period($renewalInterval, $renewalIntervalCount, $startDate);
+        $period = new Period($renewalInterval, $renewalIntervalCount, $startDate);
         $newExpiresAt = $period->getEndDate();
         if ($this->isContract()) {
-            $contractPeriod = new \Coderstm\Services\Period($this->plan->interval->value, $this->plan->interval_count, $this->created_at ?? $this->starts_at);
+            $contractPeriod = new Period($this->plan->interval->value, $this->plan->interval_count, $this->created_at ?? $this->starts_at);
             $contractEndDate = $contractPeriod->getEndDate();
             if ($newExpiresAt->gt($contractEndDate)) {
                 $newExpiresAt = $contractEndDate;
@@ -144,6 +144,7 @@ trait ManagesSubscriptionPlan
         $gracePeriodDays = $this->plan->grace_period_days ?? config('coderstm.subscription.grace_period_days', 0);
         $graceEndsAt = $gracePeriodDays > 0 ? Carbon::now()->addDays($gracePeriodDays) : null;
         $this->fill(['starts_at' => $period->getStartDate(), 'expires_at' => $newExpiresAt, 'ends_at' => $graceEndsAt, 'trial_ends_at' => null])->save();
+        $this->resetUsagesForRenewal();
         $invoice = $this->generateInvoice();
         if ($invoice && config('coderstm.wallet.auto_charge_on_renewal', true) && $this->user) {
             try {
@@ -184,7 +185,7 @@ trait ManagesSubscriptionPlan
     {
         $amount = (float) $invoice->grand_total;
         $transaction = $this->user->debitWallet(amount: $amount, source: 'subscription_renewal', description: "Subscription renewal - {$this->plan->label}", transactionable: $this, metadata: ['subscription_id' => $this->id, 'plan_id' => $this->plan_id, 'invoice_id' => $invoice->id, 'cycle' => $this->current_cycle]);
-        $walletPaymentMethod = \Coderstm\Models\PaymentMethod::where('provider', \Coderstm\Models\PaymentMethod::WALLET)->first();
+        $walletPaymentMethod = PaymentMethod::where('provider', PaymentMethod::WALLET)->first();
         if ($walletPaymentMethod) {
             $invoice->markAsPaid($walletPaymentMethod->id, ['id' => $transaction->id, 'amount' => $amount, 'status' => 'succeeded', 'note' => 'Paid from wallet balance', 'wallet_transaction_id' => $transaction->id]);
         }

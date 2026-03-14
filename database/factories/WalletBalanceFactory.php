@@ -2,6 +2,7 @@
 
 namespace Coderstm\Database\Factories;
 
+use Coderstm\Models\User;
 use Coderstm\Models\WalletBalance;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,7 +23,7 @@ class WalletBalanceFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => \Coderstm\Models\User::factory(),
+            'user_id' => User::factory(),
             'balance' => $this->faker->randomFloat(2, 0, 1000),
         ];
     }

@@ -7,6 +7,9 @@ use Coderstm\Coderstm;
 use Coderstm\Contracts\Currencyable;
 use Coderstm\Database\Factories\PlanFactory;
 use Coderstm\Enum\PlanInterval;
+use Coderstm\Facades\Currency;
+use Coderstm\Models\Shop\Product;
+use Coderstm\Models\Shop\Product\Variant;
 use Coderstm\Services\Period;
 use Coderstm\Traits\Core;
 use Coderstm\Traits\SerializeDate;
@@ -35,12 +38,12 @@ class Plan extends Model implements Currencyable
 
     public function variant(): BelongsTo
     {
-        return $this->belongsTo(\Coderstm\Models\Shop\Product\Variant::class, 'variant_id');
+        return $this->belongsTo(Variant::class, 'variant_id');
     }
 
     public function product()
     {
-        return $this->hasOneThrough(\Coderstm\Models\Shop\Product::class, \Coderstm\Models\Shop\Product\Variant::class, 'id', 'id', 'variant_id', 'product_id');
+        return $this->hasOneThrough(Product::class, Variant::class, 'id', 'id', 'variant_id', 'product_id');
     }
 
     public function getResetDate(?Carbon $dateFrom): Carbon
@@ -181,7 +184,7 @@ class Plan extends Model implements Currencyable
 
     public function formatPrice()
     {
-        return \Coderstm\Facades\Currency::format($this->price);
+        return Currency::format($this->price);
     }
 
     protected function formatInterval()

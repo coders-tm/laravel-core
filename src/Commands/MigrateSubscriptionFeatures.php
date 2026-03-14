@@ -106,8 +106,7 @@ class MigrateSubscriptionFeatures extends Command
         foreach ($planFeatures as $planFeature) {
             $usage = Usage::where('subscription_id', $subscription->id)->where('slug', $planFeature->slug)->first();
             $used = $usage ? $usage->used : 0;
-            $resetAt = $usage ? $usage->reset_at : null;
-            $subscriptionFeatureData = ['subscription_id' => $subscription->id, 'slug' => $planFeature->slug, 'label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'used' => $used, 'reset_at' => $resetAt];
+            $subscriptionFeatureData = ['subscription_id' => $subscription->id, 'slug' => $planFeature->slug, 'label' => $planFeature->label, 'type' => $planFeature->type, 'resetable' => $planFeature->resetable, 'value' => $planFeature->pivot->value, 'used' => $used];
             SubscriptionFeature::updateOrCreate(['subscription_id' => $subscription->id, 'slug' => $planFeature->slug], $subscriptionFeatureData);
             $subscriptionFeatures[] = $subscriptionFeatureData;
         }

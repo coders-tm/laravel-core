@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription;
 use Coderstm\Repository\InvoiceRepository;
 use Coderstm\Services\Period;
 use Coderstm\Services\Resource;
@@ -109,7 +110,7 @@ trait ManageSubscriptionInvoices
         if ($plan->setup_fee === 0.0) {
             return false;
         }
-        $hasOtherSubscriptions = \Coderstm\Models\Subscription::where('user_id', $this->user_id)->where('id', '!=', $this->id)->exists();
+        $hasOtherSubscriptions = Subscription::where('user_id', $this->user_id)->where('id', '!=', $this->id)->exists();
         if ($hasOtherSubscriptions) {
             return false;
         }

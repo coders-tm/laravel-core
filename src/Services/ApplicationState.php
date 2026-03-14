@@ -4,6 +4,7 @@ namespace Coderstm\Services;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Validation\ValidationException;
 
@@ -57,9 +58,9 @@ class ApplicationState
     {
         $request = request();
         $request->validate(['email' => 'required|email|exists:admins,email', 'password' => 'required', 'license' => 'required'], ['email.required' => __('An email address is required.'), 'email.exists' => __('Your email address doens\'t exists.')]);
-        if (\Illuminate\Support\Facades\Auth::guard('admins')->attempt($request->only(['email', 'password']))) {
+        if (Auth::guard('admins')->attempt($request->only(['email', 'password']))) {
             $user = $request->user('admins');
-            \Illuminate\Support\Facades\Auth::guard('admins')->logout();
+            Auth::guard('admins')->logout();
             if (! $user->is_active()) {
                 throw ValidationException::withMessages(['email' => [__('Your account has been disabled.')]]);
             }

@@ -11,6 +11,7 @@ use Coderstm\Payment\Mappers\FlutterwavePayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
 use Coderstm\Payment\RefundResult;
+use Flutterwave\Service\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -138,7 +139,7 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 RefundResult::failed('Flutterwave client not configured');
             }
             $refundAmt = $payment->metadata['gateway_amount'] ?? $payment->amount;
-            $transactionService = new \Flutterwave\Service\Transactions;
+            $transactionService = new Transactions;
             $response = $transactionService->refund($payment->transaction_id);
             if (! $response || $response->status !== 'success') {
                 RefundResult::failed('Flutterwave refund failed: '.($response->message ?? 'Unknown error'));

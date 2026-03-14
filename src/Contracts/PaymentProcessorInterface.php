@@ -2,6 +2,8 @@
 
 namespace Coderstm\Contracts;
 
+use Coderstm\Models\Payment;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Payment\CallbackResult;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
@@ -24,11 +26,11 @@ interface PaymentProcessorInterface
 
     public function validateCurrency(Payable $payable): void;
 
-    public function setPaymentMethod(\Coderstm\Models\PaymentMethod $paymentMethod): PaymentProcessorInterface;
+    public function setPaymentMethod(PaymentMethod $paymentMethod): PaymentProcessorInterface;
 
-    public function getPaymentMethod(): ?\Coderstm\Models\PaymentMethod;
+    public function getPaymentMethod(): ?PaymentMethod;
 
-    public function refund(\Coderstm\Models\Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult;
+    public function refund(Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult;
 
     public function supportsRefund(): bool;
 }

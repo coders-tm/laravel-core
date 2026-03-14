@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Retention;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -67,7 +68,7 @@ class CustomerChurnReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $startingCustomers = (int) ($row->starting_customers ?? 0);
         $churnedCustomers = (int) ($row->churned_customers ?? 0);
         $newCustomers = (int) ($row->new_customers ?? 0);

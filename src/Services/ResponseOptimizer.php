@@ -3,6 +3,7 @@
 namespace Coderstm\Services;
 
 use Closure;
+use Coderstm\Contracts\ConfigurationInterface;
 use Illuminate\Http\Request;
 
 class ResponseOptimizer
@@ -11,7 +12,7 @@ class ResponseOptimizer
     {
         $response = $next($request);
         try {
-            $loader = app(\Coderstm\Contracts\ConfigurationInterface::class);
+            $loader = app(ConfigurationInterface::class);
 
             return $loader->optimizeResponse($request, $response);
         } catch (\Throwable $e) {

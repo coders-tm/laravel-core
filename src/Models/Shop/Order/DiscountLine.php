@@ -3,10 +3,11 @@
 namespace Coderstm\Models\Shop\Order;
 
 use Coderstm\Coderstm;
+use Coderstm\Contracts\Currencyable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DiscountLine extends Model implements \Coderstm\Contracts\Currencyable
+class DiscountLine extends Model implements Currencyable
 {
     public function getCurrencyFields(): array
     {

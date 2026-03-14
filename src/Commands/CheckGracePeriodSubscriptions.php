@@ -16,7 +16,7 @@ class CheckGracePeriodSubscriptions extends Command
     {
         $this->info('Checking for subscriptions with expired grace periods...');
         $count = 0;
-        $subscriptions = Subscription::query()->onGracePeriod()->where('ends_at', '<', now());
+        $subscriptions = Subscription::query()->where('status', SubscriptionStatus::ACTIVE)->whereNotNull('ends_at')->where('ends_at', '<', now());
         foreach ($subscriptions->cursor() as $subscription) {
             $subscription->update(['status' => SubscriptionStatus::EXPIRED]);
             $count++;

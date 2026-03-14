@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Admin;
 
+use Carbon\Carbon;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Redeem;
@@ -46,8 +47,8 @@ class SubscriptionCreationService
             throw ValidationException::withMessages(['plan' => __('A valid plan is required.')]);
         }
         if (! empty($data['starts_at']) && ! empty($data['expires_at'])) {
-            $startsAt = \Carbon\Carbon::parse($data['starts_at']);
-            $expiresAt = \Carbon\Carbon::parse($data['expires_at']);
+            $startsAt = Carbon::parse($data['starts_at']);
+            $expiresAt = Carbon::parse($data['expires_at']);
             if ($expiresAt->lte($startsAt)) {
                 throw ValidationException::withMessages(['expires_at' => __('Expiry date must be after the start date.')]);
             }

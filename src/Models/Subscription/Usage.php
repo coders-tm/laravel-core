@@ -2,7 +2,6 @@
 
 namespace Coderstm\Models\Subscription;
 
-use Carbon\Carbon;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,21 +14,12 @@ class Usage extends Model
 
     protected $table = 'subscription_usages';
 
-    protected $fillable = ['slug', 'used', 'subscription_id', 'reset_at'];
+    protected $fillable = ['slug', 'used', 'subscription_id'];
 
-    protected $casts = ['reset_at' => 'datetime'];
+    protected $casts = [];
 
     public function scopeByFeatureSlug($query, string $featureSlug)
     {
         return $query->whereSlug($featureSlug);
-    }
-
-    public function expired(): bool
-    {
-        if (is_null($this->reset_at)) {
-            return false;
-        }
-
-        return Carbon::now()->gte($this->reset_at);
     }
 }

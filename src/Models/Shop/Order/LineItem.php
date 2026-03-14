@@ -2,11 +2,12 @@
 
 namespace Coderstm\Models\Shop\Order;
 
+use Coderstm\Contracts\Currencyable;
 use Coderstm\Models\Shop\LineItem as BaseLineItem;
 use Coderstm\Models\Shop\Product\Weight;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
-class LineItem extends BaseLineItem implements \Coderstm\Contracts\Currencyable
+class LineItem extends BaseLineItem implements Currencyable
 {
     public function getCurrencyFields(): array
     {

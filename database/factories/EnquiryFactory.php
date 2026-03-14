@@ -3,13 +3,14 @@
 namespace Coderstm\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Eloquent\Model;
 
 class EnquiryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
-     * @var class-string<\Illuminate\Database\Eloquent\Model|TModel>
+     * @var class-string<Model|TModel>
      */
     protected $model = 'App\Models\Enquiry';
 

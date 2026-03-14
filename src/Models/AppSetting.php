@@ -4,6 +4,7 @@ namespace Coderstm\Models;
 
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
@@ -184,7 +185,7 @@ class AppSetting extends Model
         }
     }
 
-    public static function findByKeyAsCollection(string $key): \Illuminate\Support\Collection
+    public static function findByKeyAsCollection(string $key): Collection
     {
         return collect(static::findByKey($key));
     }

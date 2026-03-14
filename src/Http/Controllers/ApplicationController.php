@@ -7,14 +7,11 @@ use Coderstm\Mail\TestEmail;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Task;
-use Coderstm\Services\Theme;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 
 class ApplicationController extends Controller
 {
@@ -80,51 +77,5 @@ class ApplicationController extends Controller
         }
 
         return response()->json(['message' => __('Test email sent successfully!')], 200);
-    }
-
-    public function shortCode(Request $request)
-    {
-        $request->validate(['content' => 'required|string']);
-        if (Str::startsWith($request->content, '[calendar')) {
-            return $request->content;
-        }
-
-        return Blade::render($request->content);
-    }
-
-    public function theme()
-    {
-        $theme = false;
-        $editor = ['styles' => [], 'scripts' => ['~/js/app.js']];
-        $config = Theme::config();
-        $theme = Theme::active();
-        if ($theme) {
-            $editor = array_merge_recursive($editor, $config['editor']);
-        }
-        $editor['styles'][] = '~/css/app.css';
-        $editor['styles'] = $this->mapAssets($editor['styles'], $theme);
-        $editor['scripts'] = $this->mapAssets($editor['scripts'], $theme);
-
-        return response()->json($editor, 200);
-    }
-
-    private function mapAssets(array $assets, ?string $theme = null)
-    {
-        return collect($assets)->unique()->map(function ($asset) use ($theme) {
-            if (preg_match('/^(https?:\\/\\/|\\/\\/)/', $asset)) {
-                return $asset;
-            }
-            if (strpos($asset, '~') === 0) {
-                $asset = substr($asset, 1);
-                $asset = $theme ? theme($asset, $theme) : mix($asset, 'statics');
-                if (preg_match('/^(https?:\\/\\/|\\/\\/)/', $asset)) {
-                    return (string) $asset;
-                }
-
-                return asset($asset);
-            }
-
-            return asset($asset);
-        })->values();
     }
 }

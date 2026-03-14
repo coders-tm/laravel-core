@@ -36,7 +36,7 @@ class InvoiceRepository extends Order
             $attributes['tax_lines'] = billing_address_tax($attributes['billing_address']);
         }
         $this->taxes = collect(has($attributes)->tax_lines ?: [])->map(function ($item) {
-            return Taxline::firstOrNew(['id' => has($item)->id], $item)->fill($item);
+            return TaxLine::firstOrNew(['id' => has($item)->id], $item)->fill($item);
         });
         parent::__construct($attributes);
     }

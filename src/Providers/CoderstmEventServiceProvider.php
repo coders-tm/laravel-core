@@ -2,11 +2,52 @@
 
 namespace Coderstm\Providers;
 
+use Coderstm\Events\Checkout\Abandoned;
+use Coderstm\Events\EnquiryCreated;
+use Coderstm\Events\EnquiryReplyCreated;
+use Coderstm\Events\Shop\LowStockAlert;
+use Coderstm\Events\Shop\OrderCanceled;
+use Coderstm\Events\Shop\OrderDelivered;
+use Coderstm\Events\Shop\OrderPaid;
+use Coderstm\Events\Shop\OrderRefunded;
+use Coderstm\Events\Shop\OrderShipped;
+use Coderstm\Events\Shop\OutOfStockAlert;
+use Coderstm\Events\Shop\PartialRefundProcessed;
+use Coderstm\Events\Shop\PaymentFailed;
+use Coderstm\Events\Shop\PaymentSuccessful;
+use Coderstm\Events\SubscriptionCancelled;
+use Coderstm\Events\SubscriptionPlanChanged;
+use Coderstm\Events\TaskCreated;
+use Coderstm\Events\UserSubscribed;
+use Coderstm\Listeners\DeleteExpiredNotificationTokens;
+use Coderstm\Listeners\GoCardless\SubscriptionCancelledListener;
+use Coderstm\Listeners\GoCardless\SubscriptionChangeListener;
+use Coderstm\Listeners\SendEnquiryConfirmation;
+use Coderstm\Listeners\SendEnquiryNotification;
+use Coderstm\Listeners\SendEnquiryReplyNotification;
+use Coderstm\Listeners\SendSignupNotification;
+use Coderstm\Listeners\SendTaskUsersNotification;
+use Coderstm\Listeners\Shop\SendAbandonedCartNotification;
+use Coderstm\Listeners\Shop\SendAdminNewOrderNotification;
+use Coderstm\Listeners\Shop\SendAdminOrderCanceledNotification;
+use Coderstm\Listeners\Shop\SendAdminPaymentFailedNotification;
+use Coderstm\Listeners\Shop\SendAdminRefundNotification;
+use Coderstm\Listeners\Shop\SendLowStockNotification;
+use Coderstm\Listeners\Shop\SendOrderCanceledNotification;
+use Coderstm\Listeners\Shop\SendOrderConfirmationNotification;
+use Coderstm\Listeners\Shop\SendOrderDeliveredNotification;
+use Coderstm\Listeners\Shop\SendOrderRefundedNotification;
+use Coderstm\Listeners\Shop\SendOrderShippedNotification;
+use Coderstm\Listeners\Shop\SendOutOfStockNotification;
+use Coderstm\Listeners\Shop\SendPartialRefundNotification;
+use Coderstm\Listeners\Shop\SendPaymentFailedNotification;
+use Coderstm\Listeners\Shop\SendPaymentSuccessNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Notifications\Events\NotificationFailed;
 
 class CoderstmEventServiceProvider extends ServiceProvider
 {
-    protected $listen = [\Coderstm\Events\EnquiryCreated::class => [\Coderstm\Listeners\SendEnquiryNotification::class, \Coderstm\Listeners\SendEnquiryConfirmation::class], \Coderstm\Events\EnquiryReplyCreated::class => [\Coderstm\Listeners\SendEnquiryReplyNotification::class], \Coderstm\Events\TaskCreated::class => [\Coderstm\Listeners\SendTaskUsersNotification::class], \Coderstm\Events\UserSubscribed::class => [\Coderstm\Listeners\SendSignupNotification::class], \Illuminate\Notifications\Events\NotificationFailed::class => [\Coderstm\Listeners\DeleteExpiredNotificationTokens::class], \Coderstm\Events\SubscriptionPlanChanged::class => [\Coderstm\Listeners\GoCardless\SubscriptionChangeListener::class], \Coderstm\Events\SubscriptionCancelled::class => [\Coderstm\Listeners\GoCardless\SubscriptionCancelledListener::class], \Coderstm\Events\Shop\OrderPaid::class => [\Coderstm\Listeners\Shop\SendOrderConfirmationNotification::class, \Coderstm\Listeners\Shop\SendAdminNewOrderNotification::class], \Coderstm\Events\Shop\OrderCanceled::class => [\Coderstm\Listeners\Shop\SendOrderCanceledNotification::class, \Coderstm\Listeners\Shop\SendAdminOrderCanceledNotification::class], \Coderstm\Events\Shop\OrderShipped::class => [\Coderstm\Listeners\Shop\SendOrderShippedNotification::class], \Coderstm\Events\Shop\OrderDelivered::class => [\Coderstm\Listeners\Shop\SendOrderDeliveredNotification::class], \Coderstm\Events\Shop\PaymentSuccessful::class => [\Coderstm\Listeners\Shop\SendPaymentSuccessNotification::class], \Coderstm\Events\Shop\PaymentFailed::class => [\Coderstm\Listeners\Shop\SendPaymentFailedNotification::class, \Coderstm\Listeners\Shop\SendAdminPaymentFailedNotification::class], \Coderstm\Events\Shop\OrderRefunded::class => [\Coderstm\Listeners\Shop\SendOrderRefundedNotification::class, \Coderstm\Listeners\Shop\SendAdminRefundNotification::class], \Coderstm\Events\Shop\PartialRefundProcessed::class => [\Coderstm\Listeners\Shop\SendPartialRefundNotification::class, \Coderstm\Listeners\Shop\SendAdminRefundNotification::class], \Coderstm\Events\Checkout\Abandoned::class => [\Coderstm\Listeners\Shop\SendAbandonedCartNotification::class], \Coderstm\Events\Shop\LowStockAlert::class => [\Coderstm\Listeners\Shop\SendLowStockNotification::class], \Coderstm\Events\Shop\OutOfStockAlert::class => [\Coderstm\Listeners\Shop\SendOutOfStockNotification::class]];
+    protected $listen = [EnquiryCreated::class => [SendEnquiryNotification::class, SendEnquiryConfirmation::class], EnquiryReplyCreated::class => [SendEnquiryReplyNotification::class], TaskCreated::class => [SendTaskUsersNotification::class], UserSubscribed::class => [SendSignupNotification::class], NotificationFailed::class => [DeleteExpiredNotificationTokens::class], SubscriptionPlanChanged::class => [SubscriptionChangeListener::class], SubscriptionCancelled::class => [SubscriptionCancelledListener::class], OrderPaid::class => [SendOrderConfirmationNotification::class, SendAdminNewOrderNotification::class], OrderCanceled::class => [SendOrderCanceledNotification::class, SendAdminOrderCanceledNotification::class], OrderShipped::class => [SendOrderShippedNotification::class], OrderDelivered::class => [SendOrderDeliveredNotification::class], PaymentSuccessful::class => [SendPaymentSuccessNotification::class], PaymentFailed::class => [SendPaymentFailedNotification::class, SendAdminPaymentFailedNotification::class], OrderRefunded::class => [SendOrderRefundedNotification::class, SendAdminRefundNotification::class], PartialRefundProcessed::class => [SendPartialRefundNotification::class, SendAdminRefundNotification::class], Abandoned::class => [SendAbandonedCartNotification::class], LowStockAlert::class => [SendLowStockNotification::class], OutOfStockAlert::class => [SendOutOfStockNotification::class]];
 
     public function boot() {}
 }

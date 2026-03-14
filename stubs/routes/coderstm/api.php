@@ -5,7 +5,6 @@ use Coderstm\Http\Controllers\Admin\WalletController as AdminWalletController;
 use Coderstm\Http\Controllers as Coderstm;
 use Coderstm\Http\Controllers\Auth;
 use Coderstm\Http\Controllers\Blog;
-use Coderstm\Http\Controllers\Page;
 use Coderstm\Http\Controllers\Payment;
 use Coderstm\Http\Controllers\Subscription;
 use Coderstm\Http\Controllers\User\WalletController;
@@ -67,8 +66,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         'controller' => Coderstm\ApplicationController::class,
     ], function () {
         Route::get('stats', 'stats')->name('stats');
-        Route::get('editor-theme', 'theme')->name('editor-theme');
-        Route::get('short-code', 'shortCode')->middleware('web')->name('short-code');
         Route::post('test-mail-config', 'testMailConfig')->name('test-mail-config');
         Route::get('settings/{key}', 'getSettings')->name('get-settings');
         Route::middleware('can:update,Coderstm\Models\AppSetting')->group(function () {
@@ -306,38 +303,6 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         });
     });
     Route::resource('blogs', Coderstm\BlogController::class);
-
-    // Pages
-    Route::group([
-        'as' => 'pages.',
-        'prefix' => 'pages',
-    ], function () {
-        Route::group([
-            'as' => 'templates.',
-            'controller' => Page\TemplateController::class,
-        ], function () {
-            Route::get('templates', 'index')->name('index');
-            Route::post('templates', 'store')->name('store');
-            Route::get('templates/{template}', 'show')->name('show');
-            Route::delete('templates', 'destroy')->name('destroy');
-        });
-
-        Route::group([
-            'as' => 'blocks.',
-            'controller' => Page\BlockController::class,
-        ], function () {
-            Route::get('blocks', 'index')->name('index');
-            Route::post('blocks', 'store')->name('store');
-        });
-
-        Route::group([
-            // 'middleware' => 'can:update,page',
-            'controller' => Coderstm\PageController::class,
-        ], function () {
-            Route::post('{page}/change-active', 'changeActive')->name('change-active');
-        });
-    });
-    Route::resource('pages', Coderstm\PageController::class)->middleware('preserve.json.whitespace');
 
     Route::group(['prefix' => 'themes', 'as' => 'themes.'], function () {
         Route::get('/', [Coderstm\ThemeController::class, 'index'])->name('index');

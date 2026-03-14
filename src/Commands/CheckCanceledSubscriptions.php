@@ -4,6 +4,7 @@ namespace Coderstm\Commands;
 
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Events\SubscriptionCancelled;
 use Coderstm\Models\Log;
 use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
 use Coderstm\Notifications\SubscriptionCanceledNotification;
@@ -23,7 +24,7 @@ class CheckCanceledSubscriptions extends Command
                 $subscription->attachAction('canceled-notification');
                 $subscription->update(['status' => SubscriptionStatus::CANCELED]);
                 if ($user = $subscription->user) {
-                    event(new \Coderstm\Events\SubscriptionCancelled($subscription));
+                    event(new SubscriptionCancelled($subscription));
                     $user->notify(new SubscriptionCanceledNotification($subscription));
                     admin_notify(new AdminsSubscriptionCanceledNotification($subscription));
                     $subscription->logs()->create(['type' => 'canceled-notification', 'message' => 'Notification for canceled subscriptions has been successfully sent.']);

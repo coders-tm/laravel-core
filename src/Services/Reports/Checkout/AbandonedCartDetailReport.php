@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Checkout;
 
+use Carbon\Carbon;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -42,7 +43,7 @@ class AbandonedCartDetailReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $recoveryRate = $row->recovery_sent > 0 ? $row->recovered_after_email / $row->recovery_sent * 100 : 0;
         $abandonedAtPayment = $row->abandoned_at_billing;
 

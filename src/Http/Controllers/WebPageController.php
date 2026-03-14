@@ -41,18 +41,6 @@ class WebPageController extends Controller
         }
     }
 
-    public function pages(Request $request, $slug)
-    {
-        if (! preg_match('/^[a-z0-9\\-_]+$/i', $slug)) {
-            abort(404);
-        }
-        try {
-            return view("pages.{$slug}", $request->input());
-        } catch (\Throwable $th) {
-            abort(404);
-        }
-    }
-
     public function contact(Request $request)
     {
         $request->validate(['email' => 'required|email', 'name' => 'required', 'phone' => 'required', 'message' => 'required', 'recaptcha_token' => ['required', new ReCaptchaRule]]);

@@ -3,11 +3,12 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\Tax;
+use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 
 class TaxController extends Controller
 {
-    use \Coderstm\Traits\HasResourceActions;
+    use HasResourceActions;
 
     public function __construct()
     {

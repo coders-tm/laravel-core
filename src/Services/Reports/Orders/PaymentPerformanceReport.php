@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Orders;
 
+use Carbon\Carbon;
 use Coderstm\Models\Payment;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
@@ -43,7 +44,7 @@ class PaymentPerformanceReport extends AbstractReport
 
     public function toRow($row): array
     {
-        $period = $this->formatPeriodLabel(\Carbon\Carbon::parse($row->period_start));
+        $period = $this->formatPeriodLabel(Carbon::parse($row->period_start));
         $totalPayments = (int) ($row->total_payments ?? 0);
         $successful = (int) ($row->successful ?? 0);
         $successRate = $totalPayments > 0 ? $successful / $totalPayments * 100 : 0;
