@@ -9,6 +9,9 @@ class SendAdminNewOrderNotification extends AdminNotificationListener
 {
     public function handle(OrderPaid $event): void
     {
+        if ($event->order->orderable_id) {
+            return;
+        }
         $this->notifyForEvent(fn ($admin) => new NewOrderNotification($event->order));
     }
 }

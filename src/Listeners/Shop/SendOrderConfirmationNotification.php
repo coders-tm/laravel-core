@@ -13,6 +13,9 @@ class SendOrderConfirmationNotification implements ShouldQueue
     public function handle(OrderPaid $event)
     {
         $order = $event->order;
+        if ($order->orderable_id) {
+            return;
+        }
         if ($order->customer) {
             $order->customer->notify(new OrderConfirmationNotification($order));
         }

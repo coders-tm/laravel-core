@@ -8,6 +8,7 @@ use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Redeem;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
+use Coderstm\Services\Period;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Validation\ValidationException;
 
@@ -89,6 +90,10 @@ class SubscriptionCreationService
     {
         if (! empty($data['starts_at'])) {
             $subscription->setStartsAt($data['starts_at']);
+            if (empty($data['expires_at'])) {
+                $period = new Period($plan->interval->value, (int) $plan->interval_count, Carbon::parse($data['starts_at']));
+                $subscription->setExpiresAt($period->getEndDate());
+            }
         }
         if (! empty($data['expires_at'])) {
             $subscription->setExpiresAt($data['expires_at']);
