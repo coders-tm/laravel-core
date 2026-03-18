@@ -55,7 +55,6 @@ return [
             ],
             'name' => ['mail.from.name'],
             'currency' => 'cashier.currency',
-            'timezone' => fn ($value) => date_default_timezone_set($value),
         ],
     ],
 
