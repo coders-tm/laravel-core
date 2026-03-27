@@ -54,7 +54,7 @@ trait ManageSubscriptionStatus
             $query->whereNull('canceled_at')->orWhere(function ($query) {
                 $query->canceledOnGracePeriod();
             });
-        })->where('status', SubscriptionStatus::ACTIVE);
+        })->whereIn('status', [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALING]);
     }
 
     public function scopeFree($query)
