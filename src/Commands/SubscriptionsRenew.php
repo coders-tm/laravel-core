@@ -16,7 +16,7 @@ class SubscriptionsRenew extends Command
 
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::query()->active()->hasUser()->where('expires_at', '<=', now());
+        $subscriptions = Coderstm::$subscriptionModel::query()->active()->where('expires_at', '<=', now());
         $renewedCount = 0;
         $errorCount = 0;
         foreach ($subscriptions->cursor() as $subscription) {
