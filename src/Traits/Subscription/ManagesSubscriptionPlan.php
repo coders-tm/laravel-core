@@ -146,33 +146,35 @@ trait ManagesSubscriptionPlan
         $this->fill(['starts_at' => $period->getStartDate(), 'expires_at' => $newExpiresAt, 'ends_at' => $graceEndsAt, 'trial_ends_at' => null])->save();
         $this->resetUsagesForRenewal();
         $invoice = $this->generateInvoice();
-        if ($invoice && config('coderstm.wallet.auto_charge_on_renewal', true) && $this->user) {
+        $isPaid = $invoice && $invoice->is_paid;
+        if (! $isPaid && $invoice && config('coderstm.wallet.auto_charge_on_renewal', true) && $this->user) {
             try {
                 if ($this->user->hasWalletBalance((float) $invoice->grand_total)) {
                     $this->chargeFromWallet($invoice);
+                    $isPaid = true;
                     $this->fill(['status' => SubscriptionStatus::ACTIVE, 'ends_at' => null])->save();
                 } else {
                     throw new \Exception('Insufficient wallet balance.');
                 }
             } catch (\Throwable $e) {
                 logger()->error('Failed to charge wallet during subscription renewal', ['subscription_id' => $this->id, 'user_id' => $this->user_id, 'error' => $e->getMessage()]);
-                if (! $graceEndsAt) {
-                    $this->update(['status' => SubscriptionStatus::EXPIRED, 'ends_at' => null]);
-                    $this->attachAction('expired-notification');
-                    try {
-                        $this->user->notify(new SubscriptionExpiredNotification($this));
-                    } catch (\Throwable $e) {
-                        logger()->error('Failed to send subscription expired notification', ['error' => $e->getMessage()]);
-                    }
-                    try {
-                        admin_notify(new \Coderstm\Notifications\Admins\SubscriptionExpiredNotification($this));
-                    } catch (\Throwable $e) {
-                        logger()->error('Failed to send admin subscription expired notification', ['error' => $e->getMessage()]);
-                    }
-                    $this->logs()->create(['type' => 'expired-notification', 'message' => 'Notification for expired subscriptions has been successfully sent (Wallet Failure).']);
-                    event(new SubscriptionExpired($this));
-                }
             }
+        }
+        if (! $isPaid && ! $graceEndsAt && $invoice && (float) $invoice->grand_total > 0) {
+            $this->update(['status' => SubscriptionStatus::EXPIRED, 'ends_at' => null]);
+            $this->attachAction('expired-notification');
+            try {
+                $this->user->notify(new SubscriptionExpiredNotification($this));
+            } catch (\Throwable $e) {
+                logger()->error('Failed to send subscription expired notification', ['error' => $e->getMessage()]);
+            }
+            try {
+                admin_notify(new \Coderstm\Notifications\Admins\SubscriptionExpiredNotification($this));
+            } catch (\Throwable $e) {
+                logger()->error('Failed to send admin subscription expired notification', ['error' => $e->getMessage()]);
+            }
+            $this->logs()->create(['type' => 'expired-notification', 'message' => 'Notification for expired subscriptions has been successfully sent.']);
+            event(new SubscriptionExpired($this));
         }
         if ($this->total_cycles && $this->current_cycle >= $this->total_cycles) {
             $this->cancelNow();
