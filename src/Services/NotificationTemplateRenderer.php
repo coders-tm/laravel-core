@@ -11,6 +11,7 @@ class NotificationTemplateRenderer
     {
         try {
             $compiler = new MaskSensitiveConfig(app(Filesystem::class), storage_path('framework/views'));
+            $template = str_replace(['-&gt;', '&amp;'], ['->', '&'], $template);
             $compiler->compileString($template);
             $template = preg_replace('/\\{\\{\\s+/', '{{', $template);
             $template = preg_replace('/\\s+\\}\\}/', '}}', $template);
