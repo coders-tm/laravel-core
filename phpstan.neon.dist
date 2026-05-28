@@ -1,0 +1,10 @@
+parameters:
+  paths:
+    - config
+    - database
+    - src
+
+  level: 0
+
+  ignoreErrors:
+    - "#Argument of an invalid type Carbon\\\\CarbonPeriod supplied for foreach#"

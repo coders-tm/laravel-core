@@ -1,0 +1,5 @@
+{
+  "label": "New Order (Admin)",
+  "subject": "New Order Received - Order {{ $order->number }}",
+  "type": "admin:new-order"
+}

@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Enquiry Update Notification",
+  "subject": "[{{ENQUIRY_STATUS}}] #{{ENQUIRY_ID}} - {{ENQUIRY_SUBJECT}}",
+  "type": "push:enquiry-reply-notification"
+}

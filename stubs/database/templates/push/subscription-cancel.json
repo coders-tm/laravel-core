@@ -1,0 +1,5 @@
+{
+  "label": "[Push/Whatsapp] Subscription cancel",
+  "subject": "Your Subscription Has Canceled",
+  "type": "push:subscription-cancel"
+}

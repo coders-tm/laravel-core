@@ -1,0 +1,5 @@
+{
+  "label": "[Admin] Task User Notification",
+  "subject": "[{{ $app->name }}] Task #{{ $task->id }} - {{ $task->subject }} by {{ $task->created_by }}",
+  "type": "admin:task-user-notification"
+}

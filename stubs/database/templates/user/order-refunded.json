@@ -1,0 +1,5 @@
+{
+  "label": "Order Refunded",
+  "subject": "Refund Processed - Order {{ $order->number }}",
+  "type": "user:order-refunded"
+}

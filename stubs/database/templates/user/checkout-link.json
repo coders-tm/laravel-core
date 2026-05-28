@@ -1,0 +1,5 @@
+{
+  "label": "Checkout Link",
+  "subject": "Complete Your Purchase - {{ $app->name }}",
+  "type": "user:checkout-link"
+}

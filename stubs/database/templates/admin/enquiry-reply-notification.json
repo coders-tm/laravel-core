@@ -1,0 +1,5 @@
+{
+  "label": "[Admin] Enquiry Update Notification",
+  "subject": "[{{ $app->name }}] Enquiry #{{ $enquiry->id }} - {{ $enquiry->subject }} has a new update",
+  "type": "admin:enquiry-reply-notification"
+}

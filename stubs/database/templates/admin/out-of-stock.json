@@ -1,0 +1,5 @@
+{
+  "label": "Out of Stock Alert (Admin)",
+  "subject": "🚨 Out of Stock: {{ $variant->product_name }} - {{ $variant->title }}",
+  "type": "admin:out-of-stock"
+}

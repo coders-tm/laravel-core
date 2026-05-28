@@ -1,0 +1,5 @@
+{
+  "label": "Order Confirmation",
+  "subject": "Order Confirmation - Order {{ $order->number }}",
+  "type": "user:order-confirmation"
+}

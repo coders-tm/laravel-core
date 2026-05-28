@@ -1,0 +1,48 @@
+laravel: "@testbench"
+
+providers:
+  - Barryvdh\DomPDF\ServiceProvider
+  - Laravel\Cashier\CashierServiceProvider
+  - Qirolab\Theme\ThemeServiceProvider
+  - Laravel\Sanctum\SanctumServiceProvider
+  - Stevebauman\Location\LocationServiceProvider
+  - Vedmant\LaravelShortcodes\LaravelShortcodesServiceProvider
+  - Coderstm\Providers\ThemeServiceProvider
+  - Coderstm\Providers\CoderstmServiceProvider
+  - Coderstm\Providers\CoderstmPermissionsServiceProvider
+  - Coderstm\Providers\CoderstmEventServiceProvider
+  - Coderstm\Providers\ShortcodeServiceProvider
+  - Workbench\App\Providers\WorkbenchServiceProvider
+
+migrations:
+  - workbench/database/migrations
+
+seeders:
+  - Workbench\Database\Seeders\DatabaseSeeder
+
+workbench:
+  start: "/"
+  user: "hello@coderstm.com"
+  install: true
+  health: false
+  discovers:
+    web: false
+    api: false
+    commands: true
+    components: false
+    factories: true
+    views: true
+  build:
+    - asset-publish
+    - coderstm:install
+    - create-sqlite-db
+    - db-wipe
+    - migrate-fresh
+  assets:
+    - coderstm-assets
+  sync:
+    - from: ./config/auth.php
+      to: workbench/config/auth.php
+    - from: ./config/sanctum.php
+      to: workbench/config/sanctum.php
+      reverse: true
