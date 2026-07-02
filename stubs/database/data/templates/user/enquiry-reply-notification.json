@@ -1,0 +1,6 @@
+{
+  "label": "Enquiry Update Notification",
+  "subject": "[{{ $app->name }}] Enquiry #{{ $enquiry->id }} - {{ $enquiry->subject }} has a new update",
+  "type": "user:enquiry-reply-notification",
+  "text": "New reply on ticket #{{ $enquiry->id }} – {{ $enquiry->subject }}: {{ $reply->message }}"
+}

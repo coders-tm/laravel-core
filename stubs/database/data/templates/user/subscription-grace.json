@@ -1,0 +1,6 @@
+{
+  "label": "Subscription grace period reminder",
+  "subject": "[{{$app->name}}] Your Subscription Has Entered Grace Period",
+  "type": "user:subscription-grace",
+  "text": "Your {{ $plan->label }} subscription expired on {{ $expires_at }} and is now in grace period. Renew now to restore full access."
+}

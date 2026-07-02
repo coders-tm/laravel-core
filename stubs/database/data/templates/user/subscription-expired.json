@@ -1,0 +1,6 @@
+{
+  "label": "Subscription expired",
+  "subject": "[{{$app->name}}] Subscription Renewal Required - Your Subscription Has Expired",
+  "type": "user:subscription-expired",
+  "text": "Your {{ $plan->label }} subscription expired on {{ $expires_at ?: $ends_at }}."
+}

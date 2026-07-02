@@ -1,0 +1,124 @@
+<?php
+
+namespace Coderstm\Http\Controllers;
+
+use Coderstm\Facades\Currency;
+use Coderstm\Models\Subscription\Feature;
+use Coderstm\Traits\HasResourceActions;
+use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Gate;
+
+class PlanController extends Controller
+{
+    use HasResourceActions;
+
+    public function __construct()
+    {
+        $this->useModel(\Coderstm\Coderstm::$planModel);
+        $this->authorizeResource(\Coderstm\Coderstm::$planModel, 'plan', ['except' => ['show']]);
+    }
+
+    public function index(Request $request)
+    {
+        $plan = \Coderstm\Coderstm::$planModel::query();
+        if ($request->filled('filter')) {
+            $plan->where('label', 'like', "%{$request->filter}%");
+        }
+        if ($request->boolean('active')) {
+            $plan->onlyActive();
+        }
+        if ($request->filled('plan_id')) {
+            $plan->orWhere('id', $request->plan_id);
+        }
+        if ($request->boolean('deleted')) {
+            $plan->onlyTrashed();
+        }
+        $plan = $plan->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?? 15);
+
+        return new ResourceCollection($plan);
+    }
+
+    public function store(Request $request, $plan)
+    {
+        $rules = ['label' => 'required', 'interval' => 'required', 'interval_count' => 'required', 'price' => 'required'];
+        $request->validate($rules);
+        $plan = \Coderstm\Coderstm::$planModel::create($request->input());
+        if ($request->filled('features')) {
+            $plan->syncFeatures($request->features);
+        }
+
+        return response()->json(['data' => $this->toArray($plan->fresh('features')), 'message' => __('Plan has been created successfully!')], 200);
+    }
+
+    public function show($plan)
+    {
+        $plan = \Coderstm\Coderstm::$planModel::withTrashed()->findOrFail($plan);
+        Gate::authorize('view', $plan);
+
+        return response()->json($this->toArray($plan->load('features')), 200);
+    }
+
+    public function update(Request $request, $plan)
+    {
+        $rules = ['label' => 'required', 'interval' => 'required', 'interval_count' => 'required', 'price' => 'required'];
+        $request->validate($rules);
+        $plan->update($request->input());
+        if ($request->filled('features')) {
+            $plan->syncFeatures($request->features);
+        }
+
+        return response()->json(['data' => $this->toArray($plan->fresh('features')), 'message' => __('Plan has been updated successfully!')], 200);
+    }
+
+    public function destroy(Request $request, $plan)
+    {
+        $this->authorize('delete', $plan);
+        if ($plan->subscriptions()->count() > 0) {
+            return response()->json(['message' => __('Cannot delete plan with active subscriptions.')], 422);
+        }
+        if ($request->boolean('force')) {
+            $plan->forceDelete();
+        } else {
+            $plan->delete();
+        }
+
+        return response()->json(['message' => __('Plan deleted successfully!')], 200);
+    }
+
+    public function changeActive(Request $request, $plan)
+    {
+        $plan->update(['is_active' => ! $plan->is_active]);
+        $type = $plan->active ? 'active' : 'deactive';
+
+        return response()->json(['message' => __('Plan marked as :type successfully!', ['type' => __($type)])], 200);
+    }
+
+    public function shared(Request $request)
+    {
+        $plans = \Coderstm\Coderstm::$planModel::onlyActive();
+        if ($request->filled('plan_id')) {
+            $plans->orWhere('id', $request->plan_id);
+        }
+        $plans = $plans->get();
+        $plans = Currency::transform($plans);
+
+        return response()->json($plans, 200);
+    }
+
+    public function features(Request $request)
+    {
+        return response()->json(Feature::all(), 200);
+    }
+
+    private function toArray($plan)
+    {
+        return array_merge($plan->toArray(), ['features' => $plan->features->mapWithKeys(function ($item) {
+            if ($item->isBoolean()) {
+                return [$item->slug => (bool) $item->pivot->value];
+            }
+
+            return [$item->slug => $item->pivot->value];
+        })->toArray()]);
+    }
+}

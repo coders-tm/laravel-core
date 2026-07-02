@@ -1,0 +1,78 @@
+<?php
+
+namespace Coderstm\Services\Admin;
+
+use Coderstm\Coderstm;
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Models\Redeem;
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Services\Period;
+use Illuminate\Validation\ValidationException;
+
+class SubscriptionService
+{
+    public function createOrUpdate($user, array $data, $subscription = null)
+    {
+        $plan = Plan::findOrFail($data['plan']);
+        if (! $subscription) {
+            $subscription = $user->newSubscription($data['type'] ?? 'default', $plan)->withCoupon($data['promotion_code'] ?? null);
+        } else {
+            $planChanged = $subscription->plan_id != $plan->id;
+            $subscription->plan_id = $plan->id;
+            if ($planChanged) {
+                $subscription->fill(['billing_interval' => $plan->interval->value, 'billing_interval_count' => $plan->interval_count]);
+            }
+        }
+        $subscription->is_free_forever = $data['is_free_forever'] ?? false;
+        if (isset($data['status'])) {
+            $subscription->status = $data['status'];
+        }
+        if (! empty($data['starts_at'])) {
+            $subscription->setStartsAt($data['starts_at']);
+        }
+        if (! empty($data['expires_at'])) {
+            $subscription->setExpiresAt($data['expires_at']);
+        } elseif (! empty($data['starts_at']) || ($subscription->wasRecentlyCreated || ($planChanged ?? false))) {
+            $period = new Period($plan->interval->value, $plan->interval_count, $subscription->starts_at);
+            $subscription->setExpiresAt($period->getEndDate());
+        }
+        if (! empty($data['trial_days'])) {
+            $subscription->trialDays($data['trial_days']);
+        }
+        if (! empty($data['trial_ends_at'])) {
+            $subscription->trialUntil($data['trial_ends_at']);
+        }
+        if ($data['generate_invoice'] ?? false) {
+            $subscription->status = SubscriptionStatus::INCOMPLETE;
+            $pendingInvoice = $subscription->invoices()->where('status', Coderstm::$orderModel::STATUS_OPEN)->latest()->first();
+            if ($pendingInvoice) {
+                $invoiceData = $subscription->upcomingInvoice(false)->toArray();
+                $pendingInvoice->update($invoiceData);
+            } else {
+                $subscription->saveAndInvoice();
+            }
+        } else {
+            if (! isset($data['status'])) {
+                $subscription->status = SubscriptionStatus::ACTIVE;
+            }
+            $subscription->save();
+        }
+        if ($couponCode = $data['promotion_code'] ?? null) {
+            $coupon = Coderstm::$couponModel::findByCode($couponCode);
+            if ($coupon) {
+                Redeem::updateOrCreate(['redeemable_type' => $subscription->getMorphClass(), 'redeemable_id' => $subscription->id, 'coupon_id' => $coupon->id], ['user_id' => $user->id, 'amount' => $coupon->getAmount($plan->price)]);
+            }
+        }
+        if ($data['reset_feature'] ?? false) {
+            $subscription->syncFeaturesFromPlan();
+        }
+        if ($data['mark_as_paid'] ?? false) {
+            if (empty($data['payment_method'])) {
+                throw ValidationException::withMessages(['payment_method' => __('Payment method is required when marking as paid.')]);
+            }
+            $subscription->pay($data['payment_method']);
+        }
+
+        return $subscription->fresh();
+    }
+}

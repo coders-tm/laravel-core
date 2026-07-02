@@ -1,0 +1,60 @@
+<?php
+
+namespace Coderstm\Models;
+
+use Coderstm\Database\Factories\NotificationFactory;
+use Coderstm\Services\NotificationTemplateRenderer;
+use Coderstm\Traits\Core;
+use Illuminate\Database\Eloquent\Model;
+
+class Notification extends Model
+{
+    use Core;
+
+    protected $table = 'notification_templates';
+
+    protected $fillable = ['label', 'subject', 'type', 'content', 'text', 'is_default'];
+
+    protected $casts = ['is_default' => 'boolean'];
+
+    protected static function newFactory()
+    {
+        return NotificationFactory::new();
+    }
+
+    public function markAsDefault()
+    {
+        $this->update(['is_default' => 1]);
+        static::where('type', $this->type)->where('id', '<>', $this->id)->update(['is_default' => 0]);
+
+        return $this;
+    }
+
+    public static function default($type = null): static
+    {
+        return static::where('type', $type)->orderBy('is_default')->firstOrFail();
+    }
+
+    public function duplicate()
+    {
+        $template = $this->replicate(['is_default']);
+        $template->save();
+
+        return $template->fresh();
+    }
+
+    public function render(array $data = []): array
+    {
+        $renderer = app(NotificationTemplateRenderer::class);
+        $content = $renderer->render($this->content, $data);
+
+        return ['subject' => $renderer->render($this->subject, $data), 'content' => $content, 'text' => $this->text ? $renderer->render($this->text, $data) : html_text($content)];
+    }
+
+    public function validate(): array
+    {
+        $renderer = app(NotificationTemplateRenderer::class);
+
+        return ['subject' => $renderer->validate($this->subject), 'content' => $renderer->validate($this->content)];
+    }
+}

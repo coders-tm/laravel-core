@@ -1,0 +1,33 @@
+<?php
+
+namespace Coderstm\Commands\Subscription;
+
+use Coderstm\Contracts\SubscriptionStatus;
+use Coderstm\Models\Subscription;
+use Illuminate\Console\Command;
+
+class GraceCheck extends Command
+{
+    protected $signature = 'coderstm:subscriptions-grace-check';
+
+    protected $description = 'Check for grace period subscriptions and mark them as expired if grace period has ended';
+
+    public function handle(): int
+    {
+        $this->info('Checking for subscriptions with expired grace periods...');
+        $count = 0;
+        $subscriptions = Subscription::query()->where('status', SubscriptionStatus::ACTIVE)->whereNotNull('ends_at')->where('ends_at', '<', now());
+        foreach ($subscriptions->cursor() as $subscription) {
+            $subscription->update(['status' => SubscriptionStatus::EXPIRED]);
+            $count++;
+        }
+        if ($count === 0) {
+            $this->info('No subscriptions found with expired grace periods.');
+
+            return Command::SUCCESS;
+        }
+        $this->info("Marked {$count} subscription(s) as expired after grace period ended.");
+
+        return Command::SUCCESS;
+    }
+}

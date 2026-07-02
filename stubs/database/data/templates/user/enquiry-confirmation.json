@@ -1,0 +1,6 @@
+{
+  "label": "Enquiry Confirmation",
+  "subject": "[{{ $app->name }}] Enquiry #{{ $enquiry->id }} - Enquiry Confirmation",
+  "type": "user:enquiry-confirmation",
+  "text": "Ticket #{{ $enquiry->id }} received ({{ $enquiry->subject ?? 'No subject' }}). Our team will review and respond shortly."
+}

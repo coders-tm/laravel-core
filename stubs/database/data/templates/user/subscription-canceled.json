@@ -1,0 +1,6 @@
+{
+  "label": "Subscription canceled",
+  "subject": "[{{$app->name}}] Subscription Cancellation Notification - Your Subscription Has Canceled",
+  "type": "user:subscription-canceled",
+  "text": "Your {{ $plan->label }} subscription ended on {{ $expires_at ?: $ends_at }}. We're here if you decide to return."
+}

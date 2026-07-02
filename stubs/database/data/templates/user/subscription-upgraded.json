@@ -1,0 +1,6 @@
+{
+  "label": "Subscription upgraded",
+  "subject": "[{{$app->name}}] Subscription Changed - Your Subscription Upgraded",
+  "type": "user:subscription-upgraded",
+  "text": "Subscription upgraded to {{ $plan->label }} ({{ $plan->price }}) – billing cycle: {{ $billing_cycle }}."
+}

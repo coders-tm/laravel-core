@@ -1,0 +1,87 @@
+{
+    "Enquiries": {
+        "sort_order": 1,
+        "icon": "fas fa-square-question",
+        "url": "enquiries",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Tasks": {
+        "sort_order": 16,
+        "show_menu": 1,
+        "icon": "fas fa-list-check",
+        "url": "tasks",
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Staff": {
+        "sort_order": 2,
+        "icon": "fas fa-user-shield",
+        "url": "staff",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Groups": {
+        "sort_order": 3,
+        "icon": "fas fa-user-group",
+        "url": "groups",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Members": {
+        "sort_order": 4,
+        "icon": "fas fa-user-tag",
+        "url": "members",
+        "show_menu": 1,
+        "sub_items": [
+            "View",
+            "Edit",
+            "List",
+            "New",
+            "Delete",
+            "Reports Daily",
+            "Reports Monthly",
+            "Reports Yearly"
+        ]
+    },
+    "Plans": {
+        "sort_order": 4,
+        "icon": "fas fa-bookmark",
+        "url": "plans",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Coupons": {
+        "sort_order": 4,
+        "icon": "fas fa-badge-percent",
+        "url": "coupons",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Blogs": {
+        "sort_order": 1,
+        "icon": "fas fa-square-rss",
+        "url": "blogs",
+        "show_menu": 1,
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Pages": {
+        "sort_order": 1,
+        "icon": "fas fa-browser",
+        "url": "pages",
+        "sub_items": ["View", "Edit", "List", "New", "Delete"]
+    },
+    "Settings": {
+        "sort_order": 5,
+        "icon": "fas fa-gear",
+        "url": "settings",
+        "show_menu": 1,
+        "sub_items": [
+            "Edit",
+            "Plans",
+            "Coupons",
+            "Taxes",
+            "Notifications",
+            "Payment Methods"
+        ]
+    }
+}

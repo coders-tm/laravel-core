@@ -1,0 +1,59 @@
+<?php
+
+use Coderstm\Models\Subscription\Feature;
+use Coderstm\Models\Subscription\Plan;
+use Coderstm\Traits\Helpers;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    use Helpers;
+
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        // Skip if plans table already exists
+        if (Schema::hasTable('plans')) {
+            return;
+        }
+
+        Schema::create('plans', function (Blueprint $table) {
+            $table->id();
+            $table->string('label')->nullable();
+            $table->string('slug')->unique()->index();
+            $table->longText('description')->nullable();
+            $table->boolean('is_active')->default(true)->index();
+            $table->string('default_interval')->default('month');
+            $table->string('interval')->default('month')->index();
+            $table->unsignedInteger('interval_count')->default(1);
+            $table->boolean('is_contract')->default(false)->comment('Whether this is a contract plan requiring multiple billing cycles');
+            $table->unsignedInteger('contract_cycles')->nullable()->comment('Total number of billing cycles required for contract (null = unlimited)');
+            $table->boolean('allow_freeze')->default(true)->comment('Whether this plan allows membership freeze');
+            $table->decimal('freeze_fee', 10, 2)->nullable()->comment('Fee charged per billing cycle during freeze (null = use global config)');
+            $table->unsignedInteger('grace_period_days')->default(0)->comment('Number of grace period days before subscription expires after non-payment (0 = expires immediately)');
+            $table->double('price', 12, 2)->default(0.00);
+            $table->double('setup_fee')->nullable();
+            $table->double('yearly_fee')->nullable();
+            $table->unsignedInteger('trial_days')->nullable()->default(0);
+            $table->{$this->jsonable()}('metadata')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+        $this->setAutoIncrement('plans');
+
+        Schema::create('plan_features', function (Blueprint $table) {
+            $table->foreignIdFor(Plan::class);
+            $table->foreignIdFor(Feature::class);
+            $table->integer('value')->default(0);
+
+            $table->index(['plan_id', 'feature_id']);
+        });
+    }
+};

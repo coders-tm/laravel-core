@@ -1,0 +1,5 @@
+{
+  "label": "Invoice sent",
+  "subject": "[{{$app->name}}] Invoice Sent: {{$order->customer->first_name ?? 'there'}} - {{$order->number}}",
+  "type": "user:invoice-sent"
+}

@@ -1,0 +1,99 @@
+<?php
+
+namespace Coderstm\Models\Shop;
+
+use AshAllenDesign\LaravelExchangeRates\Classes\ExchangeRate as LaravelExchangeRate;
+use Illuminate\Database\Eloquent\Model;
+use League\ISO3166\ISO3166;
+
+class ExchangeRate extends Model
+{
+    protected $fillable = ['currency', 'rate'];
+
+    protected $casts = ['rate' => 'decimal:4'];
+
+    public static function getBaseCurrency(): string
+    {
+        return strtoupper(config('app.currency', 'USD'));
+    }
+
+    public static function rateFor(string $currency): float
+    {
+        $currency = strtoupper($currency);
+        if ($currency === self::getBaseCurrency()) {
+            return 1.0;
+        }
+        $rate = static::where('currency', $currency)->value('rate');
+        if (is_null($rate)) {
+            try {
+                $baseCurrency = self::getBaseCurrency();
+                $rate = app(LaravelExchangeRate::class)->exchangeRate($baseCurrency, $currency);
+                if ($rate && $rate > 0) {
+                    static::updateOrCreate(['currency' => $currency], ['rate' => $rate]);
+
+                    return (float) $rate;
+                }
+            } catch (\Throwable $e) {
+            }
+            throw new \RuntimeException("Missing exchange rate for currency: {$currency}");
+        }
+
+        return (float) $rate;
+    }
+
+    public static function getRate(string $currency): float
+    {
+        return self::rateFor($currency);
+    }
+
+    public static function convertAmount(float $amount, string $fromCurrency, string $toCurrency): float
+    {
+        $fromCurrency = strtoupper($fromCurrency);
+        $toCurrency = strtoupper($toCurrency);
+        $baseCurrency = self::getBaseCurrency();
+        if ($fromCurrency === $toCurrency) {
+            return $amount;
+        }
+        if ($fromCurrency !== $baseCurrency) {
+            $fromRate = self::rateFor($fromCurrency);
+            if ($fromRate > 0) {
+                $amount = $amount / $fromRate;
+            }
+        }
+        if ($toCurrency !== $baseCurrency) {
+            $toRate = self::rateFor($toCurrency);
+            if ($toRate > 0) {
+                $amount = $amount * $toRate;
+            }
+        }
+
+        return $amount;
+    }
+
+    public static function getCurrencyFromCountryCode(string $countryCode): string
+    {
+        $countryCode = strtoupper($countryCode);
+        try {
+            $data = (new ISO3166)->alpha2($countryCode);
+            if (! empty($data['currency'][0])) {
+                return strtoupper($data['currency'][0]);
+            }
+        } catch (\Throwable $e) {
+        }
+
+        return self::getBaseCurrency();
+    }
+
+    public static function getCurrencyFromCountry(string $country): string
+    {
+        try {
+            $data = (new ISO3166)->name($country);
+            if (! empty($data['currency'][0])) {
+                return strtoupper($data['currency'][0]);
+            }
+        } catch (\Throwable $e) {
+        }
+
+        return self::getBaseCurrency();
+    }
+}

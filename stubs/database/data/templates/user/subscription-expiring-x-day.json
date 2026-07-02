@@ -1,0 +1,6 @@
+{
+  "label": "Subscription expiring soon",
+  "subject": "[{{$app->name}}] Your Subscription Will Expire in {{ $days_remaining }} Day(s)",
+  "type": "user:subscription-expiring-x-day",
+  "text": "Your {{ $plan->label }} subscription will expire in {{ $days_remaining }} day(s) on {{ $expires_at }}. Renew now to keep your access."
+}
