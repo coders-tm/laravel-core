@@ -15,15 +15,30 @@ class ResetUsages extends Command
 
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::query()->active()->where('expires_at', '<=', now());
+        $subscriptions = Coderstm::$subscriptionModel::query()
+            ->active()
+            ->where('expires_at', '<=', now());
+
         foreach ($subscriptions->cursor() as $subscription) {
             $this->resetSubscriptionUsages($subscription);
         }
-        $creditResetSubscriptions = Coderstm::$subscriptionModel::query()->active()->whereNotNull('credit_resets_at')->where('credit_resets_at', '<=', now())->where('expires_at', '>', now());
+
+        $creditResetSubscriptions = Coderstm::$subscriptionModel::query()
+            ->active()
+            ->whereNotNull('credit_resets_at')
+            ->where('credit_resets_at', '<=', now())
+            ->where('expires_at', '>', now());
+
         foreach ($creditResetSubscriptions->cursor() as $subscription) {
             $this->resetSubscriptionUsages($subscription);
+
             $subscription->advanceCreditResetsAt()->save();
-            $subscription->logs()->create(['type' => 'credit-reset', 'message' => 'Credit usage has been reset and next reset date advanced.']);
+
+            $subscription->logs()->create([
+                'type' => 'credit-reset',
+                'message' => 'Credit usage has been reset and next reset date advanced.',
+            ]);
+
             $this->info("Credit usage of subscription #{$subscription->id} has been reset!");
         }
     }
@@ -32,12 +47,24 @@ class ResetUsages extends Command
     {
         try {
             event(new ResetFeatureUsages($subscription, $subscription->usagesToArray()));
+
             $subscription->resetUsages();
-            $subscription->logs()->create(['type' => 'usages-reset', 'message' => 'Usages has been reset successfully!']);
+
+            $subscription->logs()->create([
+                'type' => 'usages-reset',
+                'message' => 'Usages has been reset successfully!',
+            ]);
+
             $this->info("Usages of subscription #{$subscription->id} has been reset!");
         } catch (\Throwable $e) {
             $message = "Usages of subscription #{$subscription->id} unable to reset! {$e->getMessage()}";
-            $subscription->logs()->create(['type' => 'usages-reset', 'status' => Log::STATUS_ERROR, 'message' => $message]);
+
+            $subscription->logs()->create([
+                'type' => 'usages-reset',
+                'status' => Log::STATUS_ERROR,
+                'message' => $message,
+            ]);
+
             $this->error($message);
         }
     }

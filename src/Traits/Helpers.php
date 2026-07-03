@@ -14,6 +14,7 @@ use PDO;
 
 trait Helpers
 {
+    // jsonable column to migration table
     protected function jsonable(): string
     {
         $driverName = DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME);
@@ -85,6 +86,7 @@ trait Helpers
         if (! file_exists($filename) || ! is_readable($filename)) {
             return false;
         }
+
         try {
             $header = null;
             $data = [];
@@ -137,6 +139,7 @@ trait Helpers
         $csv->setHeaderOffset(0);
         $csv->setDelimiter($delimiter);
 
+        // Normalize CSV headers to remove newlines
         return array_map('trim', $csv->getHeader());
     }
 
@@ -148,8 +151,9 @@ trait Helpers
         $dist = rad2deg($dist);
         $miles = $dist * 60 * 1.1515;
         $unit = Str::lower($unit);
+
         if ($unit == 'km') {
-            return round($miles * 1.609344, 2);
+            return round(($miles * 1.609344), 2);
         } else {
             return round($miles, 2);
         }
@@ -158,6 +162,7 @@ trait Helpers
     protected function weeksBetweenTwoDates($start, $end)
     {
         $weeks = [];
+
         while ($start->weekOfYear !== $end->weekOfYear) {
             $weeks[] = $start->startOfWeek()->format('Y-m-d');
             $start->addWeek();
@@ -166,6 +171,11 @@ trait Helpers
         return $weeks;
     }
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected function paginate($items, $perPage = 10, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
@@ -182,14 +192,22 @@ trait Helpers
     protected function setAutoIncrement($table, $increment = 1000000)
     {
         try {
-            DB::statement("ALTER TABLE {$table} AUTO_INCREMENT = {$increment};");
+            DB::statement("ALTER TABLE $table AUTO_INCREMENT = $increment;");
         } catch (\Throwable $e) {
+            // throw $e;
         }
     }
 
     protected function updateOrCreateModule($item): Module
     {
-        $module = Module::updateOrCreate(['name' => $item['name']], ['icon' => $item['icon'], 'url' => $item['url'], 'show_menu' => isset($item['show_menu']) ? $item['show_menu'] : 1, 'sort_order' => $item['sort_order']]);
+        $module = Module::updateOrCreate([
+            'name' => $item['name'],
+        ], [
+            'icon' => $item['icon'],
+            'url' => $item['url'],
+            'show_menu' => isset($item['show_menu']) ? $item['show_menu'] : 1,
+            'sort_order' => $item['sort_order'],
+        ]);
 
         return $module;
     }

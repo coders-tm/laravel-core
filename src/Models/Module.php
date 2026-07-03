@@ -10,14 +10,24 @@ class Module extends Model
 {
     use SerializeDate;
 
-    protected $fillable = ['name', 'icon', 'url', 'show_menu', 'sort_order'];
+    protected $fillable = [
+        'name',
+        'icon',
+        'url',
+        'show_menu',
+        'sort_order',
+    ];
 
-    protected $casts = ['show_menu' => 'boolean'];
+    protected $casts = [
+        'show_menu' => 'boolean',
+    ];
 
     protected $appends = ['permissions'];
 
     protected function permissions(): Attribute
     {
-        return Attribute::make(get: fn () => Permission::forModule($this));
+        return Attribute::make(
+            get: fn () => Permission::forModule($this),
+        );
     }
 }

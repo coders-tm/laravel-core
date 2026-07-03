@@ -9,21 +9,43 @@ use Illuminate\Routing\Router as BaseRouter;
 
 class Router extends BaseRouter
 {
+    /**
+     * Create a new Router instance.
+     *
+     * @return void
+     */
     public function __construct(Dispatcher $events, ?Container $container = null)
     {
         parent::__construct($events, $container);
     }
 
+    /**
+     * Route an API resource to a controller.
+     *
+     * @param  string  $name
+     * @param  string  $controller
+     * @return PendingResourceRegistration
+     */
     public function apiResource($name, $controller, array $options = [])
     {
         $only = ['index', 'show', 'store', 'destroySelected', 'restoreSelected', 'forceDestroy', 'forceDestroySelected', 'update', 'destroy', 'restore'];
+
         if (isset($options['except'])) {
             $only = array_diff($only, (array) $options['except']);
         }
 
-        return $this->resource($name, $controller, array_merge(['only' => $only], $options));
+        return $this->resource($name, $controller, array_merge([
+            'only' => $only,
+        ], $options));
     }
 
+    /**
+     * Route a resource to a controller.
+     *
+     * @param  string  $name
+     * @param  string  $controller
+     * @return PendingResourceRegistration
+     */
     public function resource($name, $controller, array $options = [])
     {
         if ($this->container && $this->container->bound(ResourceRegistrar::class)) {
@@ -32,6 +54,11 @@ class Router extends BaseRouter
             $registrar = new ResourceRegistrar($this);
         }
 
-        return new PendingResourceRegistration($registrar, $name, $controller, $options);
+        return new PendingResourceRegistration(
+            $registrar,
+            $name,
+            $controller,
+            $options
+        );
     }
 }

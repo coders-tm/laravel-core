@@ -10,6 +10,9 @@ class SubscriptionMetrics extends MetricsCalculator
 {
     protected string $cachePrefix = 'subscription_metrics';
 
+    /**
+     * Get total active subscriptions
+     */
     public function getActiveCount(): int
     {
         return $this->remember('active_count', function () {
@@ -17,13 +20,22 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get subscriptions on grace period (at-risk)
+     */
     public function getGracePeriodCount(): int
     {
         return $this->remember('grace_period', function () {
-            return Subscription::query()->whereNotNull('canceled_at')->where('expires_at', '>', now())->count();
+            return Subscription::query()
+                ->whereNotNull('canceled_at')
+                ->where('expires_at', '>', now())
+                ->count();
         });
     }
 
+    /**
+     * Get cancelled subscriptions for date range
+     */
     public function getCancelledCount(): int
     {
         return $this->remember('cancelled_count', function () {
@@ -33,13 +45,22 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get trial subscriptions
+     */
     public function getTrialCount(): int
     {
         return $this->remember('trial_count', function () {
-            return Subscription::query()->whereNotNull('trial_ends_at')->where('trial_ends_at', '>', now())->count();
+            return Subscription::query()
+                ->whereNotNull('trial_ends_at')
+                ->where('trial_ends_at', '>', now())
+                ->count();
         });
     }
 
+    /**
+     * Get churn rate (percentage)
+     */
     public function getChurnRate(): float
     {
         return $this->remember('churn_rate', function () {
@@ -49,6 +70,9 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get new subscriptions for date range
+     */
     public function getNewSubscriptions(): int
     {
         return $this->remember('new_subscriptions', function () {
@@ -58,13 +82,22 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get new subscriptions this month
+     */
     public function getNewThisMonth(): int
     {
         return $this->remember('new_this_month', function () {
-            return Subscription::query()->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year)->count();
+            return Subscription::query()
+                ->whereMonth('created_at', now()->month)
+                ->whereYear('created_at', now()->year)
+                ->count();
         });
     }
 
+    /**
+     * Get trial conversion rate
+     */
     public function getTrialConversionRate(): float
     {
         return $this->remember('trial_conversion', function () {
@@ -74,34 +107,74 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get subscriptions by plan
+     */
     public function getByPlan(): array
     {
         return $this->remember('by_plan', function () {
-            return Subscription::query()->select('plans.label as plan_name', 'plans.id as plan_id', DB::raw('count(*) as count'))->join('plans', 'subscriptions.plan_id', '=', 'plans.id')->active()->groupBy('plans.id', 'plans.label')->orderByDesc('count')->get()->toArray();
+            return Subscription::query()
+                ->select('plans.label as plan_name', 'plans.id as plan_id', DB::raw('count(*) as count'))
+                ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
+                ->active()
+                ->groupBy('plans.id', 'plans.label')
+                ->orderByDesc('count')
+                ->get()
+                ->toArray();
         });
     }
 
+    /**
+     * Get subscriptions by billing interval
+     */
     public function getByInterval(): array
     {
         return $this->remember('by_interval', function () {
-            return Subscription::query()->select('billing_interval', 'billing_interval_count', DB::raw('COUNT(*) as count'))->active()->groupBy('billing_interval', 'billing_interval_count')->orderBy('billing_interval')->orderBy('billing_interval_count')->get()->toArray();
+            return Subscription::query()
+                ->select(
+                    'billing_interval',
+                    'billing_interval_count',
+                    DB::raw('COUNT(*) as count')
+                )
+                ->active()
+                ->groupBy('billing_interval', 'billing_interval_count')
+                ->orderBy('billing_interval')
+                ->orderBy('billing_interval_count')
+                ->get()
+                ->toArray();
         });
     }
 
+    /**
+     * Get subscriptions by status
+     */
     public function getByStatus(): array
     {
         return $this->remember('by_status', function () {
-            return Subscription::query()->select('status', DB::raw('count(*) as count'))->groupBy('status')->get()->pluck('count', 'status')->toArray();
+            return Subscription::query()
+                ->select('status', DB::raw('count(*) as count'))
+                ->groupBy('status')
+                ->get()
+                ->pluck('count', 'status')
+                ->toArray();
         });
     }
 
+    /**
+     * Get average subscription lifetime in days
+     */
     public function getAverageLifetime(): float
     {
         return $this->remember('avg_lifetime', function () {
-            $subscriptions = Subscription::query()->whereNotNull('canceled_at')->get(['created_at', 'canceled_at']);
+            // Use database-agnostic approach
+            $subscriptions = Subscription::query()
+                ->whereNotNull('canceled_at')
+                ->get(['created_at', 'canceled_at']);
+
             if ($subscriptions->isEmpty()) {
                 return 0.0;
             }
+
             $totalDays = $subscriptions->sum(function ($sub) {
                 return $sub->created_at->diffInDays($sub->canceled_at);
             });
@@ -110,144 +183,328 @@ class SubscriptionMetrics extends MetricsCalculator
         });
     }
 
+    /**
+     * Get retention rate (percentage)
+     */
     public function getRetentionRate(): float
     {
         return $this->remember('retention_rate', function () {
             $range = $this->getDateRange();
-            $startingSubscriptions = Subscription::query()->where('created_at', '<=', $range['start'])->count();
+
+            $startingSubscriptions = Subscription::query()
+                ->where('created_at', '<=', $range['start'])
+                ->count();
+
             if ($startingSubscriptions === 0) {
                 return 0.0;
             }
-            $retained = Subscription::query()->where('created_at', '<=', $range['start'])->where(function ($q) use ($range) {
-                $q->whereNull('canceled_at')->orWhere('canceled_at', '>', $range['end']);
-            })->count();
 
-            return round($retained / $startingSubscriptions * 100, 2);
+            $retained = Subscription::query()
+                ->where('created_at', '<=', $range['start'])
+                ->where(function ($q) use ($range) {
+                    $q->whereNull('canceled_at')
+                        ->orWhere('canceled_at', '>', $range['end']);
+                })
+                ->count();
+
+            return round(($retained / $startingSubscriptions) * 100, 2);
         });
     }
 
+    /**
+     * Get frozen subscriptions count
+     */
     public function getFrozenCount(): int
     {
         return $this->remember('frozen_count', function () {
-            return Subscription::query()->whereNotNull('frozen_at')->where(function ($q) {
-                $q->whereNull('release_at')->orWhere('release_at', '>', now());
-            })->count();
+            return Subscription::query()
+                ->whereNotNull('frozen_at')
+                ->where(function ($q) {
+                    $q->whereNull('release_at')
+                        ->orWhere('release_at', '>', now());
+                })
+                ->count();
         });
     }
 
+    /**
+     * Get subscriptions pending release from freeze
+     */
     public function getPendingReleaseCount(): int
     {
         return $this->remember('pending_release', function () {
-            return Subscription::query()->whereNotNull('frozen_at')->whereNotNull('release_at')->where('release_at', '<=', now()->addDays(7))->where('release_at', '>', now())->count();
+            return Subscription::query()
+                ->whereNotNull('frozen_at')
+                ->whereNotNull('release_at')
+                ->where('release_at', '<=', now()->addDays(7))
+                ->where('release_at', '>', now())
+                ->count();
         });
     }
 
+    /**
+     * Get subscriptions with active contracts
+     */
     public function getContractCount(): int
     {
         return $this->remember('contract_count', function () {
-            return Subscription::query()->whereNotNull('total_cycles')->where('total_cycles', '>', 0)->where(function ($q) {
-                $q->whereNull('canceled_at')->orWhere('expires_at', '>', now());
-            })->count();
+            return Subscription::query()
+                ->whereNotNull('total_cycles')
+                ->where('total_cycles', '>', 0)
+                ->where(function ($q) {
+                    $q->whereNull('canceled_at')
+                        ->orWhere('expires_at', '>', now());
+                })
+                ->count();
         });
     }
 
+    /**
+     * Get subscriptions with contracts ending in next 30 days
+     */
     public function getContractsEndingSoon(): int
     {
         return $this->remember('contracts_ending_soon', function () {
-            return Subscription::query()->whereNotNull('total_cycles')->where('total_cycles', '>', 0)->whereNotNull('expires_at')->whereBetween('expires_at', [now(), now()->addDays(30)])->count();
+            return Subscription::query()
+                ->whereNotNull('total_cycles')
+                ->where('total_cycles', '>', 0)
+                ->whereNotNull('expires_at')
+                ->whereBetween('expires_at', [now(), now()->addDays(30)])
+                ->count();
         });
     }
 
+    /**
+     * Get renewal forecast for next 30 days
+     */
     public function getRenewalForecast(): array
     {
         return $this->remember('renewal_forecast', function () {
             $next30Days = now()->addDays(30);
-            $subscriptions = Subscription::query()->join('plans', 'plans.id', '=', 'subscriptions.plan_id')->select(DB::raw('DATE(subscriptions.expires_at) as renewal_date'), DB::raw('COUNT(*) as count'), DB::raw('SUM(
+
+            $subscriptions = Subscription::query()
+                ->join('plans', 'plans.id', '=', 'subscriptions.plan_id')
+                ->select(
+                    DB::raw('DATE(subscriptions.expires_at) as renewal_date'),
+                    DB::raw('COUNT(*) as count'),
+                    DB::raw('SUM(
                         (CASE plans.interval
                             WHEN \'day\' THEN plans.price * 30
                             WHEN \'week\' THEN plans.price * 4.345
                             WHEN \'year\' THEN plans.price / 12
                             ELSE plans.price / COALESCE(plans.interval_count, 1)
                         END) * COALESCE(subscriptions.quantity, 1)
-                    ) as expected_mrr'))->active()->whereNotNull('subscriptions.expires_at')->whereBetween('subscriptions.expires_at', [now(), $next30Days])->groupBy(DB::raw('DATE(subscriptions.expires_at)'))->orderBy('renewal_date')->get()->toArray();
+                    ) as expected_mrr')
+                )
+                ->active()
+                ->whereNotNull('subscriptions.expires_at')
+                ->whereBetween('subscriptions.expires_at', [now(), $next30Days])
+                ->groupBy(DB::raw('DATE(subscriptions.expires_at)'))
+                ->orderBy('renewal_date')
+                ->get()
+                ->toArray();
 
-            return ['renewals' => $subscriptions, 'total_count' => array_sum(array_column($subscriptions, 'count')), 'expected_mrr' => round(array_sum(array_column($subscriptions, 'expected_mrr')), 2)];
+            return [
+                'renewals' => $subscriptions,
+                'total_count' => array_sum(array_column($subscriptions, 'count')),
+                'expected_mrr' => round(array_sum(array_column($subscriptions, 'expected_mrr')), 2),
+            ];
         });
     }
 
+    /**
+     * Get plan upgrade/downgrade metrics
+     */
     public function getPlanChangeMetrics(): array
     {
         return $this->remember('plan_changes', function () {
             $range = $this->getDateRange();
-            $scheduledDowngrades = Subscription::query()->where('is_downgrade', true)->whereNotNull('next_plan')->count();
+
+            // Subscriptions with scheduled downgrades
+            $scheduledDowngrades = Subscription::query()
+                ->where('is_downgrade', true)
+                ->whereNotNull('next_plan')
+                ->count();
+
+            // Assuming plan changes are tracked via subscription history or logs
+            // This is a placeholder - would need actual plan change tracking
             $upgrades = 0;
             $downgrades = 0;
 
-            return ['scheduled_downgrades' => $scheduledDowngrades, 'upgrades' => $upgrades, 'downgrades' => $downgrades];
+            return [
+                'scheduled_downgrades' => $scheduledDowngrades,
+                'upgrades' => $upgrades,
+                'downgrades' => $downgrades,
+            ];
         });
     }
 
+    /**
+     * Get subscriptions expiring today
+     */
     public function getExpiringTodayCount(): int
     {
         return $this->remember('expiring_today', function () {
-            return Subscription::query()->whereDate('expires_at', today())->count();
+            return Subscription::query()
+                ->whereDate('expires_at', today())
+                ->count();
         });
     }
 
+    /**
+     * Get subscription growth rate (percentage)
+     */
     public function getGrowthRate(): float
     {
         return $this->remember('growth_rate', function () {
-            $currentMonth = Subscription::query()->whereMonth('created_at', now()->month)->whereYear('created_at', now()->year)->count();
-            $previousMonth = Subscription::query()->whereMonth('created_at', now()->subMonth()->month)->whereYear('created_at', now()->subMonth()->year)->count();
+            $currentMonth = Subscription::query()
+                ->whereMonth('created_at', now()->month)
+                ->whereYear('created_at', now()->year)
+                ->count();
+
+            $previousMonth = Subscription::query()
+                ->whereMonth('created_at', now()->subMonth()->month)
+                ->whereYear('created_at', now()->subMonth()->year)
+                ->count();
+
             if ($previousMonth === 0) {
                 return $currentMonth > 0 ? 100.0 : 0.0;
             }
 
-            return round(($currentMonth - $previousMonth) / $previousMonth * 100, 2);
+            return round((($currentMonth - $previousMonth) / $previousMonth) * 100, 2);
         });
     }
 
+    /**
+     * Get all metrics
+     */
     public function get(): array
     {
-        $payload = ['active_count' => $this->getActiveCount(), 'grace_period_count' => $this->getGracePeriodCount(), 'cancelled_count' => $this->getCancelledCount(), 'trial_count' => $this->getTrialCount(), 'churn_rate' => $this->getChurnRate(), 'new_subscriptions' => $this->getNewSubscriptions(), 'new_this_month' => $this->getNewThisMonth(), 'trial_conversion_rate' => $this->getTrialConversionRate(), 'by_plan' => $this->getByPlan(), 'by_interval' => $this->getByInterval(), 'by_status' => $this->getByStatus(), 'average_lifetime_days' => $this->getAverageLifetime(), 'retention_rate' => $this->getRetentionRate(), 'growth_rate' => $this->getGrowthRate(), 'frozen_count' => $this->getFrozenCount(), 'pending_release_count' => $this->getPendingReleaseCount(), 'contract_count' => $this->getContractCount(), 'contracts_ending_soon' => $this->getContractsEndingSoon(), 'renewal_forecast' => $this->getRenewalForecast(), 'plan_changes' => $this->getPlanChangeMetrics(), 'expiring_today' => $this->getExpiringTodayCount(), 'metadata' => $this->getMetadata()];
+        $payload = [
+            'active_count' => $this->getActiveCount(),
+            'grace_period_count' => $this->getGracePeriodCount(),
+            'cancelled_count' => $this->getCancelledCount(),
+            'trial_count' => $this->getTrialCount(),
+            'churn_rate' => $this->getChurnRate(),
+            'new_subscriptions' => $this->getNewSubscriptions(),
+            'new_this_month' => $this->getNewThisMonth(),
+            'trial_conversion_rate' => $this->getTrialConversionRate(),
+            'by_plan' => $this->getByPlan(),
+            'by_interval' => $this->getByInterval(),
+            'by_status' => $this->getByStatus(),
+            'average_lifetime_days' => $this->getAverageLifetime(),
+            'retention_rate' => $this->getRetentionRate(),
+            'growth_rate' => $this->getGrowthRate(),
+            'frozen_count' => $this->getFrozenCount(),
+            'pending_release_count' => $this->getPendingReleaseCount(),
+            'contract_count' => $this->getContractCount(),
+            'contracts_ending_soon' => $this->getContractsEndingSoon(),
+            'renewal_forecast' => $this->getRenewalForecast(),
+            'plan_changes' => $this->getPlanChangeMetrics(),
+            'expiring_today' => $this->getExpiringTodayCount(),
+            'metadata' => $this->getMetadata(),
+        ];
+
         $periods = $this->getComparisonPeriods();
 
-        return $this->withComparisons($payload, ['cancelled_count' => ['calculator' => fn (Carbon $start, Carbon $end) => $this->cancelledBetween($start, $end), 'description' => __('Cancellations from :current_start to :current_end compared with :previous_start to :previous_end', ['current_start' => $periods['current']['start']->format('d M'), 'current_end' => $periods['current']['end']->format('d M'), 'previous_start' => $periods['previous']['start']->format('d M'), 'previous_end' => $periods['previous']['end']->format('d M')])], 'new_subscriptions' => ['calculator' => fn (Carbon $start, Carbon $end) => $this->newSubscriptionsBetween($start, $end), 'description' => __('New subscriptions from :current_start to :current_end compared with :previous_start to :previous_end', ['current_start' => $periods['current']['start']->format('d M'), 'current_end' => $periods['current']['end']->format('d M'), 'previous_start' => $periods['previous']['start']->format('d M'), 'previous_end' => $periods['previous']['end']->format('d M')])], 'churn_rate' => ['calculator' => fn (Carbon $start, Carbon $end) => $this->churnRateBetween($start, $end), 'type' => 'percentage', 'description' => __('Churn rate from :current_start to :current_end compared with :previous_start to :previous_end', ['current_start' => $periods['current']['start']->format('d M'), 'current_end' => $periods['current']['end']->format('d M'), 'previous_start' => $periods['previous']['start']->format('d M'), 'previous_end' => $periods['previous']['end']->format('d M')])], 'trial_conversion_rate' => ['calculator' => fn (Carbon $start, Carbon $end) => $this->trialConversionBetween($start, $end), 'type' => 'percentage', 'description' => __('Trial conversion from :current_start to :current_end compared with :previous_start to :previous_end', ['current_start' => $periods['current']['start']->format('d M'), 'current_end' => $periods['current']['end']->format('d M'), 'previous_start' => $periods['previous']['start']->format('d M'), 'previous_end' => $periods['previous']['end']->format('d M')])]]);
+        return $this->withComparisons($payload, [
+            'cancelled_count' => [
+                'calculator' => fn (Carbon $start, Carbon $end) => $this->cancelledBetween($start, $end),
+                'description' => __('Cancellations from :current_start to :current_end compared with :previous_start to :previous_end', [
+                    'current_start' => $periods['current']['start']->format('d M'),
+                    'current_end' => $periods['current']['end']->format('d M'),
+                    'previous_start' => $periods['previous']['start']->format('d M'),
+                    'previous_end' => $periods['previous']['end']->format('d M'),
+                ]),
+            ],
+            'new_subscriptions' => [
+                'calculator' => fn (Carbon $start, Carbon $end) => $this->newSubscriptionsBetween($start, $end),
+                'description' => __('New subscriptions from :current_start to :current_end compared with :previous_start to :previous_end', [
+                    'current_start' => $periods['current']['start']->format('d M'),
+                    'current_end' => $periods['current']['end']->format('d M'),
+                    'previous_start' => $periods['previous']['start']->format('d M'),
+                    'previous_end' => $periods['previous']['end']->format('d M'),
+                ]),
+            ],
+            'churn_rate' => [
+                'calculator' => fn (Carbon $start, Carbon $end) => $this->churnRateBetween($start, $end),
+                'type' => 'percentage',
+                'description' => __('Churn rate from :current_start to :current_end compared with :previous_start to :previous_end', [
+                    'current_start' => $periods['current']['start']->format('d M'),
+                    'current_end' => $periods['current']['end']->format('d M'),
+                    'previous_start' => $periods['previous']['start']->format('d M'),
+                    'previous_end' => $periods['previous']['end']->format('d M'),
+                ]),
+            ],
+            'trial_conversion_rate' => [
+                'calculator' => fn (Carbon $start, Carbon $end) => $this->trialConversionBetween($start, $end),
+                'type' => 'percentage',
+                'description' => __('Trial conversion from :current_start to :current_end compared with :previous_start to :previous_end', [
+                    'current_start' => $periods['current']['start']->format('d M'),
+                    'current_end' => $periods['current']['end']->format('d M'),
+                    'previous_start' => $periods['previous']['start']->format('d M'),
+                    'previous_end' => $periods['previous']['end']->format('d M'),
+                ]),
+            ],
+        ]);
     }
 
     protected function cancelledBetween(Carbon $start, Carbon $end): int
     {
-        return Subscription::query()->whereNotNull('canceled_at')->whereBetween('canceled_at', [$start, $end])->count();
+        return Subscription::query()
+            ->whereNotNull('canceled_at')
+            ->whereBetween('canceled_at', [$start, $end])
+            ->count();
     }
 
     protected function newSubscriptionsBetween(Carbon $start, Carbon $end): int
     {
-        return Subscription::query()->whereBetween('created_at', [$start, $end])->count();
+        return Subscription::query()
+            ->whereBetween('created_at', [$start, $end])
+            ->count();
     }
 
     protected function churnRateBetween(Carbon $start, Carbon $end): float
     {
-        $activeStart = Subscription::query()->where('created_at', '<=', $start)->where(function ($q) use ($start) {
-            $q->whereNull('canceled_at')->orWhere('expires_at', '>', $start);
-        })->count();
+        $activeStart = Subscription::query()
+            ->where('created_at', '<=', $start)
+            ->where(function ($q) use ($start) {
+                $q->whereNull('canceled_at')
+                    ->orWhere('expires_at', '>', $start);
+            })
+            ->count();
+
         if ($activeStart === 0) {
             return 0.0;
         }
-        $churned = Subscription::query()->whereBetween('canceled_at', [$start, $end])->count();
 
-        return round($churned / $activeStart * 100, 2);
+        $churned = Subscription::query()
+            ->whereBetween('canceled_at', [$start, $end])
+            ->count();
+
+        return round(($churned / $activeStart) * 100, 2);
     }
 
     protected function trialConversionBetween(Carbon $start, Carbon $end): float
     {
-        $totalTrials = Subscription::query()->whereNotNull('trial_ends_at')->whereBetween('created_at', [$start, $end])->count();
+        $totalTrials = Subscription::query()
+            ->whereNotNull('trial_ends_at')
+            ->whereBetween('created_at', [$start, $end])
+            ->count();
+
         if ($totalTrials === 0) {
             return 0.0;
         }
-        $converted = Subscription::query()->whereNotNull('trial_ends_at')->whereBetween('created_at', [$start, $end])->where(function ($q) {
-            $q->whereNull('canceled_at')->orWhere('canceled_at', '>', DB::raw('trial_ends_at'));
-        })->count();
 
-        return round($converted / $totalTrials * 100, 2);
+        $converted = Subscription::query()
+            ->whereNotNull('trial_ends_at')
+            ->whereBetween('created_at', [$start, $end])
+            ->where(function ($q) {
+                $q->whereNull('canceled_at')
+                    ->orWhere('canceled_at', '>', DB::raw('trial_ends_at'));
+            })
+            ->count();
+
+        return round(($converted / $totalTrials) * 100, 2);
     }
 }

@@ -15,14 +15,26 @@ class SendWhatsappNotification implements ShouldQueue
 
     protected $phoneNumber;
 
+    /**
+     * Create a new job instance.
+     */
     public function __construct(protected $user, protected string $message)
     {
         $this->phoneNumber = $user->phone_number;
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(): void
     {
         $twilio = new Client(config('alert.sid'), config('alert.token'));
-        $twilio->messages->create("whatsapp:{$this->phoneNumber}", ['from' => 'whatsapp:'.config('alert.from'), 'body' => html_text($this->message)]);
+        $twilio->messages->create(
+            "whatsapp:{$this->phoneNumber}",
+            [
+                'from' => 'whatsapp:'.config('alert.from'),
+                'body' => html_text($this->message),
+            ]
+        );
     }
 }

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Cache;
 
 trait HasPermission
 {
+    /**
+     * Get all of the permissions for the model
+     */
     public function permissions(): MorphManyPermissions
     {
         return new MorphManyPermissions($this);
@@ -19,16 +22,26 @@ trait HasPermission
             $scope = $item['scope'] ?? $item['id'] ?? null;
             $access = isset($item['access']) ? (bool) $item['access'] : null;
 
-            return ['scope' => $scope, 'access' => $access];
+            return [
+                'scope' => $scope,
+                'access' => $access,
+            ];
         })->filter(function ($item) {
             return ! is_null($item['scope']) && ! is_null($item['access']);
         });
+
         if ($detach) {
             $this->permissions()->delete();
         }
+
         foreach ($data as $item) {
-            $this->permissions()->updateOrCreate(['scope' => $item['scope']], ['access' => $item['access']]);
+            $this->permissions()->updateOrCreate(
+                ['scope' => $item['scope']],
+                ['access' => $item['access']]
+            );
         }
+
+        // Clear cached permissions for this user
         Cache::forget("user_permissions_{$this->id}");
 
         return $this;
@@ -39,6 +52,9 @@ trait HasPermission
         return $this->syncPermissions($permissions, false);
     }
 
+    /**
+     * Return all the permissions the model has, both directly.
+     */
     public function getAllPermissions(): Collection
     {
         return Cache::remember("user_permissions_{$this->id}", 5, function () {

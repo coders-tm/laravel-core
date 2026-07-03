@@ -6,6 +6,7 @@ use Coderstm\Models\Task;
 use Coderstm\Traits\HasResourceActions;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Gate;
 
 class TaskController extends Controller
@@ -15,16 +16,21 @@ class TaskController extends Controller
     public function __construct()
     {
         $this->useModel(Task::class);
-        $this->authorizeResource(Task::class, 'task', ['except' => ['show']]);
+        $this->authorizeResource(Task::class, 'task', [
+            'except' => ['show'],
+        ]);
     }
 
     private function query(Request $request)
     {
         $task = Task::with('user');
+
         if ($request->filled('filter')) {
             $task->where('subject', 'like', "%{$request->filter}%");
         }
+
         $task->onlyStatus($request->status);
+
         if ($request->boolean('deleted')) {
             $task->onlyTrashed();
         }
@@ -32,6 +38,11 @@ class TaskController extends Controller
         return $task->sortBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc');
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
     public function index(Request $request)
     {
         $task = $this->query($request)->onlyOwner()->paginate($request->rowsPerPage ?: 15);
@@ -39,41 +50,85 @@ class TaskController extends Controller
         return new ResourceCollection($task);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
     public function store(Request $request, Task $task)
     {
-        $rules = ['subject' => 'required', 'message' => 'required', 'users' => 'required|array'];
+        $rules = [
+            'subject' => 'required',
+            'message' => 'required',
+            'users' => 'required|array',
+        ];
+
         $request->validate($rules);
+
         $task = $task->create($request->input());
+
+        // Update media
         if ($request->filled('media')) {
             $task = $task->syncMedia($request->input('media'));
         }
+
         $task->syncUsers(collect($request->users));
 
-        return response()->json(['data' => $task->load('user', 'replies.user', 'media'), 'message' => __('Task has been created successfully!')], 200);
+        return response()->json([
+            'data' => $task->load('user', 'replies.user', 'media'),
+            'message' => __('Task has been created successfully!'),
+        ], 200);
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  Task  $task
+     * @return Response
+     */
     public function show(Request $request, $task)
     {
         $task = Task::withTrashed()->findOrFail($task);
+
         Gate::authorize('view', $task);
 
         return response()->json($task->load(['users', 'replies.user', 'media']), 200);
     }
 
+    /**
+     * Create reply for the specified resource.
+     *
+     * @return Response
+     */
     public function reply(Request $request, Task $task)
     {
-        $request->validate(['message' => 'required']);
+        $request->validate([
+            'message' => 'required',
+        ]);
+
         $reply = $task->createReply($request->input());
+
+        // Update media
         if ($request->filled('media')) {
             $reply = $reply->syncMedia($request->input('media'));
         }
+
+        // Update task status
         if ($request->filled('status')) {
             $task->update($request->only(['status']));
         }
 
-        return response()->json(['data' => $reply->fresh('user'), 'message' => __('Reply has been created successfully!')], 200);
+        return response()->json([
+            'data' => $reply->fresh('user'),
+            'message' => __('Reply has been created successfully!'),
+        ], 200);
     }
 
+    /**
+     * Change archived of specified resource from storage.
+     *
+     * @return Response
+     */
     public function changeArchived(Request $request, Task $task)
     {
         if (! $task->is_archived) {
@@ -81,8 +136,11 @@ class TaskController extends Controller
         } else {
             $task->archives()->detach(user());
         }
+
         $type = ! $task->is_archived ? 'archived' : 'unarchive';
 
-        return response()->json(['message' => __('Task marked as :type successfully!', ['type' => __($type)])], 200);
+        return response()->json([
+            'message' => __('Task marked as :type successfully!', ['type' => __($type)]),
+        ], 200);
     }
 }

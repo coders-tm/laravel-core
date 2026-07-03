@@ -16,14 +16,28 @@ class SendPushNotification implements ShouldQueue
 
     protected $deviceTokens;
 
-    public function __construct(protected $user, protected array $notification, protected array $data = [])
-    {
+    /**
+     * Create a new job instance.
+     */
+    public function __construct(
+        protected $user,
+        protected array $notification,
+        protected array $data = []
+    ) {
         $this->deviceTokens = $user->deviceTokens()->pluck('token')->toArray();
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(): void
     {
-        $message = CloudMessage::fromArray(['notification' => $this->notification, 'topic' => 'global', 'data' => $this->data]);
+        $message = CloudMessage::fromArray([
+            'notification' => $this->notification,
+            'topic' => 'global',
+            'data' => $this->data,
+        ]);
+
         app(Messaging::class)->sendMulticast($message, $this->deviceTokens);
     }
 }

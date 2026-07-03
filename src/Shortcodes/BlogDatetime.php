@@ -6,7 +6,11 @@ use Vedmant\LaravelShortcodes\Shortcode;
 
 class BlogDatetime extends Shortcode
 {
-    public $attributes = ['format' => ['default' => 'Y-m-d H:i:s']];
+    public $attributes = [
+        'format' => [
+            'default' => 'Y-m-d H:i:s',
+        ],
+    ];
 
     public function render($content)
     {

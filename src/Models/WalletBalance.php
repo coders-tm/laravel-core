@@ -14,38 +14,79 @@ class WalletBalance extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'balance'];
+    protected $fillable = [
+        'user_id',
+        'balance',
+    ];
 
-    protected $casts = ['balance' => 'decimal:2'];
+    protected $casts = [
+        'balance' => 'decimal:2',
+    ];
 
+    /**
+     * Create a new factory instance for the model.
+     */
     protected static function newFactory()
     {
         return WalletBalanceFactory::new();
     }
 
+    /**
+     * Get the user that owns the wallet.
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(Coderstm::$userModel);
     }
 
+    /**
+     * Get all transactions for this wallet.
+     */
     public function transactions(): HasMany
     {
         return $this->hasMany(WalletTransaction::class);
     }
 
-    public function credit(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
-    {
+    /**
+     * Add credit to wallet.
+     */
+    public function credit(
+        float $amount,
+        string $source,
+        ?string $description = null,
+        $transactionable = null,
+        array $metadata = []
+    ): WalletTransaction {
         return DB::transaction(function () use ($amount, $source, $description, $transactionable, $metadata) {
             $balanceBefore = $this->balance;
             $this->increment('balance', $amount);
             $balanceAfter = $this->fresh()->balance;
 
-            return $this->transactions()->create(['user_id' => $this->user_id, 'type' => 'credit', 'source' => $source, 'amount' => $amount, 'balance_before' => $balanceBefore, 'balance_after' => $balanceAfter, 'description' => $description, 'transactionable_type' => $transactionable ? get_class($transactionable) : null, 'transactionable_id' => $transactionable?->id, 'metadata' => $metadata]);
+            return $this->transactions()->create([
+                'user_id' => $this->user_id,
+                'type' => 'credit',
+                'source' => $source,
+                'amount' => $amount,
+                'balance_before' => $balanceBefore,
+                'balance_after' => $balanceAfter,
+                'description' => $description,
+                'transactionable_type' => $transactionable ? get_class($transactionable) : null,
+                'transactionable_id' => $transactionable?->id,
+                'metadata' => $metadata,
+            ]);
         });
     }
 
-    public function debit(float $amount, string $source, ?string $description = null, $transactionable = null, array $metadata = []): WalletTransaction
-    {
+    /**
+     * Deduct from wallet.
+     */
+    public function debit(
+        float $amount,
+        string $source,
+        ?string $description = null,
+        $transactionable = null,
+        array $metadata = []
+    ): WalletTransaction {
         if ($amount > $this->balance) {
             throw new \Exception('Insufficient wallet balance. Available: '.format_amount($this->balance).', Required: '.format_amount($amount));
         }
@@ -55,15 +96,32 @@ class WalletBalance extends Model
             $this->decrement('balance', $amount);
             $balanceAfter = $this->fresh()->balance;
 
-            return $this->transactions()->create(['user_id' => $this->user_id, 'type' => 'debit', 'source' => $source, 'amount' => $amount, 'balance_before' => $balanceBefore, 'balance_after' => $balanceAfter, 'description' => $description, 'transactionable_type' => $transactionable ? get_class($transactionable) : null, 'transactionable_id' => $transactionable?->id, 'metadata' => $metadata]);
+            return $this->transactions()->create([
+                'user_id' => $this->user_id,
+                'type' => 'debit',
+                'source' => $source,
+                'amount' => $amount,
+                'balance_before' => $balanceBefore,
+                'balance_after' => $balanceAfter,
+                'description' => $description,
+                'transactionable_type' => $transactionable ? get_class($transactionable) : null,
+                'transactionable_id' => $transactionable?->id,
+                'metadata' => $metadata,
+            ]);
         });
     }
 
+    /**
+     * Check if wallet has sufficient balance.
+     */
     public function hasSufficientBalance(float $amount): bool
     {
         return $this->balance >= $amount;
     }
 
+    /**
+     * Get formatted balance.
+     */
     public function getFormattedBalanceAttribute(): string
     {
         return format_amount($this->balance, config('app.currency', 'USD'));

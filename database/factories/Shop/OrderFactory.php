@@ -3,6 +3,7 @@
 namespace Coderstm\Database\Factories\Shop;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Shop\Order;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory

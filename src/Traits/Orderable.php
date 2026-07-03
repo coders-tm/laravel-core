@@ -13,6 +13,7 @@ trait Orderable
 
     public function latestOrder()
     {
-        return $this->hasOne(Coderstm::$orderModel, 'customer_id')->orderBy('created_at', 'desc');
+        return $this->hasOne(Coderstm::$orderModel, 'customer_id')
+            ->orderBy('created_at', 'desc');
     }
 }

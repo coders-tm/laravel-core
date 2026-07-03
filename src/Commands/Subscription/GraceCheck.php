@@ -15,17 +15,28 @@ class GraceCheck extends Command
     public function handle(): int
     {
         $this->info('Checking for subscriptions with expired grace periods...');
+
         $count = 0;
-        $subscriptions = Subscription::query()->where('status', SubscriptionStatus::ACTIVE)->whereNotNull('ends_at')->where('ends_at', '<', now());
+
+        $subscriptions = Subscription::query()
+            ->where('status', SubscriptionStatus::ACTIVE)
+            ->whereNotNull('ends_at')
+            ->where('ends_at', '<', now());
+
         foreach ($subscriptions->cursor() as $subscription) {
-            $subscription->update(['status' => SubscriptionStatus::EXPIRED]);
+            $subscription->update([
+                'status' => SubscriptionStatus::EXPIRED,
+            ]);
+
             $count++;
         }
+
         if ($count === 0) {
             $this->info('No subscriptions found with expired grace periods.');
 
             return Command::SUCCESS;
         }
+
         $this->info("Marked {$count} subscription(s) as expired after grace period ended.");
 
         return Command::SUCCESS;

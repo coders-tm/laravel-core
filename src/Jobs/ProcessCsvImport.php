@@ -26,6 +26,9 @@ class ProcessCsvImport implements ShouldQueue
 
     public array $options;
 
+    /**
+     * Create a new job instance.
+     */
     public function __construct(Import $import)
     {
         $this->import = $import;
@@ -34,13 +37,20 @@ class ProcessCsvImport implements ShouldQueue
         $this->options = $import->options;
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(): void
     {
         $csv = Reader::createFromPath($this->filePath, 'r');
         $csv->setHeaderOffset(0);
         $csv->setDelimiter(',');
+
+        // Normalize CSV headers to remove newlines
         $csvHeaders = array_map('trim', $csv->getHeader());
         $mappedHeaders = $this->model::getMappedAttributes();
+
+        // Map $headers from $mapped
         $finalHeaders = [];
         foreach ($csvHeaders as $header) {
             if (isset($mappedHeaders[$header])) {
@@ -49,8 +59,12 @@ class ProcessCsvImport implements ShouldQueue
                 $finalHeaders[] = $header;
             }
         }
+
         $this->import->update(['status' => Import::STATUS_PROCESSING]);
+
+        // Begin a database transaction
         DB::beginTransaction();
+
         try {
             foreach ($csv->getRecords($finalHeaders) as $key => $row) {
                 try {
@@ -66,12 +80,20 @@ class ProcessCsvImport implements ShouldQueue
                     }
                 }
             }
+
+            // Commit the transaction if all records are successfully processed
             DB::commit();
+
+            // Update import status to completed
             $this->import->update(['status' => Import::STATUS_COMPLETED]);
             admin_notify(new ImportCompletedNotification($this->import));
         } catch (\Throwable $e) {
+            // Update import status to failed
             $this->import->update(['status' => Import::STATUS_FAILED]);
+
+            // Rollback the transaction in case of an error
             DB::rollback();
+
             throw $e;
         }
     }

@@ -20,15 +20,30 @@ class Log extends Model
 
     const STATUS_WARNING = 'warning';
 
-    protected $dispatchesEvents = ['created' => LogCreated::class];
+    protected $dispatchesEvents = [
+        'created' => LogCreated::class,
+    ];
 
-    protected $fillable = ['type', 'status', 'message', 'options', 'admin_id'];
+    protected $fillable = [
+        'type',
+        'status',
+        'message',
+        'options',
+        'admin_id',
+    ];
 
-    protected $hidden = ['logable_type', 'logable_id'];
+    protected $hidden = [
+        'logable_type',
+        'logable_id',
+    ];
 
-    protected $appends = ['can_edit'];
+    protected $appends = [
+        'can_edit',
+    ];
 
-    protected $casts = ['options' => 'json'];
+    protected $casts = [
+        'options' => 'json',
+    ];
 
     public function logable()
     {

@@ -10,9 +10,15 @@ class Contact extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['email', 'phone_number'];
+    protected $fillable = [
+        'email',
+        'phone_number',
+    ];
 
-    protected $hidden = ['contactable_type', 'contactable_id'];
+    protected $hidden = [
+        'contactable_type',
+        'contactable_id',
+    ];
 
     public function contactable()
     {

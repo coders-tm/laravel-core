@@ -3,6 +3,8 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Order;
+use Coderstm\Models\User;
 use Coderstm\Traits\Helpers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -14,17 +16,25 @@ class InvoiceController extends Controller
     public function invoices(Request $request)
     {
         $query = $this->user($request)->invoices();
+
         if ($request->filled('status')) {
             $query->whereStatus($request->status);
         }
-        $invoices = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')->paginate($request->rowsPerPage ?: 15);
+
+        $invoices = $query->orderBy($request->sortBy ?? 'created_at', $request->direction ?? 'desc')
+            ->paginate($request->rowsPerPage ?: 15);
 
         return new ResourceCollection($invoices);
     }
 
+    /**
+     * Download invoice PDF.
+     */
     public function downloadInvoice(Request $request, $invoice)
     {
+        /** @var Order $invoice */
         $invoice = Coderstm::$orderModel::findOrFail($invoice);
+
         if (guard('users') && $invoice->customer_id != user('id')) {
             abort(403, __('You are not authorized to access this invoice.'));
         }
@@ -32,6 +42,11 @@ class InvoiceController extends Controller
         return $invoice->load('line_items')->download();
     }
 
+    /**
+     * Get the requesting user.
+     *
+     * @return User
+     */
     protected function user(Request $request)
     {
         if (guard('admins')) {

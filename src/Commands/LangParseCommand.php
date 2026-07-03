@@ -19,7 +19,10 @@ class LangParseCommand extends Command
     {
         parent::__construct();
         $this->langDirPath = resource_path('lang');
-        $this->phpDirectories = [app_path('**/*.php'), resource_path('views/**/*.php')];
+        $this->phpDirectories = [
+            app_path('**/*.php'),
+            resource_path('views/**/*.php'),
+        ];
     }
 
     public function handle()
@@ -31,7 +34,7 @@ class LangParseCommand extends Command
 
     protected function findTranslationKeys($content)
     {
-        preg_match_all("/__\\('([^']+)'\\)/", $content, $matches);
+        preg_match_all("/__\('([^']+)'\)/", $content, $matches);
 
         return array_unique($matches[1]);
     }

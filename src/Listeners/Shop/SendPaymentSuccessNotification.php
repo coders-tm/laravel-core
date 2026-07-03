@@ -8,11 +8,26 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendPaymentSuccessNotification implements ShouldQueue
 {
-    public function __construct() {}
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
 
+    /**
+     * Handle the event.
+     *
+     * @return void
+     */
     public function handle(PaymentSuccessful $event)
     {
         $order = $event->order;
+
+        // Send notification to customer
         if ($order->customer) {
             $order->customer->notify(new PaymentSuccessNotification($order));
         }

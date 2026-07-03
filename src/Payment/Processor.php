@@ -20,6 +20,9 @@ use Illuminate\Http\Request;
 
 class Processor
 {
+    /**
+     * Create a payment processor instance for the given provider
+     */
     public static function make(string $provider): PaymentProcessorInterface
     {
         return match ($provider) {
@@ -35,25 +38,50 @@ class Processor
             'flutterwave' => new FlutterwaveProcessor,
             'alipay' => new AlipayProcessor,
             'payu' => new PayuProcessor,
-            default => throw new \InvalidArgumentException("Unsupported payment provider: {$provider}"),
+            default => throw new \InvalidArgumentException("Unsupported payment provider: {$provider}")
         };
     }
 
+    /**
+     * Get all supported payment providers
+     */
     public static function getSupportedProviders(): array
     {
-        return ['stripe', 'razorpay', 'paypal', 'klarna', 'manual', 'wallet', 'mercadopago', 'xendit', 'paystack', 'flutterwave', 'alipay', 'payu'];
+        return [
+            'stripe',
+            'razorpay',
+            'paypal',
+            'klarna',
+            'manual',
+            'wallet',
+            'mercadopago',
+            'xendit',
+            'paystack',
+            'flutterwave',
+            'alipay',
+            'payu',
+        ];
     }
 
+    /**
+     * Check if a provider is supported
+     */
     public static function isSupported(string $provider): bool
     {
         return in_array($provider, self::getSupportedProviders());
     }
 
+    /**
+     * Handle success callback for a provider
+     */
     public static function handleSuccessCallback(string $provider, Request $request): CallbackResult
     {
         if (! self::isSupported($provider)) {
-            return CallbackResult::failed(message: 'Unsupported payment provider');
+            return CallbackResult::failed(
+                message: 'Unsupported payment provider'
+            );
         }
+
         try {
             $paymentMethod = PaymentMethod::byProvider($provider);
             $processor = self::make($provider);
@@ -61,15 +89,23 @@ class Processor
 
             return $processor->handleSuccessCallback($request);
         } catch (\Throwable $e) {
-            return CallbackResult::failed(message: 'Error processing payment callback: '.$e->getMessage());
+            return CallbackResult::failed(
+                message: 'Error processing payment callback: '.$e->getMessage()
+            );
         }
     }
 
+    /**
+     * Handle cancel callback for a provider
+     */
     public static function handleCancelCallback(string $provider, Request $request): CallbackResult
     {
         if (! self::isSupported($provider)) {
-            return CallbackResult::failed(message: 'Unsupported payment provider');
+            return CallbackResult::failed(
+                message: 'Unsupported payment provider'
+            );
         }
+
         try {
             $paymentMethod = PaymentMethod::byProvider($provider);
             $processor = self::make($provider);
@@ -77,7 +113,9 @@ class Processor
 
             return $processor->handleCancelCallback($request);
         } catch (\Throwable $e) {
-            return CallbackResult::failed(message: 'Error processing payment cancellation: '.$e->getMessage());
+            return CallbackResult::failed(
+                message: 'Error processing payment cancellation: '.$e->getMessage()
+            );
         }
     }
 }

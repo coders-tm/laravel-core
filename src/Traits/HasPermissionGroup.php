@@ -10,18 +10,28 @@ trait HasPermissionGroup
 {
     use HasGroup, HasPermission;
 
+    /**
+     * Return all the permissions the model has via groups.
+     */
     public function getPermissionsViaGroups(): Collection
     {
-        return $this->loadMissing('groups', 'groups.permissions')->groups->flatMap(function ($group) {
-            return $group->permissions->filter(function ($permission) {
-                return ! is_null($permission->pivot->access);
-            });
-        })->sort()->values();
+        return $this->loadMissing('groups', 'groups.permissions')
+            ->groups->flatMap(function ($group) {
+                return $group->permissions->filter(function ($permission) {
+                    return ! is_null($permission->pivot->access);
+                });
+            })
+            ->sort()
+            ->values();
     }
 
+    /**
+     * Return all the permissions the model has, both directly and via groups.
+     */
     public function getAllPermissions(): Collection
     {
         $permissions = $this->permissions;
+
         if ($this->groups->count()) {
             $permissions = $permissions->merge($this->getPermissionsViaGroups());
         }
@@ -34,15 +44,19 @@ trait HasPermissionGroup
         if ($this->is_supper_admin) {
             $modules = Module::all();
         } else {
-            $permissions = $this->getAllPermissions()->filter(function ($permission) {
-                return $permission->pivot->access == 1;
-            });
+            $permissions = $this->getAllPermissions()
+                ->filter(function ($permission) {
+                    return $permission->pivot->access == 1;
+                });
             $permissionByModule = $permissions->groupBy('module_id');
+
             $modules = Module::orderBy('sort_order')->find($permissionByModule->keys());
         }
 
         return $modules->makeHidden(['created_at', 'deleted_at', 'updated_at'])->map(function ($item) {
-            return array_merge($item->toArray(), ['label' => __($item['name'])]);
+            return array_merge($item->toArray(), [
+                'label' => __($item['name']),
+            ]);
         });
     }
 
@@ -50,12 +64,17 @@ trait HasPermissionGroup
     {
         if ($this->is_supper_admin) {
             return Module::all()->flatMap(function ($module) {
-                return [Str::slug($module->name).':read', Str::slug($module->name).':write', Str::slug($module->name).':editor'];
+                return [
+                    Str::slug($module->name).':read',
+                    Str::slug($module->name).':write',
+                    Str::slug($module->name).':editor',
+                ];
             })->toArray();
         } else {
-            $permissions = $this->getAllPermissions()->filter(function ($permission) {
-                return $permission->pivot->access == 1;
-            });
+            $permissions = $this->getAllPermissions()
+                ->filter(function ($permission) {
+                    return $permission->pivot->access == 1;
+                });
 
             return $permissions->pluck('scope')->toArray();
         }

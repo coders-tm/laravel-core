@@ -9,11 +9,17 @@ use Illuminate\Support\Collection;
 
 trait TaskUser
 {
+    /**
+     * Get the user that owns the Task
+     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(Coderstm::$adminModel, 'user_id');
     }
 
+    /**
+     * The users that belong to the Task
+     */
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(Coderstm::$adminModel, 'task_users', 'task_id', 'user_id')->withOnly([]);

@@ -8,8 +8,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendTaskUsersNotification implements ShouldQueue
 {
-    public function __construct() {}
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
 
+    /**
+     * Handle the event.
+     *
+     * @return void
+     */
     public function handle(TaskCreated $event)
     {
         $users = $event->task->users;

@@ -19,24 +19,52 @@ class TaxController extends Controller
     {
         $tax = Tax::query();
 
-        return $tax->orderBy($request->sortBy ?? 'code', $request->direction ?? 'desc')->orderBy('priority')->get();
+        return $tax->orderBy($request->sortBy ?? 'code', $request->direction ?? 'desc')
+            ->orderBy('priority')
+            ->get();
     }
 
     public function store(Request $request)
     {
-        $rules = ['country' => 'required', 'code' => 'required', 'state' => 'required', 'label' => 'required', 'rate' => 'required'];
+        $rules = [
+            'country' => 'required',
+            'code' => 'required',
+            'state' => 'required',
+            'label' => 'required',
+            'rate' => 'required',
+        ];
+
+        // Validate those rules
         $request->validate($rules);
+
+        // create the tax
         $tax = Tax::create($request->input());
 
-        return response()->json(['data' => $tax, 'message' => trans_module('store', 'tax')], 200);
+        return response()->json([
+            'data' => $tax,
+            'message' => trans_module('store', 'tax'),
+        ], 200);
     }
 
     public function update(Request $request, Tax $tax)
     {
-        $rules = ['country' => 'required', 'code' => 'required', 'state' => 'required', 'label' => 'required', 'rate' => 'required'];
+        $rules = [
+            'country' => 'required',
+            'code' => 'required',
+            'state' => 'required',
+            'label' => 'required',
+            'rate' => 'required',
+        ];
+
+        // Validate those rules
         $request->validate($rules);
+
+        // update the tax
         $tax->update($request->input());
 
-        return response()->json(['data' => $tax->fresh(), 'message' => trans_module('updated', 'tax')], 200);
+        return response()->json([
+            'data' => $tax->fresh(),
+            'message' => trans_module('updated', 'tax'),
+        ], 200);
     }
 }

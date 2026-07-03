@@ -56,7 +56,8 @@ class EnquiryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  mixed  $enquiry
+     * @param Request $request
+     * @param mixed $enquiry
      * @return Response
      */
     public function store(Request $request, $enquiry)
@@ -116,6 +117,7 @@ class EnquiryController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  Request  $request
      * @return Response
      */
     public function show(Request $request)
@@ -129,7 +131,8 @@ class EnquiryController extends Controller
     /**
      * Create reply for the specified resource.
      *
-     * @param  mixed  $enquiry
+     * @param Request $request
+     * @param mixed $enquiry
      * @return Response
      */
     public function reply(Request $request, $enquiry)
@@ -159,7 +162,8 @@ class EnquiryController extends Controller
     /**
      * Change archived of specified resource from storage.
      *
-     * @param  mixed  $enquiry
+     * @param Request $request
+     * @param mixed $enquiry
      * @return Response
      */
     public function changeArchived(Request $request, $enquiry)
@@ -178,7 +182,8 @@ class EnquiryController extends Controller
     /**
      * Change user archived of specified resource from storage.
      *
-     * @param  mixed  $enquiry
+     * @param Request $request
+     * @param mixed $enquiry
      * @return Response
      */
     public function changeUserArchived(Request $request, $enquiry)

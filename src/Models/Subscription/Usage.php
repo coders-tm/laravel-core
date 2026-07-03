@@ -14,7 +14,11 @@ class Usage extends Model
 
     protected $table = 'subscription_usages';
 
-    protected $fillable = ['slug', 'used', 'subscription_id'];
+    protected $fillable = [
+        'slug',
+        'used',
+        'subscription_id',
+    ];
 
     protected $casts = [];
 

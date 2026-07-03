@@ -14,12 +14,29 @@ class UserLogin extends BaseNotification
 
     public $user;
 
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
     public function __construct(Log $log)
     {
         $this->log = $log;
         $this->user = $log->logable;
+
         $template = Template::default('common:user-login');
-        $rendered = $template->render(['user' => $this->user->getShortCodes(), 'log' => ['time' => $this->log->options['time'] ?? null, 'device' => $this->log->options['device'] ?? null, 'location' => $this->log->options['location'] ?? null, 'ip' => $this->log->options['ip'] ?? null]]);
+
+        // Render using NotificationTemplateRenderer
+        $rendered = $template->render([
+            'user' => $this->user->getShortCodes(),
+            'log' => [
+                'time' => $this->log->options['time'] ?? null,
+                'device' => $this->log->options['device'] ?? null,
+                'location' => $this->log->options['location'] ?? null,
+                'ip' => $this->log->options['ip'] ?? null,
+            ],
+        ]);
+
         parent::__construct($rendered['subject'], $rendered['content']);
     }
 }

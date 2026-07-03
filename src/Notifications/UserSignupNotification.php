@@ -3,6 +3,7 @@
 namespace Coderstm\Notifications;
 
 use Coderstm\Models\Notification as Template;
+use Coderstm\Models\User;
 
 class UserSignupNotification extends BaseNotification
 {
@@ -14,12 +15,25 @@ class UserSignupNotification extends BaseNotification
 
     public $subscription;
 
+    /**
+     * Create a new notification instance.
+     *
+     * @param User $user
+     * @return void
+     */
     public function __construct($user)
     {
         $this->user = $user;
         $this->subscription = $user->subscription();
+
         $template = Template::default('user:signup');
-        $rendered = $template->render(['user' => $user->getShortCodes(), 'subscription' => $this->subscription ? $this->subscription->getShortCodes() : null]);
+
+        // Render using NotificationTemplateRenderer
+        $rendered = $template->render([
+            'user' => $user->getShortCodes(),
+            'subscription' => $this->subscription ? $this->subscription->getShortCodes() : null,
+        ]);
+
         parent::__construct($rendered['subject'], $rendered['content']);
     }
 }

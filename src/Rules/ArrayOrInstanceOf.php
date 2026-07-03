@@ -14,6 +14,11 @@ class ArrayOrInstanceOf implements ValidationRule
         $this->class = $class;
     }
 
+    /**
+     * Run the validation rule.
+     *
+     * @param  Closure(string, string): void  $fail
+     */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (! is_array($value) && ! $value instanceof $this->class) {

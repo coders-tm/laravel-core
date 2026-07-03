@@ -8,8 +8,21 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendEnquiryNotification implements ShouldQueue
 {
-    public function __construct() {}
+    /**
+     * Create the event listener.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        //
+    }
 
+    /**
+     * Handle the event.
+     *
+     * @return void
+     */
     public function handle(EnquiryCreated $event)
     {
         admin_notify(new EnquiryNotification($event->enquiry));

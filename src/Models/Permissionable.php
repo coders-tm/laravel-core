@@ -11,9 +11,16 @@ class Permissionable extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['permissionable_type', 'permissionable_id', 'scope', 'access'];
+    protected $fillable = [
+        'permissionable_type',
+        'permissionable_id',
+        'scope',
+        'access',
+    ];
 
-    protected $casts = ['access' => 'boolean'];
+    protected $casts = [
+        'access' => 'boolean',
+    ];
 
     public function getPivotAttribute()
     {
@@ -32,6 +39,7 @@ class Permissionable extends Model
                 return [Str::slug($m->name) => $m->id];
             });
         });
+
         $parts = explode(':', $this->scope);
         $slug = $parts[0] ?? null;
 

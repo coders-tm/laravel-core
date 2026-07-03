@@ -30,13 +30,56 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     protected $table = 'subscriptions';
 
-    protected $fillable = ['user_id', 'type', 'status', 'plan_id', 'coupon_id', 'is_downgrade', 'next_plan', 'trial_ends_at', 'expires_at', 'ends_at', 'starts_at', 'canceled_at', 'frozen_at', 'release_at', 'provider', 'metadata', 'billing_interval', 'billing_interval_count', 'total_cycles', 'current_cycle', 'is_free_forever', 'credit_resets_at'];
+    protected $fillable = [
+        'user_id',
+        'type',
+        'status',
+        'plan_id',
+        'coupon_id',
+        'is_downgrade',
+        'next_plan',
+        'trial_ends_at',
+        'expires_at',
+        'ends_at',
+        'starts_at',
+        'canceled_at',
+        'frozen_at',
+        'release_at',
+        'provider',
+        'metadata',
+        'billing_interval',
+        'billing_interval_count',
+        'total_cycles',
+        'current_cycle',
+        'is_free_forever',
+        'credit_resets_at',
+    ];
 
-    protected $with = ['features'];
+    protected $with = [
+        'features',
+    ];
 
-    protected $dispatchesEvents = ['created' => SubscriptionCreated::class, 'updated' => SubscriptionUpdated::class];
+    protected $dispatchesEvents = [
+        'created' => SubscriptionCreated::class,
+        'updated' => SubscriptionUpdated::class,
+    ];
 
-    protected $casts = ['is_downgrade' => 'boolean', 'trial_ends_at' => 'datetime', 'expires_at' => 'datetime', 'ends_at' => 'datetime', 'starts_at' => 'datetime', 'canceled_at' => 'datetime', 'frozen_at' => 'datetime', 'release_at' => 'datetime', 'metadata' => 'json', 'billing_interval_count' => 'integer', 'total_cycles' => 'integer', 'current_cycle' => 'integer', 'is_free_forever' => 'boolean', 'credit_resets_at' => 'datetime'];
+    protected $casts = [
+        'is_downgrade' => 'boolean',
+        'trial_ends_at' => 'datetime',
+        'expires_at' => 'datetime',
+        'ends_at' => 'datetime',
+        'starts_at' => 'datetime',
+        'canceled_at' => 'datetime',
+        'frozen_at' => 'datetime',
+        'release_at' => 'datetime',
+        'metadata' => 'json',
+        'billing_interval_count' => 'integer',
+        'total_cycles' => 'integer',
+        'current_cycle' => 'integer',
+        'is_free_forever' => 'boolean',
+        'credit_resets_at' => 'datetime',
+    ];
 
     protected $hasCustomDates = false;
 
@@ -93,6 +136,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     public function saveAndInvoice(array $options = [], bool $force = false): self
     {
         $this->save($options);
+
         if (! $this->onTrial() || $force) {
             $this->generateInvoice(true, $force);
         }
@@ -113,9 +157,11 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     protected static function booted(): void
     {
         parent::booted();
+
         static::created(function (self $model): void {
             $model->syncFeaturesFromPlan();
         });
+
         static::deleted(function (self $model): void {
             $model->features()->delete();
         });
@@ -126,14 +172,23 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if (! $this->billing_interval) {
             return '';
         }
+
         $interval = is_string($this->billing_interval) ? $this->billing_interval : $this->billing_interval->value;
+
         $count = $this->billing_interval_count ?? 1;
+
         if ($count > 1) {
             return "{$count} {$interval}s";
         }
 
         return $interval;
     }
+
+    /*
+     * --------------------------------------------------------------------------
+     * Plan Methods
+     * --------------------------------------------------------------------------
+     */
 
     public function hasPlan($plan)
     {
@@ -160,6 +215,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if ($this->ended()) {
             throw new \LogicException('Unable to renew canceled ended subscription.');
         }
+
         if ($this->onGracePeriod()) {
             throw new \LogicException('Unable to renew subscription that is not within grace period.');
         }
@@ -170,8 +226,15 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if ($this->expired() || $this->hasIncompletePayment()) {
             return;
         }
+
         throw new \LogicException('Unable to charge subscription that is not expired.');
     }
+
+    /*
+     * --------------------------------------------------------------------------
+     * Period Methods
+     * --------------------------------------------------------------------------
+     */
 
     protected function anchorActivationFromInvoice(): bool
     {
@@ -183,17 +246,28 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if (! $force && $this->hasCustomDates) {
             return $this;
         }
+
         if ($this->anchorActivationFromInvoice()) {
             $dateFrom = $this->starts_at?->copy() ?? $dateFrom;
         }
+
         if (empty($interval)) {
             $interval = $this->plan->interval->value;
         }
+
         if (empty($count)) {
             $count = $this->plan->interval_count;
         }
+
         $period = new Period($interval, $count, $dateFrom ?? Carbon::now());
-        $this->fill(['starts_at' => $period->getStartDate(), 'expires_at' => $period->getEndDate(), 'billing_interval' => $this->plan->interval->value, 'billing_interval_count' => $this->plan->interval_count]);
+
+        $this->fill([
+            'starts_at' => $period->getStartDate(),
+            'expires_at' => $period->getEndDate(),
+            'billing_interval' => $this->plan->interval->value,
+            'billing_interval_count' => $this->plan->interval_count,
+        ]);
+
         if ($this->plan->isContract() && is_null($this->total_cycles)) {
             $this->total_cycles = $this->plan->contract_cycles;
             $this->current_cycle = 0;
@@ -248,7 +322,9 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         $plan = $this->plan;
         $interval = $billingInterval ?? $this->getBillingInterval();
 
-        return $interval === 'year' ? (float) ($plan?->yearly_fee ?? $plan?->price) : (float) ($plan?->price ?? 0);
+        return $interval === 'year'
+            ? (float) ($plan?->yearly_fee ?? $plan?->price)
+            : (float) ($plan?->price ?? 0);
     }
 
     public function isContract(): bool
@@ -263,6 +339,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         } elseif ($date instanceof \DateTimeInterface && ! $date instanceof Carbon) {
             $date = Carbon::instance($date);
         }
+
         $this->starts_at = $date;
         $this->hasCustomDates = true;
 
@@ -276,6 +353,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         } elseif ($date instanceof \DateTimeInterface && ! $date instanceof Carbon) {
             $date = Carbon::instance($date);
         }
+
         $this->expires_at = $date;
         $this->hasCustomDates = true;
 
@@ -285,12 +363,22 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     public function advanceCreditResetsAt(): self
     {
         if ($this->credit_resets_at && $this->plan) {
-            $period = new Period($this->plan->interval->value, $this->plan->interval_count, $this->credit_resets_at);
+            $period = new Period(
+                $this->plan->interval->value,
+                $this->plan->interval_count,
+                $this->credit_resets_at
+            );
             $this->credit_resets_at = $period->getEndDate();
         }
 
         return $this;
     }
+
+    /*
+     * --------------------------------------------------------------------------
+     * Coupon Methods
+     * --------------------------------------------------------------------------
+     */
 
     public function coupon(): BelongsTo
     {
@@ -312,12 +400,14 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         $coupon = $coupon ?? $this->coupon;
         $foreignKey = $this->getUserForeignKey();
         $userId = $this->{$foreignKey};
+
         if ($coupon && $coupon->canApplyToPlan($this->plan)) {
             if ($coupon->duration->value === 'once') {
                 if ($coupon->redeems()->where($foreignKey, $userId)->exists()) {
                     return null;
                 }
             }
+
             if ($coupon->duration->value === 'repeating') {
                 if ($coupon->redeems()->where($foreignKey, $userId)->count() >= $coupon->duration_in_months) {
                     return null;
@@ -337,18 +427,33 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
                 'percentage' => DiscountLine::TYPE_PERCENTAGE,
                 'fixed' => DiscountLine::TYPE_FIXED_AMOUNT,
                 'override' => DiscountLine::TYPE_PRICE_OVERRIDE,
-                default => DiscountLine::TYPE_PERCENTAGE,
+                default => DiscountLine::TYPE_PERCENTAGE
             };
 
-            return ['type' => $discountType, 'value' => $coupon->value, 'description' => $coupon->name, 'coupon_id' => $coupon->id, 'coupon_code' => $coupon->promotion_code, 'auto_applied' => false];
+            return [
+                'type' => $discountType,
+                'value' => $coupon->value,
+                'description' => $coupon->name,
+                'coupon_id' => $coupon->id,
+                'coupon_code' => $coupon->promotion_code,
+                'auto_applied' => false,
+            ];
         }
 
         return null;
     }
 
+    /*
+     * --------------------------------------------------------------------------
+     * Freeze Methods
+     * --------------------------------------------------------------------------
+     */
+
     public function onFreeze(): bool
     {
-        return ! is_null($this->frozen_at) && $this->status === SubscriptionStatus::PAUSED && (is_null($this->release_at) || $this->release_at->isFuture());
+        return ! is_null($this->frozen_at) &&
+            $this->status === SubscriptionStatus::PAUSED &&
+            (is_null($this->release_at) || $this->release_at->isFuture());
     }
 
     public function canFreeze(int $days = 0): bool
@@ -356,9 +461,11 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if (! $this->plan->allowsFreeze()) {
             return false;
         }
+
         if ($this->onFreeze()) {
             return false;
         }
+
         if ($this->canceled() || $this->expired()) {
             return false;
         }
@@ -368,17 +475,41 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function scopeFrozen($query)
     {
-        return $query->where('status', SubscriptionStatus::PAUSED)->whereNotNull('frozen_at');
+        return $query->where('status', SubscriptionStatus::PAUSED)
+            ->whereNotNull('frozen_at');
     }
 
     public function scopeDueForUnfreeze($query)
     {
-        return $query->frozen()->whereNotNull('release_at')->where('release_at', '<=', now());
+        return $query->frozen()
+            ->whereNotNull('release_at')
+            ->where('release_at', '<=', now());
     }
+
+    /*
+     * --------------------------------------------------------------------------
+     * Notification Methods
+     * --------------------------------------------------------------------------
+     */
 
     public function getShortCodes(): array
     {
-        return ['user' => $this->user?->toArray(), 'plan' => ['label' => $this->plan?->label, 'price' => $this->plan?->formatPrice()], 'billing_page' => user_route('/billing'), 'renew_url' => user_route('/billing?renew=1'), 'subscription_status' => is_string($this->status) ? $this->status : $this->status->value ?? '', 'billing_cycle' => $this->formatBillingInterval(), 'next_billing_date' => $this->expires_at ? $this->expires_at->format('d M, Y') : '', 'ends_at' => $this->ends_at ? $this->ends_at->format('d M, Y') : '', 'starts_at' => $this->starts_at ? $this->starts_at->format('d M, Y') : '', 'expires_at' => $this->expires_at ? $this->expires_at->format('d M, Y') : '', 'upcoming_invoice' => $this->upcomingInvoice()];
+        return [
+            'user' => $this->user?->toArray(),
+            'plan' => [
+                'label' => $this->plan?->label,
+                'price' => $this->plan?->formatPrice(),
+            ],
+            'billing_page' => user_route('/billing'),
+            'renew_url' => user_route('/billing?renew=1'),
+            'subscription_status' => is_string($this->status) ? $this->status : ($this->status->value ?? ''),
+            'billing_cycle' => $this->formatBillingInterval(),
+            'next_billing_date' => $this->expires_at ? $this->expires_at->format('d M, Y') : '',
+            'ends_at' => $this->ends_at ? $this->ends_at->format('d M, Y') : '',
+            'starts_at' => $this->starts_at ? $this->starts_at->format('d M, Y') : '',
+            'expires_at' => $this->expires_at ? $this->expires_at->format('d M, Y') : '',
+            'upcoming_invoice' => $this->upcomingInvoice(),
+        ];
     }
 
     public function sendRenewNotification(): void
@@ -386,6 +517,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         if (! $this->user) {
             return;
         }
+
         if ($this->expired()) {
             SendRenewNotificationJob::dispatch($this)->afterResponse();
         }
@@ -394,18 +526,39 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     public function renderNotification($type, $additionalData = []): ?Notification
     {
         $template = Notification::default($type);
+
         $data = array_merge($this->getShortCodes(), $additionalData);
+
         $rendered = $template->render($data);
 
-        return $template->fill(['subject' => $rendered['subject'], 'content' => $rendered['content'], 'text' => $rendered['text']]);
+        return $template->fill([
+            'subject' => $rendered['subject'],
+            'content' => $rendered['content'],
+            'text' => $rendered['text'],
+        ]);
     }
 
     public function renderPushNotification($type, $additionalData = [])
     {
         $template = $this->renderNotification($type, $additionalData);
 
-        return optional((object) ['subject' => $template->subject, 'content' => $template->text, 'whatsappContent' => $template->text ? "{$template->subject}\n{$template->text}" : $template->subject, 'data' => ['route' => user_route('/billing')]]);
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => $template->text,
+            'whatsappContent' => $template->text
+                ? "{$template->subject}\n{$template->text}"
+                : $template->subject,
+            'data' => [
+                'route' => user_route('/billing'),
+            ],
+        ]);
     }
+
+    /*
+     * --------------------------------------------------------------------------
+     * Status Methods
+     * --------------------------------------------------------------------------
+     */
 
     public function valid(): bool
     {
@@ -450,9 +603,10 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     public function scopeActive($query)
     {
         $query->where(function ($query) {
-            $query->whereNull('canceled_at')->orWhere(function ($query) {
-                $query->canceledOnGracePeriod();
-            });
+            $query->whereNull('canceled_at')
+                ->orWhere(function ($query) {
+                    $query->canceledOnGracePeriod();
+                });
         })->whereIn('status', [SubscriptionStatus::ACTIVE, SubscriptionStatus::TRIALING]);
     }
 
@@ -535,12 +689,16 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function scopeCanceledOnGracePeriod($query)
     {
-        $query->whereNotNull('canceled_at')->whereNotNull('expires_at')->where('expires_at', '>', Carbon::now());
+        $query->whereNotNull('canceled_at')
+            ->whereNotNull('expires_at')
+            ->where('expires_at', '>', Carbon::now());
     }
 
     public function scopeCanceledNotOnGracePeriod($query)
     {
-        $query->whereNotNull('canceled_at')->whereNotNull('expires_at')->where('expires_at', '<=', Carbon::now());
+        $query->whereNotNull('canceled_at')
+            ->whereNotNull('expires_at')
+            ->where('expires_at', '<=', Carbon::now());
     }
 
     public function onGracePeriod(): bool
@@ -559,13 +717,17 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function scopeOnGracePeriod($query)
     {
-        $query->where('status', SubscriptionStatus::ACTIVE)->whereNotNull('ends_at')->where('ends_at', '>', Carbon::now());
+        $query->where('status', SubscriptionStatus::ACTIVE)
+            ->whereNotNull('ends_at')
+            ->where('ends_at', '>', Carbon::now());
     }
 
     public function scopeNotOnGracePeriod($query)
     {
         $query->where(function ($q) {
-            $q->where('status', '<>', SubscriptionStatus::ACTIVE)->orWhereNull('ends_at')->orWhere('ends_at', '<=', Carbon::now());
+            $q->where('status', '<>', SubscriptionStatus::ACTIVE)
+                ->orWhereNull('ends_at')
+                ->orWhere('ends_at', '<=', Carbon::now());
         });
     }
 
@@ -583,28 +745,74 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function toResponse(array $extends = []): array
     {
-        $status = ['id' => $this->id, 'status' => $this->status, 'active' => $this->active(), 'canceled' => $this->canceled(), 'ended' => $this->ended(), 'expired' => $this->expired(), 'downgrade' => $this->hasDowngrade(), 'on_grace_period' => $this->onGracePeriod(), 'canceled_on_grace_period' => $this->canceledOnGracePeriod(), 'has_incomplete_payment' => $this->hasIncompletePayment(), 'has_due' => $this->onGracePeriod() || $this->expired() || $this->hasIncompletePayment(), 'on_trial' => $this->onTrial(), 'is_valid' => $this->valid() ?? false, 'type' => $this->type, 'is_downgrade' => $this->is_downgrade, 'next_plan' => $this->next_plan, 'trial_ends_at' => $this->serializeDate($this->trial_ends_at), 'expires_at' => $this->serializeDate($this->expires_at), 'ends_at' => $this->serializeDate($this->ends_at), 'starts_at' => $this->serializeDate($this->starts_at), 'canceled_at' => $this->serializeDate($this->canceled_at), 'frozen_at' => $this->serializeDate($this->frozen_at), 'release_at' => $this->serializeDate($this->release_at), 'provider' => $this->provider, 'metadata' => $this->metadata ?? [], 'billing_interval' => $this->billing_interval, 'billing_interval_count' => $this->billing_interval_count, 'total_cycles' => $this->total_cycles, 'current_cycle' => $this->current_cycle, 'credit_resets_at' => $this->serializeDate($this->credit_resets_at), 'created_at' => $this->serializeDate($this->created_at), 'updated_at' => $this->serializeDate($this->updated_at), 'invoice' => null];
+        $status = [
+            'id' => $this->id,
+            'status' => $this->status,
+            'active' => $this->active(),
+            'canceled' => $this->canceled(),
+            'ended' => $this->ended(),
+            'expired' => $this->expired(),
+            'downgrade' => $this->hasDowngrade(),
+            'on_grace_period' => $this->onGracePeriod(),
+            'canceled_on_grace_period' => $this->canceledOnGracePeriod(),
+            'has_incomplete_payment' => $this->hasIncompletePayment(),
+            'has_due' => $this->onGracePeriod() || $this->expired() || $this->hasIncompletePayment(),
+            'on_trial' => $this->onTrial(),
+            'is_valid' => $this->valid() ?? false,
+            'type' => $this->type,
+            'is_downgrade' => $this->is_downgrade,
+            'next_plan' => $this->next_plan,
+            'trial_ends_at' => $this->serializeDate($this->trial_ends_at),
+            'expires_at' => $this->serializeDate($this->expires_at),
+            'ends_at' => $this->serializeDate($this->ends_at),
+            'starts_at' => $this->serializeDate($this->starts_at),
+            'canceled_at' => $this->serializeDate($this->canceled_at),
+            'frozen_at' => $this->serializeDate($this->frozen_at),
+            'release_at' => $this->serializeDate($this->release_at),
+            'provider' => $this->provider,
+            'metadata' => $this->metadata ?? [],
+            'billing_interval' => $this->billing_interval,
+            'billing_interval_count' => $this->billing_interval_count,
+            'total_cycles' => $this->total_cycles,
+            'current_cycle' => $this->current_cycle,
+            'credit_resets_at' => $this->serializeDate($this->credit_resets_at),
+            'created_at' => $this->serializeDate($this->created_at),
+            'updated_at' => $this->serializeDate($this->updated_at),
+            'invoice' => null,
+        ];
+
         try {
             $upcomingInvoice = $this->upcomingInvoice();
         } catch (\Throwable $e) {
             $upcomingInvoice = null;
         }
+
         if ($this->onGracePeriod() || $this->expired() || $this->hasIncompletePayment()) {
             $invoice = $this->latestInvoice ?? $upcomingInvoice;
             $amount = $invoice?->total();
-            $status['invoice'] = ['amount' => $amount, 'key' => $invoice?->key];
+            $status['invoice'] = [
+                'amount' => $amount,
+                'key' => $invoice?->key,
+            ];
         } elseif ($upcomingInvoice) {
-            $status['invoice'] = ['amount' => $upcomingInvoice->total(), 'date' => $this->expires_at->format('d M, Y')];
+            $status['invoice'] = [
+                'amount' => $upcomingInvoice->total(),
+                'date' => $this->expires_at->format('d M, Y'),
+            ];
         }
+
         if (in_array('plan', $extends)) {
             $status['plan'] = $this->plan;
         }
+
         if (in_array('user', $extends)) {
             $status['user'] = $this->user;
         }
+
         if (in_array('next_plan', $extends) && $this->hasDowngrade()) {
             $status['next_plan'] = $this->nextPlan;
         }
+
         if (in_array('usages', $extends)) {
             $status['usages'] = $this->usagesToArray();
         }

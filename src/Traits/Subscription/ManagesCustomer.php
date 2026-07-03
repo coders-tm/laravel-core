@@ -76,21 +76,38 @@ trait ManagesCustomer
         }
     }
 
+    /**
+     * Get the Stripe supported currency used by the customer.
+     *
+     * @return string
+     */
     public function preferredCurrency()
     {
         return config('app.currency');
     }
 
+    /**
+     * Format the given amount into a displayable currency.
+     *
+     * @param  int  $amount
+     * @return string
+     */
     protected function formatAmount($amount)
     {
         return Cashier::formatAmount($amount, $this->preferredCurrency());
     }
 
+    /**
+     * Get all of the invoices for the User
+     */
     public function invoices(): HasMany
     {
         return $this->hasMany(Coderstm::$orderModel, 'customer_id');
     }
 
+    /**
+     * Get the latest invoices for the User
+     */
     public function latestInvoice(): HasOne
     {
         return $this->hasOne(Coderstm::$orderModel, 'customer_id')->latest();
@@ -99,15 +116,44 @@ trait ManagesCustomer
     public function billingAddress(): array
     {
         $this->loadMissing('address');
+
         if ($this->address) {
-            return Arr::only($this->address->toArray(), ['first_name', 'last_name', 'company', 'phone_number', 'line1', 'line2', 'city', 'state', 'state_code', 'postal_code', 'country', 'country_code']);
+            return Arr::only($this->address->toArray(), [
+                'first_name',
+                'last_name',
+                'company',
+                'phone_number',
+                'line1',
+                'line2',
+                'city',
+                'state',
+                'state_code',
+                'postal_code',
+                'country',
+                'country_code',
+            ]);
         }
 
-        return ['first_name' => $this->first_name, 'last_name' => $this->last_name, 'phone_number' => $this->phone_number, 'company' => $this->company];
+        return [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'phone_number' => $this->phone_number,
+            'company' => $this->company,
+        ];
     }
 
+    /**
+     * The plan that belong to the User
+     */
     public function plan(): HasOneThrough
     {
-        return $this->hasOneThrough(Coderstm::$planModel, Coderstm::$subscriptionModel, $this->getForeignKey(), 'id', 'id', (new Coderstm::$planModel)->getForeignKey())->orderByDesc('created_at');
+        return $this->hasOneThrough(
+            Coderstm::$planModel,
+            Coderstm::$subscriptionModel,
+            $this->getForeignKey(),
+            'id',
+            'id',
+            (new Coderstm::$planModel)->getForeignKey()
+        )->orderByDesc('created_at');
     }
 }

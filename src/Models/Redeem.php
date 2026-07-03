@@ -8,7 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Redeem extends Model
 {
-    protected $fillable = ['redeemable_type', 'redeemable_id', 'coupon_id', 'user_id', 'amount'];
+    protected $fillable = [
+        'redeemable_type',
+        'redeemable_id',
+        'coupon_id',
+        'user_id',
+        'amount',
+    ];
 
     public function coupon(): BelongsTo
     {

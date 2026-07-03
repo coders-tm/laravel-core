@@ -19,9 +19,23 @@ class Import extends Model
 
     const STATUS_FAILED = 'Failed';
 
-    protected $fillable = ['model', 'file_id', 'user_id', 'status', 'options', 'success', 'failed', 'skipped'];
+    protected $fillable = [
+        'model',
+        'file_id',
+        'user_id',
+        'status',
+        'options',
+        'success',
+        'failed',
+        'skipped',
+    ];
 
-    protected $casts = ['options' => 'array', 'success' => 'array', 'failed' => 'array', 'skipped' => 'array'];
+    protected $casts = [
+        'options' => 'array',
+        'success' => 'array',
+        'failed' => 'array',
+        'skipped' => 'array',
+    ];
 
     public function user(): BelongsTo
     {
@@ -36,12 +50,23 @@ class Import extends Model
     public function addLogs($type, $line): void
     {
         $lines = $this->{$type} ?? [];
-        $this->update([$type => array_merge($lines, [$line])]);
+        $this->update([
+            $type => array_merge($lines, [$line]),
+        ]);
     }
 
     public function getShortCodes(): array
     {
-        return ['import' => ['model' => class_basename($this->model), 'status' => $this->status, 'successed' => count($this->success ?? []), 'failed' => count($this->failed ?? []), 'skipped' => count($this->skipped ?? [])], 'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'System']];
+        return [
+            'import' => [
+                'model' => class_basename($this->model),
+                'status' => $this->status,
+                'successed' => count($this->success ?? []),
+                'failed' => count($this->failed ?? []),
+                'skipped' => count($this->skipped ?? []),
+            ],
+            'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'System'],
+        ];
     }
 
     protected static function booted()

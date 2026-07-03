@@ -4,6 +4,7 @@ namespace Coderstm\Models\Task;
 
 use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
+use Coderstm\Models\Admin;
 use Coderstm\Models\Task;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\SerializeDate;
@@ -16,7 +17,11 @@ class Reply extends Model
 
     protected $table = 'task_replies';
 
-    protected $fillable = ['message', 'task_id', 'user_id'];
+    protected $fillable = [
+        'message',
+        'task_id',
+        'user_id',
+    ];
 
     protected $with = ['media'];
 
@@ -39,7 +44,9 @@ class Reply extends Model
             }
         });
         static::created(function ($model) {
-            $model->task->update(['status' => AppStatus::ONGOING->value]);
+            $model->task->update([
+                'status' => AppStatus::ONGOING->value,
+            ]);
         });
     }
 }

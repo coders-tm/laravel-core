@@ -15,4 +15,6 @@ example
 /gympify
 /logs
 testbench-output.log
+/tools
 phpunit.log
+workbench/.env

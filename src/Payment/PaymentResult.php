@@ -7,11 +7,27 @@ use Coderstm\Exceptions\PaymentException;
 
 class PaymentResult
 {
-    public function __construct(protected bool $success, protected ?PaymentInterface $paymentData = null, protected ?string $transactionId = null, protected ?string $status = null, protected array $metadata = []) {}
+    public function __construct(
+        protected bool $success,
+        protected ?PaymentInterface $paymentData = null,
+        protected ?string $transactionId = null,
+        protected ?string $status = null,
+        protected array $metadata = []
+    ) {}
 
-    public static function success(?PaymentInterface $paymentData, string $transactionId, string $status = 'success', array $metadata = []): self
-    {
-        return new self(success: true, paymentData: $paymentData, transactionId: $transactionId, status: $status, metadata: $metadata);
+    public static function success(
+        ?PaymentInterface $paymentData,
+        string $transactionId,
+        string $status = 'success',
+        array $metadata = []
+    ): self {
+        return new self(
+            success: true,
+            paymentData: $paymentData,
+            transactionId: $transactionId,
+            status: $status,
+            metadata: $metadata
+        );
     }
 
     public static function failed(string $error, array $metadata = []): never
@@ -46,16 +62,22 @@ class PaymentResult
 
     public function toArray(): array
     {
-        $result = ['success' => $this->success];
+        $result = [
+            'success' => $this->success,
+        ];
+
         if ($this->paymentData) {
             $result['payment_data'] = $this->paymentData;
         }
+
         if ($this->transactionId) {
             $result['transaction_id'] = $this->transactionId;
         }
+
         if ($this->status) {
             $result['status'] = $this->status;
         }
+
         if (! empty($this->metadata)) {
             $result = array_merge($result, $this->metadata);
         }

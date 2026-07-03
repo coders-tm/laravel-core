@@ -19,6 +19,9 @@ class RefundException extends Exception
         return $this->metadata;
     }
 
+    /**
+     * Check if this is a "not supported" error type.
+     */
     public function isNotSupported(): bool
     {
         return ($this->metadata['error_type'] ?? null) === 'not_supported';

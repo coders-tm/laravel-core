@@ -14,10 +14,18 @@ class MembersBreakdownChart
         $this->request = $request;
     }
 
+    /**
+     * Get members breakdown by status
+     */
     public function get(): array
     {
         $subscriptionMetrics = new SubscriptionMetrics($this->request);
 
-        return ['Active' => $subscriptionMetrics->getActiveCount(), 'On Trial' => $subscriptionMetrics->getTrialCount(), 'Grace Period' => $subscriptionMetrics->getGracePeriodCount(), 'Cancelled' => $subscriptionMetrics->getCancelledCount()];
+        return [
+            'Active' => $subscriptionMetrics->getActiveCount(),
+            'On Trial' => $subscriptionMetrics->getTrialCount(),
+            'Grace Period' => $subscriptionMetrics->getGracePeriodCount(),
+            'Cancelled' => $subscriptionMetrics->getCancelledCount(),
+        ];
     }
 }

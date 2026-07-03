@@ -43,11 +43,15 @@ trait Logable
         parent::boot();
         static::created(function ($model) {
             $modelName = static::getLogName($model);
-            $data = ['message' => "{$modelName} has been created."];
+            $data = [
+                'message' => "{$modelName} has been created.",
+            ];
             if (! empty($model->log_options)) {
                 $data['options'] = $model->log_options;
             }
-            $model->logs()->updateOrCreate(['type' => LogType::CREATED], $data);
+            $model->logs()->updateOrCreate([
+                'type' => LogType::CREATED,
+            ], $data);
         });
         static::updated(function ($model) {
             $modelName = static::getLogName($model);
@@ -56,31 +60,52 @@ trait Logable
                 if ($model->wasChanged($key)) {
                     $previous = $model->getOriginal($key);
                     $current = $model[$key];
-                    $options[$key] = ['_previous' => $previous, 'previous' => static::getLogValue($key, $previous), '_current' => $current, 'current' => static::getLogValue($key, $current)];
+                    $options[$key] = [
+                        '_previous' => $previous,
+                        'previous' => static::getLogValue($key, $previous),
+                        '_current' => $current,
+                        'current' => static::getLogValue($key, $current),
+                    ];
+
                     $method = 'on'.Str::studly(str_replace('.', '_', $key)).'Updated';
+
                     if (method_exists(static::class, $method)) {
-                        static::$method($model, $options[$key]);
+                        static::{$method}($model, $options[$key]);
                     }
                 }
             }
+
             if (! empty($options)) {
-                $model->logs()->create(['type' => LogType::UPDATED, 'message' => "{$modelName} has been updated.", 'options' => $options]);
+                $model->logs()->create([
+                    'type' => LogType::UPDATED,
+                    'message' => "{$modelName} has been updated.",
+                    'options' => $options,
+                ]);
             }
         });
         static::deleted(function ($model) {
             $modelName = static::getLogName($model);
-            $model->logs()->create(['type' => LogType::DELETED, 'message' => "{$modelName} has been deleted."]);
+            $model->logs()->create([
+                'type' => LogType::DELETED,
+                'message' => "{$modelName} has been deleted.",
+            ]);
         });
         if (method_exists(static::class, 'forceDeleted')) {
             static::forceDeleted(function ($model) {
                 $modelName = static::getLogName($model);
-                $model->logs()->create(['type' => LogType::PERMANENTLY_DELETED, 'message' => "{$modelName} has been permanently deleted."]);
+                $model->logs()->create([
+                    'type' => LogType::PERMANENTLY_DELETED,
+                    'message' => "{$modelName} has been permanently deleted.",
+                ]);
             });
         }
         if (method_exists(static::class, 'restored')) {
             static::restored(function ($model) {
                 $modelName = static::getLogName($model);
-                $model->logs()->create(['type' => LogType::RESTORED, 'message' => "{$modelName} has been restored."]);
+                $model->logs()->create([
+                    'type' => LogType::RESTORED,
+                    'message' => "{$modelName} has been restored.",
+                ]);
             });
         }
     }

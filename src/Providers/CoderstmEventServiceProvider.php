@@ -27,7 +27,53 @@ use Illuminate\Notifications\Events\NotificationFailed;
 
 class CoderstmEventServiceProvider extends ServiceProvider
 {
-    protected $listen = [EnquiryCreated::class => [SendEnquiryNotification::class, SendEnquiryConfirmation::class], EnquiryReplyCreated::class => [SendEnquiryReplyNotification::class], TaskCreated::class => [SendTaskUsersNotification::class], UserSubscribed::class => [SendSignupNotification::class], NotificationFailed::class => [DeleteExpiredNotificationTokens::class], PaymentSuccessful::class => [SendPaymentSuccessNotification::class], PaymentFailed::class => [SendPaymentFailedNotification::class, SendAdminPaymentFailedNotification::class], OrderRefunded::class => [SendOrderRefundedNotification::class, SendAdminRefundNotification::class], PartialRefundProcessed::class => [SendPartialRefundNotification::class, SendAdminRefundNotification::class]];
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [
+        EnquiryCreated::class => [
+            SendEnquiryNotification::class,
+            SendEnquiryConfirmation::class,
+        ],
+        EnquiryReplyCreated::class => [
+            SendEnquiryReplyNotification::class,
+        ],
+        TaskCreated::class => [
+            SendTaskUsersNotification::class,
+        ],
+        UserSubscribed::class => [
+            SendSignupNotification::class,
+        ],
+        NotificationFailed::class => [
+            DeleteExpiredNotificationTokens::class,
+        ],
+        // Shop Payment Events
+        PaymentSuccessful::class => [
+            SendPaymentSuccessNotification::class,
+        ],
+        PaymentFailed::class => [
+            SendPaymentFailedNotification::class,
+            SendAdminPaymentFailedNotification::class,
+        ],
+        OrderRefunded::class => [
+            SendOrderRefundedNotification::class,
+            SendAdminRefundNotification::class,
+        ],
+        PartialRefundProcessed::class => [
+            SendPartialRefundNotification::class,
+            SendAdminRefundNotification::class,
+        ],
+    ];
 
-    public function boot() {}
+    /**
+     * Register any events for your application.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+    }
 }

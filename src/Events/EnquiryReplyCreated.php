@@ -3,6 +3,7 @@
 namespace Coderstm\Events;
 
 use Coderstm\Models\Enquiry\Reply;
+use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -20,6 +21,11 @@ class EnquiryReplyCreated
 
     public $enquiryUser;
 
+    /**
+     * Create a new event instance.
+     *
+     * @return void
+     */
     public function __construct(Reply $reply)
     {
         $this->reply = $reply;
@@ -28,6 +34,11 @@ class EnquiryReplyCreated
         $this->enquiryUser = $this->enquiry->user;
     }
 
+    /**
+     * Get the channels the event should broadcast on.
+     *
+     * @return Channel|array
+     */
     public function broadcastOn()
     {
         return new PrivateChannel('channel-name');

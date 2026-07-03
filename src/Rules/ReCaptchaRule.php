@@ -11,13 +11,29 @@ class ReCaptchaRule implements Rule
 
     const BOT_SCORE = 0.0;
 
+    /**
+     * Determine if the validation rule passes.
+     *
+     * @param  string  $attribute
+     * @param  mixed  $value
+     * @return bool
+     */
     public function passes($attribute, $value)
     {
-        $response = Http::asForm()->post(static::URL, ['secret' => config('recaptcha.secret_key'), 'response' => $value, 'remoteip' => request()->ip()])->json();
+        $response = Http::asForm()->post(static::URL, [
+            'secret' => config('recaptcha.secret_key'),
+            'response' => $value,
+            'remoteip' => request()->ip(),
+        ])->json();
 
         return $response['success'] === true && $response['score'] > static::BOT_SCORE ?? false;
     }
 
+    /**
+     * Get the validation error message.
+     *
+     * @return string
+     */
     public function message()
     {
         return __('The verification process for reCAPTCHA failed. Please attempt again.');

@@ -14,10 +14,16 @@ class RevenueBreakdownChart
         $this->request = $request;
     }
 
+    /**
+     * Get revenue breakdown by source
+     */
     public function get(): array
     {
         $orderMetrics = new OrderMetrics($this->request);
 
-        return ['Subscription' => round($orderMetrics->getSubscriptionRevenue(), 2), 'Product' => round($orderMetrics->getNonSubscriptionRevenue(), 2)];
+        return [
+            'Subscription' => round($orderMetrics->getSubscriptionRevenue(), 2),
+            'Product' => round($orderMetrics->getNonSubscriptionRevenue(), 2),
+        ];
     }
 }

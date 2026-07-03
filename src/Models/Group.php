@@ -10,9 +10,14 @@ class Group extends Model
 {
     use Core, HasPermission;
 
-    protected $fillable = ['name', 'description'];
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 
-    protected $with = ['permissions'];
+    protected $with = [
+        'permissions',
+    ];
 
     public function groupable()
     {

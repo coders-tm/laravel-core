@@ -9,6 +9,7 @@ use Coderstm\Events\EnquiryCreated;
 use Coderstm\Models\Enquiry\Reply;
 use Coderstm\Traits\Core;
 use Coderstm\Traits\Fileable;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -17,9 +18,22 @@ class Enquiry extends Model
 {
     use Core, Fileable;
 
-    protected $dispatchesEvents = ['created' => EnquiryCreated::class];
+    protected $dispatchesEvents = [
+        'created' => EnquiryCreated::class,
+    ];
 
-    protected $fillable = ['name', 'email', 'phone', 'subject', 'message', 'status', 'seen', 'is_archived', 'user_archived', 'source'];
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'subject',
+        'message',
+        'status',
+        'seen',
+        'is_archived',
+        'user_archived',
+        'source',
+    ];
 
     protected $with = ['last_reply.user', 'user'];
 
@@ -27,7 +41,13 @@ class Enquiry extends Model
 
     protected $withCount = ['unseen'];
 
-    protected $casts = ['status' => AppStatus::class, 'seen' => 'boolean', 'is_archived' => 'boolean', 'user_archived' => 'boolean', 'source' => 'boolean'];
+    protected $casts = [
+        'status' => AppStatus::class,
+        'seen' => 'boolean',
+        'is_archived' => 'boolean',
+        'user_archived' => 'boolean',
+        'source' => 'boolean',
+    ];
 
     public function getHasUnseenAttribute()
     {
@@ -75,7 +95,9 @@ class Enquiry extends Model
     public function markedAsSeen()
     {
         $this->seen = true;
-        $this->unseen()->update(['seen' => true]);
+        $this->unseen()->update([
+            'seen' => true,
+        ]);
         $this->save();
 
         return $this;
@@ -95,6 +117,7 @@ class Enquiry extends Model
             case 'users':
                 return $query->whereNotNull('subject');
                 break;
+
             default:
                 return $query->whereNull('subject');
                 break;
@@ -128,6 +151,7 @@ class Enquiry extends Model
                     return $query->whereIsArchived(0);
                 }
                 break;
+
             case 'Archive':
                 if (Auth::guard('users')->hasUser()) {
                     return $query->whereUserArchived(1);
@@ -144,10 +168,15 @@ class Enquiry extends Model
     {
         switch ($column) {
             case 'last_reply':
-                return $query->select('enquiries.*')->leftJoin('replies', function ($join) {
-                    $join->on('replies.enquiry_id', '=', 'enquiries.id');
-                })->groupBy('enquiries.id')->orderBy(DB::raw('replies.created_at IS NULL'), 'desc')->orderBy(DB::raw('replies.created_at'), $direction ?? 'asc');
+                return $query->select('enquiries.*')
+                    ->leftJoin('replies', function ($join) {
+                        $join->on('replies.enquiry_id', '=', 'enquiries.id');
+                    })
+                    ->groupBy('enquiries.id')
+                    ->orderBy(DB::raw('replies.created_at IS NULL'), 'desc')
+                    ->orderBy(DB::raw('replies.created_at'), $direction ?? 'asc');
                 break;
+
             default:
                 return $query->orderBy($column ?: 'created_at', $direction ?? 'asc');
                 break;
@@ -157,11 +186,27 @@ class Enquiry extends Model
     public function renderNotification($type = null): Notification
     {
         $default = $this->source ? 'user:enquiry-confirmation' : 'user:enquiry-notification';
+
         $template = Notification::default($type ?? $default);
-        $data = ['user' => $this->user?->getShortCodes() ?? ['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone], 'enquiry' => $this->getShortCodes()];
+
+        // Use structured data for dual-format support
+        $data = [
+            'user' => $this->user?->getShortCodes() ?? [
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+            ],
+            'enquiry' => $this->getShortCodes(),
+        ];
+
+        // Render using NotificationTemplateRenderer
         $rendered = $template->render($data);
 
-        return $template->fill(['subject' => $rendered['subject'], 'content' => $rendered['content'], 'text' => $rendered['text']]);
+        return $template->fill([
+            'subject' => $rendered['subject'],
+            'content' => $rendered['content'],
+            'text' => $rendered['text'],
+        ]);
     }
 
     public function renderPushNotification($type = null)
@@ -170,16 +215,42 @@ class Enquiry extends Model
         $type = $type ?? $default;
         $template = $this->renderNotification($type);
 
-        return optional((object) ['subject' => $template->subject, 'content' => $template->text, 'whatsappContent' => $template->text ? "{$template->subject}\n{$template->text}" : $template->subject, 'data' => ['route' => user_route("/enquiries/{$this->id}?action=edit"), 'enquiry_id' => (string) $this->id]]);
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => $template->text,
+            'whatsappContent' => $template->text
+                ? "{$template->subject}\n{$template->text}"
+                : $template->subject,
+            'data' => [
+                'route' => user_route("/enquiries/{$this->id}?action=edit"),
+                'enquiry_id' => (string) $this->id,
+            ],
+        ]);
     }
 
     public function getShortCodes(): array
     {
-        return ['id' => $this->id, 'url' => app_url("enquiries/{$this->id}?action=edit"), 'admin_url' => admin_url("enquiries/{$this->id}?action=edit"), 'attachments' => $this->media->map(function ($file) {
-            return ['name' => $file->name, 'url' => $file->url];
-        })->toArray(), 'subject' => $this->subject, 'status' => $this->status->value, 'message' => $this->message];
+        return [
+            'id' => $this->id,
+            'url' => app_url("enquiries/{$this->id}?action=edit"),
+            'admin_url' => admin_url("enquiries/{$this->id}?action=edit"),
+            'attachments' => $this->media->map(function ($file) {
+                return [
+                    'name' => $file->name,
+                    'url' => $file->url,
+                ];
+            })->toArray(),
+            'subject' => $this->subject,
+            'status' => $this->status->value,
+            'message' => $this->message,
+        ];
     }
 
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
     protected static function newFactory()
     {
         return EnquiryFactory::new();

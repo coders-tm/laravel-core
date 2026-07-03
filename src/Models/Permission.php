@@ -21,12 +21,16 @@ class Permission implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
     public function __construct(Module $module, string $action)
     {
         $scope = Str::slug($module->name).':'.strtolower($action);
+
         $this->id = $scope;
         $this->scope = $scope;
         $this->action = strtolower($action);
         $this->module_id = $module->id;
     }
 
+    /**
+     * Generate all permissions for a given module.
+     */
     public static function forModule(Module $module)
     {
         return collect(['read', 'write', 'editor'])->map(function ($action) use ($module) {
@@ -34,6 +38,9 @@ class Permission implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
         });
     }
 
+    /**
+     * Get all virtual permissions across all modules.
+     */
     public static function all($columns = ['*'])
     {
         return Module::all()->flatMap(function ($module) {
@@ -41,36 +48,45 @@ class Permission implements Arrayable, ArrayAccess, Jsonable, JsonSerializable
         });
     }
 
+    // ArrayAccess implementation
     public function offsetExists($offset): bool
     {
-        return isset($this->{$offset});
+        return isset($this->$offset);
     }
 
     public function offsetGet($offset): mixed
     {
-        return $this->{$offset} ?? null;
+        return $this->$offset ?? null;
     }
 
     public function offsetSet($offset, $value): void
     {
-        $this->{$offset} = $value;
+        $this->$offset = $value;
     }
 
     public function offsetUnset($offset): void
     {
-        unset($this->{$offset});
+        unset($this->$offset);
     }
 
+    // JsonSerializable implementation
     public function jsonSerialize(): array
     {
         return $this->toArray();
     }
 
+    // Arrayable implementation
     public function toArray(): array
     {
-        return ['id' => $this->id, 'scope' => $this->scope, 'action' => $this->action, 'module_id' => $this->module_id];
+        return [
+            'id' => $this->id,
+            'scope' => $this->scope,
+            'action' => $this->action,
+            'module_id' => $this->module_id,
+        ];
     }
 
+    // Jsonable implementation
     public function toJson($options = 0): string
     {
         return json_encode($this->jsonSerialize(), $options);

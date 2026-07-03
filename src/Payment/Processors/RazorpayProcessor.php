@@ -32,55 +32,126 @@ class RazorpayProcessor extends AbstractPaymentProcessor implements PaymentProce
     public function setupPaymentIntent(Request $request, Payable $payable): array
     {
         $api = Coderstm::razorpay();
-        $payable->setCurrencies($this->supportedCurrencies());
-        $this->validateCurrency($payable);
-        $order = $api->order->create(['amount' => round($payable->getGatewayAmount() * 100), 'currency' => Str::upper($payable->getCurrency()), 'receipt' => $payable->getReferenceId(), 'notes' => array_merge($payable->getMetadata(), ['customer_email' => $payable->getCustomerEmail(), 'order_amount' => $payable->getGrandTotal(), 'order_currency' => ExchangeRate::getBaseCurrency()])]);
 
-        return ['order_id' => $order['id'], 'amount' => $order['amount'], 'currency' => $order['currency']];
+        // Ensure the payable supports the required currencies
+        $payable->setCurrencies($this->supportedCurrencies());
+
+        // Validate currency
+        $this->validateCurrency($payable);
+
+        $order = $api->order->create([
+            'amount' => round($payable->getGatewayAmount() * 100), // Convert to paise
+            'currency' => Str::upper($payable->getCurrency()),
+            'receipt' => $payable->getReferenceId(),
+            'notes' => array_merge(
+                $payable->getMetadata(),
+                [
+                    'customer_email' => $payable->getCustomerEmail(),
+                    'order_amount' => $payable->getGrandTotal(),
+                    'order_currency' => ExchangeRate::getBaseCurrency(),
+                ]
+            ),
+        ]);
+
+        return [
+            'order_id' => $order['id'],
+            'amount' => $order['amount'],
+            'currency' => $order['currency'],
+        ];
     }
 
     public function confirmPayment(Request $request, Payable $payable): PaymentResult
     {
-        $request->validate(['payment_id' => 'required|string', 'order_id' => 'required|string', 'signature' => 'required|string']);
+        $request->validate([
+            'payment_id' => 'required|string',
+            'order_id' => 'required|string',
+            'signature' => 'required|string',
+        ]);
+
         try {
             $api = Coderstm::razorpay();
-            $attributes = ['razorpay_order_id' => $request->order_id, 'razorpay_payment_id' => $request->payment_id, 'razorpay_signature' => $request->signature];
+
+            // Verify payment signature
+            $attributes = [
+                'razorpay_order_id' => $request->order_id,
+                'razorpay_payment_id' => $request->payment_id,
+                'razorpay_signature' => $request->signature,
+            ];
+
             $api->utility->verifyPaymentSignature($attributes);
+
             $payment_details = $api->payment->fetch($request->payment_id);
+
             if ($payment_details['status'] !== 'captured') {
                 return PaymentResult::failed('Payment not captured');
             }
+
             $paymentData = new RazorpayPayment($payment_details, $this->paymentMethod);
 
-            return PaymentResult::success(paymentData: $paymentData, transactionId: $request->payment_id, status: 'success');
+            return PaymentResult::success(
+                paymentData: $paymentData,
+                transactionId: $request->payment_id,
+                status: 'success'
+            );
         } catch (\Throwable $e) {
             return PaymentResult::failed($e->getMessage());
         }
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function supportsRefund(): bool
     {
         return true;
     }
 
+    /**
+     * Process a refund through Razorpay.
+     *
+     * @param  Payment  $payment  The payment to refund
+     * @param  float|null  $amount  Amount to refund in base currency (null = full refund)
+     * @param  string|null  $reason  Reason for the refund
+     */
     public function refund(Payment $payment, ?float $amount = null, ?string $reason = null): RefundResult
     {
         try {
             $api = Coderstm::razorpay();
+
             $refundParams = [];
+
+            // Convert amount to paise
             if ($amount !== null) {
                 $refundParams['amount'] = round($amount * 100);
             }
+
+            // Add notes for reason if provided
             if ($reason) {
-                $refundParams['notes'] = ['reason' => $reason];
+                $refundParams['notes'] = [
+                    'reason' => $reason,
+                ];
             }
+
+            // Razorpay uses payment_id for refunds
             $refund = $api->payment->fetch($payment->transaction_id)->refund($refundParams);
+
             if (! $refund || ! isset($refund['id'])) {
                 RefundResult::failed('Razorpay refund failed: No refund ID returned');
             }
-            $refundedAmount = ($refund['amount'] ?? $amount * 100) / 100;
 
-            return RefundResult::success(refundId: $refund['id'], amount: $refundedAmount, status: $refund['status'] ?? 'processed', metadata: ['razorpay_refund_id' => $refund['id'], 'payment_id' => $payment->transaction_id, 'status' => $refund['status'] ?? 'processed']);
+            // Convert amount back from paise
+            $refundedAmount = ($refund['amount'] ?? ($amount * 100)) / 100;
+
+            return RefundResult::success(
+                refundId: $refund['id'],
+                amount: $refundedAmount,
+                status: $refund['status'] ?? 'processed',
+                metadata: [
+                    'razorpay_refund_id' => $refund['id'],
+                    'payment_id' => $payment->transaction_id,
+                    'status' => $refund['status'] ?? 'processed',
+                ]
+            );
         } catch (Error $e) {
             RefundResult::failed('Razorpay refund error: '.$e->getMessage());
         } catch (\Throwable $e) {

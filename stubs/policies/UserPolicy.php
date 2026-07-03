@@ -12,8 +12,8 @@ class UserPolicy
     /**
      * Perform pre-authorization checks.
      *
-     * @param  mixed  $admin
-     * @param  mixed  $ability
+     * @param mixed $admin
+     * @param mixed $ability
      * @return mixed
      */
     public function before($admin, $ability)
@@ -26,7 +26,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view any models.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function viewAny($admin)
@@ -37,8 +37,8 @@ class UserPolicy
     /**
      * Determine whether the admin can view the model.
      *
-     * @param  mixed  $admin
-     * @param  mixed  $user
+     * @param mixed $admin
+     * @param mixed $user
      * @return bool|mixed
      */
     public function view($admin, $user)
@@ -53,7 +53,7 @@ class UserPolicy
     /**
      * Determine whether the admin can create models.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function create($admin)
@@ -64,7 +64,7 @@ class UserPolicy
     /**
      * Determine whether the admin can update the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function update($admin)
@@ -75,7 +75,7 @@ class UserPolicy
     /**
      * Determine whether the admin can delete the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function delete($admin)
@@ -86,7 +86,7 @@ class UserPolicy
     /**
      * Determine whether the admin can restore the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function restore($admin)
@@ -97,7 +97,7 @@ class UserPolicy
     /**
      * Determine whether the admin can permanently delete the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function forceDelete($admin)
@@ -108,7 +108,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view reports of the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function reports($admin)
@@ -119,7 +119,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view daily reports of the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function reportsDaily($admin)
@@ -130,7 +130,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view monthly reports of the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function reportsMonthly($admin)
@@ -141,7 +141,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view yearly reports of the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function reportsYearly($admin)
@@ -152,7 +152,7 @@ class UserPolicy
     /**
      * Determine whether the admin can view enquiry of the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function enquiry($admin)

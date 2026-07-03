@@ -3,10 +3,16 @@
 namespace Coderstm\Traits;
 
 use Coderstm\Models\Group;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Support\Collection;
 
 trait HasGroup
 {
+    /**
+     * Get all of the groups for the model
+     *
+     * @return MorphToMany
+     */
     public function groups()
     {
         return $this->morphToMany(Group::class, 'groupable');

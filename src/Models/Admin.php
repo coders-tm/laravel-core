@@ -11,6 +11,7 @@ use Coderstm\Traits\Fileable;
 use Coderstm\Traits\HasApiTokens;
 use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,21 +24,48 @@ class Admin extends Authenticatable
 
     protected $guard = 'admins';
 
-    protected $fillable = ['first_name', 'last_name', 'gender', 'email', 'password', 'phone_number', 'is_supper_admin', 'is_active'];
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'gender',
+        'email',
+        'password',
+        'phone_number',
+        'is_supper_admin',
+        'is_active',
+    ];
 
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-    protected $casts = ['email_verified_at' => 'datetime', 'last_login_at' => 'datetime', 'is_active' => 'boolean', 'is_supper_admin' => 'boolean'];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
+        'is_active' => 'boolean',
+        'is_supper_admin' => 'boolean',
+    ];
 
-    protected $appends = ['name', 'guard'];
+    protected $appends = [
+        'name',
+        'guard',
+    ];
 
-    protected $with = ['avatar'];
+    protected $with = [
+        'avatar',
+    ];
 
     public function getNameAttribute()
     {
         return "{$this->first_name} {$this->last_name}";
     }
 
+    /**
+     * Route notifications for the mail channel.
+     *
+     * @return array<string, string>|string
+     */
     public function routeNotificationForMail($notification): array|string
     {
         return [$this->email => $this->name];
@@ -45,7 +73,9 @@ class Admin extends Authenticatable
 
     public function lastLogin(): MorphOne
     {
-        return $this->morphOne(Log::class, 'logable')->where('type', 'login')->orderBy('created_at', 'desc');
+        return $this->morphOne(Log::class, 'logable')
+            ->where('type', 'login')
+            ->orderBy('created_at', 'desc');
     }
 
     public function createdBy(): MorphOne
@@ -74,9 +104,11 @@ class Admin extends Authenticatable
             case 'last_login':
                 $query->orderByRaw('(SELECT MAX(created_at) FROM logs WHERE logs.logable_id = admins.id AND logs.logable_type = ? AND logs.type = ?) '.($direction ?? 'asc'), [$this->getMorphClass(), 'login']);
                 break;
+
             case 'name':
                 $query->orderBy(DB::raw('CONCAT(`first_name`, `last_name`)'), $direction ?? 'asc');
                 break;
+
             default:
                 $query->orderBy($column ?: 'created_at', $direction ?? 'asc');
                 break;
@@ -88,6 +120,7 @@ class Admin extends Authenticatable
     public function toLoginResponse()
     {
         $response = $this->append('modules')->toArray();
+
         $response['permissions'] = $this->getScopes();
 
         return $response;
@@ -95,44 +128,87 @@ class Admin extends Authenticatable
 
     public function getShortCodes(): array
     {
-        return ['id' => $this->id, 'name' => $this->name, 'first_name' => $this->first_name, 'last_name' => $this->last_name, 'email' => $this->email, 'phone_number' => $this->phone_number];
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
+            'email' => $this->email,
+            'phone_number' => $this->phone_number,
+        ];
     }
 
     public static function getMappedAttributes(): array
     {
-        return ['First Name' => 'first_name', 'Surname' => 'last_name', 'Gender' => 'gender', 'Email Address' => 'email', 'Phone Number' => 'phone_number', 'Status' => 'status', 'Password' => 'password', 'Created At' => 'created_at', 'Address Line1' => 'line1', 'Address Line2' => 'line2', 'Country' => 'country', 'State' => 'state', 'State Code' => 'state_code', 'City' => 'city', 'Postcode/Zip' => 'postal_code'];
+        return [
+            'First Name' => 'first_name',
+            'Surname' => 'last_name',
+            'Gender' => 'gender',
+            'Email Address' => 'email',
+            'Phone Number' => 'phone_number',
+            'Status' => 'status',
+            'Password' => 'password',
+            'Created At' => 'created_at',
+            'Address Line1' => 'line1',
+            'Address Line2' => 'line2',
+            'Country' => 'country',
+            'State' => 'state',
+            'State Code' => 'state_code',
+            'City' => 'city',
+            'Postcode/Zip' => 'postal_code',
+        ];
     }
 
     public static function createFromCsv(array $attributes = [], array $options = [])
     {
         $replaceByEmail = isset($options['email_overwrite']) && $options['email_overwrite'];
         $user = static::where('email', $attributes['email'])->withTrashed()->first();
+
         if (! $replaceByEmail && $user) {
             throw new ImportFailedException;
         } elseif ($user && ($user->wasRecentlyUpdated || $user->wasRecentlyCreated)) {
             throw new ImportSkippedException;
         }
+
         if (isset($attributes['password'])) {
             $attributes['password'] = bcrypt($attributes['password']);
         }
+
         if (isset($attributes['country'])) {
             $country = (new ISO3166)->name($attributes['country']);
             $attributes['country_code'] = $country['alpha2'];
         }
-        $user = static::firstOrNew(['email' => $attributes['email']], $attributes);
+
+        $user = static::firstOrNew([
+            'email' => $attributes['email'],
+        ], $attributes);
+
         if (isset($attributes['created_at']) && ! empty($attributes['created_at'])) {
             $user->created_at = $attributes['created_at'];
         }
+
         $user->deleted_at = null;
+
         $user->save();
+
         $user->updateOrCreateAddress($attributes);
     }
 
+    /**
+     * Get the guard attribute.
+     *
+     * @return string
+     */
     public function getGuardAttribute()
     {
         return $this->guard;
     }
 
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
     protected static function newFactory()
     {
         return AdminFactory::new();

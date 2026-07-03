@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class TaxLine extends Model implements Currencyable
 {
+    /**
+     * Get the list of currency fields to be converted.
+     *
+     * @return array Field names that contain currency amounts
+     */
     public function getCurrencyFields(): array
     {
         return ['amount'];
@@ -17,13 +22,21 @@ class TaxLine extends Model implements Currencyable
 
     public $timestamps = false;
 
-    protected $fillable = ['label', 'rate', 'amount', 'type'];
+    protected $fillable = [
+        'label',
+        'rate',
+        'amount',
+        'type',
+    ];
 
     const TYPE_NORMAL = 'normal';
 
     const TYPE_COMPOUND = 'compound';
 
-    protected $hidden = ['taxable_type', 'taxable_id'];
+    protected $hidden = [
+        'taxable_type',
+        'taxable_id',
+    ];
 
     public function taxable()
     {

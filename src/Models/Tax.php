@@ -11,7 +11,17 @@ class Tax extends Model
 {
     use HasFactory, Logable, SerializeDate;
 
-    protected $fillable = ['country', 'code', 'state', 'label', 'compounded', 'rate', 'priority'];
+    protected $fillable = [
+        'country',
+        'code',
+        'state',
+        'label',
+        'compounded',
+        'rate',
+        'priority',
+    ];
 
-    protected $casts = ['compounded' => 'boolean'];
+    protected $casts = [
+        'compounded' => 'boolean',
+    ];
 }

@@ -20,11 +20,26 @@ class AuthenticateSession
         if (! $request->hasSession() || ! $request->user()) {
             return $next($request);
         }
-        $guards = Collection::make(Arr::wrap(config('sanctum.guard')))->mapWithKeys(fn ($guard) => [$guard => $this->auth->guard($guard)])->filter(fn ($guard) => $guard instanceof SessionGuard);
-        $shouldLogout = $guards->filter(fn ($guard, $driver) => $request->session()->has('password_hash_'.$driver))->filter(fn ($guard, $driver) => ! $this->validatePasswordHash($guard, $guard->user()?->getAuthPassword(), $request->session()->get('password_hash_'.$driver)));
+
+        $guards = Collection::make(Arr::wrap(config('sanctum.guard')))
+            ->mapWithKeys(fn ($guard) => [$guard => $this->auth->guard($guard)])
+            ->filter(fn ($guard) => $guard instanceof SessionGuard);
+
+        $shouldLogout = $guards->filter(
+            fn ($guard, $driver) => $request->session()->has('password_hash_'.$driver)
+        )->filter(
+            fn ($guard, $driver) => ! $this->validatePasswordHash(
+                $guard,
+                $guard->user()?->getAuthPassword(),
+                $request->session()->get('password_hash_'.$driver)
+            )
+        );
+
         if ($shouldLogout->isNotEmpty()) {
             $shouldLogout->each->logoutCurrentDevice();
+
             $request->session()->flush();
+
             throw new AuthenticationException('Unauthenticated.', [...$shouldLogout->keys()->all(), 'sanctum']);
         }
 
@@ -40,7 +55,12 @@ class AuthenticateSession
     protected function storePasswordHashInSession($request, string $guard)
     {
         $guardInstance = $this->auth->guard($guard);
-        $request->session()->put(["password_hash_{$guard}" => method_exists($guardInstance, 'hashPasswordForCookie') ? $guardInstance->hashPasswordForCookie($guardInstance->user()->getAuthPassword()) : $guardInstance->user()->getAuthPassword()]);
+
+        $request->session()->put([
+            "password_hash_{$guard}" => method_exists($guardInstance, 'hashPasswordForCookie')
+                ? $guardInstance->hashPasswordForCookie($guardInstance->user()->getAuthPassword())
+                : $guardInstance->user()->getAuthPassword(),
+        ]);
     }
 
     protected function validatePasswordHash(SessionGuard $guard, ?string $passwordHash, string $storedValue): bool

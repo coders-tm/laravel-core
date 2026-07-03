@@ -2,6 +2,12 @@
 
 namespace Coderstm\Services;
 
+/**
+ * Hook System Service
+ *
+ * WordPress-style hooks system with full multiple arguments support.
+ * Based on the WordPress plugin API and millat/laravel-hooks package.
+ */
 class HookService
 {
     protected array $filters = [];
@@ -13,7 +19,10 @@ class HookService
     public function add_filter(string $tag, callable $callback, int $priority = 10, int $accepted_args = 1): bool
     {
         $idx = $this->hookUniqueId($tag, $callback, $priority);
-        $this->filters[$tag][$priority][$idx] = ['function' => $callback, 'accepted_args' => $accepted_args];
+        $this->filters[$tag][$priority][$idx] = [
+            'function' => $callback,
+            'accepted_args' => $accepted_args,
+        ];
         unset($this->merged_filters[$tag]);
 
         return true;
@@ -26,6 +35,7 @@ class HookService
             $all_args = func_get_args();
             $this->callAllHooks($all_args);
         }
+
         if (! isset($this->filters[$tag]) || empty($this->filters[$tag])) {
             if (isset($this->filters['all'])) {
                 array_pop($this->current_filter);
@@ -33,27 +43,37 @@ class HookService
 
             return $value;
         }
+
         if (! isset($this->filters['all'])) {
             $this->current_filter[] = $tag;
         }
+
         if (! isset($this->merged_filters[$tag])) {
             ksort($this->filters[$tag]);
             $this->merged_filters[$tag] = true;
         }
+
         reset($this->filters[$tag]);
+
         $filter_args = array_merge([$value], $args);
+
         do {
             $current_priority_filters = current($this->filters[$tag]);
             if ($current_priority_filters === false) {
                 break;
             }
+
             foreach ($current_priority_filters as $the_) {
                 if (! is_null($the_['function'])) {
                     $filter_args[0] = $value;
-                    $value = call_user_func_array($the_['function'], array_slice($filter_args, 0, (int) $the_['accepted_args']));
+                    $value = call_user_func_array(
+                        $the_['function'],
+                        array_slice($filter_args, 0, (int) $the_['accepted_args'])
+                    );
                 }
             }
         } while (next($this->filters[$tag]) !== false);
+
         array_pop($this->current_filter);
 
         return $value;
@@ -71,6 +91,7 @@ class HookService
             $all_args = func_get_args();
             $this->callAllHooks($all_args);
         }
+
         if (! isset($this->filters[$tag]) || empty($this->filters[$tag])) {
             if (isset($this->filters['all'])) {
                 array_pop($this->current_filter);
@@ -78,39 +99,51 @@ class HookService
 
             return;
         }
+
         if (! isset($this->filters['all'])) {
             $this->current_filter[] = $tag;
         }
+
         if (! isset($this->merged_filters[$tag])) {
             ksort($this->filters[$tag]);
             $this->merged_filters[$tag] = true;
         }
+
         reset($this->filters[$tag]);
+
         do {
             $current_priority_actions = current($this->filters[$tag]);
             if ($current_priority_actions === false) {
                 break;
             }
+
             foreach ((array) $current_priority_actions as $the_) {
                 if (! is_null($the_['function'])) {
-                    call_user_func_array($the_['function'], array_slice($args, 0, (int) $the_['accepted_args']));
+                    call_user_func_array(
+                        $the_['function'],
+                        array_slice($args, 0, (int) $the_['accepted_args'])
+                    );
                 }
             }
         } while (next($this->filters[$tag]) !== false);
+
         array_pop($this->current_filter);
     }
 
     protected function hookUniqueId(string $tag, $function, $priority)
     {
         static $filter_id_count = 0;
+
         if (is_string($function)) {
             return $function;
         }
+
         if (is_object($function)) {
             $function = [$function, ''];
         } else {
             $function = (array) $function;
         }
+
         if (is_object($function[0])) {
             if (function_exists('spl_object_hash')) {
                 return spl_object_hash($function[0]).$function[1];
@@ -120,7 +153,8 @@ class HookService
                     if ($priority === false) {
                         return false;
                     }
-                    $obj_idx .= isset($this->filters[$tag][$priority]) ? count((array) $this->filters[$tag][$priority]) : $filter_id_count;
+                    $obj_idx .= isset($this->filters[$tag][$priority]) ?
+                        count((array) $this->filters[$tag][$priority]) : $filter_id_count;
                     $function[0]->filter_id = $filter_id_count;
                     $filter_id_count++;
                 } else {

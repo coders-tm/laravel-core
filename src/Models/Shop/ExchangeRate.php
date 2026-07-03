@@ -8,33 +8,51 @@ use League\ISO3166\ISO3166;
 
 class ExchangeRate extends Model
 {
-    protected $fillable = ['currency', 'rate'];
+    protected $fillable = [
+        'currency',
+        'rate',
+    ];
 
-    protected $casts = ['rate' => 'decimal:4'];
+    protected $casts = [
+        'rate' => 'decimal:4',
+    ];
 
     public static function getBaseCurrency(): string
     {
         return strtoupper(config('app.currency', 'USD'));
     }
 
+    /**
+     * Get the rate for a specific currency.
+     * Returns 1 if currency is the same as base or not found (default behavior can be adjusted).
+     */
     public static function rateFor(string $currency): float
     {
         $currency = strtoupper($currency);
+
         if ($currency === self::getBaseCurrency()) {
             return 1.0;
         }
+
         $rate = static::where('currency', $currency)->value('rate');
+
         if (is_null($rate)) {
             try {
                 $baseCurrency = self::getBaseCurrency();
-                $rate = app(LaravelExchangeRate::class)->exchangeRate($baseCurrency, $currency);
+                $rate = app(LaravelExchangeRate::class)
+                    ->exchangeRate($baseCurrency, $currency);
+
                 if ($rate && $rate > 0) {
-                    static::updateOrCreate(['currency' => $currency], ['rate' => $rate]);
+                    static::updateOrCreate(['currency' => $currency], [
+                        'rate' => $rate,
+                    ]);
 
                     return (float) $rate;
                 }
             } catch (\Throwable $e) {
+                // Fail silently and fallback to exception below
             }
+
             throw new \RuntimeException("Missing exchange rate for currency: {$currency}");
         }
 
@@ -51,15 +69,18 @@ class ExchangeRate extends Model
         $fromCurrency = strtoupper($fromCurrency);
         $toCurrency = strtoupper($toCurrency);
         $baseCurrency = self::getBaseCurrency();
+
         if ($fromCurrency === $toCurrency) {
             return $amount;
         }
+
         if ($fromCurrency !== $baseCurrency) {
             $fromRate = self::rateFor($fromCurrency);
             if ($fromRate > 0) {
                 $amount = $amount / $fromRate;
             }
         }
+
         if ($toCurrency !== $baseCurrency) {
             $toRate = self::rateFor($toCurrency);
             if ($toRate > 0) {
@@ -70,20 +91,28 @@ class ExchangeRate extends Model
         return $amount;
     }
 
+    /**
+     * Get currency code from country code.
+     */
     public static function getCurrencyFromCountryCode(string $countryCode): string
     {
         $countryCode = strtoupper($countryCode);
+
         try {
             $data = (new ISO3166)->alpha2($countryCode);
             if (! empty($data['currency'][0])) {
                 return strtoupper($data['currency'][0]);
             }
         } catch (\Throwable $e) {
+            // Invalid country code or other error, fallback to default
         }
 
         return self::getBaseCurrency();
     }
 
+    /**
+     * Get currency code from country code.
+     */
     public static function getCurrencyFromCountry(string $country): string
     {
         try {
@@ -92,6 +121,7 @@ class ExchangeRate extends Model
                 return strtoupper($data['currency'][0]);
             }
         } catch (\Throwable $e) {
+            // Invalid country code or other error, fallback to default
         }
 
         return self::getBaseCurrency();

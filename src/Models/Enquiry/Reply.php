@@ -10,6 +10,7 @@ use Coderstm\Models\Notification;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\SerializeDate;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,24 @@ class Reply extends Model
 {
     use Fileable, HasFactory, SerializeDate;
 
-    protected $dispatchesEvents = ['created' => EnquiryReplyCreated::class];
+    protected $dispatchesEvents = [
+        'created' => EnquiryReplyCreated::class,
+    ];
 
-    protected $fillable = ['message', 'enquiry_id', 'user_type', 'user_id', 'seen', 'staff_only'];
+    protected $fillable = [
+        'message',
+        'enquiry_id',
+        'user_type',
+        'user_id',
+        'seen',
+        'staff_only',
+    ];
 
     protected $with = ['media'];
 
-    protected $casts = ['seen' => 'boolean'];
+    protected $casts = [
+        'seen' => 'boolean',
+    ];
 
     protected $appends = ['created_time'];
 
@@ -56,10 +68,21 @@ class Reply extends Model
     public function renderNotification($type = null): Notification
     {
         $default = $this->byAdmin() ? 'user:enquiry-reply-notification' : 'admin:enquiry-reply-notification';
-        $template = Notification::default($type ?? $default);
-        $rendered = $template->render(['user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'], 'enquiry' => $this->enquiry->getShortCodes(), 'reply' => $this->getShortCodes()]);
 
-        return $template->fill(['subject' => $rendered['subject'], 'content' => $rendered['content'], 'text' => $rendered['text']]);
+        $template = Notification::default($type ?? $default);
+
+        // Render using NotificationTemplateRenderer for dual-format support
+        $rendered = $template->render([
+            'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'],
+            'enquiry' => $this->enquiry->getShortCodes(),
+            'reply' => $this->getShortCodes(),
+        ]);
+
+        return $template->fill([
+            'subject' => $rendered['subject'],
+            'content' => $rendered['content'],
+            'text' => $rendered['text'],
+        ]);
     }
 
     public function renderPushNotification($type = null)
@@ -68,16 +91,38 @@ class Reply extends Model
         $type = $type ?? $default;
         $template = $this->renderNotification($type);
 
-        return optional((object) ['subject' => $template->subject, 'content' => $template->text, 'whatsappContent' => $template->text ? "{$template->subject}\n{$template->text}" : $template->subject, 'data' => ['route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"), 'enquiry_id' => (string) $this->enquiry_id]]);
+        return optional((object) [
+            'subject' => $template->subject,
+            'content' => $template->text,
+            'whatsappContent' => $template->text
+                ? "{$template->subject}\n{$template->text}"
+                : $template->subject,
+            'data' => [
+                'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
+                'enquiry_id' => (string) $this->enquiry_id,
+            ],
+        ]);
     }
 
     public function getShortCodes(): array
     {
-        return ['message' => $this->message, 'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'], 'attachments' => $this->media->map(function ($file) {
-            return ['name' => $file->name, 'url' => $file->url];
-        })->toArray()];
+        return [
+            'message' => $this->message,
+            'user' => $this->user ? $this->user->getShortCodes() : ['name' => 'Guest'],
+            'attachments' => $this->media->map(function ($file) {
+                return [
+                    'name' => $file->name,
+                    'url' => $file->url,
+                ];
+            })->toArray(),
+        ];
     }
 
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return Factory
+     */
     protected static function newFactory()
     {
         return ReplyFactory::new();
@@ -96,9 +141,15 @@ class Reply extends Model
                 return false;
             }
             if ($model->byAdmin()) {
-                $model->enquiry->update(['status' => AppStatus::STAFF_REPLIED->value, 'user_archived' => 0]);
+                $model->enquiry->update([
+                    'status' => AppStatus::STAFF_REPLIED->value,
+                    'user_archived' => 0,
+                ]);
             } else {
-                $model->enquiry->update(['status' => AppStatus::REPLIED->value, 'is_archived' => 0]);
+                $model->enquiry->update([
+                    'status' => AppStatus::REPLIED->value,
+                    'is_archived' => 0,
+                ]);
             }
         });
         static::addGlobalScope('default', function (Builder $builder) {

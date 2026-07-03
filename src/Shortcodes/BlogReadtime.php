@@ -6,7 +6,11 @@ use Vedmant\LaravelShortcodes\Shortcode;
 
 class BlogReadtime extends Shortcode
 {
-    public $attributes = ['suffix' => ['default' => 'min read']];
+    public $attributes = [
+        'suffix' => [
+            'default' => 'min read',
+        ],
+    ];
 
     public function render($content)
     {

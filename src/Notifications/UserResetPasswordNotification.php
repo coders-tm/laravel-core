@@ -13,12 +13,25 @@ class UserResetPasswordNotification extends BaseNotification
 
     public $reset;
 
+    /**
+     * Create a new notification instance.
+     */
     public function __construct($user, array $reset)
     {
         $this->user = $user;
         $this->reset = $reset;
+
         $template = Template::default('common:password-reset-request');
-        $rendered = $template->render(['user' => $this->user->getShortCodes(), 'reset' => ['url' => $this->reset['url'] ?? null, 'token' => $this->reset['token'] ?? null, 'expires' => $this->reset['expires'] ?? null]]);
+
+        $rendered = $template->render([
+            'user' => $this->user->getShortCodes(),
+            'reset' => [
+                'url' => $this->reset['url'] ?? null,
+                'token' => $this->reset['token'] ?? null,
+                'expires' => $this->reset['expires'] ?? null,
+            ],
+        ]);
+
         parent::__construct($rendered['subject'], $rendered['content']);
     }
 }

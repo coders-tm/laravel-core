@@ -2,6 +2,8 @@
 
 namespace Coderstm\Events;
 
+use Coderstm\Models\Subscription;
+use Coderstm\Models\Shop\Order;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -11,10 +13,22 @@ class SubscriptionInvoiced
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    /**
+     * @var Subscription
+     */
     public $subscription;
 
+    /**
+     * @var Order
+     */
     public $invoice;
 
+    /**
+     * Create a new event instance.
+     *
+     * @param Subscription $subscription
+     * @param Order $invoice
+     */
     public function __construct($subscription, $invoice)
     {
         $this->subscription = $subscription;

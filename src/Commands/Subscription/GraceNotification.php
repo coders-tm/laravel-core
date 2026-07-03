@@ -17,19 +17,34 @@ class GraceNotification extends Command
     {
         $today = now()->format('Y-m-d');
         $actionName = "grace-notification-{$today}";
-        $subscriptions = Coderstm::$subscriptionModel::query()->active()->onGracePeriod()->hasUser()->with(['user']);
+
+        $subscriptions = Coderstm::$subscriptionModel::query()
+            ->active()
+            ->onGracePeriod()
+            ->hasUser()
+            ->with(['user']);
+
         foreach ($subscriptions->cursor() as $subscription) {
             try {
                 if ($user = $subscription->user) {
                     if (apply_filters('subscription.grace_notification.should_send', true, $user, $subscription)) {
                         $user->notify(new SubscriptionGraceNotification($subscription));
-                        $subscription->logs()->create(['type' => $actionName, 'message' => 'Daily grace period notification has been successfully sent.']);
+
+                        $subscription->logs()->create([
+                            'type' => $actionName,
+                            'message' => 'Daily grace period notification has been successfully sent.',
+                        ]);
                     }
                 }
             } catch (\Throwable $e) {
-                $subscription->logs()->create(['type' => $actionName, 'status' => Log::STATUS_ERROR, 'message' => $e->getMessage()]);
+                $subscription->logs()->create([
+                    'type' => $actionName,
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage(),
+                ]);
             }
         }
+
         $this->info('Grace period notifications sent.');
     }
 }

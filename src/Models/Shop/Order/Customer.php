@@ -8,7 +8,11 @@ class Customer extends ShopCustomer
 {
     protected $table = 'users';
 
-    protected $appends = ['name'];
+    protected $appends = [
+        'name',
+    ];
 
-    protected $with = [];
+    protected $with = [
+        //
+    ];
 }

@@ -11,8 +11,21 @@ use Illuminate\Support\ServiceProvider;
 
 class CoderstmPermissionsServiceProvider extends ServiceProvider
 {
-    public function register() {}
+    /**
+     * Register services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
+    }
 
+    /**
+     * Bootstrap services.
+     *
+     * @return void
+     */
     public function boot()
     {
         try {
@@ -24,11 +37,14 @@ class CoderstmPermissionsServiceProvider extends ServiceProvider
                     return $user->hasPermission($permission);
                 });
             });
+
+            // Blade directives
             Blade::directive('group', function ($group, $guard = 'users') {
-                return "if(guard({$guard}) && user()->hasGroup({$group})) :";
+                return "if(guard({$guard}) && user()->hasGroup({$group})) :"; // return this if statement inside php tag
             });
+
             Blade::directive('endgroup', function ($group) {
-                return 'endif;';
+                return 'endif;'; // return this endif statement inside php tag
             });
         } catch (\Throwable $e) {
             Log::error('Error booting CoderstmPermissionsServiceProvider: '.$e->getMessage());

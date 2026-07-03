@@ -11,7 +11,12 @@ class Comment extends Model
 
     protected $fillable = ['message'];
 
-    protected $hidden = ['commentable_type', 'commentable_id', 'userable_type', 'userable_id'];
+    protected $hidden = [
+        'commentable_type',
+        'commentable_id',
+        'userable_type',
+        'userable_id',
+    ];
 
     public function commentable()
     {

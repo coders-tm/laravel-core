@@ -12,8 +12,8 @@ class AdminPolicy
     /**
      * Perform pre-authorization checks.
      *
-     * @param  mixed  $admin
-     * @param  mixed  $ability
+     * @param mixed $admin
+     * @param mixed $ability
      * @return mixed
      */
     public function before($admin, $ability)
@@ -26,7 +26,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can view any models.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function viewAny($admin)
@@ -37,7 +37,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can view the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function view($admin)
@@ -48,7 +48,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can create models.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function create($admin)
@@ -59,7 +59,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can update the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function update($admin)
@@ -70,7 +70,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can delete the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function delete($admin)
@@ -81,7 +81,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can restore the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function restore($admin)
@@ -92,7 +92,7 @@ class AdminPolicy
     /**
      * Determine whether the admin can permanently delete the model.
      *
-     * @param  mixed  $admin
+     * @param mixed $admin
      * @return bool|mixed
      */
     public function forceDelete($admin)

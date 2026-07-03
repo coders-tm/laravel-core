@@ -21,17 +21,26 @@ class FileMeta
 
     public function toArray()
     {
-        $fileInfo = ['header' => 'file'];
+        $fileInfo = [
+            'header' => 'file',
+        ];
+
         $basepath = str_replace($this->basepath.'/', '', $this->file->getPathname());
+
         if ($this->prefix) {
             $basepath = $this->prefix.'/'.$basepath;
         }
+
+        // Basic info
         $fileInfo['name'] = basename($this->file->getPathname());
         $fileInfo['basepath'] = $basepath;
         $fileInfo['size'] = $this->getSize();
+
         $fileInfo['modified_at'] = $this->getModifiedAt();
         $fileInfo['mimetype'] = $this->getMimeType();
         $fileInfo['icon'] = $this->getIcon();
+
+        // Additional info for images
         if ($this->isImage()) {
             $fileInfo['dimensions'] = $this->getImageDimensions();
         }
@@ -57,9 +66,10 @@ class FileMeta
     protected function getIcon()
     {
         $mimeType = $this->getMimeType();
-        $icon = 'fas fa-code';
+        $icon = 'fas fa-code'; // Default icon for files
+
         if (str_starts_with($mimeType, 'image/')) {
-            $icon = 'fas fa-image';
+            $icon = 'fas fa-image'; // Icon for image files
         }
 
         return $icon;
@@ -77,7 +87,10 @@ class FileMeta
         if ($this->isImage()) {
             [$width, $height] = getimagesize($this->file);
 
-            return ['width' => $width, 'height' => $height];
+            return [
+                'width' => $width,
+                'height' => $height,
+            ];
         }
 
         return null;

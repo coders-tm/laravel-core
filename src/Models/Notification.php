@@ -11,12 +11,25 @@ class Notification extends Model
 {
     use Core;
 
+    // Use a distinct table name to avoid clashing with Laravel's database notifications table
     protected $table = 'notification_templates';
 
-    protected $fillable = ['label', 'subject', 'type', 'content', 'text', 'is_default'];
+    protected $fillable = [
+        'label',
+        'subject',
+        'type',
+        'content',
+        'text',
+        'is_default',
+    ];
 
-    protected $casts = ['is_default' => 'boolean'];
+    protected $casts = [
+        'is_default' => 'boolean',
+    ];
 
+    /**
+     * Create a new factory instance for the model.
+     */
     protected static function newFactory()
     {
         return NotificationFactory::new();
@@ -25,36 +38,58 @@ class Notification extends Model
     public function markAsDefault()
     {
         $this->update(['is_default' => 1]);
-        static::where('type', $this->type)->where('id', '<>', $this->id)->update(['is_default' => 0]);
+
+        static::where('type', $this->type)
+            ->where('id', '<>', $this->id)
+            ->update(['is_default' => 0]);
 
         return $this;
     }
 
     public static function default($type = null): static
     {
-        return static::where('type', $type)->orderBy('is_default')->firstOrFail();
+        return static::where('type', $type)
+            ->orderBy('is_default')
+            ->firstOrFail();
     }
 
     public function duplicate()
     {
         $template = $this->replicate(['is_default']);
+
         $template->save();
 
         return $template->fresh();
     }
 
+    /**
+     * Render template with data
+     */
     public function render(array $data = []): array
     {
         $renderer = app(NotificationTemplateRenderer::class);
+
         $content = $renderer->render($this->content, $data);
 
-        return ['subject' => $renderer->render($this->subject, $data), 'content' => $content, 'text' => $this->text ? $renderer->render($this->text, $data) : html_text($content)];
+        return [
+            'subject' => $renderer->render($this->subject, $data),
+            'content' => $content,
+            'text' => $this->text
+                ? $renderer->render($this->text, $data)
+                : html_text($content),
+        ];
     }
 
+    /**
+     * Validate template syntax
+     */
     public function validate(): array
     {
         $renderer = app(NotificationTemplateRenderer::class);
 
-        return ['subject' => $renderer->validate($this->subject), 'content' => $renderer->validate($this->content)];
+        return [
+            'subject' => $renderer->validate($this->subject),
+            'content' => $renderer->validate($this->content),
+        ];
     }
 }

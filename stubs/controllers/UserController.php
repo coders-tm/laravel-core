@@ -329,7 +329,8 @@ class UserController extends Controller
     /**
      * Mark subscription as paid.
      *
-     * @param  mixed  $user
+     * @param Request $request
+     * @param mixed $user
      * @return \Illuminate\Http\JsonResponse
      */
     public function markAsPaid(Request $request, $id)
@@ -367,7 +368,7 @@ class UserController extends Controller
 
         // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
         $baseUrl = config('app.frontend_url') ?: config('app.url');
-        $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
+        $resetUrl = rtrim($baseUrl, '/') . '/password/reset?token=' . $token . '&email=' . urlencode($user->email);
 
         // Send notification using common template system
         $user->notify(new UserResetPasswordNotification($user, [

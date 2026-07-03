@@ -14,10 +14,21 @@ use Illuminate\Http\Request;
 
 class ReportsController extends Controller
 {
+    /**
+     * Get time-series chart data
+     */
     public function charts(Request $request): JsonResponse
     {
-        $request->validate(['type' => 'required|in:revenue,subscriptions,customers,orders,mrr,churn,revenue-breakdown,members-breakdown', 'start_date' => 'nullable|date', 'end_date' => 'nullable|date|after_or_equal:start_date', 'period' => 'nullable|in:day,week,month,year', 'granularity' => 'nullable|in:daily,weekly,monthly,yearly']);
+        $request->validate([
+            'type' => 'required|in:revenue,subscriptions,customers,orders,mrr,churn,revenue-breakdown,members-breakdown',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'period' => 'nullable|in:day,week,month,year',
+            'granularity' => 'nullable|in:daily,weekly,monthly,yearly',
+        ]);
+
         $chartService = new ChartService($request);
+
         $chartData = match ($request->input('type')) {
             'revenue' => $chartService->getRevenueChart(),
             'subscriptions' => $chartService->getSubscriptionChart(),
@@ -33,20 +44,38 @@ class ReportsController extends Controller
         return response()->json($chartData);
     }
 
+    /**
+     * Get available report types.
+     */
     public function types(): JsonResponse
     {
-        return response()->json(['types' => ReportService::allWithLabels(), 'grouped' => ReportService::grouped()]);
+        return response()->json([
+            'types' => ReportService::allWithLabels(),
+            'grouped' => ReportService::grouped(),
+        ]);
     }
 
+    /**
+     * Get advanced metrics for a specific category.
+     */
     public function metrics(Request $request): JsonResponse
     {
-        $validated = $request->validate(['category' => 'required|in:revenue,retention,economics,customers', 'date_from' => 'nullable|date', 'date_to' => 'nullable|date|after_or_equal:date_from', 'compare' => 'nullable|boolean', 'no_cache' => 'nullable|boolean']);
+        $validated = $request->validate([
+            'category' => 'required|in:revenue,retention,economics,customers',
+            'date_from' => 'nullable|date',
+            'date_to' => 'nullable|date|after_or_equal:date_from',
+            'compare' => 'nullable|boolean',
+            'no_cache' => 'nullable|boolean',
+        ]);
+
         if ($request->filled('date_from') && ! $request->filled('start_date')) {
             $request->merge(['start_date' => $validated['date_from']]);
         }
+
         if ($request->filled('date_to') && ! $request->filled('end_date')) {
             $request->merge(['end_date' => $validated['date_to']]);
         }
+
         $metrics = match ($validated['category']) {
             'revenue' => $this->getRevenueMetrics($request),
             'retention' => $this->getRetentionMetrics($request),
@@ -58,10 +87,22 @@ class ReportsController extends Controller
         return response()->json($metrics);
     }
 
+    /**
+     * Get KPIs with period comparison
+     */
     public function kpis(Request $request): JsonResponse
     {
-        $request->validate(['start_date' => 'nullable|date', 'end_date' => 'nullable|date|after_or_equal:start_date', 'period' => 'nullable|in:day,week,month,year', 'no_cache' => 'nullable|boolean', 'includes' => 'nullable|string']);
+        $request->validate([
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'period' => 'nullable|in:day,week,month,year',
+            'no_cache' => 'nullable|boolean',
+            'includes' => 'nullable|string',
+        ]);
+
         $kpiMetrics = new KpiMetrics($request);
+
+        // If includes parameter is present, only calculate requested KPIs
         if ($request->filled('includes')) {
             $includes = array_map('trim', explode(',', $request->input('includes')));
 
@@ -71,6 +112,9 @@ class ReportsController extends Controller
         return response()->json($kpiMetrics->get());
     }
 
+    /**
+     * Clear all reports cache
+     */
     public function clearCache(Request $request): JsonResponse
     {
         (new SubscriptionMetrics($request))->clearCache();
@@ -81,14 +125,23 @@ class ReportsController extends Controller
         return response()->json(['message' => 'Reports cache cleared successfully']);
     }
 
+    /**
+     * Get revenue metrics.
+     */
     protected function getRevenueMetrics(Request $request): array
     {
         $subscriptionMetrics = new SubscriptionMetrics($request);
         $orderMetrics = new OrderMetrics($request);
 
-        return $this->mergeMetrics($subscriptionMetrics->get(), $orderMetrics->get());
+        return $this->mergeMetrics(
+            $subscriptionMetrics->get(),
+            $orderMetrics->get()
+        );
     }
 
+    /**
+     * Get retention metrics.
+     */
     protected function getRetentionMetrics(Request $request): array
     {
         $subscriptionMetrics = new SubscriptionMetrics($request);
@@ -96,14 +149,23 @@ class ReportsController extends Controller
         return $subscriptionMetrics->get();
     }
 
+    /**
+     * Get economics metrics.
+     */
     protected function getEconomicsMetrics(Request $request): array
     {
         $subscriptionMetrics = new SubscriptionMetrics($request);
         $customerMetrics = new CustomerMetrics($request);
 
-        return $this->mergeMetrics($subscriptionMetrics->get(), $customerMetrics->get());
+        return $this->mergeMetrics(
+            $subscriptionMetrics->get(),
+            $customerMetrics->get()
+        );
     }
 
+    /**
+     * Get customer metrics.
+     */
     protected function getCustomerMetrics(Request $request): array
     {
         $customerMetrics = new CustomerMetrics($request);
@@ -114,14 +176,19 @@ class ReportsController extends Controller
     protected function mergeMetrics(array ...$metricSets): array
     {
         $merged = [];
+
         foreach ($metricSets as $set) {
             $comparisons = $set['comparisons'] ?? [];
             $metadata = $set['metadata'] ?? [];
+
             unset($set['comparisons'], $set['metadata']);
+
             $merged = array_merge($merged, $set);
+
             if (! empty($comparisons)) {
                 $merged['comparisons'] = array_merge($merged['comparisons'] ?? [], $comparisons);
             }
+
             if (! empty($metadata)) {
                 $merged['metadata'] = array_merge($merged['metadata'] ?? [], $metadata);
             }

@@ -17,22 +17,38 @@ class Expired extends Command
 
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::where('expires_at', '<=', now())->doesntHaveAction('expired-notification')->hasUser()->with(['user']);
+        $subscriptions = Coderstm::$subscriptionModel::where('expires_at', '<=', now())
+            ->doesntHaveAction('expired-notification')
+            ->hasUser()
+            ->with(['user']);
+
         foreach ($subscriptions->cursor() as $subscription) {
             try {
                 $subscription->attachAction('expired-notification');
+
                 if ($user = $subscription->user) {
                     event(new SubscriptionExpired($subscription));
+
                     if (apply_filters('subscription.expired.should_send', true, $user, $subscription)) {
                         $user->notify(new SubscriptionExpiredNotification($subscription));
-                        $subscription->logs()->create(['type' => 'expired-notification', 'message' => 'Notification for expired subscriptions has been successfully sent.']);
+
+                        $subscription->logs()->create([
+                            'type' => 'expired-notification',
+                            'message' => 'Notification for expired subscriptions has been successfully sent.',
+                        ]);
                     }
+
                     admin_notify(new AdminsSubscriptionExpiredNotification($subscription));
                 }
             } catch (\Throwable $e) {
-                $subscription->logs()->create(['type' => 'expired-notification', 'status' => Log::STATUS_ERROR, 'message' => $e->getMessage()]);
+                $subscription->logs()->create([
+                    'type' => 'expired-notification',
+                    'status' => Log::STATUS_ERROR,
+                    'message' => $e->getMessage(),
+                ]);
             }
         }
+
         $this->info('Expired subscriptions checked and notifications sent.');
     }
 }

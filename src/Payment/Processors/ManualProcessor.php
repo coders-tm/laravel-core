@@ -25,7 +25,12 @@ class ManualProcessor extends AbstractPaymentProcessor implements PaymentProcess
 
     public function setupPaymentIntent(Request $request, Payable $payable): array
     {
-        return ['message' => 'Manual payment ready for processing', 'amount' => $payable->getGrandTotal(), 'currency' => strtoupper(config('app.currency', 'USD'))];
+        // Manual payments don't need a setup intent
+        return [
+            'message' => 'Manual payment ready for processing',
+            'amount' => $payable->getGrandTotal(),
+            'currency' => strtoupper(config('app.currency', 'USD')),
+        ];
     }
 
     public function confirmPayment(Request $request, Payable $payable): PaymentResult

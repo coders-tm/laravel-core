@@ -4,19 +4,15 @@ namespace Coderstm\Providers;
 
 use Coderstm\Coderstm;
 use Coderstm\Commands;
-use Coderstm\Contracts\ConfigurationInterface;
 use Coderstm\Http\Middleware;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Services\AdminNotification;
-use Coderstm\Services\ApplicationState;
 use Coderstm\Services\BlogService;
-use Coderstm\Services\ConfigLoader;
 use Coderstm\Services\Currency;
 use Coderstm\Services\Guard;
 use Coderstm\Services\HookService;
 use Coderstm\Services\MaskSensitiveConfig;
-use Coderstm\Services\ResponseOptimizer;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Routing\ResourceRegistrar;
@@ -26,51 +22,87 @@ use Illuminate\Support\ServiceProvider;
 
 class CoderstmServiceProvider extends ServiceProvider
 {
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
     public function register()
     {
         $this->configure();
+
+        // Register Currency as request-scoped service
         $this->app->scoped('currency', function () {
             return new Currency;
         });
+
         $this->app->bind(ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
+
         $this->app->singleton(AdminNotification::class);
-        $this->app->singleton(ConfigurationInterface::class, ConfigLoader::class);
-        $this->app->alias(ConfigurationInterface::class, 'core.config');
+
+        // Register Guard service and facade
         $this->app->singleton('coderstm.guard', function ($app) {
             return new Guard;
         });
+
+        // Register Hook Service
         $this->app->singleton('hooks', function ($app) {
             return new HookService;
         });
+
+        // Register Blog service and facade
         $this->app->singleton('blog', function ($app) {
             return new BlogService;
         });
+
+        // Register MaskSensitiveConfig as a singleton for direct usage (e.g. ThemeController)
         $this->app->singleton(MaskSensitiveConfig::class, function ($app) {
-            return new MaskSensitiveConfig($app['files'], $app['config']['view.compiled'], $app['config']->get('view.relative_hash', false) ? $app->basePath() : '', $app['config']->get('view.cache', true), $app['config']->get('view.compiled_extension', 'php'));
+            return new MaskSensitiveConfig(
+                $app['files'],
+                $app['config']['view.compiled'],
+                $app['config']->get('view.relative_hash', false) ? $app->basePath() : '',
+                $app['config']->get('view.cache', true),
+                $app['config']->get('view.compiled_extension', 'php'),
+            );
         });
+
+        // Swap the global Blade compiler to MaskSensitiveConfig
         $this->app->extend('blade.compiler', function ($compiler, $app) {
             return $app->make(MaskSensitiveConfig::class);
         });
     }
 
+    /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
     public function boot()
     {
-        $this->bootApplicationCore();
         $this->registerRouteMiddleware();
         $this->registerResources();
         $this->registerMigrations();
         $this->registerPublishing();
         $this->registerCommands();
-        $this->defineManagementRoutes();
+
         App::setLocale(app_lang());
+
         $this->loadConfigFromDatabase();
+
         Paginator::useBootstrapFive();
+
+        // Register core middleware
         $this->registerCoreMiddleware();
+
+        // Register Request macro for IP Location
         Request::macro('ipLocation', function ($key = null, $default = null) {
+            /** @var Request $this */
             $location = $this->attributes->get('ip_location');
+
             if (! $location) {
                 return $default;
             }
+
             if (is_null($key)) {
                 return $location;
             }
@@ -79,43 +111,110 @@ class CoderstmServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Setup the configuration for Coderstm.
+     *
+     * @return void
+     */
     protected function configure()
     {
-        $this->mergeConfigFrom($this->packagePath('config/coderstm.php'), 'coderstm');
+        $this->mergeConfigFrom(
+            $this->packagePath('config/coderstm.php'),
+            'coderstm'
+        );
     }
 
+    /**
+     * Register the package migrations.
+     *
+     * @return void
+     */
     protected function registerMigrations()
     {
         if (Coderstm::shouldRunMigrations()) {
-            $this->loadMigrationsFrom(['vendor/laravel/sanctum/database/migrations']);
+            $this->loadMigrationsFrom([
+                'vendor/laravel/sanctum/database/migrations',
+            ]);
             $this->loadMigrationsFrom($this->packagePath('database/migrations'));
         }
     }
 
+    /**
+     * Load config from databse.
+     *
+     * @return void
+     */
     protected function loadConfigFromDatabase()
     {
         try {
+            // Load app config
             AppSetting::syncConfig();
+
+            // Load payment methods config
             PaymentMethod::syncConfig();
         } catch (\Throwable $e) {
             report($e);
         }
     }
 
+    /**
+     * Register the package resources.
+     *
+     * @return void
+     */
     protected function registerResources()
     {
         $this->loadViewsFrom($this->packagePath('resources/views'), 'coderstm');
     }
 
+    /**
+     * Register the package's publishable resources.
+     *
+     * @return void
+     */
     protected function registerPublishing()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([$this->packagePath('config/coderstm.php') => $this->app->configPath('coderstm.php')], 'coderstm-config');
-            $this->publishes([$this->packagePath('database/migrations') => $this->app->databasePath('migrations')], 'coderstm-migrations');
-            $this->publishes([$this->packagePath('public') => public_path('statics'), $this->packageStubPath('database') => $this->app->databasePath(), $this->packageStubPath('routes') => $this->app->basePath('routes'), $this->packagePath('resources/views/emails') => resource_path('views/emails'), $this->packagePath('resources/views/pdfs') => resource_path('views/pdfs'), $this->packagePath('resources/views/shortcodes') => resource_path('views/shortcodes'), $this->packagePath('resources/views/includes') => resource_path('views/includes'), $this->packagePath('resources/views/layouts') => resource_path('views/layouts'), $this->packageStubPath('views/app.blade.php') => resource_path('views/app.blade.php'), $this->packageStubPath('theme') => $this->app->basePath('themes/foundation'), $this->packageStubPath('webpack.theme.mix.js') => $this->app->basePath('webpack.theme.mix.js'), $this->packageStubPath('controllers') => app_path('Http/Controllers'), $this->packageStubPath('models') => app_path('Models'), $this->packageStubPath('policies') => app_path('Policies'), $this->packageStubPath('CoderstmServiceProvider.php') => app_path('Providers/CoderstmServiceProvider.php'), $this->packagePath('resources/lang') => resource_path('lang')], 'coderstm-assets');
+            $this->publishes([
+                $this->packagePath('config/coderstm.php') => $this->app->configPath('coderstm.php'),
+            ], 'coderstm-config');
+
+            $this->publishes([
+                $this->packagePath('database/migrations') => $this->app->databasePath('migrations'),
+            ], 'coderstm-migrations');
+
+            $this->publishes([
+                $this->packagePath('public') => public_path('statics'),
+
+                $this->packageStubPath('database') => $this->app->databasePath(),
+                $this->packageStubPath('routes') => $this->app->basePath('routes'),
+
+                $this->packagePath('resources/views/emails') => resource_path('views/emails'),
+                $this->packagePath('resources/views/pdfs') => resource_path('views/pdfs'),
+                $this->packagePath('resources/views/shortcodes') => resource_path('views/shortcodes'),
+                $this->packagePath('resources/views/includes') => resource_path('views/includes'),
+                $this->packagePath('resources/views/layouts') => resource_path('views/layouts'),
+                $this->packageStubPath('views/app.blade.php') => resource_path('views/app.blade.php'),
+
+                $this->packageStubPath('theme') => $this->app->basePath('themes/foundation'),
+                $this->packageStubPath('webpack.theme.mix.js') => $this->app->basePath('webpack.theme.mix.js'),
+
+                $this->packageStubPath('controllers') => app_path('Http/Controllers'),
+                $this->packageStubPath('models') => app_path('Models'),
+                $this->packageStubPath('policies') => app_path('Policies'),
+
+                $this->packageStubPath('CoderstmServiceProvider.php') => app_path('Providers/CoderstmServiceProvider.php'),
+
+                $this->packagePath('resources/lang') => resource_path('lang'),
+            ], 'coderstm-assets');
         }
     }
 
+    /**
+     * Register the package route middlewares.
+     *
+     * @return void
+     */
     protected function registerRouteMiddleware()
     {
         Route::aliasMiddleware('guard', Middleware\GuardMiddleware::class);
@@ -125,93 +224,50 @@ class CoderstmServiceProvider extends ServiceProvider
         Route::aliasMiddleware('resolve.ip', Middleware\ResolveIpAddress::class);
     }
 
+    /**
+     * Register the package's commands.
+     *
+     * @return void
+     */
     protected function registerCommands()
     {
-        $this->commands([Commands\InstallCommand::class, Commands\Subscription\Canceled::class, Commands\Subscription\GraceCheck::class, Commands\Subscription\GraceNotification::class, Commands\Subscription\Expired::class, Commands\Subscription\ExpiringSoon::class, Commands\Subscription\Renew::class, Commands\Subscription\ResetUsages::class, Commands\Subscription\Resume::class, Commands\MigrateSubscriptionFeatures::class, Commands\MigrateOrderCommand::class, Commands\LangParseCommand::class, Commands\UpdateExchangeRates::class]);
+        $this->commands([
+            Commands\InstallCommand::class,
+            Commands\Subscription\Canceled::class,
+            Commands\Subscription\GraceCheck::class,
+            Commands\Subscription\GraceNotification::class,
+            Commands\Subscription\Expired::class,
+            Commands\Subscription\ExpiringSoon::class,
+            Commands\Subscription\Renew::class,
+            Commands\Subscription\ResetUsages::class,
+            Commands\Subscription\Resume::class,
+            Commands\MigrateSubscriptionFeatures::class,
+            Commands\MigrateOrderCommand::class,
+            Commands\LangParseCommand::class,
+            Commands\UpdateExchangeRates::class,
+        ]);
     }
 
-    protected function defineManagementRoutes()
-    {
-        if (app()->routesAreCached()) {
-            return;
-        }
-        if (! $this->app->runningInConsole()) {
-            Route::group(['prefix' => 'license'], function () {
-                Route::get('/manage', [ApplicationState::class, 'manage'])->middleware('web')->name('license-manage');
-                Route::post('/update', [ApplicationState::class, 'update'])->middleware('web')->name('license-update');
-            });
-        }
-    }
-
-    protected function bootApplicationCore()
-    {
-        $loader = $this->app->make(ConfigurationInterface::class);
-        if (! $loader->isValid()) {
-            $this->haltApplication();
-        }
-        $this->app->instance('system.ready', true);
-        $this->app->instance('core.loader', $loader);
-    }
-
+    /**
+     * Register core middleware.
+     *
+     * @return void
+     */
     protected function registerCoreMiddleware()
     {
-        $kernel = $this->app->make('Illuminate\\Contracts\\Http\\Kernel');
-        $kernel->pushMiddleware(ApplicationState::class);
-        $kernel->pushMiddleware(ResponseOptimizer::class);
+        $kernel = $this->app->make('Illuminate\Contracts\Http\Kernel');
+
+        // Register resolve ip address middleware
         $kernel->pushMiddleware(Middleware\ResolveIpAddress::class);
-    }
-
-    protected function isManagementRoute()
-    {
-        try {
-            if (! $this->app->bound('request')) {
-                return false;
-            }
-            $request = $this->app->make('request');
-            if (! $request || ! method_exists($request, 'is')) {
-                return false;
-            }
-
-            return $request->is('*license/manage') || $request->is('*license/update') || $request->is('*install*');
-        } catch (\Throwable $e) {
-            return false;
-        }
-    }
-
-    protected function isInitialized()
-    {
-        $flag = base_path('storage/.installed');
-
-        return file_exists($flag);
-    }
-
-    protected function haltApplication()
-    {
-        if ($this->isManagementRoute()) {
-            return;
-        }
-        try {
-            $htmlPath = $this->packagePath('resources/views/license-required.html');
-            if (file_exists($htmlPath)) {
-                $html = file_get_contents($htmlPath);
-            } else {
-                throw new \Exception('Required HTML file not found.');
-            }
-        } catch (\Throwable $e) {
-            $html = '<!DOCTYPE html><html><body><h1>Application Error</h1><p>Initialization failed.</p></body></html>';
-        }
-        http_response_code(403);
-        echo $html;
-        exit;
     }
 
     protected function packagePath(string $path)
     {
-        return __DIR__.'/../../'.$path;
+        return __DIR__ . '/../../' . $path;
     }
 
     protected function packageStubPath(string $path)
     {
-        return __DIR__.'/../../stubs/'.$path;
+        return __DIR__ . '/../../stubs/' . $path;
     }
 }

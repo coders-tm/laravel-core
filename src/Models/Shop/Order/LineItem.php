@@ -11,21 +11,46 @@ class LineItem extends Model implements Currencyable
 {
     use Core;
 
-    protected $hidden = ['itemable_type', 'itemable_id'];
+    protected $hidden = [
+        'itemable_type',
+        'itemable_id',
+    ];
 
-    protected $fillable = ['title', 'price', 'quantity', 'taxable', 'metadata', 'is_custom'];
+    protected $fillable = [
+        'title',
+        'price',
+        'quantity',
+        'taxable',
+        'metadata',
+        'is_custom',
+    ];
 
-    protected $with = ['discount'];
+    protected $with = [
+        'discount',
+    ];
 
-    protected $appends = ['discounted_price', 'has_discount', 'total'];
+    protected $appends = [
+        'discounted_price',
+        'has_discount',
+        'total',
+    ];
 
-    protected $casts = ['metadata' => 'json', 'taxable' => 'boolean', 'is_custom' => 'boolean'];
+    protected $casts = [
+        'metadata' => 'json',
+        'taxable' => 'boolean',
+        'is_custom' => 'boolean',
+    ];
 
     public function itemable()
     {
         return $this->morphTo();
     }
 
+    /**
+     * Get the list of currency fields to be converted.
+     *
+     * @return array Field names that contain currency amounts
+     */
     public function getCurrencyFields(): array
     {
         return ['price', 'total', 'discounted_price'];
@@ -43,18 +68,22 @@ class LineItem extends Model implements Currencyable
 
     protected function total(): Attribute
     {
-        return Attribute::make(get: fn () => round($this->discounted_price * $this->quantity, 2));
+        return Attribute::make(
+            get: fn () => round($this->discounted_price * $this->quantity, 2),
+        );
     }
 
     protected function discountedPrice(): Attribute
     {
-        return Attribute::make(get: function () {
-            if ($this->hasDiscount()) {
-                return $this->discount->calculateFinalPrice($this->price);
-            }
+        return Attribute::make(
+            get: function () {
+                if ($this->hasDiscount()) {
+                    return $this->discount->calculateFinalPrice($this->price);
+                }
 
-            return $this->price;
-        });
+                return $this->price;
+            },
+        );
     }
 
     public function getHasDiscountAttribute()

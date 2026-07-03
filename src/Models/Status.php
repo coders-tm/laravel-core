@@ -11,9 +11,14 @@ class Status extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['label'];
+    protected $fillable = [
+        'label',
+    ];
 
-    protected $hidden = ['statusable_type', 'statusable_id'];
+    protected $hidden = [
+        'statusable_type',
+        'statusable_id',
+    ];
 
     public function statusable()
     {

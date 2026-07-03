@@ -22,22 +22,35 @@ class Cashier
         return new StripeClient($key);
     }
 
+    /**
+     * Set the custom currency formatter.
+     *
+     * @return void
+     */
     public static function formatCurrencyUsing(callable $callback)
     {
         static::$formatCurrencyUsing = $callback;
     }
 
+    /**
+     * Format the given amount into a displayable currency.
+     */
     public static function formatAmount(int $amount, ?string $currency = null, ?string $locale = null, array $options = []): string
     {
         if (static::$formatCurrencyUsing) {
             return call_user_func(static::$formatCurrencyUsing, $amount, $currency, $locale, $options);
         }
+
         $money = new Money($amount, new Currency(strtoupper($currency ?? config('stripe.currency'))));
+
         $locale = $locale ?? config('stripe.currency_locale', 'en_US');
+
         $numberFormatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
+
         if (isset($options['min_fraction_digits'])) {
             $numberFormatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $options['min_fraction_digits']);
         }
+
         $moneyFormatter = new IntlMoneyFormatter($numberFormatter, new ISOCurrencies);
 
         return $moneyFormatter->format($money);

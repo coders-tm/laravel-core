@@ -14,15 +14,20 @@ class Resume extends Command
     public function handle()
     {
         $subscriptionModel = Coderstm::$subscriptionModel;
+
         $subscriptions = $subscriptionModel::dueForUnfreeze()->get();
+
         if ($subscriptions->isEmpty()) {
             $this->info('No subscriptions due for resume.');
 
             return Command::SUCCESS;
         }
+
         $this->info("Found {$subscriptions->count()} subscription(s) to resume...");
+
         $resumed = 0;
         $failed = 0;
+
         foreach ($subscriptions as $subscription) {
             try {
                 $subscription->unfreeze();
@@ -33,6 +38,7 @@ class Resume extends Command
                 $this->error("✗ Failed to resume subscription #{$subscription->id}: {$e->getMessage()}");
             }
         }
+
         $this->newLine();
         $this->info("Completed: {$resumed} resumed, {$failed} failed.");
 

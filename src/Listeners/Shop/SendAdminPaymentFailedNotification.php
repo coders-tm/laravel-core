@@ -7,6 +7,9 @@ use Coderstm\Notifications\Shop\Admins\PaymentFailedNotification;
 
 class SendAdminPaymentFailedNotification extends AdminNotificationListener
 {
+    /**
+     * Handle the event.
+     */
     public function handle(PaymentFailed $event): void
     {
         $this->notifyForEvent(fn ($admin) => new PaymentFailedNotification($event->order, $event->reason));

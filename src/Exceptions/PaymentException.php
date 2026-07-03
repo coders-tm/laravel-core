@@ -21,6 +21,9 @@ class PaymentException extends Exception
 
     public function context(): array
     {
-        return array_merge(['message' => $this->getMessage(), 'code' => $this->getCode()], $this->metadata);
+        return array_merge([
+            'message' => $this->getMessage(),
+            'code' => $this->getCode(),
+        ], $this->metadata);
     }
 }

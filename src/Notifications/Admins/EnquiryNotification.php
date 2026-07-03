@@ -2,6 +2,7 @@
 
 namespace Coderstm\Notifications\Admins;
 
+use Coderstm\Models\Enquiry;
 use Coderstm\Notifications\BaseNotification;
 
 class EnquiryNotification extends BaseNotification
@@ -10,13 +11,21 @@ class EnquiryNotification extends BaseNotification
 
     public $message;
 
+    /**
+     * Create a new notification instance.
+     *
+     * @param Enquiry $enquiry
+     * @return void
+     */
     public function __construct($enquiry)
     {
         $contactUs = empty($enquiry->subject);
         $type = $contactUs ? 'admin:contact-us-notification' : 'admin:enquiry-notification';
         $template = $enquiry->renderNotification($type);
+
         $this->subject = $template->subject;
         $this->message = $template->content;
+
         parent::__construct($this->subject, $this->message);
     }
 }

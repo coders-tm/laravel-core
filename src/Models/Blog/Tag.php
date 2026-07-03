@@ -16,16 +16,24 @@ class Tag extends Model
 
     protected $table = 'blogs_tags';
 
-    protected $fillable = ['label', 'slug'];
+    protected $fillable = [
+        'label',
+        'slug',
+    ];
 
     public function getSlugOptions(): SlugOptions
     {
-        return SlugOptions::create()->generateSlugsFrom('label')->saveSlugsTo('slug')->preventOverwrite();
+        return SlugOptions::create()
+            ->generateSlugsFrom('label')
+            ->saveSlugsTo('slug')
+            ->preventOverwrite();
     }
 
     protected function label(): Attribute
     {
-        return Attribute::make(set: fn ($value) => Str::lower($value));
+        return Attribute::make(
+            set: fn ($value) => Str::lower($value),
+        );
     }
 
     public function blogs()

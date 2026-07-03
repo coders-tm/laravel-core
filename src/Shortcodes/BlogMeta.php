@@ -15,6 +15,11 @@ class BlogMeta extends Shortcode
         $category = blog('category', null);
         $featured = isset($options['featured']) ? $options['featured'] : false;
 
-        return $this->view('shortcodes.blog-meta', array_merge($atts, ['category' => $category, 'featured' => $featured, 'readtime' => isset($options['read_time']) ? $options['read_time'] : 0, 'datetime' => blog('created_at', now())]));
+        return $this->view('shortcodes.blog-meta', array_merge($atts, [
+            'category' => $category,
+            'featured' => $featured,
+            'readtime' => isset($options['read_time']) ? $options['read_time'] : 0,
+            'datetime' => blog('created_at', now()),
+        ]));
     }
 }

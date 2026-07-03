@@ -10,10 +10,21 @@ trait HasApiTokens
 {
     use SanctumHasApiTokens;
 
+    /**
+     * Create a new personal access token for the user.
+     *
+     * @return NewAccessToken
+     */
     public function createToken(string $name, array $abilities = ['*'], ?DateTimeInterface $expiresAt = null)
     {
         $plainTextToken = $this->generateTokenString();
-        $token = $this->tokens()->create(['name' => $name, 'token' => hash('sha256', $plainTextToken), 'abilities' => $abilities, 'expires_at' => $expiresAt]);
+
+        $token = $this->tokens()->create([
+            'name' => $name,
+            'token' => hash('sha256', $plainTextToken),
+            'abilities' => $abilities,
+            'expires_at' => $expiresAt,
+        ]);
 
         return new NewAccessToken($token, $plainTextToken);
     }

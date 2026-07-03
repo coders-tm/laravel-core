@@ -13,11 +13,18 @@ class ImportCompletedNotification extends BaseNotification
 
     public $message;
 
+    /**
+     * Create a new notification instance.
+     */
     public function __construct(Import $import)
     {
         $this->import = $import;
+
         $template = Template::default('admin:import-completed');
+
+        // Render using NotificationTemplateRenderer
         $rendered = $template->render($this->import->getShortCodes());
+
         parent::__construct($rendered['subject'], $rendered['content']);
     }
 }

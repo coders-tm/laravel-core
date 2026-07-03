@@ -12,13 +12,23 @@ class TestEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * Get the message envelope.
+     */
     public function envelope(): Envelope
     {
-        return new Envelope(subject: 'Test Email');
+        return new Envelope(
+            subject: 'Test Email',
+        );
     }
 
+    /**
+     * Get the message content definition.
+     */
     public function content(): Content
     {
-        return new Content(markdown: 'emails.test');
+        return new Content(
+            markdown: 'emails.test',
+        );
     }
 }

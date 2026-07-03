@@ -12,11 +12,35 @@ class InvoiceRepository extends Order
 {
     public $timestamps = false;
 
-    protected $fillable = ['customer_id', 'due_date', 'billing_address', 'note', 'collect_tax', 'sub_total', 'tax_total', 'discount_total', 'line_items', 'grand_total', 'paid_total', 'refund_total', 'source', 'discount', 'orderable_id', 'orderable_type'];
+    protected $fillable = [
+        'customer_id',
+        'due_date',
+        'billing_address',
+        'note',
+        'collect_tax',
+        'sub_total',
+        'tax_total',
+        'discount_total',
+        'line_items',
+        'grand_total',
+        'paid_total',
+        'refund_total',
+        'source',
+        'discount',
+        'orderable_id',
+        'orderable_type',
+    ];
 
     protected $with = [];
 
-    protected $appends = ['sub_total', 'tax_total', 'tax_lines', 'total_line_items', 'discount_total', 'grand_total'];
+    protected $appends = [
+        'sub_total',
+        'tax_total',
+        'tax_lines',
+        'total_line_items',
+        'discount_total',
+        'grand_total',
+    ];
 
     protected $casts = [];
 
@@ -29,15 +53,21 @@ class InvoiceRepository extends Order
         if (isset($attributes['line_items'])) {
             $attributes['line_items'] = collect($attributes['line_items']);
         }
+
         if (! isset($attributes['tax_lines']) || empty($attributes['tax_lines'])) {
             $attributes['tax_lines'] = default_tax();
         }
+
         if (isset($attributes['billing_address']) && ! empty($attributes['billing_address'])) {
             $attributes['tax_lines'] = billing_address_tax($attributes['billing_address']);
         }
+
         $this->taxes = collect(has($attributes)->tax_lines ?: [])->map(function ($item) {
-            return TaxLine::firstOrNew(['id' => has($item)->id], $item)->fill($item);
+            return TaxLine::firstOrNew([
+                'id' => has($item)->id,
+            ], $item)->fill($item);
         });
+
         parent::__construct($attributes);
     }
 
@@ -50,6 +80,7 @@ class InvoiceRepository extends Order
     {
         return collect($value ?: [])->map(function ($item) {
             $lineItem = new LineItem($item);
+
             if (isset($item['discount'])) {
                 $lineItem->setRelation('discount', new DiscountLine($item['discount']));
             }
@@ -144,28 +175,30 @@ class InvoiceRepository extends Order
     public function getDefaultTaxTotalAttribute()
     {
         return $this->taxes->whereNotIn('type', ['compounded'])->map(function ($tax) {
-            return round($this->total_taxable * $tax->rate / 100, 2);
+            return round(($this->total_taxable * $tax->rate) / 100, 2);
         })->sum();
     }
 
     public function getTaxLinesAttribute($value)
     {
         return $this->taxes->map(function ($item) {
-            return $item->fill(['amount' => $this->getTaxTotal($item)]);
+            return $item->fill([
+                'amount' => $this->getTaxTotal($item),
+            ]);
         });
     }
 
     private function getTaxTotal($tax)
     {
         if ($this->has_compound_tax && $this->default_tax_total && $tax->type == 'compounded') {
-            return round(($this->total_taxable + $this->default_tax_total) * $tax->rate / 100, 2);
+            return round((($this->total_taxable + $this->default_tax_total) * $tax->rate) / 100, 2);
         } else {
-            return round($this->total_taxable * $tax->rate / 100, 2);
+            return round(($this->total_taxable * $tax->rate) / 100, 2);
         }
     }
 
     public function getGrandTotalAttribute()
     {
-        return round($this->sub_total + $this->tax_total - $this->discount_total ?? 0, 2);
+        return round(($this->sub_total + $this->tax_total - $this->discount_total) ?? 0, 2);
     }
 }

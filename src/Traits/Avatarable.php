@@ -17,7 +17,11 @@ trait Avatarable
     {
         $mediaId = $media instanceof File ? $media->id : $media;
 
-        return $this->avatar()->sync([$mediaId => ['type' => 'avatar']]);
+        return $this->avatar()->sync([
+            $mediaId => [
+                'type' => 'avatar',
+            ],
+        ]);
     }
 
     public function detachAvatar()

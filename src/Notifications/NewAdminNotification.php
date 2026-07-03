@@ -2,6 +2,7 @@
 
 namespace Coderstm\Notifications;
 
+use Coderstm\Models\Admin;
 use Coderstm\Models\Notification as Template;
 
 class NewAdminNotification extends BaseNotification
@@ -14,13 +15,30 @@ class NewAdminNotification extends BaseNotification
 
     public $message;
 
+    /**
+     * Create a new notification instance.
+     *
+     * @param Admin $admin
+     * @param string $password
+     * @return void
+     */
     public function __construct($admin, $password = '********')
     {
         $this->admin = $admin;
         $this->password = $password;
+
         $template = Template::default('admin:new-account');
-        $data = ['admin' => $this->admin->getShortCodes(), 'password' => $this->password, 'login_url' => admin_url('auth/login')];
+
+        // Use structured data for dual-format support
+        $data = [
+            'admin' => $this->admin->getShortCodes(),
+            'password' => $this->password,
+            'login_url' => admin_url('auth/login'),
+        ];
+
+        // Render using NotificationTemplateRenderer
         $rendered = $template->render($data);
+
         parent::__construct($rendered['subject'], $rendered['content']);
     }
 }
