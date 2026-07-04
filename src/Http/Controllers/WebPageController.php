@@ -7,6 +7,7 @@ use Coderstm\Models\Blog;
 use Coderstm\Rules\ReCaptchaRule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View;
 
 class WebPageController extends Controller
 {
@@ -34,7 +35,7 @@ class WebPageController extends Controller
             return Blog::findBySlug($slug);
         });
 
-        $request->merge(['blog' => $blog]);
+        View::share('blog', $blog);
 
         try {
             return view('pages.blog', $blog);

@@ -3,6 +3,7 @@
 namespace Coderstm\Providers;
 
 use Coderstm\Shortcodes as Component;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Vedmant\LaravelShortcodes\Facades\Shortcodes;
 
@@ -40,7 +41,7 @@ class ShortcodeServiceProvider extends ServiceProvider
         ]);
 
         Shortcodes::add('blog-title', function ($atts, $content, $tag, $manager) {
-            return request()->input('blog.title');
+            return blog('title');
         });
 
         Shortcodes::add('page-title', function ($atts, $content, $tag, $manager) {
