@@ -470,9 +470,9 @@ BLADE;
     #[Test]
     public function it_does_not_block_plain_text_system_references()
     {
-        $template = "This message is system generate";
+        $template = 'This message is system generate';
         $compiled = $this->compiler->compileString($template);
 
-        $this->assertStringContainsString("This message is system generate", $compiled);
+        $this->assertStringContainsString('This message is system generate', $compiled);
     }
 }

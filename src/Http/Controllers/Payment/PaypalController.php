@@ -4,7 +4,6 @@ namespace Coderstm\Http\Controllers\Payment;
 
 use Coderstm\Coderstm;
 use Coderstm\Http\Controllers\Controller;
-use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Paymentable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -54,7 +53,6 @@ class PaypalController extends Controller
     /**
      * Verify payment.
      *
-     * @param Request $request
      * @return mixed
      */
     private function verifyPayment(Request $request)

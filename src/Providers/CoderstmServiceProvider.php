@@ -263,11 +263,11 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function packagePath(string $path)
     {
-        return __DIR__ . '/../../' . $path;
+        return __DIR__.'/../../'.$path;
     }
 
     protected function packageStubPath(string $path)
     {
-        return __DIR__ . '/../../stubs/' . $path;
+        return __DIR__.'/../../stubs/'.$path;
     }
 }

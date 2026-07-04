@@ -35,9 +35,9 @@ class SubscriptionPlanChanged
     /**
      * Create a new event instance.
      *
-     * @param Subscription $subscription
-     * @param Plan|null $oldPlan
-     * @param Plan $newPlan
+     * @param  Subscription  $subscription
+     * @param  Plan|null  $oldPlan
+     * @param  Plan  $newPlan
      * @return void
      */
     public function __construct($subscription, $oldPlan, $newPlan)

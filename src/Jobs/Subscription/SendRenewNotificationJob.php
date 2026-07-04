@@ -27,7 +27,7 @@ class SendRenewNotificationJob implements ShouldQueue
     /**
      * Create a new job instance.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return void
      */
     public function __construct($subscription)

@@ -2,8 +2,8 @@
 
 namespace Coderstm\Policies\Subscription;
 
-use Illuminate\Database\Eloquent\Model as Plan;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model as Plan;
 
 class PlanPolicy
 {
@@ -12,8 +12,7 @@ class PlanPolicy
     /**
      * Perform pre-authorization checks.
      *
-     * @param mixed $admin
-     * @param string $ability
+     * @param  mixed  $admin
      * @return mixed
      */
     public function before($admin, string $ability)
@@ -26,8 +25,7 @@ class PlanPolicy
     /**
      * Determine whether the admin can view any models.
      *
-     * @param mixed $admin
-     * @return bool
+     * @param  mixed  $admin
      */
     public function viewAny($admin): bool
     {
@@ -37,9 +35,8 @@ class PlanPolicy
     /**
      * Determine whether the admin can view the model.
      *
-     * @param mixed $admin
-     * @param Plan $plan
-     * @return bool
+     * @param  mixed  $admin
+     * @param  Plan  $plan
      */
     public function view($admin, $plan): bool
     {
@@ -49,8 +46,7 @@ class PlanPolicy
     /**
      * Determine whether the admin can create models.
      *
-     * @param mixed $admin
-     * @return bool
+     * @param  mixed  $admin
      */
     public function create($admin): bool
     {
@@ -60,9 +56,8 @@ class PlanPolicy
     /**
      * Determine whether the admin can update the model.
      *
-     * @param mixed $admin
-     * @param Plan $plan
-     * @return bool
+     * @param  mixed  $admin
+     * @param  Plan  $plan
      */
     public function update($admin, $plan): bool
     {
@@ -72,8 +67,7 @@ class PlanPolicy
     /**
      * Determine whether the admin can delete the model.
      *
-     * @param mixed $admin
-     * @return bool
+     * @param  mixed  $admin
      */
     public function delete($admin): bool
     {
@@ -83,8 +77,7 @@ class PlanPolicy
     /**
      * Determine whether the admin can restore the model.
      *
-     * @param mixed $admin
-     * @return bool
+     * @param  mixed  $admin
      */
     public function restore($admin): bool
     {
@@ -94,8 +87,7 @@ class PlanPolicy
     /**
      * Determine whether the admin can permanently delete the model.
      *
-     * @param mixed $admin
-     * @return bool
+     * @param  mixed  $admin
      */
     public function forceDelete($admin): bool
     {

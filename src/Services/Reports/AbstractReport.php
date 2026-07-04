@@ -7,7 +7,6 @@ use Carbon\CarbonPeriod;
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Enum\PlanInterval;
-use Coderstm\Models\ReportExport;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Traits\DatabaseAgnostic;
 use Illuminate\Contracts\Database\Query\Builder as QueryBuilderContract;
@@ -212,9 +211,7 @@ abstract class AbstractReport implements ReportInterface
     /**
      * Generate report.
      *
-     * @param Writer $csv
-     * @param mixed $reportExport
-     * @return int
+     * @param  mixed  $reportExport
      */
     public function generate(Writer $csv, $reportExport): int
     {
@@ -394,8 +391,7 @@ abstract class AbstractReport implements ReportInterface
     /**
      * Set the report export context.
      *
-     * @param mixed $reportExport
-     * @return self
+     * @param  mixed  $reportExport
      */
     public function setReportExport($reportExport): self
     {
@@ -582,8 +578,7 @@ abstract class AbstractReport implements ReportInterface
     /**
      * Get monthly price for a plan (normalized from yearly if needed).
      *
-     * @param mixed $plan
-     * @return float
+     * @param  mixed  $plan
      */
     protected function getMonthlyPrice($plan): float
     {

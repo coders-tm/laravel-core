@@ -135,8 +135,7 @@ class MigrateSubscriptionFeatures extends Command
     /**
      * Migrate features for a single subscription.
      *
-     * @param Subscription $subscription
-     * @return string
+     * @param  Subscription  $subscription
      */
     protected function migrateSubscriptionFeatures($subscription): string
     {
@@ -198,8 +197,7 @@ class MigrateSubscriptionFeatures extends Command
     /**
      * Migrate billing intervals from plan to subscription.
      *
-     * @param Subscription $subscription
-     * @return bool
+     * @param  Subscription  $subscription
      */
     protected function migrateBillingIntervals($subscription): bool
     {

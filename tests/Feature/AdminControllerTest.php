@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Admin;
+use Coderstm\Coderstm;
 use Coderstm\Models\Module;
 use Coderstm\Notifications\NewAdminNotification;
 use Database\Seeders\NotificationSeeder;
@@ -90,7 +91,7 @@ class AdminControllerTest extends FeatureTestCase
             'last_name' => 'Admin',
         ]);
 
-        $newAdmin = \Coderstm\Coderstm::$adminModel::where('email', 'newadmin@example.com')->first();
+        $newAdmin = Coderstm::$adminModel::where('email', 'newadmin@example.com')->first();
         Notification::assertSentTo($newAdmin, NewAdminNotification::class);
     }
 

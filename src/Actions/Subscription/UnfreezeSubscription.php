@@ -10,7 +10,7 @@ class UnfreezeSubscription
     /**
      * Unfreeze subscription.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription)
@@ -42,9 +42,7 @@ class UnfreezeSubscription
     /**
      * Extend contract for freeze duration.
      *
-     * @param Subscription $subscription
-     * @param int $freezeDays
-     * @return void
+     * @param  Subscription  $subscription
      */
     protected function extendContractForFreeze($subscription, int $freezeDays): void
     {

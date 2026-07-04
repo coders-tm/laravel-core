@@ -22,7 +22,7 @@ trait ForwardsSubscriptionActions
         return app(SwapSubscriptionPlan::class)->execute($this, $planId, $billing, $invoiceNow);
     }
 
-    public function forceSwap($plan, $billing = 'monthly',)
+    public function forceSwap($plan, $billing = 'monthly')
     {
         return app(SwapSubscriptionPlan::class)->execute($this, $plan, $billing, true, true);
     }

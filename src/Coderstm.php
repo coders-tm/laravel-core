@@ -3,6 +3,11 @@
 namespace Coderstm;
 
 use Coderstm\Cashier\Cashier;
+use Coderstm\Policies\AdminPolicy;
+use Coderstm\Policies\CouponPolicy;
+use Coderstm\Policies\EnquiryPolicy;
+use Coderstm\Policies\Subscription\PlanPolicy;
+use Coderstm\Policies\UserPolicy;
 use Coderstm\Services\Payment\KlarnaClient;
 use Coderstm\Services\Payment\MercadoPagoClient;
 use Coderstm\Services\Payment\PaypalClient;
@@ -13,11 +18,11 @@ use Flutterwave\Config\PackageConfig;
 use Flutterwave\Flutterwave;
 use GoCardlessPro\Client;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Gate;
 use Razorpay\Api\Api;
 use Stripe\StripeClient;
 use Yabacon\Paystack;
 use Yansongda\Pay\Gateways\Alipay;
-use Illuminate\Support\Facades\Gate;
 use Yansongda\Pay\Pay;
 
 class Coderstm
@@ -254,7 +259,7 @@ class Coderstm
 
         Config::set('auth.providers.users.model', $userModel);
 
-        Gate::policy($userModel, \Coderstm\Policies\UserPolicy::class);
+        Gate::policy($userModel, UserPolicy::class);
     }
 
     /**
@@ -280,7 +285,7 @@ class Coderstm
 
         Config::set('auth.providers.admins.model', $adminModel);
 
-        Gate::policy($adminModel, \Coderstm\Policies\AdminPolicy::class);
+        Gate::policy($adminModel, AdminPolicy::class);
     }
 
     /**
@@ -293,7 +298,7 @@ class Coderstm
     {
         static::$enquiryModel = $enquiryModel;
 
-        Gate::policy($enquiryModel, \Coderstm\Policies\EnquiryPolicy::class);
+        Gate::policy($enquiryModel, EnquiryPolicy::class);
     }
 
     /**
@@ -339,7 +344,7 @@ class Coderstm
     {
         static::$planModel = $planModel;
 
-        Gate::policy($planModel, \Coderstm\Policies\Subscription\PlanPolicy::class);
+        Gate::policy($planModel, PlanPolicy::class);
     }
 
     /**
@@ -352,7 +357,7 @@ class Coderstm
     {
         static::$couponModel = $couponModel;
 
-        Gate::policy($couponModel, \Coderstm\Policies\CouponPolicy::class);
+        Gate::policy($couponModel, CouponPolicy::class);
     }
 
     /**

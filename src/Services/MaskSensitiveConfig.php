@@ -54,16 +54,6 @@ class MaskSensitiveConfig extends BladeCompiler
         'die',
         'exit',
 
-        // Laravel Helpers & Container Access
-        'app',
-        'resolve',
-        'request',
-        'session',
-        'cookie',
-        'auth',
-        'redirect',
-        'abort',
-
         // Reflection
         'ReflectionClass',
         'ReflectionFunction',
@@ -293,8 +283,10 @@ class MaskSensitiveConfig extends BladeCompiler
     public function sanitizeSettingsCalls($value)
     {
         // Replace all settings('key', [default]) with '****' (mask any settings access)
+        // Uses balanced-parentheses matching to handle defaults with nested calls like
+        // settings('app.favicon', asset('favicon.ico'))
         return preg_replace_callback(
-            '/(?<!->|::|\?->)\bsettings\((["]|\')(?:\s*)?([a-zA-Z0-9._-]+)(?:\s*)?\1(?:\s*,\s*[^)]*)?\)/',
+            '/(?<!->|::|\?->)\bsettings\((["\'])([a-zA-Z0-9._-]+)\1(?:\s*,\s*((?:[^()]|\([^()]*\))*))?\)/',
             function () {
                 return "'****'"; // Masked value
             },

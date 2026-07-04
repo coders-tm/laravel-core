@@ -13,9 +13,7 @@ class GenerateSubscriptionInvoice
     /**
      * Generate subscription invoice.
      *
-     * @param Subscription $subscription
-     * @param bool $start
-     * @param bool $force
+     * @param  Subscription  $subscription
      * @return mixed
      */
     public function execute($subscription, bool $start = false, bool $force = false)

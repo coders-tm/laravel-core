@@ -3,7 +3,6 @@
 namespace Coderstm\Providers;
 
 use Coderstm\Shortcodes as Component;
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Vedmant\LaravelShortcodes\Facades\Shortcodes;
 

@@ -15,8 +15,7 @@ class CartRepository extends BaseRepository
     /**
      * Create repository from request data and calculate order totals.
      *
-     * @param Request $request
-     * @param Order $order
+     * @param  Order  $order
      * @return Order
      */
     public static function fromRequest(Request $request, $order)

@@ -12,8 +12,7 @@ class ExtendSubscriptionTrial
     /**
      * Extend the subscription's trial to a specific date.
      *
-     * @param Subscription $subscription
-     * @param CarbonInterface $date
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function extendTrial($subscription, CarbonInterface $date)
@@ -31,8 +30,7 @@ class ExtendSubscriptionTrial
     /**
      * Set subscription's trial duration in days.
      *
-     * @param Subscription $subscription
-     * @param int $trialDays
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function trialDays($subscription, int $trialDays)
@@ -47,8 +45,8 @@ class ExtendSubscriptionTrial
     /**
      * Set subscription's trial ending date.
      *
-     * @param Subscription $subscription
-     * @param mixed $trialUntil
+     * @param  Subscription  $subscription
+     * @param  mixed  $trialUntil
      * @return Subscription
      */
     public function trialUntil($subscription, $trialUntil)
@@ -69,7 +67,7 @@ class ExtendSubscriptionTrial
     /**
      * End subscription's trial.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function endTrial($subscription)

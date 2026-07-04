@@ -12,10 +12,7 @@ class FreezeSubscription
     /**
      * Freeze subscription.
      *
-     * @param Subscription $subscription
-     * @param Carbon|null $releaseAt
-     * @param string|null $reason
-     * @param float|null $fee
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription, ?Carbon $releaseAt = null, ?string $reason = null, ?float $fee = null)
@@ -57,9 +54,7 @@ class FreezeSubscription
     /**
      * Generate freeze invoice.
      *
-     * @param Subscription $subscription
-     * @param float $fee
-     * @param Carbon|null $releaseAt
+     * @param  Subscription  $subscription
      * @return mixed
      */
     protected function generateFreezeInvoice($subscription, float $fee, ?Carbon $releaseAt = null)

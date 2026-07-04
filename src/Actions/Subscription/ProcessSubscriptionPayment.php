@@ -12,9 +12,8 @@ class ProcessSubscriptionPayment
     /**
      * Mark subscription as paid.
      *
-     * @param Subscription $subscription
-     * @param mixed $paymentMethod
-     * @param array $options
+     * @param  Subscription  $subscription
+     * @param  mixed  $paymentMethod
      * @return Subscription
      */
     public function pay($subscription, $paymentMethod, array $options = [])
@@ -66,8 +65,8 @@ class ProcessSubscriptionPayment
     /**
      * Handle payment confirmation.
      *
-     * @param Subscription $subscription
-     * @param mixed $order
+     * @param  Subscription  $subscription
+     * @param  mixed  $order
      * @return Subscription
      */
     public function paymentConfirmation($subscription, $order = null)
@@ -83,8 +82,8 @@ class ProcessSubscriptionPayment
     /**
      * Handle payment failure.
      *
-     * @param Subscription $subscription
-     * @param mixed $order
+     * @param  Subscription  $subscription
+     * @param  mixed  $order
      * @return Subscription
      */
     public function paymentFailed($subscription, $order = null)

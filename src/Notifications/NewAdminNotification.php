@@ -18,8 +18,8 @@ class NewAdminNotification extends BaseNotification
     /**
      * Create a new notification instance.
      *
-     * @param Admin $admin
-     * @param string $password
+     * @param  Admin  $admin
+     * @param  string  $password
      * @return void
      */
     public function __construct($admin, $password = '********')

@@ -10,7 +10,7 @@ class SubscriptionUpdateFailure extends Exception
     /**
      * Create a new SubscriptionUpdateFailure instance.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return static
      */
     public static function incompleteSubscription($subscription)

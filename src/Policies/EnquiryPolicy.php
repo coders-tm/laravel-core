@@ -2,9 +2,9 @@
 
 namespace Coderstm\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Database\Eloquent\Model as Enquiry;
 use Illuminate\Database\Eloquent\Model as User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
 class EnquiryPolicy
 {

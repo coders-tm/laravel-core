@@ -6,9 +6,15 @@ use App\Models\Admin;
 use App\Models\User;
 use App\Policies\AdminPolicy;
 use Coderstm\Coderstm;
+use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Shop\Order\LineItem;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Workbench\App\Models\Coupon;
+use Workbench\App\Models\Enquiry;
+use Workbench\App\Models\Plan;
+use Workbench\App\Models\Subscription;
 use Workbench\App\Policies\UserPolicy;
 
 class WorkbenchServiceProvider extends ServiceProvider
@@ -28,15 +34,15 @@ class WorkbenchServiceProvider extends ServiceProvider
     {
         // Set model classes to the base Coderstm models so Guard::resolveGuardFromModel()
         // can match both base model instances and workbench subclass instances via instanceof.
-        Coderstm::useUserModel(\App\Models\User::class);
-        Coderstm::useSubscriptionUserModel(\App\Models\User::class);
-        Coderstm::useAdminModel(\App\Models\Admin::class);
-        Coderstm::useCouponModel(\Workbench\App\Models\Coupon::class);
-        Coderstm::useEnquiryModel(\Workbench\App\Models\Enquiry::class);
-        Coderstm::usePlanModel(\Workbench\App\Models\Plan::class);
-        Coderstm::useSubscriptionModel(\Workbench\App\Models\Subscription::class);
-        Coderstm::useOrderModel(\Coderstm\Models\Shop\Order::class);
-        Coderstm::useOrderLineItemModel(\Coderstm\Models\Shop\Order\LineItem::class);
+        Coderstm::useUserModel(User::class);
+        Coderstm::useSubscriptionUserModel(User::class);
+        Coderstm::useAdminModel(Admin::class);
+        Coderstm::useCouponModel(Coupon::class);
+        Coderstm::useEnquiryModel(Enquiry::class);
+        Coderstm::usePlanModel(Plan::class);
+        Coderstm::useSubscriptionModel(Subscription::class);
+        Coderstm::useOrderModel(Order::class);
+        Coderstm::useOrderLineItemModel(LineItem::class);
 
         Config::set('cache.default', 'array');
         Config::set('mail.default', 'log');

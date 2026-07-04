@@ -11,10 +11,8 @@ class SwapSubscriptionPlan
     /**
      * Swap subscription plan.
      *
-     * @param Subscription $subscription
-     * @param mixed $planId
-     * @param bool $invoiceNow
-     * @param bool $force
+     * @param  Subscription  $subscription
+     * @param  mixed  $planId
      * @return Subscription
      */
     public function execute($subscription, $planId, $billing = 'monthly', bool $invoiceNow = true, bool $force = false)

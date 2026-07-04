@@ -2,12 +2,13 @@
 
 namespace Coderstm\Http\Controllers\Subscription;
 
+use Coderstm\Coderstm;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Http\Resources\Coupon\PlanCollection;
 use Coderstm\Http\Resources\CouponResource;
 use Coderstm\Models\Coupon;
-use Coderstm\Models\Subscription\Plan;
 use Coderstm\Traits\HasResourceActions;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Gate;
@@ -18,15 +19,15 @@ class CouponController extends Controller
 
     public function __construct()
     {
-        $this->useModel(\Coderstm\Coderstm::$couponModel);
-        $this->authorizeResource(\Coderstm\Coderstm::$couponModel, 'coupon', [
+        $this->useModel(Coderstm::$couponModel);
+        $this->authorizeResource(Coderstm::$couponModel, 'coupon', [
             'except' => ['show'],
         ]);
     }
 
     public function index(Request $request)
     {
-        $coupon = \Coderstm\Coderstm::$couponModel::query();
+        $coupon = Coderstm::$couponModel::query();
 
         if ($request->filled('filter')) {
             $coupon->where(function ($query) use ($request) {
@@ -64,7 +65,7 @@ class CouponController extends Controller
         $request->validate($rules);
 
         // create the coupon
-        $coupon = \Coderstm\Coderstm::$couponModel::create($request->input());
+        $coupon = Coderstm::$couponModel::create($request->input());
 
         $coupon = $coupon->syncPlans($request->plans ?? []);
 
@@ -76,7 +77,7 @@ class CouponController extends Controller
 
     public function show($coupon)
     {
-        $coupon = \Coderstm\Coderstm::$couponModel::withTrashed()->findOrFail($coupon);
+        $coupon = Coderstm::$couponModel::withTrashed()->findOrFail($coupon);
 
         Gate::authorize('view', $coupon);
 
@@ -86,9 +87,8 @@ class CouponController extends Controller
     /**
      * Update a coupon.
      *
-     * @param Request $request
-     * @param mixed $coupon
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $coupon
+     * @return JsonResponse
      */
     public function update(Request $request, $coupon)
     {
@@ -118,9 +118,8 @@ class CouponController extends Controller
     /**
      * Change coupon active status.
      *
-     * @param Request $request
-     * @param mixed $coupon
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $coupon
+     * @return JsonResponse
      */
     public function changeActive(Request $request, $coupon)
     {
@@ -138,9 +137,8 @@ class CouponController extends Controller
     /**
      * Create logs for specified resource from storage.
      *
-     * @param Request $request
-     * @param mixed $coupon
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $coupon
+     * @return JsonResponse
      */
     public function logs(Request $request, $coupon)
     {
@@ -161,7 +159,7 @@ class CouponController extends Controller
      */
     public function plans(Request $request)
     {
-        $query = \Coderstm\Coderstm::$planModel::with('product')->where('is_active', true);
+        $query = Coderstm::$planModel::with('product')->where('is_active', true);
 
         if ($request->filled('filter')) {
             $query->where(function ($q) use ($request) {

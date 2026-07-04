@@ -4,7 +4,6 @@ namespace Coderstm\Models\Task;
 
 use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
-use Coderstm\Models\Admin;
 use Coderstm\Models\Task;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\SerializeDate;

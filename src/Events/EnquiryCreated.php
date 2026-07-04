@@ -18,7 +18,7 @@ class EnquiryCreated
     /**
      * Create a new event instance.
      *
-     * @param Enquiry $enquiry
+     * @param  Enquiry  $enquiry
      * @return void
      */
     public function __construct($enquiry)

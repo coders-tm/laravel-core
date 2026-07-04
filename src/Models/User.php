@@ -8,7 +8,6 @@ use Coderstm\Enum\AppRag;
 use Coderstm\Enum\AppStatus;
 use Coderstm\Exceptions\ImportFailedException;
 use Coderstm\Exceptions\ImportSkippedException;
-use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Addressable;
 use Coderstm\Traits\Billable;
 use Coderstm\Traits\Core;

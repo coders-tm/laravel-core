@@ -9,7 +9,7 @@ class CancelSubscriptionDowngrade
     /**
      * Cancel subscription downgrade.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription)

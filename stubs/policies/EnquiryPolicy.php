@@ -3,8 +3,6 @@
 namespace App\Policies;
 
 use App\Models\Admin;
-use App\Models\Enquiry;
-use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class EnquiryPolicy
@@ -14,8 +12,8 @@ class EnquiryPolicy
     /**
      * Perform pre-authorization checks.
      *
-     * @param mixed $admin
-     * @param mixed $ability
+     * @param  mixed  $admin
+     * @param  mixed  $ability
      * @return mixed
      */
     public function before($admin, $ability)
@@ -28,7 +26,7 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can view any models.
      *
-     * @param mixed $admin
+     * @param  mixed  $admin
      * @return bool|mixed
      */
     public function viewAny($admin)
@@ -43,8 +41,8 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can view the model.
      *
-     * @param mixed $admin
-     * @param mixed $enquiry
+     * @param  mixed  $admin
+     * @param  mixed  $enquiry
      * @return bool|mixed
      */
     public function view($admin, $enquiry)
@@ -59,7 +57,7 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can create models.
      *
-     * @param mixed $admin
+     * @param  mixed  $admin
      * @return bool|mixed
      */
     public function create($admin)
@@ -74,8 +72,8 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can update the model.
      *
-     * @param mixed $admin
-     * @param mixed $enquiry
+     * @param  mixed  $admin
+     * @param  mixed  $enquiry
      * @return bool|mixed
      */
     public function update($admin, $enquiry)
@@ -90,7 +88,7 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can delete the model.
      *
-     * @param mixed $admin
+     * @param  mixed  $admin
      * @return bool|mixed
      */
     public function delete($admin)
@@ -101,7 +99,7 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can restore the model.
      *
-     * @param mixed $admin
+     * @param  mixed  $admin
      * @return bool|mixed
      */
     public function restore($admin)
@@ -112,7 +110,7 @@ class EnquiryPolicy
     /**
      * Determine whether the admin can permanently delete the model.
      *
-     * @param mixed $admin
+     * @param  mixed  $admin
      * @return bool|mixed
      */
     public function forceDelete($admin)

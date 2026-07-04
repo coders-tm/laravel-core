@@ -12,7 +12,7 @@ class ResumeSubscription
     /**
      * Resume subscription.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription)

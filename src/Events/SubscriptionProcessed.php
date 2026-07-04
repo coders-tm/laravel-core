@@ -18,7 +18,7 @@ class SubscriptionProcessed
     /**
      * Create a new event instance.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return void
      */
     public function __construct($subscription)

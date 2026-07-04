@@ -14,7 +14,7 @@ class EnquiryNotification extends BaseNotification
     /**
      * Create a new notification instance.
      *
-     * @param Enquiry $enquiry
+     * @param  Enquiry  $enquiry
      * @return void
      */
     public function __construct($enquiry)

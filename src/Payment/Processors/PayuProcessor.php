@@ -187,7 +187,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
             'paymentable_type' => $payable->isOrder() ? Coderstm::$orderModel : get_class($payable->getSource()),
             'paymentable_id' => $payable->getSourceId(),
             'payment_method_id' => $this->getPaymentMethodId(),
-            'transaction_id' => 'pending_' . uniqid(),
+            'transaction_id' => 'pending_'.uniqid(),
             'amount' => $payable->getGrandTotal(),
             'status' => Payment::STATUS_PENDING,
             'note' => 'PayU payment initiated',
@@ -198,7 +198,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
             ]),
         ]);
 
-        $txnid = 'TXN' . substr(hash('sha256', $payment->uuid . time()), 0, 12);
+        $txnid = 'TXN'.substr(hash('sha256', $payment->uuid.time()), 0, 12);
 
         // Map required fields for PayU checkout post parameters
         $source = $payable->getSource();
@@ -277,7 +277,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
             }
 
             if ($request->input('status') !== 'success') {
-                return CallbackResult::failed('Payment was unsuccessful: ' . ($request->input('error_Message') ?? 'Failed'));
+                return CallbackResult::failed('Payment was unsuccessful: '.($request->input('error_Message') ?? 'Failed'));
             }
 
             $paymentData = new PayuPayment($request->all(), $this->paymentMethod);
@@ -288,7 +288,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
                 payment: $payment->fresh()
             );
         } catch (\Throwable $e) {
-            return CallbackResult::failed('Payment verification failed: ' . $e->getMessage());
+            return CallbackResult::failed('Payment verification failed: '.$e->getMessage());
         }
     }
 

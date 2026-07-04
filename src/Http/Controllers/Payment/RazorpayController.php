@@ -42,7 +42,6 @@ class RazorpayController extends Controller
     /**
      * Verify payment.
      *
-     * @param Request $request
      * @return mixed
      */
     private function verifyPayment(Request $request)
@@ -84,7 +83,7 @@ class RazorpayController extends Controller
     /**
      * Get billing details.
      *
-     * @param mixed $order
+     * @param  mixed  $order
      * @return array
      */
     private function billingDetails($order)

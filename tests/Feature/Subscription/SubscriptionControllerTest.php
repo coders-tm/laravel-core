@@ -330,7 +330,7 @@ class SubscriptionControllerTest extends FeatureTestCase
         ]);
 
         $response = $this->getJson(
-            route('subscriptions.invoices', $subscription->id) . '?status=completed'
+            route('subscriptions.invoices', $subscription->id).'?status=completed'
         );
 
         $response->assertStatus(200);

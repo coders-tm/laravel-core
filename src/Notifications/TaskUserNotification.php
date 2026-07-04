@@ -19,8 +19,8 @@ class TaskUserNotification extends BaseNotification
     /**
      * Create a new notification instance.
      *
-     * @param Task $task
-     * @param Admin $user
+     * @param  Task  $task
+     * @param  Admin  $user
      * @return void
      */
     public function __construct($task, $user)

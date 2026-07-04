@@ -70,7 +70,7 @@ if (! function_exists('user')) {
                 return null;
             }
 
-            return collect($key)->mapWithKeys(fn($k) => [$k => data_get($user, $k)])->all();
+            return collect($key)->mapWithKeys(fn ($k) => [$k => data_get($user, $k)])->all();
         }
 
         if ($key && $user) {
@@ -130,11 +130,11 @@ if (! function_exists('app_url')) {
 
         // Check if $path starts with a slash
         $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-        $url = $path ? $baseUrl . $separator . $path : $baseUrl;
+        $url = $path ? $baseUrl.$separator.$path : $baseUrl;
 
         // Append query parameters if provided
         if (! empty($query)) {
-            $url .= '?' . http_build_query($query);
+            $url .= '?'.http_build_query($query);
         }
 
         return $url;
@@ -149,11 +149,11 @@ if (! function_exists('admin_url')) {
 
         // Get the base URL from config
         $baseUrl = rtrim(config('coderstm.admin_url'), '/');
-        $url = $path ? $baseUrl . $separator . $path : $baseUrl;
+        $url = $path ? $baseUrl.$separator.$path : $baseUrl;
 
         // Append query parameters if provided
         if (! empty($query)) {
-            $url .= '?' . http_build_query($query);
+            $url .= '?'.http_build_query($query);
         }
 
         return $url;
@@ -168,12 +168,12 @@ if (! function_exists('base_route')) {
         } else {
             // Check if $path starts with a slash
             $separator = (substr($path, 0, 1) === '/') ? '' : '/';
-            $url = $separator . $path;
+            $url = $separator.$path;
         }
 
         // Append query parameters if provided
         if (! empty($query)) {
-            $url .= '?' . http_build_query($query);
+            $url .= '?'.http_build_query($query);
         }
 
         return $url;
@@ -193,7 +193,7 @@ if (! function_exists('admin_route')) {
         $prefix = config('coderstm.admin_prefix');
         $prefix = (substr($prefix, 0, 1) === '/') ? substr($prefix, 1) : $prefix;
 
-        $fullPath = $prefix . ($path ? '/' . ltrim($path, '/') : '');
+        $fullPath = $prefix.($path ? '/'.ltrim($path, '/') : '');
 
         return base_route($fullPath, $query);
     }
@@ -366,15 +366,15 @@ if (! function_exists('format_amount')) {
         if (in_array($currency, ['RWF', 'JPY', 'KRW'])) {
             // If the currency symbol is more than one character
             if (mb_strlen($symbol) > 1) {
-                return number_format($amount, 2) . ' ' . $symbol;
+                return number_format($amount, 2).' '.$symbol;
             }
 
-            return $symbol . number_format($amount, 2);
+            return $symbol.number_format($amount, 2);
         }
 
         // If the currency symbol is more than one character
         if (mb_strlen($symbol) > 1) {
-            return number_format($amount, 2) . ' ' . $symbol;
+            return number_format($amount, 2).' '.$symbol;
         }
 
         return Cashier::formatAmount($amount * 100, $currency, $locale, $options);

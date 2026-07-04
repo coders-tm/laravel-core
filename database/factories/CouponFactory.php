@@ -3,7 +3,6 @@
 namespace Coderstm\Database\Factories;
 
 use Coderstm\Coderstm;
-use Coderstm\Models\Coupon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

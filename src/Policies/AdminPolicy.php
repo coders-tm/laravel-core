@@ -2,8 +2,8 @@
 
 namespace Coderstm\Policies;
 
-use Illuminate\Database\Eloquent\Model as Admin;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Database\Eloquent\Model as Admin;
 
 class AdminPolicy
 {

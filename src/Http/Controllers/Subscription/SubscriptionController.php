@@ -173,7 +173,7 @@ class SubscriptionController extends Controller
 
             $invoice = $subscription?->latestInvoice;
             $payment = $invoice && $invoice->due_amount > 0;
-            $redirectUrl = $payment ? user_route('/payment/' . $invoice->key, [
+            $redirectUrl = $payment ? user_route('/payment/'.$invoice->key, [
                 'redirect' => user_route('/billing'),
             ]) : null;
 
@@ -415,7 +415,7 @@ class SubscriptionController extends Controller
             ], 200);
         } catch (\Throwable $e) {
             throw ValidationException::withMessages([
-                'subscription' => 'Failed to resume subscription: ' . $e->getMessage(),
+                'subscription' => 'Failed to resume subscription: '.$e->getMessage(),
             ]);
         }
     }

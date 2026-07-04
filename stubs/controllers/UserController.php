@@ -13,6 +13,7 @@ use Coderstm\Notifications\UserResetPasswordNotification;
 use Coderstm\Services\Admin\SubscriptionService;
 use Coderstm\Traits\HasResourceActions;
 use Coderstm\Traits\Helpers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\DB;
@@ -329,9 +330,8 @@ class UserController extends Controller
     /**
      * Mark subscription as paid.
      *
-     * @param Request $request
-     * @param mixed $user
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $user
+     * @return JsonResponse
      */
     public function markAsPaid(Request $request, $id)
     {
@@ -368,7 +368,7 @@ class UserController extends Controller
 
         // Build a generic reset URL (frontend may handle it). If frontend URL isn't configured, fallback to app URL
         $baseUrl = config('app.frontend_url') ?: config('app.url');
-        $resetUrl = rtrim($baseUrl, '/') . '/password/reset?token=' . $token . '&email=' . urlencode($user->email);
+        $resetUrl = rtrim($baseUrl, '/').'/password/reset?token='.$token.'&email='.urlencode($user->email);
 
         // Send notification using common template system
         $user->notify(new UserResetPasswordNotification($user, [

@@ -56,8 +56,7 @@ class Payable implements PayableInterface
     /**
      * Create a Payable instance from an Order model.
      *
-     * @param Order $order
-     * @return static
+     * @param  Order  $order
      */
     public static function fromOrder($order): static
     {

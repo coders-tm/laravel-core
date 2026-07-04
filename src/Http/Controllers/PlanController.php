@@ -2,10 +2,12 @@
 
 namespace Coderstm\Http\Controllers;
 
+use Coderstm\Coderstm;
 use Coderstm\Facades\Currency;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Traits\HasResourceActions;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Gate;
@@ -16,15 +18,15 @@ class PlanController extends Controller
 
     public function __construct()
     {
-        $this->useModel(\Coderstm\Coderstm::$planModel);
-        $this->authorizeResource(\Coderstm\Coderstm::$planModel, 'plan', [
+        $this->useModel(Coderstm::$planModel);
+        $this->authorizeResource(Coderstm::$planModel, 'plan', [
             'except' => ['show'],
         ]);
     }
 
     public function index(Request $request)
     {
-        $plan = \Coderstm\Coderstm::$planModel::query();
+        $plan = Coderstm::$planModel::query();
 
         if ($request->filled('filter')) {
             $plan->where('label', 'like', "%{$request->filter}%");
@@ -51,9 +53,8 @@ class PlanController extends Controller
     /**
      * Store a plan.
      *
-     * @param Request $request
-     * @param mixed $plan
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $plan
+     * @return JsonResponse
      */
     public function store(Request $request, $plan)
     {
@@ -68,7 +69,7 @@ class PlanController extends Controller
         $request->validate($rules);
 
         // create the plan
-        $plan = \Coderstm\Coderstm::$planModel::create($request->input());
+        $plan = Coderstm::$planModel::create($request->input());
 
         if ($request->filled('features')) {
             $plan->syncFeatures($request->features);
@@ -82,7 +83,7 @@ class PlanController extends Controller
 
     public function show($plan)
     {
-        $plan = \Coderstm\Coderstm::$planModel::withTrashed()->findOrFail($plan);
+        $plan = Coderstm::$planModel::withTrashed()->findOrFail($plan);
 
         Gate::authorize('view', $plan);
 
@@ -92,9 +93,8 @@ class PlanController extends Controller
     /**
      * Update a plan.
      *
-     * @param Request $request
-     * @param mixed $plan
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $plan
+     * @return JsonResponse
      */
     public function update(Request $request, $plan)
     {
@@ -124,9 +124,8 @@ class PlanController extends Controller
     /**
      * Destroy a plan.
      *
-     * @param Request $request
-     * @param mixed $plan
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $plan
+     * @return JsonResponse
      */
     public function destroy(Request $request, $plan)
     {
@@ -152,9 +151,8 @@ class PlanController extends Controller
     /**
      * Change plan active status.
      *
-     * @param Request $request
-     * @param mixed $plan
-     * @return \Illuminate\Http\JsonResponse
+     * @param  mixed  $plan
+     * @return JsonResponse
      */
     public function changeActive(Request $request, $plan)
     {
@@ -171,7 +169,7 @@ class PlanController extends Controller
 
     public function shared(Request $request)
     {
-        $plans = \Coderstm\Coderstm::$planModel::onlyActive();
+        $plans = Coderstm::$planModel::onlyActive();
 
         if ($request->filled('plan_id')) {
             $plans->orWhere('id', $request->plan_id);
@@ -193,7 +191,7 @@ class PlanController extends Controller
     /**
      * Convert plan to array.
      *
-     * @param mixed $plan
+     * @param  mixed  $plan
      * @return array
      */
     private function toArray($plan)

@@ -2,9 +2,9 @@
 
 namespace Coderstm\Http\Controllers\Payment;
 
-use Coderstm\Coderstm;
 use Coderstm\Cashier\Cashier;
 use Coderstm\Cashier\Payment;
+use Coderstm\Coderstm;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Traits\Paymentable;
@@ -45,7 +45,6 @@ class StripeController extends Controller
     /**
      * Verify payment.
      *
-     * @param Request $request
      * @return mixed
      */
     private function verifyPayment(Request $request)
@@ -86,7 +85,7 @@ class StripeController extends Controller
     /**
      * Get billing details.
      *
-     * @param mixed $order
+     * @param  mixed  $order
      * @return array
      */
     private function billingDetails($order)

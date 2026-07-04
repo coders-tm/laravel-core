@@ -16,8 +16,7 @@ class RenewSubscription
     /**
      * Renew the subscription.
      *
-     * @param Subscription $subscription
-     * @param bool $charge
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription, bool $charge = true)
@@ -155,7 +154,7 @@ class RenewSubscription
     /**
      * Renew subscription without charge.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     protected function executeNoCharge($subscription)
@@ -192,9 +191,8 @@ class RenewSubscription
     /**
      * Charge subscription fee from wallet.
      *
-     * @param Subscription $subscription
-     * @param mixed $invoice
-     * @return void
+     * @param  Subscription  $subscription
+     * @param  mixed  $invoice
      */
     protected function chargeFromWallet($subscription, $invoice): void
     {

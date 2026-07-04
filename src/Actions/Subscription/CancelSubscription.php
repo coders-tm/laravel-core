@@ -10,7 +10,7 @@ class CancelSubscription
     /**
      * Cancel the subscription.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function execute($subscription)
@@ -28,8 +28,7 @@ class CancelSubscription
     /**
      * Cancel subscription at a specific date.
      *
-     * @param Subscription $subscription
-     * @param \DateTimeInterface|null $endsAt
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function cancelAt($subscription, ?\DateTimeInterface $endsAt)
@@ -48,7 +47,7 @@ class CancelSubscription
     /**
      * Cancel subscription immediately.
      *
-     * @param Subscription $subscription
+     * @param  Subscription  $subscription
      * @return Subscription
      */
     public function cancelNow($subscription)

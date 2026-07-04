@@ -16,9 +16,9 @@ class UpdateOrCreate
     /**
      * Invoke the action.
      *
-     * @param mixed $resource
-     * @param array $options
-     * @param Order|null $order
+     * @param  mixed  $resource
+     * @param  array  $options
+     * @param  Order|null  $order
      * @return mixed
      */
     public function __call($method, $parameters)
@@ -29,9 +29,9 @@ class UpdateOrCreate
     /**
      * Invoke the action.
      *
-     * @param mixed $resource
-     * @param array $options
-     * @param Order|null $order
+     * @param  mixed  $resource
+     * @param  array  $options
+     * @param  Order|null  $order
      * @return mixed
      */
     public function __invoke($resource, $options = [], $order = null)
@@ -42,9 +42,9 @@ class UpdateOrCreate
     /**
      * Execute the action.
      *
-     * @param mixed $resource
-     * @param array $options
-     * @param Order|null $order
+     * @param  mixed  $resource
+     * @param  array  $options
+     * @param  Order|null  $order
      * @return mixed
      */
     public function execute($resource, $options = [], $order = null)
@@ -79,10 +79,8 @@ class UpdateOrCreate
     /**
      * Save the order.
      *
-     * @param Order $order
-     * @param mixed $resource
-     * @param array $options
-     * @return void
+     * @param  Order  $order
+     * @param  mixed  $resource
      */
     public function save($order, $resource, array $options = []): void
     {
