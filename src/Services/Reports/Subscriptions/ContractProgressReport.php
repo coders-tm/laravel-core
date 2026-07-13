@@ -2,6 +2,8 @@
 
 namespace Coderstm\Services\Reports\Subscriptions;
 
+use Coderstm\Coderstm;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -52,13 +54,19 @@ class ContractProgressReport extends AbstractReport
     public function query(array $filters)
     {
         $now = now()->toDateTimeString();
+        $plansQuery = Coderstm::$planModel::query()->select('*');
 
-        return DB::table('plans')
-            ->leftJoin('subscriptions', function ($join) {
-                $join->on('subscriptions.plan_id', '=', 'plans.id')
-                    ->whereNotNull('subscriptions.total_cycles')
-                    ->where('subscriptions.total_cycles', '>', 0);
-            })
+        return DB::table(DB::raw("({$plansQuery->toSql()}) as plans"))
+            ->mergeBindings($plansQuery->toBase())
+            ->leftJoinSub(
+                Subscription::query()->select('*'),
+                'subscriptions',
+                function ($join) {
+                    $join->on('subscriptions.plan_id', '=', 'plans.id')
+                        ->whereNotNull('subscriptions.total_cycles')
+                        ->where('subscriptions.total_cycles', '>', 0);
+                }
+            )
             ->whereNotNull('plans.contract_cycles')
             ->where('plans.contract_cycles', '>', 0)
             ->select([
@@ -115,7 +123,7 @@ class ContractProgressReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $summary = DB::table('subscriptions')
+        $summary = Subscription::query()->toBase()
             ->whereNotNull('total_cycles')
             ->where('total_cycles', '>', 0)
             ->select([

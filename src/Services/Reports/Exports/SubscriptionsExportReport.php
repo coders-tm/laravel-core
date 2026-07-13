@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Exports;
 
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +55,7 @@ class SubscriptionsExportReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        return DB::table('subscriptions')
+        return Subscription::query()->toBase()
             ->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->select([
                 'subscriptions.id',
@@ -105,7 +106,7 @@ class SubscriptionsExportReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('subscriptions')
+        $stats = Subscription::query()->toBase()
             ->select([DB::raw('COUNT(*) as total_subscriptions')])
             ->first();
 

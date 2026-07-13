@@ -4,6 +4,7 @@ namespace Coderstm\Services\Reports\Revenue;
 
 use Carbon\Carbon;
 use Coderstm\Coderstm;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -91,9 +92,11 @@ class MrrMovementReport extends AbstractReport
             ! $this->isSQLite() // Use DISTINCT for non-SQLite databases
         );
 
+        $subscriptionsQuery = Subscription::query()->select('*');
+
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin('subscriptions', function ($join) {
+            ->leftJoinSub($subscriptionsQuery, 'subscriptions', function ($join) {
                 $join->where(function ($q) {
                     $q->whereBetween('subscriptions.created_at', [DB::raw('periods.period_start'), DB::raw('periods.period_end')])
                         ->orWhereBetween('subscriptions.canceled_at', [DB::raw('periods.period_start'), DB::raw('periods.period_end')]);

@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Subscriptions;
 
 use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -71,11 +72,12 @@ class SubscriptionLifecycleReport extends AbstractReport
             ->select([
                 'periods.period_start',
                 'periods.period_order',
-                DB::raw('(
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE created_at BETWEEN periods.period_start AND periods.period_end
-                ) as new_subscriptions'),
+                    {$this->scopeClause()}
+                ) as new_subscriptions"),
                 DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
@@ -83,42 +85,48 @@ class SubscriptionLifecycleReport extends AbstractReport
                     AND status = 'active'
                     AND canceled_at IS NULL
                     AND (expires_at IS NULL OR expires_at > periods.period_end)
+                    {$this->scopeClause()}
                 ) as active_subscriptions"),
-                DB::raw('(
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
                     AND trial_ends_at IS NOT NULL
                     AND trial_ends_at > periods.period_end
-                ) as trial_subscriptions'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as trial_subscriptions"),
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE canceled_at IS NOT NULL
                     AND canceled_at BETWEEN periods.period_start AND periods.period_end
-                ) as canceled_subscriptions'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as canceled_subscriptions"),
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE expires_at IS NOT NULL
                     AND expires_at BETWEEN periods.period_start AND periods.period_end
                     AND canceled_at IS NOT NULL
-                ) as expired_subscriptions'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as expired_subscriptions"),
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
                     AND frozen_at IS NOT NULL
                     AND (release_at IS NULL OR release_at > periods.period_end)
-                ) as frozen_subscriptions'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as frozen_subscriptions"),
+                DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
                     AND canceled_at IS NOT NULL
                     AND expires_at IS NOT NULL
                     AND expires_at > periods.period_end
-                ) as grace_period'),
+                    {$this->scopeClause()}
+                ) as grace_period"),
                 DB::raw('0 as reactivations'),
             ])
             ->orderBy('periods.period_order');
@@ -151,7 +159,7 @@ class SubscriptionLifecycleReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $stats = DB::table('subscriptions')
+        $stats = Subscription::query()->toBase()
             ->selectRaw("
                 COUNT(CASE WHEN status = 'active' AND canceled_at IS NULL THEN 1 END) as total_active,
                 COUNT(CASE WHEN canceled_at IS NOT NULL THEN 1 END) as total_canceled

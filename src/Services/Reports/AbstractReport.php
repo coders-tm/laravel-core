@@ -7,6 +7,8 @@ use Carbon\CarbonPeriod;
 use Coderstm\Coderstm;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Enum\PlanInterval;
+use Coderstm\Models\Payment;
+use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Traits\DatabaseAgnostic;
 use Illuminate\Contracts\Database\Query\Builder as QueryBuilderContract;
@@ -61,6 +63,11 @@ use League\Csv\Writer;
 abstract class AbstractReport implements ReportInterface
 {
     use DatabaseAgnostic;
+
+    /**
+     * Optional extra SQL WHERE clause for scoping queries.
+     */
+    private static ?string $extraScope = null;
 
     /**
      * The report export context.
@@ -453,7 +460,7 @@ abstract class AbstractReport implements ReportInterface
         return match ($granularity) {
             'daily' => $date->format('Y-m-d'),
             'weekly' => $date->format('Y-\WW'),
-            'quarterly' => $date->format('Y-').'Q'.$date->quarter,
+            'quarterly' => $date->format('Y-') . 'Q' . $date->quarter,
             'yearly' => $date->format('Y'),
             default => $date->format('Y-m'),
         };
@@ -601,7 +608,7 @@ abstract class AbstractReport implements ReportInterface
     {
         $mrr = 0;
 
-        $subscriptions = DB::table('subscriptions')
+        $subscriptions = Subscription::query()
             ->where('created_at', '<=', $date)
             ->where(function ($q) use ($date) {
                 $q->whereNull('canceled_at')
@@ -627,10 +634,12 @@ abstract class AbstractReport implements ReportInterface
 
     /**
      * Build base subscription query with common filters.
+     *
+     * Uses Eloquent so that TenantScope is automatically applied.
      */
     protected function buildSubscriptionQuery()
     {
-        $query = DB::table('subscriptions');
+        $query = Subscription::query()->toBase();
 
         $status = $this->getFilter('status');
         if ($status) {
@@ -659,6 +668,8 @@ abstract class AbstractReport implements ReportInterface
 
     /**
      * Build base user query with common filters.
+     *
+     * Uses Eloquent so that TenantScope is automatically applied.
      */
     protected function buildUserQuery()
     {
@@ -681,10 +692,12 @@ abstract class AbstractReport implements ReportInterface
 
     /**
      * Build base orders query with common filters.
+     *
+     * Uses Eloquent so that TenantScope is automatically applied.
      */
     protected function buildOrdersQuery()
     {
-        $query = DB::table('orders');
+        $query = Coderstm::$orderModel::query()->toBase();
 
         if ($this->getFilter('status')) {
             $query->where('status', $this->getFilter('status'));
@@ -703,10 +716,12 @@ abstract class AbstractReport implements ReportInterface
 
     /**
      * Build base payments query with common filters.
+     *
+     * Uses Eloquent so that TenantScope is automatically applied.
      */
     protected function buildPaymentsQuery()
     {
-        $query = DB::table('payments');
+        $query = Payment::query()->toBase();
 
         if ($this->getFilter('status')) {
             $query->where('status', $this->getFilter('status'));
@@ -724,29 +739,43 @@ abstract class AbstractReport implements ReportInterface
     }
 
     /**
+     * Set an optional extra SQL WHERE clause for scoping report queries.
+     */
+    public static function setScope(?string $scope): void
+    {
+        self::$extraScope = $scope;
+    }
+
+    /**
+     * Returns an extra WHERE clause fragment for raw SQL subqueries.
+     * Default is empty; modules may seed via setScope().
+     */
+    protected function scopeClause(): string
+    {
+        return self::$extraScope ?? '';
+    }
+
+    /**
      * Build base checkouts query with common filters.
      */
     protected function buildCheckoutsQuery()
     {
-        $query = DB::table('checkouts');
-
-        if ($this->getFilter('status')) {
-            $query->where('status', $this->getFilter('status'));
-        }
-
-        if ($this->getFilter('date_from')) {
-            $query->whereDate('started_at', '>=', $this->getFilter('date_from'));
-        }
-
-        if ($this->getFilter('date_to')) {
-            $query->whereDate('started_at', '<=', $this->getFilter('date_to'));
-        }
-
-        return $query;
+        return DB::table('checkouts')
+            ->when($this->getFilter('status'), function ($q) {
+                $q->where('status', $this->getFilter('status'));
+            })
+            ->when($this->getFilter('date_from'), function ($q) {
+                $q->whereDate('started_at', '>=', $this->getFilter('date_from'));
+            })
+            ->when($this->getFilter('date_to'), function ($q) {
+                $q->whereDate('started_at', '<=', $this->getFilter('date_to'));
+            });
     }
 
     /**
      * Get plans filtered by the plan_id filter if set.
+     *
+     * Uses Eloquent so that TenantScope is automatically applied.
      */
     protected function getFilteredPlans()
     {

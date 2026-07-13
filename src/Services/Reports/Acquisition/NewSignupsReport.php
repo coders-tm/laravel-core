@@ -4,6 +4,7 @@ namespace Coderstm\Services\Reports\Acquisition;
 
 use Carbon\Carbon;
 use Coderstm\Coderstm;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -65,16 +66,14 @@ class NewSignupsReport extends AbstractReport
             return $this->emptyQuery();
         }
 
-        $userTable = (new (Coderstm::$userModel))->getTable();
-
         // Main query with aggregations
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin($userTable, function ($join) use ($userTable) {
-                $join->whereRaw("{$userTable}.created_at >= periods.period_start")
-                    ->whereRaw("{$userTable}.created_at <= periods.period_end");
+            ->leftJoinSub(Coderstm::$userModel::query()->select('*'), 'users', function ($join) {
+                $join->whereRaw('users.created_at >= periods.period_start')
+                    ->whereRaw('users.created_at <= periods.period_end');
             })
-            ->leftJoin('subscriptions', function ($join) {
+            ->leftJoinSub(Subscription::query()->select('*'), 'subscriptions', function ($join) {
                 $join->whereRaw('subscriptions.created_at >= periods.period_start')
                     ->whereRaw('subscriptions.created_at <= periods.period_end');
             })
@@ -83,7 +82,7 @@ class NewSignupsReport extends AbstractReport
                 'periods.period_start',
                 'periods.period_end',
                 'periods.period_order',
-                DB::raw("COUNT(DISTINCT {$userTable}.id) as new_users"),
+                DB::raw('COUNT(DISTINCT users.id) as new_users'),
                 DB::raw('COUNT(DISTINCT subscriptions.id) as new_subscriptions'),
                 DB::raw('COUNT(DISTINCT CASE WHEN subscriptions.trial_ends_at IS NOT NULL THEN subscriptions.id END) as trial_signups'),
                 DB::raw('COUNT(DISTINCT CASE WHEN subscriptions.trial_ends_at IS NULL THEN subscriptions.id END) as paid_signups'),
@@ -124,7 +123,7 @@ class NewSignupsReport extends AbstractReport
 
         foreach ($query->cursor() as $row) {
             // Get top plan for this period using period_start and period_end
-            $topPlan = DB::table('subscriptions')
+            $topPlan = Subscription::query()->toBase()
                 ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
                 ->whereRaw('subscriptions.created_at >= ?', [$row->period_start])
                 ->whereRaw('subscriptions.created_at <= ?', [$row->period_end])
@@ -145,12 +144,12 @@ class NewSignupsReport extends AbstractReport
     {
         $userModel = Coderstm::$userModel;
 
-        $summary = DB::table((new $userModel)->getTable())
+        $summary = $userModel::query()->toBase()
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->selectRaw('COUNT(*) as total_new_users')
             ->first();
 
-        $subSummary = DB::table('subscriptions')
+        $subSummary = Subscription::query()->toBase()
             ->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->whereBetween('subscriptions.created_at', [$filters['from'], $filters['to']])
             ->selectRaw('

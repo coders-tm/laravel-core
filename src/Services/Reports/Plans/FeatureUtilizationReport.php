@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Plans;
 
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -52,8 +53,8 @@ class FeatureUtilizationReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        return DB::table('subscription_features')
-            ->join('subscriptions', 'subscriptions.id', '=', 'subscription_features.subscription_id')
+        return Subscription::query()->toBase()
+            ->join('subscription_features', 'subscriptions.id', '=', 'subscription_features.subscription_id')
             ->join('plans', 'plans.id', '=', 'subscriptions.plan_id')
             ->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])
             ->whereNull('subscriptions.canceled_at')
@@ -108,8 +109,8 @@ class FeatureUtilizationReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $summary = DB::table('subscription_features')
-            ->join('subscriptions', 'subscriptions.id', '=', 'subscription_features.subscription_id')
+        $summary = Subscription::query()->toBase()
+            ->join('subscription_features', 'subscriptions.id', '=', 'subscription_features.subscription_id')
             ->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])
             ->whereNull('subscriptions.canceled_at')
             ->select([

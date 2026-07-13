@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Coupons;
 
+use Coderstm\Coderstm;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -75,11 +76,13 @@ class CouponPerformanceReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        return DB::table('coupons')
-            ->leftJoin(DB::raw('discount_lines'), function ($join) {
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+
+        return Coderstm::$couponModel::query()->toBase()
+            ->leftJoin('discount_lines', function ($join) {
                 $join->on('coupons.id', '=', 'discount_lines.coupon_id');
             })
-            ->leftJoin(DB::raw('orders'), function ($join) use ($filters) {
+            ->leftJoinSub($ordersQuery, 'orders', function ($join) use ($filters) {
                 $join->on('discount_lines.discountable_id', '=', 'orders.id')
                     ->whereRaw("discount_lines.discountable_type LIKE '%Order%'")
                     ->whereBetween('orders.created_at', [$filters['from'], $filters['to']]);
@@ -131,9 +134,13 @@ class CouponPerformanceReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('discount_lines')
-            ->join('orders', 'discount_lines.discountable_id', '=', 'orders.id')
-            ->where('discount_lines.discountable_type', 'like', '%Order%')
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+
+        $stats = Coderstm::$orderModel::query()->toBase()
+            ->join('discount_lines', function ($join) {
+                $join->on('discount_lines.discountable_id', '=', 'orders.id')
+                    ->where('discount_lines.discountable_type', 'like', '%Order%');
+            })
             ->whereBetween('orders.created_at', [$filters['from'], $filters['to']])
             ->whereNotNull('discount_lines.coupon_id')
             ->select([
@@ -143,7 +150,7 @@ class CouponPerformanceReport extends AbstractReport
             ])
             ->first();
 
-        $totalCoupons = DB::table('coupons')->count();
+        $totalCoupons = Coderstm::$couponModel::query()->toBase()->count();
 
         return [
             'total_coupons' => (int) $totalCoupons,

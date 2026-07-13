@@ -4,6 +4,7 @@ namespace Coderstm\Services\Reports\Exports;
 
 use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -52,26 +53,22 @@ class UsersExportReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        $userTable = (new (Coderstm::$userModel))->getTable();
-
-        // Subquery for active/most recent subscription
-        $subscriptionSubquery = DB::table('subscriptions as s')
+        $subscriptionSubquery = Subscription::query()->toBase()
             ->select([
-                's.user_id',
-                's.type as plan_type',
-                's.status as sub_status',
-                's.trial_ends_at',
-                DB::raw('MAX(s.created_at) as latest_sub_date'),
+                'subscriptions.user_id',
+                'subscriptions.type as plan_type',
+                'subscriptions.status as sub_status',
+                'subscriptions.trial_ends_at',
+                DB::raw('MAX(subscriptions.created_at) as latest_sub_date'),
             ])
             ->where(function ($q) {
-                $q->where('s.status', AppStatus::ACTIVE->value)
-                    ->orWhereNull('s.canceled_at');
+                $q->where('subscriptions.status', AppStatus::ACTIVE->value)
+                    ->orWhereNull('subscriptions.canceled_at');
             })
-            ->groupBy('s.user_id', 's.type', 's.status', 's.trial_ends_at');
+            ->groupBy('subscriptions.user_id', 'subscriptions.type', 'subscriptions.status', 'subscriptions.trial_ends_at');
 
-        return DB::table("$userTable as users")
-            ->leftJoin(DB::raw("({$subscriptionSubquery->toSql()}) as subscription"), 'users.id', '=', 'subscription.user_id')
-            ->mergeBindings($subscriptionSubquery)
+        return Coderstm::$userModel::query()->toBase()
+            ->leftJoinSub($subscriptionSubquery, 'subscription', 'users.id', '=', 'subscription.user_id')
             ->select([
                 'users.id',
                 'users.name',
@@ -113,9 +110,7 @@ class UsersExportReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $userTable = (new (Coderstm::$userModel))->getTable();
-
-        $stats = DB::table("$userTable as users")
+        $stats = Coderstm::$userModel::query()->toBase()
             ->select([DB::raw('COUNT(*) as total_users')])
             ->first();
 

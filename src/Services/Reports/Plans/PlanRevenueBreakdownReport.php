@@ -2,7 +2,9 @@
 
 namespace Coderstm\Services\Reports\Plans;
 
+use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription\Plan;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -54,7 +56,7 @@ class PlanRevenueBreakdownReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        return DB::table('plans')
+        return Plan::query()->toBase()
             ->leftJoin('subscriptions', function ($join) use ($filters) {
                 $join->on('subscriptions.plan_id', '=', 'plans.id')
                     ->whereBetween('subscriptions.created_at', [$filters['from'], $filters['to']]);
@@ -111,7 +113,7 @@ class PlanRevenueBreakdownReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $summary = DB::table('orders')
+        $summary = Coderstm::$orderModel::query()->toBase()
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->where('orderable_type', 'like', '%Subscription')
             ->select([

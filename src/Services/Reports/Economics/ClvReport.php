@@ -60,7 +60,7 @@ class ClvReport extends AbstractReport
         // Database-agnostic months diff calculation
         $monthsDiffExpression = $this->dbDateDiffMonths("'{$now}'", 'MIN(orders.created_at)');
 
-        return DB::table($userTable)
+        return Coderstm::$userModel::query()->toBase()
             ->join('orders', 'orders.customer_id', '=', "{$userTable}.id")
             ->where('orders.payment_status', Order::STATUS_PAID)
             ->whereBetween('orders.created_at', [$filters['from'], $filters['to']])
@@ -114,14 +114,14 @@ class ClvReport extends AbstractReport
         $oneMonthAgo = now()->subMonth()->toDateTimeString();
 
         // Get aggregated stats for all users with orders in the period
-        $totalCustomers = DB::table('orders')
+        $totalCustomers = Coderstm::$orderModel::query()->toBase()
             ->where('payment_status', Order::STATUS_PAID)
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->distinct('customer_id')
             ->count('customer_id');
 
         // Calculate average monthly revenue (revenue from last month / unique customers)
-        $lastMonthRevenue = DB::table('orders')
+        $lastMonthRevenue = Coderstm::$orderModel::query()->toBase()
             ->where('payment_status', Order::STATUS_PAID)
             ->whereRaw('created_at >= ?', [$oneMonthAgo])
             ->whereRaw('created_at <= ?', [$now])

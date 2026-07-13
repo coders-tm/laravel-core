@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Coupons;
 
+use Coderstm\Coderstm;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -55,12 +56,12 @@ class CouponRedemptionReport extends AbstractReport
     {
         $coalesce = $this->dbCoalesce(['users.email', '"Guest"']);
 
-        return DB::table('discount_lines')
-            ->join('coupons', 'discount_lines.coupon_id', '=', 'coupons.id')
-            ->leftJoin(DB::raw('orders'), function ($join) {
+        return Coderstm::$orderModel::query()->toBase()
+            ->join('discount_lines', function ($join) {
                 $join->on('discount_lines.discountable_id', '=', 'orders.id')
                     ->whereRaw("discount_lines.discountable_type LIKE '%Order%'");
             })
+            ->join('coupons', 'discount_lines.coupon_id', '=', 'coupons.id')
             ->leftJoin('users', 'orders.customer_id', '=', 'users.id')
             ->whereBetween('orders.created_at', [$filters['from'], $filters['to']])
             ->whereNotNull('discount_lines.coupon_id')
@@ -106,9 +107,11 @@ class CouponRedemptionReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('discount_lines')
-            ->join('orders', 'discount_lines.discountable_id', '=', 'orders.id')
-            ->where('discount_lines.discountable_type', 'like', '%Order%')
+        $stats = Coderstm::$orderModel::query()->toBase()
+            ->join('discount_lines', function ($join) {
+                $join->on('discount_lines.discountable_id', '=', 'orders.id')
+                    ->where('discount_lines.discountable_type', 'like', '%Order%');
+            })
             ->whereBetween('orders.created_at', [$filters['from'], $filters['to']])
             ->whereNotNull('coupon_id')
             ->select([

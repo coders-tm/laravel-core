@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Revenue;
 
 use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -62,10 +63,12 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        $subscriptionsQuery = Subscription::query()->select('*');
+
         // Subquery with aggregations
         $metricsQuery = DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->crossJoin('subscriptions')
+            ->crossJoinSub($subscriptionsQuery, 'subscriptions')
             ->select([
                 'periods.period_start',
                 'periods.period_order',
@@ -138,7 +141,7 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $currentActive = DB::table('subscriptions')
+        $currentActive = Subscription::query()->toBase()
             ->whereNull('canceled_at')
             ->where(function ($q) use ($now) {
                 $q->whereNull('expires_at')

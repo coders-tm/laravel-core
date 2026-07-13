@@ -2,7 +2,9 @@
 
 namespace Coderstm\Services\Reports\Exports;
 
+use Coderstm\Coderstm;
 use Coderstm\Enum\AppStatus;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -57,68 +59,63 @@ class CustomersExportReport extends AbstractReport
     public function query(array $filters)
     {
         // Subquery for first subscription
-        $firstSubQuery = DB::table('subscriptions as s1')
+        $firstSubQuery = Subscription::query()->toBase()
             ->select([
-                's1.user_id',
-                DB::raw('MIN(s1.created_at) as first_sub_date'),
+                'subscriptions.user_id',
+                DB::raw('MIN(subscriptions.created_at) as first_sub_date'),
             ])
-            ->groupBy('s1.user_id');
+            ->groupBy('subscriptions.user_id');
 
         // Subquery for current active subscription
-        $currentSubQuery = DB::table('subscriptions as s2')
+        $currentSubQuery = Subscription::query()->toBase()
             ->select([
-                's2.user_id',
-                's2.status',
-                's2.plan_id as current_plan_id',
-                DB::raw('MAX(s2.created_at) as current_sub_date'),
+                'subscriptions.user_id',
+                'subscriptions.status',
+                'subscriptions.plan_id as current_plan_id',
+                DB::raw('MAX(subscriptions.created_at) as current_sub_date'),
             ])
-            ->where('s2.status', AppStatus::ACTIVE->value)
-            ->whereNull('s2.canceled_at')
-            ->groupBy('s2.user_id', 's2.status', 's2.plan_id');
+            ->where('subscriptions.status', AppStatus::ACTIVE->value)
+            ->whereNull('subscriptions.canceled_at')
+            ->groupBy('subscriptions.user_id', 'subscriptions.status', 'subscriptions.plan_id');
 
         // Subquery for subscription counts
-        $subCountQuery = DB::table('subscriptions as s3')
+        $subCountQuery = Subscription::query()->toBase()
             ->select([
-                's3.user_id',
+                'subscriptions.user_id',
                 DB::raw('COUNT(*) as total_subs'),
             ])
-            ->groupBy('s3.user_id');
+            ->groupBy('subscriptions.user_id');
 
         // Subquery for order stats
-        $orderStatsQuery = DB::table('orders as o')
+        $orderStatsQuery = Coderstm::$orderModel::query()->toBase()
             ->select([
-                'o.customer_id',
+                'orders.customer_id',
                 DB::raw('COUNT(*) as total_orders'),
-                DB::raw('COALESCE(SUM(CASE WHEN o.payment_status = "paid" THEN o.grand_total ELSE 0 END), 0) as total_revenue'),
+                DB::raw('COALESCE(SUM(CASE WHEN orders.payment_status = "paid" THEN orders.grand_total ELSE 0 END), 0) as total_revenue'),
             ])
-            ->groupBy('o.customer_id');
+            ->groupBy('orders.customer_id');
 
         // Subquery for MRR/LTV calculation (active subscriptions with plan prices)
-        $mrrQuery = DB::table('subscriptions as s4')
-            ->join('plans', 's4.plan_id', '=', 'plans.id')
+        $mrrQuery = Subscription::query()->toBase()
+            ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->select([
-                's4.user_id',
-                DB::raw('SUM(plans.price * COALESCE(s4.quantity, 1)) as mrr'),
+                'subscriptions.user_id',
+                DB::raw('SUM(plans.price * COALESCE(subscriptions.quantity, 1)) as mrr'),
             ])
-            ->whereNull('s4.canceled_at')
+            ->whereNull('subscriptions.canceled_at')
             ->where(function ($q) {
-                $q->whereNull('s4.expires_at')
-                    ->orWhere('s4.expires_at', '>', now());
+                $q->whereNull('subscriptions.expires_at')
+                    ->orWhere('subscriptions.expires_at', '>', now());
             })
-            ->groupBy('s4.user_id');
+            ->groupBy('subscriptions.user_id');
 
-        return DB::table('users')
-            ->leftJoin(DB::raw("({$firstSubQuery->toSql()}) as first_sub"), 'users.id', '=', 'first_sub.user_id')
-            ->mergeBindings($firstSubQuery)
-            ->leftJoin(DB::raw("({$currentSubQuery->toSql()}) as current_sub"), 'users.id', '=', 'current_sub.user_id')
-            ->mergeBindings($currentSubQuery)
+        return Coderstm::$userModel::query()->toBase()
+            ->leftJoinSub($firstSubQuery, 'first_sub', 'users.id', '=', 'first_sub.user_id')
+            ->leftJoinSub($currentSubQuery, 'current_sub', 'users.id', '=', 'current_sub.user_id')
             ->leftJoin('plans as current_plan', 'current_sub.current_plan_id', '=', 'current_plan.id')
-            ->leftJoin(DB::raw("({$subCountQuery->toSql()}) as sub_counts"), 'users.id', '=', 'sub_counts.user_id')
-            ->mergeBindings($subCountQuery)
-            ->leftJoin(DB::raw("({$orderStatsQuery->toSql()}) as order_stats"), 'users.id', '=', 'order_stats.customer_id')
-            ->mergeBindings($orderStatsQuery)
-            ->leftJoin(DB::raw("({$mrrQuery->toSql()}) as mrr_calc"), 'users.id', '=', 'mrr_calc.user_id')
-            ->mergeBindings($mrrQuery)
+            ->leftJoinSub($subCountQuery, 'sub_counts', 'users.id', '=', 'sub_counts.user_id')
+            ->leftJoinSub($orderStatsQuery, 'order_stats', 'users.id', '=', 'order_stats.customer_id')
+            ->leftJoinSub($mrrQuery, 'mrr_calc', 'users.id', '=', 'mrr_calc.user_id')
             ->select([
                 'users.id',
                 'users.email',

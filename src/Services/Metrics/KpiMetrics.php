@@ -216,7 +216,7 @@ class KpiMetrics extends MetricsCalculator
      */
     protected function calculateMrr(Carbon $date): float
     {
-        return DB::table('subscriptions')
+        return Subscription::query()->toBase()
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->where('subscriptions.status', SubscriptionStatus::ACTIVE)
             ->where('subscriptions.created_at', '<=', $date)
@@ -240,7 +240,7 @@ class KpiMetrics extends MetricsCalculator
      */
     protected function getMrrByPlan(Carbon $date): array
     {
-        return DB::table('subscriptions')
+        return Subscription::query()->toBase()
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->select('plans.label as plan', DB::raw("
                 SUM(CASE plans.interval
@@ -271,7 +271,7 @@ class KpiMetrics extends MetricsCalculator
      */
     protected function getMrrByInterval(Carbon $date): array
     {
-        return DB::table('subscriptions')
+        return Subscription::query()->toBase()
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->select(
                 'plans.interval',
@@ -379,7 +379,7 @@ class KpiMetrics extends MetricsCalculator
     protected function calculateRevenueChurn(Carbon $start, Carbon $end): array
     {
         $mrrStart = $this->calculateMrr($start);
-        $lostMrr = DB::table('subscriptions')
+        $lostMrr = Subscription::query()->toBase()
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->whereBetween('subscriptions.canceled_at', [$start, $end])
             ->sum(DB::raw("

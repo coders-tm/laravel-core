@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Acquisition;
 
 use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -63,13 +64,13 @@ class TrialConversionReport extends AbstractReport
             return $this->emptyQuery();
         }
 
-        // Database-agnostic date diff expression
         $daysExpression = $this->dbDateDiff('subscriptions.trial_ends_at', 'subscriptions.created_at');
+        $subscriptionsQuery = Subscription::query()->select('*');
 
         // Main query with aggregations
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin('subscriptions', function ($join) {
+            ->leftJoinSub($subscriptionsQuery, 'subscriptions', function ($join) {
                 $join->whereRaw('subscriptions.created_at >= periods.period_start')
                     ->whereRaw('subscriptions.created_at <= periods.period_end')
                     ->whereNotNull('subscriptions.trial_ends_at');
@@ -122,7 +123,7 @@ class TrialConversionReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $summary = DB::table('subscriptions')
+        $summary = Subscription::query()->toBase()
             ->whereNotNull('trial_ends_at')
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->selectRaw('

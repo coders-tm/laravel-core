@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Exports;
 
+use Coderstm\Models\Payment;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -56,7 +57,7 @@ class PaymentsExportReport extends AbstractReport
      */
     public function query(array $filters)
     {
-        return DB::table('payments')
+        return Payment::query()->toBase()
             ->leftJoin('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.id')
             ->select([
                 'payments.id',
@@ -111,7 +112,7 @@ class PaymentsExportReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('payments')
+        $stats = Payment::query()->toBase()
             ->select([DB::raw('COUNT(*) as total_payments')])
             ->first();
 

@@ -4,6 +4,7 @@ namespace Coderstm\Services\Metrics;
 
 use Carbon\Carbon;
 use Coderstm\Coderstm;
+use Coderstm\Models\Payment;
 use Coderstm\Models\Subscription;
 use Illuminate\Support\Facades\DB;
 
@@ -67,7 +68,7 @@ class OrderMetrics extends MetricsCalculator
     public function getMRR(): float
     {
         return $this->remember('mrr', function () {
-            return DB::table('orders')
+            return Coderstm::$orderModel::query()->toBase()
                 ->join('subscriptions', function ($join) {
                     $join->on('orders.orderable_id', '=', 'subscriptions.id')
                         ->where('orders.orderable_type', Subscription::class);
@@ -107,7 +108,7 @@ class OrderMetrics extends MetricsCalculator
     public function getARPU(): float
     {
         return $this->remember('arpu', function () {
-            $totalRevenue = DB::table('orders')
+            $totalRevenue = Coderstm::$orderModel::query()->toBase()
                 ->join('subscriptions', function ($join) {
                     $join->on('orders.orderable_id', '=', 'subscriptions.id')
                         ->where('orders.orderable_type', Subscription::class);
@@ -115,7 +116,7 @@ class OrderMetrics extends MetricsCalculator
                 ->where('orders.payment_status', 'paid')
                 ->sum('orders.grand_total') ?? 0.0;
 
-            $totalUsers = DB::table('subscriptions')
+            $totalUsers = Subscription::query()->toBase()
                 ->distinct('user_id')
                 ->count('user_id');
 
@@ -370,8 +371,8 @@ class OrderMetrics extends MetricsCalculator
         return $this->remember('items_per_order', function () {
             $range = $this->getDateRange();
 
-            $totalItems = DB::table('line_items')
-                ->join('orders', 'line_items.itemable_id', '=', 'orders.id')
+            $totalItems = Coderstm::$orderModel::query()->toBase()
+                ->join('line_items', 'line_items.itemable_id', '=', 'orders.id')
                 ->where('line_items.itemable_type', Coderstm::$orderModel)
                 ->whereBetween('orders.created_at', [$range['start'], $range['end']])
                 ->sum('line_items.quantity') ?? 0;
@@ -447,8 +448,8 @@ class OrderMetrics extends MetricsCalculator
         return $this->remember("top_discount_codes_{$limit}", function () use ($limit) {
             $range = $this->getDateRange();
 
-            return DB::table('discount_lines')
-                ->join('orders', function ($join) {
+            return Coderstm::$orderModel::query()->toBase()
+                ->join('discount_lines', function ($join) {
                     $join->on('discount_lines.discountable_id', '=', 'orders.id')
                         ->where('discount_lines.discountable_type', Coderstm::$orderModel);
                 })
@@ -476,8 +477,8 @@ class OrderMetrics extends MetricsCalculator
         return $this->remember("top_products_revenue_{$limit}", function () use ($limit) {
             $range = $this->getDateRange();
 
-            return DB::table('line_items')
-                ->join('orders', function ($join) {
+            return Coderstm::$orderModel::query()->toBase()
+                ->join('line_items', function ($join) {
                     $join->on('line_items.itemable_id', '=', 'orders.id')
                         ->where('line_items.itemable_type', Coderstm::$orderModel);
                 })
@@ -506,8 +507,8 @@ class OrderMetrics extends MetricsCalculator
         return $this->remember("top_products_units_{$limit}", function () use ($limit) {
             $range = $this->getDateRange();
 
-            return DB::table('line_items')
-                ->join('orders', function ($join) {
+            return Coderstm::$orderModel::query()->toBase()
+                ->join('line_items', function ($join) {
                     $join->on('line_items.itemable_id', '=', 'orders.id')
                         ->where('line_items.itemable_type', Coderstm::$orderModel);
                 })
@@ -565,7 +566,7 @@ class OrderMetrics extends MetricsCalculator
         return $this->remember('by_payment_method', function () {
             $range = $this->getDateRange();
 
-            return DB::table('payments')
+            return Payment::query()->toBase()
                 ->join('payment_methods', 'payments.payment_method_id', '=', 'payment_methods.id')
                 ->join('orders', function ($join) {
                     $join->on('payments.paymentable_id', '=', 'orders.id')

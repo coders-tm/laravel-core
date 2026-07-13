@@ -3,6 +3,8 @@
 namespace Coderstm\Services\Reports\Retention;
 
 use Carbon\Carbon;
+use Coderstm\Coderstm;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -63,27 +65,33 @@ class MrrChurnReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        $subsStartingQuery = Subscription::query()->select('*');
+        $subsEndingQuery = Subscription::query()->select('*');
+        $subsChurnedQuery = Subscription::query()->select('*');
+        $subsNewQuery = Subscription::query()->select('*');
+        $plansQuery = Coderstm::$planModel::query()->select('*');
+
         // Single query with all MRR calculations using CASE statements
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('subscriptions as subs_starting'), function ($join) {
+            ->leftJoinSub($subsStartingQuery, 'subs_starting', function ($join) {
                 $join->whereRaw('subs_starting.created_at < periods.period_start')
                     ->whereRaw('(subs_starting.canceled_at IS NULL OR subs_starting.canceled_at >= periods.period_start)');
             })
-            ->leftJoin(DB::raw('plans as plans_starting'), 'subs_starting.plan_id', '=', 'plans_starting.id')
-            ->leftJoin(DB::raw('subscriptions as subs_ending'), function ($join) {
+            ->leftJoinSub($plansQuery, 'plans_starting', 'subs_starting.plan_id', '=', 'plans_starting.id')
+            ->leftJoinSub($subsEndingQuery, 'subs_ending', function ($join) {
                 $join->whereRaw('subs_ending.created_at <= periods.period_end')
                     ->whereRaw('(subs_ending.canceled_at IS NULL OR subs_ending.canceled_at > periods.period_end)');
             })
-            ->leftJoin(DB::raw('plans as plans_ending'), 'subs_ending.plan_id', '=', 'plans_ending.id')
-            ->leftJoin(DB::raw('subscriptions as subs_churned'), function ($join) {
+            ->leftJoinSub($plansQuery, 'plans_ending', 'subs_ending.plan_id', '=', 'plans_ending.id')
+            ->leftJoinSub($subsChurnedQuery, 'subs_churned', function ($join) {
                 $join->whereRaw('subs_churned.canceled_at BETWEEN periods.period_start AND periods.period_end');
             })
-            ->leftJoin(DB::raw('plans as plans_churned'), 'subs_churned.plan_id', '=', 'plans_churned.id')
-            ->leftJoin(DB::raw('subscriptions as subs_new'), function ($join) {
+            ->leftJoinSub($plansQuery, 'plans_churned', 'subs_churned.plan_id', '=', 'plans_churned.id')
+            ->leftJoinSub($subsNewQuery, 'subs_new', function ($join) {
                 $join->whereRaw('subs_new.created_at BETWEEN periods.period_start AND periods.period_end');
             })
-            ->leftJoin(DB::raw('plans as plans_new'), 'subs_new.plan_id', '=', 'plans_new.id')
+            ->leftJoinSub($plansQuery, 'plans_new', 'subs_new.plan_id', '=', 'plans_new.id')
             ->select([
                 'periods.period_start',
                 'periods.period_order',
@@ -173,7 +181,7 @@ class MrrChurnReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $currentMrr = DB::table('subscriptions')
+        $currentMrr = Subscription::query()->toBase()
             ->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->whereNull('subscriptions.canceled_at')
             ->where(function ($q) use ($now) {

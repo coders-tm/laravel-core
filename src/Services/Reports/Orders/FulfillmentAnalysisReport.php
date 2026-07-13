@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Orders;
 
 use Carbon\Carbon;
+use Coderstm\Coderstm;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -72,10 +73,12 @@ class FulfillmentAnalysisReport extends AbstractReport
         $fulfillmentHours = $this->dbDateDiff('orders.shipped_at', 'orders.created_at');
         $deliveryDays = $this->dbDateDiff('orders.delivered_at', 'orders.shipped_at');
 
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+
         // Single query with all metrics
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('orders'), function ($join) {
+            ->leftJoinSub($ordersQuery, 'orders', function ($join) {
                 $join->whereRaw('orders.created_at BETWEEN periods.period_start AND periods.period_end');
             })
             ->select([
@@ -131,7 +134,7 @@ class FulfillmentAnalysisReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('orders')
+        $stats = Coderstm::$orderModel::query()->toBase()
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->selectRaw("
                 COUNT(*) as total_orders,

@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Retention;
 
 use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -69,19 +70,21 @@ class CustomerChurnReport extends AbstractReport
             ->select([
                 'periods.period_start',
                 'periods.period_order',
-                DB::raw('(
+                DB::raw("(
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at < periods.period_start
                     AND (canceled_at IS NULL OR canceled_at >= periods.period_start)
-                ) as starting_customers'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as starting_customers"),
+                DB::raw("(
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
                     AND (canceled_at IS NULL OR canceled_at > periods.period_end)
-                ) as ending_customers'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as ending_customers"),
+                DB::raw("(
                     SELECT COUNT(DISTINCT new_subs.user_id)
                     FROM subscriptions as new_subs
                     WHERE new_subs.created_at BETWEEN periods.period_start AND periods.period_end
@@ -90,9 +93,11 @@ class CustomerChurnReport extends AbstractReport
                         FROM subscriptions as prior_subs
                         WHERE prior_subs.user_id = new_subs.user_id
                         AND prior_subs.created_at < periods.period_start
+                        {$this->scopeClause()}
                     )
-                ) as new_customers'),
-                DB::raw('(
+                    {$this->scopeClause()}
+                ) as new_customers"),
+                DB::raw("(
                     SELECT COUNT(DISTINCT churned_subs.user_id)
                     FROM subscriptions as churned_subs
                     WHERE churned_subs.canceled_at BETWEEN periods.period_start AND periods.period_end
@@ -101,8 +106,10 @@ class CustomerChurnReport extends AbstractReport
                         FROM subscriptions as active_subs
                         WHERE active_subs.user_id = churned_subs.user_id
                         AND (active_subs.canceled_at IS NULL OR active_subs.canceled_at > periods.period_end)
+                        {$this->scopeClause()}
                     )
-                ) as churned_customers'),
+                    {$this->scopeClause()}
+                ) as churned_customers"),
             ])
             ->groupBy('periods.period_start', 'periods.period_end', 'periods.period_order')
             ->orderBy('periods.period_order');
@@ -141,7 +148,7 @@ class CustomerChurnReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $activeCustomers = DB::table('subscriptions')
+        $activeCustomers = Subscription::query()->toBase()
             ->whereNull('canceled_at')
             ->where(function ($q) use ($now) {
                 $q->whereNull('expires_at')

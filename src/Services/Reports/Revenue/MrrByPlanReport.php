@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Revenue;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -74,7 +75,7 @@ class MrrByPlanReport extends AbstractReport
                     THEN subscriptions.quantity
                 END), 0) as total_quantity"),
             ])
-            ->leftJoin('subscriptions', 'plans.id', '=', 'subscriptions.plan_id')
+            ->leftJoinSub(Subscription::query()->select('*'), 'subscriptions', 'plans.id', '=', 'subscriptions.plan_id')
             ->where('plans.is_active', true)
             ->groupBy('plans.id', 'plans.label', 'plans.slug', 'plans.interval', 'plans.interval_count', 'plans.price', 'plans.is_active', 'plans.created_at', 'plans.updated_at');
 

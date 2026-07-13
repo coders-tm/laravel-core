@@ -75,11 +75,12 @@ class PaymentPerformanceReport extends AbstractReport
 
         $completedStatus = Payment::STATUS_COMPLETED;
         $failedStatus = Payment::STATUS_FAILED;
+        $paymentsQuery = Payment::query()->select('*');
 
         // Single query with all metrics
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('payments'), function ($join) {
+            ->leftJoinSub($paymentsQuery, 'payments', function ($join) {
                 $join->whereRaw('payments.created_at BETWEEN periods.period_start AND periods.period_end');
             })
             ->select([
@@ -136,7 +137,7 @@ class PaymentPerformanceReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('payments')
+        $stats = Payment::query()->toBase()
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->selectRaw('
                 COUNT(*) as total_payments,

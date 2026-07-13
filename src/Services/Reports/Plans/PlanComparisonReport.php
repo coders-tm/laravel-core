@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Plans;
 
+use Coderstm\Models\Subscription\Plan;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -75,7 +76,7 @@ class PlanComparisonReport extends AbstractReport
         $to = $filters['to'];
         $from = $filters['from'];
 
-        return DB::table('plans')
+        return Plan::query()->toBase()
             ->leftJoin('subscriptions', 'subscriptions.plan_id', '=', 'plans.id')
             ->select([
                 'plans.id as plan_id',
@@ -167,7 +168,7 @@ class PlanComparisonReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $summary = DB::table('plans')
+        $summary = Plan::query()->toBase()
             ->leftJoin('subscriptions', function ($join) use ($filters) {
                 $join->on('subscriptions.plan_id', '=', 'plans.id')
                     ->whereNull('subscriptions.canceled_at')
@@ -181,7 +182,7 @@ class PlanComparisonReport extends AbstractReport
             ->first();
 
         // Calculate actual total MRR
-        $totalMrr = DB::table('plans')
+        $totalMrr = Plan::query()->toBase()
             ->leftJoin('subscriptions', function ($join) use ($filters) {
                 $join->on('subscriptions.plan_id', '=', 'plans.id')
                     ->whereNull('subscriptions.canceled_at')

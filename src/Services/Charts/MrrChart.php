@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Charts;
 
+use Coderstm\Models\Subscription;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,7 @@ class MrrChart extends AbstractChart
         for ($i = 0; $i < count($labels); $i++) {
             $date = Carbon::now()->subMonths($this->months - 1 - $i)->endOfMonth();
 
-            $mrr = DB::table('subscriptions')
+            $mrr = Subscription::query()->toBase()
                 ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
                 ->where('subscriptions.status', 'active')
                 ->where('subscriptions.created_at', '<=', $date)

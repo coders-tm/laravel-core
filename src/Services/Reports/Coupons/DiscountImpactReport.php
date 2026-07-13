@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Coupons;
 
 use Carbon\Carbon;
+use Coderstm\Coderstm;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -68,13 +69,15 @@ class DiscountImpactReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+
         // Single query with LEFT JOIN and period aggregation
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('orders'), function ($join) {
+            ->leftJoinSub($ordersQuery, 'orders', function ($join) {
                 $join->whereRaw('orders.created_at BETWEEN periods.period_start AND periods.period_end');
             })
-            ->leftJoin(DB::raw('discount_lines'), function ($join) {
+            ->leftJoin('discount_lines', function ($join) {
                 $join->on('discount_lines.discountable_id', '=', 'orders.id')
                     ->whereRaw("discount_lines.discountable_type LIKE '%Order%'");
             })
@@ -137,8 +140,8 @@ class DiscountImpactReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('orders')
-            ->leftJoin(DB::raw('discount_lines'), function ($join) {
+        $stats = Coderstm::$orderModel::query()->toBase()
+            ->leftJoin('discount_lines', function ($join) {
                 $join->on('discount_lines.discountable_id', '=', 'orders.id')
                     ->where('discount_lines.discountable_type', 'like', '%Order%');
             })

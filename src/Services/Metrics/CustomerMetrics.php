@@ -121,7 +121,7 @@ class CustomerMetrics extends MetricsCalculator
         return $this->remember('repeat_purchase_rate', function () {
             $range = $this->getDateRange();
 
-            $customersWithOrders = DB::table('orders')
+            $customersWithOrders = Coderstm::$orderModel::query()->toBase()
                 ->where('payment_status', 'paid')
                 ->whereBetween('created_at', [$range['start'], $range['end']])
                 ->distinct('customer_id')
@@ -131,7 +131,7 @@ class CustomerMetrics extends MetricsCalculator
                 return 0.0;
             }
 
-            $repeatCustomers = DB::table('orders')
+            $repeatCustomers = Coderstm::$orderModel::query()->toBase()
                 ->select('customer_id')
                 ->where('payment_status', 'paid')
                 ->whereBetween('created_at', [$range['start'], $range['end']])
@@ -173,18 +173,18 @@ class CustomerMetrics extends MetricsCalculator
     public function getCLV(): float
     {
         return $this->remember('clv', function () {
-            $avgRevenue = DB::table('users')
+            $userRevenueQuery = Coderstm::$userModel::query()->toBase()
+                ->select('users.id')
+                ->selectRaw('COALESCE(SUM(orders.grand_total), 0) as total_revenue')
+                ->leftJoin('orders', function ($join) {
+                    $join->on('users.id', '=', 'orders.customer_id')
+                        ->where('orders.payment_status', 'paid');
+                })
+                ->groupBy('users.id');
+
+            $avgRevenue = DB::query()
                 ->select(DB::raw('AVG(total_revenue) as avg_revenue'))
-                ->fromSub(function ($query) {
-                    $query->from('users')
-                        ->select('users.id')
-                        ->selectRaw('COALESCE(SUM(orders.grand_total), 0) as total_revenue')
-                        ->leftJoin('orders', function ($join) {
-                            $join->on('users.id', '=', 'orders.customer_id')
-                                ->where('orders.payment_status', 'paid');
-                        })
-                        ->groupBy('users.id');
-                }, 'user_revenues')
+                ->fromSub($userRevenueQuery, 'user_revenues')
                 ->value('avg_revenue');
 
             return round($avgRevenue ?? 0, 2);
@@ -197,9 +197,16 @@ class CustomerMetrics extends MetricsCalculator
     public function getSegments(): array
     {
         return $this->remember('segments', function () {
+            $customerTotalsQuery = Coderstm::$userModel::query()->toBase()
+                ->select('users.id')
+                ->selectRaw('COALESCE(SUM(orders.grand_total), 0) as total_spent')
+                ->leftJoin('orders', function ($join) {
+                    $join->on('users.id', '=', 'orders.customer_id')
+                        ->where('orders.payment_status', 'paid');
+                })
+                ->groupBy('users.id');
 
-            // Get customers with order totals
-            $segments = DB::table('users')
+            $segments = DB::query()
                 ->select(
                     DB::raw('CASE
                         WHEN total_spent >= 1000 THEN "high_value"
@@ -209,16 +216,7 @@ class CustomerMetrics extends MetricsCalculator
                     END as segment'),
                     DB::raw('COUNT(*) as count')
                 )
-                ->fromSub(function ($query) {
-                    $query->from('users')
-                        ->select('users.id')
-                        ->selectRaw('COALESCE(SUM(orders.grand_total), 0) as total_spent')
-                        ->leftJoin('orders', function ($join) {
-                            $join->on('users.id', '=', 'orders.customer_id')
-                                ->where('orders.payment_status', 'paid');
-                        })
-                        ->groupBy('users.id');
-                }, 'customer_totals')
+                ->fromSub($customerTotalsQuery, 'customer_totals')
                 ->groupBy('segment')
                 ->get()
                 ->pluck('count', 'segment')
@@ -323,7 +321,7 @@ class CustomerMetrics extends MetricsCalculator
 
     protected function repeatRateBetween(Carbon $start, Carbon $end): float
     {
-        $customersWithOrders = DB::table('orders')
+        $customersWithOrders = Coderstm::$orderModel::query()->toBase()
             ->where('payment_status', 'paid')
             ->whereBetween('created_at', [$start, $end])
             ->distinct('customer_id')
@@ -333,7 +331,7 @@ class CustomerMetrics extends MetricsCalculator
             return 0.0;
         }
 
-        $repeatCustomers = DB::table('orders')
+        $repeatCustomers = Coderstm::$orderModel::query()->toBase()
             ->select('customer_id')
             ->where('payment_status', 'paid')
             ->whereBetween('created_at', [$start, $end])

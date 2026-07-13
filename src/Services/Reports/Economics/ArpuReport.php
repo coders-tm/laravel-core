@@ -3,7 +3,9 @@
 namespace Coderstm\Services\Reports\Economics;
 
 use Carbon\Carbon;
+use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -65,14 +67,17 @@ class ArpuReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+        $subscriptionsQuery = Subscription::query()->select('*');
+
         // Single query with LEFT JOINs for revenue and active users
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('orders'), function ($join) {
+            ->leftJoinSub($ordersQuery, 'orders', function ($join) {
                 $join->whereRaw('DATE(orders.created_at) BETWEEN DATE(periods.period_start) AND DATE(periods.period_end)')
                     ->whereRaw("orders.payment_status = '".Order::STATUS_PAID."'"); // Literal to avoid binding order corruption
             })
-            ->leftJoin(DB::raw('subscriptions'), function ($join) {
+            ->leftJoinSub($subscriptionsQuery, 'subscriptions', function ($join) {
                 $join->whereRaw('DATE(subscriptions.created_at) <= DATE(periods.period_end)')
                     ->whereRaw('subscriptions.canceled_at IS NULL')
                     ->where(function ($q) {
@@ -123,12 +128,12 @@ class ArpuReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $totalRevenue = DB::table('orders')
+        $totalRevenue = Coderstm::$orderModel::query()->toBase()
             ->where('payment_status', Order::STATUS_PAID)
             ->whereBetween('created_at', [$filters['from'], $filters['to']])
             ->sum('grand_total');
 
-        $activeUsers = DB::table('subscriptions')
+        $activeUsers = Subscription::query()->toBase()
             ->where('created_at', '<=', $filters['to'])
             ->where(function ($q) use ($filters) {
                 $q->whereNull('expires_at')

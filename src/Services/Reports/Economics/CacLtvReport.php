@@ -3,7 +3,9 @@
 namespace Coderstm\Services\Reports\Economics;
 
 use Carbon\Carbon;
+use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -66,13 +68,16 @@ class CacLtvReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        $subscriptionsQuery = Subscription::query()->select('*');
+        $ordersQuery = Coderstm::$orderModel::query()->select('*');
+
         // Single query with customer and revenue aggregation
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin(DB::raw('subscriptions'), function ($join) {
+            ->leftJoinSub($subscriptionsQuery, 'subscriptions', function ($join) {
                 $join->whereRaw('subscriptions.created_at BETWEEN periods.period_start AND periods.period_end');
             })
-            ->leftJoin(DB::raw('orders'), function ($join) {
+            ->leftJoinSub($ordersQuery, 'orders', function ($join) {
                 $join->on('orders.customer_id', '=', 'subscriptions.user_id')
                     ->whereRaw("orders.payment_status = '".Order::STATUS_PAID."'"); // Literal to avoid binding order corruption
             })
@@ -134,7 +139,7 @@ class CacLtvReport extends AbstractReport
      */
     public function summarize(array $filters): array
     {
-        $stats = DB::table('subscriptions')
+        $stats = Subscription::query()->toBase()
             ->leftJoin('orders', function ($join) {
                 $join->on('orders.customer_id', '=', 'subscriptions.user_id')
                     ->where('orders.payment_status', '=', Order::STATUS_PAID);

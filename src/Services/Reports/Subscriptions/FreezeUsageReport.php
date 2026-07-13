@@ -3,6 +3,7 @@
 namespace Coderstm\Services\Reports\Subscriptions;
 
 use Carbon\Carbon;
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -62,24 +63,30 @@ class FreezeUsageReport extends AbstractReport
             return $this->emptyQuery();
         }
 
+        // Scoped subscription base query for each aliased join
+        $freezeSubsQuery = Subscription::query()->select('*');
+        $releaseSubsQuery = Subscription::query()->select('*');
+        $frozenAtEndQuery = Subscription::query()->select('*');
+        $activeSubsQuery = Subscription::query()->select('*');
+
         // Database-agnostic date diff expression
         $daysExpression = $this->dbDateDiff('release_subs.release_at', 'release_subs.frozen_at');
 
         // Main query with aggregations
         return DB::table(DB::raw("({$periodQuery->toSql()}) as periods"))
             ->mergeBindings($periodQuery)
-            ->leftJoin('subscriptions as freeze_subs', function ($join) {
+            ->leftJoinSub($freezeSubsQuery, 'freeze_subs', function ($join) {
                 $join->whereNotNull('freeze_subs.frozen_at')
                     ->whereRaw('freeze_subs.frozen_at >= periods.period_start')
                     ->whereRaw('freeze_subs.frozen_at <= periods.period_end');
             })
-            ->leftJoin('subscriptions as release_subs', function ($join) {
+            ->leftJoinSub($releaseSubsQuery, 'release_subs', function ($join) {
                 $join->whereNotNull('release_subs.release_at')
                     ->whereNotNull('release_subs.frozen_at')
                     ->whereRaw('release_subs.release_at >= periods.period_start')
                     ->whereRaw('release_subs.release_at <= periods.period_end');
             })
-            ->leftJoin('subscriptions as frozen_at_end', function ($join) {
+            ->leftJoinSub($frozenAtEndQuery, 'frozen_at_end', function ($join) {
                 $join->whereNotNull('frozen_at_end.frozen_at')
                     ->whereRaw('frozen_at_end.frozen_at <= periods.period_end')
                     ->where(function ($q) {
@@ -87,7 +94,7 @@ class FreezeUsageReport extends AbstractReport
                             ->orWhereRaw('frozen_at_end.release_at > periods.period_end');
                     });
             })
-            ->leftJoin('subscriptions as active_subs', function ($join) {
+            ->leftJoinSub($activeSubsQuery, 'active_subs', function ($join) {
                 $join->whereRaw('active_subs.created_at <= periods.period_end')
                     ->whereRaw("active_subs.status = 'active'");
             })
@@ -132,7 +139,7 @@ class FreezeUsageReport extends AbstractReport
     {
         $now = now()->toDateTimeString();
 
-        $currentlyFrozen = DB::table('subscriptions')
+        $currentlyFrozen = Subscription::query()->toBase()
             ->whereNotNull('frozen_at')
             ->where(function ($q) use ($now) {
                 $q->whereNull('release_at')

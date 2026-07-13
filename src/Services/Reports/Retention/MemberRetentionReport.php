@@ -79,25 +79,27 @@ class MemberRetentionReport extends AbstractReport
 
         // Build retention month calculations dynamically
         $selects = [
-            DB::raw('
+            DB::raw("
                 (
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at >= periods.period_start
                     AND created_at <= periods.period_end
+                    {$this->scopeClause()}
                 ) as cohort_label
-            '),
+            "),
             'periods.period_start',
             'periods.period_end',
             'periods.period_order',
-            DB::raw('
+            DB::raw("
                 (
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at >= periods.period_start
                     AND created_at <= periods.period_end
+                    {$this->scopeClause()}
                 ) as initial_count
-            '),
+            "),
         ];
 
         // Add retention calculations for each month
@@ -124,15 +126,15 @@ class MemberRetentionReport extends AbstractReport
     protected function buildRetentionCalculation(int $months, string $checkDate, string $now): Expression
     {
         // Escape the check date and now for use in raw SQL
-        $checkDateEscaped = str_replace("'", "''", $checkDate);
         $nowEscaped = str_replace("'", "''", $now);
+        $scope = $this->scopeClause();
 
         $sql = "
             CASE
                 WHEN {$checkDate} > '{$nowEscaped}' THEN 0
                 ELSE (
                     SELECT COUNT(DISTINCT cohort_subs.user_id) * 100.0 / NULLIF(
-                        (SELECT COUNT(DISTINCT user_id) FROM subscriptions WHERE created_at >= periods.period_start AND created_at <= periods.period_end),
+                        (SELECT COUNT(DISTINCT user_id) FROM subscriptions WHERE created_at >= periods.period_start AND created_at <= periods.period_end {$scope}),
                         0
                     )
                     FROM subscriptions as cohort_subs
@@ -145,7 +147,9 @@ class MemberRetentionReport extends AbstractReport
                         AND check_subs.created_at <= {$checkDate}
                         AND (check_subs.canceled_at IS NULL OR check_subs.canceled_at > {$checkDate})
                         AND (check_subs.expires_at IS NULL OR check_subs.expires_at > {$checkDate})
+                        {$scope}
                     )
+                    {$scope}
                 )
             END as month_{$months}
         ";

@@ -2,6 +2,7 @@
 
 namespace Coderstm\Services\Reports\Subscriptions;
 
+use Coderstm\Models\Subscription;
 use Coderstm\Services\Reports\AbstractReport;
 use Illuminate\Support\Facades\DB;
 
@@ -56,7 +57,7 @@ class RenewalForecastReport extends AbstractReport
         // Database-agnostic DATE extraction
         $dateExtract = $this->dbDateFormat('subscriptions.expires_at', 'Y-m-d');
 
-        return DB::table('subscriptions')
+        return Subscription::query()->toBase()
             ->leftJoin('plans', 'subscriptions.plan_id', '=', 'plans.id')
             ->whereNotNull('subscriptions.expires_at')
             ->where('subscriptions.expires_at', '>=', $now)
@@ -108,7 +109,7 @@ class RenewalForecastReport extends AbstractReport
         $now = now()->toDateTimeString();
         $next30Days = now()->addDays(30)->toDateTimeString();
 
-        $totalRenewals = DB::table('subscriptions')
+        $totalRenewals = Subscription::query()->toBase()
             ->whereNotNull('expires_at')
             ->whereRaw('expires_at >= ?', [$now])
             ->whereRaw('expires_at <= ?', [$next30Days])
