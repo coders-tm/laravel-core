@@ -16,7 +16,6 @@ use Coderstm\Services\Reports\Exports\OrdersExportReport;
 use Coderstm\Services\Reports\Exports\PaymentsExportReport;
 use Coderstm\Services\Reports\Exports\SubscriptionsExportReport;
 use Coderstm\Services\Reports\Exports\UsersExportReport;
-use Coderstm\Services\Reports\Orders\FulfillmentAnalysisReport;
 use Coderstm\Services\Reports\Orders\PaymentPerformanceReport;
 use Coderstm\Services\Reports\Orders\RefundAnalysisReport;
 use Coderstm\Services\Reports\Orders\SalesSummaryReport;
@@ -91,7 +90,6 @@ class ReportService
         // Order & Sales Reports
         'sales-summary' => SalesSummaryReport::class,
         'payment-performance' => PaymentPerformanceReport::class,
-        'fulfillment-analysis' => FulfillmentAnalysisReport::class,
         'refund-analysis' => RefundAnalysisReport::class,
         'tax-summary' => TaxSummaryReport::class,
 
