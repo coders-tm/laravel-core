@@ -94,10 +94,6 @@ trait HasFeature
             return false;
         }
 
-        if ($subscriptionFeature->resetable) {
-            $subscriptionFeature->used = 0;
-        }
-
         return $subscriptionFeature->recordUsage($uses, $incremental);
     }
 

@@ -148,6 +148,46 @@ class SubscriptionFeatureTest extends TestCase
         $this->assertEquals(7, $subscription->getFeatureRemainings($feature->slug));
     }
 
+    public function test_record_feature_usage_increments_resetable_features_multiple_times()
+    {
+        // Create a resetable feature
+        $feature = Feature::factory()->create([
+            'slug' => 'test-resetable-feature',
+            'type' => 'integer',
+            'resetable' => true,
+        ]);
+
+        $plan = new Plan([
+            'label' => 'Test Plan',
+            'slug' => 'test-plan-resetable',
+            'description' => 'A test plan',
+            'is_active' => true,
+            'default_interval' => 'month',
+            'interval' => 'month',
+            'interval_count' => 1,
+            'price' => 1000,
+            'trial_days' => 0,
+            'options' => null,
+        ]);
+        $plan->save();
+        $plan->features()->attach($feature, ['value' => 10]);
+
+        $subscription = Subscription::factory()->create([
+            'plan_id' => $plan->id,
+        ]);
+        $subscription->update(['status' => 'active']);
+        $subscription->refresh();
+
+        // Record feature usage multiple times
+        $subscription->recordFeatureUsage($feature->slug, 1);
+        $subscription->recordFeatureUsage($feature->slug, 2);
+        $subscription->recordFeatureUsage($feature->slug, 1);
+
+        // Usage should sum up to 4
+        $this->assertEquals(4, $subscription->getFeatureUsage($feature->slug));
+        $this->assertEquals(6, $subscription->getFeatureRemainings($feature->slug));
+    }
+
     public function test_reduce_feature_usage_works_with_subscription_features()
     {
         // Create a feature
