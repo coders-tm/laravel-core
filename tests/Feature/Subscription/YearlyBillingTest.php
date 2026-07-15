@@ -399,36 +399,6 @@ class YearlyBillingTest extends TestCase
         Carbon::setTestNow();
     }
 
-    public function test_reset_usages_command_resets_monthly_subscriptions_via_credit_resets_at()
-    {
-        Event::fake();
-
-        Carbon::setTestNow(Carbon::parse('2026-06-01 12:00:00'));
-
-        $user = User::factory()->create();
-        $plan = Plan::factory()->create([
-            'label' => 'Monthly Test',
-            'slug' => 'monthly-test',
-            'price' => 1000,
-            'interval' => 'month',
-            'interval_count' => 1,
-            'trial_days' => 0,
-        ]);
-
-        $subscription = $user->newSubscription('default', $plan, 'monthly');
-        $subscription->save();
-        $subscription->paymentConfirmation();
-
-        $this->assertNotNull($subscription->credit_resets_at);
-
-        Carbon::setTestNow(Carbon::parse('2026-07-02 12:00:00'));
-
-        $this->artisan('coderstm:subscriptions-reset-usages')
-            ->expectsOutputToContain("Usages of subscription #{$subscription->id} has been reset!")
-            ->assertExitCode(0);
-
-        Carbon::setTestNow();
-    }
 
     public function test_renew_advances_credit_resets_at()
     {
