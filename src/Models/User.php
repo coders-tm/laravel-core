@@ -13,10 +13,10 @@ use Coderstm\Traits\Billable;
 use Coderstm\Traits\Core;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\HasApiTokens;
+use Coderstm\Traits\HasDeviceTokens;
 use Coderstm\Traits\HasWallet;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,7 +25,7 @@ use League\ISO3166\ISO3166;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Addressable, Core, Fileable, HasApiTokens, Notifiable;
+    use Addressable, Core, Fileable, HasApiTokens, HasDeviceTokens, Notifiable;
     use Billable, HasWallet;
 
     protected $guard = 'users';
@@ -86,11 +86,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return [$this->email => $this->name];
     }
 
-    public function routeNotificationForFcm(): array
-    {
-        return $this->deviceTokens()->pluck('token')->toArray();
-    }
-
     public function routeNotificationForTwilio()
     {
         return $this->phone_number;
@@ -147,14 +142,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Coderstm::$enquiryModel, 'email', 'email');
     }
 
-    public function deviceTokens(): HasMany
-    {
-        return $this->hasMany(DeviceToken::class);
-    }
-
-    /**
-     * Eager load unread enquiries counts on the User.
-     */
     public function loadUnreadEnquiries()
     {
         return $this->loadCount([
@@ -520,17 +507,6 @@ class User extends Authenticatable implements MustVerifyEmail
     protected static function newFactory()
     {
         return UserFactory::new();
-    }
-
-    public function addDeviceToken(string $deviceToken)
-    {
-        if (! $deviceToken) {
-            throw new \InvalidArgumentException('Device token cannot be empty.');
-        }
-
-        return $this->deviceTokens()->updateOrCreate([
-            'token' => $deviceToken,
-        ]);
     }
 
     protected static function booted()

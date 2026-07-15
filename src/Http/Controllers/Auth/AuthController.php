@@ -262,10 +262,11 @@ class AuthController extends Controller
     {
         $this->validate($request, [
             'device_token' => 'required|string',
+            'app_id' => 'nullable|string',
         ]);
 
         try {
-            user()->addDeviceToken($request->device_token);
+            user()->addDeviceToken($request->device_token, $request->app_id);
         } catch (\Throwable $e) {
             // throw $e;
         }

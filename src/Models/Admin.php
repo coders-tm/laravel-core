@@ -9,6 +9,7 @@ use Coderstm\Traits\Addressable;
 use Coderstm\Traits\Core;
 use Coderstm\Traits\Fileable;
 use Coderstm\Traits\HasApiTokens;
+use Coderstm\Traits\HasDeviceTokens;
 use Coderstm\Traits\HasPermissionGroup;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -20,7 +21,7 @@ use League\ISO3166\ISO3166;
 
 class Admin extends Authenticatable
 {
-    use Addressable, Core, Fileable, HasApiTokens, HasPermissionGroup, Notifiable;
+    use Addressable, Core, Fileable, HasApiTokens, HasDeviceTokens, HasPermissionGroup, Notifiable;
 
     protected $guard = 'admins';
 

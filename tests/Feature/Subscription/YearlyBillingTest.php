@@ -399,7 +399,6 @@ class YearlyBillingTest extends TestCase
         Carbon::setTestNow();
     }
 
-
     public function test_renew_advances_credit_resets_at()
     {
         Carbon::setTestNow(Carbon::parse('2026-06-01 12:00:00'));
