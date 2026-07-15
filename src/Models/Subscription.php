@@ -360,13 +360,13 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         return $this;
     }
 
-    public function advanceCreditResetsAt(): self
+    public function advanceCreditResetsAt($date = null): self
     {
-        if ($this->credit_resets_at && $this->plan) {
+        if ($this->plan) {
             $period = new Period(
                 $this->plan->interval->value,
                 $this->plan->interval_count,
-                $this->credit_resets_at
+                $date ?? $this->credit_resets_at ?? $this->expires_at
             );
             $this->credit_resets_at = $period->getEndDate();
         }

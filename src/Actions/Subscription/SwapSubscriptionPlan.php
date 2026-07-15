@@ -5,6 +5,7 @@ namespace Coderstm\Actions\Subscription;
 use Coderstm\Coderstm;
 use Coderstm\Events\SubscriptionPlanChanged;
 use Coderstm\Models\Subscription;
+use Coderstm\Services\Period;
 
 class SwapSubscriptionPlan
 {
@@ -47,13 +48,20 @@ class SwapSubscriptionPlan
 
         $subscription->setPeriod($billingInterval, $billingIntervalCount, null, true);
 
+        $creditStartDate = $subscription->starts_at ?? now();
+        $creditPeriod = new Period(
+            $newPlan->interval->value,
+            $newPlan->interval_count,
+            $creditStartDate
+        );
+
         $subscription->fill([
             'canceled_at' => null,
             'billing_interval' => $billingInterval,
             'billing_interval_count' => $billingIntervalCount,
             'total_cycles' => $newPlan->contract_cycles,
             'current_cycle' => 0,
-            'credit_resets_at' => null,
+            'credit_resets_at' => $creditPeriod->getEndDate(),
         ])->save();
 
         $subscription->syncFeaturesFromPlan();

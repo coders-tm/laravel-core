@@ -76,13 +76,11 @@ class RenewSubscription
             'expires_at' => $newExpiresAt,
             'ends_at' => $graceEndsAt,
             'trial_ends_at' => null,
-        ])->save();
+        ]);
 
         $subscription->resetUsagesForRenewal();
 
-        if ($subscription->credit_resets_at) {
-            $subscription->advanceCreditResetsAt()->save();
-        }
+        $subscription->advanceCreditResetsAt()->save();
 
         $invoice = app(GenerateSubscriptionInvoice::class)->execute($subscription);
 

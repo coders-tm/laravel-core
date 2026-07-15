@@ -75,15 +75,13 @@ trait ManagesSubscriptions
             $this->getForeignKey() => $this->getKey(),
         ]);
 
-        if ($billing === 'yearly') {
-            $creditStartDate = $isTrial ? $billingStartDate : ($subscription->starts_at ?? now());
-            $creditPeriod = new Period(
-                $plan->interval->value,
-                $plan->interval_count,
-                $creditStartDate
-            );
-            $subscription->credit_resets_at = $creditPeriod->getEndDate();
-        }
+        $creditStartDate = $isTrial ? $billingStartDate : ($subscription->starts_at ?? now());
+        $creditPeriod = new Period(
+            $plan->interval->value,
+            $plan->interval_count,
+            $creditStartDate
+        );
+        $subscription->credit_resets_at = $creditPeriod->getEndDate();
 
         return $subscription;
     }

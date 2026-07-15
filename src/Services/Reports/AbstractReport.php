@@ -460,7 +460,7 @@ abstract class AbstractReport implements ReportInterface
         return match ($granularity) {
             'daily' => $date->format('Y-m-d'),
             'weekly' => $date->format('Y-\WW'),
-            'quarterly' => $date->format('Y-') . 'Q' . $date->quarter,
+            'quarterly' => $date->format('Y-').'Q'.$date->quarter,
             'yearly' => $date->format('Y'),
             default => $date->format('Y-m'),
         };

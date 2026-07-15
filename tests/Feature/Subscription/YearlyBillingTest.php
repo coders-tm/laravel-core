@@ -146,7 +146,7 @@ class YearlyBillingTest extends TestCase
         Carbon::setTestNow();
     }
 
-    public function test_new_subscription_with_monthly_billing_does_not_set_credit_resets_at()
+    public function test_new_subscription_with_monthly_billing_sets_credit_resets_at()
     {
         $user = User::factory()->create();
         $plan = Plan::factory()->create([
@@ -158,7 +158,7 @@ class YearlyBillingTest extends TestCase
         $subscription = $user->newSubscription('default', $plan, 'monthly');
         $subscription->save();
 
-        $this->assertNull($subscription->credit_resets_at);
+        $this->assertNotNull($subscription->credit_resets_at);
     }
 
     public function test_new_subscription_monthly_billing_uses_plan_interval()
@@ -280,7 +280,7 @@ class YearlyBillingTest extends TestCase
         $this->assertNotNull($response['credit_resets_at']);
     }
 
-    public function test_monthly_subscription_to_response_credit_resets_at_is_null()
+    public function test_monthly_subscription_to_response_credit_resets_at_is_not_null()
     {
         $user = User::factory()->create();
         $plan = Plan::factory()->create([
@@ -294,7 +294,7 @@ class YearlyBillingTest extends TestCase
         $response = $subscription->toResponse();
 
         $this->assertArrayHasKey('credit_resets_at', $response);
-        $this->assertNull($response['credit_resets_at']);
+        $this->assertNotNull($response['credit_resets_at']);
     }
 
     public function test_advance_credit_resets_at_moves_to_next_plan_interval()
@@ -327,7 +327,7 @@ class YearlyBillingTest extends TestCase
         Carbon::setTestNow();
     }
 
-    public function test_swap_resets_to_plan_defaults_and_clears_credit_resets_at()
+    public function test_swap_resets_to_plan_defaults_and_updates_credit_resets_at()
     {
         $user = User::factory()->create();
         $plan = Plan::factory()->create([
@@ -355,7 +355,7 @@ class YearlyBillingTest extends TestCase
 
         $this->assertEquals($newPlan->id, $subscription->plan_id);
         $this->assertEquals('month', $subscription->billing_interval);
-        $this->assertNull($subscription->credit_resets_at);
+        $this->assertNotNull($subscription->credit_resets_at);
     }
 
     public function test_reset_usages_command_resets_credit_resets_at_subscriptions()
@@ -399,7 +399,7 @@ class YearlyBillingTest extends TestCase
         Carbon::setTestNow();
     }
 
-    public function test_reset_usages_command_does_not_reset_monthly_subscriptions_via_credit_resets_at()
+    public function test_reset_usages_command_resets_monthly_subscriptions_via_credit_resets_at()
     {
         Event::fake();
 
@@ -411,6 +411,7 @@ class YearlyBillingTest extends TestCase
             'slug' => 'monthly-test',
             'price' => 1000,
             'interval' => 'month',
+            'interval_count' => 1,
             'trial_days' => 0,
         ]);
 
@@ -418,12 +419,12 @@ class YearlyBillingTest extends TestCase
         $subscription->save();
         $subscription->paymentConfirmation();
 
-        $this->assertNull($subscription->credit_resets_at);
+        $this->assertNotNull($subscription->credit_resets_at);
 
-        Carbon::setTestNow(Carbon::parse('2026-07-01 12:00:00'));
+        Carbon::setTestNow(Carbon::parse('2026-07-02 12:00:00'));
 
         $this->artisan('coderstm:subscriptions-reset-usages')
-            ->doesntExpectOutput("Credit usage of subscription #{$subscription->id}")
+            ->expectsOutputToContain("Usages of subscription #{$subscription->id} has been reset!")
             ->assertExitCode(0);
 
         Carbon::setTestNow();

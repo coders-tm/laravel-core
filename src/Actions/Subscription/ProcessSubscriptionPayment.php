@@ -5,7 +5,6 @@ namespace Coderstm\Actions\Subscription;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Events\SubscriptionRenewed;
 use Coderstm\Models\Subscription;
-use Coderstm\Services\Period;
 
 class ProcessSubscriptionPayment
 {
@@ -48,14 +47,8 @@ class ProcessSubscriptionPayment
 
             $subscription->syncUsages();
 
-            if ($subscription->getBillingInterval() === 'year' && ! $subscription->credit_resets_at && $subscription->plan) {
-                $creditPeriod = new Period(
-                    $subscription->plan->interval->value,
-                    $subscription->plan->interval_count,
-                    $subscription->starts_at ?? now()
-                );
-                $subscription->credit_resets_at = $creditPeriod->getEndDate();
-                $subscription->save();
+            if (! $subscription->credit_resets_at) {
+                $subscription->advanceCreditResetsAt($subscription->starts_at ?? now())->save();
             }
         }
 
@@ -74,7 +67,13 @@ class ProcessSubscriptionPayment
         $subscription->fill([
             'status' => SubscriptionStatus::ACTIVE,
             'ends_at' => null,
-        ])->save();
+        ]);
+
+        if (! $subscription->credit_resets_at) {
+            $subscription->advanceCreditResetsAt($subscription->starts_at ?? now());
+        }
+
+        $subscription->save();
 
         return $subscription;
     }

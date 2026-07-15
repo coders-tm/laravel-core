@@ -11,18 +11,10 @@ class ResetUsages extends Command
 {
     protected $signature = 'coderstm:subscriptions-reset-usages';
 
-    protected $description = 'Reset the subscription usages for expired subscriptions and credit reset schedules';
+    protected $description = 'Reset the subscription usages for credit reset schedules';
 
     public function handle()
     {
-        $subscriptions = Coderstm::$subscriptionModel::query()
-            ->active()
-            ->where('expires_at', '<=', now());
-
-        foreach ($subscriptions->cursor() as $subscription) {
-            $this->resetSubscriptionUsages($subscription);
-        }
-
         $creditResetSubscriptions = Coderstm::$subscriptionModel::query()
             ->active()
             ->whereNotNull('credit_resets_at')
