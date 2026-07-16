@@ -24,6 +24,6 @@ class AppSettingPolicy
      */
     public function update(Model $admin): bool
     {
-        return $admin->can('settings:edit');
+        return $admin->canAny(['settings:write', 'settings:editor']);
     }
 }

@@ -29,7 +29,7 @@ class PlanPolicy
      */
     public function viewAny($admin): bool
     {
-        return $admin->can('plans:list');
+        return $admin->canAny(['plans:read', 'plans:write', 'plans:editor']);
     }
 
     /**
@@ -40,7 +40,7 @@ class PlanPolicy
      */
     public function view($admin, $plan): bool
     {
-        return $admin->can('plans:view');
+        return $admin->canAny(['plans:read', 'plans:write', 'plans:editor']);
     }
 
     /**
@@ -50,7 +50,7 @@ class PlanPolicy
      */
     public function create($admin): bool
     {
-        return $admin->can('plans:new');
+        return $admin->canAny(['plans:write', 'plans:editor']);
     }
 
     /**
@@ -61,7 +61,7 @@ class PlanPolicy
      */
     public function update($admin, $plan): bool
     {
-        return $admin->can('plans:edit') && ($plan->user_id == $admin->id || $plan->hasUser($admin->id));
+        return $admin->canAny(['plans:write', 'plans:editor']) && ($plan->user_id == $admin->id || $plan->hasUser($admin->id));
     }
 
     /**
@@ -71,7 +71,7 @@ class PlanPolicy
      */
     public function delete($admin): bool
     {
-        return $admin->can('plans:delete');
+        return $admin->can('plans:write');
     }
 
     /**
@@ -81,7 +81,7 @@ class PlanPolicy
      */
     public function restore($admin): bool
     {
-        return $admin->can('plans:restore');
+        return $admin->can('plans:write');
     }
 
     /**
@@ -91,6 +91,6 @@ class PlanPolicy
      */
     public function forceDelete($admin): bool
     {
-        return $admin->can('plans:forceDelete');
+        return $admin->can('plans:write');
     }
 }

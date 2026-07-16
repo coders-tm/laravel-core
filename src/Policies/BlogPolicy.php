@@ -24,7 +24,7 @@ class BlogPolicy
      */
     public function viewAny(Model $admin): bool
     {
-        return $admin->can('blogs:list');
+        return $admin->canAny(['blogs:read', 'blogs:write', 'blogs:editor']);
     }
 
     /**
@@ -32,7 +32,7 @@ class BlogPolicy
      */
     public function view(Model $admin): bool
     {
-        return $admin->can('blogs:view');
+        return $admin->canAny(['blogs:read', 'blogs:write', 'blogs:editor']);
     }
 
     /**
@@ -40,7 +40,7 @@ class BlogPolicy
      */
     public function create(Model $admin): bool
     {
-        return $admin->can('blogs:new');
+        return $admin->canAny(['blogs:write', 'blogs:editor']);
     }
 
     /**
@@ -48,7 +48,7 @@ class BlogPolicy
      */
     public function update(Model $admin): bool
     {
-        return $admin->can('blogs:edit');
+        return $admin->canAny(['blogs:write', 'blogs:editor']);
     }
 
     /**
@@ -56,7 +56,7 @@ class BlogPolicy
      */
     public function delete(Model $admin): bool
     {
-        return $admin->can('blogs:delete');
+        return $admin->can('blogs:write');
     }
 
     /**
@@ -64,7 +64,7 @@ class BlogPolicy
      */
     public function restore(Model $admin): bool
     {
-        return $admin->can('blogs:restore');
+        return $admin->can('blogs:write');
     }
 
     /**
@@ -72,6 +72,6 @@ class BlogPolicy
      */
     public function forceDelete(Model $admin): bool
     {
-        return $admin->can('blogs:forceDelete');
+        return $admin->can('blogs:write');
     }
 }

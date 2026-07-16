@@ -25,7 +25,7 @@ class TaskPolicy
      */
     public function viewAny(Model $admin): bool
     {
-        return $admin->can('tasks:list');
+        return $admin->canAny(['tasks:read', 'tasks:write', 'tasks:editor']);
     }
 
     /**
@@ -33,7 +33,7 @@ class TaskPolicy
      */
     public function view(Model $admin, Task $task): bool
     {
-        return $admin->can('tasks:view') && ($task->user_id == $admin->id || $task->hasUser($admin->id));
+        return $admin->canAny(['tasks:read', 'tasks:write', 'tasks:editor']) && ($task->user_id == $admin->id || $task->hasUser($admin->id));
     }
 
     /**
@@ -41,7 +41,7 @@ class TaskPolicy
      */
     public function create(Model $admin): bool
     {
-        return $admin->can('tasks:new');
+        return $admin->canAny(['tasks:write', 'tasks:editor']);
     }
 
     /**
@@ -49,7 +49,7 @@ class TaskPolicy
      */
     public function update(Model $admin, Task $task): bool
     {
-        return $admin->can('tasks:edit') && ($task->user_id == $admin->id || $task->hasUser($admin->id));
+        return $admin->canAny(['tasks:write', 'tasks:editor']) && ($task->user_id == $admin->id || $task->hasUser($admin->id));
     }
 
     /**
@@ -57,7 +57,7 @@ class TaskPolicy
      */
     public function delete(Model $admin): bool
     {
-        return $admin->can('tasks:delete');
+        return $admin->can('tasks:write');
     }
 
     /**
@@ -65,7 +65,7 @@ class TaskPolicy
      */
     public function restore(Model $admin): bool
     {
-        return $admin->can('tasks:restore');
+        return $admin->can('tasks:write');
     }
 
     /**
@@ -73,6 +73,6 @@ class TaskPolicy
      */
     public function forceDelete(Model $admin): bool
     {
-        return $admin->can('tasks:forceDelete');
+        return $admin->can('tasks:write');
     }
 }

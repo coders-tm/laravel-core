@@ -24,7 +24,7 @@ class GroupPolicy
      */
     public function viewAny(Model $admin): bool
     {
-        return $admin->can('groups:list');
+        return $admin->canAny(['groups:read', 'groups:write', 'groups:editor']);
     }
 
     /**
@@ -32,7 +32,7 @@ class GroupPolicy
      */
     public function view(Model $admin): bool
     {
-        return $admin->can('groups:view');
+        return $admin->canAny(['groups:read', 'groups:write', 'groups:editor']);
     }
 
     /**
@@ -40,7 +40,7 @@ class GroupPolicy
      */
     public function create(Model $admin): bool
     {
-        return $admin->can('groups:new');
+        return $admin->canAny(['groups:write', 'groups:editor']);
     }
 
     /**
@@ -48,7 +48,7 @@ class GroupPolicy
      */
     public function update(Model $admin): bool
     {
-        return $admin->can('groups:edit');
+        return $admin->canAny(['groups:write', 'groups:editor']);
     }
 
     /**
@@ -56,7 +56,7 @@ class GroupPolicy
      */
     public function delete(Model $admin): bool
     {
-        return $admin->can('groups:delete');
+        return $admin->can('groups:write');
     }
 
     /**
@@ -64,7 +64,7 @@ class GroupPolicy
      */
     public function restore(Model $admin): bool
     {
-        return $admin->can('groups:restore');
+        return $admin->can('groups:write');
     }
 
     /**
@@ -72,6 +72,6 @@ class GroupPolicy
      */
     public function forceDelete(Model $admin): bool
     {
-        return $admin->can('groups:forceDelete');
+        return $admin->can('groups:write');
     }
 }

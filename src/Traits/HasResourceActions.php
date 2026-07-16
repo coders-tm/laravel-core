@@ -138,6 +138,8 @@ trait HasResourceActions
         $modelClass = $this->getModelClass();
         $model = $modelClass::findOrFail($id);
 
+        $this->authorize('delete', $model);
+
         $force = $request->boolean('force');
 
         if ($force) {
@@ -219,6 +221,21 @@ trait HasResourceActions
         return response()->json([
             'message' => trans_modules('restore', $this->getModelName()),
         ], 200);
+    }
+
+    /**
+     * Get the list of resource methods which do not have model parameters.
+     *
+     * Includes destroy because the trait's method uses $id (untyped),
+     * preventing implicit route model binding. When authorizeResource
+     * generates can:delete,{parameter}, the parameter is unresolved,
+     * causing the gate to receive a raw string instead of a model.
+     * Adding destroy here makes authorizeResource use class-level
+     * authorization (can:delete,App\Models\X) instead.
+     */
+    protected function resourceMethodsWithoutModels()
+    {
+        return ['index', 'create', 'store', 'destroy'];
     }
 
     /**

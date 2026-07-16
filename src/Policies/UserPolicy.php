@@ -24,7 +24,7 @@ class UserPolicy
      */
     public function viewAny(Admin $admin)
     {
-        return $admin->can('members:list');
+        return $admin->canAny(['members:read', 'members:write', 'members:editor']);
     }
 
     /**
@@ -36,7 +36,7 @@ class UserPolicy
             return $user->id == user()->id;
         }
 
-        return $admin->can('members:view');
+        return $admin->canAny(['members:read', 'members:write', 'members:editor']);
     }
 
     /**
@@ -44,7 +44,7 @@ class UserPolicy
      */
     public function create(Admin $admin)
     {
-        return $admin->can('members:new');
+        return $admin->canAny(['members:write', 'members:editor']);
     }
 
     /**
@@ -52,7 +52,7 @@ class UserPolicy
      */
     public function update(Admin $admin)
     {
-        return $admin->can('members:edit');
+        return $admin->canAny(['members:write', 'members:editor']);
     }
 
     /**
@@ -60,7 +60,7 @@ class UserPolicy
      */
     public function delete(Admin $admin)
     {
-        return $admin->can('members:delete');
+        return $admin->can('members:write');
     }
 
     /**
@@ -68,7 +68,7 @@ class UserPolicy
      */
     public function restore(Admin $admin)
     {
-        return $admin->can('members:restore');
+        return $admin->can('members:write');
     }
 
     /**
@@ -76,6 +76,6 @@ class UserPolicy
      */
     public function forceDelete(Admin $admin)
     {
-        return $admin->can('members:forceDelete');
+        return $admin->can('members:write');
     }
 }

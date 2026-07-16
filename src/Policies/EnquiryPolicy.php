@@ -29,7 +29,7 @@ class EnquiryPolicy
             return true;
         }
 
-        return $admin->can('tickets:list');
+        return $admin->canAny(['tickets:read', 'tickets:write', 'tickets:editor']);
     }
 
     /**
@@ -41,7 +41,7 @@ class EnquiryPolicy
             return $enquiry->email == user()->email;
         }
 
-        return $admin->can('tickets:view');
+        return $admin->canAny(['tickets:read', 'tickets:write', 'tickets:editor']);
     }
 
     /**
@@ -53,7 +53,7 @@ class EnquiryPolicy
             return true;
         }
 
-        return $admin->can('tickets:new');
+        return $admin->canAny(['tickets:write', 'tickets:editor']);
     }
 
     /**
@@ -65,7 +65,7 @@ class EnquiryPolicy
             return $enquiry->email == user()->email;
         }
 
-        return $admin->can('tickets:edit');
+        return $admin->canAny(['tickets:write', 'tickets:editor']);
     }
 
     /**
@@ -73,7 +73,7 @@ class EnquiryPolicy
      */
     public function delete(User $admin)
     {
-        return $admin->can('tickets:delete');
+        return $admin->can('tickets:write');
     }
 
     /**
@@ -81,7 +81,7 @@ class EnquiryPolicy
      */
     public function restore(User $admin)
     {
-        return $admin->can('tickets:restore');
+        return $admin->can('tickets:write');
     }
 
     /**
@@ -89,6 +89,6 @@ class EnquiryPolicy
      */
     public function forceDelete(User $admin)
     {
-        return $admin->can('tickets:forceDelete');
+        return $admin->can('tickets:write');
     }
 }

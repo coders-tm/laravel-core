@@ -24,6 +24,6 @@ class NotificationPolicy
      */
     public function update(Model $admin): bool
     {
-        return $admin->can('settings:notifications');
+        return $admin->canAny(['settings:write', 'settings:editor']);
     }
 }

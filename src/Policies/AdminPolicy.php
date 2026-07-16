@@ -24,7 +24,7 @@ class AdminPolicy
      */
     public function viewAny(Admin $admin)
     {
-        return $admin->can('staff:list');
+        return $admin->canAny(['staff:read', 'staff:write', 'staff:editor']);
     }
 
     /**
@@ -32,7 +32,7 @@ class AdminPolicy
      */
     public function view(Admin $admin)
     {
-        return $admin->can('staff:view');
+        return $admin->canAny(['staff:read', 'staff:write', 'staff:editor']);
     }
 
     /**
@@ -40,7 +40,7 @@ class AdminPolicy
      */
     public function create(Admin $admin)
     {
-        return $admin->can('staff:new');
+        return $admin->canAny(['staff:write', 'staff:editor']);
     }
 
     /**
@@ -48,7 +48,7 @@ class AdminPolicy
      */
     public function update(Admin $admin)
     {
-        return $admin->can('staff:edit');
+        return $admin->canAny(['staff:write', 'staff:editor']);
     }
 
     /**
@@ -56,7 +56,7 @@ class AdminPolicy
      */
     public function delete(Admin $admin)
     {
-        return $admin->can('staff:delete');
+        return $admin->can('staff:write');
     }
 
     /**
@@ -64,7 +64,7 @@ class AdminPolicy
      */
     public function restore(Admin $admin)
     {
-        return $admin->can('staff:restore');
+        return $admin->can('staff:write');
     }
 
     /**
@@ -72,6 +72,6 @@ class AdminPolicy
      */
     public function forceDelete(Admin $admin)
     {
-        return $admin->can('staff:forceDelete');
+        return $admin->can('staff:write');
     }
 }

@@ -30,7 +30,7 @@ class CouponPolicy
      */
     public function viewAny($admin): bool
     {
-        return $admin->can('coupons:list');
+        return $admin->canAny(['coupons:read', 'coupons:write', 'coupons:editor']);
     }
 
     /**
@@ -41,7 +41,7 @@ class CouponPolicy
      */
     public function view($admin, $coupon): bool
     {
-        return $admin->can('coupons:view');
+        return $admin->canAny(['coupons:read', 'coupons:write', 'coupons:editor']);
     }
 
     /**
@@ -51,7 +51,7 @@ class CouponPolicy
      */
     public function create($admin): bool
     {
-        return $admin->can('coupons:new');
+        return $admin->canAny(['coupons:write', 'coupons:editor']);
     }
 
     /**
@@ -62,7 +62,7 @@ class CouponPolicy
      */
     public function update($admin, $coupon): bool
     {
-        return $admin->can('coupons:edit');
+        return $admin->canAny(['coupons:write', 'coupons:editor']);
     }
 
     /**
@@ -72,7 +72,7 @@ class CouponPolicy
      */
     public function delete($admin): bool
     {
-        return $admin->can('coupons:delete');
+        return $admin->can('coupons:write');
     }
 
     /**
@@ -82,7 +82,7 @@ class CouponPolicy
      */
     public function restore($admin): bool
     {
-        return $admin->can('coupons:restore');
+        return $admin->can('coupons:write');
     }
 
     /**
@@ -92,6 +92,6 @@ class CouponPolicy
      */
     public function forceDelete($admin): bool
     {
-        return $admin->can('coupons:forceDelete');
+        return $admin->can('coupons:write');
     }
 }
