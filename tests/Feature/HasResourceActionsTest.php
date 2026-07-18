@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Admin;
 use Coderstm\Http\Controllers\Controller;
 use Coderstm\Models\Task;
 use Coderstm\Traits\HasResourceActions;
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Laravel\Sanctum\Sanctum;
 
 class HasResourceActionsTest extends FeatureTestCase
 {
@@ -17,6 +19,8 @@ class HasResourceActionsTest extends FeatureTestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $admin = Admin::factory()->admin()->create();
+        Sanctum::actingAs($admin, [], 'sanctum');
     }
 
     public function test_trait_can_guess_model_from_controller_name()
