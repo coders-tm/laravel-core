@@ -54,10 +54,14 @@ class InstallCommand extends Command
         $this->comment('Configuring cookie encryption for Laravel 12...');
         $this->configureCookieEncryption();
 
+        $this->comment('Configuring custom Application class in bootstrap/app.php...');
+        $this->configureApplicationBootstrap();
+
         $this->info('Coderstm scaffolding installed successfully.');
         $this->line('');
         $this->info('✓ Providers registered in bootstrap/providers.php');
         $this->info('✓ Cookie encryption configured for Laravel 12');
+        $this->info('✓ Custom Application class and router registered');
         $this->info('✓ Cart tokens excluded from encryption automatically');
         $this->info('✓ Cart functionality configured and ready to use');
     }
@@ -190,5 +194,35 @@ class InstallCommand extends Command
         } else {
             $this->warn('Could not find middleware configuration section in bootstrap/app.php. Please manually add the encryptCookies configuration.');
         }
+    }
+
+    /**
+     * Configure the custom application class in bootstrap/app.php.
+     *
+     * @return void
+     */
+    protected function configureApplicationBootstrap()
+    {
+        $bootstrapPath = base_path('bootstrap/app.php');
+
+        if (! file_exists($bootstrapPath)) {
+            $this->warn('bootstrap/app.php not found. Please manually configure custom Application.');
+
+            return;
+        }
+
+        $bootstrapContent = file_get_contents($bootstrapPath);
+
+        // Replace the Application class import
+        if (strpos($bootstrapContent, 'use Illuminate\Foundation\Application;') !== false) {
+            $bootstrapContent = str_replace(
+                'use Illuminate\Foundation\Application;',
+                'use Coderstm\Foundation\Application;',
+                $bootstrapContent
+            );
+            $this->info('Updated Application class import in bootstrap/app.php.');
+        }
+
+        file_put_contents($bootstrapPath, $bootstrapContent);
     }
 }
