@@ -37,6 +37,9 @@ class CoderstmServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
+        $this->app->singleton('router', function ($app) {
+            return new \Coderstm\Http\Routing\Router($app['events'], $app);
+        });
 
         $this->app->singleton(AdminNotification::class);
 
