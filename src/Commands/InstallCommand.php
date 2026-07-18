@@ -54,9 +54,13 @@ class InstallCommand extends Command
         $this->comment('Configuring cookie encryption for Laravel 12...');
         $this->configureCookieEncryption();
 
+        $this->comment('Configuring custom Router for Laravel 12...');
+        $this->configureRouterExtension();
+
         $this->info('Coderstm scaffolding installed successfully.');
         $this->line('');
         $this->info('✓ Providers registered in bootstrap/providers.php');
+        $this->info('✓ Custom Router configured in bootstrap/app.php');
         $this->info('✓ Cookie encryption configured for Laravel 12');
         $this->info('✓ Cart tokens excluded from encryption automatically');
         $this->info('✓ Cart functionality configured and ready to use');
@@ -189,6 +193,57 @@ class InstallCommand extends Command
             $this->info('Cookie encryption configured to exclude cart_token.');
         } else {
             $this->warn('Could not find middleware configuration section in bootstrap/app.php. Please manually add the encryptCookies configuration.');
+        }
+    }
+
+    /**
+     * Configure custom router singleton in bootstrap/app.php.
+     *
+     * @return void
+     */
+    protected function configureRouterExtension()
+    {
+        $bootstrapPath = base_path('bootstrap/app.php');
+
+        if (! file_exists($bootstrapPath)) {
+            $this->warn('bootstrap/app.php not found. Please manually configure the custom Router.');
+
+            return;
+        }
+
+        $bootstrapContent = file_get_contents($bootstrapPath);
+
+        // Check if Router is already registered
+        if (strpos($bootstrapContent, 'Http\Routing\Router') !== false) {
+            $this->info('Custom Router already configured in bootstrap/app.php.');
+
+            return;
+        }
+
+        // Change 'return Application::configure' to '$app = Application::configure'
+        if (strpos($bootstrapContent, 'return Application::configure(') !== false) {
+            $bootstrapContent = str_replace(
+                'return Application::configure(',
+                '$app = Application::configure(',
+                $bootstrapContent
+            );
+        }
+
+        // Find the ')->create();' at the end of Application configuration
+        $createString = ')->create();';
+        if (strpos($bootstrapContent, $createString) !== false) {
+            $replacement = ")->create();\n\n\$app->singleton('router', function (\$app) {\n    return new \\Coderstm\\Http\\Routing\\Router(\$app['events'], \$app);\n});\n\nreturn \$app;";
+
+            // Replace the last occurrence of ')->create();'
+            $pos = strrpos($bootstrapContent, $createString);
+            if ($pos !== false) {
+                $bootstrapContent = substr_replace($bootstrapContent, $replacement, $pos, strlen($createString));
+            }
+
+            file_put_contents($bootstrapPath, $bootstrapContent);
+            $this->info('Custom Router configured successfully in bootstrap/app.php.');
+        } else {
+            $this->warn('Could not find Application::configure()->create() call in bootstrap/app.php. Please manually bind the Coderstm Router.');
         }
     }
 }

@@ -41,23 +41,6 @@ class ResourceRegistrar extends BaseResourceRegistrar
             $this->parameters = $options['parameters'];
         }
 
-        if (isset($options['only'])) {
-            $only = (array) $options['only'];
-
-            if (! in_array('create', $only) && ! in_array('edit', $only)) {
-                if (in_array('destroy', $only) && ! in_array('bulkDestroy', $only)) {
-                    $only[] = 'bulkDestroy';
-                }
-                if (in_array('store', $only) && ! in_array('bulkRestore', $only)) {
-                    $only[] = 'bulkRestore';
-                }
-                if (in_array('destroy', $only) && ! in_array('restore', $only)) {
-                    $only[] = 'restore';
-                }
-                $options['only'] = $only;
-            }
-        }
-
         // If the resource name contains a slash, we will assume the developer wishes to
         // register these resource routes with a prefix so we will set that up out of
         // the box so they don't have to mess with it. Otherwise, we will continue.
@@ -79,7 +62,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
         $resourceMethods = $this->getResourceMethods($defaults, $options);
 
         foreach ($resourceMethods as $m) {
-            $route = $this->{'addResource' . Str::studly($m)}(
+            $route = $this->{'addResource'.Str::studly($m)}(
                 $name,
                 $base,
                 $controller,
@@ -145,7 +128,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
     {
         $name = $this->getShallowName($name, $options);
 
-        $uri = $this->getResourceUri($name) . '/{' . $base . '}';
+        $uri = $this->getResourceUri($name).'/{'.$base.'}';
 
         $action = $this->getResourceAction($name, $controller, 'update', $options);
 
@@ -165,7 +148,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
     {
         $name = $this->getShallowName($name, $options);
 
-        $uri = $this->getResourceUri($name) . '/{' . $base . '}';
+        $uri = $this->getResourceUri($name).'/{'.$base.'}';
 
         $action = $this->getResourceAction($name, $controller, 'destroy', $options);
 
@@ -183,7 +166,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
      */
     protected function addResourceBulkDestroy($name, $base, $controller, $options)
     {
-        $uri = $this->getResourceUri($name) . '/' . static::$verbs['destroy'];
+        $uri = $this->getResourceUri($name).'/'.static::$verbs['destroy'];
 
         $action = $this->getResourceAction($name, $controller, 'bulkDestroy', $options);
 
@@ -203,7 +186,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
     {
         $name = $this->getShallowName($name, $options);
 
-        $uri = $this->getResourceUri($name) . '/{' . $base . '}/' . static::$verbs['restore'];
+        $uri = $this->getResourceUri($name).'/{'.$base.'}/'.static::$verbs['restore'];
 
         $action = $this->getResourceAction($name, $controller, 'restore', $options);
 
@@ -221,7 +204,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
      */
     protected function addResourceBulkRestore($name, $base, $controller, $options)
     {
-        $uri = $this->getResourceUri($name) . '/' . static::$verbs['restore'];
+        $uri = $this->getResourceUri($name).'/'.static::$verbs['restore'];
 
         $action = $this->getResourceAction($name, $controller, 'bulkRestore', $options);
 
@@ -241,7 +224,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
     {
         $name = $this->getResourceRouteName($resource, $method, $options);
 
-        $action = ['as' => $name, 'uses' => $controller . '@' . $method];
+        $action = ['as' => $name, 'uses' => $controller.'@'.$method];
 
         if (isset($options['middleware'])) {
             $action['middleware'] = $options['middleware'];
