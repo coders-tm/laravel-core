@@ -2,15 +2,26 @@
 
 namespace Workbench\App;
 
-use Coderstm\Http\Routing\Router;
 use Illuminate\Foundation\Configuration\ApplicationBuilder as ConfigurationApplicationBuilder;
 
 class ApplicationBuilder extends ConfigurationApplicationBuilder
 {
-    public function create()
+    /**
+     * Register an array of singleton container bindings to be bound when the application is booting.
+     *
+     * @param  array  $singletons
+     * @return $this
+     */
+    public function withSingletons(array $singletons)
     {
-        $this->app->singleton('router', fn ($app) => new Router($app['events'], $app));
+        foreach ($singletons as $abstract => $concrete) {
+            if (is_string($abstract)) {
+                $this->app->singleton($abstract, $concrete);
+            } else {
+                $this->app->singleton($concrete);
+            }
+        }
 
-        return $this->app;
+        return $this;
     }
 }

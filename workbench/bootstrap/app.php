@@ -1,5 +1,6 @@
 <?php
 
+use Coderstm\Http\Routing\Router;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Workbench\App\Application;
@@ -10,13 +11,13 @@ return Application::configure(default_skeleton_path())
     ->withRouting(
         api: array_filter([
             default_skeleton_path('routes/api.php'),
-            __DIR__.'/../routes/api.php',
+            __DIR__ . '/../routes/api.php',
         ]),
         web: array_filter([
             default_skeleton_path('routes/web.php'),
-            __DIR__.'/../routes/web.php',
+            __DIR__ . '/../routes/web.php',
         ]),
-        commands: __DIR__.'/../routes/console.php',
+        commands: __DIR__ . '/../routes/console.php',
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->encryptCookies(except: [
@@ -25,4 +26,8 @@ return Application::configure(default_skeleton_path())
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
-    })->create();
+    })
+    ->withSingletons([
+        'router' => Router::class,
+    ])
+    ->create();
