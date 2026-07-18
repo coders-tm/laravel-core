@@ -5,7 +5,6 @@ namespace Coderstm\Providers;
 use Coderstm\Coderstm;
 use Coderstm\Commands;
 use Coderstm\Http\Middleware;
-use Coderstm\Http\Routing\Router;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Services\AdminNotification;
@@ -38,9 +37,6 @@ class CoderstmServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
-        $this->app->singleton('router', function ($app) {
-            return new Router($app['events'], $app);
-        });
 
         $this->app->singleton(AdminNotification::class);
 
