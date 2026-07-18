@@ -41,6 +41,23 @@ class ResourceRegistrar extends BaseResourceRegistrar
             $this->parameters = $options['parameters'];
         }
 
+        if (isset($options['only'])) {
+            $only = (array) $options['only'];
+
+            if (! in_array('create', $only) && ! in_array('edit', $only)) {
+                if (in_array('destroy', $only) && ! in_array('bulkDestroy', $only)) {
+                    $only[] = 'bulkDestroy';
+                }
+                if (in_array('store', $only) && ! in_array('bulkRestore', $only)) {
+                    $only[] = 'bulkRestore';
+                }
+                if (in_array('destroy', $only) && ! in_array('restore', $only)) {
+                    $only[] = 'restore';
+                }
+                $options['only'] = $only;
+            }
+        }
+
         // If the resource name contains a slash, we will assume the developer wishes to
         // register these resource routes with a prefix so we will set that up out of
         // the box so they don't have to mess with it. Otherwise, we will continue.
@@ -71,13 +88,6 @@ class ResourceRegistrar extends BaseResourceRegistrar
 
             if (isset($options['bindingFields'])) {
                 $this->setResourceBindingFields($route, $options['bindingFields']);
-            }
-
-            if (
-                isset($options['trashed']) &&
-                in_array($m, ! empty($options['trashed']) ? $options['trashed'] : array_intersect($resourceMethods, ['show', 'edit', 'update']))
-            ) {
-                $route->withTrashed();
             }
 
             $collection->add($route);
