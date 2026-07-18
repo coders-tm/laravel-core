@@ -38,6 +38,10 @@ class CoderstmServiceProvider extends ServiceProvider
 
         $this->app->bind(ResourceRegistrar::class, \Coderstm\Http\Routing\ResourceRegistrar::class);
 
+        $this->app->extend('router', function ($router, $app) {
+            return new \Coderstm\Http\Routing\Router($app['events'], $app);
+        });
+
         $this->app->singleton(AdminNotification::class);
 
         // Register Guard service and facade
@@ -263,11 +267,11 @@ class CoderstmServiceProvider extends ServiceProvider
 
     protected function packagePath(string $path)
     {
-        return __DIR__.'/../../'.$path;
+        return __DIR__ . '/../../' . $path;
     }
 
     protected function packageStubPath(string $path)
     {
-        return __DIR__.'/../../stubs/'.$path;
+        return __DIR__ . '/../../stubs/' . $path;
     }
 }

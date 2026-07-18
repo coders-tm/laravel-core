@@ -9,26 +9,14 @@ use Illuminate\Routing\Router as BaseRouter;
 
 class Router extends BaseRouter
 {
-    /**
-     * Create a new Router instance.
-     *
-     * @return void
-     */
     public function __construct(Dispatcher $events, ?Container $container = null)
     {
         parent::__construct($events, $container);
     }
 
-    /**
-     * Route an API resource to a controller.
-     *
-     * @param  string  $name
-     * @param  string  $controller
-     * @return PendingResourceRegistration
-     */
     public function apiResource($name, $controller, array $options = [])
     {
-        $only = ['index', 'show', 'store', 'destroySelected', 'restoreSelected', 'forceDestroy', 'forceDestroySelected', 'update', 'destroy', 'restore'];
+        $only = ['index', 'show', 'store', 'bulkDestroy', 'bulkRestore', 'update', 'destroy', 'restore'];
 
         if (isset($options['except'])) {
             $only = array_diff($only, (array) $options['except']);
@@ -39,13 +27,6 @@ class Router extends BaseRouter
         ], $options));
     }
 
-    /**
-     * Route a resource to a controller.
-     *
-     * @param  string  $name
-     * @param  string  $controller
-     * @return PendingResourceRegistration
-     */
     public function resource($name, $controller, array $options = [])
     {
         if ($this->container && $this->container->bound(ResourceRegistrar::class)) {

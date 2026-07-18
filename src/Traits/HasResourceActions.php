@@ -158,7 +158,7 @@ trait HasResourceActions
     /**
      * Remove multiple resources from storage.
      */
-    public function destroySelected(Request $request)
+    public function bulkDestroy(Request $request)
     {
         $request->validate([
             'items' => 'required|array',
@@ -204,7 +204,7 @@ trait HasResourceActions
     /**
      * Restore multiple resources from trash.
      */
-    public function restoreSelected(Request $request)
+    public function bulkRestore(Request $request)
     {
         $request->validate([
             'items' => 'required|array',

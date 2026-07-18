@@ -83,7 +83,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('{task}/reply', 'reply')->name('reply');
         Route::post('{task}/change-archived', 'changeArchived')->name('change-archived');
     });
-    Route::resource('tasks', Coderstm\TaskController::class)->except(['update']);
+    Route::apiResource('tasks', Coderstm\TaskController::class)->except(['update']);
 
     // Admins
     Route::group([
@@ -98,14 +98,14 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('{admin}/change-active', 'changeActive')->name('change-active');
         Route::post('{admin}/change-admin', 'changeAdmin')->name('change-admin');
     });
-    Route::resource('admins', App\AdminController::class);
+    Route::apiResource('admins', App\AdminController::class);
 
     // Groups
-    Route::resource('groups', Coderstm\GroupController::class);
+    Route::apiResource('groups', Coderstm\GroupController::class);
 
     // Logs
     Route::post('logs/{log}/reply', [Coderstm\LogController::class, 'reply'])->name('logs.reply');
-    Route::resource('logs', Coderstm\LogController::class)->only(['show', 'update', 'destroy']);
+    Route::apiResource('logs', Coderstm\LogController::class)->only(['show', 'update', 'destroy']);
 
     // App Payment Methods
     Route::group([
@@ -116,13 +116,13 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::post('{payment_method}/disable', 'disable')->name('disable');
         Route::post('{payment_method}/enable', 'enable')->name('enable');
     });
-    Route::resource('payment-methods', Coderstm\PaymentMethodController::class)->only(['index', 'store', 'show', 'update']);
+    Route::apiResource('payment-methods', Coderstm\PaymentMethodController::class)->only(['index', 'store', 'show', 'update']);
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
     // Files
     Route::post('files/upload-from-source', [Coderstm\FileController::class, 'uploadFromSource'])->name('files.upload-from-source');
-    Route::resource('files', Coderstm\FileController::class)->except(['destroySelected', 'restore', 'restoreSelected']);
+    Route::apiResource('files', Coderstm\FileController::class)->except(['bulkDestroy', 'restore', 'bulkRestore']);
 
     // Enquiries
     Route::group([
@@ -135,7 +135,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('{enquiry}/change-user-archived', 'changeUserArchived')->name('change-user-archived');
         Route::post('{enquiry}/change-archived', 'changeArchived')->name('change-archived');
     });
-    Route::resource('enquiries', App\EnquiryController::class);
+    Route::apiResource('enquiries', App\EnquiryController::class);
 });
 
 // User Routes
@@ -270,7 +270,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('debit', 'debit')->name('debit');
         });
     });
-    Route::resource('users', App\UserController::class);
+    Route::apiResource('users', App\UserController::class);
 
     // Plans
     Route::group([
@@ -280,7 +280,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
     ], function () {
         Route::post('{plan}/change-active', [Coderstm\PlanController::class, 'changeActive'])->name('change-active');
     });
-    Route::resource('plans', Coderstm\PlanController::class);
+    Route::apiResource('plans', Coderstm\PlanController::class);
 
     // Coupons
     Route::group([
@@ -292,17 +292,17 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
         Route::get('products', [Subscription\CouponController::class, 'products'])->name('products');
         Route::get('plans', [Subscription\CouponController::class, 'plans'])->name('plans');
     });
-    Route::resource('coupons', Subscription\CouponController::class);
+    Route::apiResource('coupons', Subscription\CouponController::class);
 
     // Taxes
-    Route::resource('taxes', Coderstm\TaxController::class)->only(['index', 'store', 'update', 'destroy']);
+    Route::apiResource('taxes', Coderstm\TaxController::class)->only(['index', 'store', 'update', 'destroy']);
 
     // Blogs
     Route::group([
         'as' => 'blogs.',
         'prefix' => 'blogs',
     ], function () {
-        Route::resource('tags', Blog\TagController::class, [
+        Route::apiResource('tags', Blog\TagController::class, [
             'middleware' => [
                 'can:create,Coderstm\Models\Blog',
                 'can:update,Coderstm\Models\Blog',
@@ -317,7 +317,7 @@ Route::middleware(['auth:sanctum', 'guard:admins'])->group(function () {
             Route::post('{blog}/comments', 'comments')->name('comments');
         });
     });
-    Route::resource('blogs', Coderstm\BlogController::class);
+    Route::apiResource('blogs', Coderstm\BlogController::class);
 
     Route::group(['prefix' => 'themes', 'as' => 'themes.'], function () {
         Route::get('/', [Coderstm\ThemeController::class, 'index'])->name('index');

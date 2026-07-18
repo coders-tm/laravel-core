@@ -180,7 +180,7 @@ class HasResourceActionsTest extends FeatureTestCase
         };
 
         $request = new Request(['items' => $tasks->pluck('id')->toArray()]);
-        $response = $controller->destroySelected($request);
+        $response = $controller->bulkDestroy($request);
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -229,7 +229,7 @@ class HasResourceActionsTest extends FeatureTestCase
         };
 
         $request = new Request(['items' => $tasks->pluck('id')->toArray()]);
-        $response = $controller->restoreSelected($request);
+        $response = $controller->bulkRestore($request);
 
         $this->assertEquals(200, $response->getStatusCode());
 
