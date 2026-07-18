@@ -26,7 +26,7 @@ class ResourceRegistrar extends BaseResourceRegistrar
      *
      * @var string[]
      */
-    protected $resourceDefaults = ['index', 'store', 'bulkDestroy', 'bulkRestore', 'show', 'update', 'destroy', 'restore'];
+    protected $resourceDefaults = ['index', 'store', 'bulkDestroy', 'bulkRestore', 'show', 'edit', 'update', 'destroy', 'restore'];
 
     /**
      * Route a resource to a controller.
