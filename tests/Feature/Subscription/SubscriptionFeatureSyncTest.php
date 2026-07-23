@@ -45,7 +45,7 @@ class SubscriptionFeatureSyncTest extends FeatureTestCase
         $subscription->swap($planB->id);
 
         // Verify state after swap
-        $this->assertEquals(0, $subscription->getFeatureUsage('test-limit'), 'Usage should be reset to 0 after swap');
+        $this->assertEquals(5, $subscription->getFeatureUsage('test-limit'), 'Usage should not be reset after swap');
 
         // Feature value should be updated to Plan B's value (20)
         $this->assertEquals(20, $subscription->getFeatureValue('test-limit'), 'Feature value should update to 20 after swap');

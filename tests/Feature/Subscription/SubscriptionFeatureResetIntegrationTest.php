@@ -83,8 +83,8 @@ class SubscriptionFeatureResetIntegrationTest extends TestCase
         $this->assertEquals(20, $subscription->getFeatureValue('basic-users'), 'Basic users should be 20 from Pro plan');
         $this->assertEquals(1, $subscription->getFeatureValue('pro-analytics'), 'Pro analytics should be available');
 
-        // Usage should be reset to 0
-        $this->assertEquals(0, $subscription->getFeatureUsage('basic-users'), 'Usage should be reset to 0 after swap');
+        // Usage should not be reset to 0
+        $this->assertEquals(3, $subscription->getFeatureUsage('basic-users'), 'Usage should not be reset after swap');
     }
 
     public function test_subscription_features_are_reset_when_downgrading_from_pro_to_basic()
@@ -150,8 +150,8 @@ class SubscriptionFeatureResetIntegrationTest extends TestCase
         // Premium support should be removed
         $this->assertNull($subscription->getFeatureValue('premium-support'), 'Premium support should be removed');
 
-        // Usage should be reset to 0
-        $this->assertEquals(0, $subscription->getFeatureUsage('storage-gb'), 'Usage should be reset to 0 after downgrade');
+        // Usage should not be reset to 0
+        $this->assertEquals(50, $subscription->getFeatureUsage('storage-gb'), 'Usage should not be reset after downgrade');
     }
 
     public function test_scheduled_downgrade_syncs_features_on_renewal()
@@ -161,6 +161,7 @@ class SubscriptionFeatureResetIntegrationTest extends TestCase
             'slug' => 'api-calls',
             'label' => 'API Calls',
             'type' => 'integer',
+            'resetable' => true,
         ]);
 
         $webhooksFeature = Feature::factory()->create([

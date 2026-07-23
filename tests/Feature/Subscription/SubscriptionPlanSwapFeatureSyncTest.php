@@ -90,9 +90,9 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         $this->assertEquals(25, $subscription->getFeatureValue('users'), 'Users should be 25 from pro plan');
         $this->assertEquals(1, $subscription->getFeatureValue('premium-support'), 'Premium support should be present');
 
-        // Verify usage is reset
-        $this->assertEquals(0, $subscription->getFeatureUsage('storage'), 'Storage usage should be reset');
-        $this->assertEquals(0, $subscription->getFeatureUsage('users'), 'Users usage should be reset');
+        // Verify usage is not reset
+        $this->assertEquals(50, $subscription->getFeatureUsage('storage'), 'Storage usage should not be reset');
+        $this->assertEquals(3, $subscription->getFeatureUsage('users'), 'Users usage should not be reset');
     }
 
     public function test_old_features_are_removed_when_swapping_to_plan_without_them()
@@ -197,9 +197,9 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         $subscription->swap($proPlan->id, 'monthly', false);
         $subscription->refresh();
 
-        // Verify storage limit is updated to 100 and usage is reset
+        // Verify storage limit is updated to 100 and usage is not reset
         $this->assertEquals(100, $subscription->getFeatureValue('storage'), 'Storage should be upgraded to 100GB');
-        $this->assertEquals(0, $subscription->getFeatureUsage('storage'), 'Usage should be reset on upgrade');
+        $this->assertEquals(8, $subscription->getFeatureUsage('storage'), 'Usage should not be reset on upgrade');
     }
 
     public function test_features_are_synced_when_downgrade_is_applied_on_renewal()
@@ -209,6 +209,7 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
             'slug' => 'storage',
             'label' => 'Storage',
             'type' => 'integer',
+            'resetable' => true,
         ]);
 
         $premiumFeature = Feature::factory()->create([
