@@ -53,10 +53,9 @@ class PlanController extends Controller
     /**
      * Store a plan.
      *
-     * @param  mixed  $plan
      * @return JsonResponse
      */
-    public function store(Request $request, $plan)
+    public function store(Request $request)
     {
         $rules = [
             'label' => 'required',
@@ -108,6 +107,8 @@ class PlanController extends Controller
         // Validate those rules
         $request->validate($rules);
 
+        $plan = Coderstm::$planModel::findOrFail($plan);
+
         // update the plan
         $plan->update($request->input());
 
@@ -129,6 +130,8 @@ class PlanController extends Controller
      */
     public function destroy(Request $request, $plan)
     {
+        $plan = Coderstm::$planModel::findOrFail($plan);
+
         $this->authorize('delete', $plan);
 
         if ($plan->subscriptions()->count() > 0) {
@@ -156,6 +159,10 @@ class PlanController extends Controller
      */
     public function changeActive(Request $request, $plan)
     {
+        $plan = Coderstm::$planModel::findOrFail($plan);
+
+        $this->authorize('update', $plan);
+
         $plan->update([
             'is_active' => ! $plan->is_active,
         ]);

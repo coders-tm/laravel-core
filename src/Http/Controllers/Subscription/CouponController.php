@@ -92,6 +92,8 @@ class CouponController extends Controller
      */
     public function update(Request $request, $coupon)
     {
+        $coupon = Coderstm::$couponModel::findOrFail($coupon);
+
         $rules = [
             'name' => 'required',
             'promotion_code' => 'required|unique:coupons,promotion_code,'.$coupon->id,
@@ -123,6 +125,10 @@ class CouponController extends Controller
      */
     public function changeActive(Request $request, $coupon)
     {
+        $coupon = Coderstm::$couponModel::findOrFail($coupon);
+
+        $this->authorize('update', $coupon);
+
         $coupon->update([
             'active' => ! $coupon->active,
         ]);
@@ -142,6 +148,10 @@ class CouponController extends Controller
      */
     public function logs(Request $request, $coupon)
     {
+        $coupon = Coderstm::$couponModel::findOrFail($coupon);
+
+        $this->authorize('update', $coupon);
+
         $request->validate([
             'message' => 'required',
         ]);

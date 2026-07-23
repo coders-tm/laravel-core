@@ -235,7 +235,7 @@ trait HasResourceActions
      */
     protected function resourceMethodsWithoutModels()
     {
-        return ['index', 'create', 'store', 'destroy'];
+        return ['index', 'create', 'store', 'update', 'destroy'];
     }
 
     /**
