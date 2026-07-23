@@ -122,7 +122,6 @@ trait HasFeature
                 'type' => $planFeature->type,
                 'resetable' => $planFeature->resetable,
                 'value' => $planFeature->pivot->value,
-                'used' => 0, // Reset usage counter
             ]);
         }
     }
