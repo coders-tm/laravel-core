@@ -203,7 +203,7 @@ class SubscriptionControllerTest extends FeatureTestCase
             'user_id' => $this->user->id,
             'plan_id' => $this->plan->id,
             'status' => 'canceled',
-            'cancels_at' => now(),
+            'cancels_at' => now()->addDays(7),
             'expires_at' => now()->addDays(7),
         ]);
 

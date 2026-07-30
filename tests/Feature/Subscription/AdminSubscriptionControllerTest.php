@@ -236,7 +236,7 @@ class AdminSubscriptionControllerTest extends FeatureTestCase
             'user_id' => $this->user->id,
             'plan_id' => $this->plan->id,
             'status' => 'active',
-            'cancels_at' => now(),
+            'cancels_at' => now()->addDays(7),
             'expires_at' => now()->addDays(7),
         ]);
 
