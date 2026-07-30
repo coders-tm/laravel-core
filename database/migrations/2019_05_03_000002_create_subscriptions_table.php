@@ -36,7 +36,7 @@ return new class extends Migration
             $table->timestamp('credit_resets_at')->nullable();
             $table->timestamp('trial_ends_at')->nullable();
             $table->timestamp('starts_at')->nullable()->index();
-            $table->dateTime('expires_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
             $table->timestamp('ends_at')->nullable();
             $table->timestamp('cancels_at')->nullable()->index();
             $table->timestamp('frozen_at')->nullable()->comment('When the subscription was frozen (paused)');
