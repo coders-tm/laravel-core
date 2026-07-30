@@ -97,7 +97,7 @@ class SubscriptionFactory extends Factory
         return $this->state([
             'status' => SubscriptionStatus::CANCELED,
             'expires_at' => now(),
-            'canceled_at' => now(),
+            'cancels_at' => now(),
         ]);
     }
 

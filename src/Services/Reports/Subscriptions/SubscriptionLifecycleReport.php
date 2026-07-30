@@ -83,7 +83,7 @@ class SubscriptionLifecycleReport extends AbstractReport
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
                     AND status = 'active'
-                    AND canceled_at IS NULL
+                    AND cancels_at IS NULL
                     AND (expires_at IS NULL OR expires_at > periods.period_end)
                     {$this->scopeClause()}
                 ) as active_subscriptions"),
@@ -98,8 +98,8 @@ class SubscriptionLifecycleReport extends AbstractReport
                 DB::raw("(
                     SELECT COUNT(*)
                     FROM subscriptions
-                    WHERE canceled_at IS NOT NULL
-                    AND canceled_at BETWEEN periods.period_start AND periods.period_end
+                    WHERE cancels_at IS NOT NULL
+                    AND cancels_at BETWEEN periods.period_start AND periods.period_end
                     {$this->scopeClause()}
                 ) as canceled_subscriptions"),
                 DB::raw("(
@@ -107,7 +107,7 @@ class SubscriptionLifecycleReport extends AbstractReport
                     FROM subscriptions
                     WHERE expires_at IS NOT NULL
                     AND expires_at BETWEEN periods.period_start AND periods.period_end
-                    AND canceled_at IS NOT NULL
+                    AND cancels_at IS NOT NULL
                     {$this->scopeClause()}
                 ) as expired_subscriptions"),
                 DB::raw("(
@@ -122,7 +122,7 @@ class SubscriptionLifecycleReport extends AbstractReport
                     SELECT COUNT(*)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
-                    AND canceled_at IS NOT NULL
+                    AND cancels_at IS NOT NULL
                     AND expires_at IS NOT NULL
                     AND expires_at > periods.period_end
                     {$this->scopeClause()}
@@ -161,8 +161,8 @@ class SubscriptionLifecycleReport extends AbstractReport
 
         $stats = Subscription::query()->toBase()
             ->selectRaw("
-                COUNT(CASE WHEN status = 'active' AND canceled_at IS NULL THEN 1 END) as total_active,
-                COUNT(CASE WHEN canceled_at IS NOT NULL THEN 1 END) as total_canceled
+                COUNT(CASE WHEN status = 'active' AND cancels_at IS NULL THEN 1 END) as total_active,
+                COUNT(CASE WHEN cancels_at IS NOT NULL THEN 1 END) as total_canceled
             ")
             ->first();
 

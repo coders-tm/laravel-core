@@ -70,7 +70,7 @@ Track subscription states and movements over time. See counts of new, active, tr
 ### Grace Period
 **Type:** Number  
 **Description:** Canceled but not yet expired at period end  
-**How it's calculated:** COUNT(canceled_at IS NOT NULL AND expires_at > period end)
+**How it's calculated:** COUNT(cancels_at IS NOT NULL AND expires_at > period end)
 
 ### Reactivations
 **Type:** Number  

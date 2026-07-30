@@ -38,7 +38,7 @@ return new class extends Migration
             $table->timestamp('starts_at')->nullable()->index();
             $table->dateTime('expires_at')->nullable();
             $table->timestamp('ends_at')->nullable();
-            $table->timestamp('canceled_at')->nullable()->index();
+            $table->timestamp('cancels_at')->nullable()->index();
             $table->timestamp('frozen_at')->nullable()->comment('When the subscription was frozen (paused)');
             $table->timestamp('release_at')->nullable()->comment('When the subscription should automatically unfreeze');
             $table->timestamps();

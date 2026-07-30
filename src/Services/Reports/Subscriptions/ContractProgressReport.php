@@ -74,20 +74,20 @@ class ContractProgressReport extends AbstractReport
                 'plans.label as plan_name',
                 'plans.contract_cycles',
                 DB::raw("COUNT(DISTINCT CASE
-                    WHEN subscriptions.canceled_at IS NULL
+                    WHEN subscriptions.cancels_at IS NULL
                     AND (subscriptions.expires_at IS NULL OR subscriptions.expires_at > '{$now}')
                     THEN subscriptions.id
                 END) as active_contracts"),
                 DB::raw('AVG(CASE
-                    WHEN subscriptions.canceled_at IS NULL
+                    WHEN subscriptions.cancels_at IS NULL
                     THEN subscriptions.current_cycle
                 END) as avg_current_cycle'),
                 DB::raw('AVG(CASE
-                    WHEN subscriptions.canceled_at IS NULL AND subscriptions.total_cycles > 0
+                    WHEN subscriptions.cancels_at IS NULL AND subscriptions.total_cycles > 0
                     THEN subscriptions.current_cycle * 100.0 / subscriptions.total_cycles
                 END) as avg_progress'),
                 DB::raw('COUNT(DISTINCT CASE
-                    WHEN subscriptions.canceled_at IS NULL
+                    WHEN subscriptions.cancels_at IS NULL
                     AND subscriptions.current_cycle >= subscriptions.total_cycles * 0.8
                     THEN subscriptions.id
                 END) as near_completion'),
@@ -128,7 +128,7 @@ class ContractProgressReport extends AbstractReport
             ->where('total_cycles', '>', 0)
             ->select([
                 DB::raw("COUNT(CASE
-                    WHEN canceled_at IS NULL
+                    WHEN cancels_at IS NULL
                     AND (expires_at IS NULL OR expires_at > '{$now}')
                     THEN 1
                 END) as total_active_contracts"),

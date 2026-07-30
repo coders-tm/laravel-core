@@ -32,7 +32,7 @@ class ResumeSubscription
         $subscription->fill([
             'status' => SubscriptionStatus::ACTIVE,
             'expires_at' => $period->getEndDate(),
-            'canceled_at' => null,
+            'cancels_at' => null,
         ])->save();
 
         return $subscription;

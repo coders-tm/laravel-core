@@ -239,7 +239,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $query->whereHas('subscriptions', function ($q) use ($type) {
             $q->active()
-                ->whereNull('canceled_at')
+                ->whereNull('cancels_at')
                 ->whereHas('plan', function ($q) use ($type) {
                     $q->whereInterval($type)
                         ->where('price', '<>', 0);
@@ -253,7 +253,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeOnlyRolling($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
-            $q->active()->whereNull('canceled_at');
+            $q->active()->whereNull('cancels_at');
         });
     }
 
@@ -263,7 +263,7 @@ class User extends Authenticatable implements MustVerifyEmail
     public function scopeOnlyEnds($query): Builder
     {
         return $query->whereHas('subscriptions', function ($q) {
-            $q->active()->whereNotNull('canceled_at');
+            $q->active()->whereNotNull('cancels_at');
         });
     }
 

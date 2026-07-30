@@ -145,7 +145,7 @@ class MemberRetentionReport extends AbstractReport
                         FROM subscriptions as check_subs
                         WHERE check_subs.user_id = cohort_subs.user_id
                         AND check_subs.created_at <= {$checkDate}
-                        AND (check_subs.canceled_at IS NULL OR check_subs.canceled_at > {$checkDate})
+                        AND (check_subs.cancels_at IS NULL OR check_subs.cancels_at > {$checkDate})
                         AND (check_subs.expires_at IS NULL OR check_subs.expires_at > {$checkDate})
                         {$scope}
                     )

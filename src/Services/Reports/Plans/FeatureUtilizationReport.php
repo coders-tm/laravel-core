@@ -57,7 +57,7 @@ class FeatureUtilizationReport extends AbstractReport
             ->join('subscription_features', 'subscriptions.id', '=', 'subscription_features.subscription_id')
             ->join('plans', 'plans.id', '=', 'subscriptions.plan_id')
             ->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])
-            ->whereNull('subscriptions.canceled_at')
+            ->whereNull('subscriptions.cancels_at')
             ->select([
                 'plans.id as plan_id',
                 'plans.label as plan_name',
@@ -112,7 +112,7 @@ class FeatureUtilizationReport extends AbstractReport
         $summary = Subscription::query()->toBase()
             ->join('subscription_features', 'subscriptions.id', '=', 'subscription_features.subscription_id')
             ->whereBetween('subscription_features.created_at', [$filters['from'], $filters['to']])
-            ->whereNull('subscriptions.canceled_at')
+            ->whereNull('subscriptions.cancels_at')
             ->select([
                 DB::raw('COUNT(DISTINCT subscriptions.plan_id) as total_plans'),
                 DB::raw('COUNT(DISTINCT subscription_features.slug) as total_features_tracked'),

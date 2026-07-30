@@ -74,14 +74,14 @@ class CustomerChurnReport extends AbstractReport
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at < periods.period_start
-                    AND (canceled_at IS NULL OR canceled_at >= periods.period_start)
+                    AND (cancels_at IS NULL OR cancels_at >= periods.period_start)
                     {$this->scopeClause()}
                 ) as starting_customers"),
                 DB::raw("(
                     SELECT COUNT(DISTINCT user_id)
                     FROM subscriptions
                     WHERE created_at <= periods.period_end
-                    AND (canceled_at IS NULL OR canceled_at > periods.period_end)
+                    AND (cancels_at IS NULL OR cancels_at > periods.period_end)
                     {$this->scopeClause()}
                 ) as ending_customers"),
                 DB::raw("(
@@ -100,12 +100,12 @@ class CustomerChurnReport extends AbstractReport
                 DB::raw("(
                     SELECT COUNT(DISTINCT churned_subs.user_id)
                     FROM subscriptions as churned_subs
-                    WHERE churned_subs.canceled_at BETWEEN periods.period_start AND periods.period_end
+                    WHERE churned_subs.cancels_at BETWEEN periods.period_start AND periods.period_end
                     AND NOT EXISTS (
                         SELECT 1
                         FROM subscriptions as active_subs
                         WHERE active_subs.user_id = churned_subs.user_id
-                        AND (active_subs.canceled_at IS NULL OR active_subs.canceled_at > periods.period_end)
+                        AND (active_subs.cancels_at IS NULL OR active_subs.cancels_at > periods.period_end)
                         {$this->scopeClause()}
                     )
                     {$this->scopeClause()}
@@ -149,7 +149,7 @@ class CustomerChurnReport extends AbstractReport
         $now = now()->toDateTimeString();
 
         $activeCustomers = Subscription::query()->toBase()
-            ->whereNull('canceled_at')
+            ->whereNull('cancels_at')
             ->where(function ($q) use ($now) {
                 $q->whereNull('expires_at')
                     ->orWhereRaw('expires_at > ?', [$now]);

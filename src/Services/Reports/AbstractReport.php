@@ -611,8 +611,8 @@ abstract class AbstractReport implements ReportInterface
         $subscriptions = Subscription::query()
             ->where('created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('canceled_at')
-                    ->orWhere('canceled_at', '>', $date);
+                $q->whereNull('cancels_at')
+                    ->orWhere('cancels_at', '>', $date);
             })
             ->where(function ($q) use ($date) {
                 $q->whereNull('expires_at')
@@ -644,14 +644,14 @@ abstract class AbstractReport implements ReportInterface
         $status = $this->getFilter('status');
         if ($status) {
             if ($status === 'active') {
-                $query->whereNull('canceled_at')
+                $query->whereNull('cancels_at')
                     ->where('status', SubscriptionStatus::ACTIVE)
                     ->where(function ($q) {
                         $q->whereNull('expires_at')
                             ->orWhere('expires_at', '>', now());
                     });
             } elseif ($status === 'canceled') {
-                $query->whereNotNull('canceled_at');
+                $query->whereNotNull('cancels_at');
             }
         }
 

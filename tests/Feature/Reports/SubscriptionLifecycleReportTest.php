@@ -28,7 +28,7 @@ class SubscriptionLifecycleReportTest extends TestCase
                 'status' => 'active',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addDays(5)->toDateTimeString(),
-                'canceled_at' => null,
+                'cancels_at' => null,
             ],
             [
                 'user_id' => 1002,
@@ -37,7 +37,7 @@ class SubscriptionLifecycleReportTest extends TestCase
                 'status' => 'cancelled',
                 'quantity' => 1,
                 'created_at' => $from->copy()->toDateTimeString(),
-                'canceled_at' => $from->copy()->addMonth()->addDays(10)->toDateTimeString(),
+                'cancels_at' => $from->copy()->addMonth()->addDays(10)->toDateTimeString(),
             ],
         ]);
 

@@ -51,7 +51,7 @@ Track fixed-term contract subscription progress. See how many cycles completed, 
 ### Active Contracts
 **Type:** Number  
 **Description:** Active subscriptions on this plan (not canceled)  
-**How it's calculated:** Count of subscriptions where status = "active" and canceled_at is null
+**How it's calculated:** Count of subscriptions where status = "active" and cancels_at is null
 
 ### Average Current Cycle
 **Type:** Number  

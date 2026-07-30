@@ -56,7 +56,7 @@ class SwapSubscriptionPlan
         );
 
         $subscription->fill([
-            'canceled_at' => null,
+            'cancels_at' => null,
             'billing_interval' => $billingInterval,
             'billing_interval_count' => $billingIntervalCount,
             'total_cycles' => $newPlan->contract_cycles,

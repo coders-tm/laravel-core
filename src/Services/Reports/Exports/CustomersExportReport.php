@@ -75,7 +75,7 @@ class CustomersExportReport extends AbstractReport
                 DB::raw('MAX(subscriptions.created_at) as current_sub_date'),
             ])
             ->where('subscriptions.status', AppStatus::ACTIVE->value)
-            ->whereNull('subscriptions.canceled_at')
+            ->whereNull('subscriptions.cancels_at')
             ->groupBy('subscriptions.user_id', 'subscriptions.status', 'subscriptions.plan_id');
 
         // Subquery for subscription counts
@@ -102,7 +102,7 @@ class CustomersExportReport extends AbstractReport
                 'subscriptions.user_id',
                 DB::raw('SUM(plans.price * COALESCE(subscriptions.quantity, 1)) as mrr'),
             ])
-            ->whereNull('subscriptions.canceled_at')
+            ->whereNull('subscriptions.cancels_at')
             ->where(function ($q) {
                 $q->whereNull('subscriptions.expires_at')
                     ->orWhere('subscriptions.expires_at', '>', now());

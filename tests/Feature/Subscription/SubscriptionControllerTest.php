@@ -168,7 +168,7 @@ class SubscriptionControllerTest extends FeatureTestCase
             'user_id' => $this->user->id,
             'plan_id' => $this->plan->id,
             'status' => 'active',
-            'canceled_at' => null,
+            'cancels_at' => null,
         ]);
 
         $response = $this->postJson(route('subscriptions.cancel', $subscription->id));
@@ -177,7 +177,7 @@ class SubscriptionControllerTest extends FeatureTestCase
         $response->assertJson(['message' => 'Subscription cancelled successfully.']);
 
         $subscription->refresh();
-        $this->assertNotNull($subscription->canceled_at);
+        $this->assertNotNull($subscription->cancels_at);
         $this->assertTrue($subscription->canceled());
     }
 
@@ -203,7 +203,7 @@ class SubscriptionControllerTest extends FeatureTestCase
             'user_id' => $this->user->id,
             'plan_id' => $this->plan->id,
             'status' => 'canceled',
-            'canceled_at' => now(),
+            'cancels_at' => now(),
             'expires_at' => now()->addDays(7),
         ]);
 
@@ -213,7 +213,7 @@ class SubscriptionControllerTest extends FeatureTestCase
         $response->assertJson(['message' => 'Subscription resumed successfully.']);
 
         $subscription->refresh();
-        $this->assertNull($subscription->canceled_at);
+        $this->assertNull($subscription->cancels_at);
         $this->assertFalse($subscription->canceled());
     }
 
@@ -223,7 +223,7 @@ class SubscriptionControllerTest extends FeatureTestCase
         $subscription = Subscription::factory()->create([
             'user_id' => $otherUser->id,
             'plan_id' => $this->plan->id,
-            'canceled_at' => now(),
+            'cancels_at' => now(),
             'expires_at' => now()->addDays(7),
         ]);
 

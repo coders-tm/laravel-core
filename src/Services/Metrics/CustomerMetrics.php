@@ -240,8 +240,8 @@ class CustomerMetrics extends MetricsCalculator
             $range = $this->getDateRange();
 
             return Subscription::query()
-                ->whereNotNull('canceled_at')
-                ->whereBetween('canceled_at', [$range['start'], $range['end']])
+                ->whereNotNull('cancels_at')
+                ->whereBetween('cancels_at', [$range['start'], $range['end']])
                 ->distinct('user_id')
                 ->count('user_id');
         });
@@ -362,8 +362,8 @@ class CustomerMetrics extends MetricsCalculator
     protected function atRiskBetween(Carbon $start, Carbon $end): int
     {
         return Subscription::query()
-            ->whereNotNull('canceled_at')
-            ->whereBetween('canceled_at', [$start, $end])
+            ->whereNotNull('cancels_at')
+            ->whereBetween('cancels_at', [$start, $end])
             ->distinct('user_id')
             ->count('user_id');
     }

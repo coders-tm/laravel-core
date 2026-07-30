@@ -74,7 +74,7 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
                 'periods.period_order',
                 DB::raw('COUNT(DISTINCT CASE
                     WHEN subscriptions.created_at <= periods.period_end
-                    AND (subscriptions.canceled_at IS NULL OR subscriptions.canceled_at > periods.period_end)
+                    AND (subscriptions.cancels_at IS NULL OR subscriptions.cancels_at > periods.period_end)
                     AND (subscriptions.expires_at IS NULL OR subscriptions.expires_at > periods.period_end)
                     THEN subscriptions.id
                 END) as active_subscriptions'),
@@ -84,9 +84,9 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
                     THEN subscriptions.id
                 END) as new_subscriptions'),
                 DB::raw('COUNT(DISTINCT CASE
-                    WHEN subscriptions.canceled_at IS NOT NULL
-                    AND subscriptions.canceled_at >= periods.period_start
-                    AND subscriptions.canceled_at <= periods.period_end
+                    WHEN subscriptions.cancels_at IS NOT NULL
+                    AND subscriptions.cancels_at >= periods.period_start
+                    AND subscriptions.cancels_at <= periods.period_end
                     THEN subscriptions.id
                 END) as canceled_subscriptions'),
             ])
@@ -142,7 +142,7 @@ class ActiveSubscriptionsTimeReport extends AbstractReport
         $now = now()->toDateTimeString();
 
         $currentActive = Subscription::query()->toBase()
-            ->whereNull('canceled_at')
+            ->whereNull('cancels_at')
             ->where(function ($q) use ($now) {
                 $q->whereNull('expires_at')
                     ->orWhereRaw('expires_at > ?', [$now]);

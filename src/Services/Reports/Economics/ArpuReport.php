@@ -79,7 +79,7 @@ class ArpuReport extends AbstractReport
             })
             ->leftJoinSub($subscriptionsQuery, 'subscriptions', function ($join) {
                 $join->whereRaw('DATE(subscriptions.created_at) <= DATE(periods.period_end)')
-                    ->whereRaw('subscriptions.canceled_at IS NULL')
+                    ->whereRaw('subscriptions.cancels_at IS NULL')
                     ->where(function ($q) {
                         $q->whereRaw('subscriptions.expires_at IS NULL')
                             ->orWhereRaw('DATE(subscriptions.expires_at) >= DATE(periods.period_start)');
@@ -139,7 +139,7 @@ class ArpuReport extends AbstractReport
                 $q->whereNull('expires_at')
                     ->orWhere('expires_at', '>=', $filters['from']);
             })
-            ->whereNull('canceled_at')
+            ->whereNull('cancels_at')
             ->distinct('user_id')
             ->count('user_id');
 

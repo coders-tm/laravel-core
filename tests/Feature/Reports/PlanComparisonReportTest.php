@@ -33,7 +33,7 @@ class PlanComparisonReportTest extends TestCase
                 'status' => 'active',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addDays(1)->toDateTimeString(),
-                'canceled_at' => null,
+                'cancels_at' => null,
             ],
             [
                 'id' => 2,
@@ -43,7 +43,7 @@ class PlanComparisonReportTest extends TestCase
                 'status' => 'active',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addDays(2)->toDateTimeString(),
-                'canceled_at' => null,
+                'cancels_at' => null,
             ],
             [
                 'id' => 3,
@@ -53,7 +53,7 @@ class PlanComparisonReportTest extends TestCase
                 'status' => 'cancelled',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addDays(3)->toDateTimeString(),
-                'canceled_at' => $from->copy()->addDays(10)->toDateTimeString(),
+                'cancels_at' => $from->copy()->addDays(10)->toDateTimeString(),
             ],
         ]);
 

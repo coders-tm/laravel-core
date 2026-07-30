@@ -84,7 +84,7 @@ class PlanComparisonReport extends AbstractReport
                 'plans.price',
                 'plans.interval',
                 DB::raw("COUNT(DISTINCT CASE
-                    WHEN subscriptions.canceled_at IS NULL
+                    WHEN subscriptions.cancels_at IS NULL
                     AND subscriptions.created_at <= '{$to}'
                     THEN subscriptions.id
                 END) as active_subscriptions"),
@@ -94,9 +94,9 @@ class PlanComparisonReport extends AbstractReport
                     THEN subscriptions.id
                 END) as total_signups"),
                 DB::raw("COUNT(DISTINCT CASE
-                    WHEN subscriptions.canceled_at IS NOT NULL
-                    AND subscriptions.canceled_at >= '{$from}'
-                    AND subscriptions.canceled_at <= '{$to}'
+                    WHEN subscriptions.cancels_at IS NOT NULL
+                    AND subscriptions.cancels_at >= '{$from}'
+                    AND subscriptions.cancels_at <= '{$to}'
                     THEN subscriptions.id
                 END) as churn_count"),
             ])
@@ -171,7 +171,7 @@ class PlanComparisonReport extends AbstractReport
         $summary = Plan::query()->toBase()
             ->leftJoin('subscriptions', function ($join) use ($filters) {
                 $join->on('subscriptions.plan_id', '=', 'plans.id')
-                    ->whereNull('subscriptions.canceled_at')
+                    ->whereNull('subscriptions.cancels_at')
                     ->where('subscriptions.created_at', '<=', $filters['to']);
             })
             ->select([
@@ -185,7 +185,7 @@ class PlanComparisonReport extends AbstractReport
         $totalMrr = Plan::query()->toBase()
             ->leftJoin('subscriptions', function ($join) use ($filters) {
                 $join->on('subscriptions.plan_id', '=', 'plans.id')
-                    ->whereNull('subscriptions.canceled_at')
+                    ->whereNull('subscriptions.cancels_at')
                     ->where('subscriptions.created_at', '<=', $filters['to']);
             })
             ->select(['plans.price', DB::raw('COUNT(subscriptions.id) as sub_count')])

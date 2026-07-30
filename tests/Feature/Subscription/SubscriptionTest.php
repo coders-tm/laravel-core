@@ -5,6 +5,7 @@ namespace Tests\Unit;
 use App\Models\User;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Coupon;
+use Coderstm\Models\Notification;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
 use Illuminate\Support\Carbon;
@@ -59,7 +60,7 @@ class SubscriptionTest extends TestCase
 
         $subscription = $subscription->cancel();
 
-        $this->assertNotNull($subscription->canceled_at);
+        $this->assertNotNull($subscription->cancels_at);
 
         $subscription = $subscription->cancelNow();
         $this->assertEquals(SubscriptionStatus::CANCELED, $subscription->status);
@@ -81,7 +82,7 @@ class SubscriptionTest extends TestCase
         // Resume the subscription
         $subscription = $subscription->resume();
 
-        $this->assertNull($subscription->canceled_at);
+        $this->assertNull($subscription->cancels_at);
         $this->assertEquals(SubscriptionStatus::ACTIVE, $subscription->status);
     }
 
@@ -91,7 +92,7 @@ class SubscriptionTest extends TestCase
         $subscription = Subscription::factory()->create([
             'status' => SubscriptionStatus::CANCELED,
             'expires_at' => Carbon::now()->subDays(1),
-            'canceled_at' => Carbon::now()->subDays(2),
+            'cancels_at' => Carbon::now()->subDays(2),
         ]);
 
         $this->expectException(\LogicException::class);
@@ -138,6 +139,10 @@ class SubscriptionTest extends TestCase
     #[Test]
     public function it_can_renew_a_subscription()
     {
+        Notification::factory()->create([
+            'type' => 'user:payment-success',
+        ]);
+
         $subscription = Subscription::factory()->create([
             'expires_at' => Carbon::now()->subDays(5),
             'status' => SubscriptionStatus::ACTIVE,
@@ -145,7 +150,7 @@ class SubscriptionTest extends TestCase
 
         $subscription->renew();
 
-        $this->assertNull($subscription->canceled_at);
+        $this->assertNull($subscription->cancels_at);
 
         $subscription->pay(config('stripe.id'));
 
@@ -163,5 +168,39 @@ class SubscriptionTest extends TestCase
         $subscription->withCoupon($coupon->promotion_code)->save();
 
         $this->assertEquals($coupon->id, $subscription->coupon_id);
+    }
+
+    #[Test]
+    public function it_sets_cancels_at_correctly_on_cancellation()
+    {
+        $subscription = Subscription::factory()->create([
+            'status' => SubscriptionStatus::ACTIVE,
+            'expires_at' => Carbon::now()->addDays(10),
+        ]);
+
+        // 1. Delay cancel (execute) - should set cancels_at to expires_at
+        $originalExpiresAt = $subscription->expires_at;
+        $subscription = $subscription->cancel();
+
+        $this->assertEquals($originalExpiresAt->toDateTimeString(), $subscription->cancels_at->toDateTimeString());
+        $this->assertEquals($originalExpiresAt->toDateTimeString(), $subscription->expires_at->toDateTimeString());
+        $this->assertTrue($subscription->canceledOnGracePeriod());
+
+        // 2. Immediate cancel (cancelNow) - should set cancels_at to now, and status to CANCELED
+        $subscription = $subscription->cancelNow();
+
+        $this->assertEquals(Carbon::now()->toDateTimeString(), $subscription->cancels_at->toDateTimeString());
+        $this->assertEquals(SubscriptionStatus::CANCELED, $subscription->status);
+        $this->assertFalse($subscription->canceledOnGracePeriod());
+
+        // 3. Cancel at specific date (cancelAt) - should set cancels_at to endsAt date
+        $subscription = Subscription::factory()->create([
+            'status' => SubscriptionStatus::ACTIVE,
+            'expires_at' => Carbon::now()->addDays(10),
+        ]);
+        $endsAt = Carbon::now()->addDays(5);
+        $subscription = $subscription->cancelAt($endsAt);
+
+        $this->assertEquals($endsAt->toDateTimeString(), $subscription->cancels_at->toDateTimeString());
     }
 }

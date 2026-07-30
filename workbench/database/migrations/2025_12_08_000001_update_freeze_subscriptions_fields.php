@@ -26,7 +26,7 @@ return new class extends Migration
         // Add fields to subscriptions table if it doesn't exist
         if (! Schema::hasColumn('subscriptions', 'frozen_at')) {
             Schema::table('subscriptions', function (Blueprint $table) {
-                $table->timestamp('frozen_at')->nullable()->after('canceled_at')
+                $table->timestamp('frozen_at')->nullable()->after('cancels_at')
                     ->comment('When the subscription was frozen (paused)');
                 $table->timestamp('release_at')->nullable()->after('frozen_at')
                     ->comment('When the subscription should automatically unfreeze');

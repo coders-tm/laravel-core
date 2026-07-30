@@ -42,7 +42,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         'expires_at',
         'ends_at',
         'starts_at',
-        'canceled_at',
+        'cancels_at',
         'frozen_at',
         'release_at',
         'provider',
@@ -70,7 +70,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         'expires_at' => 'datetime',
         'ends_at' => 'datetime',
         'starts_at' => 'datetime',
-        'canceled_at' => 'datetime',
+        'cancels_at' => 'datetime',
         'frozen_at' => 'datetime',
         'release_at' => 'datetime',
         'metadata' => 'json',
@@ -603,7 +603,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
     public function scopeActive($query)
     {
         $query->where(function ($query) {
-            $query->whereNull('canceled_at')
+            $query->whereNull('cancels_at')
                 ->orWhere(function ($query) {
                     $query->canceledOnGracePeriod();
                 });
@@ -629,17 +629,17 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function canceled(): bool
     {
-        return ! is_null($this->canceled_at);
+        return ! is_null($this->cancels_at);
     }
 
     public function scopeCanceled($query)
     {
-        $query->whereNotNull('canceled_at');
+        $query->whereNotNull('cancels_at');
     }
 
     public function scopeNotCanceled($query)
     {
-        $query->whereNull('canceled_at');
+        $query->whereNull('cancels_at');
     }
 
     public function ended()
@@ -684,21 +684,19 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function canceledOnGracePeriod(): bool
     {
-        return $this->canceled_at && $this->expires_at && $this->expires_at->isFuture();
+        return $this->cancels_at && $this->cancels_at->isFuture();
     }
 
     public function scopeCanceledOnGracePeriod($query)
     {
-        $query->whereNotNull('canceled_at')
-            ->whereNotNull('expires_at')
-            ->where('expires_at', '>', Carbon::now());
+        $query->whereNotNull('cancels_at')
+            ->where('cancels_at', '>', Carbon::now());
     }
 
     public function scopeCanceledNotOnGracePeriod($query)
     {
-        $query->whereNotNull('canceled_at')
-            ->whereNotNull('expires_at')
-            ->where('expires_at', '<=', Carbon::now());
+        $query->whereNotNull('cancels_at')
+            ->where('cancels_at', '<=', Carbon::now());
     }
 
     public function onGracePeriod(): bool
@@ -766,7 +764,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
             'expires_at' => $this->serializeDate($this->expires_at),
             'ends_at' => $this->serializeDate($this->ends_at),
             'starts_at' => $this->serializeDate($this->starts_at),
-            'canceled_at' => $this->serializeDate($this->canceled_at),
+            'cancels_at' => $this->serializeDate($this->cancels_at),
             'frozen_at' => $this->serializeDate($this->frozen_at),
             'release_at' => $this->serializeDate($this->release_at),
             'provider' => $this->provider,

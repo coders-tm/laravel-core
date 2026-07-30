@@ -63,7 +63,7 @@ class UsersExportReport extends AbstractReport
             ])
             ->where(function ($q) {
                 $q->where('subscriptions.status', AppStatus::ACTIVE->value)
-                    ->orWhereNull('subscriptions.canceled_at');
+                    ->orWhereNull('subscriptions.cancels_at');
             })
             ->groupBy('subscriptions.user_id', 'subscriptions.type', 'subscriptions.status', 'subscriptions.trial_ends_at');
 

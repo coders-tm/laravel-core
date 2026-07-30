@@ -227,7 +227,7 @@ class AdminSubscriptionControllerTest extends FeatureTestCase
         $response->assertStatus(200);
 
         $subscription->refresh();
-        $this->assertNotNull($subscription->canceled_at);
+        $this->assertNotNull($subscription->cancels_at);
     }
 
     public function test_admin_can_resume_user_subscription()
@@ -236,7 +236,7 @@ class AdminSubscriptionControllerTest extends FeatureTestCase
             'user_id' => $this->user->id,
             'plan_id' => $this->plan->id,
             'status' => 'active',
-            'canceled_at' => now(),
+            'cancels_at' => now(),
             'expires_at' => now()->addDays(7),
         ]);
 
@@ -245,7 +245,7 @@ class AdminSubscriptionControllerTest extends FeatureTestCase
         $response->assertStatus(200);
 
         $subscription->refresh();
-        $this->assertNull($subscription->canceled_at);
+        $this->assertNull($subscription->cancels_at);
         $this->assertEquals('active', $subscription->status);
     }
 

@@ -30,7 +30,7 @@ class CacLtvReportTest extends TestCase
                 'status' => 'active',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addDays(1)->toDateTimeString(),
-                'canceled_at' => null,
+                'cancels_at' => null,
                 'expires_at' => null,
             ],
             [
@@ -41,7 +41,7 @@ class CacLtvReportTest extends TestCase
                 'status' => 'active',
                 'quantity' => 1,
                 'created_at' => $from->copy()->addMonth()->addDays(1)->toDateTimeString(),
-                'canceled_at' => null,
+                'cancels_at' => null,
                 'expires_at' => null,
             ],
         ]);

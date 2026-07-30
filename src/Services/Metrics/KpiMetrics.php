@@ -221,7 +221,7 @@ class KpiMetrics extends MetricsCalculator
             ->where('subscriptions.status', SubscriptionStatus::ACTIVE)
             ->where('subscriptions.created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('subscriptions.canceled_at')
+                $q->whereNull('subscriptions.cancels_at')
                     ->orWhere('subscriptions.expires_at', '>', $date);
             })
             ->sum(DB::raw("
@@ -254,7 +254,7 @@ class KpiMetrics extends MetricsCalculator
             ->where('subscriptions.status', SubscriptionStatus::ACTIVE)
             ->where('subscriptions.created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('subscriptions.canceled_at')
+                $q->whereNull('subscriptions.cancels_at')
                     ->orWhere('subscriptions.expires_at', '>', $date);
             })
             ->groupBy('plans.id', 'plans.label')
@@ -287,7 +287,7 @@ class KpiMetrics extends MetricsCalculator
             ->where('subscriptions.status', SubscriptionStatus::ACTIVE)
             ->where('subscriptions.created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('subscriptions.canceled_at')
+                $q->whereNull('subscriptions.cancels_at')
                     ->orWhere('subscriptions.expires_at', '>', $date);
             })
             ->groupBy('plans.interval', 'plans.interval_count')
@@ -330,7 +330,7 @@ class KpiMetrics extends MetricsCalculator
         $activeStart = Subscription::query()
             ->where('created_at', '<=', $start)
             ->where(function ($q) use ($start) {
-                $q->whereNull('canceled_at')
+                $q->whereNull('cancels_at')
                     ->orWhere('expires_at', '>', $start);
             })
             ->count();
@@ -340,7 +340,7 @@ class KpiMetrics extends MetricsCalculator
         }
 
         $churned = Subscription::query()
-            ->whereBetween('canceled_at', [$start, $end])
+            ->whereBetween('cancels_at', [$start, $end])
             ->count();
 
         return round(($churned / $activeStart), 4); // Return as decimal (0.06 = 6%)
@@ -354,14 +354,14 @@ class KpiMetrics extends MetricsCalculator
         $activeStart = Subscription::query()
             ->where('created_at', '<=', $start)
             ->where(function ($q) use ($start) {
-                $q->whereNull('canceled_at')
+                $q->whereNull('cancels_at')
                     ->orWhere('expires_at', '>', $start);
             })
             ->distinct('user_id')
             ->count('user_id');
 
         $churned = Subscription::query()
-            ->whereBetween('canceled_at', [$start, $end])
+            ->whereBetween('cancels_at', [$start, $end])
             ->distinct('user_id')
             ->count('user_id');
 
@@ -381,7 +381,7 @@ class KpiMetrics extends MetricsCalculator
         $mrrStart = $this->calculateMrr($start);
         $lostMrr = Subscription::query()->toBase()
             ->join('plans', 'subscriptions.plan_id', '=', 'plans.id')
-            ->whereBetween('subscriptions.canceled_at', [$start, $end])
+            ->whereBetween('subscriptions.cancels_at', [$start, $end])
             ->sum(DB::raw("
                 CASE plans.interval
                     WHEN 'day' THEN (plans.price / COALESCE(plans.interval_count, 1)) * 30
@@ -523,7 +523,7 @@ class KpiMetrics extends MetricsCalculator
             ->where('status', SubscriptionStatus::ACTIVE)
             ->where('created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('canceled_at')
+                $q->whereNull('cancels_at')
                     ->orWhere('expires_at', '>', $date);
             })
             ->distinct('user_id')
@@ -547,7 +547,7 @@ class KpiMetrics extends MetricsCalculator
             ->where('status', SubscriptionStatus::ACTIVE)
             ->where('created_at', '<=', $date)
             ->where(function ($q) use ($date) {
-                $q->whereNull('canceled_at')
+                $q->whereNull('cancels_at')
                     ->orWhere('expires_at', '>', $date);
             })
             ->distinct('user_id')

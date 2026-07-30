@@ -162,7 +162,7 @@ class NotificationEmailsTest extends TestCase
      */
     public function test_send_subscription_canceled_notification()
     {
-        $this->subscription->update(['canceled_at' => now()]);
+        $this->subscription->update(['cancels_at' => now()]);
 
         $this->user->notify(new SubscriptionCanceledNotification($this->subscription));
 
@@ -175,7 +175,7 @@ class NotificationEmailsTest extends TestCase
     public function test_send_subscription_expired_notification()
     {
         $this->subscription->update([
-            'canceled_at' => now()->subDays(30),
+            'cancels_at' => now()->subDays(30),
             'expires_at' => now()->subDay(),
         ]);
 
@@ -203,7 +203,7 @@ class NotificationEmailsTest extends TestCase
      */
     public function test_send_admin_subscription_canceled_notification()
     {
-        $this->subscription->update(['canceled_at' => now()]);
+        $this->subscription->update(['cancels_at' => now()]);
 
         $this->admin->notify(new AdminSubscriptionCanceledNotification($this->subscription));
 
@@ -216,7 +216,7 @@ class NotificationEmailsTest extends TestCase
     public function test_send_admin_subscription_expired_notification()
     {
         $this->subscription->update([
-            'canceled_at' => now()->subDays(30),
+            'cancels_at' => now()->subDays(30),
             'expires_at' => now()->subDay(),
         ]);
 

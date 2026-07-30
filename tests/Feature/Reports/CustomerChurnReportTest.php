@@ -27,7 +27,7 @@ class CustomerChurnReportTest extends TestCase
                 'type' => 'app',
                 'status' => 'cancelled',
                 'quantity' => 1,
-                'canceled_at' => $from->copy()->addDays(15)->toDateTimeString(),
+                'cancels_at' => $from->copy()->addDays(15)->toDateTimeString(),
                 'created_at' => $from->copy()->toDateTimeString(),
             ],
         ]);

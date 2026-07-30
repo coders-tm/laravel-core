@@ -62,7 +62,7 @@ class RenewalForecastReport extends AbstractReport
             ->whereNotNull('subscriptions.expires_at')
             ->where('subscriptions.expires_at', '>=', $now)
             ->where('subscriptions.expires_at', '<=', $endDate)
-            ->whereNull('subscriptions.canceled_at')
+            ->whereNull('subscriptions.cancels_at')
             ->select([
                 DB::raw("{$dateExtract} as renewal_date"),
                 DB::raw('COUNT(*) as renewals_count'),
@@ -113,7 +113,7 @@ class RenewalForecastReport extends AbstractReport
             ->whereNotNull('expires_at')
             ->whereRaw('expires_at >= ?', [$now])
             ->whereRaw('expires_at <= ?', [$next30Days])
-            ->whereNull('canceled_at')
+            ->whereNull('cancels_at')
             ->count();
 
         return [

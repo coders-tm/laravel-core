@@ -175,7 +175,7 @@ class RenewSubscription
             'expires_at' => $period->getEndDate(),
             'ends_at' => null,
             'trial_ends_at' => null,
-            'canceled_at' => null,
+            'cancels_at' => null,
         ])->save();
 
         if ($isExpired) {
