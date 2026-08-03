@@ -155,7 +155,6 @@ class SubscriptionRenewalTest extends TestCase
             'plan_id' => $monthlyPlan->id,
             'billing_interval' => 'month',
             'billing_interval_count' => 1,
-            'total_cycles' => null,
             'current_cycle' => 3,
             'status' => 'active',
             'starts_at' => Carbon::parse('2025-01-01'),
@@ -171,8 +170,6 @@ class SubscriptionRenewalTest extends TestCase
         // Verify initial state
         $this->assertEquals('month', $subscription->billing_interval);
         $this->assertEquals(1, $subscription->billing_interval_count);
-        $this->assertNull($subscription->total_cycles);
-        $this->assertEquals(3, $subscription->current_cycle);
         $this->assertEquals($monthlyPlan->id, $subscription->plan_id);
 
         // Renew the subscription (should apply the next plan)
@@ -184,8 +181,6 @@ class SubscriptionRenewalTest extends TestCase
         // Verify billing fields are updated from next plan
         $this->assertEquals('month', $subscription->billing_interval, 'Billing interval should be month from new plan');
         $this->assertEquals(3, $subscription->billing_interval_count, 'Billing interval count should be 3 from new plan');
-        $this->assertEquals(4, $subscription->total_cycles, 'Total cycles should be 4 from contract plan');
-        $this->assertEquals(1, $subscription->current_cycle, 'Current cycle should be reset to 1 (incremented after reset to 0)');
 
         // Verify plan was switched
         $this->assertEquals($quarterlyContractPlan->id, $subscription->plan_id, 'Plan should be switched to quarterly plan');

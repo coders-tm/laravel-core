@@ -59,8 +59,6 @@ class SwapSubscriptionPlan
             'cancels_at' => null,
             'billing_interval' => $billingInterval,
             'billing_interval_count' => $billingIntervalCount,
-            'total_cycles' => $newPlan->contract_cycles,
-            'current_cycle' => 0,
             'credit_resets_at' => $creditPeriod->getEndDate(),
         ])->save();
 

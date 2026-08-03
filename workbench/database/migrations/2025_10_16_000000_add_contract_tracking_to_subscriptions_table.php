@@ -20,14 +20,6 @@ return new class extends Migration
                 $table->unsignedInteger('billing_interval_count')->nullable()->after('billing_interval')
                     ->comment('Billing interval count (e.g., 2 for bi-weekly)');
             }
-            if (! Schema::hasColumn('subscriptions', 'total_cycles')) {
-                $table->unsignedInteger('total_cycles')->nullable()->after('billing_interval_count')
-                    ->comment('Total number of billing cycles for contract');
-            }
-            if (! Schema::hasColumn('subscriptions', 'current_cycle')) {
-                $table->unsignedInteger('current_cycle')->default(0)->after('total_cycles')
-                    ->comment('Current billing cycle number');
-            }
         });
     }
 

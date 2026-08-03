@@ -49,8 +49,6 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         'metadata',
         'billing_interval',
         'billing_interval_count',
-        'total_cycles',
-        'current_cycle',
         'is_free_forever',
         'credit_resets_at',
     ];
@@ -75,8 +73,6 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
         'release_at' => 'datetime',
         'metadata' => 'json',
         'billing_interval_count' => 'integer',
-        'total_cycles' => 'integer',
-        'current_cycle' => 'integer',
         'is_free_forever' => 'boolean',
         'credit_resets_at' => 'datetime',
     ];
@@ -146,7 +142,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
 
     public function isContractBased(): bool
     {
-        return ! is_null($this->total_cycles) && $this->total_cycles > 0;
+        return false;
     }
 
     protected static function newFactory()
@@ -268,29 +264,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
             'billing_interval_count' => $this->plan->interval_count,
         ]);
 
-        if ($this->plan->isContract() && is_null($this->total_cycles)) {
-            $this->total_cycles = $this->plan->contract_cycles;
-            $this->current_cycle = 0;
-        }
-
         return $this;
-    }
-
-    public function contractCycles(?int $cycles): self
-    {
-        $this->total_cycles = $cycles;
-        $this->current_cycle = 0;
-
-        return $this;
-    }
-
-    public function contractComplete(): bool
-    {
-        if (! $this->total_cycles) {
-            return false;
-        }
-
-        return $this->current_cycle >= $this->total_cycles;
     }
 
     protected function setPeriodFromDate(Carbon $dateFrom): self
@@ -771,8 +745,6 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
             'metadata' => $this->metadata ?? [],
             'billing_interval' => $this->billing_interval,
             'billing_interval_count' => $this->billing_interval_count,
-            'total_cycles' => $this->total_cycles,
-            'current_cycle' => $this->current_cycle,
             'credit_resets_at' => $this->serializeDate($this->credit_resets_at),
             'created_at' => $this->serializeDate($this->created_at),
             'updated_at' => $this->serializeDate($this->updated_at),

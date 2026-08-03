@@ -216,12 +216,6 @@ class MigrateSubscriptionFeatures extends Command
             $subscription->billing_interval_count = $plan->interval_count;
             $updated = true;
 
-            // Initialize contract cycles if plan is a contract
-            if ($plan->is_contract && is_null($subscription->total_cycles)) {
-                $subscription->total_cycles = $plan->contract_cycles;
-                $updated = true;
-            }
-
             if ($updated) {
                 $subscription->save();
             }

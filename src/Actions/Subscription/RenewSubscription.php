@@ -27,12 +27,6 @@ class RenewSubscription
 
         $subscription->assertRenewable();
 
-        if ($subscription->total_cycles && $subscription->current_cycle >= $subscription->total_cycles) {
-            throw new \LogicException('Contract has reached its total cycles limit.');
-        }
-
-        $subscription->detachActions();
-
         if ($subscription->nextPlan) {
             $subscription->plan()->associate($subscription->nextPlan);
 
@@ -40,13 +34,9 @@ class RenewSubscription
 
             $subscription->billing_interval = $subscription->nextPlan->interval->value;
             $subscription->billing_interval_count = $subscription->nextPlan->interval_count;
-            $subscription->total_cycles = $subscription->nextPlan->contract_cycles;
-            $subscription->current_cycle = 0;
             $subscription->next_plan = null;
             $subscription->is_downgrade = false;
         }
-
-        $subscription->current_cycle = ($subscription->current_cycle ?? 0) + 1;
 
         $renewalInterval = $subscription->getBillingInterval();
         $renewalIntervalCount = $subscription->getBillingIntervalCount();
@@ -142,10 +132,6 @@ class RenewSubscription
             event(new SubscriptionExpired($subscription));
         }
 
-        if ($subscription->total_cycles && $subscription->current_cycle >= $subscription->total_cycles) {
-            app(CancelSubscription::class)->cancelNow($subscription);
-        }
-
         return $subscription;
     }
 
@@ -157,9 +143,6 @@ class RenewSubscription
      */
     protected function executeNoCharge($subscription)
     {
-        if ($subscription->total_cycles && $subscription->current_cycle >= $subscription->total_cycles) {
-            throw new \LogicException('Contract has reached its total cycles limit.');
-        }
 
         $startDate = $subscription->expires_at ?? Carbon::now();
         $period = new Period(
@@ -205,7 +188,6 @@ class RenewSubscription
                 'subscription_id' => $subscription->id,
                 'plan_id' => $subscription->plan_id,
                 'invoice_id' => $invoice->id,
-                'cycle' => $subscription->current_cycle,
             ]
         );
 

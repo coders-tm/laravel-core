@@ -28,8 +28,6 @@ return new class extends Migration
             $table->{$this->jsonable()}('metadata')->nullable();
             $table->string('billing_interval')->nullable()->comment('Billing cycle frequency (day, week, month, year)');
             $table->unsignedInteger('billing_interval_count')->nullable()->comment('Billing interval count (e.g., 2 for bi-weekly)');
-            $table->unsignedInteger('total_cycles')->nullable()->comment('Total number of billing cycles for contract');
-            $table->unsignedInteger('current_cycle')->default(0)->comment('Current billing cycle number');
             $table->string('status')->nullable()->index();
             $table->boolean('is_downgrade')->default(false);
             $table->boolean('is_free_forever')->nullable()->comment('Indicates if the subscription is free indefinitely');

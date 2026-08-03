@@ -37,14 +37,12 @@ class Renew extends Command
 
                 event(new ResetFeatureUsages($subscription, $usagesBeforeRenewal));
 
-                $cycleInfo = $subscription->total_cycles ? "{$subscription->current_cycle}/{$subscription->total_cycles}" : $subscription->current_cycle;
-
                 $subscription->logs()->create([
                     'type' => 'renew',
-                    'message' => "Subscription renewed successfully! Cycle {$cycleInfo}. Credits reset.",
+                    'message' => 'Subscription renewed successfully! Credits reset.',
                 ]);
 
-                $this->info("Subscription #{$subscription->id} renewed! ({$cycleInfo}, Credits reset)");
+                $this->info("Subscription #{$subscription->id} renewed! (Credits reset)");
                 $renewedCount++;
             } catch (\Throwable $e) {
                 $message = "Subscription #{$subscription->id} unable to renew! {$e->getMessage()}";

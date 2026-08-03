@@ -118,36 +118,7 @@ class RenewFromCheckoutTest extends FeatureTestCase
             ->assertStatus(401);
     }
 
-    #[Test]
-    public function it_rejects_renewal_when_contract_cycles_exhausted()
-    {
-        $plan = Plan::factory()->create([
-            'interval' => 'month',
-            'interval_count' => 1,
-            'price' => 1000,
-            'is_contract' => true,
-            'contract_cycles' => 2,
-        ]);
 
-        $user = User::factory()->create();
-
-        $subscription = new Subscription([
-            'user_id' => $user->id,
-            'type' => 'default',
-            'plan_id' => $plan->id,
-            'status' => 'active',
-            'total_cycles' => 2,
-            'current_cycle' => 2,
-            'starts_at' => Carbon::parse('2025-01-01'),
-            'expires_at' => Carbon::parse('2025-03-01'),
-        ]);
-        $subscription->save();
-
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Contract has reached its total cycles limit.');
-
-        $subscription->renew(false);
-    }
 
     #[Test]
     public function it_clears_ends_at_and_trial_ends_at_on_renew()

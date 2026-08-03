@@ -249,8 +249,6 @@ class SubscriptionMetrics extends MetricsCalculator
     {
         return $this->remember('contract_count', function () {
             return Subscription::query()
-                ->whereNotNull('total_cycles')
-                ->where('total_cycles', '>', 0)
                 ->where(function ($q) {
                     $q->whereNull('cancels_at')
                         ->orWhere('expires_at', '>', now());
@@ -266,8 +264,6 @@ class SubscriptionMetrics extends MetricsCalculator
     {
         return $this->remember('contracts_ending_soon', function () {
             return Subscription::query()
-                ->whereNotNull('total_cycles')
-                ->where('total_cycles', '>', 0)
                 ->whereNotNull('expires_at')
                 ->whereBetween('expires_at', [now(), now()->addDays(30)])
                 ->count();

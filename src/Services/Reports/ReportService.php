@@ -3,7 +3,6 @@
 namespace Coderstm\Services\Reports;
 
 use Coderstm\Services\Reports\Acquisition\NewSignupsReport;
-// Import new single-responsibility report classes
 use Coderstm\Services\Reports\Acquisition\TrialConversionReport;
 use Coderstm\Services\Reports\Coupons\CouponPerformanceReport;
 use Coderstm\Services\Reports\Coupons\CouponRedemptionReport;
@@ -29,7 +28,6 @@ use Coderstm\Services\Reports\Retention\MrrChurnReport;
 use Coderstm\Services\Reports\Revenue\ActiveSubscriptionsTimeReport;
 use Coderstm\Services\Reports\Revenue\MrrByPlanReport;
 use Coderstm\Services\Reports\Revenue\MrrMovementReport;
-use Coderstm\Services\Reports\Subscriptions\ContractProgressReport;
 use Coderstm\Services\Reports\Subscriptions\FreezeUsageReport;
 use Coderstm\Services\Reports\Subscriptions\RenewalForecastReport;
 use Coderstm\Services\Reports\Subscriptions\SubscriptionLifecycleReport;
@@ -70,7 +68,6 @@ class ReportService
         // Subscription Lifecycle Reports
         'subscription-lifecycle' => SubscriptionLifecycleReport::class,
         'freeze-usage' => FreezeUsageReport::class,
-        'contract-progress' => ContractProgressReport::class,
         'renewal-forecast' => RenewalForecastReport::class,
 
         // Retention & Churn Reports
@@ -125,7 +122,6 @@ class ReportService
         'subscriptions' => [
             'subscription-lifecycle',
             'freeze-usage',
-            'contract-progress',
             'renewal-forecast',
         ],
         'retention' => [
@@ -182,7 +178,6 @@ class ReportService
         // Subscription Lifecycle Reports
         'subscription-lifecycle' => 'Subscription Lifecycle Analysis',
         'freeze-usage' => 'Membership Freeze Usage',
-        'contract-progress' => 'Contract Progress & Completion',
         'renewal-forecast' => 'Renewal Forecast',
 
         // Retention & Churn Reports

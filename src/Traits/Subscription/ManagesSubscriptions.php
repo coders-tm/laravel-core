@@ -71,7 +71,6 @@ trait ManagesSubscriptions
             'expires_at' => $isTrial ? $trial->getEndDate() : $period->getEndDate(),
             'billing_interval' => $billingInterval,
             'billing_interval_count' => $billingIntervalCount,
-            'total_cycles' => $plan->contract_cycles,
             $this->getForeignKey() => $this->getKey(),
         ]);
 

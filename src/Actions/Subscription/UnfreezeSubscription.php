@@ -21,7 +21,7 @@ class UnfreezeSubscription
 
         $freezeDuration = $subscription->frozen_at->diffInDays(now());
 
-        if ($subscription->isContract() && $subscription->total_cycles) {
+        if ($subscription->isContract()) {
             $this->extendContractForFreeze($subscription, $freezeDuration);
         }
 

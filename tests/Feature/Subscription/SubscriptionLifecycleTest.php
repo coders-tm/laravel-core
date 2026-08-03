@@ -205,31 +205,7 @@ class SubscriptionLifecycleTest extends TestCase
         $this->assertFalse($notGraceSubscriptions->contains($graceSubscription));
     }
 
-    /**
-     * Test cannot renew subscription that has reached contract limit.
-     */
-    public function test_cannot_renew_beyond_contract_cycles()
-    {
-        $user = User::factory()->create();
-        $plan = Plan::factory()->create(['price' => 1000, 'trial_days' => 0]);
 
-        $subscription = $user->newSubscription('default', $plan->id)
-            ->contractCycles(1)
-            ->saveAndInvoice([], true);
-
-        $subscription->paymentConfirmation();
-        $subscription->renew(); // Completes contract and cancels
-
-        // Verify it's canceled
-        $this->assertEquals(SubscriptionStatus::CANCELED, $subscription->status);
-        $this->assertTrue($subscription->contractComplete());
-
-        // Try to renew again - should throw exception because it's ended
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('Unable to renew canceled ended subscription');
-
-        $subscription->renew();
-    }
 
     /**
      * Test renewing a subscription clears the trial_ends_at date.

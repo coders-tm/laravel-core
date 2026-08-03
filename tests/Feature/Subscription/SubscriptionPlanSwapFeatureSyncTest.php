@@ -315,25 +315,13 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         $subscription = $user->newSubscription('default', $monthlyPlan->id)
             ->saveWithoutInvoice();
 
-        // Verify initial state
-        $this->assertEquals('month', $subscription->billing_interval);
-        $this->assertEquals(1, $subscription->billing_interval_count);
-        $this->assertNull($subscription->total_cycles);
-        $this->assertEquals(0, $subscription->current_cycle);
-
         // Swap to yearly contract plan
         $subscription->swap($yearlyContractPlan->id, 'monthly', false);
         $subscription->refresh();
 
-        // Verify billing interval and contract fields are updated
+        // Verify billing interval fields are updated
         $this->assertEquals('year', $subscription->billing_interval, 'Billing interval should be updated to year');
         $this->assertEquals(1, $subscription->billing_interval_count, 'Billing interval count should be 1');
-        $this->assertEquals(12, $subscription->total_cycles, 'Total cycles should be set from plan contract_cycles');
-        $this->assertEquals(0, $subscription->current_cycle, 'Current cycle should be reset to 0');
-
-        // Record some cycles
-        $subscription->current_cycle = 5;
-        $subscription->save();
 
         // Swap to quarterly plan
         $subscription->swap($quarterlyPlan->id, 'monthly', false);
@@ -342,8 +330,6 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         // Verify all fields are updated again
         $this->assertEquals('month', $subscription->billing_interval, 'Billing interval should be month');
         $this->assertEquals(3, $subscription->billing_interval_count, 'Billing interval count should be 3');
-        $this->assertNull($subscription->total_cycles, 'Total cycles should be null (no contract)');
-        $this->assertEquals(0, $subscription->current_cycle, 'Current cycle should be reset to 0 on swap');
     }
 
     public function test_force_swap_updates_billing_interval_and_contract_fields()
@@ -375,10 +361,6 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         $subscription = $user->newSubscription('default', $monthlyPlan->id)
             ->saveWithoutInvoice();
 
-        // Simulate some progress
-        $subscription->current_cycle = 3;
-        $subscription->save();
-
         // Admin force swap to contract plan
         $subscription->forceSwap($contractPlan->id, 'monthly', false);
         $subscription->refresh();
@@ -386,8 +368,6 @@ class SubscriptionPlanSwapFeatureSyncTest extends TestCase
         // Verify all fields are updated
         $this->assertEquals('month', $subscription->billing_interval);
         $this->assertEquals(1, $subscription->billing_interval_count);
-        $this->assertEquals(6, $subscription->total_cycles, 'Total cycles should be set from contract plan');
-        $this->assertEquals(0, $subscription->current_cycle, 'Current cycle should be reset to 0');
         $this->assertEquals($contractPlan->id, $subscription->plan_id);
     }
 }
