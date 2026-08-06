@@ -49,8 +49,8 @@ class PaymentController extends Controller
     public function setupPaymentIntent(Request $request)
     {
         $request->validate([
-            'token' => 'required|string|exists:'.Coderstm::$orderModel.',key',
-            'provider' => 'required|integer|exists:'.PaymentMethod::class.',id',
+            'token' => 'required|string|exists:' . Coderstm::$orderModel . ',key',
+            'provider' => 'required|integer|exists:' . PaymentMethod::class . ',id',
         ]);
 
         try {
@@ -101,8 +101,8 @@ class PaymentController extends Controller
     public function confirmPayment(Request $request)
     {
         $request->validate([
-            'token' => 'required|string|exists:'.Coderstm::$orderModel.',key',
-            'provider' => 'required|integer|exists:'.PaymentMethod::class.',id',
+            'token' => 'required|string|exists:' . Coderstm::$orderModel . ',key',
+            'provider' => 'required|integer|exists:' . PaymentMethod::class . ',id',
         ]);
 
         try {
@@ -152,6 +152,7 @@ class PaymentController extends Controller
                 'success' => true,
                 'order_id' => $order->key,
                 'transaction_id' => $result->getTransactionId(),
+                'payment' => $result->getPaymentData()->toArray(),
                 'status' => $result->getStatus() ?? 'success',
             ]);
         } catch (\Throwable $e) {
@@ -193,7 +194,7 @@ class PaymentController extends Controller
                 ->with($result->getMessageType(), $result->getMessage());
         } catch (\Throwable $e) {
             // Log the error but don't show it to user
-            Log::error("Order payment success handler error for provider {$provider}: ".$e->getMessage(), [
+            Log::error("Order payment success handler error for provider {$provider}: " . $e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
@@ -231,7 +232,7 @@ class PaymentController extends Controller
                 ->with($result->getMessageType(), $result->getMessage());
         } catch (\Throwable $e) {
             // Log the error but don't show it to user
-            Log::error("Order payment cancel handler error for provider {$provider}: ".$e->getMessage(), [
+            Log::error("Order payment cancel handler error for provider {$provider}: " . $e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
