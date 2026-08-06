@@ -733,7 +733,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
             'is_valid' => $this->valid() ?? false,
             'type' => $this->type,
             'is_downgrade' => $this->is_downgrade,
-            'next_plan' => $this->next_plan,
+            'next_plan' => $this->nextPlan,
             'trial_ends_at' => $this->serializeDate($this->trial_ends_at),
             'expires_at' => $this->serializeDate($this->expires_at),
             'ends_at' => $this->serializeDate($this->ends_at),
