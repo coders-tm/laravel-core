@@ -69,21 +69,36 @@ class SubscriptionTest extends TestCase
     #[Test]
     public function it_can_resume_a_subscription_within_grace_period()
     {
+        $expectedExpiresAt = Carbon::now()->addDays(5)->startOfSecond();
+
         $subscription = Subscription::factory()->create([
             'status' => SubscriptionStatus::ACTIVE,
-            'expires_at' => Carbon::now()->addDays(5),
+            'starts_at' => Carbon::now()->subMonths(6),
+            'expires_at' => $expectedExpiresAt,
         ]);
 
         $subscription->pay(config('stripe.id'));
 
         // Cancel the subscription
         $subscription = $subscription->cancel();
+        $this->assertEquals($expectedExpiresAt->toDateTimeString(), $subscription->expires_at->toDateTimeString());
 
         // Resume the subscription
         $subscription = $subscription->resume();
 
         $this->assertNull($subscription->cancels_at);
         $this->assertEquals(SubscriptionStatus::ACTIVE, $subscription->status);
+        $this->assertEquals($expectedExpiresAt->toDateTimeString(), $subscription->expires_at->toDateTimeString());
+
+        // Cancel again
+        $subscription = $subscription->cancel();
+        $this->assertEquals($expectedExpiresAt->toDateTimeString(), $subscription->expires_at->toDateTimeString());
+
+        // Resume again
+        $subscription = $subscription->resume();
+        $this->assertNull($subscription->cancels_at);
+        $this->assertEquals(SubscriptionStatus::ACTIVE, $subscription->status);
+        $this->assertEquals($expectedExpiresAt->toDateTimeString(), $subscription->expires_at->toDateTimeString());
     }
 
     #[Test]

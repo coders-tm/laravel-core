@@ -2,10 +2,8 @@
 
 namespace Coderstm\Actions\Subscription;
 
-use Carbon\Carbon;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Subscription;
-use Coderstm\Services\Period;
 
 class ResumeSubscription
 {
@@ -23,15 +21,8 @@ class ResumeSubscription
 
         $subscription->guardAgainstIncomplete();
 
-        $period = new Period(
-            $subscription->plan->interval->value,
-            $subscription->plan->interval_count,
-            $subscription->starts_at ?? Carbon::now()
-        );
-
         $subscription->fill([
             'status' => SubscriptionStatus::ACTIVE,
-            'expires_at' => $period->getEndDate(),
             'cancels_at' => null,
         ])->save();
 
