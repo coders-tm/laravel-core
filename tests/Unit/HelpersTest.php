@@ -259,6 +259,14 @@ class HelpersTest extends BaseTestCase
     public function test_format_amount()
     {
         $this->assertEquals('$100.00', format_amount(100));
+
+        // Test with different locale config
+        Config::set('stripe.locale', 'en_US');
+        $this->assertEquals('$100.00', format_amount(100));
+
+        // Test fallback for unsupported/invalid locale (should fall back to 'en' without throwing exceptions)
+        Config::set('stripe.locale', 'invalid_locale');
+        $this->assertStringContainsString('$100.00', format_amount(100));
     }
 
     public function test_currency_symbol()

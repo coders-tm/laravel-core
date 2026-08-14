@@ -15,6 +15,6 @@ return [
 
     'currency' => env('STRIPE_CURRENCY', 'usd'),
 
-    'currency_locale' => env('STRIPE_CURRENCY_LOCALE', 'en_US'),
+    'locale' => env('STRIPE_CURRENCY_LOCALE', 'en'),
 
 ];

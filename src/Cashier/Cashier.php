@@ -43,9 +43,13 @@ class Cashier
 
         $money = new Money($amount, new Currency(strtoupper($currency ?? config('stripe.currency'))));
 
-        $locale = $locale ?? config('stripe.currency_locale', 'en_US');
+        $locale = $locale ?? config('stripe.locale', 'en');
 
-        $numberFormatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
+        try {
+            $numberFormatter = new NumberFormatter($locale, NumberFormatter::CURRENCY);
+        } catch (\Throwable $e) {
+            $numberFormatter = new NumberFormatter('en', NumberFormatter::CURRENCY);
+        }
 
         if (isset($options['min_fraction_digits'])) {
             $numberFormatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, $options['min_fraction_digits']);

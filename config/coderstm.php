@@ -55,6 +55,7 @@ return [
             ],
             'name' => ['mail.from.name'],
             'currency' => 'stripe.currency',
+            'lang' => 'stripe.locale',
         ],
     ],
 
