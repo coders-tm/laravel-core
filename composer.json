@@ -65,8 +65,7 @@
     "twilio/sdk": "^7.16",
     "vedmant/laravel-shortcodes": "^1.1",
     "xendit/xendit-php": "^7.0",
-    "yabacon/paystack-php": "^2.2",
-    "yansongda/laravel-pay": "^3.7.0"
+    "yabacon/paystack-php": "^2.2"
   },
   "require-dev": {
     "laravel/pint": "^1.27",

@@ -125,7 +125,7 @@ public function confirmPayment(Request $request, Payable $payable): PaymentResul
 }
 ```
 
-#### B. Redirect-Based (e.g., Alipay, Xendit)
+#### B. Redirect-Based (e.g., Xendit, PayU)
 Best for methods that redirect the user to a checkout page.
 
 ```php
@@ -194,4 +194,4 @@ case self::NEW_PROVIDER:
 
 **File**: `tests/Feature/Payment/NewProviderProcessorTest.php`
 
-Refer to [`AlipayProcessorTest.php`](file:///Volumes/Portable/laravel-core-source/tests/Feature/Payment/AlipayProcessorTest.php) for a modern test example using real database records for payment tracking.
+Refer to [`XenditProcessorTest.php`](file:///Volumes/Portable/laravel-core-source/tests/Feature/Payment/XenditProcessorTest.php) for a modern test example using real database records for payment tracking.

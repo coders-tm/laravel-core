@@ -544,42 +544,6 @@
     ]
   },
   {
-    "name": "Alipay",
-    "provider": "alipay",
-    "link": "https://www.alipay.com/",
-    "logo": "fab fa-alipay",
-    "active": false,
-    "description": "Alipay is a leading digital payment platform, providing safe and convenient payment services to millions of users and merchants worldwide.",
-    "credentials": [
-      {
-        "key": "APP_ID",
-        "value": "",
-        "label": "APP ID",
-        "publish": false
-      },
-      {
-        "key": "ALI_PUBLIC_KEY",
-        "value": "",
-        "label": "Ali Public Key",
-        "publish": false
-      },
-      {
-        "key": "PRIVATE_KEY",
-        "value": "",
-        "label": "Private Key",
-        "publish": false
-      }
-    ],
-    "methods": [
-      {
-        "key": "alipay",
-        "label": "Alipay",
-        "enabled": true,
-        "type": "DIGITAL_WALLET"
-      }
-    ]
-  },
-  {
     "name": "PayU",
     "provider": "payu",
     "link": "https://payu.in/",

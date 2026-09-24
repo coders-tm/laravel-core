@@ -37,8 +37,6 @@ class PaymentMethod extends Model
 
     const GOOGLE_PAY = 'google_pay';
 
-    const ALIPAY = 'alipay';
-
     const PAYU = 'payu';
 
     const DIRECT_DEBIT = 'direct_debit';
@@ -459,18 +457,6 @@ class PaymentMethod extends Model
                     'google_pay.id' => $paymentMethod->id,
                     'google_pay.integration_via' => $paymentMethod->integration_via,
                     'google_pay.enabled' => $paymentMethod->active,
-                ];
-
-            case self::ALIPAY:
-                return [
-                    'alipay.id' => $paymentMethod->id,
-                    'alipay.app_id' => $paymentMethod->configs['APP_ID'] ?? null,
-                    'alipay.ali_public_key' => $paymentMethod->configs['ALI_PUBLIC_KEY'] ?? null,
-                    'alipay.private_key' => $paymentMethod->configs['PRIVATE_KEY'] ?? null,
-                    'alipay.mode' => $paymentMethod->test_mode ? 'sandbox' : 'normal',
-                    'alipay.webhook_url' => $paymentMethod->webhook,
-                    'alipay.enabled' => $paymentMethod->active,
-                    'alipay.supported_currencies' => $paymentMethod->supported_currencies,
                 ];
 
             case self::PAYU:

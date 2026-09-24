@@ -4,7 +4,6 @@ namespace Coderstm\Payment;
 
 use Coderstm\Contracts\PaymentProcessorInterface;
 use Coderstm\Models\PaymentMethod;
-use Coderstm\Payment\Processors\AlipayProcessor;
 use Coderstm\Payment\Processors\FlutterwaveProcessor;
 use Coderstm\Payment\Processors\KlarnaProcessor;
 use Coderstm\Payment\Processors\ManualProcessor;
@@ -36,7 +35,6 @@ class Processor
             'xendit' => new XenditProcessor,
             'paystack' => new PaystackProcessor,
             'flutterwave' => new FlutterwaveProcessor,
-            'alipay' => new AlipayProcessor,
             'payu' => new PayuProcessor,
             default => throw new \InvalidArgumentException("Unsupported payment provider: {$provider}")
         };
@@ -58,7 +56,6 @@ class Processor
             'xendit',
             'paystack',
             'flutterwave',
-            'alipay',
             'payu',
         ];
     }

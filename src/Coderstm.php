@@ -21,8 +21,6 @@ use Illuminate\Support\Facades\Gate;
 use Razorpay\Api\Api;
 use Stripe\StripeClient;
 use Yabacon\Paystack;
-use Yansongda\Pay\Gateways\Alipay;
-use Yansongda\Pay\Pay;
 
 class Coderstm
 {
@@ -625,49 +623,5 @@ class Coderstm
         }
 
         return static::$googlePayClient = static::stripe($options);
-    }
-
-    /**
-     * The cached Alipay client instance.
-     *
-     * @var Alipay|null
-     */
-    protected static $alipayClient;
-
-    /**
-     * Get the Alipay client instance.
-     */
-    public static function alipay(array $options = [])
-    {
-        if (static::$alipayClient) {
-            return static::$alipayClient;
-        }
-
-        $config = config('alipay');
-
-        if ($config && ! empty($config['app_id'])) {
-            Pay::config([
-                'alipay' => [
-                    'default' => [
-                        'app_id' => $config['app_id'],
-                        'ali_public_key' => $config['ali_public_key'],
-                        'private_key' => $config['private_key'],
-                        'notify_url' => $config['webhook_url'],
-                        'mode' => $config['mode'] === 'sandbox' ? Pay::MODE_SANDBOX : Pay::MODE_NORMAL,
-                    ],
-                ],
-                'logger' => [
-                    'enable' => true,
-                    'file' => storage_path('logs/alipay.log'),
-                    'level' => 'debug',
-                    'type' => 'daily',
-                    'max_file' => 30,
-                ],
-            ]);
-
-            return static::$alipayClient = Pay::alipay();
-        }
-
-        return static::$alipayClient = null;
     }
 }
