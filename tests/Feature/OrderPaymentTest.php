@@ -545,4 +545,117 @@ class OrderPaymentTest extends FeatureTestCase
         // Step 6: Verify order is still pending
         $this->assertEquals('pending', $order->fresh()->payment_status);
     }
+
+    #[Test]
+    public function it_redirects_to_return_url_on_success_callback()
+    {
+        $user = $this->userModel::factory()->create([
+            'email' => 'customer@example.com',
+        ]);
+
+        $order = Order::factory()->create([
+            'customer_id' => $user->id,
+            'status' => 'pending',
+            'payment_status' => 'pending',
+            'grand_total' => 100.00,
+        ]);
+
+        $paymentMethod = PaymentMethod::firstOrCreate(
+            ['provider' => 'payu'],
+            ['name' => 'PayU', 'active' => true]
+        );
+        $paymentMethod->update([
+            'active' => true,
+            'credentials' => collect([
+                ['key' => 'MERCHANT_KEY', 'value' => 'test_key_123', 'publish' => true],
+                ['key' => 'MERCHANT_SALT', 'value' => 'test_salt_123', 'publish' => false],
+            ]),
+        ]);
+        PaymentMethod::updateProviderCache('payu');
+
+        $payment = \Coderstm\Models\Payment::create([
+            'paymentable_type' => Order::class,
+            'paymentable_id' => $order->id,
+            'payment_method_id' => $paymentMethod->id,
+            'transaction_id' => 'txn_12345',
+            'amount' => 100.00,
+            'status' => \Coderstm\Models\Payment::STATUS_PENDING,
+            'metadata' => [
+                'return_url' => 'com.nitrofit28.members://payment/callback',
+            ],
+        ]);
+
+        $salt = 'test_salt_123';
+        $key = 'test_key_123';
+        $txnid = 'txn_12345';
+        $amount = '100.00';
+        $productinfo = 'Subscription Payment';
+        $firstname = 'John';
+        $email = 'customer@example.com';
+        $status = 'success';
+
+        $hashString = "{$salt}|{$status}|||||||||||{$email}|{$firstname}|{$productinfo}|{$amount}|{$txnid}|{$key}";
+        $hash = hash('sha512', $hashString);
+
+        $response = $this->post('/payment/payu/success', [
+            'state' => $payment->uuid,
+            'status' => 'success',
+            'key' => $key,
+            'txnid' => $txnid,
+            'amount' => $amount,
+            'productinfo' => $productinfo,
+            'firstname' => $firstname,
+            'email' => $email,
+            'hash' => $hash,
+            'mihpayid' => 'payu_mih_123',
+        ]);
+
+        $response->assertRedirect();
+        $targetUrl = $response->headers->get('Location');
+        $this->assertStringStartsWith('com.nitrofit28.members://payment/callback', $targetUrl);
+        $this->assertStringContainsString('status=succeeded', $targetUrl);
+        $this->assertStringContainsString('provider=payu', $targetUrl);
+        $this->assertStringContainsString('token='.$order->key, $targetUrl);
+    }
+
+    #[Test]
+    public function it_redirects_to_return_url_on_cancel_callback()
+    {
+        $user = $this->userModel::factory()->create([
+            'email' => 'customer@example.com',
+        ]);
+
+        $order = Order::factory()->create([
+            'customer_id' => $user->id,
+            'status' => 'pending',
+            'payment_status' => 'pending',
+            'grand_total' => 100.00,
+        ]);
+
+        $paymentMethod = PaymentMethod::firstOrCreate(
+            ['provider' => 'payu'],
+            ['name' => 'PayU', 'active' => true]
+        );
+
+        $payment = \Coderstm\Models\Payment::create([
+            'paymentable_type' => Order::class,
+            'paymentable_id' => $order->id,
+            'payment_method_id' => $paymentMethod->id,
+            'transaction_id' => 'txn_12345',
+            'amount' => 100.00,
+            'status' => \Coderstm\Models\Payment::STATUS_PENDING,
+            'metadata' => [
+                'return_url' => 'com.nitrofit28.members://payment/callback',
+            ],
+        ]);
+
+        $response = $this->get("/payment/payu/cancel?state={$payment->uuid}");
+
+        $response->assertRedirect();
+        $targetUrl = $response->headers->get('Location');
+        $this->assertStringStartsWith('com.nitrofit28.members://payment/callback', $targetUrl);
+        $this->assertStringContainsString('status=cancelled', $targetUrl);
+        $this->assertStringContainsString('provider=payu', $targetUrl);
+        $this->assertStringContainsString('token='.$order->key, $targetUrl);
+    }
 }

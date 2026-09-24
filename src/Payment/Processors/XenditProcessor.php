@@ -103,7 +103,9 @@ class XenditProcessor extends AbstractPaymentProcessor implements PaymentProcess
 
             // Update payment record using mapper
             $paymentData = new XenditPayment($invoice, $this->paymentMethod);
-            $payment->update($paymentData->toArray());
+            $paymentDataArray = $paymentData->toArray();
+            $paymentDataArray['metadata'] = array_merge($payment->metadata ?? [], $paymentDataArray['metadata'] ?? []);
+            $payment->update($paymentDataArray);
 
             return CallbackResult::success(
                 message: 'Payment completed successfully!',
@@ -189,7 +191,9 @@ class XenditProcessor extends AbstractPaymentProcessor implements PaymentProcess
                 'amount' => $payable->getGrandTotal(),
                 'status' => Payment::STATUS_PENDING,
                 'note' => 'Xendit payment initiated',
-                'metadata' => array_merge($payable->getMetadata(), [
+                'metadata' => array_merge($payable->getMetadata(), array_filter([
+                    'return_url' => $request->input('return_url'),
+                ]), [
                     'amount' => $payable->getGrandTotal(),
                     'currency' => $baseCurrency,
                     'gateway_currency' => $gatewayCurrency,

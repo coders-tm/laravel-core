@@ -281,7 +281,9 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
             }
 
             $paymentData = new PayuPayment($request->all(), $this->paymentMethod);
-            $payment->update($paymentData->toArray());
+            $paymentDataArray = $paymentData->toArray();
+            $paymentDataArray['metadata'] = array_merge($payment->metadata ?? [], $paymentDataArray['metadata'] ?? []);
+            $payment->update($paymentDataArray);
 
             return CallbackResult::success(
                 message: 'PayU payment was successful.',

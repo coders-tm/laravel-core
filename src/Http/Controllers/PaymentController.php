@@ -51,6 +51,7 @@ class PaymentController extends Controller
         $request->validate([
             'token' => 'required|string|exists:' . Coderstm::$orderModel . ',key',
             'provider' => 'required|integer|exists:' . PaymentMethod::class . ',id',
+            'return_url' => 'nullable|string',
         ]);
 
         try {
@@ -175,19 +176,42 @@ class PaymentController extends Controller
             // Update redirect URL if payment information is available
             /** @var Payment $payment */
             $payment = $result->payment;
-            if ($order = $payment->paymentable) {
-                /** @var Order $paymentable */
+            if ($order = $payment?->paymentable) {
                 if (isset($order->key)) {
                     $redirectUrl = "/payment/{$order->key}";
                 }
 
                 // Check if order is already paid
                 if ($order->payment_status === 'paid') {
+                    if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
+                        $params = array_filter([
+                            'status' => 'succeeded',
+                            'provider' => $provider,
+                            'token' => $order->key ?? $order->id ?? $payment->uuid,
+                            'payment_id' => $payment->transaction_id,
+                        ]);
+                        $separator = str_contains($returnUrl, '?') ? '&' : '?';
+
+                        return redirect($returnUrl . $separator . http_build_query($params));
+                    }
+
                     return redirect($redirectUrl)
                         ->with('info', 'This order has already been paid');
                 } else {
                     $order->markAsPaid();
                 }
+            }
+
+            if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
+                $params = array_filter([
+                    'status' => 'succeeded',
+                    'provider' => $provider,
+                    'token' => $order?->key ?? $order?->id ?? $payment?->uuid,
+                    'payment_id' => $payment?->transaction_id,
+                ]);
+                $separator = str_contains($returnUrl, '?') ? '&' : '?';
+
+                return redirect($returnUrl . $separator . http_build_query($params));
             }
 
             return redirect($redirectUrl)
@@ -221,11 +245,21 @@ class PaymentController extends Controller
             // Update redirect URL if payment information is available
             /** @var Payment $payment */
             $payment = $result->payment;
-            if ($paymentable = $payment->paymentable) {
-                /** @var Order $paymentable */
+            if ($paymentable = $payment?->paymentable) {
                 if (isset($paymentable->key)) {
                     $redirectUrl = "/payment/{$paymentable->key}";
                 }
+            }
+
+            if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
+                $params = array_filter([
+                    'status' => 'cancelled',
+                    'provider' => $provider,
+                    'token' => $paymentable?->key ?? $paymentable?->id ?? $payment?->uuid,
+                ]);
+                $separator = str_contains($returnUrl, '?') ? '&' : '?';
+
+                return redirect($returnUrl . $separator . http_build_query($params));
             }
 
             return redirect($redirectUrl)
