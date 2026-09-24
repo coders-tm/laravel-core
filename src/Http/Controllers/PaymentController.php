@@ -209,8 +209,7 @@ class PaymentController extends Controller
                 'error' => $e->getMessage(),
             ]);
 
-            return PaymentRedirect::error(
-                payment: $payment ?? self::findPaymentFromRequest($request),
+            return PaymentRedirect::failed(
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: 'Payment may have been completed. Please check your order status or contact support if needed.'
@@ -225,7 +224,6 @@ class PaymentController extends Controller
     public function handleCancel(Request $request, string $provider)
     {
         $redirectUrl = '/orders';
-        $payment = null;
 
         try {
             // Use the factory to handle the cancel callback
@@ -241,7 +239,6 @@ class PaymentController extends Controller
             }
 
             return PaymentRedirect::cancel(
-                payment: $payment,
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: $result->getMessage()
@@ -254,23 +251,10 @@ class PaymentController extends Controller
             ]);
 
             return PaymentRedirect::cancel(
-                payment: $payment ?? self::findPaymentFromRequest($request),
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: 'Payment process was interrupted. Please try again.'
             );
         }
-    }
-
-    /**
-     * Helper to resolve payment model from callback request state
-     */
-    protected static function findPaymentFromRequest(Request $request): ?Payment
-    {
-        if ($state = $request->input('state')) {
-            return Payment::where('uuid', $state)->first();
-        }
-
-        return null;
     }
 }
