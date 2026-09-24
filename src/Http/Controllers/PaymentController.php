@@ -7,6 +7,7 @@ use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Payment\Payable;
+use Coderstm\Payment\PaymentRedirect;
 use Coderstm\Payment\Processor;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -168,6 +169,7 @@ class PaymentController extends Controller
     public function handleSuccess(Request $request, string $provider)
     {
         $redirectUrl = '/billing';
+        $payment = null;
 
         try {
             // Use the factory to handle the success callback
@@ -183,50 +185,36 @@ class PaymentController extends Controller
 
                 // Check if order is already paid
                 if ($order->payment_status === 'paid') {
-                    if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
-                        $params = array_filter([
-                            'status' => 'succeeded',
-                            'provider' => $provider,
-                            'token' => $order->key ?? $order->id ?? $payment->uuid,
-                            'payment_id' => $payment->transaction_id,
-                        ]);
-                        $separator = str_contains($returnUrl, '?') ? '&' : '?';
-
-                        return redirect($returnUrl . $separator . http_build_query($params));
-                    }
-
-                    return redirect($redirectUrl)
-                        ->with('info', 'This order has already been paid');
+                    return PaymentRedirect::success(
+                        payment: $payment,
+                        provider: $provider,
+                        fallbackUrl: $redirectUrl,
+                        message: 'This order has already been paid'
+                    );
                 } else {
                     $order->markAsPaid();
                 }
             }
 
-            if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
-                $params = array_filter([
-                    'status' => 'succeeded',
-                    'provider' => $provider,
-                    'token' => $order?->key ?? $order?->id ?? $payment?->uuid,
-                    'payment_id' => $payment?->transaction_id,
-                ]);
-                $separator = str_contains($returnUrl, '?') ? '&' : '?';
-
-                return redirect($returnUrl . $separator . http_build_query($params));
-            }
-
-            return redirect($redirectUrl)
-                ->with($result->getMessageType(), $result->getMessage());
+            return PaymentRedirect::success(
+                payment: $payment,
+                provider: $provider,
+                fallbackUrl: $redirectUrl,
+                message: $result->getMessage()
+            );
         } catch (\Throwable $e) {
-            // Log the error but don't show it to user
             Log::error("Order payment success handler error for provider {$provider}: " . $e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
             ]);
 
-            // Fallback to orders redirect
-            return redirect($redirectUrl)
-                ->with('info', 'Payment may have been completed. Please check your order status or contact support if needed.');
+            return PaymentRedirect::error(
+                payment: $payment ?? self::findPaymentFromRequest($request),
+                provider: $provider,
+                fallbackUrl: $redirectUrl,
+                message: 'Payment may have been completed. Please check your order status or contact support if needed.'
+            );
         }
     }
 
@@ -237,6 +225,7 @@ class PaymentController extends Controller
     public function handleCancel(Request $request, string $provider)
     {
         $redirectUrl = '/orders';
+        $payment = null;
 
         try {
             // Use the factory to handle the cancel callback
@@ -251,30 +240,37 @@ class PaymentController extends Controller
                 }
             }
 
-            if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
-                $params = array_filter([
-                    'status' => 'cancelled',
-                    'provider' => $provider,
-                    'token' => $paymentable?->key ?? $paymentable?->id ?? $payment?->uuid,
-                ]);
-                $separator = str_contains($returnUrl, '?') ? '&' : '?';
-
-                return redirect($returnUrl . $separator . http_build_query($params));
-            }
-
-            return redirect($redirectUrl)
-                ->with($result->getMessageType(), $result->getMessage());
+            return PaymentRedirect::cancel(
+                payment: $payment,
+                provider: $provider,
+                fallbackUrl: $redirectUrl,
+                message: $result->getMessage()
+            );
         } catch (\Throwable $e) {
-            // Log the error but don't show it to user
             Log::error("Order payment cancel handler error for provider {$provider}: " . $e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
             ]);
 
-            // Fallback to payment page or orders
-            return redirect($redirectUrl)
-                ->with('info', 'Payment process was interrupted. Please try again.');
+            return PaymentRedirect::cancel(
+                payment: $payment ?? self::findPaymentFromRequest($request),
+                provider: $provider,
+                fallbackUrl: $redirectUrl,
+                message: 'Payment process was interrupted. Please try again.'
+            );
         }
+    }
+
+    /**
+     * Helper to resolve payment model from callback request state
+     */
+    protected static function findPaymentFromRequest(Request $request): ?Payment
+    {
+        if ($state = $request->input('state')) {
+            return Payment::where('uuid', $state)->first();
+        }
+
+        return null;
     }
 }

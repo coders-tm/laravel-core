@@ -47,6 +47,18 @@ class CallbackResult
         return 'success';
     }
 
+    public function toRedirect(string $fallbackUrl, string $provider, string $status = 'succeeded'): \Illuminate\Http\RedirectResponse
+    {
+        return PaymentRedirect::to(
+            payment: $this->payment,
+            provider: $provider,
+            fallbackUrl: $fallbackUrl,
+            status: $status,
+            message: $this->message,
+            messageType: $this->getMessageType()
+        );
+    }
+
     public function toArray(): array
     {
         return [

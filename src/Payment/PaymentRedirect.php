@@ -1,0 +1,101 @@
+<?php
+
+namespace Coderstm\Payment;
+
+use Coderstm\Models\Payment;
+use Illuminate\Http\RedirectResponse;
+
+class PaymentRedirect
+{
+    /**
+     * Redirect to return_url (deep link or external URL) if configured in payment metadata,
+     * otherwise fallback to standard application redirect URL with flash message.
+     */
+    public static function to(
+        ?Payment $payment,
+        string $provider,
+        string $fallbackUrl,
+        string $status = 'succeeded',
+        ?string $message = null,
+        string $messageType = 'success'
+    ): RedirectResponse {
+        if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
+            $order = $payment?->paymentable;
+            $token = $order?->key ?? $order?->id ?? $payment?->uuid;
+
+            $params = array_filter([
+                'status' => $status,
+                'provider' => $provider,
+                'token' => $token,
+                'payment_id' => $status === 'succeeded' ? $payment?->transaction_id : null,
+            ]);
+            $separator = str_contains($returnUrl, '?') ? '&' : '?';
+
+            return redirect($returnUrl . $separator . http_build_query($params));
+        }
+
+        $redirect = redirect($fallbackUrl);
+        if ($message !== null) {
+            $redirect->with($messageType, $message);
+        }
+
+        return $redirect;
+    }
+
+    /**
+     * Shortcut for successful payment redirect
+     */
+    public static function success(
+        ?Payment $payment,
+        string $provider,
+        string $fallbackUrl,
+        ?string $message = null
+    ): RedirectResponse {
+        return self::to(
+            payment: $payment,
+            provider: $provider,
+            fallbackUrl: $fallbackUrl,
+            status: 'succeeded',
+            message: $message,
+            messageType: 'success'
+        );
+    }
+
+    /**
+     * Shortcut for cancelled payment redirect
+     */
+    public static function cancel(
+        ?Payment $payment,
+        string $provider,
+        string $fallbackUrl,
+        ?string $message = null
+    ): RedirectResponse {
+        return self::to(
+            payment: $payment,
+            provider: $provider,
+            fallbackUrl: $fallbackUrl,
+            status: 'cancelled',
+            message: $message,
+            messageType: 'info'
+        );
+    }
+
+    /**
+     * Shortcut for failed or errored payment redirect
+     */
+    public static function error(
+        ?Payment $payment,
+        string $provider,
+        string $fallbackUrl,
+        ?string $message = null
+    ): RedirectResponse {
+        return self::to(
+            payment: $payment,
+            provider: $provider,
+            fallbackUrl: $fallbackUrl,
+            status: 'failed',
+            message: $message,
+            messageType: 'error'
+        );
+    }
+}
