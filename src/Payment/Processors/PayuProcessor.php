@@ -191,7 +191,9 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
             'amount' => $payable->getGrandTotal(),
             'status' => Payment::STATUS_PENDING,
             'note' => 'PayU payment initiated',
-            'metadata' => array_merge($payable->getMetadata(), [
+            'metadata' => array_merge($payable->getMetadata(), array_filter([
+                'return_url' => $request->input('return_url'),
+            ]), [
                 'gateway_amount' => number_format($amount, 2, '.', ''),
                 'gateway_currency' => $gatewayCurrency,
                 'created_at' => now()->toISOString(),

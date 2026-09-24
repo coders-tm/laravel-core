@@ -2,11 +2,13 @@
 
 namespace Tests\Feature\Payment;
 
+use Coderstm\Coderstm;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Payment\Mappers\FlutterwavePayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\Processor;
 use Coderstm\Payment\Processors\FlutterwaveProcessor;
+use Coderstm\Services\Payment\FlutterwaveClient;
 use Illuminate\Foundation\Testing\WithFaker;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\FeatureTestCase;
@@ -21,11 +23,6 @@ class FlutterwaveProcessorTest extends FeatureTestCase
     {
         parent::setUp();
 
-        // Skip all tests if Flutterwave credentials are not configured
-        if (! env('FLUTTERWAVE_CLIENT_ID') || ! env('FLUTTERWAVE_CLIENT_SECRET') || ! env('FLUTTERWAVE_ENCRYPTION_KEY')) {
-            $this->markTestSkipped('Flutterwave credentials not configured. Set FLUTTERWAVE_CLIENT_ID, FLUTTERWAVE_CLIENT_SECRET, and FLUTTERWAVE_ENCRYPTION_KEY in phpunit.xml');
-        }
-
         // Get Flutterwave payment method created by seeder (don't filter by enabled status)
         $paymentMethod = PaymentMethod::byProvider(PaymentMethod::FLUTTERWAVE);
 
@@ -33,8 +30,17 @@ class FlutterwaveProcessorTest extends FeatureTestCase
             $this->markTestSkipped('Flutterwave payment method not found. Run seeders first.');
         }
 
-        // Enable the payment method for testing
-        $paymentMethod->update(['active' => true, 'test_mode' => true]);
+        // Enable the payment method for testing with test keys
+        $paymentMethod->update([
+            'active' => true,
+            'test_mode' => true,
+            'credentials' => collect([
+                ['key' => 'CLIENT_ID', 'value' => env('FLUTTERWAVE_CLIENT_ID', 'FLWPUBK_TEST-123456789'), 'publish' => true],
+                ['key' => 'CLIENT_SECRET', 'value' => env('FLUTTERWAVE_CLIENT_SECRET', 'FLWSECK_TEST-123456789'), 'publish' => false],
+                ['key' => 'ENCRYPTION_KEY', 'value' => env('FLUTTERWAVE_ENCRYPTION_KEY', 'FLWSECK_TEST-ENCR123'), 'publish' => false],
+            ]),
+        ]);
+        PaymentMethod::updateProviderCache(PaymentMethod::FLUTTERWAVE);
 
         $this->paymentMethod = $paymentMethod;
     }
@@ -264,5 +270,13 @@ class FlutterwaveProcessorTest extends FeatureTestCase
         $this->assertEquals('banktransfer', $metadata['payment_method_type']);
 
         $this->assertEquals('Banktransfer', $payment->toString());
+    }
+
+    #[Test]
+    public function it_creates_flutterwave_client_instance()
+    {
+        $client = Coderstm::flutterwave();
+
+        $this->assertInstanceOf(FlutterwaveClient::class, $client);
     }
 }

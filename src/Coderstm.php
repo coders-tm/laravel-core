@@ -8,14 +8,13 @@ use Coderstm\Policies\CouponPolicy;
 use Coderstm\Policies\EnquiryPolicy;
 use Coderstm\Policies\Subscription\PlanPolicy;
 use Coderstm\Policies\UserPolicy;
+use Coderstm\Services\Payment\FlutterwaveClient;
 use Coderstm\Services\Payment\KlarnaClient;
 use Coderstm\Services\Payment\MercadoPagoClient;
 use Coderstm\Services\Payment\PaypalClient;
 use Coderstm\Services\Payment\PayuClient;
 use Coderstm\Services\Payment\XenditClient;
 use DateTimeInterface;
-use Flutterwave\Config\PackageConfig;
-use Flutterwave\Flutterwave;
 use GoCardlessPro\Client;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
@@ -561,61 +560,33 @@ class Coderstm
     /**
      * The cached Flutterwave client instance.
      *
-     * @var Flutterwave|null
+     * @var FlutterwaveClient|null
      */
     protected static $flutterwaveClient;
 
     /**
-     * Get the Flutterwave client instance (official SDK v3).
-     * This method initializes the Flutterwave SDK with credentials.
+     * Get the Flutterwave client instance.
      *
-     * @return Flutterwave|null
+     * @return FlutterwaveClient|null
      */
     public static function flutterwave(array $options = [])
     {
-        if (static::$flutterwaveClient !== null) {
+        if (static::$flutterwaveClient !== null && empty($options)) {
             return static::$flutterwaveClient;
         }
 
-        $publicKey = $options['public_key'] ?? config('flutterwave.public_key');
         $secretKey = $options['secret_key'] ?? config('flutterwave.secret_key');
-        $encryptionKey = $options['encryption_key'] ?? config('flutterwave.encryption_key');
-        $environment = $options['environment'] ?? config('flutterwave.environment', 'sandbox');
-
-        if ($secretKey) {
-            // Set environment variables that the SDK expects
-            if (! defined('FLW_SECRET_KEY')) {
-                define('FLW_SECRET_KEY', $secretKey);
-            }
-            if ($publicKey && ! defined('FLW_PUBLIC_KEY')) {
-                define('FLW_PUBLIC_KEY', $publicKey);
-            }
-            if ($encryptionKey && ! defined('FLW_ENCRYPTION_KEY')) {
-                define('FLW_ENCRYPTION_KEY', $encryptionKey);
-            }
-            if (! defined('FLW_ENV')) {
-                define('FLW_ENV', $environment);
-            }
-
-            // Create and configure the Flutterwave client
-            $config = PackageConfig::setUp(
-                $secretKey,
-                $publicKey,
-                $encryptionKey,
-                $environment
-            );
-
-            // Set Laravel logs path for Flutterwave SDK
-            if (! defined('FLW_LOGS_PATH')) {
-                define('FLW_LOGS_PATH', storage_path('logs'));
-            }
-
-            Flutterwave::bootstrap($config);
-
-            return static::$flutterwaveClient = new Flutterwave;
+        if (! $secretKey) {
+            return null;
         }
 
-        return static::$flutterwaveClient = null;
+        $client = new FlutterwaveClient($options);
+
+        if (empty($options)) {
+            static::$flutterwaveClient = $client;
+        }
+
+        return $client;
     }
 
     /**

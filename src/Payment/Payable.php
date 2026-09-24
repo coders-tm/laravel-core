@@ -26,6 +26,7 @@ class Payable implements PayableInterface
         protected array $currencies = [],
         protected ?string $successCallbackUrl = null,
         protected ?string $cancelCallbackUrl = null,
+        protected ?string $returnUrl = null,
     ) {}
 
     /**
@@ -98,6 +99,18 @@ class Payable implements PayableInterface
         $this->cancelCallbackUrl = $url;
 
         return $this;
+    }
+
+    public function setReturnUrl(?string $url): static
+    {
+        $this->returnUrl = $url;
+
+        return $this;
+    }
+
+    public function getReturnUrl(): ?string
+    {
+        return $this->returnUrl;
     }
 
     /**
@@ -313,11 +326,12 @@ class Payable implements PayableInterface
 
     public function getMetadata(): array
     {
-        return [
+        return array_filter([
             'checkout_token' => $this->referenceId,
             'customer_email' => $this->customerEmail,
             'type' => $this->type,
-        ];
+            'return_url' => $this->returnUrl,
+        ]);
     }
 
     public function getDescription(): string

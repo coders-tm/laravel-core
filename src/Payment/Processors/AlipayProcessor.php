@@ -46,7 +46,9 @@ class AlipayProcessor extends AbstractPaymentProcessor implements PaymentProcess
             'amount' => $payable->getGrandTotal(),
             'status' => Payment::STATUS_PENDING,
             'note' => 'Alipay payment initiated',
-            'metadata' => array_merge($payable->getMetadata(), [
+            'metadata' => array_merge($payable->getMetadata(), array_filter([
+                'return_url' => $request->input('return_url'),
+            ]), [
                 'gateway_amount' => $payable->getGatewayAmount(),
                 'gateway_currency' => $payable->getCurrency(),
                 'created_at' => now()->toISOString(),

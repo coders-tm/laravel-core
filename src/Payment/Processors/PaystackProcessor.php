@@ -154,7 +154,9 @@ class PaystackProcessor extends AbstractPaymentProcessor implements PaymentProce
             'amount' => $amount,
             'status' => Payment::STATUS_PENDING,
             'note' => 'Paystack payment initiated',
-            'metadata' => array_merge($payable->getMetadata(), [
+            'metadata' => array_merge($payable->getMetadata(), array_filter([
+                'return_url' => $request->input('return_url'),
+            ]), [
                 'gateway_currency' => $gatewayCurrency,
                 'gateway_amount' => $gatewayAmount,
             ]),

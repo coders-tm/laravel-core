@@ -11,7 +11,6 @@ use Coderstm\Payment\Mappers\FlutterwavePayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
 use Coderstm\Payment\RefundResult;
-use Flutterwave\Service\Transactions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -58,25 +57,20 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
             }
 
             $flutterwave = Coderstm::flutterwave();
-            $response = $flutterwave->requeryTransaction($transactionId ?? $txRef);
+            $response = $flutterwave->verifyTransaction($transactionId ?? $txRef);
 
-            if (! $response || $response['status'] !== 'success') {
+            if (! $response || ($response['status'] ?? '') !== 'success') {
                 return CallbackResult::failed('Payment verification failed at gateway.');
             }
 
             $data = $response['data'];
 
             // Validation
-            if ($data['amount'] < $payment->metadata['gateway_amount']) {
+            if (isset($payment->metadata['gateway_amount']) && $data['amount'] < $payment->metadata['gateway_amount']) {
                 Log::warning('Flutterwave payment amount mismatch', [
                     'expected' => $payment->metadata['gateway_amount'],
                     'paid' => $data['amount'],
                 ]);
-                // We could fail here, or mark as partial? But we enforce strict checking usually.
-                // For now, let's accept if it's successful but log warning, OR fail.
-                // Xendit logic was strict. Let's be strict.
-                // Actually, floating point comparison issues?
-                // $payment->metadata['gateway_amount'] is rounded in setup, data['amount'] is from gateway.
             }
 
             // Update Payment
@@ -106,7 +100,7 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 }
             }
         } catch (\Throwable $e) {
-            // Log error
+            Log::error('Flutterwave cancel callback error: '.$e->getMessage());
         }
 
         return CallbackResult::success(
@@ -133,8 +127,8 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
         $this->validateCurrency($payable);
 
         try {
-            // Pre-create Pending Payment (Xendit pattern)
-            $currency = $payable->getCurrency();
+            // Pre-create Pending Payment
+            $currency = strtoupper($payable->getCurrency());
             $amount = $payable->getGatewayAmount();
 
             $payment = Payment::create([
@@ -142,10 +136,12 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 'paymentable_id' => $payable->getSourceId(),
                 'payment_method_id' => $this->getPaymentMethodId(),
                 'transaction_id' => 'FLW_'.$payable->getReferenceId().'_'.time(), // Pending Ref
-                'amount' => $amount, // Base amount
+                'amount' => $payable->getGrandTotal(),
                 'status' => Payment::STATUS_PENDING,
                 'note' => 'Flutterwave payment initiated',
-                'metadata' => array_merge($payable->getMetadata(), [
+                'metadata' => array_merge($payable->getMetadata(), array_filter([
+                    'return_url' => $request->input('return_url'),
+                ]), [
                     'gateway_currency' => $currency,
                     'gateway_amount' => $amount,
                 ]),
@@ -158,11 +154,11 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 'amount' => $amount,
                 'currency' => $currency,
                 'redirect_url' => $this->getSuccessUrl(['state' => $payment->uuid]),
-                'payment_options' => 'card,banktransfer,ussd,account',
+                'payment_options' => 'card,banktransfer,ussd,account,mobilemoneyghana,mobilemoneyrwanda,mobilemoneyzambia,mobilemoneyuganda,mpesa',
                 'customer' => [
                     'email' => $payable->getCustomerEmail(),
                     'phonenumber' => $payable->getCustomerPhone() ?? '',
-                    'name' => $payable->getCustomerFirstName().' '.$payable->getCustomerLastName(),
+                    'name' => trim($payable->getCustomerFirstName().' '.$payable->getCustomerLastName()),
                 ],
                 'customizations' => [
                     'title' => config('app.name').' Payment',
@@ -175,23 +171,13 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 ),
             ];
 
-            // Initialize payment
-            $paymentUrl = $flutterwave->setAmount($payload['amount'])
-                ->setCurrency($payload['currency'])
-                ->setEmail($payload['customer']['email'])
-                ->setFirstname($payable->getCustomerFirstName())
-                ->setLastname($payable->getCustomerLastName())
-                ->setPhoneNumber($payload['customer']['phonenumber'] ?? '')
-                ->setTitle($payload['customizations']['title'])
-                ->setDescription($payload['customizations']['description'])
-                ->setRedirectUrl($payload['redirect_url'])
-                ->setMetaData($payload['meta'])
-                ->initialize();
+            // Initialize hosted payment via Flutterwave API
+            $response = $flutterwave->createPayment($payload);
 
-            if ($paymentUrl) {
+            if (! empty($response['data']['link'])) {
                 return [
                     'success' => true,
-                    'payment_url' => $paymentUrl,
+                    'payment_url' => $response['data']['link'],
                     'tx_ref' => $txRef,
                     'provider' => 'flutterwave',
                     'amount' => $amount,
@@ -200,7 +186,8 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
                 ];
             }
 
-            throw new \Exception('Failed to initialize Flutterwave payment');
+            $errorMessage = $response['message'] ?? 'Failed to initialize Flutterwave payment';
+            throw new \Exception($errorMessage);
         } catch (\Throwable $e) {
             throw new \Exception('Flutterwave payment setup failed: '.$e->getMessage());
         }
@@ -211,7 +198,6 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
      */
     public function confirmPayment(Request $request, Payable $payable): PaymentResult
     {
-        // Handled via callback mostly, but if called directly:
         return PaymentResult::failed('Direct confirmation not supported. Use success callback.');
     }
 
@@ -222,12 +208,6 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
     {
         try {
             $payload = $request->all();
-
-            // ... (keep logic, but update parsing to find payment by tx_ref potentially)
-            // Existing logic finds Checkout by token.
-            // If we use Payment UUID now, we might need to adjust logic if we want webhooks to update Payments directly.
-            // But let's leave legacy webhook logic for now or update checkouts.
-            // The Xendit pattern relies on the user returning. Webhook is backup.
 
             return ['success' => true];
         } catch (\Throwable $e) {
@@ -252,43 +232,32 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
             $flutterwave = Coderstm::flutterwave();
 
             if (! $flutterwave) {
-                RefundResult::failed('Flutterwave client not configured');
+                return RefundResult::failed('Flutterwave client not configured');
             }
 
-            // Enforce full refund
-            // Flutterwave SDK refund might take amount. If we pass nothing, what happens?
-            // The SDK logic is: $service->refund($id, $amount).
-            // If we want full refund, we should pass the original gateway amount if required, OR pass null/empty if SDK supports it.
-            // Looking at standard FW API, providing amount is optional for full refund?
-            // Actually, checking library common usage, usually passing amount is safer for partial, but for full we pass the full amount.
-            // Since we stored 'gateway_amount' in metadata, we should use it.
+            $refundAmt = $amount ?? ($payment->metadata['gateway_amount'] ?? $payment->amount);
 
-            $refundAmt = $payment->metadata['gateway_amount'] ?? $payment->amount;
+            $response = $flutterwave->refundTransaction($payment->transaction_id, $refundAmt);
 
-            // ... implementation
-
-            $transactionService = new Transactions;
-            $response = $transactionService->refund($payment->transaction_id);
-
-            if (! $response || $response->status !== 'success') {
-                RefundResult::failed(
-                    'Flutterwave refund failed: '.($response->message ?? 'Unknown error')
+            if (! $response || ($response['status'] ?? '') !== 'success') {
+                return RefundResult::failed(
+                    'Flutterwave refund failed: '.($response['message'] ?? 'Unknown error')
                 );
             }
 
-            $refundData = $response->data ?? new \stdClass;
+            $refundData = $response['data'] ?? [];
 
             return RefundResult::success(
-                refundId: (string) ($refundData->id ?? $payment->transaction_id.'_refund'),
-                amount: $payment->amount, // Base amount refunded
-                status: $refundData->status ?? 'processed',
+                refundId: (string) ($refundData['id'] ?? $payment->transaction_id.'_refund'),
+                amount: $payment->amount,
+                status: $refundData['status'] ?? 'processed',
                 metadata: [
-                    'flutterwave_refund_id' => $refundData->id ?? null,
+                    'flutterwave_refund_id' => $refundData['id'] ?? null,
                     'gateway_refund_amount' => $refundAmt,
                 ]
             );
         } catch (\Throwable $e) {
-            RefundResult::failed('Flutterwave refund error: '.$e->getMessage());
+            return RefundResult::failed('Flutterwave refund error: '.$e->getMessage());
         }
     }
 }

@@ -12,18 +12,13 @@ class PaymentRedirect
      * otherwise fallback to standard application redirect URL with flash message.
      */
     public static function to(
-        Payment|string|null $payment = null,
+        ?Payment $payment = null,
         string $provider = '',
         string $fallbackUrl = '/',
         string $status = 'succeeded',
         ?string $message = null,
         string $messageType = 'success'
     ): RedirectResponse {
-        if (is_string($payment)) {
-            $payment = Payment::where('uuid', $payment)->first();
-        } elseif ($payment === null && $state = request('state')) {
-            $payment = Payment::where('uuid', $state)->first();
-        }
 
         if ($returnUrl = ($payment?->metadata['return_url'] ?? null)) {
             $order = $payment?->paymentable;
@@ -33,14 +28,13 @@ class PaymentRedirect
                 'success' => $status === 'succeeded' ? 'true' : 'false',
                 'status' => $status,
                 'provider' => $provider,
-                'order_id' => $token,
                 'token' => $token,
                 'transaction_id' => $status === 'succeeded' ? $payment?->transaction_id : null,
                 'message' => $message,
             ]);
             $separator = str_contains($returnUrl, '?') ? '&' : '?';
 
-            return redirect($returnUrl . $separator . http_build_query($params));
+            return redirect($returnUrl.$separator.http_build_query($params));
         }
 
         $redirect = redirect($fallbackUrl);
@@ -74,12 +68,13 @@ class PaymentRedirect
      * Shortcut for cancelled payment redirect
      */
     public static function cancel(
+        ?Payment $payment = null,
         string $provider = '',
         string $fallbackUrl = '/',
         ?string $message = null
     ): RedirectResponse {
         return self::to(
-            payment: null,
+            payment: $payment,
             provider: $provider,
             fallbackUrl: $fallbackUrl,
             status: 'cancelled',
@@ -92,12 +87,13 @@ class PaymentRedirect
      * Shortcut for failed or errored payment redirect
      */
     public static function failed(
+        ?Payment $payment = null,
         string $provider = '',
         string $fallbackUrl = '/',
         ?string $message = null
     ): RedirectResponse {
         return self::to(
-            payment: null,
+            payment: $payment,
             provider: $provider,
             fallbackUrl: $fallbackUrl,
             status: 'failed',
@@ -110,10 +106,11 @@ class PaymentRedirect
      * Alias for failed()
      */
     public static function error(
+        ?Payment $payment = null,
         string $provider = '',
         string $fallbackUrl = '/',
         ?string $message = null
     ): RedirectResponse {
-        return self::failed($provider, $fallbackUrl, $message);
+        return self::failed($payment, $provider, $fallbackUrl, $message);
     }
 }
