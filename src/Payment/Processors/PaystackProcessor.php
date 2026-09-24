@@ -95,8 +95,7 @@ class PaystackProcessor extends AbstractPaymentProcessor implements PaymentProce
             }
 
             // Update Payment
-            $paymentData = new PaystackPayment($data, $this->paymentMethod);
-            $payment->update($paymentData->toArray());
+            $payment->updateFromPaymentData(new PaystackPayment($data, $this->paymentMethod));
 
             return CallbackResult::success(
                 message: 'Payment completed successfully!',

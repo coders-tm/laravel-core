@@ -50,8 +50,8 @@ class PaymentController extends Controller
     public function setupPaymentIntent(Request $request)
     {
         $request->validate([
-            'token' => 'required|string|exists:' . Coderstm::$orderModel . ',key',
-            'provider' => 'required|integer|exists:' . PaymentMethod::class . ',id',
+            'token' => 'required|string|exists:'.Coderstm::$orderModel.',key',
+            'provider' => 'required|integer|exists:'.PaymentMethod::class.',id',
             'return_url' => 'nullable|string',
         ]);
 
@@ -103,8 +103,8 @@ class PaymentController extends Controller
     public function confirmPayment(Request $request)
     {
         $request->validate([
-            'token' => 'required|string|exists:' . Coderstm::$orderModel . ',key',
-            'provider' => 'required|integer|exists:' . PaymentMethod::class . ',id',
+            'token' => 'required|string|exists:'.Coderstm::$orderModel.',key',
+            'provider' => 'required|integer|exists:'.PaymentMethod::class.',id',
         ]);
 
         try {
@@ -203,13 +203,14 @@ class PaymentController extends Controller
                 message: $result->getMessage()
             );
         } catch (\Throwable $e) {
-            Log::error("Order payment success handler error for provider {$provider}: " . $e->getMessage(), [
+            Log::error("Order payment success handler error for provider {$provider}: ".$e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
             ]);
 
             return PaymentRedirect::failed(
+                payment: $payment,
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: 'Payment may have been completed. Please check your order status or contact support if needed.'
@@ -224,6 +225,7 @@ class PaymentController extends Controller
     public function handleCancel(Request $request, string $provider)
     {
         $redirectUrl = '/orders';
+        $payment = null;
 
         try {
             // Use the factory to handle the cancel callback
@@ -239,18 +241,20 @@ class PaymentController extends Controller
             }
 
             return PaymentRedirect::cancel(
+                payment: $payment,
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: $result->getMessage()
             );
         } catch (\Throwable $e) {
-            Log::error("Order payment cancel handler error for provider {$provider}: " . $e->getMessage(), [
+            Log::error("Order payment cancel handler error for provider {$provider}: ".$e->getMessage(), [
                 'request' => $request->all(),
                 'provider' => $provider,
                 'error' => $e->getMessage(),
             ]);
 
             return PaymentRedirect::cancel(
+                payment: $payment,
                 provider: $provider,
                 fallbackUrl: $redirectUrl,
                 message: 'Payment process was interrupted. Please try again.'

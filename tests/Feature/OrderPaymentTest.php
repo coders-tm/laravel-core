@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Coderstm\Coderstm;
+use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Shop\Order;
 use Illuminate\Database\Eloquent\Collection;
@@ -573,13 +574,13 @@ class OrderPaymentTest extends FeatureTestCase
         ]);
         PaymentMethod::updateProviderCache('payu');
 
-        $payment = \Coderstm\Models\Payment::create([
+        $payment = Payment::create([
             'paymentable_type' => Order::class,
             'paymentable_id' => $order->id,
             'payment_method_id' => $paymentMethod->id,
             'transaction_id' => 'txn_12345',
             'amount' => 100.00,
-            'status' => \Coderstm\Models\Payment::STATUS_PENDING,
+            'status' => Payment::STATUS_PENDING,
             'metadata' => [
                 'return_url' => 'com.nitrofit28.members://payment/callback',
             ],
@@ -637,13 +638,13 @@ class OrderPaymentTest extends FeatureTestCase
             ['name' => 'PayU', 'active' => true]
         );
 
-        $payment = \Coderstm\Models\Payment::create([
+        $payment = Payment::create([
             'paymentable_type' => Order::class,
             'paymentable_id' => $order->id,
             'payment_method_id' => $paymentMethod->id,
             'transaction_id' => 'txn_12345',
             'amount' => 100.00,
-            'status' => \Coderstm\Models\Payment::STATUS_PENDING,
+            'status' => Payment::STATUS_PENDING,
             'metadata' => [
                 'return_url' => 'com.nitrofit28.members://payment/callback',
             ],
@@ -656,6 +657,47 @@ class OrderPaymentTest extends FeatureTestCase
         $this->assertStringStartsWith('com.nitrofit28.members://payment/callback', $targetUrl);
         $this->assertStringContainsString('status=cancelled', $targetUrl);
         $this->assertStringContainsString('provider=payu', $targetUrl);
+        $this->assertStringContainsString('token='.$order->key, $targetUrl);
+    }
+
+    #[Test]
+    public function it_redirects_to_return_url_on_paystack_cancel_callback()
+    {
+        $user = $this->userModel::factory()->create([
+            'email' => 'customer@example.com',
+        ]);
+
+        $order = Order::factory()->create([
+            'customer_id' => $user->id,
+            'status' => 'pending',
+            'payment_status' => 'pending',
+            'grand_total' => 100.00,
+        ]);
+
+        $paymentMethod = PaymentMethod::firstOrCreate(
+            ['provider' => 'paystack'],
+            ['name' => 'Paystack', 'active' => true]
+        );
+
+        $payment = Payment::create([
+            'paymentable_type' => Order::class,
+            'paymentable_id' => $order->id,
+            'payment_method_id' => $paymentMethod->id,
+            'transaction_id' => 'PAYSTACK_test_123',
+            'amount' => 100.00,
+            'status' => Payment::STATUS_PENDING,
+            'metadata' => [
+                'return_url' => 'com.nitrofit28.members://payment/callback',
+            ],
+        ]);
+
+        $response = $this->get("/payment/paystack/cancel?state={$payment->uuid}");
+
+        $response->assertRedirect();
+        $targetUrl = $response->headers->get('Location');
+        $this->assertStringStartsWith('com.nitrofit28.members://payment/callback', $targetUrl);
+        $this->assertStringContainsString('status=cancelled', $targetUrl);
+        $this->assertStringContainsString('provider=paystack', $targetUrl);
         $this->assertStringContainsString('token='.$order->key, $targetUrl);
     }
 }

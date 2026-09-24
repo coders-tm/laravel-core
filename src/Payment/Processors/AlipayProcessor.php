@@ -167,7 +167,9 @@ class AlipayProcessor extends AbstractPaymentProcessor implements PaymentProcess
             $response = $alipay->verify();
 
             $paymentData = new AlipayPayment($response, $this->paymentMethod);
-            $payment->update($paymentData->toArray());
+            $paymentDataArray = $paymentData->toArray();
+            $paymentDataArray['metadata'] = array_merge($payment->metadata ?? [], $paymentDataArray['metadata'] ?? []);
+            $payment->update($paymentDataArray);
 
             return CallbackResult::success(
                 message: 'Alipay payment was successful.',

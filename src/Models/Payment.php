@@ -3,6 +3,7 @@
 namespace Coderstm\Models;
 
 use Coderstm\Coderstm;
+use Coderstm\Contracts\PaymentInterface;
 use Coderstm\Database\Factories\PaymentFactory;
 use Coderstm\Events\Shop\OrderRefunded;
 use Coderstm\Traits\Core;
@@ -187,6 +188,17 @@ class Payment extends Model
             'status' => self::STATUS_COMPLETED,
             'processed_at' => now(),
         ]);
+    }
+
+    /**
+     * Update payment from mapper or array, preserving and merging metadata.
+     */
+    public function updateFromPaymentData(PaymentInterface|array $paymentData): bool
+    {
+        $data = $paymentData instanceof PaymentInterface ? $paymentData->toArray() : $paymentData;
+        $data['metadata'] = array_merge($this->metadata ?? [], $data['metadata'] ?? []);
+
+        return $this->update($data);
     }
 
     /**

@@ -282,10 +282,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
                 return CallbackResult::failed('Payment was unsuccessful: '.($request->input('error_Message') ?? 'Failed'));
             }
 
-            $paymentData = new PayuPayment($request->all(), $this->paymentMethod);
-            $paymentDataArray = $paymentData->toArray();
-            $paymentDataArray['metadata'] = array_merge($payment->metadata ?? [], $paymentDataArray['metadata'] ?? []);
-            $payment->update($paymentDataArray);
+            $payment->updateFromPaymentData(new PayuPayment($request->all(), $this->paymentMethod));
 
             return CallbackResult::success(
                 message: 'PayU payment was successful.',

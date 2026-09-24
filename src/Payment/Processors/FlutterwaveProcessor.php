@@ -74,8 +74,7 @@ class FlutterwaveProcessor extends AbstractPaymentProcessor implements PaymentPr
             }
 
             // Update Payment
-            $paymentData = new FlutterwavePayment($data, $this->paymentMethod);
-            $payment->update($paymentData->toArray());
+            $payment->updateFromPaymentData(new FlutterwavePayment($data, $this->paymentMethod));
 
             return CallbackResult::success(
                 message: 'Payment completed successfully!',

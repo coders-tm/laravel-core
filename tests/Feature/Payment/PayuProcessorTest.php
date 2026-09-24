@@ -33,6 +33,7 @@ class PayuProcessorTest extends FeatureTestCase
             'name' => 'PayU',
             'provider' => 'payu',
             'active' => true,
+            'test_mode' => true,
         ]);
 
         $this->paymentMethod->credentials = collect([
@@ -48,6 +49,12 @@ class PayuProcessorTest extends FeatureTestCase
             'payu.merchant_salt' => 'test_salt_123',
             'payu.test_mode' => true,
         ]);
+
+        $reflection = new \ReflectionClass(\Coderstm\Coderstm::class);
+        if ($reflection->hasProperty('payuClient')) {
+            $prop = $reflection->getProperty('payuClient');
+            $prop->setValue(null, null);
+        }
     }
 
     protected function createMockPayable()
