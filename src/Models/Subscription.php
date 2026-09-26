@@ -523,6 +523,7 @@ class Subscription extends Model implements ManagesSubscriptions, SubscriptionSt
                 ? "{$template->subject}\n{$template->text}"
                 : $template->subject,
             'data' => [
+                'type' => $type,
                 'route' => user_route('/billing'),
             ],
         ]);

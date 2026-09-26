@@ -222,6 +222,7 @@ class Enquiry extends Model
                 ? "{$template->subject}\n{$template->text}"
                 : $template->subject,
             'data' => [
+                'type' => $type,
                 'route' => user_route("/enquiries/{$this->id}?action=edit"),
                 'enquiry_id' => (string) $this->id,
             ],

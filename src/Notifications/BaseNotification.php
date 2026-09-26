@@ -31,6 +31,15 @@ class BaseNotification extends Notification
 
     public $pushData = [];
 
+    /**
+     * Unique notification type included in the push data payload so clients
+     * can route/parse the message without guessing from the body.
+     *
+     * Value convention matches notification_templates.type
+     * (e.g. "user:booking-canceled").
+     */
+    public ?string $pushType = null;
+
     public $pushTopic;
 
     /**
@@ -95,7 +104,10 @@ class BaseNotification extends Notification
                 'image' => $this->pushImage,
             ]),
             'topic' => $this->pushTopic,
-            'data' => array_map(fn ($v) => (string) $v, array_filter($this->pushData)),
+            'data' => array_map(fn ($v) => (string) $v, array_filter(array_merge(
+                $this->pushData,
+                ['type' => $this->pushType ?? ($this->pushData['type'] ?? null)],
+            ))),
         ]);
     }
 

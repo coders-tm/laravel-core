@@ -22,7 +22,8 @@ class SendPushNotification implements ShouldQueue
     public function __construct(
         protected $user,
         protected array $notification,
-        protected array $data = []
+        protected array $data = [],
+        protected ?string $type = null
     ) {
         $this->deviceTokens = $user->deviceTokens()->pluck('token')->toArray();
     }
@@ -35,7 +36,10 @@ class SendPushNotification implements ShouldQueue
         $message = CloudMessage::fromArray([
             'notification' => $this->notification,
             'topic' => 'global',
-            'data' => $this->data,
+            'data' => array_filter(array_merge(
+                $this->data,
+                ['type' => $this->type ?? ($this->data['type'] ?? null)],
+            )),
         ]);
 
         app(Messaging::class)->sendMulticast($message, $this->deviceTokens);

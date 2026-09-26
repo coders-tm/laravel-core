@@ -98,6 +98,7 @@ class Reply extends Model
                 ? "{$template->subject}\n{$template->text}"
                 : $template->subject,
             'data' => [
+                'type' => $type,
                 'route' => user_route("/enquiries/{$this->enquiry_id}?action=edit"),
                 'enquiry_id' => (string) $this->enquiry_id,
             ],
