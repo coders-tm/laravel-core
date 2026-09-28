@@ -4,7 +4,7 @@ namespace Tests\Unit\Notifications;
 
 use Coderstm\Notifications\BaseNotification;
 use Kreait\Firebase\Messaging\CloudMessage;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class BaseNotificationToFcmTest extends TestCase
 {

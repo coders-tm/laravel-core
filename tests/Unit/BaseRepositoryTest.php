@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order\DiscountLine;
+use Coderstm\Models\Tax;
 use Coderstm\Repository\BaseRepository;
 use Illuminate\Support\Collection;
 use Orchestra\Testbench\Concerns\WithWorkbench;
@@ -13,6 +14,20 @@ use Tests\TestCase;
 class BaseRepositoryTest extends TestCase
 {
     use WithWorkbench;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Tax::create([
+            'country' => '*',
+            'label' => 'VAT',
+            'code' => '*',
+            'state' => '*',
+            'rate' => 10,
+            'priority' => 0,
+        ]);
+    }
 
     protected function createTestRepository($attributes = [])
     {

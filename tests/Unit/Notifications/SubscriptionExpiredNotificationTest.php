@@ -5,11 +5,18 @@ namespace Tests\Notifications;
 use App\Models\User;
 use Coderstm\Models\Subscription;
 use Coderstm\Notifications\SubscriptionExpiredNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 class SubscriptionExpiredNotificationTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     public function test_notification_construct()
     {
         Notification::fake();

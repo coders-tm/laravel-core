@@ -4,9 +4,9 @@ namespace Tests\Unit;
 
 use Coderstm\Services\ShortcodeProcessor;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+use Tests\BaseTestCase;
 
-class ShortcodeExposureTest extends TestCase
+class ShortcodeExposureTest extends BaseTestCase
 {
     #[Test]
     public function it_exposes_array_keys_as_shortcodes()

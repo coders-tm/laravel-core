@@ -1,19 +1,33 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Feature\Subscription;
 
 use App\Models\User;
 use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\Notification;
+use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
+use Database\Seeders\PaymentMethodSeeder;
 use Illuminate\Support\Carbon;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
-class SubscriptionTest extends TestCase
+class SubscriptionTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed(PaymentMethodSeeder::class);
+        $this->seed(NotificationSeeder::class);
+
+        $paymentMethod = PaymentMethod::first();
+        config(['stripe.id' => $paymentMethod->id]);
+    }
+
     #[Test]
     public function it_can_create_a_subscription()
     {

@@ -1,17 +1,14 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Subscription;
 
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
-class SubscriptionFeatureTest extends TestCase
+class SubscriptionFeatureTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-
     public function test_subscription_features_are_created_on_subscription_creation()
     {
         // Create a feature
@@ -288,7 +285,17 @@ class SubscriptionFeatureTest extends TestCase
 
     public function test_cannot_use_feature_with_expired_subscription()
     {
+        $feature = Feature::factory()->create([
+            'slug' => 'test-feature-expired',
+            'type' => 'integer',
+            'resetable' => true,
+        ]);
+
+        $plan = Plan::factory()->create();
+        $plan->features()->attach($feature, ['value' => 10]);
+
         $subscription = Subscription::factory()->create([
+            'plan_id' => $plan->id,
             'status' => 'expired',
             'expires_at' => now()->subDay(),
         ]);

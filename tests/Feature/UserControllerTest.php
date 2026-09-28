@@ -4,13 +4,13 @@ namespace Tests\Feature;
 
 use App\Models\Admin;
 use App\Models\User;
-use Coderstm\Coderstm;
 use Coderstm\Models\Coupon;
 use Coderstm\Models\File;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\Sanctum;
@@ -25,6 +25,8 @@ class UserControllerTest extends FeatureTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
 
         $admin = Admin::factory()->admin()->create();
         $this->admin = Admin::find($admin->id);
@@ -630,7 +632,7 @@ class UserControllerTest extends FeatureTestCase
         $this->assertEquals('This is a test note for the user.', $responseData['message']);
 
         $this->assertDatabaseHas('logs', [
-            'logable_type' => Coderstm::$userModel,
+            'logable_type' => $user->getMorphClass(),
             'logable_id' => $user->id,
             'message' => 'This is a test note for the user.',
             'type' => 'notes',

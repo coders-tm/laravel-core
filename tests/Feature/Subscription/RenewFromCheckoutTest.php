@@ -118,8 +118,6 @@ class RenewFromCheckoutTest extends FeatureTestCase
             ->assertStatus(401);
     }
 
-
-
     #[Test]
     public function it_clears_ends_at_and_trial_ends_at_on_renew()
     {

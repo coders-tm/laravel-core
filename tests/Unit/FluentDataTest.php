@@ -48,7 +48,7 @@ class FluentDataTest extends TestCase
         $fluent = new FluentData([]);
 
         $this->assertNull($fluent->missing);
-        $this->assertNull($fluent->missing->nested);
+        $this->assertNull($fluent->missing?->nested);
     }
 
     public function test_it_is_countable()

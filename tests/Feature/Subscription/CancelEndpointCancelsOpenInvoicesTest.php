@@ -2,15 +2,21 @@
 
 namespace Tests\Feature\Subscription;
 
-use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
 use Laravel\Sanctum\Sanctum;
 use Tests\Feature\FeatureTestCase;
 
 class CancelEndpointCancelsOpenInvoicesTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     protected function createPlan(): Plan
     {
         $plan = new Plan([
@@ -41,8 +47,7 @@ class CancelEndpointCancelsOpenInvoicesTest extends FeatureTestCase
         $order = new Order([
             'customer_id' => $subscription->user_id,
             'orderable_id' => $subscription->id,
-            // Use configured subscription model for correct morph type resolution
-            'orderable_type' => Coderstm::$subscriptionModel,
+            'orderable_type' => $subscription->getMorphClass(),
             'currency' => config('app.currency'),
             'collect_tax' => false,
             'source' => 'Membership',

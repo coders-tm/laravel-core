@@ -325,14 +325,15 @@ class PaymentMethod extends Model
             return null;
         }
 
+        $configs = $paymentMethod->configs ?? [];
+
         switch ($provider) {
             case self::STRIPE:
                 return [
                     'stripe.id' => $paymentMethod->id,
-                    'stripe.id' => $paymentMethod->id,
-                    'stripe.key' => $paymentMethod->configs['API_KEY'],
-                    'stripe.secret' => $paymentMethod->configs['API_SECRET'],
-                    'stripe.webhook.secret' => $paymentMethod->configs['WEBHOOK_SECRET'],
+                    'stripe.key' => $configs['API_KEY'] ?? null,
+                    'stripe.secret' => $configs['API_SECRET'] ?? null,
+                    'stripe.webhook.secret' => $configs['WEBHOOK_SECRET'] ?? null,
                     'stripe.enabled' => $paymentMethod->active,
                     'stripe.supported_currencies' => $paymentMethod->supported_currencies,
                 ];
@@ -343,8 +344,8 @@ class PaymentMethod extends Model
                 return [
                     'paypal.id' => $paymentMethod->id,
                     'paypal.mode' => $mode,
-                    "paypal.{$mode}.client_id" => $paymentMethod->configs['CLIENT_ID'],
-                    "paypal.{$mode}.client_secret" => $paymentMethod->configs['CLIENT_SECRET'],
+                    "paypal.{$mode}.client_id" => $configs['CLIENT_ID'] ?? null,
+                    "paypal.{$mode}.client_secret" => $configs['CLIENT_SECRET'] ?? null,
                     'paypal.notify_url' => $paymentMethod->webhook,
                     'paypal.enabled' => $paymentMethod->active,
                     'paypal.supported_currencies' => $paymentMethod->supported_currencies,
@@ -353,8 +354,8 @@ class PaymentMethod extends Model
             case self::RAZORPAY:
                 return [
                     'razorpay.id' => $paymentMethod->id,
-                    'razorpay.key_id' => $paymentMethod->configs['API_KEY'],
-                    'razorpay.key_secret' => $paymentMethod->configs['API_SECRET'],
+                    'razorpay.key_id' => $configs['API_KEY'] ?? null,
+                    'razorpay.key_secret' => $configs['API_SECRET'] ?? null,
                     'razorpay.enabled' => $paymentMethod->active,
                     'razorpay.supported_currencies' => $paymentMethod->supported_currencies,
                 ];
@@ -365,8 +366,8 @@ class PaymentMethod extends Model
                 return [
                     'gocardless.id' => $paymentMethod->id,
                     'gocardless.environment' => $environment,
-                    'gocardless.access_token' => $paymentMethod->configs['ACCESS_TOKEN'],
-                    'gocardless.webhook_secret' => $paymentMethod->configs['WEBHOOK_SECRET'],
+                    'gocardless.access_token' => $configs['ACCESS_TOKEN'] ?? null,
+                    'gocardless.webhook_secret' => $configs['WEBHOOK_SECRET'] ?? null,
                     'gocardless.webhook_url' => $paymentMethod->webhook,
                     'gocardless.schemes' => [
                         'GB' => 'bacs',      // UK
@@ -389,8 +390,8 @@ class PaymentMethod extends Model
             case self::KLARNA:
                 return [
                     'klarna.id' => $paymentMethod->id,
-                    'klarna.api_key' => $paymentMethod->configs['API_KEY'],
-                    'klarna.api_secret' => $paymentMethod->configs['API_SECRET'],
+                    'klarna.api_key' => $configs['API_KEY'] ?? null,
+                    'klarna.api_secret' => $configs['API_SECRET'] ?? null,
                     'klarna.webhook_url' => $paymentMethod->webhook,
                     'klarna.test_mode' => $paymentMethod->test_mode,
                     'klarna.enabled' => $paymentMethod->active,
@@ -400,8 +401,8 @@ class PaymentMethod extends Model
             case self::MERCADOPAGO:
                 return [
                     'mercadopago.id' => $paymentMethod->id,
-                    'mercadopago.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
-                    'mercadopago.access_token' => $paymentMethod->configs['ACCESS_TOKEN'],
+                    'mercadopago.public_key' => $configs['PUBLIC_KEY'] ?? null,
+                    'mercadopago.access_token' => $configs['ACCESS_TOKEN'] ?? null,
                     'mercadopago.webhook_url' => $paymentMethod->webhook,
                     'mercadopago.test_mode' => $paymentMethod->test_mode,
                     'mercadopago.enabled' => $paymentMethod->active,
@@ -411,8 +412,8 @@ class PaymentMethod extends Model
             case self::PAYSTACK:
                 return [
                     'paystack.id' => $paymentMethod->id,
-                    'paystack.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
-                    'paystack.secret_key' => $paymentMethod->configs['SECRET_KEY'],
+                    'paystack.public_key' => $configs['PUBLIC_KEY'] ?? null,
+                    'paystack.secret_key' => $configs['SECRET_KEY'] ?? null,
                     'paystack.webhook_url' => $paymentMethod->webhook,
                     'paystack.test_mode' => $paymentMethod->test_mode,
                     'paystack.enabled' => $paymentMethod->active,
@@ -422,8 +423,8 @@ class PaymentMethod extends Model
             case self::XENDIT:
                 return [
                     'xendit.id' => $paymentMethod->id,
-                    'xendit.public_key' => $paymentMethod->configs['PUBLIC_KEY'],
-                    'xendit.secret_key' => $paymentMethod->configs['SECRET_KEY'],
+                    'xendit.public_key' => $configs['PUBLIC_KEY'] ?? null,
+                    'xendit.secret_key' => $configs['SECRET_KEY'] ?? null,
                     'xendit.webhook_url' => $paymentMethod->webhook,
                     'xendit.test_mode' => $paymentMethod->test_mode,
                     'xendit.enabled' => $paymentMethod->active,
@@ -433,9 +434,9 @@ class PaymentMethod extends Model
             case self::FLUTTERWAVE:
                 return [
                     'flutterwave.id' => $paymentMethod->id,
-                    'flutterwave.public_key' => $paymentMethod->configs['CLIENT_ID'],
-                    'flutterwave.secret_key' => $paymentMethod->configs['CLIENT_SECRET'],
-                    'flutterwave.encryption_key' => $paymentMethod->configs['ENCRYPTION_KEY'],
+                    'flutterwave.public_key' => $configs['CLIENT_ID'] ?? null,
+                    'flutterwave.secret_key' => $configs['CLIENT_SECRET'] ?? null,
+                    'flutterwave.encryption_key' => $configs['ENCRYPTION_KEY'] ?? null,
                     'flutterwave.environment' => $paymentMethod->test_mode ? 'sandbox' : 'live',
                     'flutterwave.webhook_url' => $paymentMethod->webhook,
                     'flutterwave.test_mode' => $paymentMethod->test_mode,

@@ -6,6 +6,7 @@ use Coderstm\Coderstm;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PlanFactory extends Factory
 {
@@ -20,9 +21,11 @@ class PlanFactory extends Factory
     public function definition()
     {
         $interval = $this->faker->randomElement(['week', 'month', 'year']);
+        $label = $this->faker->word;
 
         return [
-            'label' => $this->faker->word,
+            'label' => $label,
+            'slug' => Str::slug($label).'-'.$this->faker->unique()->numberBetween(1000, 99999),
             'description' => $this->faker->sentence,
             'is_active' => $this->faker->boolean,
             'default_interval' => $interval,

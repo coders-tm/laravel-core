@@ -5,11 +5,17 @@ namespace Tests\Feature;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\User;
 use Coderstm\Notifications\SubscriptionCanceledNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
 
-class SubscriptionCanceledNotificationTest extends TestCase
+class SubscriptionCanceledNotificationTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     public function test_subscription_cancellation_sends_notification()
     {
         Notification::fake();

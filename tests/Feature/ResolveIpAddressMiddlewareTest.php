@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\Route;
 use PHPUnit\Framework\Attributes\Test;
 use Stevebauman\Location\Facades\Location;
 use Stevebauman\Location\Position;
-use Tests\TestCase;
+use Tests\BaseTestCase;
 
-class ResolveIpAddressMiddlewareTest extends TestCase
+class ResolveIpAddressMiddlewareTest extends BaseTestCase
 {
     protected function setUp(): void
     {

@@ -483,14 +483,17 @@ if (! function_exists('has')) {
 if (! function_exists('get_country_code')) {
     function get_country_code($country)
     {
-        if (empty($country)) {
+        if (empty($country) || $country === '*') {
             return '*';
         }
 
         try {
-            $country = (new ISO3166)->name($country);
+            $iso = new ISO3166;
+            if (strlen($country) === 2) {
+                return $iso->alpha2(strtoupper($country))['alpha2'];
+            }
 
-            return $country['alpha2'];
+            return $iso->name($country)['alpha2'];
         } catch (Throwable $e) {
             return '*';
         }

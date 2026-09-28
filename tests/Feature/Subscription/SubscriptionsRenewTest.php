@@ -8,11 +8,20 @@ use Coderstm\Contracts\SubscriptionStatus;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
+use Database\Seeders\PaymentMethodSeeder;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\FeatureTestCase;
 
 class SubscriptionsRenewTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+        $this->seed(PaymentMethodSeeder::class);
+    }
+
     #[Test]
     public function it_renews_active_subscriptions()
     {
@@ -31,7 +40,7 @@ class SubscriptionsRenewTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'renew',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -77,7 +86,7 @@ class SubscriptionsRenewTest extends FeatureTestCase
         // Assert: A renew log was recorded for the subscription
         $this->assertDatabaseHas('logs', [
             'type' => 'renew',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
 

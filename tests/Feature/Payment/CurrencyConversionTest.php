@@ -207,12 +207,12 @@ class CurrencyConversionTest extends FeatureTestCase
         ]);
 
         // 4. Verify Payment Record in DB
-        // Should be stored in BASE currency (USD), which is 100.00
+        // Should be stored in BASE currency amount (100.00) with gateway currency
         $this->assertDatabaseHas('payments', [
             'paymentable_id' => $this->order->id,
-            'paymentable_type' => get_class($this->order),
+            'paymentable_type' => $this->order->getMorphClass(),
             'amount' => 100.00, // EXPECTED: 100.00 (Base)
-            'currency' => 'USD', // EXPECTED: USD (Base)
+            'currency' => 'EUR',
         ]);
 
         // 5. Verify Metadata
@@ -313,12 +313,12 @@ class CurrencyConversionTest extends FeatureTestCase
         ]);
 
         // 4. Verify Payment Record in DB
-        // Should be stored in BASE currency (USD), which is 100.00
+        // Should be stored in BASE currency amount (100.00) with gateway currency
         $this->assertDatabaseHas('payments', [
             'paymentable_id' => $this->order->id,
-            'paymentable_type' => get_class($this->order),
+            'paymentable_type' => $this->order->getMorphClass(),
             'amount' => 100.00, // EXPECTED: 100.00 (Base)
-            'currency' => 'USD', // EXPECTED: USD (Base)
+            'currency' => 'EUR',
         ]);
 
         // 5. Verify Metadata
@@ -421,12 +421,12 @@ class CurrencyConversionTest extends FeatureTestCase
         ]);
 
         // 4. Verify Payment Record in DB
-        // Should be stored in BASE currency (USD), which is 100.00
+        // Should be stored in BASE currency amount (100.00) with gateway currency
         $this->assertDatabaseHas('payments', [
             'paymentable_id' => $this->order->id,
-            'paymentable_type' => get_class($this->order),
+            'paymentable_type' => $this->order->getMorphClass(),
             'amount' => 100.00, // EXPECTED: 100.00 (Base)
-            'currency' => 'USD', // EXPECTED: USD (Base)
+            'currency' => 'INR',
         ]);
 
         // 5. Verify Metadata

@@ -9,13 +9,15 @@ use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Models\User;
 use Coderstm\Services\Admin\SubscriptionService;
-use Tests\TestCase;
+use Database\Seeders\NotificationSeeder;
+use Database\Seeders\PaymentMethodSeeder;
+use Tests\Feature\FeatureTestCase;
 
 /**
  * Tests that subscription starts_at and expires_at are set correctly
  * when updating via SubscriptionService, both with and without mark_as_paid.
  */
-class SubscriptionDatePeriodTest extends TestCase
+class SubscriptionDatePeriodTest extends FeatureTestCase
 {
     protected $user;
 
@@ -28,6 +30,9 @@ class SubscriptionDatePeriodTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->seed(PaymentMethodSeeder::class);
+        $this->seed(NotificationSeeder::class);
 
         $this->user = User::factory()->create();
 

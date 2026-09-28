@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
+use Database\Seeders\PaymentMethodSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Feature\FeatureTestCase;
 
@@ -16,6 +18,9 @@ class OrderMarkAsPaidPropagatesSubscriptionTest extends FeatureTestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
+        $this->seed(PaymentMethodSeeder::class);
 
         // Ensure app.currency is set for these tests
         config(['app.currency' => 'USD']);
@@ -58,7 +63,7 @@ class OrderMarkAsPaidPropagatesSubscriptionTest extends FeatureTestCase
         $order = Order::create([
             'customer_id' => $subscription->user_id,
             'orderable_id' => $subscription->id,
-            'orderable_type' => Subscription::class,
+            'orderable_type' => $subscription->getMorphClass(),
             'collect_tax' => false,
             'source' => 'Membership',
             'sub_total' => 1000,

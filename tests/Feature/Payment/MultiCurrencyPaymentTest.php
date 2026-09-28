@@ -8,6 +8,7 @@ use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Shop\ExchangeRate;
 use Coderstm\Models\Shop\Order;
 use Coderstm\Models\User;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\Test;
@@ -17,7 +18,7 @@ class MultiCurrencyPaymentTest extends FeatureTestCase
 {
     use WithFaker;
 
-    protected PaymentMethod $paymentMethod;
+    protected ?PaymentMethod $paymentMethod = null;
 
     protected $order;
 
@@ -29,25 +30,23 @@ class MultiCurrencyPaymentTest extends FeatureTestCase
 
         parent::setUp();
 
+        $this->seed(NotificationSeeder::class);
+
         // Setup base currency as USD
         Config::set('app.currency', 'USD');
         Currency::set('USD', 1.0);
 
         // Get or Create Stripe payment method
-        $this->paymentMethod = PaymentMethod::byProvider(PaymentMethod::STRIPE);
-
-        if (! $this->paymentMethod) {
-            $this->paymentMethod = PaymentMethod::create([
-                'name' => 'Stripe',
-                'provider' => PaymentMethod::STRIPE,
-                'active' => true,
-                'credentials' => [
-                    ['key' => 'API_KEY', 'value' => 'pk_test_123'],
-                    ['key' => 'API_SECRET', 'value' => 'sk_test_123'],
-                ],
-                'test_mode' => true,
-            ]);
-        }
+        $this->paymentMethod = PaymentMethod::byProvider(PaymentMethod::STRIPE) ?? PaymentMethod::create([
+            'name' => 'Stripe',
+            'provider' => PaymentMethod::STRIPE,
+            'active' => true,
+            'credentials' => [
+                ['key' => 'API_KEY', 'value' => 'pk_test_123'],
+                ['key' => 'API_SECRET', 'value' => 'sk_test_123'],
+            ],
+            'test_mode' => true,
+        ]);
 
         // Configure payment method for testing
         $this->paymentMethod->update([

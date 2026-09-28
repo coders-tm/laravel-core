@@ -10,6 +10,8 @@ use Coderstm\Models\Shop\Order;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Feature;
 use Coderstm\Models\Subscription\Plan;
+use Database\Seeders\NotificationSeeder;
+use Database\Seeders\PaymentMethodSeeder;
 use Laravel\Sanctum\Sanctum;
 use Tests\Feature\FeatureTestCase;
 
@@ -27,6 +29,8 @@ class SubscriptionControllerTest extends FeatureTestCase
     protected function setUp(): void
     {
         parent::setUp();
+        $this->seed(PaymentMethodSeeder::class);
+        $this->seed(NotificationSeeder::class);
         $this->user = User::factory()->create();
         $this->plan = Plan::factory()->create();
         Sanctum::actingAs($this->user);

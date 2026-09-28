@@ -29,18 +29,18 @@ class SubscriptionFactory extends Factory
     {
         $model = Coderstm::$userModel;
         $startsAt = now();
-        $plan = Coderstm::$planModel::inRandomOrder()->first();
+        $plan = Coderstm::$planModel::inRandomOrder()->first() ?? Coderstm::$planModel::factory()->create();
 
         return [
             (new $model)->getForeignKey() => ($model)::factory(),
-            'plan_id' => $plan?->id,
+            'plan_id' => $plan->id,
             'type' => 'default',
             'status' => SubscriptionStatus::ACTIVE,
             'trial_ends_at' => null,
             'starts_at' => $startsAt,
-            'expires_at' => $plan ? $this->calculateExpiresAt($plan, $startsAt) : $startsAt->copy()->addMonth(),
-            'billing_interval' => $plan?->interval,
-            'billing_interval_count' => $plan?->interval_count ?? 1,
+            'expires_at' => $this->calculateExpiresAt($plan, $startsAt),
+            'billing_interval' => $plan->interval,
+            'billing_interval_count' => $plan->interval_count ?? 1,
         ];
     }
 

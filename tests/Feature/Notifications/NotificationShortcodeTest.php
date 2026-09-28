@@ -14,11 +14,19 @@ use Coderstm\Notifications\SubscriptionGraceNotification;
 use Coderstm\Notifications\SubscriptionRenewedNotification;
 use Coderstm\Notifications\SubscriptionUpgradeNotification;
 use Coderstm\Notifications\UserSignupNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Support\Facades\Notification;
 use Tests\Feature\FeatureTestCase;
 
 class NotificationShortcodeTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
+    }
+
     public function test_user_signup_notification()
     {
         $user = User::factory()->create();

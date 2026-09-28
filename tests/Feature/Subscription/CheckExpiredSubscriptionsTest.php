@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Subscription;
 
-use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
 use Coderstm\Notifications\Admins\SubscriptionExpiredNotification as AdminsSubscriptionExpiredNotification;
 use Coderstm\Notifications\SubscriptionExpiredNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,6 +18,7 @@ class CheckExpiredSubscriptionsTest extends FeatureTestCase
     {
         parent::setUp();
 
+        $this->seed(NotificationSeeder::class);
         $this->withoutMiddleware();
     }
 
@@ -47,8 +48,7 @@ class CheckExpiredSubscriptionsTest extends FeatureTestCase
         // Assert: Verify log creation
         $this->assertDatabaseHas('logs', [
             'type' => 'expired-notification',
-            // Use configured subscription model class to avoid static override flakiness
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'message' => 'Notification for expired subscriptions has been successfully sent.',
         ]);
@@ -82,7 +82,7 @@ class CheckExpiredSubscriptionsTest extends FeatureTestCase
 
         $this->assertDatabaseMissing('logs', [
             'type' => 'expired-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -103,8 +103,7 @@ class CheckExpiredSubscriptionsTest extends FeatureTestCase
         // Assert: Verify error log created
         $this->assertDatabaseHas('logs', [
             'type' => 'expired-notification',
-            // Use configured subscription model class to avoid static override flakiness
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'status' => Log::STATUS_ERROR,
             'message' => 'Failed to send notification',

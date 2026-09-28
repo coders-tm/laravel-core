@@ -4,15 +4,12 @@ namespace Tests\Feature;
 
 use Coderstm\Models\Admin;
 use Coderstm\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\BaseTestCase;
 
 class AuthHelperFunctionsTest extends BaseTestCase
 {
-    use RefreshDatabase;
-
     protected function setUp(): void
     {
         parent::setUp();

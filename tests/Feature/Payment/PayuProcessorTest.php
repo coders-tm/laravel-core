@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Payment;
 
+use Coderstm\Coderstm;
 use Coderstm\Exceptions\PaymentException;
 use Coderstm\Models\Payment;
 use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Shop\ExchangeRate;
+use Coderstm\Models\Shop\Order;
 use Coderstm\Payment\Mappers\PayuPayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\Processor;
@@ -50,7 +52,7 @@ class PayuProcessorTest extends FeatureTestCase
             'payu.test_mode' => true,
         ]);
 
-        $reflection = new \ReflectionClass(\Coderstm\Coderstm::class);
+        $reflection = new \ReflectionClass(Coderstm::class);
         if ($reflection->hasProperty('payuClient')) {
             $prop = $reflection->getProperty('payuClient');
             $prop->setValue(null, null);
@@ -190,7 +192,7 @@ class PayuProcessorTest extends FeatureTestCase
         $processor->setPaymentMethod($this->paymentMethod);
 
         $payment = Payment::create([
-            'paymentable_type' => 'App\Models\Order',
+            'paymentable_type' => Order::class,
             'paymentable_id' => 1,
             'payment_method_id' => $this->paymentMethod->id,
             'transaction_id' => 'pending_123',
@@ -237,7 +239,7 @@ class PayuProcessorTest extends FeatureTestCase
         $processor->setPaymentMethod($this->paymentMethod);
 
         $payment = Payment::create([
-            'paymentable_type' => 'App\Models\Order',
+            'paymentable_type' => Order::class,
             'paymentable_id' => 1,
             'payment_method_id' => $this->paymentMethod->id,
             'transaction_id' => 'pending_123',

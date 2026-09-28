@@ -3,10 +3,10 @@
 namespace Tests\Unit;
 
 use Coderstm\Services\NotificationTemplateRenderer;
-use PHPUnit\Framework\Attributes\Test; // Changed from BaseTestCase to TestCase
-use Tests\TestCase;
+use PHPUnit\Framework\Attributes\Test;
+use Tests\BaseTestCase;
 
-class NotificationTemplateRendererTest extends TestCase // Extended TestCase for full Laravel environment
+class NotificationTemplateRendererTest extends BaseTestCase
 {
     protected NotificationTemplateRenderer $renderer;
 

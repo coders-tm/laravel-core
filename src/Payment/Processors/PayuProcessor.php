@@ -11,6 +11,7 @@ use Coderstm\Payment\CallbackResult;
 use Coderstm\Payment\Mappers\PayuPayment;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\PaymentResult;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessorInterface
@@ -183,9 +184,12 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
         }
 
         // Create a pending payment record to track the transaction
+        $source = $payable->getSource();
+        $isModel = $source instanceof Model;
+
         $payment = Payment::create([
-            'paymentable_type' => $payable->getSource()->getMorphClass(),
-            'paymentable_id' => $payable->getSourceId(),
+            'paymentable_type' => $isModel ? $source->getMorphClass() : null,
+            'paymentable_id' => $isModel ? $payable->getSourceId() : null,
             'payment_method_id' => $this->getPaymentMethodId(),
             'transaction_id' => 'pending_'.uniqid(),
             'amount' => $payable->getGrandTotal(),

@@ -7,12 +7,29 @@ use App\Models\User;
 use Coderstm\Models\AppSetting;
 use Coderstm\Models\Tax;
 use Coderstm\Notifications\NewAdminNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Facades\Notification;
 use Laravel\Sanctum\Sanctum;
 
 class HelpersTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
+
+        Tax::create([
+            'country' => 'Rest of World',
+            'label' => 'Zero Tax',
+            'code' => '*',
+            'state' => '*',
+            'rate' => 0,
+            'priority' => 0,
+        ]);
+    }
+
     protected function defineRoutes($router)
     {
         $router->get('/foo', function () {

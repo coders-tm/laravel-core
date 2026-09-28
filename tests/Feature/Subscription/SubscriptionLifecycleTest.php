@@ -205,8 +205,6 @@ class SubscriptionLifecycleTest extends TestCase
         $this->assertFalse($notGraceSubscriptions->contains($graceSubscription));
     }
 
-
-
     /**
      * Test renewing a subscription clears the trial_ends_at date.
      */

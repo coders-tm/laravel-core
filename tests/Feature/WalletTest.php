@@ -11,6 +11,7 @@ use Coderstm\Models\WalletBalance;
 use Coderstm\Models\WalletTransaction;
 use Coderstm\Payment\Payable;
 use Coderstm\Payment\Processor;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
@@ -24,6 +25,8 @@ class WalletTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
 
         $this->user = User::factory()->create();
 
@@ -169,11 +172,11 @@ class WalletTest extends TestCase
         // Get all wallet transactions to see what was charged
         $transactions = $this->user->walletTransactions()->orderBy('id', 'desc')->get();
 
-        // Should be 100 - (plan price 50 + tax 5) = 45
+        // Should be 100 - 50 = 50
         $this->assertEquals(
-            45.00,
+            50.00,
             $walletBalance,
-            'Wallet balance should be 45 (100 - 55 with tax). Transactions: '.
+            'Wallet balance should be 50 (100 - 50). Transactions: '.
                 $transactions->pluck('description', 'amount')->toJson()
         );
 

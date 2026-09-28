@@ -2,16 +2,22 @@
 
 namespace Tests\Feature\Subscription;
 
-use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
 use Coderstm\Notifications\SubscriptionExpiringNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\FeatureTestCase;
 
 class ExpiringSoonCommandTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     #[Test]
     public function it_sends_expiring_7_days_notification()
     {
@@ -33,7 +39,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-7-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -59,7 +65,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-2-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -85,7 +91,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-1-day-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -114,7 +120,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-7-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -141,7 +147,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseMissing('logs', [
             'type' => 'expiring-7-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -171,7 +177,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-7-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -191,7 +197,7 @@ class ExpiringSoonCommandTest extends FeatureTestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'expiring-7-days-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'status' => Log::STATUS_ERROR,
             'message' => 'Failed to send notification',

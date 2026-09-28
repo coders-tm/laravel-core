@@ -2,17 +2,23 @@
 
 namespace Tests\Feature\Subscription;
 
-use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
 use Coderstm\Models\Subscription\Plan;
 use Coderstm\Notifications\SubscriptionGraceNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\Feature\FeatureTestCase;
 
 class GraceNotificationCommandTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     #[Test]
     public function it_sends_grace_notification_to_subscriptions_on_grace_period()
     {
@@ -44,7 +50,7 @@ class GraceNotificationCommandTest extends FeatureTestCase
         $today = now()->format('Y-m-d');
         $this->assertDatabaseHas('logs', [
             'type' => "grace-notification-{$today}",
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -99,7 +105,7 @@ class GraceNotificationCommandTest extends FeatureTestCase
         $today = now()->format('Y-m-d');
         $this->assertDatabaseHas('logs', [
             'type' => "grace-notification-{$today}",
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -136,7 +142,7 @@ class GraceNotificationCommandTest extends FeatureTestCase
         $today = now()->format('Y-m-d');
         $this->assertDatabaseMissing('logs', [
             'type' => "grace-notification-{$today}",
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -176,7 +182,7 @@ class GraceNotificationCommandTest extends FeatureTestCase
         $today = now()->format('Y-m-d');
         $this->assertDatabaseHas('logs', [
             'type' => "grace-notification-{$today}",
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -206,7 +212,7 @@ class GraceNotificationCommandTest extends FeatureTestCase
         $today = now()->format('Y-m-d');
         $this->assertDatabaseHas('logs', [
             'type' => "grace-notification-{$today}",
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'status' => Log::STATUS_ERROR,
             'message' => 'Failed to send notification',

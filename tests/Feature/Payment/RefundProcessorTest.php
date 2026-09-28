@@ -9,13 +9,14 @@ use Coderstm\Models\Shop\Order;
 use Coderstm\Models\User;
 use Coderstm\Payment\Processor;
 use Coderstm\Payment\RefundResult;
+use Database\Seeders\NotificationSeeder;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
 /**
  * Tests for the RefundResult class and payment processor refund capabilities.
  */
-class RefundProcessorTest extends TestCase
+class RefundProcessorTest extends FeatureTestCase
 {
     protected $user;
 
@@ -32,6 +33,8 @@ class RefundProcessorTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        $this->seed(NotificationSeeder::class);
 
         $this->user = User::factory()->create();
 

@@ -2,18 +2,24 @@
 
 namespace Tests\Feature\Subscription;
 
-use Coderstm\Coderstm;
 use Coderstm\Models\Log;
 use Coderstm\Models\Subscription;
 use Coderstm\Notifications\Admins\SubscriptionCanceledNotification as AdminsSubscriptionCanceledNotification;
 use Coderstm\Notifications\SubscriptionCanceledNotification;
+use Database\Seeders\NotificationSeeder;
 use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Facades\Notification;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+use Tests\Feature\FeatureTestCase;
 
-class CanceledSubscriptionCommandTest extends TestCase
+class CanceledSubscriptionCommandTest extends FeatureTestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed(NotificationSeeder::class);
+    }
+
     #[Test]
     public function it_sends_notifications_for_canceled_subscriptions()
     {
@@ -37,7 +43,7 @@ class CanceledSubscriptionCommandTest extends TestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'canceled-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'message' => 'Notification for canceled subscriptions has been successfully sent.',
         ]);
@@ -73,7 +79,7 @@ class CanceledSubscriptionCommandTest extends TestCase
 
         $this->assertDatabaseMissing('logs', [
             'type' => 'canceled-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
         ]);
     }
@@ -93,7 +99,7 @@ class CanceledSubscriptionCommandTest extends TestCase
 
         $this->assertDatabaseHas('logs', [
             'type' => 'canceled-notification',
-            'logable_type' => Coderstm::$subscriptionModel,
+            'logable_type' => $subscription->getMorphClass(),
             'logable_id' => $subscription->id,
             'status' => Log::STATUS_ERROR,
             'message' => 'Failed to send notification',

@@ -7,7 +7,7 @@ use Coderstm\Services\Reports\ReportInterface;
 use Coderstm\Services\Reports\ReportService;
 use Coderstm\Services\Reports\Revenue\MrrByPlanReport;
 use PHPUnit\Framework\Attributes\Test;
-use Tests\TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ReportServiceTest extends TestCase
 {
