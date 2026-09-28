@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use Coderstm\Casts\PreserveWhitespaceJson;
-use PageBuilder\Models\Page;
 use Illuminate\Database\Eloquent\Model;
+use PageBuilder\Models\Page;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
