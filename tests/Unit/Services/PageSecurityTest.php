@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use Coderstm\PageBuilder\Models\Page;
-use Coderstm\PageBuilder\Services\PageStorage;
+use PageBuilder\Models\Page;
+use PageBuilder\Services\PageStorage;
 use Coderstm\Services\MaskSensitiveConfig;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;

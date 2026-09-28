@@ -184,7 +184,7 @@ config([
 Publish the config file:
 
 ```bash
-php artisan vendor:publish --provider="Coderstm\\PageBuilder\\PageBuilderServiceProvider" --tag=config
+php artisan vendor:publish --provider="PageBuilder\\Providers\\PageBuilderServiceProvider" --tag=config
 ```
 
 **Benefits:**

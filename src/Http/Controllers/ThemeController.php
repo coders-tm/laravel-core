@@ -3,7 +3,7 @@
 namespace Coderstm\Http\Controllers;
 
 use Coderstm\Models\AppSetting;
-use Coderstm\PageBuilder\Services\Theme;
+use PageBuilder\Services\Theme;
 use Coderstm\Services\Helpers;
 use Coderstm\Services\Theme\FileMeta;
 use Illuminate\Http\Request;

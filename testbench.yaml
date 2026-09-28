@@ -10,7 +10,7 @@ providers:
   - Coderstm\Providers\CoderstmPermissionsServiceProvider
   - Coderstm\Providers\CoderstmEventServiceProvider
   - Coderstm\Providers\ShortcodeServiceProvider
-  - Coderstm\PageBuilder\Providers\PageBuilderServiceProvider
+  - PageBuilder\Providers\PageBuilderServiceProvider
   - Workbench\App\Providers\WorkbenchServiceProvider
 
 migrations:

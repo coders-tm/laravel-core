@@ -3,7 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Admin;
-use Coderstm\PageBuilder\Facades\Theme;
+use PageBuilder\Facades\Theme;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\File;
 use Laravel\Sanctum\Sanctum;
