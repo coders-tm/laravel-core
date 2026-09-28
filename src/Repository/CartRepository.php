@@ -2,12 +2,8 @@
 
 namespace Coderstm\Repository;
 
-use Coderstm\Models\Address;
-use Coderstm\Models\Shop\Customer;
+use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
-use Coderstm\Models\Shop\Order\Contact;
-use Coderstm\Models\Shop\Order\DiscountLine;
-use Coderstm\Models\Shop\Order\LineItem;
 use Illuminate\Http\Request;
 
 class CartRepository extends BaseRepository
@@ -20,9 +16,15 @@ class CartRepository extends BaseRepository
      */
     public static function fromRequest(Request $request, $order)
     {
+        $lineItemClass = Coderstm::$orderLineItemModel;
+        $discountLineClass = Coderstm::$orderDiscountLineModel;
+        $customerClass = Coderstm::$customerModel;
+        $addressClass = Coderstm::$addressModel;
+        $contactClass = Coderstm::$orderContactModel;
+
         // Process line items
-        $line_items = collect($request->line_items ?? [])->map(function ($product) {
-            return LineItem::firstOrNew([
+        $line_items = collect($request->line_items ?? [])->map(function ($product) use ($lineItemClass) {
+            return $lineItemClass::firstOrNew([
                 'id' => $product['id'] ?? null,
             ], $product)->fill($product);
         });
@@ -49,7 +51,7 @@ class CartRepository extends BaseRepository
         if ($request->filled('line_items')) {
             foreach ($request->line_items as $key => $product) {
                 if (isset($product['discount'])) {
-                    $order->line_items[$key]->setRelation('discount', DiscountLine::firstOrNew([
+                    $order->line_items[$key]->setRelation('discount', $discountLineClass::firstOrNew([
                         'id' => $product['discount']['id'] ?? null,
                     ], $product['discount'])->fill($product['discount']));
                 }
@@ -57,13 +59,13 @@ class CartRepository extends BaseRepository
         }
 
         // Set order discount
-        $order->setRelation('discount', $request->filled('discount') ? new DiscountLine($request->discount) : null);
+        $order->setRelation('discount', $request->filled('discount') ? new $discountLineClass($request->discount) : null);
 
         // Process customer data
         if ($request->filled('customer')) {
-            $customer = new Customer($request->customer);
+            $customer = new $customerClass($request->customer);
             if ($request->filled('customer.address')) {
-                $customer->setRelation('address', new Address($request->input('customer.address')));
+                $customer->setRelation('address', new $addressClass($request->input('customer.address')));
             }
             $order->setRelation('customer', $customer);
             $order->customer->created_at = $order->customer->created_at ?? now();
@@ -75,7 +77,7 @@ class CartRepository extends BaseRepository
         }
 
         // Set contact
-        $order->setRelation('contact', $request->filled('contact') ? new Contact($request->contact) : null);
+        $order->setRelation('contact', $request->filled('contact') ? new $contactClass($request->contact) : null);
 
         // Calculate using CartRepository
         $cartRepository = new static($order->toArray());

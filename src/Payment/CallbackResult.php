@@ -4,6 +4,7 @@ namespace Coderstm\Payment;
 
 use Coderstm\Exceptions\PaymentException;
 use Coderstm\Models\Payment;
+use Illuminate\Http\RedirectResponse;
 
 class CallbackResult
 {
@@ -47,7 +48,7 @@ class CallbackResult
         return 'success';
     }
 
-    public function toRedirect(string $fallbackUrl, string $provider, string $status = 'succeeded'): \Illuminate\Http\RedirectResponse
+    public function toRedirect(string $fallbackUrl, string $provider, string $status = 'succeeded'): RedirectResponse
     {
         return PaymentRedirect::to(
             payment: $this->payment,

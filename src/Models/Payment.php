@@ -227,7 +227,7 @@ class Payment extends Model
             'refunded_at' => now(),
         ]);
 
-        if ($updated && $this->paymentable_type === Coderstm::$orderModel) {
+        if ($updated && $this->paymentable instanceof (Coderstm::$orderModel)) {
             $order = $this->paymentable;
 
             // Full refund event
@@ -242,7 +242,7 @@ class Payment extends Model
      */
     public function updateOrderPaidTotal(): void
     {
-        if ($this->paymentable_type === Coderstm::$orderModel && $this->paymentable) {
+        if ($this->paymentable instanceof (Coderstm::$orderModel)) {
             $paidTotal = $this->paymentable->payments()->sum('amount');
             $this->paymentable->updateQuietly(['paid_total' => $paidTotal]);
         }
@@ -254,7 +254,7 @@ class Payment extends Model
     public static function createForOrder($order, array $attributes = [])
     {
         return static::updateOrCreate([
-            'paymentable_type' => Coderstm::$orderModel,
+            'paymentable_type' => $order->getMorphClass(),
             'paymentable_id' => $order->id,
             'payment_method_id' => $attributes['payment_method_id'] ?? null,
             'transaction_id' => $attributes['transaction_id'] ?? null,

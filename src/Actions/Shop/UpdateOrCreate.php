@@ -4,8 +4,6 @@ namespace Coderstm\Actions\Shop;
 
 use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
-use Coderstm\Models\Shop\Order\Contact;
-use Coderstm\Models\Shop\Order\DiscountLine;
 use Coderstm\Repository\CartRepository;
 use Coderstm\Services\Resource;
 use Illuminate\Support\Arr;
@@ -96,6 +94,7 @@ class UpdateOrCreate
                 'tax_total' => $resource->tax_total,
                 'discount_total' => $resource->discount_total ?? 0,
                 'grand_total' => $resource->grand_total,
+                'line_items_quantity' => $resource->line_items_quantity,
             ])->save();
 
             if ($resource->filled('tax_lines')) {
@@ -138,18 +137,20 @@ class UpdateOrCreate
                 $order->customer->update(Arr::only($resource->contact, ['email', 'phone_number']));
             }
 
+            $contactClass = Coderstm::$orderContactModel;
             if ($order->contact) {
-                $order->contact->update((new Contact($resource->contact))->toArray());
+                $order->contact->update((new $contactClass($resource->contact))->toArray());
             } else {
-                $order->contact()->save(new Contact($resource->contact));
+                $order->contact()->save(new $contactClass($resource->contact));
             }
         }
 
         if ($resource->filled('discount')) {
+            $discountClass = Coderstm::$orderDiscountLineModel;
             if ($order->discount) {
-                $order->discount->update((new DiscountLine($resource->discount))->toArray());
+                $order->discount->update((new $discountClass($resource->discount))->toArray());
             } else {
-                $order->discount()->save(new DiscountLine($resource->discount));
+                $order->discount()->save(new $discountClass($resource->discount));
             }
         }
 

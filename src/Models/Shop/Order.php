@@ -18,8 +18,6 @@ use Coderstm\Models\PaymentMethod;
 use Coderstm\Models\Refund;
 use Coderstm\Models\Shop\Order\Contact;
 use Coderstm\Models\Shop\Order\Customer;
-use Coderstm\Models\Shop\Order\DiscountLine;
-use Coderstm\Models\Shop\Order\TaxLine;
 use Coderstm\Models\Subscription;
 use Coderstm\Repository\CartRepository;
 use Coderstm\Services\Resource;
@@ -141,7 +139,7 @@ class Order extends Model implements Currencyable
 
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Coderstm::$customerModel);
     }
 
     /**
@@ -159,12 +157,12 @@ class Order extends Model implements Currencyable
 
     public function tax_lines()
     {
-        return $this->morphMany(TaxLine::class, 'taxable');
+        return $this->morphMany(Coderstm::$orderTaxLineModel, 'taxable');
     }
 
     public function payments()
     {
-        return $this->morphMany(Payment::class, 'paymentable')
+        return $this->morphMany(Coderstm::$paymentModel, 'paymentable')
             ->whereIn('status', [
                 Payment::STATUS_COMPLETED,
                 Payment::STATUS_REFUNDED,
@@ -174,17 +172,17 @@ class Order extends Model implements Currencyable
 
     public function discount()
     {
-        return $this->morphOne(DiscountLine::class, 'discountable');
+        return $this->morphOne(Coderstm::$orderDiscountLineModel, 'discountable');
     }
 
     public function contact()
     {
-        return $this->morphOne(Contact::class, 'contactable');
+        return $this->morphOne(Coderstm::$orderContactModel, 'contactable');
     }
 
     public function refunds()
     {
-        return $this->hasMany(Refund::class);
+        return $this->hasMany(Coderstm::$refundModel);
     }
 
     public function orderable()
@@ -308,9 +306,10 @@ class Order extends Model implements Currencyable
 
             // update the discount
             if (! empty(has($item)->discount)) {
+                $discountClass = Coderstm::$orderDiscountLineModel;
                 $product->discount()->updateOrCreate([
                     'id' => has($item['discount'])->id,
-                ], (new DiscountLine($item['discount']))->toArray());
+                ], (new $discountClass($item['discount']))->toArray());
             } else {
                 $product->discount()->delete();
             }
@@ -396,6 +395,7 @@ class Order extends Model implements Currencyable
                 'tax_total' => $resource->tax_total,
                 'discount_total' => $resource->discount_total ?? 0,
                 'grand_total' => $resource->grand_total,
+                'line_items_quantity' => $resource->line_items_quantity,
             ])->save();
 
             // Directly sync the tax lines without recalculation
@@ -453,19 +453,21 @@ class Order extends Model implements Currencyable
                 $this->customer->update(Arr::only($resource->contact, ['email', 'phone_number']));
             }
 
+            $contactClass = Coderstm::$orderContactModel;
             if ($this->contact) {
-                $this->contact->update((new Contact($resource->contact))->toArray());
+                $this->contact->update((new $contactClass($resource->contact))->toArray());
             } else {
-                $this->contact()->save(new Contact($resource->contact));
+                $this->contact()->save(new $contactClass($resource->contact));
             }
         }
 
         // update order discount
         if ($resource->filled('discount')) {
+            $discountClass = Coderstm::$orderDiscountLineModel;
             if ($this->discount) {
-                $this->discount->update((new DiscountLine($resource->discount))->toArray());
+                $this->discount->update((new $discountClass($resource->discount))->toArray());
             } else {
-                $this->discount()->save(new DiscountLine($resource->discount));
+                $this->discount()->save(new $discountClass($resource->discount));
             }
         }
 
@@ -989,7 +991,11 @@ class Order extends Model implements Currencyable
 
         $attributes = array_merge($attributes, $transaction);
 
-        return Payment::createForOrder($this, $attributes);
+        if (empty($attributes['amount'])) {
+            $attributes['amount'] = $this->grand_total;
+        }
+
+        return (Coderstm::$paymentModel)::createForOrder($this, $attributes);
     }
 
     protected static function newFactory()

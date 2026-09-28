@@ -181,7 +181,7 @@ class XenditProcessor extends AbstractPaymentProcessor implements PaymentProcess
 
             // Create a pending payment record first to get the uuid
             $payment = Payment::create([
-                'paymentable_type' => $payable->isOrder() ? Coderstm::$orderModel : get_class($payable->getSource()),
+                'paymentable_type' => $payable->getSource()->getMorphClass(),
                 'paymentable_id' => $payable->getSourceId(),
                 'payment_method_id' => $this->getPaymentMethodId(),
                 'transaction_id' => 'pending_'.uniqid(), // Placeholder until we get the invoice ID

@@ -54,7 +54,7 @@ class Refund extends Model
 
     public function payment(): BelongsTo
     {
-        return $this->belongsTo(Payment::class);
+        return $this->belongsTo(Coderstm::$paymentModel);
     }
 
     public function walletTransaction(): BelongsTo

@@ -146,7 +146,7 @@ class PaystackProcessor extends AbstractPaymentProcessor implements PaymentProce
 
         // Create Pending Payment
         $payment = Payment::create([
-            'paymentable_type' => $payable->isOrder() ? Coderstm::$orderModel : get_class($payable->getSource()),
+            'paymentable_type' => $payable->getSource()->getMorphClass(),
             'paymentable_id' => $payable->getSourceId(),
             'payment_method_id' => $this->getPaymentMethodId(),
             'transaction_id' => 'PAYSTACK_'.$payable->getReferenceId().'_'.time(),

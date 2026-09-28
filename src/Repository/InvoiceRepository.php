@@ -2,10 +2,8 @@
 
 namespace Coderstm\Repository;
 
+use Coderstm\Coderstm;
 use Coderstm\Models\Shop\Order;
-use Coderstm\Models\Shop\Order\DiscountLine;
-use Coderstm\Models\Shop\Order\LineItem;
-use Coderstm\Models\Shop\Order\TaxLine;
 use Illuminate\Support\Collection;
 
 class InvoiceRepository extends Order
@@ -62,8 +60,9 @@ class InvoiceRepository extends Order
             $attributes['tax_lines'] = billing_address_tax($attributes['billing_address']);
         }
 
-        $this->taxes = collect(has($attributes)->tax_lines ?: [])->map(function ($item) {
-            return TaxLine::firstOrNew([
+        $taxLineClass = Coderstm::$orderTaxLineModel;
+        $this->taxes = collect(has($attributes)->tax_lines ?: [])->map(function ($item) use ($taxLineClass) {
+            return $taxLineClass::firstOrNew([
                 'id' => has($item)->id,
             ], $item)->fill($item);
         });
@@ -78,11 +77,14 @@ class InvoiceRepository extends Order
 
     public function getLineItemsAttribute($value)
     {
-        return collect($value ?: [])->map(function ($item) {
-            $lineItem = new LineItem($item);
+        $lineItemClass = Coderstm::$orderLineItemModel;
+        $discountLineClass = Coderstm::$orderDiscountLineModel;
+
+        return collect($value ?: [])->map(function ($item) use ($lineItemClass, $discountLineClass) {
+            $lineItem = new $lineItemClass($item);
 
             if (isset($item['discount'])) {
-                $lineItem->setRelation('discount', new DiscountLine($item['discount']));
+                $lineItem->setRelation('discount', new $discountLineClass($item['discount']));
             }
 
             return $lineItem;
@@ -91,7 +93,9 @@ class InvoiceRepository extends Order
 
     public function getDiscountAttribute($value)
     {
-        return new DiscountLine($value ?: []);
+        $discountLineClass = Coderstm::$orderDiscountLineModel;
+
+        return new $discountLineClass($value ?: []);
     }
 
     public function getTotalLineItemsAttribute()

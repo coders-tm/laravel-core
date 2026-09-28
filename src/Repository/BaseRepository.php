@@ -196,8 +196,10 @@ abstract class BaseRepository extends Model
      */
     protected function setDiscount($value)
     {
+        $discountLineClass = Coderstm::$orderDiscountLineModel;
+
         // If already a DiscountLine object, return it
-        if ($value instanceof DiscountLine) {
+        if ($value instanceof $discountLineClass) {
             return $value;
         }
 
@@ -206,7 +208,7 @@ abstract class BaseRepository extends Model
             return null;
         }
 
-        return new DiscountLine($value);
+        return new $discountLineClass($value);
     }
 
     protected function discount(): Attribute
@@ -222,7 +224,9 @@ abstract class BaseRepository extends Model
      */
     protected function setLineItems($value)
     {
-        return collect($value ?: [])->map(function ($item) {
+        $discountLineClass = Coderstm::$orderDiscountLineModel;
+
+        return collect($value ?: [])->map(function ($item) use ($discountLineClass) {
             // If already a LineItem object, return it
             if ($item instanceof Coderstm::$orderLineItemModel) {
                 return $item;
@@ -242,7 +246,7 @@ abstract class BaseRepository extends Model
             $model = new Coderstm::$orderLineItemModel($item);
 
             if ($discount) {
-                $model->setRelation('discount', $discount instanceof DiscountLine ? $discount : new DiscountLine($discount));
+                $model->setRelation('discount', $discount instanceof $discountLineClass ? $discount : new $discountLineClass($discount));
             }
 
             return $model;

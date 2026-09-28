@@ -95,6 +95,8 @@ abstract class AbstractPayment implements PaymentInterface
         return [
             'payment_method_id' => $this->getPaymentMethodId(),
             'transaction_id' => $this->getTransactionId(),
+            'amount' => $this->getAmount(),
+            'currency' => $this->getCurrency(),
             'status' => $this->getStatus(),
             'note' => $this->getNote(),
             'processed_at' => $this->getProcessedAt(),

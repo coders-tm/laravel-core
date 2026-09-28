@@ -91,6 +91,9 @@ class CoderstmServiceProvider extends ServiceProvider
 
         Paginator::useBootstrapFive();
 
+        // Register default morph map for Coderstm models
+        Coderstm::registerMorphMap();
+
         // Register core middleware
         $this->registerCoreMiddleware();
 

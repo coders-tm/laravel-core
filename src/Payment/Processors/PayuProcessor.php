@@ -184,7 +184,7 @@ class PayuProcessor extends AbstractPaymentProcessor implements PaymentProcessor
 
         // Create a pending payment record to track the transaction
         $payment = Payment::create([
-            'paymentable_type' => $payable->isOrder() ? Coderstm::$orderModel : get_class($payable->getSource()),
+            'paymentable_type' => $payable->getSource()->getMorphClass(),
             'paymentable_id' => $payable->getSourceId(),
             'payment_method_id' => $this->getPaymentMethodId(),
             'transaction_id' => 'pending_'.uniqid(),

@@ -16,6 +16,7 @@ use Coderstm\Services\Payment\PayuClient;
 use Coderstm\Services\Payment\XenditClient;
 use DateTimeInterface;
 use GoCardlessPro\Client;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Gate;
 use Razorpay\Api\Api;
@@ -69,7 +70,7 @@ class Coderstm
     public static $subscriptionModel = 'Coderstm\\Models\\Subscription';
 
     /**
-     * The default invoice model class name.
+     * The default order/invoice model class name.
      *
      * @var string
      */
@@ -81,6 +82,34 @@ class Coderstm
      * @var string
      */
     public static $orderLineItemModel = 'Coderstm\\Models\\Shop\\Order\\LineItem';
+
+    /**
+     * The default order discount line model class name.
+     *
+     * @var string
+     */
+    public static $orderDiscountLineModel = 'Coderstm\\Models\\Shop\\Order\\DiscountLine';
+
+    /**
+     * The default order tax line model class name.
+     *
+     * @var string
+     */
+    public static $orderTaxLineModel = 'Coderstm\\Models\\Shop\\Order\\TaxLine';
+
+    /**
+     * The default order contact model class name.
+     *
+     * @var string
+     */
+    public static $orderContactModel = 'Coderstm\\Models\\Shop\\Order\\Contact';
+
+    /**
+     * The default customer model class name.
+     *
+     * @var string
+     */
+    public static $customerModel = 'Coderstm\\Models\\Shop\\Order\\Customer';
 
     /**
      * The default plan model class name.
@@ -95,6 +124,69 @@ class Coderstm
      * @var string
      */
     public static $couponModel = 'Coderstm\\Models\\Coupon';
+
+    /**
+     * The default payment model class name.
+     *
+     * @var string
+     */
+    public static $paymentModel = 'Coderstm\\Models\\Payment';
+
+    /**
+     * The default refund model class name.
+     *
+     * @var string
+     */
+    public static $refundModel = 'Coderstm\\Models\\Refund';
+
+    /**
+     * The default payment method model class name.
+     *
+     * @var string
+     */
+    public static $paymentMethodModel = 'Coderstm\\Models\\PaymentMethod';
+
+    /**
+     * The default address model class name.
+     *
+     * @var string
+     */
+    public static $addressModel = 'Coderstm\\Models\\Address';
+
+    /**
+     * The default file model class name.
+     *
+     * @var string
+     */
+    public static $fileModel = 'Coderstm\\Models\\File';
+
+    /**
+     * The default task model class name.
+     *
+     * @var string
+     */
+    public static $taskModel = 'Coderstm\\Models\\Task';
+
+    /**
+     * The default blog model class name.
+     *
+     * @var string
+     */
+    public static $blogModel = 'Coderstm\\Models\\Blog';
+
+    /**
+     * The default log model class name.
+     *
+     * @var string
+     */
+    public static $logModel = 'Coderstm\\Models\\Log';
+
+    /**
+     * The default group model class name.
+     *
+     * @var string
+     */
+    public static $groupModel = 'Coderstm\\Models\\Group';
 
     /**
      * Indicates if Coderstm's migrations will be run.
@@ -257,6 +349,11 @@ class Coderstm
         Config::set('auth.providers.users.model', $userModel);
 
         Gate::policy($userModel, UserPolicy::class);
+
+        // Register morph map for user model
+        Relation::morphMap([
+            'User' => $userModel,
+        ]);
     }
 
     /**
@@ -283,6 +380,11 @@ class Coderstm
         Config::set('auth.providers.admins.model', $adminModel);
 
         Gate::policy($adminModel, AdminPolicy::class);
+
+        // Register morph map for admin model
+        Relation::morphMap([
+            'Admin' => $adminModel,
+        ]);
     }
 
     /**
@@ -296,6 +398,11 @@ class Coderstm
         static::$enquiryModel = $enquiryModel;
 
         Gate::policy($enquiryModel, EnquiryPolicy::class);
+
+        // Register morph map for enquiry model
+        Relation::morphMap([
+            'Enquiry' => $enquiryModel,
+        ]);
     }
 
     /**
@@ -307,6 +414,11 @@ class Coderstm
     public static function useOrderModel($orderModel)
     {
         static::$orderModel = $orderModel;
+
+        // Register morph map for order model
+        Relation::morphMap([
+            'Order' => $orderModel,
+        ]);
     }
 
     /**
@@ -318,6 +430,86 @@ class Coderstm
     public static function useOrderLineItemModel($orderLineItemModel)
     {
         static::$orderLineItemModel = $orderLineItemModel;
+
+        // Register morph map for line item model
+        Relation::morphMap([
+            'LineItem' => $orderLineItemModel,
+        ]);
+    }
+
+    /**
+     * Set the order discount line model class name.
+     *
+     * @param  string  $orderDiscountLineModel
+     * @return void
+     */
+    public static function useOrderDiscountLineModel($orderDiscountLineModel)
+    {
+        static::$orderDiscountLineModel = $orderDiscountLineModel;
+
+        // Register morph map for discount line model
+        Relation::morphMap([
+            'DiscountLine' => $orderDiscountLineModel,
+        ]);
+    }
+
+    /**
+     * Set the order tax line model class name.
+     *
+     * @param  string  $orderTaxLineModel
+     * @return void
+     */
+    public static function useOrderTaxLineModel($orderTaxLineModel)
+    {
+        static::$orderTaxLineModel = $orderTaxLineModel;
+
+        // Register morph map for tax line model
+        Relation::morphMap([
+            'TaxLine' => $orderTaxLineModel,
+        ]);
+    }
+
+    /**
+     * Set the order contact model class name.
+     *
+     * @param  string  $orderContactModel
+     * @return void
+     */
+    public static function useOrderContactModel($orderContactModel)
+    {
+        static::$orderContactModel = $orderContactModel;
+
+        // Register morph map for contact model
+        Relation::morphMap([
+            'Contact' => $orderContactModel,
+        ]);
+    }
+
+    /**
+     * Set the customer model class name.
+     *
+     * @param  string  $customerModel
+     * @return void
+     */
+    public static function useCustomerModel($customerModel)
+    {
+        static::$customerModel = $customerModel;
+
+        // Register morph map for customer model
+        Relation::morphMap([
+            'Customer' => $customerModel,
+        ]);
+    }
+
+    /**
+     * Set the order customer model class name (alias).
+     *
+     * @param  string  $customerModel
+     * @return void
+     */
+    public static function useOrderCustomerModel($customerModel)
+    {
+        static::useCustomerModel($customerModel);
     }
 
     /**
@@ -329,6 +521,11 @@ class Coderstm
     public static function useSubscriptionModel($subscriptionModel)
     {
         static::$subscriptionModel = $subscriptionModel;
+
+        // Register morph map for subscription model
+        Relation::morphMap([
+            'Subscription' => $subscriptionModel,
+        ]);
     }
 
     /**
@@ -342,6 +539,11 @@ class Coderstm
         static::$planModel = $planModel;
 
         Gate::policy($planModel, PlanPolicy::class);
+
+        // Register morph map for plan model
+        Relation::morphMap([
+            'Plan' => $planModel,
+        ]);
     }
 
     /**
@@ -355,6 +557,187 @@ class Coderstm
         static::$couponModel = $couponModel;
 
         Gate::policy($couponModel, CouponPolicy::class);
+
+        // Register morph map for coupon model
+        Relation::morphMap([
+            'Coupon' => $couponModel,
+        ]);
+    }
+
+    /**
+     * Set the payment model class name.
+     *
+     * @param  string  $paymentModel
+     * @return void
+     */
+    public static function usePaymentModel($paymentModel)
+    {
+        static::$paymentModel = $paymentModel;
+
+        // Register morph map for payment model
+        Relation::morphMap([
+            'Payment' => $paymentModel,
+        ]);
+    }
+
+    /**
+     * Set the refund model class name.
+     *
+     * @param  string  $refundModel
+     * @return void
+     */
+    public static function useRefundModel($refundModel)
+    {
+        static::$refundModel = $refundModel;
+
+        // Register morph map for refund model
+        Relation::morphMap([
+            'Refund' => $refundModel,
+        ]);
+    }
+
+    /**
+     * Set the payment method model class name.
+     *
+     * @param  string  $paymentMethodModel
+     * @return void
+     */
+    public static function usePaymentMethodModel($paymentMethodModel)
+    {
+        static::$paymentMethodModel = $paymentMethodModel;
+
+        // Register morph map for payment method model
+        Relation::morphMap([
+            'PaymentMethod' => $paymentMethodModel,
+        ]);
+    }
+
+    /**
+     * Set the address model class name.
+     *
+     * @param  string  $addressModel
+     * @return void
+     */
+    public static function useAddressModel($addressModel)
+    {
+        static::$addressModel = $addressModel;
+
+        // Register morph map for address model
+        Relation::morphMap([
+            'Address' => $addressModel,
+        ]);
+    }
+
+    /**
+     * Set the file model class name.
+     *
+     * @param  string  $fileModel
+     * @return void
+     */
+    public static function useFileModel($fileModel)
+    {
+        static::$fileModel = $fileModel;
+
+        // Register morph map for file model
+        Relation::morphMap([
+            'File' => $fileModel,
+        ]);
+    }
+
+    /**
+     * Set the task model class name.
+     *
+     * @param  string  $taskModel
+     * @return void
+     */
+    public static function useTaskModel($taskModel)
+    {
+        static::$taskModel = $taskModel;
+
+        // Register morph map for task model
+        Relation::morphMap([
+            'Task' => $taskModel,
+        ]);
+    }
+
+    /**
+     * Set the blog model class name.
+     *
+     * @param  string  $blogModel
+     * @return void
+     */
+    public static function useBlogModel($blogModel)
+    {
+        static::$blogModel = $blogModel;
+
+        // Register morph map for blog model
+        Relation::morphMap([
+            'Blog' => $blogModel,
+        ]);
+    }
+
+    /**
+     * Set the log model class name.
+     *
+     * @param  string  $logModel
+     * @return void
+     */
+    public static function useLogModel($logModel)
+    {
+        static::$logModel = $logModel;
+
+        // Register morph map for log model
+        Relation::morphMap([
+            'Log' => $logModel,
+        ]);
+    }
+
+    /**
+     * Set the group model class name.
+     *
+     * @param  string  $groupModel
+     * @return void
+     */
+    public static function useGroupModel($groupModel)
+    {
+        static::$groupModel = $groupModel;
+
+        // Register morph map for group model
+        Relation::morphMap([
+            'Group' => $groupModel,
+        ]);
+    }
+
+    /**
+     * Register default morph map for all Coderstm models.
+     *
+     * @return void
+     */
+    public static function registerMorphMap()
+    {
+        Relation::morphMap([
+            'User' => static::$userModel,
+            'Admin' => static::$adminModel,
+            'Enquiry' => static::$enquiryModel,
+            'Subscription' => static::$subscriptionModel,
+            'Order' => static::$orderModel,
+            'LineItem' => static::$orderLineItemModel,
+            'DiscountLine' => static::$orderDiscountLineModel,
+            'TaxLine' => static::$orderTaxLineModel,
+            'Contact' => static::$orderContactModel,
+            'Customer' => static::$customerModel,
+            'Plan' => static::$planModel,
+            'Coupon' => static::$couponModel,
+            'Payment' => static::$paymentModel,
+            'Refund' => static::$refundModel,
+            'PaymentMethod' => static::$paymentMethodModel,
+            'Address' => static::$addressModel,
+            'File' => static::$fileModel,
+            'Task' => static::$taskModel,
+            'Blog' => static::$blogModel,
+            'Log' => static::$logModel,
+            'Group' => static::$groupModel,
+        ]);
     }
 
     /**

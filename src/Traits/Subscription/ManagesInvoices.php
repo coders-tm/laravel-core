@@ -114,7 +114,7 @@ trait ManagesInvoices
             'source' => 'Membership',
             'customer_id' => $this->user?->id,
             'orderable_id' => $this->id,
-            'orderable_type' => static::class,
+            'orderable_type' => $this->getMorphClass(),
             'due_date' => $dueDate,
             'billing_address' => $this->user?->billingAddress(),
             'collect_tax' => true,

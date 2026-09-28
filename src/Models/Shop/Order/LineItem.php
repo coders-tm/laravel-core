@@ -2,6 +2,7 @@
 
 namespace Coderstm\Models\Shop\Order;
 
+use Coderstm\Coderstm;
 use Coderstm\Contracts\Currencyable;
 use Coderstm\Traits\Core;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -58,7 +59,7 @@ class LineItem extends Model implements Currencyable
 
     public function discount()
     {
-        return $this->morphOne(DiscountLine::class, 'discountable');
+        return $this->morphOne(Coderstm::$orderDiscountLineModel, 'discountable');
     }
 
     public function hasDiscount(): bool
