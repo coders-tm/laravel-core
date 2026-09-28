@@ -53,7 +53,6 @@
     "mercadopago/dx-php": "^3.5",
     "moneyphp/money": "^4.0",
     "nesbot/carbon": "^3.0",
-    "qirolab/laravel-themer": "^2.4",
     "razorpay/razorpay": "^2.9",
     "spatie/laravel-sluggable": "^3.7",
     "srmklive/paypal": "^3.0",
